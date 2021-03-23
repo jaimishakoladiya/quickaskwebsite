@@ -12,6 +12,7 @@ function Home() {
     return (
         <>
                 <HomeFooter/>
+            
             <FirstHomeComp /><br></br>
              <SecondHomeComp /> <br></br><br></br><br></br>
              <ThirdHomeComp />
