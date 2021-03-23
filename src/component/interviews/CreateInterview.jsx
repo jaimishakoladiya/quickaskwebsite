@@ -72,7 +72,7 @@ return (
 <div className="Main_box">
 
 
-<div className={classes.root}>
+<div className={classes.root} id="stepper_css">
 <Stepper activeStep={activeStep} orientation="vertical">
 {steps.map((label, index) => (
 <Step key={label}>
@@ -83,7 +83,7 @@ return (
 <div className={classes.actionsContainer}>
 
 <div>
-<Button style={{ color:"black", backgroundColor:"gray" }}
+<Button style={{ color:"darkcyan", backgroundColor:"black",fontWeight:"bold" }}
 disabled={activeStep === 0}
 onClick={handleBack}
 className={classes.button}
@@ -92,7 +92,8 @@ Back
 </Button>
 <Button style={{marginRight : '50px'}}
 variant="contained"
-color="primary"
+// color="primary"
+id="btn_color"
 onClick={handleNext}
 className={classes.button}
 >

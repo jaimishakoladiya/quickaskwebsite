@@ -11,7 +11,7 @@
   text-align: left;
   font-weight: bold;
   overflow: hidden;
-  background-color: #38d39f;
+  background-color: darkcyan;
   display: flex;
   justify-content: left;
   align-items: center;
@@ -98,6 +98,8 @@ btn1 {
   margin: 15px auto;
   border: 1px solid black;
   border-radius: 3px;
+  background-color: rgb(65, 109, 109);
+
 }
 .step1 {
   margin: 15px auto;
@@ -106,7 +108,7 @@ btn1 {
   justify-content: center;
   padding: 15px 5px 10px 15px;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
-  background-color: whitesmoke;
+  /* background-color: whitesmoke; */
   width: 900px;
   height: auto;
   border-radius: 1px;
@@ -170,4 +172,12 @@ btn1 {
 #Step4_heading{
   border: 1px solid black;
   border-radius: 4px;
+}
+#btn_color{
+  background-color: darkcyan;
+  font-weight: bold;
+}
+#stepper_css{
+  color: black;
+  background-color: darkcyan;
 }
