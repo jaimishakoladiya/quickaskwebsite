@@ -1,9 +1,9 @@
 import React from 'react';
-import ButtonDelete from './Steps/ButtonDelete'
+//import ButtonDelete from './steps/ButtonDelete'
 import CandidateDetails from './CandidateDetails';
-import CreateInterview from './CreateInterview';
+//import CreateInterview from './CreateInterview';
 
-const AppD = ()=>{
+const Interviews = ()=>{
     return(<>
              
              <CandidateDetails/>
@@ -13,4 +13,4 @@ const AppD = ()=>{
     );
 }
 
-export default AppD;
+export default Interviews;

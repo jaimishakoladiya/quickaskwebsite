@@ -8,10 +8,10 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import './Interviews.css'
-import Step1 from './Steps/Step1';
-import Step2 from './Steps/Step2';
-import Step3 from './Steps/Step3';
-import Step4 from './Steps/Step4';
+import Step1 from './steps/Step1';
+import Step2 from './steps/Step2';
+import Step3 from './steps/Step3';
+import Step4 from './steps/Step4';
 
 const CreateInterview = ()=> {
 const useStyles = makeStyles((theme) => ({
@@ -72,7 +72,7 @@ return (
 <div className="Main_box">
 
 
-<div className={classes.root}>
+<div className={classes.root} id="stepper_css">
 <Stepper activeStep={activeStep} orientation="vertical">
 {steps.map((label, index) => (
 <Step key={label}>
@@ -83,7 +83,7 @@ return (
 <div className={classes.actionsContainer}>
 
 <div>
-<Button style={{ color:"black", backgroundColor:"gray" }}
+<Button style={{ color:"darkcyan", backgroundColor:"black",fontWeight:"bold" }}
 disabled={activeStep === 0}
 onClick={handleBack}
 className={classes.button}
@@ -92,7 +92,8 @@ Back
 </Button>
 <Button style={{marginRight : '50px'}}
 variant="contained"
-color="primary"
+// color="primary"
+id="btn_color"
 onClick={handleNext}
 className={classes.button}
 >
