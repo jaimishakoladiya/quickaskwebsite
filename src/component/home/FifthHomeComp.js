@@ -1,6 +1,6 @@
 import React from 'react'
-import maleface from '../img/maleface.png'
-import femaleface from '../img/femaleface.png'
+import maleface from '../images/maleface.png'
+import femaleface from '../images/femaleface.png'
 
 function FifthHomeComp() {
 return (

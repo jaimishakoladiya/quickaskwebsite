@@ -1,5 +1,5 @@
 import React from 'react'
-import img1 from '../img/Admininterview.png'
+import img1 from '../images/Admininterview.png'
 
 function ThirdHomeComp() {
     return (
