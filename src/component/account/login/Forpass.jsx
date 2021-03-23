@@ -1,10 +1,10 @@
 
 import React from 'react'
-import image1 from '../component/images/wave.png';
+import image1 from '../../images/wave.png';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
-import image2 from '../component/images/undraw_mobile_user_7oqo (3).svg';
+import image2 from '../../images/undraw_mobile_user_7oqo (3).svg';
 
-import image3 from '../component/images/undraw_profile_pic_ic5t (2).svg';
+import image3 from '../../images/undraw_profile_pic_ic5t (2).svg';
 // import Loginpage from './Loginpage';
 import './forpass.css';
 import {Route,Switch,useHistory} from 'react-router-dom';
