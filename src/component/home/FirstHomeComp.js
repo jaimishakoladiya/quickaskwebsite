@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from '@material-ui/core/Button';
-import homeimg from '../img/inter.png'
+import homeimg from '../images/inter.png'
 
 
 function FirstHomeComp() {
