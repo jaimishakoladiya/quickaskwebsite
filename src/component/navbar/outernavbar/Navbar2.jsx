@@ -2,7 +2,7 @@ import React from 'react'
 import './navbar2.css'
 import DehazeIcon from '@material-ui/icons/Dehaze';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import img from '../images/logo.png';
+import img from '../../images/logo.png';
 function Navbar2() {
     return (
         <div>
