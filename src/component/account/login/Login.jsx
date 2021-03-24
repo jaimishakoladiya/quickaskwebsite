@@ -1,9 +1,9 @@
 
 import React from 'react'
-import image1 from '../component/images/wave.png';
-import image2 from '../component/images/undraw_mobile_user_7oqo (3).svg';
-import image4 from '../component/images/undraw_Bookmarks_re_mq1u.svg'
-import image3 from '../component/images/undraw_profile_pic_ic5t (2).svg';
+import image1 from '../../images/wave.png';
+import image2 from '../../images/undraw_mobile_user_7oqo (3).svg';
+import image4 from '../../images/undraw_Bookmarks_re_mq1u.svg'
+import image3 from '../../images/undraw_profile_pic_ic5t (2).svg';
 import './login.css';
 import { makeStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';

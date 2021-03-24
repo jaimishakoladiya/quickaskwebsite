@@ -22,10 +22,10 @@ const Step2 = () => {
     <>
       <div className="step2">
         <h4>MANAGER</h4>
-        <div className="mt-3">
+        <div className="step2-mt-3">
           <Grid container spacing={3}>
             <Grid item xs={4} sm={4} xl={4} md={4} className="d-flex">
-              <PersonIcon className="material-person-icon" />
+              <PersonIcon className="step2-material-person-icon" />
               <TextField
                 variant="filled"
                 id="outlined-basic"
@@ -33,7 +33,7 @@ const Step2 = () => {
               />
             </Grid>
             <Grid item xs={4} sm={4} xl={4} md={4} className="d-flex">
-              <PersonIcon className="material-person-icon" />
+              <PersonIcon className="step2-material-person-icon" />
               <TextField
                 variant="filled"
                 id="outlined-basic"
@@ -62,7 +62,7 @@ const Step2 = () => {
                           style={{ width:"200px",marginTop:"5px"}}/>
             </Grid>
           </Grid>
-          <div className="Add"><Button variant="contained" color="secondary" >ADD</Button></div>
+          <div className="step2-Add"><Button variant="contained" color="secondary" >ADD</Button></div>
       </div>
     </>
   );

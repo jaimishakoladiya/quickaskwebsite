@@ -33,7 +33,7 @@ const Step4 = () => {
 
   return (
     <>
-      <div className="step1">
+      <div className="step4">
         <TextField
           style={{ width: "550px" }}
           id="standard-basic"
