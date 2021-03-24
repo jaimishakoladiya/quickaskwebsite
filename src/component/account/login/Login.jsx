@@ -65,13 +65,14 @@ function Loginpage() {
                                 <input type="password" className="input" />
                             </div>
                         </div>
+                        
                         <a href="#" style={{ fontSize: "20px" }}>Forget Password..?</a>
 
                         <input type="submit" className="btn-login" value="login" /><br />
                         {/* <input type="submit" className="button"  value="Create Account" /> */}
 
                         <Tooltip classes={{ tooltip: classes.customWidth }} title="Click Here When You Are Ready To Create Your Full Profile And Start Saving Time" placement="top">
-                        <NavLink to="/Registration" >
+                        {/* <NavLink to="/Registration" > */}
                             <div className="caccount">
                                 {/* <a href={<Registartion/>} value="Create Account">CreateAccount</a><br /><br /> */}
                                 
@@ -79,7 +80,7 @@ function Loginpage() {
                                
                                 <img src={image4} className="anker-image"  />
                             </div>
-                            </NavLink>
+                            {/* </NavLink> */}
                         </Tooltip>
                         {/* <NavLink to="/" className="navlink" className="a">home  </NavLink><br /><br /> */}
 

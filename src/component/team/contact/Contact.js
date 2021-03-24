@@ -10,6 +10,7 @@ const Contact=()=>{
         margin:"2px",
         marginTop:"20px",
     width:600,
+    
         }
     
 
@@ -20,13 +21,13 @@ return (
 <form>
 <h4 className="contact-title">CONTACT US</h4>
 <h3 className="contact-text">As A New StartUp , We Want To know Your Comments..</h3>
-<TextField style={field} id="standard-basic" label="FirstName" variant="standard" />
+<TextField  id="field2" style={field} id="standard-basic" label="FirstName" variant="standard" />
 
 <TextField style={field} id="standard-basic" label="LastName" variant="standard" />
 <TextField style={field} id="standard-basic" label="Subject" variant="standard" />
 <TextField style={field} id="standard-basic" label="Email" variant="standard" />
 <TextField style={field} id="standard-textarea" label="Comment.. " multiline   rowsMax={5}/><br></br><br></br><br></br>
-<Button className="contact-butn" variant="contained" color="secondary">
+<Button id="contact-butn" variant="contained">
         Submit
       </Button><br/>
 {/* <div className="contact-inputbox">
