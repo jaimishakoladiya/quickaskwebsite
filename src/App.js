@@ -1,15 +1,17 @@
 
 
 //import Registration from "./component/account/register/Registartion";
- import Navbar from "./component/navbar/innernavbar/Navbar";
+ //import Navbar from "./component/navbar/innernavbar/Navbar";
 
 //import Login from './component/account/login/Login'
 // import Home from './component/home/Home'
-import Interviews from './component/interviews/Interviews'
+// import Interviews from './component/interviews/Interviews'
 // import Login from './component/account/login/Login'
 // import Registration from './component/account/register/Registartion'
 // import CompanyProfilePage from './component/companyprofile/CompanyProfilePage'
-import Navbar2 from './component/navbar/outernavbar/Navbar2'
+//import Navbar2 from './component/navbar/outernavbar/Navbar2'
+import { BrowserRouter } from 'react-router-dom';
+import Outernavbar from './component/navbar/outernavbar/OuterNavbar'
 // import Interviews from './component/interviews/Interviews'
 function App() {
   return (
@@ -20,14 +22,16 @@ function App() {
     {/* <Forpass/> */}
     {/* <Registration/> */}
     {/* <Navbar/> */}
-    {/* <Navbar2/> */}
- <Interviews/>
+    <BrowserRouter>
+ <Outernavbar/>
+ </BrowserRouter>
+ {/* <Interviews/> */}
    {/* <Home/> */}
    {/* <Login/> */}
 </>
-    // <CompanyProfilePage/>
-    // <Interviews/>
-  );
+  )
 }
+  
+
 
 export default App;
