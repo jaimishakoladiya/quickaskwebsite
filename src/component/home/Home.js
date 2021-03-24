@@ -11,8 +11,7 @@ import HomeFooter from './HomeFooter';
 function Home() {
     return (
         <>
-                <HomeFooter/>
-            
+            <div className="home-all-start">
             <FirstHomeComp /><br></br>
              <SecondHomeComp /> <br></br><br></br><br></br>
              <ThirdHomeComp />
@@ -20,7 +19,7 @@ function Home() {
             <FifthHomeComp /><br></br><br></br>
             <HomeFooter/>
            
-
+</div>
 
         </>
     );

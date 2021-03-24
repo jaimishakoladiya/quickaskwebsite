@@ -7,7 +7,7 @@ import Navbar2 from './Navbar2';
 import CompanyProfilePage from '../../companyprofile/CompanyProfilePage';
 import Interviews from '../../interviews/Interviews'
 
-const OuterNavbar=()=>{
+const InnerNavbar=()=>{
     return (
     <>
     <Navbar2/><br></br><br></br><br></br>
@@ -23,4 +23,4 @@ const OuterNavbar=()=>{
     </>)
 }
 
-export default OuterNavbar;
+export default InnerNavbar;

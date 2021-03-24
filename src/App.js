@@ -11,9 +11,10 @@
 // import CompanyProfilePage from './component/companyprofile/CompanyProfilePage'
 //import Navbar2 from './component/navbar/outernavbar/Navbar2'
 import { BrowserRouter } from 'react-router-dom';
-import Outernavbar from './component/navbar/outernavbar/OuterNavbar'
-import CompanyProfilePage from './component/companyprofile/CompanyProfilePage'
-import Navbar2 from './component/navbar/outernavbar/Navbar2'
+//import InnerNavbar from './component/navbar/innernavbar/InnerNavbar'
+import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
+//import CompanyProfilePage from './component/companyprofile/CompanyProfilePage'
+//import Navbar2 from './component/navbar/outernavbar/Navbar2'
 // import Interviews from './component/interviews/Interviews'
 function App() {
   return (
@@ -25,7 +26,8 @@ function App() {
     {/* <Registration/> */}
     {/* <Navbar/> */}
     <BrowserRouter>
- <Outernavbar/>
+    <HomeNavbar/>
+ {/* <InnerNavbar/> */}
  </BrowserRouter>
     {/* <Navbar2/> */}
  {/* <Interviews/> */}
