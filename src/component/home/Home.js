@@ -7,7 +7,7 @@ import FirstHomeComp from './FirstHomeComp';
 import FouthHomeComp from './FouthHomeComp';
 import FifthHomeComp from './FifthHomeComp';
 import HomeFooter from './HomeFooter';
-import Navbar from '../navbar/innernavbar/Navbar';
+
 
 function Home() {
     return (
