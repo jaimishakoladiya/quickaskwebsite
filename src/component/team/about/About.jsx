@@ -8,7 +8,7 @@ function About() {
     return (
       <>
     
-     
+     <div style={{marginTop:"200px"}}>
       <div className="title">
       <div>
         <img  className="about-img1" src={img1}/>
@@ -48,7 +48,7 @@ function About() {
      </div>
      </div> 
 
-    
+     </div>
 
       </>
     )

@@ -11,11 +11,12 @@ function HomeNavbar() {
         <div>
             <Navbar/>
             <Switch>
+            
                 <Route exact path="/registartion" component={Registration}/>
                 <Route exact path="/login" componet={Login}/>
                 <Route exact path="/about" component={About}/>
                 <Route exact path="/contact" component={Contact}/>
-            </Switch>
+                          </Switch>
                 
         </div>
     )
