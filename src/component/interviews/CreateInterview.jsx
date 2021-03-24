@@ -72,11 +72,11 @@ return (
 <div className="interview-Mainbox">
 
 
-<div className={classes.root} id="stepper_css">
-<Stepper activeStep={activeStep} orientation="vertical">
+<div  id="stepper_font" className={classes.root} >
+<Stepper  id="stepper_css" activeStep={activeStep} orientation="vertical">
 {steps.map((label, index) => (
-<Step key={label}>
-<StepLabel>{label}</StepLabel>
+<Step  id="stepper_font" key={label}>
+<StepLabel >{label}</StepLabel>
 <StepContent>
 <Typography>{getStepContent(index)}</Typography>
 
