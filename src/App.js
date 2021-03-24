@@ -4,8 +4,8 @@
  //import Navbar from "./component/navbar/innernavbar/Navbar";
 
 //import Login from './component/account/login/Login'
-// import Home from './component/home/Home'
-// import Interviews from './component/interviews/Interviews'
+import Home from './component/home/Home'
+//import Interviews from './component/interviews/Interviews'
 // import Login from './component/account/login/Login'
 // import Registration from './component/account/register/Registartion'
 // import CompanyProfilePage from './component/companyprofile/CompanyProfilePage'
@@ -20,15 +20,15 @@ function App() {
   return (
     <>
     {/* <CompanyProfilePage/> */}
-    {/* <Home/>  */}
+    <Home/> 
     {/* <Login/> */}
     {/* <Forpass/> */}
     {/* <Registration/> */}
     {/* <Navbar/> */}
-    <BrowserRouter>
+    {/* <BrowserRouter>
     <HomeNavbar/>
- {/* <InnerNavbar/> */}
- </BrowserRouter>
+ {/* <InnerNavbar/> 
+ </BrowserRouter> */}
     {/* <Navbar2/> */}
  {/* <Interviews/> */}
    {/* <Home/> */}

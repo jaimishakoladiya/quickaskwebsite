@@ -50,12 +50,11 @@
 .in-navbar nav ul li ul{
   position: absolute;
  float: right;
-  height: auto;
+  height: 125 px;
   top: 70px;
-  line-height: 10px;
   background:darkcyan;
   color:black;
-    
+ 
   display: none;
 }
 .in-navbar nav ul li ul li .a{
@@ -63,6 +62,8 @@
   justify-content: space-between;
   align-items: center;
   line-height: 35px;
+  list-style: none;
+  text-align: -webkit-match-parent;
   
 }
 .in-navbar nav ul li ul li .a:hover{
@@ -108,7 +109,8 @@
     
     position: absolute;
     width: 100%;
-    height: calc(100vh - 50px);
+    height: auto;
+    
     background: rosybrown;
     top: 90px;
     left: -100%;
