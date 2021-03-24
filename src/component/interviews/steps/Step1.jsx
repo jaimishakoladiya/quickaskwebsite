@@ -24,6 +24,12 @@ const Step1 = () => {
     SetFirstInput("");
     SetSecondInput("");
   };
+
+  const DeleteRecords=()=>{
+      return(
+          console.log("deleted")
+      )
+  }
  
   
   return (
@@ -73,9 +79,14 @@ const Step1 = () => {
           </Button>
         </div>
         <div>
-          {Records.map((recordsValue) => {
+          {Records.map((recordsValue,index) => {
             return (
-                <Step1AddField Records={recordsValue}/>
+                <Step1AddField 
+                Records={recordsValue}
+                key={index}
+                id={index}
+                onSelect={DeleteRecords}
+                />
                 );
             })}
           </div>
