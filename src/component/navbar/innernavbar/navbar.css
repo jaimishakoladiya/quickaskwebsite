@@ -1,4 +1,4 @@
-header{
+.in-navbar {
   position: absolute;
   top: 0;
   left: 0;
@@ -9,28 +9,28 @@ header{
   margin-top: 20px;
   box-sizing: border-box;
 }
-header .logo{
-  height: 120%;
+.in-navbar .in-navbar-logo{
+  height: 20%;
   margin-top: -10px;
   font-size: 24px;
   float: left;
 }
-header nav{
+.in-navbar nav{
   float: right;
 }
-header nav ul{
+.in-navbar nav ul{
   margin: 0;
   padding: 0;
   display: flex;
 }
-header nav ul li{
+.in-navbar nav ul li{
   list-style: none;
   position: relative;
 }
-header nav ul li:hover ul{
+.in-navbar nav ul li:hover ul{
   display: block;
 }
-header nav ul li ul{
+.in-navbar nav ul li ul{
   position: absolute;
   left: 0;
   height: auto;
@@ -41,26 +41,26 @@ header nav ul li ul{
     
   display: none;
 }
-header nav ul li ul li .a{
+.in-navbar nav ul li ul li .a{
  
   justify-content: space-between;
   align-items: center;
   line-height: 35px;
   
 }
-header nav ul li ul li .a:hover{
+.in-navbar nav ul li ul li .a:hover{
   background:#333;
 }
 
-header nav ul li.sub-menu:before{
+.in-navbar nav ul li.in-sub-menu:before{
   position: absolute;
   content: '';
 }
-header nav ul li ul li{
+.in-navbar nav ul li ul li{
   display: block;
   width: 200px;
 }
-header nav ul li .a{
+.in-navbar nav ul li .a{
   line-height: 50px;
   height: 50px;
   margin-top: 20px;
@@ -70,8 +70,8 @@ header nav ul li .a{
   text-decoration: none;
   display: block;
 }
-header nav ul li .a:hover,
-header nav ul li .a.active{
+.in-navbar nav ul li .a:hover,
+.in-navbar nav ul li .a.active{
   
   border-bottom: 2px solid black;
   transition: 0.5s;
@@ -86,14 +86,14 @@ header nav ul li .a.active{
 }
 @media(max-width:991px)
 {
-  header{
+  .in-navbar{
     padding: 0 20px;
   }
   .icon{
     display: block;
    margin-top: 12px;
   }
-  header nav{
+  .in-navbar nav{
     
     position: absolute;
     width: 100%;
@@ -103,21 +103,21 @@ header nav ul li .a.active{
     left: -100%;
     transition: 0.5s;
   }
-  header nav.active{
+  .in-navbar nav.active{
     left: 0%;
   }
-  header nav ul{
+  .in-navbar nav ul{
     display: block;
     text-align: center;
   }
-  header nav ul li a{
+  .in-navbar nav ul li a{
     border-bottom: 1px solid rgba(0,0,0,.2);
   }
-  header nav ul li.active ul{
+  .in-navbar nav ul li.active ul{
     position: relative;
     background: cornflowerblue;
   }
-  header nav ul li ul li{
+  .in-navbar nav ul li ul li{
     width: 100%;
   }
 }

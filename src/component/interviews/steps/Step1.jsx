@@ -13,7 +13,7 @@ const Step1 = () => {
                 <PersonIcon style={{ marginBottom: '15px', marginLeft: '30px', color: 'gray' }} /><TextField style={{ width: '160px' }} id="standard-basic" placeholder="Last Name" />
                 <EmailIcon style={{ marginBottom: '15px', marginLeft: '30px', color: 'gray' }} /><TextField style={{ width: '160px' }} id="standard-basic" placeholder="Email-Id" />
                 <PersonIcon style={{ marginBottom: '15px', marginLeft: '30px', color: 'gray' }} /><TextField style={{ width: '160px' }} id="standard-basic" placeholder="Id" /><br />
-                <div className="Add"><Button variant="contained" color="secondary" >ADD</Button></div>
+                <div className="step1-Add"><Button variant="contained" color="secondary" >ADD</Button></div>
             </div>
         </div>
     );

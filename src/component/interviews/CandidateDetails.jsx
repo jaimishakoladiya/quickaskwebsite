@@ -27,22 +27,22 @@ const CandidateDetails = () =>{
 return(
      
         <>
-        <div className="btn"><Button onClick = {OpenBox} variant="contained" color="secondary" >
+        <div className="create-btn"><Button onClick = {OpenBox} variant="contained" color="secondary" >
         Create Interview
         </Button></div><br></br>
         {open==true?
           <CreateInterview/>
         :null}
         <br></br>
-        <div className="comdata">
-        <div className="header1">
-           <h4>ALLCANDIDATES</h4>
-           <div className='input'>Search
+        <div className="detail-data">
+        <div className="detail-header1">
+           <h5>ALLCANDIDATES</h5>
+           <div className='detail-input'>Search
              <TextField  type="date" style={{ margin:'15px'}} id="outlined-basic"  variant="outlined" />
-             <TextField id="outlined-basic" label="By Name or ID" variant="outlined" />
+             <TextField   id="outlined-basic" label="By Name or ID" variant="outlined" />
            </div>
         </div>
-       <div className="header2">
+       <div className="detail-header2">
        <TableContainer >
         <Table aria-label="customized table">
         <TableHead style={style} >
@@ -60,7 +60,7 @@ return(
         </TableContainer>
        
        </div>
-       <h1 className="NDFound">No Data Found</h1>
+       <h1 className="detail-found-data">No Data Found</h1>
      </div>
      </>
     );

@@ -69,7 +69,7 @@ setActiveStep(0);
 };
 
 return (
-<div className="Main_box">
+<div className="interview-Mainbox">
 
 
 <div className={classes.root} id="stepper_css">

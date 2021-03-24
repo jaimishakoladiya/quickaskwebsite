@@ -1,18 +1,15 @@
-// import CompanyProfilePage from './component/companyprofile/CompanyProfilePage'
- //import Home from './component/home/Home'
-//import AppD from './component/interviews/AppD'
-// import Forpass from './component/account/login/Forpass'
+
 
 //import Registration from "./component/account/register/Registartion";
-import Navbar from "./component/navbar/innernavbar/Navbar";
+ import Navbar from "./component/navbar/innernavbar/Navbar";
 
 //import Login from './component/account/login/Login'
 // import Home from './component/home/Home'
-//import AppD from './component/interviews/AppD'
-import Login from './component/account/login/Login'
-import Registration from './component/account/register/Registartion'
+import Interviews from './component/interviews/Interviews'
+// import Login from './component/account/login/Login'
+// import Registration from './component/account/register/Registartion'
 // import CompanyProfilePage from './component/companyprofile/CompanyProfilePage'
-
+import Navbar2 from './component/navbar/outernavbar/Navbar2'
 // import Interviews from './component/interviews/Interviews'
 function App() {
   return (
@@ -22,10 +19,11 @@ function App() {
     {/* <Login/> */}
     {/* <Forpass/> */}
     {/* <Registration/> */}
-    <Navbar/>
-   {/* <AppD/> */}
+    {/* <Navbar/> */}
+    {/* <Navbar2/> */}
+ <Interviews/>
    {/* <Home/> */}
-  <Registration/>
+
    {/* <Login/> */}
 </>
     // <CompanyProfilePage/>
