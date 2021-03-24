@@ -23,7 +23,6 @@ function App() {
     {/* <Navbar2/> */}
  <Interviews/>
    {/* <Home/> */}
-
    {/* <Login/> */}
 </>
     // <CompanyProfilePage/>
