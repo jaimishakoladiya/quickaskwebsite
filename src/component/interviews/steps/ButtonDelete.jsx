@@ -35,9 +35,9 @@ const ButtonDelete = () => {
         onClose={handleClickClose}
         aria-labelledby="max-width-dialog-title"
       >
-        <DialogTitle id="max-width-dialog-title">Are You Sure ..?:</DialogTitle>
+        <DialogTitle id="max-width-dialog-title">PLEASE CONFIRM</DialogTitle>
         <DialogContent>
-          <DialogContentText>You Want To Delete This Item</DialogContentText>
+          <DialogContentText>Are You Sure ! You Want To Remove Candidate ..?</DialogContentText>
           <DialogActions>
             <Button
               onClick={handleClickClose}
