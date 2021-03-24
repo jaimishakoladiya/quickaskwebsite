@@ -20,14 +20,17 @@ function App() {
     {/* <Forpass/> */}
     {/* <Registration/> */}
     {/* <Navbar/> */}
+    <BrowserRouter>
+ <Outernavbar/>
+ </BrowserRouter>
     {/* <Navbar2/> */}
  {/* <Interviews/> */}
    {/* <Home/> */}
    {/* <Login/> */}
 </>
-    // <CompanyProfilePage/>
-    // <Interviews/>
-  );
+  )
 }
+  
+
 
 export default App;

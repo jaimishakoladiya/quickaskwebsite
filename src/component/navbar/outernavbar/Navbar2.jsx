@@ -2,38 +2,43 @@ import React from 'react'
 import './navbar2.css'
 import DehazeIcon from '@material-ui/icons/Dehaze';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import img from '../../images/admin.png'
+import img from '../../images/logo.png'
+import { NavLink } from 'react-router-dom';
 function Navbar2() {
-    return (
-        <div>
-           <header>
-      <div className="out-nav-logo">
-      <img src={img} className="out-nav-logo"/>
-      </div>
+  return (
+    <div>
+      <header>
+        <div className="out-nav-logo">
+          <img src={img} className="out-nav-logo" />
+        </div>
         <nav className="first">
           <ul>
-            <li><a href="#">INTERVIEWS</a></li>
-            
-            <li className="sub-menu"><a href="#">LOGOOUT </a></li>
-            <li><a href="#">NAME</a></li>
+            {/* <li><a href="#" className="a">INTERVIEWS</a></li> */}
+
+            <li><NavLink to="/interviews" className="a" >INTERVIEWS</NavLink></li>
+
+            <li className="sub-menu"><a href="#" className="a">LOGOOUT </a></li>
+            <li><a href="#" className="a">NAME</a></li>
           </ul>
         </nav>
         <nav className="second">
           <ul>
-            <li><a href="#">INTERVIEW DASHBOARD</a></li>
-            <li className="sub-menu"><a href="#">COMPANY PROFILE </a>
-           
+            <li><a href="#" className="a">INTERVIEW DASHBOARD</a></li>
+            {/* <li className="sub-menu"><a href="#" className="a">COMPANY PROFILE </a>
+
+            </li> */}
+            <li><NavLink to="/companyprofilepage" className="a" >COMPANY PROFILE</NavLink></li> 
+
+            <li className="sub-menu"><a href="#" className="a">INVOICE </a>
+
             </li>
-            <li className="sub-menu"><a href="#">INVOICE </a>
-            
-            </li>
-          
+
           </ul>
         </nav>
-        <div className="icon"><DehazeIcon/></div>
+        <div className="icon"><DehazeIcon /></div>
       </header>
-        </div>
-    )
+    </div>
+  )
 }
 
 export default Navbar2
