@@ -1,4 +1,7 @@
 /* home page csss */
+.home-all-start{
+  margin-top: 200px;
+}
 .home-start{
   margin-left: 250px;
 }

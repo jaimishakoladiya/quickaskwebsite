@@ -34,7 +34,11 @@
   margin: -17px;
   margin-top: 15px;
   color: rgb(8, 8, 8);
+<<<<<<< HEAD
   background-color:rgb(245, 202, 92);
+=======
+  background-color:rgb(245, 202, 92);;
+>>>>>>> 59499a0b26287decbb19e8ad1b77e8d1c2c89a44
 }
 
 .page {
