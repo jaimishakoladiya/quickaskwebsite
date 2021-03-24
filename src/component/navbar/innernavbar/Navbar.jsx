@@ -2,13 +2,13 @@ import React from 'react'
 import './navbar.css';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import DehazeIcon from '@material-ui/icons/Dehaze';
-import img from '../../images/admin.png'
+import img from '../../images/logo.png'
 function Navbar() {
   return (
     <div>
       <header className="in-navbar">
       <div className="in-navbar-logo">
-      <img src={img} className="logo"/>
+      <img src={img} className="in-navbar-logo"/>
       </div>
         <nav className="active">
           <ul>
@@ -19,7 +19,7 @@ function Navbar() {
               <li><a href="#">Login</a></li>
             </ul>
             </li>
-            <li className="sub-menu"><a href="#">Team <ArrowDropDownIcon style={{fontSize:"32px",margin:"-10px 0px"}}/></a>
+            <li className="in-sub-menu"><a href="#">Team <ArrowDropDownIcon style={{fontSize:"32px",margin:"-10px 0px"}}/></a>
             <ul>
              <li><a href="#">About Us</a></li>
               <li><a href="#">Contact Us</a></li>
