@@ -107,12 +107,7 @@ const erroralert=(error)=>{
                             </div>
                         </div>
                         
-<<<<<<< HEAD
                         <a  onClick={()=>history.push('/forgotpassword')} style={{ fontSize: "20px" }}>Forget Password..?</a>
-=======
-
-                        <a href="#" style={{ fontSize: "20px" }}>Forget Password..?</a>
->>>>>>> 4ac767716fa092591247a4b5ba4383ce2e6e55f8
                         {formik.errors.username?erroralert(formik.errors.username):
                         formik.errors.password?erroralert(formik.errors.password):null}
               
@@ -143,12 +138,9 @@ const erroralert=(error)=>{
             }}
         </Formik>
 
-<<<<<<< HEAD
 
     )
 }
 
-=======
->>>>>>> 4ac767716fa092591247a4b5ba4383ce2e6e55f8
 export default Login
 

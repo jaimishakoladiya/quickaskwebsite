@@ -20,7 +20,7 @@ function Registration()
  {
    const[openalert,setopenalert] = useState(false);
   const history=useHistory();
-  const [openalert,setopenalert]=useState(false)
+  
 
   
   const closealert = () =>{

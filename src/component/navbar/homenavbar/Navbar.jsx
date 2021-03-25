@@ -16,7 +16,7 @@ function Navbar() {
       </div>
         <nav className="active">
           <ul>
-            <li><a href="#" className="a">Home</a></li>
+            <li><NavLink to ="/" className="a">Home</NavLink></li>
             <li className="in-sub-menu"><a href="#" className="a">Account <ArrowDropDownIcon style={{fontSize:"32px",margin:"-10px 0px"}}/></a>
             <ul>
              {/* <li><a href="#" className="a">Create Accout</a></li>
