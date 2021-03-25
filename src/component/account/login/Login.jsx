@@ -76,6 +76,7 @@ const erroralert=(error)=>{
                     <>
                     <img src={image1} className="Wave1"></img>
             <div className="login-container">
+            <img src={image1} className="Wave1"></img>
                 <div className="img1" id="img">
                     <img src={image2} className="img-fluid animated"></img>
                 </div>
