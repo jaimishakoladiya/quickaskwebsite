@@ -14,6 +14,7 @@ import InsertPhotoIcon from '@material-ui/icons/InsertPhoto';
 import LockIcon from '@material-ui/icons/Lock';
 import { colors } from '@material-ui/core';
 import AlertBox from '../../alert/AlertBox';
+
 function Registration()
  {
   const history=useHistory();
@@ -112,7 +113,7 @@ function Registration()
             </div>
            <br/>
       
-         <input  className="btn"   value="Back To Sign In" />
+         <input type="button" onClick={()=>history.push('/login')}  className="btn"   value="Back To Sign In" />
       </Form>
         </div>
       </div>
