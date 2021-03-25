@@ -18,10 +18,10 @@ function Forpass()
    
   
     <div>
-     <Switch>
+     {/* <Switch>
     <Route exact path="/forpass" component={Forpass}/>
       
-      </Switch>
+      </Switch> */}
       <img src={image1} className="Wave"></img>
       <div className="container">
         <div className="img" id="img">
