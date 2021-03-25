@@ -7,7 +7,7 @@
 //import About from './component/team/about/About.jsx'
  //import Login from './component/account/login/Login'
 // import Registration from './component/account/register/Registartion'
-// import CompanyProfilePage from './component/companyprofile/CompanyProfilePage'
+import CompanyProfilePage from './component/companyprofile/CompanyProfilePage'
 //import Navbar2 from './component/navbar/outernavbar/Navbar2'
 import { BrowserRouter } from 'react-router-dom';
 import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
@@ -22,22 +22,23 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 function App() {
   return (
     <>
-    {/* <CompanyProfilePage/> */}/
+    <CompanyProfilePage/>
     {/* <Home/>  */}
   {/* <BrowserRouter>
     <Login/>
 
     </BrowserRouter> */}
 
-    
-    {/* <Forpass/> */}
+{/*     
+    <Forpass/> */} 
     {/* <Forpass/> */}
 
     {/* <Registration/> */}
+    {/* <Login/> */}
     {/* <Navbar/> */}
-    <BrowserRouter>
+    {/* <BrowserRouter>
   <HomeNavbar/> 
- </BrowserRouter>
+ </BrowserRouter> */}
  {/* <Login/> */}
     {/* <Navbar2/> */}
  {/* <Interviews/> */}

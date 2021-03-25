@@ -48,6 +48,7 @@ function Forpass()
       
       </Switch> */}
       {formik=>{
+        console.log(formik)
         return(
           <>
        
@@ -68,7 +69,7 @@ function Forpass()
             </div>
             <div>
               <h5>Email</h5>
-              <Field type="email" id="email" name="email" className="input"/>
+              <Field type="text" id="email" name="email" className="input"/>
             </div>
           </div>
           

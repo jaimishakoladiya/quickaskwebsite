@@ -41,8 +41,8 @@
 .in-navbar nav ul li .a:hover,
 .in-navbar nav ul li .a.active{
   
-  border-bottom: 2px solid black;
-  transition: 0.5s;
+  border: 1px solid transparent;
+  transition: 99.5s;
 }
 .in-navbar nav ul li:hover ul{
   display: block;

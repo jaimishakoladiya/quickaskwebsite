@@ -21,6 +21,8 @@ function Registration()
    const[openalert,setopenalert] = useState(false);
   const history=useHistory();
   
+
+  
   const closealert = () =>{
     setopenalert(false)
   }
@@ -69,7 +71,7 @@ function Registration()
         </div>
         <div className="reg2-container">
          <Form className="registation-form"><br/>
-          <img src={image3} className="face"></img><br/>
+          <img src={image3} className="registration-face"></img><br/>
           <h2 style={{fontFamily:"DIN",marginTop:"5px"}}>Register...</h2><br></br>
           
           <div className="input-group">
