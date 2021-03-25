@@ -8,37 +8,38 @@ import image3 from '../../images/undraw_profile_pic_ic5t (2).svg';
 import { Field, Formik,Form } from "formik";
 import './registarion.css';
 import {Route,Switch,useHistory} from 'react-router-dom';
+import * as yup from "yup";
 import PersonIcon from '@material-ui/icons/Person';
-import * as yup from "yup"
+
 import InsertPhotoIcon from '@material-ui/icons/InsertPhoto';
 import LockIcon from '@material-ui/icons/Lock';
 import { colors } from '@material-ui/core';
 import AlertBox from '../../alert/AlertBox';
 function Registration()
  {
+   const[openalert,setopenalert] = useState(false);
   const history=useHistory();
   const [openalert,setopenalert]=useState(false)
 
- 
-  const closealert=()=>{
+  
+  const closealert = () =>{
     setopenalert(false)
   }
+ 
+ const erroralert=(error)=>{
+   return(
+   <AlertBox setopenalert={openalert} closealert={closealert} error={error}/>
+   )
+ }
+ const initialValues={
+  firstname:'',
+  lastname:'',
+  companyemail:''
 
-  const erroralert=(error)=>{
-    return(
-    <AlertBox setopenalert={openalert} closealert={closealert} error={error}/>
-    )
-  }
-  const initialValues={
-    firstname:'',
-    lastname:'',
-    companyemail:''
-
-  }
-
+}
   const onSubmit=(values,onsubmitprops)=>
-  { onsubmitprops.resetForm();
-    
+  {
+    onsubmitprops.resetForm();
   }
 
   const validationSchema=yup.object({
