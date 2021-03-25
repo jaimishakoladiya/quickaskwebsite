@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     customWidth: {
         maxWidth: 350,
         fontSize: 18,
-
+                                                        
         zIndex: 9999,
         lineHeight: 1.4,
         color: "#eef5f6",
@@ -76,6 +76,7 @@ const erroralert=(error)=>{
                     <>
                     <img src={image1} className="Wave1"></img>
             <div className="login-container">
+            <img src={image1} className="Wave1"></img>
                 <div className="img1" id="img">
                     <img src={image2} className="img-fluid animated"></img>
                 </div>
@@ -110,9 +111,12 @@ const erroralert=(error)=>{
                         formik.errors.password?erroralert(formik.errors.password):null}
               
                         <input type="submit" onClick={()=>setopenalert(true)} className="btn-login" value="login" /><br />
+<<<<<<< HEAD
 
                         
 
+=======
+>>>>>>> b78143fbf6e92a82a70d568a2cff4d92fda3c49e
                         {/* <input type="submit" className="button"  value="Create Account" /> */}
 
                         <Tooltip classes={{ tooltip: classes.customWidth }} title="Click Here When You Are Ready To Create Your Full Profile And Start Saving Time" placement="top">

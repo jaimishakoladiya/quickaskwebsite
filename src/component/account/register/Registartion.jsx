@@ -19,6 +19,7 @@ function Registration()
  {
    const[openalert,setopenalert] = useState(false);
   const history=useHistory();
+  const [openalert,setopenalert]=useState(false)
 
   
   const closealert = () =>{
@@ -98,7 +99,7 @@ function Registration()
             </div>
             <div>
               <h5>Company Email.</h5>
-              <Field type="email"  name="companyemail" className="input"/>
+              <Field type="text"  name="companyemail" className="input"/>
             </div>
           </div> 
            
@@ -108,11 +109,11 @@ function Registration()
             formik.errors.lastname?erroralert(formik.errors.lastname):
             formik.errors.companyemail?erroralert(formik.errors.companyemail)
             :null}
-            <input type="submit" onClick={()=>setopenalert(true)} className="tn" value="Sign Up"/>
+            <input type="submit" className="tn" onClick={()=>setopenalert(true)} value="Sign Up"/>
             </div>
            <br/>
       
-         <input type="submit" className="btn"   value="Back To Signin" />
+         <input  className="btn"   value="Back To Sign In" />
       </Form>
         </div>
       </div>
