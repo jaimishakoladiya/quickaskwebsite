@@ -17,7 +17,7 @@ import { BrowserRouter } from 'react-router-dom';
 // import Navbar from './component/navbar/homenavbar/Navbar'
 //import CompanyProfilePage from './component/companyprofile/CompanyProfilePage'
 //import Navbar2 from './component/navbar/outernavbar/Navbar2'
-// import Interviews from './component/interviews/Interviews'
+import Interviews from './component/interviews/Interviews'
 function App() {
   return (
     <>
@@ -34,7 +34,7 @@ function App() {
  </BrowserRouter> */}
  <Login/>
     {/* <Navbar2/> */}
- {/* <Interviews/> */}
+ <Interviews/>
    {/* <Home/> */}
    {/* <Login/> */}
    {/* <Navbar/> */}
