@@ -24,17 +24,18 @@ function Registration()
   const closealert = () =>{
     setopenalert(false)
   }
-  const initialValues={
-    firstname:'',
-    lastname:'',
-    companyemail:''
-
-  }
+ 
  const erroralert=(error)=>{
    return(
    <AlertBox setopenalert={openalert} closealert={closealert} error={error}/>
    )
  }
+ const initialValues={
+  firstname:'',
+  lastname:'',
+  companyemail:''
+
+}
   const onSubmit=(values,onsubmitprops)=>
   {
     onsubmitprops.resetForm();
