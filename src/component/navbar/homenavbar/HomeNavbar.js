@@ -6,13 +6,13 @@ import Login from '../../account/login/Login'
 import forpass from '../../account/login/Forpass';
 import About from '../../team/about/About'
 import Contact from '../../team/contact/Contact'
-import { useHistory, useLocation, useParams } from "react-router-dom";
+import { useLocation} from "react-router-dom";
 function HomeNavbar() {
     
     const location =useLocation();
     return (
         <div>
-        {location.pathname==="/login" || location.pathname==="/registartion" || location.pathname==="/forgotpassword"?null:<Navbar/>}
+        {location.pathname==="/login"  || location.pathname==="/registartion" || location.pathname==="/forgotpassword"?null:<Navbar/>}
            
             <Switch>
             
