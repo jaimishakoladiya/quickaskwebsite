@@ -96,8 +96,6 @@
   margin: 15px auto;
   border: 1px solid black;
   border-radius: 3px;
-  background-color: rgb(65, 109, 109);
-
 }
 
 .step1,
@@ -109,6 +107,8 @@
   justify-content: center;
   padding: 15px 5px 10px 15px;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
+  /* background-color: rgb(209, 245, 245); */
+  background-color:rgb(250, 252, 252);
   /* background-color: whitesmoke; */
   width: 900px;
   height: auto;
@@ -183,5 +183,37 @@
 }
 #stepper_css{
   color: black;
-  background-color: darkcyan;
+  background-color: rgb(192, 231, 231);
+}
+#stepper_font{
+  font-size: 20px;
+  color: black;
+}
+/* .Step1_Input_box{
+  height: auto;
+  width:150px;
+  border: 1px solid black;
+  border-radius: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 15px;
+  background-color: rgb(197, 196, 196);
+} */
+/* .Step1_Input_box #icon{
+  justify-content: left;
+  margin-left: 20px;
+  color:black;
+
+}
+.Step1_Input_box #icon_close{
+  
+  margin-left:30px;
+  color:black;
+
+} */
+#Chip_box{
+  margin-left: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 20px;
 }

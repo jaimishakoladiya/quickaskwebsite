@@ -7,14 +7,12 @@ import FirstHomeComp from './FirstHomeComp';
 import FouthHomeComp from './FouthHomeComp';
 import FifthHomeComp from './FifthHomeComp';
 import HomeFooter from './HomeFooter';
-import Navbar from '../navbar/innernavbar/Navbar';
+
 
 function Home() {
     return (
         <>
-        <Navbar/><br/><br/><br/><br/><br/><br/>
-                
-            
+            <div className="home-all-start">
             <FirstHomeComp /><br></br>
              <SecondHomeComp /> <br></br><br></br><br></br>
              <ThirdHomeComp />
@@ -22,7 +20,7 @@ function Home() {
             <FifthHomeComp /><br></br><br></br>
             <HomeFooter/>
            
-
+</div>
 
         </>
     );

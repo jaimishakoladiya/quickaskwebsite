@@ -24,6 +24,11 @@ const Manager=()=> {
             
               <tr>
                 <td>hey</td>
+                <td>ck</td> 
+                <td>hey</td> 
+                <td>hey</td> 
+                <td>hey</td>
+                <td>hey</td>
               </tr>
                </table>
             
