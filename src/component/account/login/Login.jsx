@@ -66,7 +66,8 @@ function Loginpage() {
                             </div>
                         </div>
                         
-                        <a href="#" style={{ fontSize: "20px" }}>Forget Password..?</a>
+                        {/* <a href="#" style={{ fontSize: "20px" }}>Forget Password..?</a> */}
+                        <NavLink to="/forpass"  style={{ fontSize: "20px" }}>Forget Password..?</NavLink>
 
                         <input type="submit" className="btn-login" value="login" /><br />
                         {/* <input type="submit" className="button"  value="Create Account" /> */}
