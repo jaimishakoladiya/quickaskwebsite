@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     customWidth: {
         maxWidth: 350,
         fontSize: 18,
-                                                        
+
         zIndex: 9999,
         lineHeight: 1.4,
         color: "#eef5f6",
@@ -107,11 +107,17 @@ const erroralert=(error)=>{
                             </div>
                         </div>
                         
+<<<<<<< HEAD
                         <a  onClick={()=>history.push('/forgotpassword')} style={{ fontSize: "20px" }}>Forget Password..?</a>
+=======
+
+                        <a href="#" style={{ fontSize: "20px" }}>Forget Password..?</a>
+>>>>>>> 4ac767716fa092591247a4b5ba4383ce2e6e55f8
                         {formik.errors.username?erroralert(formik.errors.username):
                         formik.errors.password?erroralert(formik.errors.password):null}
               
                         <input type="submit" onClick={()=>setopenalert(true)} className="btn-login" value="login" /><br />
+
                         {/* <input type="submit" className="button"  value="Create Account" /> */}
 
                         <Tooltip classes={{ tooltip: classes.customWidth }} title="Click Here When You Are Ready To Create Your Full Profile And Start Saving Time" placement="top">
@@ -137,9 +143,12 @@ const erroralert=(error)=>{
             }}
         </Formik>
 
+<<<<<<< HEAD
 
     )
 }
 
+=======
+>>>>>>> 4ac767716fa092591247a4b5ba4383ce2e6e55f8
 export default Login
 
