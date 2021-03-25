@@ -5,47 +5,52 @@ import image2 from '../../images/undraw_mobile_user_7oqo (3).svg';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import image3 from '../../images/undraw_profile_pic_ic5t (2).svg';
 // import Loginpage from './Loginpage';
+import { Field, Formik,Form } from "formik";
 import './registarion.css';
 import {Route,Switch,useHistory} from 'react-router-dom';
 import * as yup from "yup";
 import PersonIcon from '@material-ui/icons/Person';
+import * as yup from "yup"
 import InsertPhotoIcon from '@material-ui/icons/InsertPhoto';
 import LockIcon from '@material-ui/icons/Lock';
-import { Formik ,Form,Field} from 'formik';
+import { colors } from '@material-ui/core';
 function Registration()
  {
-   const intialValues = {
-     firstname:'',
-     lastname:'',
-     companyemail:''
+  const history=useHistory();
 
-   }
-   const onSubmit=(values)=>
-   {
-     console.log(values);
-   }
-   const validationSchema=yup.object({
-     firstname:yup.string().required('FirstName Is Required'),
-     lastname:yup.string().required('LastName Is Required'),
-     companyemail:yup.string().email('Please Enter Valid Email Address').required('CompanyEmail Is Required'),
-     
-   })
- const history=useHistory();
+  const initialValues={
+    firstname:'',
+    lastname:'',
+    companyemail:''
+
+  }
+
+  const onSubmit=(values)=>
+  {
+    console.log(values);
+  }
+
+  const validationSchema=yup.object({
+    firstname:yup.string().required("firstname is required"),
+    lastname:yup.string().required('lastname is required'),
+    companyemail:yup.string().email("Enter valid email").required("email is required")
+
+
+  })
   return (
    
   
-    <Formik
-    intialValues={intialValues}
+    <Formik 
+    initialValues={initialValues}
     onSubmit={onSubmit}
-    validationSchema={validationSchema}
-    >
-     {/* <Switch>
-    <Route exact path="/Loginpage" component={Loginpage}/>
-      
-      </Switch> */}
-     {formik=>{
-       return(
-         <>
+    validationSchema={validationSchema}>
+    
+  
+
+      {formik=>{
+        return(
+          <>
+        
       <img src={image1} className="registration-wave"></img>
       <div className="registration-container">
         <div className="reimg" id="img">
@@ -54,7 +59,7 @@ function Registration()
         <div className="reg2-container">
          <Form className="registation-form"><br/>
           <img src={image3} className="face"></img><br/>
-          <h2>Register...</h2>
+          <h2 style={{fontFamily:"DIN"}}>Register...</h2><br></br>
           
           <div className="input-group">
           <div className="registation-div one focus">
@@ -63,7 +68,7 @@ function Registration()
             </div>
             <div>
               <h5>Firstname.</h5>
-              <Field type="text" name="firstname" id="firstname" className="input"/>
+              <Field type="text" name="firstname" className="input"/>
             </div>
           </div>
           
@@ -73,7 +78,7 @@ function Registration()
             </div>
             <div>
               <h5>Lastname.</h5>
-              <Field type="text" name="lastname" id="lastname" className="input"/>
+              <Field type="text" name="lastname" className="input"/>
             </div>
           </div>
           <div className="registation-div two focus">
@@ -82,7 +87,7 @@ function Registration()
             </div>
             <div>
               <h5>Company Email.</h5>
-              <Field type="email" name="companyemail" id="companyemail" className="input"/>
+              <Field type="email"  name="companyemil" className="input"/>
             </div>
           </div> 
            
@@ -100,11 +105,10 @@ function Registration()
       </Form>
         </div>
       </div>
-       </>
-       )
-
-     }}
-      </Formik>
+      </>
+        )
+      }}
+    </Formik>
    
 
   )
