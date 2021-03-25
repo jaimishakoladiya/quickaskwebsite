@@ -13,6 +13,7 @@ import * as yup from 'yup';
 import { BrowserRouter, Route, Switch, NavLink } from "react-router-dom";
 import { Field, Form, Formik } from 'formik';
 import AlertBox from '../../alert/AlertBox';
+import { useHistory } from "react-router-dom";
 
 // import Registration from './Registartion';
 const useStyles = makeStyles((theme) => ({
@@ -37,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Login() {
 const [openalert,setopenalert]=useState(false);
+const history = useHistory();
 const initialValues={
     username:'',
     password:''
@@ -60,6 +62,8 @@ const erroralert=(error)=>{
         <AlertBox setopenalert={openalert} closealert={closealert} error={error}/>
     )
 }
+
+
     const classes = useStyles();
 
     return (
@@ -103,8 +107,7 @@ const erroralert=(error)=>{
                             </div>
                         </div>
                         
-
-                        <a href="#" style={{ fontSize: "20px" }}>Forget Password..?</a>
+                        <a  onClick={()=>history.push('/forgotpassword')} style={{ fontSize: "20px" }}>Forget Password..?</a>
                         {formik.errors.username?erroralert(formik.errors.username):
                         formik.errors.password?erroralert(formik.errors.password):null}
               
@@ -114,7 +117,7 @@ const erroralert=(error)=>{
 
                         <Tooltip classes={{ tooltip: classes.customWidth }} title="Click Here When You Are Ready To Create Your Full Profile And Start Saving Time" placement="top">
                         {/* <NavLink to="/Registration" > */}
-                            <div className="caccount">
+                            <div className="caccount" onClick={()=>history.push('/registartion')}>
                                 {/* <a href={<Registartion/>} value="Create Account">CreateAccount</a><br /><br /> */}
                                 
                                 <h1 className="anker">CreateAccount</h1>
@@ -137,5 +140,8 @@ const erroralert=(error)=>{
     )}
     
 
+
 export default Login;
+
+
 
