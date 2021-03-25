@@ -27,10 +27,10 @@ function App() {
     {/* <Forpass/> */}
     {/* <Registration/> */}
     {/* <Navbar/> */}
-    {/* <BrowserRouter>
+    <BrowserRouter>
   <HomeNavbar/> 
- </BrowserRouter> */}
- <Login/>
+ </BrowserRouter>
+ {/* <Login/> */}
     {/* <Navbar2/> */}
  {/* <Interviews/> */}
    {/* <Home/> */}

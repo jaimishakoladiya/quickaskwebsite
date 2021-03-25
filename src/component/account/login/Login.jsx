@@ -82,10 +82,7 @@ function Loginpage() {
                             </div>
                             {/* </NavLink> */}
                         </Tooltip>
-                        {/* <NavLink to="/" className="navlink" className="a">home  </NavLink><br /><br /> */}
-
-
-                        {/* <input type="submit" className="tn" value="Craete Account"/> */}
+                        
                     </form>
                 </div>
             </div>
