@@ -104,14 +104,12 @@ const erroralert=(error)=>{
                         </div>
                         
 
-                       <a href="#" style={{ fontSize: "20px" }}>Forget Password..?</a>
+                        <a href="#" style={{ fontSize: "20px" }}>Forget Password..?</a>
                         {formik.errors.username?erroralert(formik.errors.username):
                         formik.errors.password?erroralert(formik.errors.password):null}
               
                         <input type="submit" onClick={()=>setopenalert(true)} className="btn-login" value="login" /><br />
 
-                        <input type="submit" className="btn-login" value="login" /><br />
- 
                         {/* <input type="submit" className="button"  value="Create Account" /> */}
 
                         <Tooltip classes={{ tooltip: classes.customWidth }} title="Click Here When You Are Ready To Create Your Full Profile And Start Saving Time" placement="top">
@@ -138,8 +136,8 @@ const erroralert=(error)=>{
         </Formik>
 
 
-    )
-}
+    )}
+
 
 export default Loginpage
 
