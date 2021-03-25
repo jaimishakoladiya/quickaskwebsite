@@ -31,7 +31,7 @@
     justify-content: flex-end;
     align-items: center;
   }
-  form{
+  .forgot-form{
     width: 500px;
     height: 400px;
    margin-top: -50px;
@@ -48,7 +48,7 @@
     align-items: center;
     text-align: center;
   }
-  form h2{
+  .forgot-form h2{
     font-size: 1.9rem;
     text-transform: uppercase;
     margin: 15px 0;
@@ -116,13 +116,14 @@
   }
   .forgot-avatar
   {
-    width:500px;
-	height:200px;
-    border-radius:50%;
-    position:absolute;
-    top:90px;
-    left: 67%;
-    transform:translatex(-50%);
+ 
+    margin-top: -110px;
+    width: 400px;
+    height: 200px;
+    align-self: stretch;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 30%;
 						
   }
   

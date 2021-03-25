@@ -84,8 +84,8 @@ const erroralert=(error)=>{
                 <div className="img1" id="img">
                     <img src={image2} className="img-fluid animated"></img>
                 </div>
-                <div className="login2-container">
-                    <Form className="form1">
+                <div className="main-login-container">
+                    <Form className="login-form1">
                         <img src={image3} className="login-avtar"></img>
                         <h2>Welcome..</h2><br />
                         <div className="inpput-div1 one focus">
