@@ -57,11 +57,11 @@ function Forpass()
           <img src={image2} className="img-fluid animated" alt="images"></img>
         </div>
         <div className="forpass-container">
-         <Form><br/>
+         <Form className="forgot-form"><br/>
           <img src={image3} className="forgot-avatar"></img>
        
           
-          <div className="input-group"><br/><br/><br/><br/><br/><br/>
+          <div className="input-group"><br/><br/>
           <div className="for-inpput-div one focus">
             <div className="i">
              <MailOutlineIcon className="per" />

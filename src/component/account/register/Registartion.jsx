@@ -70,7 +70,7 @@ function Registration()
         <div className="reg2-container">
          <Form className="registation-form"><br/>
           <img src={image3} className="face"></img><br/>
-          <h2 style={{fontFamily:"DIN"}}>Register...</h2><br></br>
+          <h2 style={{fontFamily:"DIN",marginTop:"5px"}}>Register...</h2><br></br>
           
           <div className="input-group">
           <div className="registation-div one focus">
