@@ -20,9 +20,9 @@ function App() {
     {/* <Forpass/> */}
     {/* <Registration/> */}
     {/* <Navbar/> */}
-    <BrowserRouter>
+    {/* <BrowserRouter>
  <Outernavbar/>
- </BrowserRouter>
+ </BrowserRouter> */}
     {/* <Navbar2/> */}
  {/* <Interviews/> */}
    {/* <Home/> */}
