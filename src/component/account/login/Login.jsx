@@ -38,8 +38,9 @@ function Loginpage() {
     return (
 
         <div>
-            <img src={image1} className="Wave1"></img>
+           
             <div className="login-container">
+            <img src={image1} className="Wave1"></img>
                 <div className="img1" id="img">
                     <img src={image2} className="img-fluid animated"></img>
                 </div>
@@ -66,8 +67,8 @@ function Loginpage() {
                             </div>
                         </div>
                         
-                        {/* <a href="#" style={{ fontSize: "20px" }}>Forget Password..?</a> */}
-                        <NavLink to="/forpass"  style={{ fontSize: "20px" }}>Forget Password..?</NavLink>
+                        <a href="#" style={{ fontSize: "20px" }}>Forget Password..?</a> 
+                        {/* <NavLink to="/forpass"  style={{ fontSize: "20px" }}>Forget Password..?</NavLink> */}
 
                         <input type="submit" className="btn-login" value="login" /><br />
                         {/* <input type="submit" className="button"  value="Create Account" /> */}

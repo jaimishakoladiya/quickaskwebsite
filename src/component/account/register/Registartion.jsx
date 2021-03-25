@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 import image1 from '../../images/wave.png';
 import image2 from '../../images/undraw_mobile_user_7oqo (3).svg';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
@@ -13,10 +13,22 @@ import * as yup from "yup"
 import InsertPhotoIcon from '@material-ui/icons/InsertPhoto';
 import LockIcon from '@material-ui/icons/Lock';
 import { colors } from '@material-ui/core';
+import AlertBox from '../../alert/AlertBox';
 function Registration()
  {
   const history=useHistory();
+  const [openalert,setopenalert]=useState(false)
 
+ 
+  const closealert=()=>{
+    setopenalert(false)
+  }
+
+  const erroralert=(error)=>{
+    return(
+    <AlertBox setopenalert={openalert} closealert={closealert} error={error}/>
+    )
+  }
   const initialValues={
     firstname:'',
     lastname:'',
@@ -24,9 +36,9 @@ function Registration()
 
   }
 
-  const onSubmit=(values)=>
-  {
-    console.log(values);
+  const onSubmit=(values,onsubmitprops)=>
+  { onsubmitprops.resetForm();
+    
   }
 
   const validationSchema=yup.object({
@@ -86,21 +98,21 @@ function Registration()
             </div>
             <div>
               <h5>Company Email.</h5>
-              <Field type="email"  name="companyemil" className="input"/>
+              <Field type="text"  name="companyemail" className="input"/>
             </div>
           </div> 
            
             </div>
             <div>
-            {formik.errors.firstname?<div>{formik.errors.firstname}</div>:
-            formik.errors.lastname?<div>{formik.errors.lastname}</div>:
-            formik.errors.companyemail?<div>{formik.errors.companyemail}</div>
+            {formik.errors.firstname?erroralert(formik.errors.firstname):
+            formik.errors.lastname?erroralert(formik.errors.lastname):
+            formik.errors.companyemail?erroralert(formik.errors.companyemail)
             :null}
-            <input type="submit" className="tn" value="Sign Up"/>
+            <input type="submit" className="tn" onClick={()=>setopenalert(true)} value="Sign Up"/>
             </div>
            <br/>
       
-         <input type="submit" className="btn"   value="Back To Signin" />
+         <input  className="btn"   value="Back To Sign In" />
       </Form>
         </div>
       </div>
