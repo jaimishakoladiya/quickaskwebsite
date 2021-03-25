@@ -134,6 +134,8 @@ const erroralert=(error)=>{
                 )
             }}
         </Formik>
+    )}
+    
 
-export default Login
+export default Login;
 

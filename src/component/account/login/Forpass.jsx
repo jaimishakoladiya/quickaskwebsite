@@ -16,7 +16,7 @@ import AlertBox from '../../alert/AlertBox';
 function Forpass()
  {
    const [openalert,setopenalert] = useState(false);
-   const intialValues = {
+   const initialValues = {
      email:''
    }
    const onSubmit = (values,onsubmitprops) =>{
@@ -39,7 +39,7 @@ function Forpass()
    
   
     <Formik
-    intialValues={intialValues}
+    initialValues={initialValues}
     onSubmit={onSubmit}
     validationSchema={validationSchema}
     >
