@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-function Loginpage() {
+function Login() {
 const [openalert,setopenalert]=useState(false);
 const initialValues={
     username:'',
@@ -135,9 +135,5 @@ const erroralert=(error)=>{
             }}
         </Formik>
 
-
-
-
-
-export default Loginpage
+export default Login
 
