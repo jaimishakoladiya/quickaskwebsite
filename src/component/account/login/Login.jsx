@@ -102,11 +102,18 @@ const erroralert=(error)=>{
                             </div>
                         </div>
                         
+<<<<<<< HEAD
                         <a href="#" style={{ fontSize: "20px" }}>Forget Password..?</a>
                         {formik.errors.username?erroralert(formik.errors.username):
                         formik.errors.password?erroralert(formik.errors.password):null}
               
                         <input type="submit" onClick={()=>setopenalert(true)} className="btn-login" value="login" /><br />
+=======
+                        {/* <a href="#" style={{ fontSize: "20px" }}>Forget Password..?</a> */}
+                        <NavLink to="/forpass"  style={{ fontSize: "20px" }}>Forget Password..?</NavLink>
+
+                        <input type="submit" className="btn-login" value="login" /><br />
+>>>>>>> f320f41becc1ed3ca9a97b55a7d89c8c4d609d23
                         {/* <input type="submit" className="button"  value="Create Account" /> */}
 
                         <Tooltip classes={{ tooltip: classes.customWidth }} title="Click Here When You Are Ready To Create Your Full Profile And Start Saving Time" placement="top">
@@ -120,11 +127,16 @@ const erroralert=(error)=>{
                             </div>
                             {/* </NavLink> */}
                         </Tooltip>
+<<<<<<< HEAD
                         {/* <NavLink to="/" className="navlink" className="a">home  </NavLink><br /><br /> */}
 
 
                         {/* <input type="submit" className="tn" value="Craete Account"/> */}
                     </Form>
+=======
+                        
+                    </form>
+>>>>>>> f320f41becc1ed3ca9a97b55a7d89c8c4d609d23
                 </div>
             </div>
                     </>
