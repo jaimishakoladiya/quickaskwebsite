@@ -6,7 +6,7 @@ import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
 import img1 from '../images/femaleface.png';
-
+import img3 from '../images/user1.png';
 import img2 from '../images/maleface.png';
 
 import './home.css'
@@ -34,7 +34,7 @@ function FifthHomeComp() {
                                 <img src={img1} alt="members_img" />
                             </div>
                             <p className="home-comment-title">
-                                AskAway has made the hiring process easy!  Being able to streamline the interview process has been a game-changer for me.
+                                QuickAsk has made the hiring process easy!  Being able to streamline the interview process has been a game-changer for me.
                                 I love the ability to view multiple candidates in one single
                                 grid and compare the answers.  It is a huge time saver.  Great job you guys.
     </p>    <h3>Caris Gonzalez</h3>
@@ -49,9 +49,9 @@ function FifthHomeComp() {
                             </div>
 
                             <p className="home-comment-title">
-                                "As a tool, AskAway gives me the exact solution to my problem.
+                                "As a tool, QuickAsk gives me the exact solution to my problem.
                                 I don't care to learn a complicated ATS/HR system,
-                                I just want to have the ability to screen my candidates quickly and effectively.  AskAway provides me with the
+                                I just want to have the ability to screen my candidates quickly and effectively.  QuickAsk provides me with the
                                 ability to do just that, and can serve as a valuable complement to whatever ATS/HR system you have in place"
   </p>
                             <h3>Bredan Nicholas</h3>
@@ -66,7 +66,7 @@ function FifthHomeComp() {
                                 <img src={img1} alt="members_img" />
                             </div>
                             <p className="home-comment-title">
-                                AskAway has made the hiring process easy!  Being able to streamline the interview process has been a game-changer for me.
+                                QuickAsk has made the hiring process easy!  Being able to streamline the interview process has been a game-changer for me.
                                 I love the ability to view multiple candidates in one single
                                 grid and compare the answers.  It is a huge time saver.  Great job you guys.
     </p>    <h3>Caris Gonzalez</h3>
@@ -81,9 +81,9 @@ function FifthHomeComp() {
                         </div>
 
                         <p className="home-comment-title">
-                            "As a tool, AskAway gives me the exact solution to my problem.
+                            "As a tool, QuickAsk gives me the exact solution to my problem.
                             I don't care to learn a complicated ATS/HR system,
-                            I just want to have the ability to screen my candidates quickly and effectively.  AskAway provides me with the
+                            I just want to have the ability to screen my candidates quickly and effectively.  QuickAsk provides me with the
                             ability to do just that, and can serve as a valuable complement to whatever ATS/HR system you have in place"
   </p>
                         <h3>Bredan Nicholas</h3>
