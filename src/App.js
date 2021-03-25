@@ -23,18 +23,18 @@ function App() {
     <>
     {/* <CompanyProfilePage/> */}/
     {/* <Home/>  */}
-  {/* <BrowserRouter>
+  <BrowserRouter>
     <Login/>
-    </BrowserRouter> */}
+    </BrowserRouter>
     {/* <Forpass/> */}
     {/* <Registration/> */}
     {/* <Navbar/> */}
     {/* <BrowserRouter>
   <HomeNavbar/> 
  </BrowserRouter> */}
- <Login/>
+
     {/* <Navbar2/> */}
- <Interviews/>
+ {/* <Interviews/> */}
    {/* <Home/> */}
    {/* <Login/> */}
    {/* <Navbar/> */}

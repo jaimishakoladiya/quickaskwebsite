@@ -44,7 +44,7 @@ const initialValues={
 
 const onSubmit=(values,onSubmitprops)=>{
     console.log(values);
-    onSubmitprops.resetForm()
+    onSubmitprops.resetForm();
 }
 
 const validationSchema=yup.object({
@@ -89,7 +89,7 @@ const erroralert=(error)=>{
                                 <PersonIcon className="per" />
                             </div>
                             <div>
-                                <h5>UserName.</h5>
+                                <h5>UserName/Email Id</h5>
                                 <Field name='username' type="text" className="input" />
                             </div>
                         </div>
@@ -103,7 +103,7 @@ const erroralert=(error)=>{
                             </div>
                         </div>
                         
-                        <a href="#" style={{ fontSize: "20px" }}>Forget Password..?</a> 
+                       
                         {/* <NavLink to="/forpass"  style={{ fontSize: "20px" }}>Forget Password..?</NavLink> */}
 
                         <a href="#" style={{ fontSize: "20px" }}>Forget Password..?</a>
@@ -113,10 +113,7 @@ const erroralert=(error)=>{
                         <input type="submit" onClick={()=>setopenalert(true)} className="btn-login" value="login" /><br />
 
                         {/* <a href="#" style={{ fontSize: "20px" }}>Forget Password..?</a> */}
-                        <NavLink to="/forpass"  style={{ fontSize: "20px" }}>Forget Password..?</NavLink>
-
-
-                        <input type="submit" className="btn-login" value="login" /><br />
+                     
 
                         {/* <input type="submit" className="button"  value="Create Account" /> */}
 
@@ -132,10 +129,6 @@ const erroralert=(error)=>{
                             {/* </NavLink> */}
                         </Tooltip>
 
-                        {/* <NavLink to="/" className="navlink" className="a">home  </NavLink><br /><br /> */}
-
-
-                        {/* <input type="submit" className="tn" value="Craete Account"/> */}
                     </Form>
                 </div>
             </div>
