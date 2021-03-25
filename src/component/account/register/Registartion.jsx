@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 import image1 from '../../images/wave.png';
 import image2 from '../../images/undraw_mobile_user_7oqo (3).svg';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
@@ -10,24 +10,34 @@ import './registarion.css';
 import {Route,Switch,useHistory} from 'react-router-dom';
 import * as yup from "yup";
 import PersonIcon from '@material-ui/icons/Person';
-import * as yup from "yup"
+
 import InsertPhotoIcon from '@material-ui/icons/InsertPhoto';
 import LockIcon from '@material-ui/icons/Lock';
 import { colors } from '@material-ui/core';
+import AlertBox from '../../alert/AlertBox';
 function Registration()
  {
+   const[openalert,setopenalert] = useState(false);
   const history=useHistory();
 
+  
+  const closealert = () =>{
+    setopenalert(false)
+  }
   const initialValues={
     firstname:'',
     lastname:'',
     companyemail:''
 
   }
-
-  const onSubmit=(values)=>
+ const erroralert=(error)=>{
+   return(
+   <AlertBox setopenalert={openalert} closealert={closealert} error={error}/>
+   )
+ }
+  const onSubmit=(values,onsubmitprops)=>
   {
-    console.log(values);
+    onsubmitprops.resetForm();
   }
 
   const validationSchema=yup.object({
@@ -87,17 +97,17 @@ function Registration()
             </div>
             <div>
               <h5>Company Email.</h5>
-              <Field type="email"  name="companyemil" className="input"/>
+              <Field type="email"  name="companyemail" className="input"/>
             </div>
           </div> 
            
             </div>
             <div>
-            {formik.errors.firstname?<div>{formik.errors.firstname}</div>:
-            formik.errors.lastname?<div>{formik.errors.lastname}</div>:
-            formik.errors.companyemail?<div>{formik.errors.companyemail}</div>
+            {formik.errors.firstname?erroralert(formik.errors.firstname):
+            formik.errors.lastname?erroralert(formik.errors.lastname):
+            formik.errors.companyemail?erroralert(formik.errors.companyemail)
             :null}
-            <input type="submit" className="tn" value="Sign Up"/>
+            <input type="submit" onClick={()=>setopenalert(true)} className="tn" value="Sign Up"/>
             </div>
            <br/>
       

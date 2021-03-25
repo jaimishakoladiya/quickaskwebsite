@@ -5,11 +5,11 @@
 // import Home from "./component/home/Home";
 // import Interviews from './component/interviews/Interviews'
 //import About from './component/team/about/About.jsx'
-// import Login from './component/account/login/Login'
- import Registration from './component/account/register/Registartion'
+ import Login from './component/account/login/Login'
+// import Registration from './component/account/register/Registartion'
 // import CompanyProfilePage from './component/companyprofile/CompanyProfilePage'
 //import Navbar2 from './component/navbar/outernavbar/Navbar2'
-//import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 //import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 //import Login from './component/account/login/Login';
 //import { BrowserRouter } from 'react-router-dom';
@@ -23,11 +23,11 @@ function App() {
     <>
     {/* <CompanyProfilePage/> */}/
     {/* <Home/>  */}
-  {/* <BrowserRouter>
+  <BrowserRouter>
     <Login/>
-    </BrowserRouter> */}
+    </BrowserRouter>
     {/* <Forpass/> */}
-    <Registration/>
+    {/* <Registration/> */}
     {/* <Navbar/> */}
     {/* <BrowserRouter>
   <HomeNavbar/> 

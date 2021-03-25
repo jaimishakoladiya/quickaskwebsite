@@ -111,7 +111,7 @@
   } */
   .registation-div.focus div h5
   {
-    top:-5px;
+    top:-10px;
     font-size: 15px;
   }
   .face
@@ -120,8 +120,8 @@
 	height:150px;
     border-radius:50%;
     position:absolute;
-    top:40px;
-    left: 69%;
+    top:80px;
+    left: 67%;
     transform:translatex(-50%);
 						
   }
@@ -192,8 +192,8 @@
   height: 50px;
   border-radius: 25px;
   margin: 1rem 0;
-  margin-left: 45px;
-  margin-top: 45px;
+  margin-left: 40px;
+  margin-top: 30px;
   font-size: 1.2rem;
   outline: none;
   border: none;
@@ -213,7 +213,7 @@
   height: 50px;
 margin: 1rem 0;
   margin-left: 140px;
-  margin-top: 55px;
+  margin-top: 40px;
   font-size: 1.2rem;
   outline: none;
   border: none;
