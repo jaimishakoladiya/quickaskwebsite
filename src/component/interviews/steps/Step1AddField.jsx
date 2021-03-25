@@ -68,7 +68,7 @@ const Step1AddField =(props)=>{
                     <DialogContentText><CheckCircleIcon/></DialogContentText>
                     </DialogContent>
                     <Button
-            onClick={props.onSelect(props.id)}
+            onClick={OKFunction}
             variant="contained"
             color="secondary">
             OK

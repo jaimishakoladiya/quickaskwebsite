@@ -22,6 +22,7 @@ const CreateInterview = () => {
       marginTop: theme.spacing(1),
       marginRight: theme.spacing(1),
       float: "right",
+      
     },
     actionsContainer: {
       marginBottom: theme.spacing(2),
@@ -79,7 +80,7 @@ const CreateInterview = () => {
         >
           {steps.map((label, index) => (
             <Step key={label}>
-              <StepLabel >{label}</StepLabel>
+              <StepLabel>{label}</StepLabel>
               <StepContent id="stepper_font" >
                 <Typography>{getStepContent(index)}</Typography>
 
