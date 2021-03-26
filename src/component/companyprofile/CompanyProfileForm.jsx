@@ -7,8 +7,8 @@ import  '../companyprofile/Company.css';
 
 const CompanyProfileForm = () => {
     return (
-        <>
-         <div className="CompanyProfileForm_card0">
+        <><br></br><br></br>
+                 <div className="CompanyProfileForm_card0">
         <div className="CompanyProfileForm_formheader">
         <h4 className="CompanyProfileForm_company-info-title">Comapany Information</h4>
         </div>

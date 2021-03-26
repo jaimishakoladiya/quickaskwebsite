@@ -34,8 +34,13 @@ letter-spacing: -1px;
 .home-img{
   height: 340px;
   float:right;
+<<<<<<< HEAD
 margin-right: 100px;
   width:520px;
+=======
+margin-right: 300px;
+  width:700px;
+>>>>>>> d5b8784eed2a61f87f3856ce111745743050ae02
 border-radius: 10pt;
 }
 /* 
@@ -53,6 +58,12 @@ second componet */
  
   text-size-adjust: 100%;
   width: 350px;
+}
+.home-pragraph{
+  columns: 2;
+    column-gap: 47px;
+    text-align: justify;
+    margin-right: 310px;
 }
 /* third componet */
 .home-img1 {
@@ -82,12 +93,12 @@ second componet */
 .home-thirdcomp-title{
   color:white;
   font-size:55px;
-  margin-left:60px;
+  margin-left:200px;
   margin-top:40px
 }
 .home-thirdcomp-text{
 font-size:20px;
-margin-left:60px;
+margin-left:200px;
 margin-top:5px;
 line-height: 30px;
 }
