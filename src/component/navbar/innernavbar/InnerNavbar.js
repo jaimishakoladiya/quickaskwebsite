@@ -17,13 +17,14 @@ const InnerNavbar=()=>{
     <Switch>
    
 
-   
+
            
-     <Route exact path="/companyprofilepage" component={CompanyProfilePage} />   
+      {/* <Route exact path="/companyprofilepage" component={CompanyProfilePage} />     */}
      <Route exact path="/interviews" component={Interviews} />
      <Route exact path="/login" component={Login}/>
-        
-        
+   
+    
+      <CompanyProfilePage/> 
     </Switch>
     </>)
 }
