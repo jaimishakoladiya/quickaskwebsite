@@ -1,44 +1,44 @@
-import React ,{ useState } from "react";
+import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import PersonIcon from "@material-ui/icons/Person";
 import EmailIcon from "@material-ui/icons/Email";
 import Button from "@material-ui/core/Button";
-import * as yup from 'yup';
-import AlertBox from '../../alert/AlertBox'
+import * as yup from "yup";
+import AlertBox from "../../alert/AlertBox";
 import { Form, Formik, Field } from "formik";
 
 const Step3 = () => {
-    const [open,setopenalert] =useState(false) ;
+  const [open, setopenalert] = useState(false);
   const initialValues = {
     firstname: "",
     lastname: "",
     email: "",
   };
-  const onSubmit = (values,onSubmitprops) => {
+  const onSubmit = (values, onSubmitprops) => {
     console.log(values);
-    onSubmitprops.resetForm()
+    onSubmitprops.resetForm();
   };
   const validationSchema = yup.object({
     firstname: yup.string().required("firstname Requierd!!"),
     lastname: yup.string().required("lastname Requierd!!"),
     email: yup.string().email("enter valid email").required("email Requierd!!"),
   });
-  const closealert=()=>{
-      setopenalert(false);
-  }
+  const closealert = () => {
+    setopenalert(false);
+  };
 
-  const erroralert=(error)=>{
-      return(
-          <AlertBox setopenalert={open} closealert={closealert} error={error}/>
-      );
-  }
+  const erroralert = (error) => {
+    return (
+      <AlertBox setopenalert={open} closealert={closealert} error={error} />
+    );
+  };
   return (
     <Formik
-    initialValues={initialValues} 
-    onSubmit={onSubmit}
-    validationSchema={validationSchema}>
-        
-      {formik => {
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={validationSchema}
+    >
+      {(formik) => {
         return (
           <>
             <div className="step3">
@@ -93,13 +93,21 @@ const Step3 = () => {
                     id="email"
                     placeholder="Email-Id"
                   />
-                  {formik.errors.firstname?erroralert(formik.errors.firstname):
-                  formik.errors.lastname?erroralert(formik.errors.lastname):
-                  formik.errors.email?erroralert(formik.errors.email):
-                  null}
-            
+                  {formik.errors.firstname
+                    ? erroralert(formik.errors.firstname)
+                    : formik.errors.lastname
+                    ? erroralert(formik.errors.lastname)
+                    : formik.errors.email
+                    ? erroralert(formik.errors.email)
+                    : null}
+
                   <div className="step3-Add">
-                    <Button type="submit" onClick={()=>setopenalert(true)} variant="contained" color="secondary">
+                    <Button
+                      type="submit"
+                      onClick={() => setopenalert(true)}
+                      variant="contained"
+                      color="secondary"
+                    >
                       ADD
                     </Button>
                   </div>

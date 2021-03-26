@@ -30,7 +30,6 @@ const Step4 = () => {
     return items;
   };
 
-
   return (
     <>
       <div className="step4">
@@ -52,11 +51,14 @@ const Step4 = () => {
         >
           {Selectitem()}
         </NativeSelect>
-       <div className="Add"> <br></br>
+        <div className="Add">
+          {" "}
+          <br></br>
           <Button variant="contained" color="secondary">
             ADD
           </Button>
-        </div><br></br>
+        </div>
+        <br></br>
         <div>
           <TableContainer>
             <Table id=" Step4_heading" aria-label="customized table">

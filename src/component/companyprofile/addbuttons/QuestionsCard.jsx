@@ -12,22 +12,22 @@ import AlertBox from "../../alert/AlertBox";
 
 function QuestionsCard(props) {
   const [openalert, setopenalert] = useState(false);
-  const [newquestion,setnewquestion]=useState({
-    questions:'',
-    minutes:'',
-    seconds:''
-  })
+  const [newquestion, setnewquestion] = useState({
+    questions: "",
+    minutes: "",
+    seconds: "",
+  });
 
-  const inputchange=(event)=>{
-    const {name,value}=event.target;
-    setnewquestion((oldval)=>{
+  const inputchange = (event) => {
+    const { name, value } = event.target;
+    setnewquestion((oldval) => {
       return {
         ...oldval,
-        [name]:value
-      }
-    })
-    console.log(newquestion)
-  }
+        [name]: value,
+      };
+    });
+    console.log(newquestion);
+  };
   const SelectItem = () => {
     let items = [];
     for (let i = 0; i <= 60; i++) {
@@ -57,10 +57,10 @@ function QuestionsCard(props) {
     console.log(values);
     props.addquestions(newquestion);
     setnewquestion({
-      questions:'',
-      minutes:'',
-      seconds:''
-    })
+      questions: "",
+      minutes: "",
+      seconds: "",
+    });
     onSubmitProps.resetForm();
   };
 
@@ -82,54 +82,6 @@ function QuestionsCard(props) {
       />
     );
   };
-function QuestionsCard(props) {
-  const [openalert, setopenalert] = useState(false);
-  const [newQuestions, setnewQuestions] = useState({
-    questions: ''
-  })
-
-  const inputchange = (event) => {
-    const { name, value } = event.target;
-    // console.log(value)
-    setnewQuestions((oldval) => {
-      return {
-        ...oldval,
-        [name]: value
-      }
-    })
-    
-  }
-  const initialValues = {
-
-    questions: '',
-    minutes: '',
-    seconds: ''
-  }
-
-  const onSubmit = (values, onSubmitProps) => {
-    console.log(values);
-    props.addquestions(newQuestions);
-    setnewQuestions({
-      questions:''
-    })
-    onSubmitProps.resetForm()
-
-  }
-
-  const validationSchema = yup.object({
-    questions: yup.string().required('Enter Default Question'),
-    // minutes:yup.string().required('All fields are required'),
-    // seconds:yup.string().required('All fields are required')
-  })
-
-  const closealert = () => {
-    setopenalert(false);
-  }
-  const erroralert = (error) => {
-    return (
-      <AlertBox setopenalert={openalert} closealert={closealert} error={error} />
-    )
-  }
   return (
     <div>
       <Formik
@@ -161,7 +113,8 @@ function QuestionsCard(props) {
                         id="demo-customized-select-native"
                         className="Step4_Dropdown1"
                         onChange={inputchange}
-                        name="minutes">
+                        name="minutes"
+                      >
                         {SelectItem()}
                       </NativeSelect>
                     </FormControl>
@@ -169,11 +122,12 @@ function QuestionsCard(props) {
                       <InputLabel htmlFor="demo-customized-select-native">
                         sec
                       </InputLabel>
-                     <NativeSelect
+                      <NativeSelect
                         id="demo-customized-select-native"
                         className="Step4_Dropdown1"
                         name="seconds"
-                        onChange={inputchange}>
+                        onChange={inputchange}
+                      >
                         {SelectItem()}
                       </NativeSelect>
                     </FormControl>
@@ -199,5 +153,6 @@ function QuestionsCard(props) {
       </Formik>
     </div>
   );
- 
+}
+
 export default QuestionsCard;
