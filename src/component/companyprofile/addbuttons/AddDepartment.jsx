@@ -33,7 +33,7 @@ export default function AddDepartment() {
   const classes=useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] =useState(true);
-
+const [newquestion,setnewquestion]=useState([])
   const initialValues={
     department:'',
     costcenter:'',
@@ -62,6 +62,13 @@ export default function AddDepartment() {
     )
   }
 
+  const addquestions=(question)=>{
+      console.log(question)
+      setnewquestion((oldval)=>{
+        return [...oldval,question]
+      })
+      console.log(newquestion)
+  }
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -147,6 +154,22 @@ export default function AddDepartment() {
               <Grid item xs={4}>
                 <h3 >Time Allocated</h3>
               </Grid>
+              <Grid container spacing={3}>
+                {
+                  newquestion.map((value,index)=>{
+                    return(
+                      <>
+                      <Grid item xs={7}>
+                     <h3>{value.questions}</h3>
+                    </Grid>
+                    <Grid item xs={4}>
+                    <h3 >Time Allocated</h3>
+                     </Grid>
+                      </>
+                    )
+                  })
+                }
+              </Grid>
               
             </Grid>
             <br />
@@ -160,7 +183,7 @@ export default function AddDepartment() {
             Save
           </Button>
           </Form>
-          <QuestionsCard/>
+          <QuestionsCard addquestions={addquestions}/>
               </>)
             }}
           </Formik>

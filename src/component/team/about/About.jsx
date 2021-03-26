@@ -42,7 +42,7 @@ function About() {
     
      <img className="about-img2" src={img2}/>
       <div className="about-col-8">
-     <h4 className="about-footer-title">MISSION STATMENT</h4>
+     <h4 className="about-footer-title">MISSION STATEMENT</h4>
      <p className="about-footer-text">We believe that the shortest video is longer than the longest memory. Our mission is to provide
       you the tools that will make your interviewing process easier,quick, and your hiring … a team choice</p>
      </div>

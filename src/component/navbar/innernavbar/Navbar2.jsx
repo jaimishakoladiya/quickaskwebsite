@@ -17,7 +17,7 @@ function Navbar2() {
 
             <li><NavLink to="/interviews" className="a" >INTERVIEWS</NavLink></li>
 
-            <li className="sub-menu"><a href="#" className="a">LOGOOUT </a></li>
+            <li className="sub-menu"><NavLink to="/login" className="a" >LOGOUT </NavLink></li>
             <li><a href="#" className="a">NAME</a></li>
           </ul>
         </nav>
