@@ -3,7 +3,7 @@
     box-sizing: border-box;
     margin: 0;
   }
-  .Wave
+  .forgot-Wave
   {
     position: fixed;
     height: 100%;
@@ -11,7 +11,7 @@
     bottom: 0;
     z-index: -1;
   }
-  .container
+  .forgot-container
   {
     width: 100vw;
     height: 100vh;
@@ -31,7 +31,7 @@
     justify-content: flex-end;
     align-items: center;
   }
-  form{
+  .forgot-form{
     width: 500px;
     height: 400px;
    margin-top: -50px;
@@ -39,16 +39,16 @@
   box-shadow: 5px 5px 15px -5px rgb(3,73,00)
   
   }
-  /* form:hover{
+  /* .forgot-form:hover{
       box-shadow: 0px 30px 18px -8px rgba(0, 0, 0, 0.1);
   } */
-  .login-container
+  .forpass-container
   {
     display: flex;
     align-items: center;
     text-align: center;
   }
-  form h2{
+  .forgot-form h2{
     font-size: 1.9rem;
     text-transform: uppercase;
     margin: 15px 0;
@@ -56,7 +56,7 @@
     color: #333;
   
   }
-  .inpput-div
+  .for-inpput-div
   {
    width:90%;  
    left:22px;
@@ -75,7 +75,7 @@
       
      
   }
-  .inpput-div:after .inpput-div:before
+  .for-inpput-div:after .for-inpput-div:before
   {
     content: '';
     position: absolute;
@@ -85,44 +85,46 @@
     background-color: darkcyan;
   
   }
-  .inpput-div.focus .i .per
+  .for-inpput-div.focus .i .per
   {
      color: darkcyan;
   }
-  .inpput-div.focus .i .loc
+  .for-inpput-div.focus .i .loc
   {
      color: darkcyan;
   }
-  .inpput-div:after
+  .for-inpput-div:after
   {
     right: 50%;
   }
-  .inpput-div:before
+  .for-inpput-div:before
   {
     left: 50%;
   }
   /*
-  .inpput-div.one{
+  .for-inpput-div.one{
    margin-top: 0;
   }
-  .inpput-div.two
+  .for-inpput-div.two
   {
     margin-bottom: 4px;
   } */
-  .inpput-div.focus div h5
+  .for-inpput-div.focus div h5
   {
-    top:-5px;
+    top:-10px;
     font-size: 15px;
   }
-  .avatar
+  .forgot-avatar
   {
-    width:500px;
-	height:200px;
-    border-radius:50%;
-    position:absolute;
-    top:90px;
-    left: 67%;
-    transform:translatex(-50%);
+    
+    margin-top:-110px;
+    width: 400px;
+    height: 200px;
+    align-self: stretch;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 30%;
+						
 						
   }
   
@@ -140,12 +142,12 @@
   {
     color: darkcyan;
   }
-  .inpput-div > div{
+  .for-inpput-div > div{
   
     position: relative;
     height: 45px;
   }
-  .inpput-div  >div h5
+  .for-inpput-div  >div h5
   {
     position: absolute;
     left: 10px;
@@ -258,7 +260,7 @@ margin: 1rem 0;
   
   @media screen and (max-width:1050px)
   {
-    .container{
+    .forgot-container{
       grid-gap: 5rem;
     }
   }
@@ -283,14 +285,14 @@ margin: 1rem 0;
      .img{
        display: none;
      }
-     .container{
+     .forgot-container{
        grid-template-columns: 1fr;
      }
-     .Wave
+     .forgot-Wave
      {
        display: none;
      }
-     .login-container{
+     .forpass-container{
        justify-content: center;
      }
      

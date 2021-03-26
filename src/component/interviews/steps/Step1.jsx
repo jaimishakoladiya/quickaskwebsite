@@ -5,28 +5,35 @@ import EmailIcon from "@material-ui/icons/Email";
 import Button from "@material-ui/core/Button";
 import Step1AddField from "./Step1AddField";
 import * as yup from "yup";
-import { Form , Formik , Field } from "formik";
+import { Form, Formik, Field } from "formik";
 import AlertBox from "../../alert/AlertBox";
 
 const Step1 = () => {
-  const [openalert,setopenalert] = useState(false)
-  const [FirstInputValue, SetFirstInput] = useState("");
-  const [SecondInputValue, SetSecondInput] = useState("");
-  const [Records, SetRecords] = useState([]);
+  const [openalert, setopenalert] = useState(false);
+  const [Candidate, SetCandidate] = useState({
+    firstname: "",
+    lastname: "",
+  });
+  const [CandidateArray, SetCandidatearray] = useState([]);
 
-  // const FirstInputFunction = (event) => {
-  //   SetFirstInput(event.target.value);
-  // };
-  // const SecondInputFunction = (event) => {
-  //   SetSecondInput(event.target.value);
-  // };
-  const AddRecords = () => {
-    SetRecords((OldRecords) => {
-      return [...OldRecords, `${FirstInputValue}  ${SecondInputValue}`];
+  const inputChangeFunction = (event) => {
+    const { name, value } = event.target;
+    console.log(value);
+    SetCandidate((oldvalue) => {
+      return {
+        ...oldvalue,
+        [name]: value,
+      };
     });
-    console.log(Records);
-    // SetFirstInput("");
-    // SetSecondInput("");
+    console.log(Candidate);
+  };
+  const addcandidate = () => {
+    console.log(Candidate);
+    SetCandidatearray((oldval) => {
+      return [...oldval, `${Candidate}`];
+    });
+
+    console.log(CandidateArray);
   };
 
   const DeleteRecords = () => {
@@ -40,27 +47,33 @@ const Step1 = () => {
   };
   const onSubmit = (values) => {
     console.log(values);
-    // console.log(values.firstname)
-    SetFirstInput(values.firstname);
-    SetSecondInput(values.lastname);
-    // console.log(FirstInputValue)
-    AddRecords();
-
+    addcandidate();
+    SetCandidate({
+      firstname: "",
+      lastname: "",
+    });
   };
   const validationSchema = yup.object({
     firstname: yup.string().required("First Name Required!!"),
     lastname: yup.string().required("Last Name Required!!"),
-    email: yup.string().email("Enter valid Email-id ").required("Email Required!!"),
-    id: yup.string().required("id Required!!")
+    email: yup
+      .string()
+      .email("Enter valid Email-id ")
+      .required("Email Required!!"),
+    id: yup.string().required("id Required!!"),
   });
-  const closealert =()=>{
+  const closealert = () => {
     setopenalert(false);
-  }
-const erroralert =(error)=>{
-  return( 
-        <AlertBox setopenalert={openalert} closealert={closealert} error={error} />
-     );
-}
+  };
+  const erroralert = (error) => {
+    return (
+      <AlertBox
+        setopenalert={openalert}
+        closealert={closealert}
+        error={error}
+      />
+    );
+  };
   return (
     <>
       <Formik
@@ -68,8 +81,8 @@ const erroralert =(error)=>{
         onSubmit={onSubmit}
         validationSchema={validationSchema}
       >
-        {formik=> {
-          console.log(formik)
+        {(formik) => {
+          console.log(formik);
           return (
             <>
               <div className="step1">
@@ -87,7 +100,7 @@ const erroralert =(error)=>{
                       name="firstname"
                       id="firstname"
                       style={{ width: "160px" }}
-                      // onChange={FirstInputFunction}
+                      onInput={inputChangeFunction}
                       //  value={FirstInputValue}
                       id="standard-basic"
                       placeholder="First Name"
@@ -104,7 +117,7 @@ const erroralert =(error)=>{
                       name="lastname"
                       id="lastname"
                       style={{ width: "160px" }}
-                      // onChange={SecondInputFunction}
+                      onInput={inputChangeFunction}
                       // value={SecondInputValue}
                       id="standard-basic"
                       placeholder="Last Name"
@@ -118,8 +131,8 @@ const erroralert =(error)=>{
                     />
                     <Field
                       as={TextField}
-                       name="email"
-                       id="email"
+                      name="email"
+                      id="email"
                       style={{ width: "160px" }}
                       id="standard-basic"
                       placeholder="Email-Id"
@@ -140,16 +153,21 @@ const erroralert =(error)=>{
                       placeholder="Id"
                     />
                     <br />
-                    {formik.errors.firstname?erroralert(formik.errors.firstname):
-                    formik.errors.lastname?erroralert(formik.errors.lastname):
-                    formik.errors.email?erroralert(formik.errors.email):
-                    formik.errors.id?erroralert(formik.errors.id):
-                    null }
+                    {formik.errors.firstname
+                      ? erroralert(formik.errors.firstname)
+                      : formik.errors.lastname
+                      ? erroralert(formik.errors.lastname)
+                      : formik.errors.email
+                      ? erroralert(formik.errors.email)
+                      : formik.errors.id
+                      ? erroralert(formik.errors.id)
+                      : null}
                     <div className="Add">
                       <Button
                         type="submit"
-                        onClick={()=>{setopenalert(true)
-                                 }}
+                        onClick={() => {
+                          setopenalert(true);
+                        }}
                         variant="contained"
                         // onClick={AddRecords}
                         color="secondary"
@@ -158,15 +176,8 @@ const erroralert =(error)=>{
                       </Button>
                     </div>
                     <div>
-                      {Records.map((recordsValue, index) => {
-                        return (
-                          <Step1AddField
-                            Records={recordsValue}
-                            key={index}
-                            id={index}
-                            onSelect={DeleteRecords}
-                          />
-                        );
+                      {CandidateArray.map((candidate) => {
+                        return <Step1AddField newrecords={candidate} />;
                       })}
                     </div>
                   </div>

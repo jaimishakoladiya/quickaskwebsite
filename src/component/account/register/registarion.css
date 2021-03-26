@@ -33,7 +33,7 @@
   }
   .registation-form{
     width: 500px;
-    height: 500px;
+    height: 510px;
    margin-top: -50px;
   background-color: white;
   box-shadow: 5px 5px 15px -5px rgb(3,73,00)
@@ -111,18 +111,27 @@
   } */
   .registation-div.focus div h5
   {
-    top:-5px;
+    top:-10px;
     font-size: 15px;
   }
-  .face
+  .registration-face
   {
-    width:400px;
+    /* width:400px;
 	height:150px;
     border-radius:50%;
     position:absolute;
     top:40px;
-    left: 67%;
-    transform:translatex(-50%);
+    /* top:initial; */
+    /* left: 69%;
+    transform:translatex(-50%); */
+    padding-top: -0px;
+    margin-top:-110px;
+    width: 400px;
+    height: 150px;
+    align-self: stretch;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 30%;
 						
   }
   
@@ -192,8 +201,8 @@
   height: 50px;
   border-radius: 25px;
   margin: 1rem 0;
-  margin-left: 45px;
-  margin-top: 45px;
+  margin-left: 40px;
+  margin-top: 20px;
   font-size: 1.2rem;
   outline: none;
   border: none;
@@ -213,7 +222,8 @@
   height: 50px;
 margin: 1rem 0;
   margin-left: 140px;
-  margin-top: 55px;
+  margin-top: 40px;
+
   font-size: 1.2rem;
   outline: none;
   border: none;
@@ -224,6 +234,7 @@ margin: 1rem 0;
   text-transform: uppercase;
   background-size: 200%;
   transition: .5s;
+  text-align: center;
 
 }
   
