@@ -1,6 +1,6 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid';
-import img1 from '../images/homeinter.png'
+import img1 from '../images/undraw_remotely_2j6y.svg'
 
 function SecondHomeComp() {
     return (
