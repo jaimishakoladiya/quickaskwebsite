@@ -44,9 +44,9 @@ function Registration()
   }
 
   const validationSchema=yup.object({
-    firstname:yup.string().required("firstname is required"),
-    lastname:yup.string().required('lastname is required'),
-    companyemail:yup.string().email("Enter valid email").required("email is required")
+    firstname:yup.string().required("Firstname is required"),
+    lastname:yup.string().required('Lastname is required'),
+    companyemail:yup.string().email("Enter valid email").required("Email is required")
 
 
   })

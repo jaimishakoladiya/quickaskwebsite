@@ -4,7 +4,7 @@
     align-items: center;
     min-height: 100vh;
     background-color:white;
-    margin-top: 100px;
+    margin-top: 200px;
     }
     .contact-container{
     position: relative;
@@ -60,54 +60,7 @@
        
     }
    
-    /* .contact-butn:focus{
-        background: #1bfaad;
-        color: #111;
-        
-    } */
-    /* .contact-container .contact-formbox form .contact-inputbox{
-    position: relative;
-    margin-bottom: 40px;
-    } */
     
-    /* .contact-container .contact-formbox form .contact-inputbox:last-child
-    {
-    margin-bottom: 0px;
-    } */
-/*     
-    .contact-container .contact-formbox form .contact-inputbox input,
-    .contact-container .contact-formbox form .contact-inputbox textarea{
-    position: relative;
-    background: transparent;
-    outline: none;
-    border: none;
-    width: 100%;
-    color: #fff;
-    resize: none;
-    padding-bottom: 10px;
-    font-size: 16px;
-    letter-spacing: 1px;
-    font-weight: 300;
-    border-bottom: 2px solid rgba(255,255,255,0.5);
-    }
-    .contact-container .contact-formbox form .contact-inputbox textarea{
-    height: 100px;
-    }
-    .contact-container .contact-formbox form .contact-inputbox input[type="submit"]
-    {
-    background: #fff;
-    padding: 8px 20px;
-    margin-top: -10px;
-    width: 150px;
-    cursor: pointer;
-    background: #ff5064;
-    color: #fff;
-    font-size: 18px;
-    font-weight: 400;
-    border: none;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    } */
     .contact-container .contact-formbox form .contact-inputbox input[type="submit"]:focus{
     background: #1bfaad;
     color: #111;
@@ -124,22 +77,7 @@
     color: rgba(255,255,255,0.5);
     transition: all 0.2s;
     }
-    /* .contact-container .contact-formbox form .contact-inputbox input:focus ~ span,
-    .contact-container .contact-formbox form .contact-inputbox textarea:focus ~ span,
-    .contact-container .contact-formbox form .contact-inputbox input:valid ~ span,
-    .contact-container .contact-formbox form .contact-inputbox textarea:valid ~ span{
-    transform: translateY(24px);
-    color: #1bfaad;
-    font-size: 14px; */
-
-    /* }
-    .contact-container .contact-formbox form .contact-inputbox input:focus,
-    .contact-container .contact-formbox form .contact-inputbox textarea:focus,
-    .contact-container .contact-formbox form .contact-inputbox input:valid,
-    .contact-container .contact-formbox form .contact-inputbox textarea:valid
-    {
-    border-bottom-color: #fff;
-    } */
+    
     .contact-container .contact-img{
     position: relative;
     width: 50%;

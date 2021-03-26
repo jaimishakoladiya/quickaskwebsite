@@ -50,7 +50,7 @@ const onSubmit=(values,onSubmitprops)=>{
 }
 
 const validationSchema=yup.object({
-    username:yup.string().email('Enter valid email').required('username is requied'),
+    username:yup.string().email('Enter valid email').required('Username is requied'),
     password:yup.string().required('Enter password')
     
 })
