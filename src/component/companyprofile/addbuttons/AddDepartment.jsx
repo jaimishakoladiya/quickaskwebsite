@@ -163,7 +163,7 @@ const [newquestion,setnewquestion]=useState([])
                      <h3>{value.questions}</h3>
                     </Grid>
                     <Grid item xs={4}>
-                    <h3 >Time Allocated</h3>
+                    <h3 >{value.minutes}:{value.seconds}</h3>
                      </Grid>
                       </>
                     )
