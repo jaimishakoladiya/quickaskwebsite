@@ -10,7 +10,6 @@ import TextField from "@material-ui/core/TextField";
 import "../Company.css";
 import AlertBox from "../../alert/AlertBox";
 
-<<<<<<< HEAD
 function QuestionsCard() {
   const [openalert, setopenalert] = useState(false);
   const SelectItem = () => {
@@ -61,56 +60,6 @@ function QuestionsCard() {
       />
     );
   };
-=======
-function QuestionsCard(props) {
-  const [openalert, setopenalert] = useState(false);
-  const [newQuestions, setnewQuestions] = useState({
-    questions: ''
-  })
-
-  const inputchange = (event) => {
-    const { name, value } = event.target;
-    // console.log(value)
-    setnewQuestions((oldval) => {
-      return {
-        ...oldval,
-        [name]: value
-      }
-    })
-    
-  }
-  const initialValues = {
-
-    questions: '',
-    minutes: '',
-    seconds: ''
-  }
-
-  const onSubmit = (values, onSubmitProps) => {
-    console.log(values);
-    props.addquestions(newQuestions);
-    setnewQuestions({
-      questions:''
-    })
-    onSubmitProps.resetForm()
-
-  }
-
-  const validationSchema = yup.object({
-    questions: yup.string().required('Enter Default Question'),
-    // minutes:yup.string().required('All fields are required'),
-    // seconds:yup.string().required('All fields are required')
-  })
-
-  const closealert = () => {
-    setopenalert(false);
-  }
-  const erroralert = (error) => {
-    return (
-      <AlertBox setopenalert={openalert} closealert={closealert} error={error} />
-    )
-  }
->>>>>>> 9bc369de5ad2944782f3eec61b3012adbfb79952
   return (
     <div>
       <Formik
@@ -118,12 +67,7 @@ function QuestionsCard(props) {
         onSubmit={onSubmit}
         validationSchema={validationSchema}
       >
-<<<<<<< HEAD
         {(formik) => {
-=======
-        {formik => {
-
->>>>>>> 9bc369de5ad2944782f3eec61b3012adbfb79952
           return (
             <>
               <Grid item xs={12}>
@@ -136,7 +80,6 @@ function QuestionsCard(props) {
                       id="questions"
                       label="New Question"
                       variant="standard"
-<<<<<<< HEAD
                     />
 
                     <FormControl style={{ marginLeft: "30px" }}>
@@ -164,42 +107,10 @@ function QuestionsCard(props) {
                     {formik.errors.questions
                       ? erroralert(formik.errors.questions)
                       : null}
-=======
-                      onInput={inputchange}
-                    />
-
-
-
-                    <FormControl style={{ marginLeft: "30px" }}>
-                      <InputLabel htmlFor="demo-customized-select-native">
-                        min
-                    </InputLabel>
-                      <Field as={NativeSelect} id="demo-customized-select-native">
-                        <option value="565">03</option>
-                        <option value={20}>0</option>
-                        <option value={30}>1</option>
-                      </Field>
-                    </FormControl>
-
-                    <FormControl style={{ marginLeft: "30px" }}>
-                      <InputLabel htmlFor="demo-customized-select-native">
-                        sec
-                    </InputLabel>
-                      <Field as={NativeSelect} id="demo-customized-select-native">
-                        <option value={10}>03</option>
-                        <option value={20}>0</option>
-                        <option value={30}>1</option>
-                      </Field>
-                    </FormControl>
-                    <br />
-                    <br />
-                    {formik.errors.questions ? erroralert(formik.errors.questions) : null}
->>>>>>> 9bc369de5ad2944782f3eec61b3012adbfb79952
                     <Button
                       onClick={() => setopenalert(true)}
                       variant="contained"
                       color="secondary"
-<<<<<<< HEAD
                       type="submit"
                     >
                       Save
@@ -213,19 +124,6 @@ function QuestionsCard(props) {
       </Formik>
     </div>
   );
-=======
-                      type="submit">
-                      Save
-                  </Button>
-                  </Form>
-                </div>
-              </Grid>
-            </>)
-        }}
-      </Formik>
-    </div>
-  )
->>>>>>> 9bc369de5ad2944782f3eec61b3012adbfb79952
 }
 
 export default QuestionsCard;
