@@ -10,8 +10,24 @@ import TextField from "@material-ui/core/TextField";
 import "../Company.css";
 import AlertBox from "../../alert/AlertBox";
 
-function QuestionsCard() {
+function QuestionsCard(props) {
   const [openalert, setopenalert] = useState(false);
+  const [newquestion,setnewquestion]=useState({
+    questions:'',
+    minutes:'',
+    seconds:''
+  })
+
+  const inputchange=(event)=>{
+    const {name,value}=event.target;
+    setnewquestion((oldval)=>{
+      return {
+        ...oldval,
+        [name]:value
+      }
+    })
+    console.log(newquestion)
+  }
   const SelectItem = () => {
     let items = [];
     for (let i = 0; i <= 60; i++) {
@@ -39,6 +55,12 @@ function QuestionsCard() {
 
   const onSubmit = (values, onSubmitProps) => {
     console.log(values);
+    props.addquestions(newquestion);
+    setnewquestion({
+      questions:'',
+      minutes:'',
+      seconds:''
+    })
     onSubmitProps.resetForm();
   };
 
@@ -80,6 +102,7 @@ function QuestionsCard() {
                       id="questions"
                       label="New Question"
                       variant="standard"
+                      onInput={inputchange}
                     />
 
                     <FormControl style={{ marginLeft: "30px" }}>
@@ -88,7 +111,9 @@ function QuestionsCard() {
                       </InputLabel>
                       <NativeSelect
                         id="demo-customized-select-native"
-                        className="Step4_Dropdown1">
+                        className="Step4_Dropdown1"
+                        onChange={inputchange}
+                        name="minutes">
                         {SelectItem()}
                       </NativeSelect>
                     </FormControl>
@@ -98,7 +123,9 @@ function QuestionsCard() {
                       </InputLabel>
                      <NativeSelect
                         id="demo-customized-select-native"
-                        className="Step4_Dropdown1">
+                        className="Step4_Dropdown1"
+                        name="seconds"
+                        onChange={inputchange}>
                         {SelectItem()}
                       </NativeSelect>
                     </FormControl>
