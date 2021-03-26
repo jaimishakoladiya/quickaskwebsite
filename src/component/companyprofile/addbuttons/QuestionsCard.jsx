@@ -60,6 +60,54 @@ function QuestionsCard() {
       />
     );
   };
+function QuestionsCard(props) {
+  const [openalert, setopenalert] = useState(false);
+  const [newQuestions, setnewQuestions] = useState({
+    questions: ''
+  })
+
+  const inputchange = (event) => {
+    const { name, value } = event.target;
+    // console.log(value)
+    setnewQuestions((oldval) => {
+      return {
+        ...oldval,
+        [name]: value
+      }
+    })
+    
+  }
+  const initialValues = {
+
+    questions: '',
+    minutes: '',
+    seconds: ''
+  }
+
+  const onSubmit = (values, onSubmitProps) => {
+    console.log(values);
+    props.addquestions(newQuestions);
+    setnewQuestions({
+      questions:''
+    })
+    onSubmitProps.resetForm()
+
+  }
+
+  const validationSchema = yup.object({
+    questions: yup.string().required('Enter Default Question'),
+    // minutes:yup.string().required('All fields are required'),
+    // seconds:yup.string().required('All fields are required')
+  })
+
+  const closealert = () => {
+    setopenalert(false);
+  }
+  const erroralert = (error) => {
+    return (
+      <AlertBox setopenalert={openalert} closealert={closealert} error={error} />
+    )
+  }
   return (
     <div>
       <Formik
@@ -124,6 +172,5 @@ function QuestionsCard() {
       </Formik>
     </div>
   );
-}
-
+ 
 export default QuestionsCard;
