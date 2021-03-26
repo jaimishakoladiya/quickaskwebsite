@@ -80,10 +80,13 @@
   margin-top: 30px;
 }
 
-.create-btn {
-  padding-top: 100px;
-  padding-left: 183px;
-  margin-top: -20px;
+#create-btn {
+ 
+  margin-top:80px;
+  margin-bottom: -20px;
+  margin-left: 370px;
+  font-weight: bold;
+  color:white;
 }
 
 
@@ -94,6 +97,7 @@
   justify-content: left;
   text-align: left;
   margin: 15px auto;
+  margin-top: 50px;
   border: 1px solid black;
   border-radius: 3px;
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@material-ui/core'
 import Slide from '@material-ui/core/Slide';
 import './alert.css';
+
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="down" ref={ref} {...props} />;
   });
@@ -16,7 +17,9 @@ const closebox=()=>{
         <div>
             <Dialog open={props.setopenalert}
             TransitionComponent={Transition} >
-            <div id="error-dialog">
+            <div id="error-
+            ]
+            ">
                 <DialogTitle>
 
                    <h3> Alert</h3>

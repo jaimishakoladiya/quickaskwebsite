@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import { Field, Formik, Form } from "formik";
 import FormControl from "@material-ui/core/FormControl";
@@ -7,9 +7,8 @@ import InputLabel from "@material-ui/core/InputLabel";
 import * as yup from "yup";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import '../Company.css';
-import AlertBox from '../../alert/AlertBox';
-
+import "../Company.css";
+import AlertBox from "../../alert/AlertBox";
 
 function QuestionsCard(props) {
   const [openalert, setopenalert] = useState(false);
@@ -66,8 +65,7 @@ function QuestionsCard(props) {
         onSubmit={onSubmit}
         validationSchema={validationSchema}
       >
-        {formik => {
-
+        {(formik) => {
           return (
             <>
               <Grid item xs={12}>
@@ -126,4 +124,4 @@ function QuestionsCard(props) {
   )
 }
 
-export default QuestionsCard
+export default QuestionsCard;

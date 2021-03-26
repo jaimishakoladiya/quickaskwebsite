@@ -12,9 +12,11 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
 const Step1AddField =(props)=>{
+ 
+    
     const [open, SetOpen] = useState(false);
     const [Yesopen , SetYesopen] = useState(false);
-    const handleCickOpen = () => {
+    const handleClickOpen = () => {
         SetOpen(true);
       };
       const handleClickClose = () => {
@@ -33,8 +35,8 @@ const Step1AddField =(props)=>{
         <Chip
         id="Chip_box"
         icon={<PersonIcon />}
-        label={props.Records}
-         onClick={handleCickOpen}
+        label={props.newrecords}
+         onClick={handleClickOpen}
         onDelete={handleDelete}
         deleteIcon={<CloseIcon />}
       ></Chip>
@@ -75,7 +77,6 @@ const Step1AddField =(props)=>{
           </Button>
           </Dialog>
         </DialogActions>
-
         <DialogContent />
       </DialogContent>
     </Dialog>
