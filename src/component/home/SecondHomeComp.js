@@ -11,6 +11,7 @@ function SecondHomeComp() {
                     <Grid item xs>
                         <img style={{ height: "400px", width: "500px" }} src={img1}></img>
                     </Grid>
+                    <div className="home-pragraph">
                     <Grid item xs>
                     <p className="home-text">
                          There is no replacement for a face-to-face interview, that’s why phone interviews are so ineffective. But when you can’t meet face-to-face,
@@ -33,6 +34,7 @@ function SecondHomeComp() {
                         So – Go Ahead-QuickAsk!
                         </p>
                     </Grid>
+                    </div>
                 </Grid>
                 </div>
         </>

@@ -39,7 +39,7 @@
   box-shadow: 5px 5px 15px -5px rgb(3,73,00)
   
   }
-  /* form:hover{
+  /* .forgot-form:hover{
       box-shadow: 0px 30px 18px -8px rgba(0, 0, 0, 0.1);
   } */
   .forpass-container
@@ -116,14 +116,15 @@
   }
   .forgot-avatar
   {
- 
-    margin-top: -110px;
+    
+    margin-top:-110px;
     width: 400px;
     height: 200px;
     align-self: stretch;
     align-items: center;
     justify-content: center;
     flex-basis: 30%;
+						
 						
   }
   

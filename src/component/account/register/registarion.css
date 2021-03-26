@@ -121,10 +121,11 @@
     border-radius:50%;
     position:absolute;
     top:40px;
-    left: 69%;
+    /* top:initial; */
+    /* left: 69%;
     transform:translatex(-50%); */
     padding-top: -0px;
-    margin-top: -110px;
+    margin-top:-110px;
     width: 400px;
     height: 150px;
     align-self: stretch;
@@ -222,6 +223,7 @@
 margin: 1rem 0;
   margin-left: 140px;
   margin-top: 40px;
+
   font-size: 1.2rem;
   outline: none;
   border: none;
