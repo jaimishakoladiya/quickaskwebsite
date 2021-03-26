@@ -7,10 +7,10 @@
 import About from "./component/team/about/About.jsx";
 // import Login from './component/account/login/Login'
 // import Registration from './component/account/register/Registartion'
-// import CompanyProfilePage from './component/companyprofile/CompanyProfilePage'
+import CompanyProfilePage from './component/companyprofile/CompanyProfilePage'
 //import Navbar2 from './component/navbar/outernavbar/Navbar2'
-import { BrowserRouter } from "react-router-dom";
-import HomeNavbar from "./component/navbar/homenavbar/HomeNavbar";
+//  import { BrowserRouter } from 'react-router-dom';
+//  import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 //import Login from './component/account/login/Login';
 //import Forpass from './component/account/login/Forpass';
 // import { BrowserRouter } from 'react-router-dom';
@@ -25,9 +25,9 @@ import Interviews from './component/interviews/Interviews'
 function App() {
   return (
     <>
-      {/* <CompanyProfilePage/> */}
-      {/* <Home/>  */}
-      {/* <BrowserRouter>
+    <CompanyProfilePage/>
+    {/* <Home/>  */}
+   {/* <BrowserRouter>
     <InnerNavbar/>
 
     </BrowserRouter>  */}
@@ -35,22 +35,22 @@ function App() {
       {/* <Forpass/> */}
       {/* <Forpass/> */}
 
-      {/* <Registration/> */}
-      {/* <Login/> */}
-      {/* <Navbar/> */}
-      {/* <BrowserRouter>
+    {/* <Registration/> */}
+    {/* <Login/> */}
+    {/* <Navbar/> */}
+    {/* <BrowserRouter>
   <HomeNavbar/> 
  </BrowserRouter> */}
-      {/* <Login/> */}
-      {/* <Navbar2/> */}
-      <Interviews/>
-      {/* <Home/> */}
-      {/* <Login/> */}
-      {/* <Navbar/> */}
-      {/* <Contact/> */}
-      {/* <About/> */}
-    </>
-  );
+ {/* <Login/> */}
+    {/* <Navbar2/> */}
+ {/* <Interviews/> */}
+   {/* <Home/> */}
+   {/* <Login/> */}
+   {/* <Navbar/> */}
+   {/* <Contact/> */}
+   {/* <About/> */}
+</>
+  )
 }
 
 export default App;

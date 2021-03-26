@@ -34,7 +34,7 @@ letter-spacing: -1px;
 .home-img{
   height: 340px;
   float:right;
-margin-right: 300px;
+margin-right: 100px;
   width:700px;
 border-radius: 10pt;
 }
@@ -58,7 +58,7 @@ second componet */
   columns: 2;
     column-gap: 47px;
     text-align: justify;
-    margin-right: 310px;
+    margin-right: 100px;
 }
 /* third componet */
 .home-img1 {
