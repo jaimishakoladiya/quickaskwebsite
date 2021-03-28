@@ -22,7 +22,7 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 function App() {
   return (
     <>
-    <CompanyProfilePage/>
+    {/* <CompanyProfilePage/> */}
     {/* <Home/>  */}
   {/* <BrowserRouter>
     <Login/>
@@ -36,9 +36,9 @@ function App() {
     {/* <Registration/> */}
     {/* <Login/> */}
     {/* <Navbar/> */}
-    {/* <BrowserRouter>
+    <BrowserRouter>
   <HomeNavbar/> 
- </BrowserRouter> */}
+ </BrowserRouter>
  {/* <Login/> */}
     {/* <Navbar2/> */}
  {/* <Interviews/> */}
