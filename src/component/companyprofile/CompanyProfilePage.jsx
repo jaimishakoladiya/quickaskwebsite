@@ -1,5 +1,5 @@
-import React from 'react'
-import CompanyProfileForm from './CompanyProfileForm'
+import React from "react";
+import CompanyProfileForm from "./CompanyProfileForm";
 
 function CompanyProfilePage() {
   return (

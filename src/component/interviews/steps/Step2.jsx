@@ -3,9 +3,8 @@ import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import PersonIcon from "@material-ui/icons/Person";
 import { makeStyles } from "@material-ui/core/styles";
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -41,28 +40,39 @@ const Step2 = () => {
               />
             </Grid>
             <Grid item xs={4} sm={4} xl={4} md={4} className="d-flex">
-               <TextField 
-                id="standard-select-currency-native" 
-                select  style={{ width:"200px",marginTop:"5px"}}/>
+              <TextField
+                id="standard-select-currency-native"
+                select
+                style={{ width: "200px", marginTop: "5px" }}
+              />
             </Grid>
           </Grid>
-        </div><br></br>
+        </div>
+        <br></br>
         <h4>Department</h4>
         <Grid container spacing={2}>
-           <Grid item xs={4} sm={4} xl={4} md={4} className="d-flex">
-              <TextField  id="standard-select-currency-native" 
-                          select
-                          label="---Select Department---"
-                          style={{ width:"200px",marginTop:"5px"}}/>
-            </Grid>
-            <Grid item xs={4} sm={4} xl={4} md={4} className="d-flex">
-               <TextField  id="standard-select-currency-native" 
-                          select
-                          label="--Select Job title--"
-                          style={{ width:"200px",marginTop:"5px"}}/>
-            </Grid>
+          <Grid item xs={4} sm={4} xl={4} md={4} className="d-flex">
+            <TextField
+              id="standard-select-currency-native"
+              select
+              label="---Select Department---"
+              style={{ width: "200px", marginTop: "5px" }}
+            />
           </Grid>
-          <div className="step2-Add"><Button variant="contained" color="secondary" >ADD</Button></div>
+          <Grid item xs={4} sm={4} xl={4} md={4} className="d-flex">
+            <TextField
+              id="standard-select-currency-native"
+              select
+              label="--Select Job title--"
+              style={{ width: "200px", marginTop: "5px" }}
+            />
+          </Grid>
+        </Grid>
+        <div className="step2-Add">
+          <Button variant="contained" color="secondary">
+            ADD
+          </Button>
+        </div>
       </div>
     </>
   );
