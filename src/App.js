@@ -16,9 +16,9 @@
 import { BrowserRouter } from 'react-router-dom';
 //  import InnerNavbar from './component/navbar/innernavbar/InnerNavbar'
 // import Navbar from './component/navbar/homenavbar/Navbar'
-//import CompanyProfilePage from './component/companyprofile/CompanyProfilePage'
+import CompanyProfilePage from './component/companyprofile/CompanyProfilePage'
 //import Navbar2 from './component/navbar/outernavbar/Navbar2'
-import Interviews from "./component/interviews/Interviews";
+// import Interviews from "./component/interviews/Interviews";
 
 //import Contact from './component/team/contact/Contact';
 
@@ -27,7 +27,7 @@ import Interviews from "./component/interviews/Interviews";
 function App() {
   return (
     <>
-    {/* <CompanyProfilePage/> */}
+    <CompanyProfilePage/>
     {/* <Home/>  */}
    {/* <BrowserRouter>
     <InnerNavbar/>
@@ -45,7 +45,7 @@ function App() {
  </BrowserRouter> */}
  {/* <Login/> */}
     {/* <Navbar2/> */}
- <Interviews/>
+ {/* <Interviews/> */}
    {/* <Home/> */}
    {/* <Login/> */}
    {/* <Navbar/> */}
