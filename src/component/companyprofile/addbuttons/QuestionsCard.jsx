@@ -18,16 +18,16 @@ function QuestionsCard(props) {
     seconds:'0'
   })
 
-  const inputchange=(event)=>{
-    const {name,value}=event.target;
-    setnewquestion((oldval)=>{
+  const inputchange = (event) => {
+    const { name, value } = event.target;
+    setnewquestion((oldval) => {
       return {
         ...oldval,
-        [name]:value
-      }
-    })
-    console.log(newquestion)
-  }
+        [name]: value,
+      };
+    });
+    console.log(newquestion);
+  };
   const SelectItem = () => {
     let items = [];
     for (let i = 0; i <= 60; i++) {

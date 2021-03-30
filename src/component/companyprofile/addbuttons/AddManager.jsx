@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -10,145 +10,202 @@ import CloseIcon from "@material-ui/icons/Close";
 import Grid from "@material-ui/core/Grid";
 import QuestionsCard from "./QuestionsCard";
 import { makeStyles } from "@material-ui/core";
-import { Field, Formik ,Form} from "formik";
-import * as yup from 'yup';
-import AlertBox from '../../alert/AlertBox';
-
+import { Field, Formik, Form } from "formik";
+import * as yup from "yup";
+import AlertBox from "../../alert/AlertBox";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
-const useStyle=makeStyles(theme=>({
-        dialogWrapper:{
-          position:'absolute',
-          top:theme.spacing(0),
-          backgroundColor:'#eef5f6'
-          
-        }
-      })
-      )
+const useStyle = makeStyles((theme) => ({
+  dialogWrapper: {
+    position: "absolute",
+    top: theme.spacing(0),
+    backgroundColor: "#eef5f6",
+  },
+}));
 export default function AddManager() {
-const classes=useStyle();
-const [open, setOpen] =useState(false);
-const [openalert,setopenalert]=useState(false);
+  const classes = useStyle();
+  const [open, setOpen] = useState(false);
+  const [openalert, setopenalert] = useState(false);
 
-const initialValues={
-        firstname:'',
-        lastname:'',
-        email:'',
-}
+  const initialValues = {
+    firstname: "",
+    lastname: "",
+    email: "",
+  };
 
-const onSubmit=(values)=>{
-        console.log(values);
-        setOpen(false);
-}
+  const onSubmit = (values) => {
+    console.log(values);
+    setOpen(false);
+  };
 
-const validationSchema=yup.object({
-        firstname:yup.string().required('All Fields Are Required'),
-        lastname:yup.string().required('All Fields Are Required'),
-        email:yup.string().email('Enter Valid Email').required('All Fields Are Required'),
-})
+  const validationSchema = yup.object({
+    firstname: yup.string().required("All Fields Are Required"),
+    lastname: yup.string().required("All Fields Are Required"),
+    email: yup
+      .string()
+      .email("Enter Valid Email")
+      .required("All Fields Are Required"),
+  });
 
-const closealert=()=>{
-        setopenalert(false);
-}
-const erroralert=(error)=>{
-        return(
-                <AlertBox setopenalert={openalert} closealert={closealert} error={error}/>
-        )
-}
-const handleClickOpen = () => {
-setOpen(true);
-};
+  const closealert = () => {
+    setopenalert(false);
+  };
+  const erroralert = (error) => {
+    return (
+      <AlertBox
+        setopenalert={openalert}
+        closealert={closealert}
+        error={error}
+      />
+    );
+  };
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
-const handleClose = () => {
-setOpen(false);
-};
+  const handleClose = () => {
+    setOpen(false);
+  };
 
-return (
-<div>
-<Button style={{marginBottom:"25px"}} variant="contained" color="secondary" 
-onClick={handleClickOpen}>Add Manager
-</Button><br/>
+  return (
+    <div>
+      <Button
+        style={{ marginBottom: "25px" }}
+        variant="contained"
+        color="secondary"
+        onClick={handleClickOpen}
+      >
+        Add Manager
+      </Button>
+      <br />
 
-<Dialog open={open} 
-onClose={handleClose} 
-aria-labelledby="form-dialog-title" 
-TransitionComponent={Transition}
-fullWidth={true}
- maxWidth='md'
- classes={{paper:classes.dialogWrapper}}>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
+        TransitionComponent={Transition}
+        fullWidth={true}
+        maxWidth="md"
+        classes={{ paper: classes.dialogWrapper }}
+      >
+        <div className="AddManager_primaryHeader">
+          <h2>Add Manager </h2>
+          <div className="AddManager_closeicon">
+            <CloseIcon style={{ color: "black" }} onClick={handleClose} />
+          </div>
+        </div>
+        <DialogTitle id="form-dialog-title"></DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            <Formik
+              initialValues={initialValues}
+              onSubmit={onSubmit}
+              validationSchema={validationSchema}
+            >
+              {(formik) => {
+                return (
+                  <>
+                    <Form>
+                      <Grid container spacing={3}>
+                        <Grid
+                          container
+                          spacing={3}
+                          style={{ marginLeft: "10px" }}
+                        >
+                          <Grid item xs>
+                            <h3>First Name</h3>
+                          </Grid>
+                          <Grid item xs>
+                            <h3>Last Name</h3>
+                          </Grid>
+                          <Grid item xs>
+                            <h3>Email</h3>
+                          </Grid>
+                        </Grid>
+                        <Grid
+                          container
+                          spacing={3}
+                          style={{ marginLeft: "10px" }}
+                        >
+                          <Grid item xs>
+                            <Field
+                              as={TextField}
+                              name="firstname"
+                              placeholder="Enter FirstName"
+                              id="standard-basic-input"
+                              variant="standard"
+                            />
+                          </Grid>
+                          <Grid item xs>
+                            <Field
+                              as={TextField}
+                              name="lastname"
+                              placeholder="Enter LastName"
+                              id="standard-basic-input"
+                              variant="standard"
+                            />
+                          </Grid>
+                          <Grid item xs>
+                            <Field
+                              as={TextField}
+                              name="email"
+                              placeholder="Enter Email"
+                              id="standard-basic-input"
+                              variant="standard"
+                            />
+                          </Grid>
+                        </Grid>
+                        <Grid
+                          container
+                          spacing={3}
+                          style={{ marginTop: "10px", marginLeft: "10px" }}
+                        >
+                          <Grid item xs={7}>
+                            <h3>Default Question For Department</h3>
+                          </Grid>
+                          <Grid item xs={4}>
+                            <h3>Time Allocated</h3>
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                      <br />
 
-<div className="AddManager_primaryHeader">
-<h2>Add Manager </h2>
-<div className="AddManager_closeicon"><CloseIcon style={{color:'black'}} onClick={handleClose}/></div>
+                      {formik.errors.firstname
+                        ? erroralert(formik.errors.firstname)
+                        : formik.errors.lastname
+                        ? erroralert(formik.errors.lastname)
+                        : formik.errors.email
+                        ? erroralert(formik.errors.email)
+                        : null}
 
-</div>
-<DialogTitle id="form-dialog-title">
-
-</DialogTitle>
-<DialogContent>
-<DialogContentText>
-<Formik
-initialValues={initialValues}
-onSubmit={onSubmit}
-validationSchema={validationSchema}>
-   
-   {formik=>{
-           return(
-                   <>
-                   <Form>
-                   <Grid container spacing={3}>
-        <Grid container spacing={3} style={{marginLeft:'10px'}}>
-        <Grid item xs>
-        <h3>First Name</h3>
-        </Grid>
-        <Grid item xs>
-        <h3>Last Name</h3>
-        </Grid>
-        <Grid item xs>
-        <h3>Email</h3>
-        </Grid>
-       </Grid>
-        <Grid container spacing={3} style={{marginLeft:'10px'}}>
-        <Grid item xs>
-        <Field as={TextField} name="firstname"  placeholder="Enter FirstName"  id="standard-basic-input"  variant="standard" />
-        </Grid>
-        <Grid item xs>
-        <Field as={TextField} name='lastname'  placeholder="Enter LastName"  id="standard-basic-input"  variant="standard" />
-        </Grid>
-        <Grid item xs>
-        <Field as={TextField} name='email'  placeholder="Enter Email"  id="standard-basic-input"  variant="standard" />
-        </Grid>
-     </Grid>
-    <Grid container spacing={3} style={{marginTop:'10px',marginLeft:'10px'}}>
-        <Grid item xs={7}>
-        <h3>Default Question For Department</h3>
-        </Grid>
-        <Grid item xs={4}>
-        <h3>Time Allocated</h3>
-        </Grid>
-        </Grid>
-       
-      </Grid><br/>
-
-      {formik.errors.firstname?erroralert(formik.errors.firstname):
-      formik.errors.lastname?erroralert(formik.errors.lastname):
-      formik.errors.email?erroralert(formik.errors.email):null}
-
-      <Button onClick={handleClose} id='dialog-cancel-btn' variant="contained" color="primary">Cancel</Button>
-      <Button type='submit' onClick={()=>setopenalert(true)} id='dialog-save-btn' variant="contained" color="secondary">Save</Button>
-      </Form>
-                   </>
-           )
-   }}
-      </Formik>
-      <QuestionsCard/>
- </DialogContentText>
-</DialogContent>
-
-
-</Dialog>
-</div>
-);
+                      <Button
+                        onClick={handleClose}
+                        id="dialog-cancel-btn"
+                        variant="contained"
+                        color="primary"
+                      >
+                        Cancel
+                      </Button>
+                      <Button
+                        type="submit"
+                        onClick={() => setopenalert(true)}
+                        id="dialog-save-btn"
+                        variant="contained"
+                        color="secondary"
+                      >
+                        Save
+                      </Button>
+                    </Form>
+                  </>
+                );
+              }}
+            </Formik>
+            <QuestionsCard />
+          </DialogContentText>
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
 }

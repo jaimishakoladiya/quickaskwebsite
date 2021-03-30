@@ -1,4 +1,4 @@
-import React ,{ useState } from 'react'
+import React, { useState } from "react";
 import PersonIcon from "@material-ui/icons/Person";
 import CloseIcon from "@material-ui/icons/Close";
 import Chip from "@material-ui/core/Chip";
@@ -9,7 +9,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 
 const Step1AddField =(props)=>{
  
@@ -41,46 +41,52 @@ const Step1AddField =(props)=>{
         deleteIcon={<CloseIcon />}
       ></Chip>
       <Dialog
-      open={open}
-      onClose={handleClickClose}
-      aria-labelledby="max-width-dialog-title"
-    >
-      <DialogTitle id="max-width-dialog-title">PLEASE CONFIRM</DialogTitle>
-      <DialogContent>
-        <DialogContentText>Are You Sure ! You Want To Remove Candidate ..?</DialogContentText>
-        <DialogActions>
-          <Button
-            onClick={handleClickClose}
-            variant="contained"
-            color="primary">
-            Cancle
-          </Button>
-          <Button
-            onClick={YesFunction}
-            variant="contained"
-            color="secondary">
-            Delete
-          </Button>
-          <Dialog
-          open={Yesopen}
-          onClose={handleClickClose}
-          aria-labelledby="max-width-dialog-title" >
-                    <DialogTitle id="max-width-dialog-title">Deleted Successfully</DialogTitle>
-                    <DialogContent>
-                    <DialogContentText><CheckCircleIcon/></DialogContentText>
-                    </DialogContent>
-                    <Button
-            onClick={OKFunction}
-            variant="contained"
-            color="secondary">
-            OK
-          </Button>
-          </Dialog>
-        </DialogActions>
-        <DialogContent />
-      </DialogContent>
-    </Dialog>
-      </>
-    );
-}
+        open={open}
+        onClose={handleClickClose}
+        aria-labelledby="max-width-dialog-title"
+      >
+        <DialogTitle id="max-width-dialog-title">PLEASE CONFIRM</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Are You Sure ! You Want To Remove Candidate ..?
+          </DialogContentText>
+          <DialogActions>
+            <Button
+              onClick={handleClickClose}
+              variant="contained"
+              color="primary"
+            >
+              Cancle
+            </Button>
+            <Button onClick={YesFunction} variant="contained" color="secondary">
+              Delete
+            </Button>
+            <Dialog
+              open={Yesopen}
+              onClose={handleClickClose}
+              aria-labelledby="max-width-dialog-title"
+            >
+              <DialogTitle id="max-width-dialog-title">
+                Deleted Successfully
+              </DialogTitle>
+              <DialogContent>
+                <DialogContentText>
+                  <CheckCircleIcon />
+                </DialogContentText>
+              </DialogContent>
+              <Button
+                onClick={OKFunction}
+                variant="contained"
+                color="secondary"
+              >
+                OK
+              </Button>
+            </Dialog>
+          </DialogActions>
+          <DialogContent />
+        </DialogContent>
+      </Dialog>
+    </>
+  );
+};
 export default Step1AddField;

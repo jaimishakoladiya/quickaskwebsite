@@ -34,7 +34,7 @@
   margin: -17px;
   margin-top: 15px;
   color: rgb(8, 8, 8);
-  background-color:rgb(245, 202, 92);;
+  background-color: rgb(245, 202, 92);
 }
 
 .page {
@@ -81,14 +81,12 @@
 }
 
 #create-btn {
- 
-  margin-top:80px;
+  margin-top: 80px;
   margin-bottom: -20px;
   margin-left: 370px;
   font-weight: bold;
-  color:white;
+  color: white;
 }
-
 
 .interview-Mainbox {
   width: 1000px;
@@ -112,7 +110,7 @@
   padding: 15px 5px 10px 15px;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
   /* background-color: rgb(209, 245, 245); */
-  background-color:rgb(250, 252, 252);
+  background-color: rgb(250, 252, 252);
   /* background-color: whitesmoke; */
   width: 900px;
   height: auto;
@@ -120,12 +118,11 @@
   box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
 }
 
-.step1-Add ,
+.step1-Add,
 .step2-Add,
-.step3-Add{
+.step3-Add {
   margin: 20px;
   width: 30px;
-
 }
 .step2 {
   margin: 15px auto;
@@ -134,7 +131,7 @@
   justify-content: center;
   padding: 15px 5px 10px 15px;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
-  background-color:rgb(250, 252, 252);
+  background-color: rgb(250, 252, 252);
   width: 900px;
   height: auto;
   border-radius: 1px;
@@ -161,35 +158,33 @@
 .step2-mt-3 {
   margin-top: 30px;
 }
-.Step4_Dropdown{
+.Step4_Dropdown {
   margin-left: 60px;
   width: 50px;
   box-shadow: 10px 13px 10px -7px rgba(0, 0, 0, 0.1);
   background-color: rgb(234, 234, 240);
 }
-.Step4_Dropdown1{
+.Step4_Dropdown1 {
   width: 50px;
   background-color: rgb(234, 234, 240);
-
 }
-#Step4_table{
+#Step4_table {
   font-size: 15px;
   font-weight: bold;
-
 }
-#Step4_heading{
+#Step4_heading {
   border: 1px solid black;
   border-radius: 4px;
 }
-#btn_color{
+#btn_color {
   background-color: darkcyan;
   font-weight: bold;
 }
-#stepper_css{
+#stepper_css {
   color: black;
   background-color: white;
 }
-#stepper_font{
+#stepper_font {
   font-size: 20px;
   color: black;
 }
@@ -215,9 +210,52 @@
   color:black;
 
 } */
-#Chip_box{
+#Chip_box {
   margin-left: 30px;
   font-size: 15px;
   font-weight: bold;
   margin-top: 20px;
+}
+
+
+/* tree view data css */
+ul, #myUL {
+  list-style-type: none;
+}
+/* Remove margins and padding from the parent ul */
+#myUL {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the caret/arrow */
+.caret {
+  cursor: pointer;
+  user-select: none; /* Prevent text selection */
+  margin-left: 30px;
+line-height: 50px;
+align-content:center;
+}
+
+/* Create the caret/arrow with a unicode, and style it */
+.caret::before {
+  content: "\25B6";
+  color: black;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+/* Rotate the caret/arrow icon when clicked on (using JavaScript) */
+.caret-down::before {
+  transform: rotate(90deg);
+}
+
+/* Hide the nested list */
+.nested {
+  display: none;
+}
+
+/* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
+.active {
+  display: block;
 }
