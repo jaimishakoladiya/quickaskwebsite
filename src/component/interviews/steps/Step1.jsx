@@ -157,15 +157,7 @@ const Step1 = () => {
                       placeholder="Id"
                     />
                     <br />
-                    {/* {formik.errors.firstname
-                      ? erroralert(formik.errors.firstname)
-                      : formik.errors.lastname
-                      ? erroralert(formik.errors.lastname)
-                      : formik.errors.email
-                      ? erroralert(formik.errors.email)
-                      : formik.errors.id
-                      ? erroralert(formik.errors.id)
-                      : null} */}
+                  
 
             {formik.touched.firstname && formik.errors.firstname?erroralert(formik.errors.firstname):
             formik.touched.lastname && formik.errors.lastname?erroralert(formik.errors.lastname):
