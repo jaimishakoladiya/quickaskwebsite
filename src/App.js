@@ -2,7 +2,7 @@
 //import Navbar from "./component/navbar/innernavbar/Navbar";
 
 //import Login from './component/account/login/Login'
-// import Home from "./component/home/Home";
+//  import Home from "./component/home/Home";
 // import Interviews from './component/interviews/Interviews'
 import About from "./component/team/about/About.jsx";
 // import Login from './component/account/login/Login'
@@ -13,9 +13,9 @@ import About from "./component/team/about/About.jsx";
 import CompanyProfilePage from "./component/companyprofile/CompanyProfilePage";
 >>>>>>> 27d4b6f1e998c512b20f10018a60008fc8ea2bdd
 //import Navbar2 from './component/navbar/outernavbar/Navbar2'
-//  import { BrowserRouter } from 'react-router-dom';
-//  import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
-//import Login from './component/account/login/Login';
+  // import { BrowserRouter } from 'react-router-dom';
+  // import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
+import Login from './component/account/login/Login';
 //import Forpass from './component/account/login/Forpass';
 // import { BrowserRouter } from 'react-router-dom';
  import InnerNavbar from './component/navbar/innernavbar/InnerNavbar'
@@ -72,9 +72,9 @@ function App() {
       {/* <BrowserRouter>
       <HomeNavbar/> 
       </BrowserRouter> */}
-      {/* <Login/> */}
+      <Login/>
       {/* <Navbar2/> */}
-      <Interviews />
+      {/* <Interviews /> */}
       {/* <Home/> */}
       {/* <Login/> */}
       {/* <Navbar/> */}

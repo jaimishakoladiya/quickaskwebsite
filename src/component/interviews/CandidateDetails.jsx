@@ -59,32 +59,6 @@ return(
             />
           </div>
         </div>
-<<<<<<< HEAD
-       <div className="detail-header2">
-       <TableContainer >
-        <Table aria-label="customized table">
-        <TableHead style={style} >
-          <TableRow style={style}>
-              <TableCell style={style}>Date</TableCell>
-             <TableCell style={style} align="center">Job Title</TableCell>
-            <TableCell style={style} align="center">Department</TableCell>
-            <TableCell style={style} align="center">Manager</TableCell>
-            <TableCell style={style} align="center">Candidate</TableCell>
-            <TableCell style={style} align="center">Duration</TableCell>
-            <TableCell style={style} align="center">Action</TableCell>
-          </TableRow>
-          </TableHead>
-        </Table>
-        </TableContainer>
-       
-       </div>
-       {/* <h1 className="detail-found-data">No Data Found</h1> */}
-     </div>
-     </>
-    );
-}
-export default CandidateDetails;
-=======
         <div className="detail-header2">
           <TableContainer>
             <Table aria-label="customized table">
@@ -120,4 +94,3 @@ export default CandidateDetails;
   );
 };
 export default CandidateDetails;
->>>>>>> 6cd1eb1d26d7a53eff2174917bc4df05a2bbb44b
