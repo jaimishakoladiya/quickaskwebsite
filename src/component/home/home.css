@@ -11,12 +11,21 @@
   letter-spacing: -1px;
 }
 
-.home-free-button {
+#home-free-button {
   height: 60px;
   width: 200px;
-  font-size: 35px;
+  font-size: 25px;
   font-display: center;
-  background-color: red;
+  background-color: rgb(255, 86, 86);
+  font-family:"DIN";
+
+  font-weight:500
+}
+#home-free-button:hover{
+  color: #000000;
+  box-shadow: 0px 13px 10px -7px black;
+ 
+
 }
 
 .home-border {
@@ -32,10 +41,10 @@
 }
 .home-img {
   height: 340px;
-  float: right;
-  margin-right: 100px;
-  width: 700px;
-  border-radius: 10pt;
+  float:right;
+margin-right: 100px;
+  width:700px;
+border-radius: 10pt;
 }
 /* 
 second componet */
@@ -55,9 +64,9 @@ second componet */
 }
 .home-pragraph {
   columns: 2;
-  column-gap: 47px;
-  text-align: justify;
-  margin-right: 100px;
+    column-gap: 47px;
+    text-align: justify;
+    margin-right: 100px;
 }
 /* third componet */
 .home-img1 {
@@ -73,6 +82,8 @@ second componet */
 .home-thirdcomp {
   left: 0;
   bottom: 0;
+  animation: thiran 3s;
+
   height: 270px;
   display: flex;
   background-color: rgb(245, 202, 92);
@@ -83,11 +94,12 @@ second componet */
 
   width: 100%;
 }
-.home-thirdcomp-title {
-  color: white;
-  font-size: 55px;
-  margin-left: 200px;
-  margin-top: 40px;
+
+.home-thirdcomp-title{
+  color:white;
+  font-size:55px;
+  margin-left:200px;
+  margin-top:40px
 }
 .home-thirdcomp-text {
   font-size: 20px;
@@ -98,21 +110,20 @@ second componet */
 
 /* four componrt */
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-.home-advantage-kite {
-  color: black;
-  height: 40px;
-  width: 210px;
-  font-size: 18px;
-  cursor: pointer;
-  background: darkcyan;
-}
-.home-advantage-header {
-  height: 90px;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  }
+  .home-advantage-kite{ color:black;
+  height:40px;
+  width:210px;
+  font-size:18px;
+  cursor:pointer;
+  background:darkcyan;
+  }
+  .home-advantage-header {
+  height:90px;
   overflow: hidden;
   font-size: 50pt;
   background-color: darkcyan;
@@ -225,19 +236,20 @@ fifth componet css   */
   /* / background: darkcyan; / */
   margin: 55px;
   margin-top: 150px;
-  margin-bottom: 50px;
-  cursor: pointer;
-  padding: 25px;
-  line-height: 20px;
-
-  position: relative;
-  width: 500px;
-}
-.home-members:hover {
-  box-shadow: 0px 50px 20px -8px rgba(0, 0, 0, 0.1);
-  transform: scale(1.1, 1.1);
-}
-.home-comment-name {
+  margin-bottom:50px;
+  cursor:pointer;
+  padding:25px;
+  line-height:20px;
+  animation: team 3s;
+  position:relative;
+  width:500px;
+  
+  }
+  .home-members:hover{
+  box-shadow: 0px 50px 20px -8px rgba(0,0,0,0.1);
+  transform: scale(1.10,1.10);
+  }
+  .home-comment-name{
   margin-top: 20px;
 
   font-size: 42px;
@@ -256,11 +268,41 @@ fifth componet css   */
 }
 .home-team .home-members .home-comment-title {
   font-size: 18px;
-  line-height: 30px;
-  margin-top: 52px;
-}
-.home-team .home-members p.role {
-  color: #999;
+  line-height: 30PX;
+  margin-top: 52PX;
+  }
+  .home-team .home-members p.role{
+  color:#999;
+  
+  text-decoration:uppercase;
+  margin:16px;
+  font-size:12px 0;
+  
+  
+  }
+  .home-team .home-members .img{
+  width:250px;
+  height:100px;
+  border-radius:50%;
+  position:absolute;
+  top:-80px;
+  left:40%;
+  transform:translatex(-50%);
+  
+  
+  }
+  .home-team .home-members .img img{
+  width:150px;
+  height:150px;
+  padding:10px;
+  
+  }
+  
+  
+  
+  
+  
+/*  home footer */
 
   text-decoration: uppercase;
   margin: 16px;
