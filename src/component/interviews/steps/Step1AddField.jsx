@@ -36,8 +36,8 @@ const Step1AddField = (props) => {
       <Chip
         id="Chip_box"
         icon={<PersonIcon />}
-        label={`${props.newrecords.firstname} ${props.newrecords.lastname}`}
-        onClick={handleClickOpen}
+        label={`${props.newrecords.firstname}  ${props.newrecords.lastname}`}
+         onClick={handleClickOpen}
         onDelete={handleDelete}
         deleteIcon={<CloseIcon />}
       ></Chip>
