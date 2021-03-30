@@ -14,8 +14,8 @@ function QuestionsCard(props) {
   const [openalert, setopenalert] = useState(false);
   const [newquestion,setnewquestion]=useState({
     questions:'',
-    minutes:'',
-    seconds:''
+    minutes:'0',
+    seconds:'0'
   })
 
   const inputchange=(event)=>{
@@ -49,8 +49,8 @@ function QuestionsCard(props) {
   };
   const initialValues = {
     questions: "",
-    // minutes:'',
-    // seconds:''
+     minutes:'',
+     seconds:''
   };
 
   const onSubmit = (values, onSubmitProps) => {
@@ -58,8 +58,8 @@ function QuestionsCard(props) {
     props.addquestions(newquestion);
     setnewquestion({
       questions:'',
-      minutes:'',
-      seconds:''
+      minutes:'00',
+      seconds:'00'
     })
     onSubmitProps.resetForm();
   };
@@ -90,6 +90,7 @@ function QuestionsCard(props) {
         validationSchema={validationSchema}
       >
         {(formik) => {
+          console.log(formik)
           return (
             <>
               <Grid item xs={12}>
@@ -109,25 +110,28 @@ function QuestionsCard(props) {
                       <InputLabel htmlFor="demo-customized-select-native">
                         min
                       </InputLabel>
-                      <NativeSelect
+                      <Field as={NativeSelect}
                         id="demo-customized-select-native"
                         className="Step4_Dropdown1"
-                        onChange={inputchange}
-                        name="minutes">
+                       name="minutes"
+                       onInput={inputchange}
+                        >
+                        
                         {SelectItem()}
-                      </NativeSelect>
+                      </Field>
                     </FormControl>
                     <FormControl style={{ marginLeft: "30px" }}>
                       <InputLabel htmlFor="demo-customized-select-native">
                         sec
                       </InputLabel>
-                     <NativeSelect
+                     <Field as={NativeSelect}
                         id="demo-customized-select-native"
                         className="Step4_Dropdown1"
                         name="seconds"
-                        onChange={inputchange}>
+                        onInput={inputchange}
+                       >
                         {SelectItem()}
-                      </NativeSelect>
+                      </Field>
                     </FormControl>
                     <br />
                     <br />

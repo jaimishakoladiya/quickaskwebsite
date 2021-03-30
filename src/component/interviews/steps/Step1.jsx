@@ -25,12 +25,14 @@ const Step1 = () => {
         [name]: value,
       };
     });
-    console.log(Candidate);
+  
   };
-  const addcandidate = () => {
+  const addcandidate = (values) => {
+   
+    
     console.log(Candidate);
     SetCandidatearray((oldval) => {
-      return [...oldval, `${Candidate}`];
+      return [...oldval, values];
     });
 
     console.log(CandidateArray);
@@ -45,13 +47,14 @@ const Step1 = () => {
     email: "",
     id: "",
   };
-  const onSubmit = (values) => {
+  const onSubmit = (values,onSubmitprops) => {
     console.log(values);
-    addcandidate();
+    addcandidate(values);
     SetCandidate({
       firstname: "",
       lastname: "",
     });
+    onSubmitprops.resetForm();
   };
   const validationSchema = yup.object({
     firstname: yup.string().required("First Name Required!!"),
@@ -153,7 +156,7 @@ const Step1 = () => {
                       placeholder="Id"
                     />
                     <br />
-                    {formik.errors.firstname
+                    {/* {formik.errors.firstname
                       ? erroralert(formik.errors.firstname)
                       : formik.errors.lastname
                       ? erroralert(formik.errors.lastname)
@@ -161,7 +164,12 @@ const Step1 = () => {
                       ? erroralert(formik.errors.email)
                       : formik.errors.id
                       ? erroralert(formik.errors.id)
-                      : null}
+                      : null} */}
+
+            {formik.touched.firstname && formik.errors.firstname?erroralert(formik.errors.firstname):
+            formik.touched.lastname && formik.errors.lastname?erroralert(formik.errors.lastname):
+            formik.touched.email && formik.errors.email?erroralert(formik.errors.email):
+            formik.touched.id && formik.errors.id?erroralert(formik.errors.id):null}
                     <div className="Add">
                       <Button
                         type="submit"

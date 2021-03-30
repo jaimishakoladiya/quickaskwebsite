@@ -13,7 +13,7 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
 const Step1AddField =(props)=>{
  
-    
+    console.log(props.newrecords)
     const [open, SetOpen] = useState(false);
     const [Yesopen , SetYesopen] = useState(false);
     const handleClickOpen = () => {
@@ -35,7 +35,7 @@ const Step1AddField =(props)=>{
         <Chip
         id="Chip_box"
         icon={<PersonIcon />}
-        label={props.newrecords}
+        label={`${props.newrecords.firstname}  ${props.newrecords.lastname}`}
          onClick={handleClickOpen}
         onDelete={handleDelete}
         deleteIcon={<CloseIcon />}
