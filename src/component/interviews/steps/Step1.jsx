@@ -36,8 +36,12 @@ const Step1 = () => {
     console.log(CandidateArray);
   };
 
-  const DeleteRecords = () => {
-    return console.log("deleted");
+  const deletefunction = (id) => {
+    return SetCandidatearray((oldval)=>{
+      return oldval.filter((arr,index)=>{
+        return index !== id;
+      })
+    })
   };
   const initialValues = {
     firstname: "",
@@ -178,8 +182,11 @@ const Step1 = () => {
                       </Button>
                     </div>
                     <div>
-                      {CandidateArray.map((candidate) => {
-                        return <Step1AddField newrecords={candidate} />;
+                      {CandidateArray.map((candidate, index) => {
+                        return <Step1AddField
+                        id={index}
+                        deletefunction={deletefunction}
+                        newrecords={candidate} />;
                       })}
                     </div>
                   </div>

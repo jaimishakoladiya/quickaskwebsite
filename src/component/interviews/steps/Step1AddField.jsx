@@ -26,6 +26,7 @@ const Step1AddField = (props) => {
   const OKFunction = () => {
     SetYesopen(false);
     SetOpen(false);
+    props.deletefunction(props.id);
   };
   const handleDelete = () => {};
   console.log(props.newrecords)
