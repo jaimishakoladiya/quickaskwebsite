@@ -30,7 +30,7 @@ const Step1 = () => {
   const addcandidate = () => {
     console.log(Candidate);
     SetCandidatearray((oldval) => {
-      return [...oldval, `${Candidate}`];
+      return [...oldval, Candidate];
     });
 
     console.log(CandidateArray);
@@ -45,13 +45,15 @@ const Step1 = () => {
     email: "",
     id: "",
   };
-  const onSubmit = (values) => {
+  const onSubmit = (values, onSubmitprops) => {
     console.log(values);
     addcandidate();
     SetCandidate({
       firstname: "",
       lastname: "",
-    });
+    })
+    ;
+    onSubmitprops.resetForm();
   };
   const validationSchema = yup.object({
     firstname: yup.string().required("First Name Required!!"),

@@ -28,12 +28,14 @@ const Step1AddField = (props) => {
     SetOpen(false);
   };
   const handleDelete = () => {};
+  console.log(props.newrecords)
   return (
+
     <>
       <Chip
         id="Chip_box"
         icon={<PersonIcon />}
-        label={props.newrecords}
+        label={`${props.newrecords.firstname} ${props.newrecords.lastname}`}
         onClick={handleClickOpen}
         onDelete={handleDelete}
         deleteIcon={<CloseIcon />}
