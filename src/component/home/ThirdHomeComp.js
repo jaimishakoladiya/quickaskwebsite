@@ -24,4 +24,4 @@ You Can Spend Your Time On Other Endeavors.</h4>
     )
 }
 
-export default ThirdHomeComp
+export default ThirdHomeComp;

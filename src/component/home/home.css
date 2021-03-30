@@ -1,14 +1,14 @@
 /* home page csss */
-.home-all-start{
+.home-all-start {
   margin-top: 200px;
 }
-.home-start{
-  margin-left: 250px;
+.home-start {
+  margin-left: 150px;
 }
 /* first home comp css */
 .home-head-title {
   margin-top: 70px;
-letter-spacing: -1px;
+  letter-spacing: -1px;
 }
 
 .home-free-button {
@@ -19,7 +19,6 @@ letter-spacing: -1px;
   background-color: red;
 }
 
-
 .home-border {
   border-bottom: 7px solid darkcyan;
   width: 450px;
@@ -27,11 +26,11 @@ letter-spacing: -1px;
 
 .home-title {
   font-size: 50px;
-  color:darkcyan;
+  color: darkcyan;
   font-family: "DIN";
   line-height: 55px;
 }
-.home-img{
+.home-img {
   height: 340px;
   float:right;
 margin-right: 100px;
@@ -50,11 +49,11 @@ second componet */
   margin: 0px 0px 29px;
 
   line-height: 29px;
- 
+
   text-size-adjust: 100%;
   width: 350px;
 }
-.home-pragraph{
+.home-pragraph {
   columns: 2;
     column-gap: 47px;
     text-align: justify;
@@ -65,7 +64,6 @@ second componet */
   height: 280px;
   width: 380px;
   margin-left: 100px;
-  
 }
 .home-col-8 {
   width: 100%;
@@ -79,7 +77,7 @@ second componet */
 
   height: 270px;
   display: flex;
-  background-color:rgb(245, 202, 92);
+  background-color: rgb(245, 202, 92);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: black;
@@ -94,11 +92,11 @@ second componet */
   margin-left:200px;
   margin-top:40px
 }
-.home-thirdcomp-text{
-font-size:20px;
-margin-left:200px;
-margin-top:5px;
-line-height: 30px;
+.home-thirdcomp-text {
+  font-size: 20px;
+  margin-left: 200px;
+  margin-top: 5px;
+  line-height: 30px;
 }
 
 /* four componrt */
@@ -118,8 +116,8 @@ line-height: 30px;
   .home-advantage-header {
   height:90px;
   overflow: hidden;
-  font-size:50pt;
-  background-color:darkcyan;
+  font-size: 50pt;
+  background-color: darkcyan;
   padding: 20px 10px;
   display: flex;
   justify-content: center;
@@ -127,118 +125,107 @@ line-height: 30px;
   margin-top: -10px;
   color: white;
   letter-spacing: -3px;
-  }
-  .home-advantage-card{
+}
+.home-advantage-card {
   margin: 20px auto;
   margin-bottom: 100px;
   margin-top: 50px;
   padding: 15px 5px 10px 15px;
   float: center;
   width: 1150px;
- 
+
   padding: 15px 8px;
   background: #eef5f6;
   position: relative;
-  height:800px;
+  height: 800px;
   border-radius: 1px;
-  box-shadow: 0px 13px 10px -7px rgba(0,0,0,0.1);
-  
-  }
-  
-  .home-service-img{
+  box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
+}
+
+.home-service-img {
   transform: rotate(-91deg);
   width: 200px;
   height: 200px;
-  }
-  .home-service-section{
-  
-  background-size:cover;
-  padding:200px 0;
+}
+.home-service-section {
+  background-size: cover;
+  padding: 200px 0;
   margin-top: -160px;
-  }
-  .home-inner-width{
-  width:100%;
-  max-width:1200px;
-  margin:auto;
-  padding:0 20px;
-  overflow:hidden;
-  }
-  
-  .home-service-container{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  }
-  .home-service-border{
-  width:200px;
-  height:2px;
-  background:black;
-  margin:20px auto;
-  }
-  .home-service-box{
-  max-width:33.33%;
-  padding:10px;
-  text-align:center;
-  color:white;
-  cursor:pointer;
-  flex-wrap:wrap;
-  }
-  .home-service-icon{
-  display:inline-block;
-  width:100px;
-  height:100px;
-  border:3px solid black;
-  box-shadow:0 0 9px 3px darkcyan;
-  color:darkcyan;
-  transform:rotate(45deg);
-  margin-bottom:30px;
-  margin-top:16px;
-  transition:0.3s linear;
-  
-  }
-  .home-service-icon:hover{
-  box-shadow: 0px 50px 20px -8px rgba(0,0,0,0.1);
-  transform: scale(1.10,1.10);
-  }
-  .home-service-icon i{
-  line-height:90px;
-  transform:rotate(-45deg);
-  font-size:45px;
-  
-  }
-  .home-service-box:hover .home-service-icon{
-  background:black;
-  color:darkcyan
-  
-  }
-  .home-service-title{
-  font-size:16px;
-  text-transform:uppercase;
-  margin-bottom:10px;
-  
-  }
-  .home-service-desc{
-  font-size:18px;
-  color:black;
-  
-  }
+}
+.home-inner-width {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+.home-service-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.home-service-border {
+  width: 200px;
+  height: 2px;
+  background: black;
+  margin: 20px auto;
+}
+.home-service-box {
+  max-width: 33.33%;
+  padding: 10px;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  flex-wrap: wrap;
+}
+.home-service-icon {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  border: 3px solid black;
+  box-shadow: 0 0 9px 3px darkcyan;
+  color: darkcyan;
+  transform: rotate(45deg);
+  margin-bottom: 30px;
+  margin-top: 16px;
+  transition: 0.3s linear;
+}
+.home-service-icon:hover {
+  box-shadow: 0px 50px 20px -8px rgba(0, 0, 0, 0.1);
+  transform: scale(1.1, 1.1);
+}
+.home-service-icon i {
+  line-height: 90px;
+  transform: rotate(-45deg);
+  font-size: 45px;
+}
+.home-service-box:hover .home-service-icon {
+  background: black;
+  color: darkcyan;
+}
+.home-service-title {
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.home-service-desc {
+  font-size: 18px;
+  color: black;
+}
 /* 
 fifth componet css   */
 
-  
-  
-  
-  .home-team{
-  display:flex;
-  text-align:center;
-  width:auto;
-  justify-content:center;
-  flex-wrap:wrap;
-  
-  }
-  .home-team .home-members{
+.home-team {
+  display: flex;
+  text-align: center;
+  width: auto;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.home-team .home-members {
   /* / background: darkcyan; / */
-  margin:55px;
+  margin: 55px;
   margin-top: 150px;
   margin-bottom:50px;
   cursor:pointer;
@@ -255,24 +242,22 @@ fifth componet css   */
   }
   .home-comment-name{
   margin-top: 20px;
- 
+
   font-size: 42px;
   color: darkcyan;
   margin-left: 250px;
-  }
-  .home-team .home-members h3{
-  
-  font-size:25px;
-  margin-top:50px;
+}
+.home-team .home-members h3 {
+  font-size: 25px;
+  margin-top: 50px;
   color: darkcyan;
- 
- font-family: 'Dancing Script',sans-serif;
- font-weight: 900;
- text-transform: none;
- font-style: italic;
 
-  }
-  .home-team .home-members .home-comment-title{
+  font-family: "Dancing Script", sans-serif;
+  font-weight: 900;
+  text-transform: none;
+  font-style: italic;
+}
+.home-team .home-members .home-comment-title {
   font-size: 18px;
   line-height: 30PX;
   margin-top: 52PX;
@@ -310,9 +295,28 @@ fifth componet css   */
   
 /*  home footer */
 
+  text-decoration: uppercase;
+  margin: 16px;
+  font-size: 12px 0;
+}
+.home-team .home-members .img {
+  width: 250px;
+  height: 100px;
+  border-radius: 50%;
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translatex(-50%);
+}
+.home-team .home-members .img img {
+  width: 150px;
+  height: 150px;
+  padding: 10px;
+}
+
+/*  home footer */
 
 .home-footer {
- 
   height: 180px;
   text-align: center;
   background-color: darkcyan;
@@ -324,8 +328,8 @@ fifth componet css   */
   width: 100%;
 }
 
-.home-footer-logo{
+.home-footer-logo {
   height: 70px;
-  width:150px;
+  width: 150px;
   margin-top: 40px;
 }

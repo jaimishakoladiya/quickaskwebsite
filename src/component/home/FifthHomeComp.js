@@ -102,4 +102,4 @@ function FifthHomeComp() {
     )
 }
 
-export default FifthHomeComp
+export default FifthHomeComp;

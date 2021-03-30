@@ -97,4 +97,4 @@ className="home-advantage-kite" ><b>Managment</b></button></div>
 )
 }
 
-export default FouthHomeComp
+export default FouthHomeComp;

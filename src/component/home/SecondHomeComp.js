@@ -1,6 +1,6 @@
-import React from 'react'
-import Grid from '@material-ui/core/Grid';
-import img1 from '../images/undraw_remotely_2j6y.svg'
+import React from "react";
+import Grid from "@material-ui/core/Grid";
+import img1 from "../images/undraw_remotely_2j6y.svg";
 
 function SecondHomeComp() {
     
@@ -42,4 +42,4 @@ function SecondHomeComp() {
     )
 }
 
-export default SecondHomeComp
+export default SecondHomeComp;
