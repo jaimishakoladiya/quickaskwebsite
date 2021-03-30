@@ -1,13 +1,21 @@
 
 import React from 'react'
 import Grid from '@material-ui/core/Grid';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 function FouthHomeComp() {
+    AOS.init({
+        offset: 300,
+        duration: 800,
+        
+    
+      });
 return (
 <div>
 
 <Grid container spacing={0}>
 <Grid item xs={12}>
-<div className="home-advantage-card">
+<div className="home-advantage-card" data-aos="fade-up">
 <h1 className="home-advantage-header">
 ADVANTAGES
 </h1>

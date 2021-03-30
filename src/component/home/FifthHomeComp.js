@@ -8,11 +8,16 @@ import 'swiper/components/scrollbar/scrollbar.scss';
 import img1 from '../images/femaleface.png';
 import img3 from '../images/user1.png';
 import img2 from '../images/maleface.png';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import './home.css'
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 function FifthHomeComp() {
+ AOS.init({
+    offset: 300,
+    duration: 800,
 
+  });
     return (
         <>
             <h1 className="home-comment-name">What Are They Saying About Us....</h1>
@@ -28,7 +33,7 @@ function FifthHomeComp() {
             >
 
                 <SwiperSlide>
-                    <div class="home-team">
+                    <div class="home-team" data-aos="fade-up">
                         <div class="home-members">
                             <div class="img">
                                 <img src={img1} alt="members_img" />
@@ -42,7 +47,7 @@ function FifthHomeComp() {
                         </div>
                     </div>
                 </SwiperSlide><SwiperSlide>
-                    <div className="home-team">
+                    <div className="home-team" data-aos="fade-up">
                         <div class="home-members">
                             <div class="img">
                                 <img src={img2} alt="members_img" />
@@ -60,7 +65,7 @@ function FifthHomeComp() {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <div class="home-team">
+                    <div class="home-team" data-aos="fade-up">
                         <div class="home-members">
                             <div class="img">
                                 <img src={img1} alt="members_img" />
@@ -74,7 +79,7 @@ function FifthHomeComp() {
                         </div>
                     </div>
                 </SwiperSlide>
-                <SwiperSlide><div className="home-team">
+                <SwiperSlide><div className="home-team" data-aos="fade-up">
                     <div class="home-members">
                         <div class="img">
                             <img src={img2} alt="members_img" />

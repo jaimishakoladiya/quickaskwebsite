@@ -34,7 +34,7 @@ letter-spacing: -1px;
 .home-img{
   height: 340px;
   float:right;
-margin-right: 300px;
+margin-right: 100px;
   width:700px;
 border-radius: 10pt;
 }
@@ -58,7 +58,7 @@ second componet */
   columns: 2;
     column-gap: 47px;
     text-align: justify;
-    margin-right: 310px;
+    margin-right: 100px;
 }
 /* third componet */
 .home-img1 {
@@ -75,6 +75,8 @@ second componet */
 .home-thirdcomp {
   left: 0;
   bottom: 0;
+  animation: thiran 3s;
+
   height: 270px;
   display: flex;
   background-color:rgb(245, 202, 92);
@@ -85,6 +87,7 @@ second componet */
 
   width: 100%;
 }
+
 .home-thirdcomp-title{
   color:white;
   font-size:55px;
@@ -111,7 +114,6 @@ line-height: 30px;
   font-size:18px;
   cursor:pointer;
   background:darkcyan;
-  
   }
   .home-advantage-header {
   height:90px;
@@ -242,7 +244,7 @@ fifth componet css   */
   cursor:pointer;
   padding:25px;
   line-height:20px;
-  
+  animation: team 3s;
   position:relative;
   width:500px;
   
@@ -290,7 +292,7 @@ fifth componet css   */
   border-radius:50%;
   position:absolute;
   top:-80px;
-  left:50%;
+  left:40%;
   transform:translatex(-50%);
   
   
