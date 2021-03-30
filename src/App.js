@@ -28,7 +28,7 @@ function App() {
   return (
     <>
     {/* <Interviews/> */}
- <InterviewDataGrid/>
+ {/* <InterviewDataGrid/> */}
     {/* <CompanyProfilePage/> */}
     {/* <Home/>  */}
    {/* <BrowserRouter>
@@ -43,9 +43,9 @@ function App() {
     {/* <Registration/> */}
     {/* <Login/> */}
     {/* <Navbar/> */}
-    {/* <BrowserRouter>
+    <BrowserRouter>
   <HomeNavbar/> 
- </BrowserRouter> */}
+ </BrowserRouter>
  {/* <Login/> */}
  
 </>
