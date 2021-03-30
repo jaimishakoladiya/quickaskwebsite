@@ -27,13 +27,11 @@ import Interviews from "./component/interviews/Interviews";
 function App() {
   return (
     <>
-    {/* <CompanyProfilePage/> */}
-    {/* <Home/>  */}
-   {/* <BrowserRouter>
-    <InnerNavbar/>
-
-    </BrowserRouter>  */}
-
+      {/* <CompanyProfilePage /> */}
+      {/* <Home/>  */}
+      {/* <BrowserRouter>
+        <InnerNavbar/>
+      </BrowserRouter>  */}
       {/* <Forpass/> */}
       {/* <Forpass/> */}
       {/* <Registration/> */}

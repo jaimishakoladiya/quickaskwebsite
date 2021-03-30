@@ -9,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import "../Company.css";
 import AlertBox from "../../alert/AlertBox";
+import { ChildCare } from "@material-ui/icons";
 
 function QuestionsCard(props) {
   const [openalert, setopenalert] = useState(false);
@@ -158,3 +159,10 @@ function QuestionsCard(props) {
 }
 
 export default QuestionsCard;
+
+
+
+
+
+
+
