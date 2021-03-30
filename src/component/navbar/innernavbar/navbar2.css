@@ -1,142 +1,136 @@
-header{
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 0 100px;
-    background:darkcyan;
-    width: 100%;
-    height: 90px;
-    overflow: hidden;
-    box-sizing: border-box;
-  }
-  header .out-nav-logo{
- 
-    height: 90%;
-    box-shadow: none;
-    margin-top: 5px;
-    font-size: 24px;
-    float: left;
-    margin-left: 50PX;
-  }
-  header .first{
-    float: right;
-  }
-  header .first ul{
-    margin: 0;
-    padding: 0;
-    display: flex;
-  }
-  header .first ul li{
-    list-style: none;
-    position: relative;
-  }
-  header .first ul li:hover ul{
-    display: block;
-  }
- 
-  
-  header .first ul li .a{
-    line-height: 50px;
-    height: 50px;
-    margin-top: 20px;
-    padding: 0 15px;
-    margin-right: 20px;
-    color:#000;
-    font-family: "Helvetica";
-    font-weight: 700;
-    font-size: 12pt;
-    text-decoration: none;
-    display: block;
-  }
-  header .first ul li .a:hover{
-    
-    border: 1px solid transparent;
-   transition: 95.5s;
-  }
-  .icon{
-    color: black;
-    float: right;
-    display: none;
-    line-height: 50px;
-    cursor: pointer;
-    font-size: 25px;
-  }
-  header .second{
-    margin-left: 458px;
-  }
-  header .second ul{
-    margin: 0;
-    padding: 0;
-    display: flex;
-  }
-  header .second ul li{
-    list-style: none;
-    position: relative;
-  }
-  header .second ul li:hover ul{
-    display: block;
-  }
- 
-  header .second ul li .a{
-    line-height: 50px;
-    height: 50px;
-    margin-top: 20px;
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0 100px;
+  background: darkcyan;
+  width: 100%;
+  height: 90px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+header .out-nav-logo {
+  height: 90%;
+  box-shadow: none;
+  margin-top: 5px;
+  font-size: 24px;
+  float: left;
+  margin-left: 50px;
+}
+header .first {
+  float: right;
+}
+header .first ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+header .first ul li {
+  list-style: none;
+  position: relative;
+}
+header .first ul li:hover ul {
+  display: block;
+}
+
+header .first ul li .a {
+  line-height: 50px;
+  height: 50px;
+  margin-top: 20px;
+  padding: 0 15px;
+  margin-right: 20px;
+  color: #000;
+  font-family: "Helvetica";
+  font-weight: 700;
+  font-size: 12pt;
+  text-decoration: none;
+  display: block;
+}
+header .first ul li .a:hover {
+  border: 1px solid transparent;
+  transition: 95.5s;
+}
+.icon {
+  color: black;
+  float: right;
+  display: none;
+  line-height: 50px;
+  cursor: pointer;
+  font-size: 25px;
+}
+header .second {
+  margin-left: 458px;
+}
+header .second ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+header .second ul li {
+  list-style: none;
+  position: relative;
+}
+header .second ul li:hover ul {
+  display: block;
+}
+
+header .second ul li .a {
+  line-height: 50px;
+  height: 50px;
+  margin-top: 20px;
+  padding: 0 20px;
+  color: #000;
+  font-family: "Helvetica";
+  font-weight: 700;
+  font-size: 12pt;
+  text-decoration: none;
+  display: block;
+}
+header .second ul li .a:hover,
+header .second ul li .a.active {
+  border: 1px solid transparent;
+  transition: all 95.5s;
+}
+.icon {
+  color: black;
+  float: right;
+  display: none;
+  line-height: 50px;
+  cursor: pointer;
+  font-size: 25px;
+}
+@media (max-width: 991px) {
+  header {
     padding: 0 20px;
-    color:#000;
-    font-family: "Helvetica";
-    font-weight: 700;
-    font-size: 12pt;
-    text-decoration: none;
+  }
+  .icon {
     display: block;
+    margin-top: 12px;
   }
-  header .second ul li .a:hover,
-  header .second ul li .a.active{
-    
-    border: 1px solid transparent;
-    transition:all 95.5s;
+  header .first {
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - 50px);
+    background: #333;
+    top: 50px;
+    left: -100%;
+    transition: 0.5s;
   }
-  .icon{
-    color: black;
-    float: right;
-    display: none;
-    line-height: 50px;
-    cursor: pointer;
-    font-size: 25px;
+  header .first.active {
+    left: 0%;
   }
-  @media(max-width:991px)
-  {
-    header{
-      padding: 0 20px;
-    }
-    .icon{
-      display: block;
-     margin-top: 12px;
-    }
-    header .first{
-      
-      position: absolute;
-      width: 100%;
-      height: calc(100vh - 50px);
-      background: #333;
-      top: 50px;
-      left: -100%;
-      transition: 0.5s;
-    }
-    header .first.active{
-      left: 0%;
-    }
-    header .first ul{
-      display: block;
-      text-align: center;
-    }
-    header .first ul li .a{
-      border-bottom: 1px solid rgba(0,0,0,.2);
-    }
-    header .first ul li.active ul{
-      position: relative;
-      background: cornflowerblue;
-    }
-    header .first ul li ul li{
-      width: 100%;
-    }
+  header .first ul {
+    display: block;
+    text-align: center;
   }
+  header .first ul li .a {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  }
+  header .first ul li.active ul {
+    position: relative;
+    background: cornflowerblue;
+  }
+  header .first ul li ul li {
+    width: 100%;
+  }
+}

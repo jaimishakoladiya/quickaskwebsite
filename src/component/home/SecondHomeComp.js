@@ -1,14 +1,15 @@
-import React from 'react'
-import Grid from '@material-ui/core/Grid';
-import img1 from '../images/undraw_remotely_2j6y.svg'
+import React from "react";
+import Grid from "@material-ui/core/Grid";
+import img1 from "../images/undraw_remotely_2j6y.svg";
 
 function SecondHomeComp() {
+    
     return (
         <>
-        <div className="home-start">
+        <div className="home-start" >
             <Grid container spacing={0}>
                
-                    <Grid item xs>
+                    <Grid item xs >
                         <img style={{ height: "400px", width: "500px" }} src={img1}></img>
                     </Grid>
                     <div className="home-pragraph">
@@ -41,4 +42,4 @@ function SecondHomeComp() {
     )
 }
 
-export default SecondHomeComp
+export default SecondHomeComp;

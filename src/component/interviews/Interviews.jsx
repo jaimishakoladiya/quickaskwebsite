@@ -1,7 +1,7 @@
 import React from 'react';
 
 //import ButtonDelete from './steps/ButtonDelete'
-import CandidateDetails from './CandidateDetails';
+import CandidateDetails from "./CandidateDetails";
 //import CreateInterview from './CreateInterview';
 
 const Interviews = ()=>{

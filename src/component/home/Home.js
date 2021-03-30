@@ -1,5 +1,5 @@
 import React from 'react'
-import './home.css'
+import './home.css';
 
 import SecondHomeComp from './SecondHomeComp'
 import ThirdHomeComp from './ThirdHomeComp';
