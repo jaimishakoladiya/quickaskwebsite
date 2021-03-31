@@ -25,7 +25,7 @@
 //import Interviews from "./component/interviews/Interviews";
 
 //import Contact from './component/team/contact/Contact';
-import InterviewDataGrid from './component/interviews/InterviewDataGrid';
+//import InterviewDataGrid from './component/interviews/InterviewDataGrid';
 //import HomeNavbar from './component/navbar/homenavbar/HomeNavbar';
 
 function App() {
