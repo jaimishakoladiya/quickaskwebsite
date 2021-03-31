@@ -34,7 +34,8 @@ const CandidateDetails = () =>{
 return(
  
         <>
-        <div className="create-btn"><Button onClick = {OpenBox} variant="contained" color="secondary" >
+        <div id
+        ="create-btn"><Button onClick = {OpenBox} variant="contained" color="secondary" >
         Create Interview
         </Button></div><br></br>
         {open==true?
@@ -77,7 +78,7 @@ return(
         </TableContainer>
        
        </div>
-       {/* <h1 className="detail-found-data">No Data Found</h1> */}
+       <h1 className="detail-found-data">No Data Found</h1>
      </div>
      </>
     );

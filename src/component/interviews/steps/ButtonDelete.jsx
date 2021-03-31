@@ -8,30 +8,31 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 
-const ButtonDelete = () => {
+
+
+const ButtonDelete = (props) => {
   const [open, SetOpen] = useState(false);
   const [Yesopen, SetYesopen] = useState(false);
-  const HandleClickOpen = () => {
-    SetOpen(true);
-  };
+ 
   const handleClickClose = () => {
     SetOpen(false);
   };
-  const YesFunction = () => {
-    SetYesopen(true);
-  };
-  const OKFunction = () => {
-    SetYesopen(false);
-    SetOpen(false);
-  };
+  // const YesFunction = () => {
+  //   SetYesopen(true);
+  // };
+  // const OKFunction = () => {
+  //   SetYesopen(false);
+  //   SetOpen(false);
+  //   props.deletefunction(props.id);
+  // };
+  // const handleDelete = () => {};
+  // console.log(props.newrecords)
   return (
     <React.Fragment>
-      <Button onClick={HandleClickOpen} variant="contained" color="secondary">
-        <DeleteIcon />
-      </Button>
+      
       <Dialog
-        open={open}
-        onClose={handleClickClose}
+        open={props.opendelete}
+        //onClose={handleClickClose}
         aria-labelledby="max-width-dialog-title"
       >
         <DialogTitle id="max-width-dialog-title">PLEASE CONFIRM</DialogTitle>
@@ -47,10 +48,11 @@ const ButtonDelete = () => {
             >
               Cancle
             </Button>
-            <Button onClick={YesFunction} variant="contained" color="secondary">
+            <Button variant="contained" color="secondary">
               Delete
             </Button>
-            <Dialog
+             
+            {/* <Dialog
               open={Yesopen}
               onClose={handleClickClose}
               aria-labelledby="max-width-dialog-title"
@@ -70,7 +72,7 @@ const ButtonDelete = () => {
               >
                 OK
               </Button>
-            </Dialog>
+            </Dialog> */}
           </DialogActions>
 
           <DialogContent />

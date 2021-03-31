@@ -1,9 +1,16 @@
 import React from "react";
 import img1 from "../../images/inter.png";
-import img2 from "../../images/admin.png";
+import img2 from "../../images/About/companyProfile.png";
 import "./about.css";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function About() {
+  AOS.init({
+    offset: 100,
+    duration: 1000,
+    once:true,
+  });
   return (
     <>
       <div style={{ marginTop: "200px" }}>
@@ -51,7 +58,7 @@ function About() {
         <br></br>
         <br></br>
 
-        <div className="aboutfooter">
+        <div className="aboutfooter" data-aos="fade-up">
           <img className="about-img2" src={img2} />
           <div className="about-col-8">
             <h4 className="about-footer-title">MISSION STATEMENT</h4>
