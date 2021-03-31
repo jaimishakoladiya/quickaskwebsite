@@ -3,8 +3,9 @@ import img1 from "../contact/admin.png";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import "../contact/contact.css";
-import { responsiveFontSizes } from "@material-ui/core";
-import { green } from "@material-ui/core/colors";
+import AOS from 'aos';
+import 'aos/dist/aos.css'
+
 import {
   fade,
   ThemeProvider,
@@ -14,6 +15,13 @@ import {
 } from '@material-ui/core/styles';
 
 const Contact = () => {
+  AOS.init({
+    offset: 200,
+    duration: 1000,
+    once:true,
+    
+
+  });
   const field = {
     margin: "2px",
     marginTop: "20px",
@@ -45,8 +53,8 @@ const Contact = () => {
       <div className="contact-container">
         <div className="contact-formbox">
           <form>
-            <h4 className="contact-title">CONTACT US</h4>
-            <h3 className="contact-text">
+            <h4 className="contact-title" data-aos="zoom-in">CONTACT US</h4>
+            <h3 className="contact-text" data-aos="zoom-in">
               As A New StartUp , We Want To know Your Comments..
             </h3>
            
