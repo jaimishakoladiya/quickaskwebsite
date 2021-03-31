@@ -38,7 +38,8 @@ function Registration() {
     companyemail: "",
   };
   const onSubmit = (values, onsubmitprops) => {
-    onsubmitprops.resetForm();
+    // onsubmitprops.resetForm();
+
   };
 
   const validationSchema = yup.object({
@@ -122,7 +123,7 @@ function Registration() {
                     <input
                       type="submit"
                       className="tn"
-                      onClick={() => setopenalert(true)}
+                     onClick={() => setopenalert(true)}
                       value="Sign Up"
                     />
                   </div>

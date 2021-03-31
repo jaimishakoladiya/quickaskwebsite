@@ -42,6 +42,7 @@ function Login() {
   const onSubmit = (values, onSubmitprops) => {
     console.log(values);
     onSubmitprops.resetForm();
+    history.push("/innernavbar")
   };
 
   const validationSchema = yup.object({
