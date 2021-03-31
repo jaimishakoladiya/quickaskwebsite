@@ -2,7 +2,7 @@
 //import Navbar from "./component/navbar/innernavbar/Navbar";
 
 //import Login from './component/account/login/Login'
-// import Home from "./component/home/Home";
+//  import Home from "./component/home/Home";
 // import Interviews from './component/interviews/Interviews'
 //import About from "./component/team/about/About.jsx";
 // import Login from './component/account/login/Login'

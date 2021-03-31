@@ -25,19 +25,25 @@ const Step1 = () => {
         [name]: value,
       };
     });
-    console.log(Candidate);
+  
   };
-  const addcandidate = () => {
+  const addcandidate = (values) => {
+   
+    
     console.log(Candidate);
     SetCandidatearray((oldval) => {
-      return [...oldval, `${Candidate}`];
+      return [...oldval, Candidate];
     });
 
     console.log(CandidateArray);
   };
 
-  const DeleteRecords = () => {
-    return console.log("deleted");
+  const deletefunction = (id) => {
+    return SetCandidatearray((oldval)=>{
+      return oldval.filter((arr,index)=>{
+        return index !== id;
+      })
+    })
   };
   const initialValues = {
     firstname: "",
@@ -45,13 +51,15 @@ const Step1 = () => {
     email: "",
     id: "",
   };
-  const onSubmit = (values) => {
+  const onSubmit = (values, onSubmitprops) => {
     console.log(values);
-    addcandidate();
+    addcandidate(values);
     SetCandidate({
       firstname: "",
       lastname: "",
-    });
+    })
+    ;
+    onSubmitprops.resetForm();
   };
   const validationSchema = yup.object({
     firstname: yup.string().required("First Name Required!!"),
@@ -153,15 +161,12 @@ const Step1 = () => {
                       placeholder="Id"
                     />
                     <br />
-                    {formik.errors.firstname
-                      ? erroralert(formik.errors.firstname)
-                      : formik.errors.lastname
-                      ? erroralert(formik.errors.lastname)
-                      : formik.errors.email
-                      ? erroralert(formik.errors.email)
-                      : formik.errors.id
-                      ? erroralert(formik.errors.id)
-                      : null}
+                  
+
+            {formik.touched.firstname && formik.errors.firstname?erroralert(formik.errors.firstname):
+            formik.touched.lastname && formik.errors.lastname?erroralert(formik.errors.lastname):
+            formik.touched.email && formik.errors.email?erroralert(formik.errors.email):
+            formik.touched.id && formik.errors.id?erroralert(formik.errors.id):null}
                     <div className="Add">
                       <Button
                         type="submit"
@@ -176,8 +181,11 @@ const Step1 = () => {
                       </Button>
                     </div>
                     <div>
-                      {CandidateArray.map((candidate) => {
-                        return <Step1AddField newrecords={candidate} />;
+                      {CandidateArray.map((candidate, index) => {
+                        return <Step1AddField
+                        id={index}
+                        deletefunction={deletefunction}
+                        newrecords={candidate} />;
                       })}
                     </div>
                   </div>
