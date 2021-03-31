@@ -13,11 +13,12 @@ import { ChildCare } from "@material-ui/icons";
 
 function QuestionsCard(props) {
   const [openalert, setopenalert] = useState(false);
-  const [newquestion,setnewquestion]=useState({
-    questions:'',
-    minutes:'0',
-    seconds:'0'
+  const [newquestion, setnewquestion] = useState({
+    questions: '',
+    minutes: "0"+3,
+    seconds: "0"+0
   })
+
 
   const inputchange = (event) => {
     const { name, value } = event.target;
@@ -29,13 +30,14 @@ function QuestionsCard(props) {
     });
     console.log(newquestion);
   };
+  
   const SelectItem = () => {
     let items = [];
     for (let i = 0; i <= 60; i++) {
       if (i <= 9) {
         items.push(
-          <option key={i} value={i}>
-            0{i}
+          <option key={i} value={"0"+i}>
+            {"0"+i}
           </option>
         );
       } else {
@@ -50,17 +52,17 @@ function QuestionsCard(props) {
   };
   const initialValues = {
     questions: "",
-     minutes:'',
-     seconds:''
+    minutes: '',
+    seconds: ''
   };
 
   const onSubmit = (values, onSubmitProps) => {
     console.log(values);
     props.addquestions(newquestion);
     setnewquestion({
-      questions:'',
-      minutes:'00',
-      seconds:'00'
+      questions: '',
+      minutes: "0"+3,
+      seconds: "0"+0
     })
     onSubmitProps.resetForm();
   };
@@ -112,12 +114,11 @@ function QuestionsCard(props) {
                         min
                       </InputLabel>
                       <Field as={NativeSelect}
-                        id="demo-customized-select-native"
-                        className="Step4_Dropdown1"
-                       name="minutes"
-                       onInput={inputchange}
-                        >
-                        
+                       value={newquestion.minutes}
+                       name='minutes'
+                       onChange={inputchange}
+                      >
+                      <option value=""></option>
                         {SelectItem()}
                       </Field>
                     </FormControl>
@@ -125,18 +126,18 @@ function QuestionsCard(props) {
                       <InputLabel htmlFor="demo-customized-select-native">
                         sec
                       </InputLabel>
-                     <Field as={NativeSelect}
-                        id="demo-customized-select-native"
-                        className="Step4_Dropdown1"
-                        name="seconds"
-                        onInput={inputchange}
-                       >
+                      <Field as={NativeSelect}
+                       value={newquestion.seconds}
+                       name='seconds'
+                       onChange={inputchange}
+                      >
+                      <option value=""></option>
                         {SelectItem()}
                       </Field>
                     </FormControl>
                     <br />
                     <br />
-                    {formik.errors.questions
+                    {formik.touched.questions && formik.errors.questions
                       ? erroralert(formik.errors.questions)
                       : null}
                     <Button
