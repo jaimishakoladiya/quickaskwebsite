@@ -28,8 +28,8 @@ function App() {
     {/* <CompanyProfilePage/> */}
     {/* <Home/>  */}
   <BrowserRouter>
-  <InnerNavbar/>
-
+ 
+<HomeNavbar/>
     </BrowserRouter>
 
 {/*     
