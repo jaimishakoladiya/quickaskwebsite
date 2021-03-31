@@ -11,20 +11,20 @@ const InnerNavbar = () => {
   const location = useLocation();
   return (
     <>
-      {location.pathname === "/login" ? null : <Navbar2 />}
-      <br></br>
-      <br></br>
-      <Switch>
-        <Route
-          exact
-          path="/companyprofilepage"
-          component={CompanyProfilePage}
-        />
-        <Route exact path="/interviews" component={Interviews} />
-        <Route exact path="/login" component={Login} />
-      </Switch>
-    </>
-  );
-};
+   {location.pathname==="/login" ?null:<Navbar2/>}<br></br><br></br>
+    <Switch>
+   
+
+
+           
+      {/* <Route exact path="/companyprofilepage" component={CompanyProfilePage} />     */}
+     <Route exact path="/interviews" component={Interviews} />
+     <Route exact path="/login" component={Login}/>
+   
+    
+      <CompanyProfilePage/> 
+    </Switch>
+    </>)
+}
 
 export default InnerNavbar;

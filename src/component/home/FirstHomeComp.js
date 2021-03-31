@@ -25,22 +25,11 @@ function FirstHomeComp() {
           <div className="home-border"></div>
           <br></br>
 
-          <Button
-            className="home-free-button"
-            variant="contained"
-            color="secondary"
-          >
-            Try It Free{" "}
-          </Button>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-        </div>
-      </div>
-    </>
-  );
+     <Button id="home-free-button" variant="contained" color="secondary"  >Try It Free</Button><br></br><br></br><br></br><br></br><br></br>
+    </div>
+    </div>
+        </>
+    )
 }
 
 export default FirstHomeComp;
