@@ -14,6 +14,8 @@ import "../Company.css";
 import { makeStyles } from "@material-ui/core";
 import AlertBox from "../../alert/AlertBox";
 import QuestionsCard from "./QuestionsCard";
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -36,7 +38,7 @@ export default function AddDepartment() {
   };
 
   const onSubmit = (values) => {
-    console.log(values);
+    // console.log(values);
     setOpen(false);
   };
 
@@ -65,10 +67,18 @@ export default function AddDepartment() {
     console.log(newquestion);
   };
 
+  const deletequestion=(id)=>{
+    console.log("delete")
+   return setnewquestion((oldval)=>{
+     return oldval.filter((arr,index)=>{
+       return index !== id;
+     })
+   })
+  }
   const handleClickOpen = () => {
     setOpen(true);
   };
-
+;
   const handleClose = () => {
     setOpen(false);
   };
@@ -142,17 +152,17 @@ export default function AddDepartment() {
                             variant="standard"
                           />
                         </Grid>
-                        <Grid item xs={7}>
+                        <Grid item xs={6}>
                           <h3>Default Question For Department</h3>
                         </Grid>
                         <Grid item xs={4}>
                           <h3>Time Allocated</h3>
                         </Grid>
-                        <Grid container spacing={3}>
+                        {/* <Grid container spacing={3}> */}
                           {newquestion.map((value, index) => {
                             return (
                               <>
-                                <Grid item xs={7}>
+                                <Grid item xs={6}>
                                   <h3>{value.questions}</h3>
                                 </Grid>
                                 <Grid item xs={4}>
@@ -160,11 +170,17 @@ export default function AddDepartment() {
                                     {value.minutes}:{value.seconds}
                                   </h3>
                                 </Grid>
+                                <Grid item xs={2}>
+                                  <h3>
+                                   <IconButton  aria-label="delete" variant="contained" id="delete_question"
+                                   onClick={deletequestion}><DeleteIcon /></IconButton>
+                                  </h3>
+                                </Grid>
                               </>
                             );
                           })}
                         </Grid>
-                      </Grid>
+                      {/* </Grid> */}
                       <br />
                       {formik.touched.department && formik.errors.department
                         ? erroralert(formik.errors.department)

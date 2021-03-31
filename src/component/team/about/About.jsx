@@ -1,6 +1,6 @@
 import React from "react";
 import img1 from "../../images/inter.png";
-import img2 from "../../images/admin.png";
+import img2 from "../../images/About/companyProfile.png";
 import "./about.css";
 
 function About() {

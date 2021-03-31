@@ -4,13 +4,41 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import "../contact/contact.css";
 import { responsiveFontSizes } from "@material-ui/core";
+import { green } from "@material-ui/core/colors";
+import {
+  fade,
+  ThemeProvider,
+  withStyles,
+  makeStyles,
+  createMuiTheme,
+} from '@material-ui/core/styles';
 
 const Contact = () => {
   const field = {
     margin: "2px",
     marginTop: "20px",
     width: 600,
+ 
   };
+  const CssTextField = withStyles({
+    root: {
+      '& label.Mui-focused': {
+        color: 'black',
+        
+      },
+      '& label': {
+        color: 'black',
+        fontSize:20,
+        fontFamily:'DIN',
+       fontWeight:'600'
+      
+      },
+      '& .MuiInput-underline:after': {
+        borderBottomColor: 'black',
+      },   
+      },
+    },
+  )(TextField);
 
   return (
     <body className="contact-main">
@@ -21,35 +49,38 @@ const Contact = () => {
             <h3 className="contact-text">
               As A New StartUp , We Want To know Your Comments..
             </h3>
-            <TextField
+           
+            <CssTextField
+          
               id="field2"
               style={field}
-              id="standard-basic"
+              id="custom-css-standard-input"
               label="FirstName"
               variant="standard"
+        
             />
 
-            <TextField
+            <CssTextField
               style={field}
-              id="standard-basic"
+              id="custom-css-standard-input"
               label="LastName"
               variant="standard"
             />
-            <TextField
+            <CssTextField
               style={field}
-              id="standard-basic"
+              id="custom-css-standard-inputc"
               label="Subject"
               variant="standard"
             />
-            <TextField
+            <CssTextField
               style={field}
-              id="standard-basic"
+              id="custom-css-standard-input"
               label="Email"
               variant="standard"
             />
-            <TextField
+            <CssTextField
               style={field}
-              id="standard-textarea"
+              id="custom-css-standard-textarea"
               label="Comment.. "
               multiline
               rowsMax={5}
@@ -57,30 +88,16 @@ const Contact = () => {
             <br></br>
             <br></br>
             <br></br>
+            <br></br>
             <Button id="contact-butn" variant="contained">
-              Submit
+             submit
             </Button>
             <br />
-            {/* <div className="contact-inputbox">
-<input type="text" name="" required/>
-<span>Subject</span>
-</div>
-<div className="contact-inputbox">
-<input type="text" name="" required/>
-<span>Email</span>
-</div>
-<div className="contact-inputbox">
-<textarea name="" required></textarea>
-<span>Comment..</span>
-</div>
-
-<div className="contact-inputbox">
-<input type="submit" value="Submit" name=""/>
-</div> */}
+        
           </form>
         </div>
         <div className="contact-img">
-          <img src={img1} />
+          <img style={{height:"750px"}} src={img1} />
         </div>
       </div>
     </body>

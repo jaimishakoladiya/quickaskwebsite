@@ -81,7 +81,7 @@
 }
 
 #create-btn {
-  margin-top: 80px;
+  margin-top: 180px;
   margin-bottom: -20px;
   margin-left: 370px;
   font-weight: bold;
@@ -188,6 +188,15 @@
   font-size: 20px;
   color: black;
 }
+#Delete_dailog{
+  width: 900px;
+  height: 400px;
+  justify-content: center;
+  
+  border: 1px solid black;
+  border-radius: 4px;
+
+}
 /* .Step1_Input_box{
   height: auto;
   width:150px;
@@ -215,4 +224,49 @@
   font-size: 15px;
   font-weight: bold;
   margin-top: 20px;
+}
+
+
+/* tree view data css */
+
+
+ul, #myUL {
+  list-style-type: none;
+}
+/* Remove margins and padding from the parent ul */
+#myUL {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the caret/arrow */
+.caret {
+  cursor: pointer;
+  user-select: none; /* Prevent text selection */
+  margin-left: 30px;
+line-height: 50px;
+align-content:center;
+}
+
+/* Create the caret/arrow with a unicode, and style it */
+.caret::before {
+  content: "\25B6";
+  color: black;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+/* Rotate the caret/arrow icon when clicked on (using JavaScript) */
+.caret-down::before {
+  transform: rotate(90deg);
+}
+
+/* Hide the nested list */
+.nested {
+  display: none;
+}
+
+/* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
+.active {
+  display: block;
 }

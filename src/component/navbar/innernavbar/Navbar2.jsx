@@ -1,9 +1,9 @@
-import React from "react";
-import "./navbar2.css";
-import DehazeIcon from "@material-ui/icons/Dehaze";
-import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
-import img from "../../images/logo2.png";
-import { NavLink } from "react-router-dom";
+import React from 'react'
+import './navbar2.css'
+import DehazeIcon from '@material-ui/icons/Dehaze';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import img from '../../images/logo2.png'
+import { NavLink } from 'react-router-dom';
 function Navbar2() {
   return (
     <div>
@@ -23,11 +23,11 @@ function Navbar2() {
 
             <li className="sub-menu">
               <NavLink to="/login" className="a">
-                LOGOUT{" "}
+                LOGOUT
               </NavLink>
             </li>
             <li>
-              <a href="#" className="a">
+              <a href="#" className="activename">
                 NAME
               </a>
             </li>
@@ -51,7 +51,7 @@ function Navbar2() {
 
             <li className="sub-menu">
               <a href="#" className="a">
-                INVOICE{" "}
+                INVOICE
               </a>
             </li>
           </ul>
