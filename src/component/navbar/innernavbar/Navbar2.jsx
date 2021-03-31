@@ -23,11 +23,11 @@ function Navbar2() {
 
             <li className="sub-menu">
               <NavLink to="/login" className="a">
-                LOGOUT{" "}
+                LOGOUT
               </NavLink>
             </li>
             <li>
-              <a href="#" className="a">
+              <a href="#" className="activename">
                 NAME
               </a>
             </li>
@@ -51,7 +51,7 @@ function Navbar2() {
 
             <li className="sub-menu">
               <a href="#" className="a">
-                INVOICE{" "}
+                INVOICE
               </a>
             </li>
           </ul>

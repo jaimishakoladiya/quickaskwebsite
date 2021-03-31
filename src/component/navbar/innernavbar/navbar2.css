@@ -46,10 +46,30 @@ header .first ul li .a {
   text-decoration: none;
   display: block;
 }
-header .first ul li .a:hover {
+header .first ul li .a:hover,
+header .first ul li .a.active 
+  {
   border: 1px solid transparent;
   transition: 95.5s;
 }
+.activename{
+  line-height: 50px;
+  height: 50px;
+  margin-top: 20px;
+  padding: 0 15px;
+  margin-right: 20px;
+  color: #000;
+  font-family: "Helvetica";
+  font-weight: 700;
+  font-size: 12pt;
+  text-decoration: none;
+  display: block;
+  border: 1.5px solid black;
+  transition: 95.5s;
+  
+}
+
+
 .icon {
   color: black;
   float: right;

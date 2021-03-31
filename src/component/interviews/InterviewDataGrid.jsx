@@ -24,6 +24,7 @@ const CandidateDetails = () =>{
   const style={
     fontSize : "17px",
     fontWeight:"bold",
+   
 
     
   }
@@ -81,7 +82,7 @@ return(
 
         
           <TableRow style={style2}>
-        <TableCell style={style2}>Date</TableCell>
+         <TableCell style={style2}>Date</TableCell>
           <TableCell style={style2} align="center">Job Title</TableCell>
             <TableCell style={style2} align="center">Department</TableCell>
             <TableCell style={style2} align="center">Manager</TableCell>
@@ -93,11 +94,12 @@ return(
             <TableRow style={style}>
           <TreeView
    
-      defaultCollapseIcon={<ExpandMoreIcon />}
+      defaultCollapseIcon={<ExpandMoreIcon/>}
       defaultExpandIcon={<ChevronRightIcon />}
       
     >
-        <TreeItem nodeId="1" label="">
+       <TableRow style={style2}>
+        <TreeItem nodeId="1" label="DATE">
           <TableRow style={style}>    
         
     <TreeItem nodeId="2" label="Webstorm" > <TreeItem nodeId="3" label="src"/> </TreeItem>
@@ -106,7 +108,7 @@ return(
          <TreeItem nodeId="6" label="Webstorm" > <TreeItem nodeId="7" label="src"/> </TreeItem>
           </TreeItem>
         
-      
+          </TableRow>
     
     </TreeView>
     </TableRow>

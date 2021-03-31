@@ -14,12 +14,11 @@
 // import Login from './component/account/login/Login';
 //import Forpass from './component/account/login/Forpass';
 // import { BrowserRouter } from 'react-router-dom';
-//  import InnerNavbar from './component/navbar/innernavbar/InnerNavbar'
+// import InnerNavbar from './component/navbar/innernavbar/InnerNavbar'
 // import Navbar from './component/navbar/homenavbar/Navbar'
 import CompanyProfilePage from './component/companyprofile/CompanyProfilePage'
 //import Navbar2 from './component/navbar/outernavbar/Navbar2'
-import QuestionsCard from "./component/companyprofile/addbuttons/QuestionsCard";
-import Interviews from "./component/interviews/Interviews";
+//import Interviews from "./component/interviews/Interviews";
 
 //import Contact from './component/team/contact/Contact';
 
@@ -28,6 +27,7 @@ import Interviews from "./component/interviews/Interviews";
 function App() {
   return (
     <>
+    {/* <InterviewDataGrid/> */}
       {/* <CompanyProfilePage /> */}
       {/* <Home/>  */}
       {/* <BrowserRouter>
