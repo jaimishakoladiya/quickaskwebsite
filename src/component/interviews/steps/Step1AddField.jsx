@@ -11,28 +11,29 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 
-const Step1AddField =(props)=>{
- 
-    console.log(props.newrecords)
-    const [open, SetOpen] = useState(false);
-    const [Yesopen , SetYesopen] = useState(false);
-    const handleClickOpen = () => {
-        SetOpen(true);
-      };
-      const handleClickClose = () => {
-        SetOpen(false);
-      };
-      const YesFunction = () =>{
-      
-         SetYesopen(true);
-      }
-      const OKFunction =()=>{
-        SetYesopen(false);
-        SetOpen(false);
-      }
-    const handleDelete = () => {};
-    return(<>
-        <Chip
+const Step1AddField = (props) => {
+  const [open, SetOpen] = useState(false);
+  const [Yesopen, SetYesopen] = useState(false);
+  const handleClickOpen = () => {
+    SetOpen(true);
+  };
+  const handleClickClose = () => {
+    SetOpen(false);
+  };
+  const YesFunction = () => {
+    SetYesopen(true);
+  };
+  const OKFunction = () => {
+    SetYesopen(false);
+    SetOpen(false);
+    props.deletefunction(props.id);
+  };
+  const handleDelete = () => {};
+  console.log(props.newrecords)
+  return (
+
+    <>
+      <Chip
         id="Chip_box"
         icon={<PersonIcon />}
         label={`${props.newrecords.firstname}  ${props.newrecords.lastname}`}
