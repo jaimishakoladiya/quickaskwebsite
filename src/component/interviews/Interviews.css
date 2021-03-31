@@ -56,8 +56,10 @@
   transform: scale(1.05, 1.05);
 }
 .detail-data {
+  position: absolute;
   margin: 15px auto;
   margin-bottom: 100px;
+  margin-left: 500px;
   margin-top: 30px;
   justify-content: center;
   padding: 15px 5px 10px 15px;
@@ -74,6 +76,7 @@
   display: block;
   justify-content: space-between;
   text-align: center;
+ 
 }
 .detail-found-data {
   text-align: center;
@@ -230,43 +233,75 @@
 /* tree view data css */
 
 
-ul, #myUL {
-  list-style-type: none;
-}
-/* Remove margins and padding from the parent ul */
-#myUL {
-  margin: 0;
-  padding: 0;
-}
-
-/* Style the caret/arrow */
-.caret {
-  cursor: pointer;
-  user-select: none; /* Prevent text selection */
-  margin-left: 30px;
-line-height: 50px;
-align-content:center;
-}
-
-/* Create the caret/arrow with a unicode, and style it */
-.caret::before {
-  content: "\25B6";
-  color: black;
-  display: inline-block;
-  margin-right: 6px;
-}
-
-/* Rotate the caret/arrow icon when clicked on (using JavaScript) */
-.caret-down::before {
-  transform: rotate(90deg);
-}
-
-/* Hide the nested list */
-.nested {
-  display: none;
-}
-
 /* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
 .active {
   display: block;
 }
+.openbox{
+  position: absolute;
+  width: 1000px;
+  height: auto;
+  position: absolute;
+  background:#eef5f6;
+  font-size: 15px;
+
+ 
+}
+.grid-src .line{
+  border-top: 2px solid #999;
+}
+.line{
+  margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    width:850px;
+}
+#tablefont{
+  font-size: 20px;
+}
+#name{
+ text-align: center;
+ font-size: 14pt;
+ color:black;
+ font-family: "Helvetica";
+ font-weight: 400;
+}
+#inicon{
+  color: darkcyan;
+  font-size: 35px;
+  cursor: pointer;
+  margin: -10px 0px;
+  margin-left: 70px;
+  line-height: 50px;
+  margin-top: 13px;
+}
+#question-box{
+  text-align: right;
+ color:black;
+ font-size: 14pt;
+}
+#candidate-inline-css{
+  text-align: right;
+ color:black;
+ font-size: 14pt;
+}
+#panel-inline-css{
+  text-align: right;
+ color:black;
+ font-size: 14pt;
+}
+#candidate-css{
+  color:darkcyan;
+  font-size: 18px;
+  font-weight: 700;
+  margin-left: 55px;
+}
+#panel-css{
+  color:darkcyan;
+  font-size: 18px;
+  font-weight: 700;
+  margin-left: 55px;
+}
+/* .arrowchange-down::before {
+  transform: rotate(90deg);
+} */

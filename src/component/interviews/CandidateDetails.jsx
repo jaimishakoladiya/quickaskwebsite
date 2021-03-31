@@ -78,7 +78,7 @@ return(
         </TableContainer>
        
        </div>
-       {/* <h1 className="detail-found-data">No Data Found</h1> */}
+       <h1 className="detail-found-data">No Data Found</h1>
      </div>
      </>
     );
