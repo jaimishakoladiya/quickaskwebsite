@@ -18,6 +18,7 @@
 // import Navbar from './component/navbar/homenavbar/Navbar'
 //import CompanyProfilePage from './component/companyprofile/CompanyProfilePage'
 //import Navbar2 from './component/navbar/outernavbar/Navbar2'
+import QuestionsCard from "./component/companyprofile/addbuttons/QuestionsCard";
 import Interviews from "./component/interviews/Interviews";
 
 //import Contact from './component/team/contact/Contact';
@@ -48,6 +49,7 @@ function App() {
       {/* <Navbar/> */}
       {/* <Contact/> */}
       {/* <About/> */}
+      {/* <QuestionsCard/> */}
     </>
   );
 }
