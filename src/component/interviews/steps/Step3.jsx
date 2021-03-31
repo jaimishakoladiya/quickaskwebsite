@@ -6,9 +6,36 @@ import Button from "@material-ui/core/Button";
 import * as yup from "yup";
 import AlertBox from "../../alert/AlertBox";
 import { Form, Formik, Field } from "formik";
+import Step1AddField from "./Step1AddField";
 
 const Step3 = () => {
   const [open, setopenalert] = useState(false);
+  const [panelcandidate , setpanelcandidate] = useState({
+  firstname:"",
+  lastname:""
+})
+const [panelArray,setpanelArray] = useState([]);
+  const inputChangeFunction =(event)=>{
+    const { name , value} = event.target;
+    setpanelcandidate ((oldvalue)=>{
+      return {
+        ...oldvalue,
+        [name] : value
+      }
+    })
+}
+const AddpanelCandidate =(values)=>{
+  setpanelArray((oldvalue)=>{
+    return [ ...oldvalue , panelcandidate]
+  })
+}
+const deletefunction=(id)=>{
+    return setpanelArray((oldval)=>{
+      return oldval.filter((arr,index)=>{
+        return index !== id ;
+      })
+    })
+}
   const initialValues = {
     firstname: "",
     lastname: "",
@@ -16,6 +43,7 @@ const Step3 = () => {
   };
   const onSubmit = (values, onSubmitprops) => {
     console.log(values);
+    AddpanelCandidate();
     onSubmitprops.resetForm();
   };
   const validationSchema = yup.object({
@@ -59,6 +87,7 @@ const Step3 = () => {
                     name="firstname"
                     style={{ width: "160px" }}
                     id="firstname"
+                    onInput={inputChangeFunction}
                     placeholder="First Name"
                   />
                   <PersonIcon
@@ -75,6 +104,7 @@ const Step3 = () => {
                     name="lastname"
                     style={{ width: "160px" }}
                     id="lastname"
+                    onInput={inputChangeFunction}
                     placeholder="Last Name"
                   />
                   <EmailIcon
@@ -93,11 +123,11 @@ const Step3 = () => {
                     id="email"
                     placeholder="Email-Id"
                   />
-                  {formik.errors.firstname
+                  {formik.touched.firstname && formik.errors.firstname
                     ? erroralert(formik.errors.firstname)
-                    : formik.errors.lastname
+                    : formik.touched.firstname && formik.errors.lastname
                     ? erroralert(formik.errors.lastname)
-                    : formik.errors.email
+                    : formik.touched.firstname && formik.errors.email
                     ? erroralert(formik.errors.email)
                     : null}
 
@@ -110,6 +140,19 @@ const Step3 = () => {
                     >
                       ADD
                     </Button>
+                  </div>
+                  <div>
+                    {
+                      panelArray.map((panelcandidate,index)=>{
+                        return (
+                          <>
+                           <Step1AddField newrecords={panelcandidate}
+                           deletefunction={deletefunction}
+                           id={index}/>
+                          </>
+                        )
+                      })
+                    }
                   </div>
                 </div>
               </Form>

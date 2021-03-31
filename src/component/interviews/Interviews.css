@@ -188,6 +188,15 @@
   font-size: 20px;
   color: black;
 }
+#Delete_dailog{
+  width: 900px;
+  height: 400px;
+  justify-content: center;
+  
+  border: 1px solid black;
+  border-radius: 4px;
+
+}
 /* .Step1_Input_box{
   height: auto;
   width:150px;

@@ -3,7 +3,6 @@ import PersonIcon from "@material-ui/icons/Person";
 import CloseIcon from "@material-ui/icons/Close";
 import Chip from "@material-ui/core/Chip";
 import Button from "@material-ui/core/Button";
-
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -42,6 +41,7 @@ const Step1AddField = (props) => {
         deleteIcon={<CloseIcon />}
       ></Chip>
       <Dialog
+      //id="Delete_dailog"
         open={open}
         onClose={handleClickClose}
         aria-labelledby="max-width-dialog-title"
