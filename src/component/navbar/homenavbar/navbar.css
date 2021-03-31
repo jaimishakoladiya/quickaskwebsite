@@ -42,8 +42,6 @@
   border: 1px solid transparent;
   transition: 99.5s;
   }
-
-  
   .in-navbar nav ul li:hover ul {
   display: block;
   }
