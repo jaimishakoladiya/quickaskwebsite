@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router";
 import Navbar from "./Navbar";
-import "./navbar.css"
+
 import Registration from "../../account/register/Registartion";
 import Login from "../../account/login/Login";
 import forpass from "../../account/login/Forpass";
@@ -22,6 +22,7 @@ function HomeNavbar() {
       location.pathname === "/forgotpassword" ||
       location.pathname ==="/innernavbar"? null : (
         <Navbar />
+        
       )}
 
       <Switch>
