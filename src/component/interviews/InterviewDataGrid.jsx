@@ -175,6 +175,7 @@ const CandidateDetails = () => {
                         </TableRow>
                         <TableRow >
                           <TableCell id="panel-inline-css">1.khjhj</TableCell>
+
                           <TableCell id="panel-inline-css">email@gmail.com</TableCell>
                           <TableCell id="panel-inline-css" >Action</TableCell>
                         </TableRow>
