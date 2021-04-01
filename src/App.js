@@ -35,9 +35,9 @@ function App() {
 
     {/* <Registration/> */}
     {/* <Navbar/> */}
-    <BrowserRouter>
+    {/* <BrowserRouter>
   <HomeNavbar/> 
- </BrowserRouter>
+ </BrowserRouter> */}
  {/* <Login/> */}
     {/* <Navbar2/> */}
  {/* <Interviews/> */}
