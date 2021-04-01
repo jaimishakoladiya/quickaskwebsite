@@ -175,6 +175,7 @@
 #Step4_heading {
   border: 1px solid black;
   border-radius: 4px;
+  background-color: white;
 }
 #btn_color {
   background-color: darkcyan;
