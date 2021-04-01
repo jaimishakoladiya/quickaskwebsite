@@ -6,6 +6,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 function DisplayQuestions(props) {
   return (
     <div>
+<<<<<<< HEAD
       {props.question.departmentque.map((arr, id)=>{
         return(
         <><Grid container spacing={3}>
@@ -34,6 +35,33 @@ function DisplayQuestions(props) {
       })}
     </div>
   ); 
+=======
+            {props.question.departmentque.map((arr,id)=>{
+               
+                return (<>
+                
+                    <Grid container spacing={3}>
+                    <Grid item xs={6}>
+                                  <h3>{arr.questions}</h3>
+                                </Grid>
+                                <Grid item xs={4}>
+                                  <h3>
+                                    {arr.minutes}:{arr.seconds}
+                                  </h3>
+                                </Grid>
+                                <Grid item xs={2}>
+                                  <h3>
+                                   <IconButton  aria-label="delete" variant="contained" id="delete_question"
+                                   onClick={()=>props.deletequestion(id)}><DeleteIcon /></IconButton>
+                                  </h3>
+                                </Grid>
+                                </Grid>
+                </>)
+            }) }
+            
+        </div>
+  );
+>>>>>>> 6e1eab577dd8f978a3acb0aa9770908dc12631ef
 }
 
 export default DisplayQuestions;

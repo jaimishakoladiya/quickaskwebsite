@@ -7,7 +7,7 @@ function CompanyProfilePage() {
   return (
     <div>
       <CompanyProfileForm />
-     <CompanyFooter/>
+     {/* <CompanyFooter/> */}
     </div>
   );
 }

@@ -7,7 +7,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
 
 const CompanyFields = () => {
-  const field1 = { margin: "30px", marginTop: "50px" };
+  const field1 = { margin: "30px", marginTop: "50px", };
   const field = { margin: "30px", marginTop: "-40px", width: 195 };
   return (
     <>

@@ -7,10 +7,16 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import './Interviews.css';
 import InterviewDataGrid from '../interviews/InterviewDataGrid'
 
 import CreateInterview from './CreateInterview';
+
+import DemoGrid from './DemoGrid';
 
 
 
@@ -33,6 +39,40 @@ const CandidateDetails = () =>{
             SetOpen(false);
           }
    }
+
+   ///////////newwwwwwwwwwwwwwwww
+   const style = {
+    fontSize: "17px",
+    fontWeight: "bold",
+
+
+  }
+  const style2 = {
+    fontSize: "17px",
+    fontWeight: "bold",
+
+  }
+   const [openrow, setopen1] = useState(false);
+  const [expand, setexpand] = useState(<ArrowRightIcon style={{ color: "darkcyan", fontSize: "50px", cursor: "pointer" }} />);
+
+   const [open1, SetOpen1] = useState(false);
+ 
+
+  const expandrowfunc = () => {
+    // setopen(true);
+
+    if (openrow == false) {
+      setopen1(true);
+    }
+    else {
+      setopen1(false)
+      setexpand(<ArrowRightIcon style={{ color: "darkcyan", fontSize: "50px", cursor: "pointer" }} />)
+    }
+
+  }
+  const changeicon = () => {
+    setexpand(<ArrowDropDownIcon style={{ color: "darkcyan", fontSize: "50px", cursor: "pointer" }} />)
+  }
 return(
  
         <>
@@ -42,8 +82,10 @@ return(
         </Button></div><br></br>
         {open==true?
           <CreateInterview/>
+        
         :null}
         <br></br>
+       
         <div className="detail-data">
         <div className="detail-header1">
           <h5>ALLCANDIDATES</h5>
@@ -51,7 +93,7 @@ return(
             Search
             <TextField
               type="date"
-              style={{ margin: "15px" }}
+              style={{ margin: "12px" }}
               id="outlined-basic"
               variant="outlined"
             />
@@ -77,11 +119,40 @@ return(
             <TableCell style={headercss} align="center">Action</TableCell>
      
           </TableHead>
-  <InterviewDataGrid/>
-  <InterviewDataGrid/>
+
+        {/* start new row */}
+          
+              
+                <TableRow/>
+ 
+                <TableRow style={style2}>
+                <TableCell style={style}><div onClick={() => {
+                  changeicon()
+                  expandrowfunc()
+                  
+                }
+                }>{expand}</div></TableCell>
+                <TableCell style={style2}>2-1-20</TableCell>
+                <TableCell style={style2} align="center">web</TableCell>
+                <TableCell style={style2} align="center">Android</TableCell>
+                <TableCell style={style2} align="center">4k</TableCell>
+                <TableCell style={style2} align="center">4</TableCell>
+                <TableCell style={style2} align="center">2min</TableCell>
+                <TableCell style={style2} align="center">Action</TableCell>
+              </TableRow>
+
+              {openrow ? <> <div className="openbox"  > 
+              {/* <InterviewDataGrid/> */}
+              <DemoGrid/>
+              </div>
+                </>:null}
+                
+              
+                <TableRow/>
         </Table>
+        
         </TableContainer>
-       
+      
        </div>
  
      </div>
