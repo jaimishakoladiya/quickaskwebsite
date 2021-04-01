@@ -6,11 +6,7 @@
 background-blend-mode:darken;
 
 } */
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
+
 
 .page {
   margin: 20px auto;
@@ -141,20 +137,21 @@ background-blend-mode:darken;
 
 /* all table head row css */
 
-table {
+.company-table {
   border-collapse: collapse;
   width: 100%;
 }
-th {
+.company-th {
   text-align: left;
   padding: 8px;
   background-color: rgb(245, 202, 92);
+ 
 }
-td {
+.company-td {
   text-align: left;
   padding: 8px;
 }
-tr:nth-child(even) {
+.company-tr:nth-child(even) {
   background-color: rgb(217, 232, 236);
 }
 
