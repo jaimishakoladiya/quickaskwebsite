@@ -16,6 +16,8 @@ import AlertBox from "../../alert/AlertBox";
 import QuestionsCard from "./QuestionsCard";
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { adddepartmentque } from "../../../redux/actions/companyprofile/companprofileAction";
+import { connect } from "react-redux"
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -27,7 +29,7 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: "#eef5f6",
   },
 }));
-export default function AddDepartment() {
+function AddDepartment(props) {
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
@@ -208,7 +210,7 @@ export default function AddDepartment() {
                         Save
                       </Button>
                     </Form>
-                    <QuestionsCard addquestions={addquestions} />
+                    <QuestionsCard addquestion={props.adddepartmentque} question={props.departmentque} />
                   </>
                 );
               }}
@@ -219,3 +221,16 @@ export default function AddDepartment() {
     </div>
   );
 }
+const mapStateToProps = state=>{
+  return{
+    departmentque:state.companyprofile
+  }
+}
+
+const mapDispatchToProps = dispatch=>{
+  return{
+    adddepartmentque:(newquestion)=>{dispatch(adddepartmentque(newquestion))}
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(AddDepartment);

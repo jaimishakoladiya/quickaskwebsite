@@ -26,12 +26,12 @@ import Interviews from "./component/interviews/Interviews";
 //import Contact from './component/team/contact/Contact';
 //import InterviewDataGrid from './component/interviews/InterviewDataGrid';
 //import HomeNavbar from './component/navbar/homenavbar/HomeNavbar';
-
+import { Provider } from "react-redux";
+import store from "./redux/Store";
 function App() {
   return (
     <>
       {/* <InterviewDataGrid/> */}
-      {/* <CompanyProfilePage /> */}
       {/* <Home/>  */}
       {/* <BrowserRouter>
         <InnerNavbar/>
@@ -46,13 +46,16 @@ function App() {
       </BrowserRouter> */}
       {/* <Login/> */}
       {/* <Navbar2/> */}
-      <Interviews />
+      {/* <Interviews /> */}
       {/* <Home/> */}
       {/* <Login/> */}
       {/* <Navbar/> */}
       {/* <Contact/> */}
       {/* <About/> */}
       {/* <QuestionsCard/> */}
+      <Provider store={store}>
+          <CompanyProfilePage />
+     </Provider>
     </>
   );
 }
