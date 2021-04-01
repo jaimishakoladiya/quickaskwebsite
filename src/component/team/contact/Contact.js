@@ -49,7 +49,7 @@ const Contact = () => {
   )(TextField);
 
   return (
-    <body className="contact-main">
+    <body className="contact-main" id="contact">
       <div className="contact-container">
         <div className="contact-formbox">
           <form>

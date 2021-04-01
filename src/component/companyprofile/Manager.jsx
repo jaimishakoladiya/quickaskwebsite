@@ -8,23 +8,23 @@ const Manager = () => {
       <div className="Manager_card1">
         <h5 className="Manager_title-font">Manager</h5>
 
-        <table>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Status</th>
-            <th>Date</th>
-            <th>Deleted</th>
-            <th>Actions</th>
+        <table className="company-table">
+          <tr className="company-tr">
+            <th className="company-th">Name</th>
+            <th className="company-th">Email</th>
+            <th className="company-th">Status</th>
+            <th className="company-th">Date</th>
+            <th className="company-th">Deleted</th>
+            <th className="company-th">Actions</th>
           </tr>
 
-          <tr>
-            <td>hey</td>
-            <td>ck</td>
-            <td>hey</td>
-            <td>hey</td>
-            <td>hey</td>
-            <td>hey</td>
+          <tr className="company-tr">
+            <td className="company-td">hey</td>
+            <td className="company-td">ck</td>
+            <td className="company-td">hey</td>
+            <td className="company-td">hey</td>
+            <td className="company-td">hey</td>
+            <td className="company-td">hey</td>
           </tr>
         </table>
 

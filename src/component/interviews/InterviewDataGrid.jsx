@@ -33,6 +33,7 @@ const InterviewDataGrid = () => {
   const style3 = {
     marginTop: "15px",
     marginLeft: "70px",
+ 
   }
   const style4 = {
 
@@ -78,10 +79,10 @@ const InterviewDataGrid = () => {
                 }>{expand}</div></TableCell>
                 <TableCell style={style2}>2-1-20</TableCell>
                 <TableCell style={style2} align="center">web</TableCell>
-                <TableCell style={style2} align="center">Department</TableCell>
-                <TableCell style={style2} align="center">Manager</TableCell>
-                <TableCell style={style2} align="center">Candidate</TableCell>
-                <TableCell style={style2} align="center">Duration</TableCell>
+                <TableCell style={style2} align="center">Android</TableCell>
+                <TableCell style={style2} align="center">4k</TableCell>
+                <TableCell style={style2} align="center">4</TableCell>
+                <TableCell style={style2} align="center">2min</TableCell>
                 <TableCell style={style2} align="center">Action</TableCell>
               </TableRow>
 
@@ -140,7 +141,7 @@ const InterviewDataGrid = () => {
                     <TreeItem nodeId="3" label="Panel Member" style={style3} > <TreeItem nodeId="6" />
                       <TableHead>
                         <TableRow >
-                        <TableCell></TableCell>
+                          <TableCell></TableCell>
                           <TableCell id="panel-css">Panel Member</TableCell>
                           <TableCell id="panel-css"><h3 style={{ marginLeft: "400px", fontSize: "18px" }}>Email</h3></TableCell>
                           <TableCell id="panel-css" >Action</TableCell>
