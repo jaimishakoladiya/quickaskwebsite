@@ -1,86 +1,58 @@
-import React from "react";
-import "./navbar.css";
-import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
-import DehazeIcon from "@material-ui/icons/Dehaze";
-import img from "../../images/logo2.png";
+import React from 'react';
+import './navbar.css';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import DehazeIcon from '@material-ui/icons/Dehaze';
+import img from '../../images/logo2.png';
 
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 // import Home from '../../home/Home'
 
 function Navbar() {
-return (
-<>
-<header className="in-navbar">
-<div className="in-navbar-logo">
-<img src={img} className="in-navbar-logo" />
+  return (
+    <>
+      <div class="navbar">
+      <div className="navbar-logo">
+<img src={img} className="navbar-logo" />
 </div>
-<nav className="active">
-<ul>
-<li>
-<NavLink to="/" className="a">
-Home
-</NavLink>
-</li>
-<li className="in-sub-menu">
-<a href="#" className="a">
-Account
-<ArrowDropDownIcon
-style={{ fontSize: "32px", margin: "-10px 0px" }}
-/>
-</a>
-<ul>
-{/* <li><a href="#" className="a">Create Accout</a></li>
-<li><a href="#" className="a">Login</a></li> */}
-<li>
-<NavLink to="/registartion" className="a">
-Create Account
-</NavLink>
-</li>
+        <a href="#home" className="a">Blog</a>
 
-<li>
-<NavLink to="/login" className="a">
-Login
-</NavLink>
-</li>
-</ul>
-</li>
-<li className="sub-menu">
-<a href="#" className="a">
-Team
-<ArrowDropDownIcon
-style={{ fontSize: "32px", margin: "-10px 0px" }}
-/>
-</a>
-<ul>
-{/* <li><a href="#" className="a">About Us</a></li>
-<li><a href="#" className="a">About Us</a></li> */}
-<li>
-<NavLink to="/about" className="a">
-About Us
-</NavLink>
-</li>
+        <div class="dropdown">
+          <button class="dropbtn">
+            Team
+            
+            <ArrowDropDownIcon style={{ fontSize: "35px", margin: "-10px 0px" }}/>
+          </button>
+          <div class="dropdown-content">
+            <NavLink to="/about" className="a">
+              About Us
+            </NavLink>
+            <NavLink to="/contact" className="a">
+              Contact Us
+            </NavLink>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn">
+            Accounts
+            <ArrowDropDownIcon style={{ fontSize: "35px", margin: "-10px 0px" }}/>
+          </button>
+          <div class="dropdown-content">
+            <NavLink to="/registartion" className="a">
+              Create Account
+            </NavLink>
+            <NavLink to="/login" className="a">
+              Login
+            </NavLink>
+          </div>
+        </div>
+        <NavLink to="/" className="a">
+          Home
+        </NavLink>
+      </div>
 
-<li>
-<NavLink to="/contact" className="a">
-Contact Us
-</NavLink>
-</li>
-</ul>
-</li>
-<li>
-<a href="#" className="a">
-Blog
-</a>
-</li>
-</ul>
-</nav>
-<div className="icon">
-<DehazeIcon />
-</div>
-</header>
-
-</>
-);
+ 
+    </>
+  );
 }
 
 export default Navbar;
