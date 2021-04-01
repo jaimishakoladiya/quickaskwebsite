@@ -15,7 +15,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import TreeItem from '@material-ui/lab/TreeItem';
 import CreateInterview from './CreateInterview';
-const CandidateDetails = () => {
+const InterviewDataGrid = () => {
   const [openrow, setopen] = useState(false);
   const [expand, setexpand] = useState(<ArrowRightIcon style={{ color: "darkcyan", fontSize: "50px", cursor: "pointer" }} />);
 
@@ -66,37 +66,8 @@ const CandidateDetails = () => {
 
     <>
 
-      <div className="create-btn"><Button onClick={OpenBox} variant="contained" color="secondary" >
-        Create Interview
-        </Button></div><br></br>
-      {open == true ?
-        <CreateInterview />
-        : null}
-      <br></br>
-      <div className="detail-data">
-        <div className="detail-header1">
-          <h5>ALLCANDIDATES</h5>
-          <div className='detail-input'>Search
-             <TextField type="date" style={{ margin: '15px' }} id="outlined-basic" variant="outlined" />
-            <TextField id="outlined-basic" label="By Name or ID" variant="outlined" />
-          </div>
-        </div>
-        <div className="detail-header2">
-          <TableContainer >
-            <Table aria-label="customized table">
-              <TableHead style={style} >
-
-                <TableRow style={style}>
-                  <TableCell style={style}></TableCell>
-                  <TableCell style={style}>Date</TableCell>
-                  <TableCell style={style} align="center">Job Title</TableCell>
-                  <TableCell style={style} align="center">Department</TableCell>
-                  <TableCell style={style} align="center">Manager</TableCell>
-                  <TableCell style={style} align="center">Candidate</TableCell>
-                  <TableCell style={style} align="center">Duration</TableCell>
-                  <TableCell style={style} align="center">Action</TableCell>
-                </TableRow>
-              </TableHead>
+     
+           
 
 
               <TableRow style={style2}>
@@ -105,8 +76,8 @@ const CandidateDetails = () => {
                   expandrowfunc()
                 }
                 }>{expand}</div></TableCell>
-                <TableCell style={style2}>Date</TableCell>
-                <TableCell style={style2} align="center">Job Title</TableCell>
+                <TableCell style={style2}>2-1-20</TableCell>
+                <TableCell style={style2} align="center">web</TableCell>
                 <TableCell style={style2} align="center">Department</TableCell>
                 <TableCell style={style2} align="center">Manager</TableCell>
                 <TableCell style={style2} align="center">Candidate</TableCell>
@@ -128,7 +99,7 @@ const CandidateDetails = () => {
                           <TableCell ><h3 style={{ marginLeft: "500px", color: "darkcyan", fontSize: "18px" }}>Total Allowed</h3></TableCell>
                         </TableRow> </TableHead>
                       <TableCell id="name">1.kjk</TableCell>
-                      <TableCell id="question-box">   3mins<br />
+                      <TableCell id="question-box">3mins<br />
                       </TableCell>
                       <TableRow><TableCell id="name">2.kk</TableCell>
                         <TableCell id="question-box">0 min</TableCell>
@@ -169,14 +140,19 @@ const CandidateDetails = () => {
                     <TreeItem nodeId="3" label="Panel Member" style={style3} > <TreeItem nodeId="6" />
                       <TableHead>
                         <TableRow >
+                        <TableCell></TableCell>
                           <TableCell id="panel-css">Panel Member</TableCell>
                           <TableCell id="panel-css"><h3 style={{ marginLeft: "400px", fontSize: "18px" }}>Email</h3></TableCell>
                           <TableCell id="panel-css" >Action</TableCell>
+                          <TableCell></TableCell>
                         </TableRow>
                         <TableRow >
+                        <TableCell></TableCell>
                           <TableCell id="panel-inline-css">1.khjhj</TableCell>
+
                           <TableCell id="panel-inline-css">email@gmail.com</TableCell>
                           <TableCell id="panel-inline-css" >Action</TableCell>
+                          <TableCell></TableCell>
                         </TableRow>
                         <br />
                       </TableHead>
@@ -187,11 +163,10 @@ const CandidateDetails = () => {
                   <h1 style={{ marginBottom: "14px", lineHeight: "60px", marginLeft: "400px" }}>No Result found</h1>
                 </TableRow>
               </div></> : null}
-            </Table>
-          </TableContainer>
-        </div>
-      </div>
+           
+         
+     
     </>
   );
 }
-export default CandidateDetails;
+export default InterviewDataGrid;

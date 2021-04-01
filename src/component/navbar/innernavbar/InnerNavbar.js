@@ -7,13 +7,15 @@ import Interviews from '../../interviews/Interviews';
 import Login from './../../account/login/Login';
 import { useLocation } from 'react-router-dom';
 import Registration from './../../account/register/Registartion';
+import Forpass from './../../account/login/Forpass';
 
 const InnerNavbar = () => {
   const location = useLocation();
   return (
     <>
       {location.pathname === '/login' ||
-      location.pathname === '/registartion' ? null : (
+      location.pathname === '/registartion' ||
+      location.pathname === '/forgotpassword' ? null : (
         <Navbar2 />
       )}
       <br></br>
@@ -33,6 +35,7 @@ const InnerNavbar = () => {
         />
         <Route exact path="/interviews" component={Interviews} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/forgotpassword" component={Forpass} />
         <Route exact path="/registartion" component={Registration} />
       </Switch>
     </>

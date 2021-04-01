@@ -8,7 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import './Interviews.css';
-
+import InterviewDataGrid from '../interviews/InterviewDataGrid'
 
 import CreateInterview from './CreateInterview';
 
@@ -17,9 +17,10 @@ import CreateInterview from './CreateInterview';
 
 const CandidateDetails = () =>{
  
-  const style={
+  const headercss={
     fontSize : "17px",
-    fontWeight:"bold"
+    fontWeight:"bold",
+   
     
   }
    const [open ,SetOpen] = useState(false);
@@ -63,23 +64,26 @@ return(
        <div className="detail-header2">
        <TableContainer >
         <Table aria-label="customized table">
-        <TableHead style={style} >
-          <TableRow style={style}>
-              <TableCell style={style}>Date</TableCell>
-             <TableCell style={style} align="center">Job Title</TableCell>
-            <TableCell style={style} align="center">Department</TableCell>
-            <TableCell style={style} align="center">Manager</TableCell>
-            <TableCell style={style} align="center">Candidate</TableCell>
-            <TableCell style={style} align="center">Duration</TableCell>
-            <TableCell style={style} align="center">Action</TableCell>
+        <TableHead style={ headercss} >
+          <TableRow style={ headercss}>
+          <TableCell></TableCell>
+              <TableCell style={ headercss}>Date</TableCell>
+             <TableCell style={ headercss} align="center">Job Title</TableCell>
+            <TableCell style={ headercss} align="center">Department</TableCell>
+            <TableCell style={ headercss} align="center">Manager</TableCell>
+            <TableCell style={ headercss} align="center">Candidate</TableCell>
+            <TableCell style={ headercss} align="center">Duration</TableCell>
+            <TableCell style={ headercss} align="center">Action</TableCell>
           </TableRow>
           </TableHead>
+  <InterviewDataGrid/>
         </Table>
         </TableContainer>
        
        </div>
-       <h1 className="detail-found-data">No Data Found</h1>
+ 
      </div>
+     
      </>
     );
 }
