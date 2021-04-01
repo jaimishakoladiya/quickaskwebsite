@@ -7,8 +7,8 @@ function DisplayQuestions(props) {
   return (
     <div>
       {props.question.departmentque.map((arr, id)=>{
-        return
-        <>
+        return(
+        <><Grid container spacing={3}>
           <Grid item xs={6}>
             <h3>{arr.questions}</h3>
           </Grid>
@@ -23,16 +23,17 @@ function DisplayQuestions(props) {
                 aria-label="delete"
                 variant="contained"
                 id="delete_question"
-                onClick={props.deletequestion(id)}
+                onClick={()=>props.deletequestion(id)}
               >
                 <DeleteIcon />
               </IconButton>
             </h3>
           </Grid>
-        </>;
+          </Grid>
+        </>)
       })}
     </div>
-  );
+  ); 
 }
 
 export default DisplayQuestions;
