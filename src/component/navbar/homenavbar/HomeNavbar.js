@@ -1,10 +1,10 @@
 import React from "react";
 import { Route, Switch } from "react-router";
 import Navbar from "./Navbar";
-import "./navbar.css"
+
 import Registration from "../../account/register/Registartion";
 import Login from "../../account/login/Login";
-import forpass from "../../account/login/Forpass";
+import Forpass from "../../account/login/Forpass";
 import About from "../../team/about/About";
 import Contact from "../../team/contact/Contact";
 import Home from "../../home/Home";
@@ -22,6 +22,7 @@ function HomeNavbar() {
       location.pathname === "/forgotpassword" ||
       location.pathname ==="/innernavbar"? null : (
         <Navbar />
+        
       )}
 
       <Switch>
@@ -30,7 +31,7 @@ function HomeNavbar() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/about" component={About} />
         <Route exact path="/contact" component={Contact} />
-        <Route exact path="/forgotpassword" component={forpass} />
+        <Route exact path="/forgotpassword" component={Forpass} />
         <Route exact path="/innernavbar" render={()=>
           <BrowserRouter><InnerNavbar name={"innernavbar"}/></BrowserRouter>
         }/>

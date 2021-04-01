@@ -1,6 +1,6 @@
 /* home page csss */
 .home-all-start {
-  margin-top: 200px;
+  margin-top: 80px;
 }
 .home-start {
   margin-left: 150px;
@@ -17,7 +17,7 @@
   font-size: 25px;
   font-display: center;
   background-color: rgb(255, 86, 86);
-  font-family:"DIN";
+  font-family:'DIN';
 
   font-weight:500
 }
@@ -303,8 +303,8 @@ fifth componet css   */
   
   
 /*  home footer */
-/* 
-  text-decoration: uppercase;
+
+  /* text-decoration: uppercase;
   margin: 16px;
   font-size: 12px 0;
 } */

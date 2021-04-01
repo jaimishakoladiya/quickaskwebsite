@@ -7,17 +7,17 @@ const JobTitle = () => {
     <>
       <div className="JobTitle_card1">
         <h5 className="JobTitle_title-font">Job Title</h5>
-        <table>
-          <tr>
-            <th>Name</th>
-            <th>Depatment</th>
-            <th>Action</th>
+        <table className="company-table">
+          <tr className="company-tr">
+            <th className="company-th">Name</th>
+            <th className="company-th">Depatment</th>
+            <th className="company-th">Action</th>
           </tr>
 
-          <tr>
-            <td>kuku</td>
-            <td>bhaw</td>
-            <td>minu</td>
+          <tr className="company-tr">
+            <td className="company-td">kuku</td>
+            <td className="company-td">bhaw</td>
+            <td className="company-td">minu</td>
           </tr>
         </table>
         <br></br> <AddJob />

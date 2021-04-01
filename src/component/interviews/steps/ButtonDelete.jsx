@@ -74,8 +74,10 @@ const ButtonDelete = (props) => {
               </Button>
             </Dialog> */}
           </DialogActions>
-
-          <DialogContent />
+        
+        
+        
+         <DialogContent />
         </DialogContent>
       </Dialog>
     </React.Fragment>

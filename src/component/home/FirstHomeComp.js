@@ -16,7 +16,7 @@ function FirstHomeComp() {
           <br></br>
 
           <h4 style={{ fontStyle: "-moz-initial", fontSize: "25px" }}>
-            {" "}
+           
             so you don't have to worry about it
           </h4>
           <br></br>
@@ -25,7 +25,7 @@ function FirstHomeComp() {
           <div className="home-border"></div>
           <br></br>
 
-     <Button id="home-free-button" variant="contained" color="secondary"  >Try It Free</Button><br></br><br></br><br></br><br></br><br></br>
+     <Button id="home-free-button" variant="contained" color="secondary">try it free</Button><br></br><br></br><br></br><br></br><br></br>
     </div>
     </div>
         </>
