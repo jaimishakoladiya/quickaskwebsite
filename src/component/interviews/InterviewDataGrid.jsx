@@ -7,18 +7,16 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
-import './Interviews.css';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import './Interviews.css';
+
 import TreeView from '@material-ui/lab/TreeView';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+
 import TreeItem from '@material-ui/lab/TreeItem';
 import CreateInterview from './CreateInterview';
 const InterviewDataGrid = () => {
-  const [openrow, setopen] = useState(false);
-  const [expand, setexpand] = useState(<ArrowRightIcon style={{ color: "darkcyan", fontSize: "50px", cursor: "pointer" }} />);
-
+ 
   const style = {
     fontSize: "17px",
     fontWeight: "bold",
@@ -35,34 +33,8 @@ const InterviewDataGrid = () => {
     marginLeft: "70px",
  
   }
-  const style4 = {
-
-  }
-  const [open, SetOpen] = useState(false);
-  const OpenBox = () => {
-    if (open == false) {
-      SetOpen(true);
-    }
-    else {
-      SetOpen(false);
-    }
-  }
-
-  const expandrowfunc = () => {
-    // setopen(true);
-
-    if (openrow == false) {
-      setopen(true);
-    }
-    else {
-      setopen(false)
-      setexpand(<ArrowRightIcon style={{ color: "darkcyan", fontSize: "50px", cursor: "pointer" }} />)
-    }
-
-  }
-  const changeicon = () => {
-    setexpand(<ArrowDropDownIcon style={{ color: "darkcyan", fontSize: "50px", cursor: "pointer" }} />)
-  }
+ 
+  
   return (
 
     <>
@@ -70,30 +42,15 @@ const InterviewDataGrid = () => {
      
            
 
-
-              <TableRow style={style2}>
-                <TableCell style={style}><div onClick={() => {
-                  changeicon()
-                  expandrowfunc()
-                }
-                }>{expand}</div></TableCell>
-                <TableCell style={style2}>2-1-20</TableCell>
-                <TableCell style={style2} align="center">web</TableCell>
-                <TableCell style={style2} align="center">Android</TableCell>
-                <TableCell style={style2} align="center">4k</TableCell>
-                <TableCell style={style2} align="center">4</TableCell>
-                <TableCell style={style2} align="center">2min</TableCell>
-                <TableCell style={style2} align="center">Action</TableCell>
-              </TableRow>
-
-              {openrow ? <> <div className="openbox">
+              
+            
                 <TableRow style={style}>
                   <TreeView
 
                     defaultCollapseIcon={<ArrowDropDownIcon style={{ fontSize: "29px", color: "darkcyan" }} />}
                     defaultExpandIcon={<ArrowRightIcon style={{ fontSize: "29px", color: "darkcyan" }} />}>
                     {/* Question List */}
-                    <TreeItem nodeId="1" label="Questions List" style={style3}> <TreeItem nodeId="4" style={style4} />
+                    <TreeItem nodeId="1" label="Questions List" style={style3}> <TreeItem nodeId="4" />
                       <TableHead>
                         <TableRow>
                           <TableCell align="left"><h3 style={{ color: "darkcyan", marginLeft: "19px", fontSize: "18px" }}>Questions</h3></TableCell>
@@ -163,7 +120,11 @@ const InterviewDataGrid = () => {
                   </TreeView>
                   <h1 style={{ marginBottom: "14px", lineHeight: "60px", marginLeft: "400px" }}>No Result found</h1>
                 </TableRow>
-              </div></> : null}
+               
+             
+              
+            
+              
            
          
      
