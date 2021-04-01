@@ -34,6 +34,7 @@ function AddDepartment(props) {
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
   const [newquestion, setnewquestion] = useState([]);
+  const [id,setId]=useState();
   const initialValues = {
     department: "",
     costcenter: "",
@@ -69,7 +70,7 @@ function AddDepartment(props) {
     console.log(newquestion);
   };
 
-  const deletequestion=(id)=>{
+  const deletequestion=()=>{
     console.log("delete")
    return setnewquestion((oldval)=>{
      return oldval.filter((arr,index)=>{
@@ -175,7 +176,10 @@ function AddDepartment(props) {
                                 <Grid item xs={2}>
                                   <h3>
                                    <IconButton  aria-label="delete" variant="contained" id="delete_question"
-                                   onClick={deletequestion}><DeleteIcon /></IconButton>
+                                   onClick={()=>{
+                                     setId(index);
+                                     deletequestion()
+                                   }}><DeleteIcon /></IconButton>
                                   </h3>
                                 </Grid>
                               </>
