@@ -16,8 +16,9 @@ import AlertBox from "../../alert/AlertBox";
 import QuestionsCard from "./QuestionsCard";
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { adddepartmentque } from "../../../redux/actions/companyprofile/companprofileAction";
+import { adddepartmentque, deletedepartmentque } from "../../../redux/actions/companyprofile/companprofileAction";
 import { connect } from "react-redux"
+import DisplayQuestions from "../DisplayQuestions";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -62,22 +63,7 @@ function AddDepartment(props) {
     );
   };
 
-  const addquestions = (question) => {
-    console.log(question);
-    setnewquestion((oldval) => {
-      return [...oldval, question];
-    });
-    console.log(newquestion);
-  };
-
-  const deletequestion=()=>{
-    console.log("delete")
-   return setnewquestion((oldval)=>{
-     return oldval.filter((arr,index)=>{
-       return index !== id;
-     })
-   })
-  }
+  
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -162,7 +148,7 @@ function AddDepartment(props) {
                           <h3>Time Allocated</h3>
                         </Grid>
                         {/* <Grid container spacing={3}> */}
-                          {newquestion.map((value, index) => {
+                          {/* {newquestion.map((value, index) => {
                             return (
                               <>
                                 <Grid item xs={6}>
@@ -184,8 +170,9 @@ function AddDepartment(props) {
                                 </Grid>
                               </>
                             );
-                          })}
+                          })} */}
                         </Grid>
+                        <DisplayQuestions question={props.departmentque} deletequestion={props.deletedepartmentque}/>
                       {/* </Grid> */}
                       <br />
                       {formik.touched.department && formik.errors.department
@@ -233,7 +220,9 @@ const mapStateToProps = state=>{
 
 const mapDispatchToProps = dispatch=>{
   return{
-    adddepartmentque:(newquestion)=>{dispatch(adddepartmentque(newquestion))}
+    adddepartmentque:(newquestion)=>{dispatch(adddepartmentque(newquestion))},
+    deletedepartmentque:(id)=>{dispatch(deletedepartmentque(id))}
+    
   }
 }
 
