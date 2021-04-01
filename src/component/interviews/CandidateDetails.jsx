@@ -20,6 +20,7 @@ const CandidateDetails = () =>{
   const headercss={
     fontSize : "17px",
     fontWeight:"bold",
+  
    
     
   }
@@ -64,17 +65,19 @@ return(
        <div className="detail-header2">
        <TableContainer >
         <Table aria-label="customized table">
-        <TableHead style={ headercss} >
-          <TableRow style={ headercss}>
-              <TableCell style={ headercss}>Date</TableCell>
-             <TableCell style={ headercss} align="center">Job Title</TableCell>
-            <TableCell style={ headercss} align="center">Department</TableCell>
-            <TableCell style={ headercss} align="center">Manager</TableCell>
-            <TableCell style={ headercss} align="center">Candidate</TableCell>
-            <TableCell style={ headercss} align="center">Duration</TableCell>
-            <TableCell style={ headercss} align="center">Action</TableCell>
-          </TableRow>
+        <TableHead style={headercss} >
+        
+            <TableCell></TableCell>
+              <TableCell style={headercss}>Date</TableCell>
+             <TableCell style={headercss} align="center">Job Title</TableCell>
+            <TableCell style={headercss} align="center">Department</TableCell>
+            <TableCell style={headercss} align="center">Manager</TableCell>
+            <TableCell style={headercss} align="center">Candidate</TableCell>
+            <TableCell style={headercss} align="center">Duration</TableCell>
+            <TableCell style={headercss} align="center">Action</TableCell>
+     
           </TableHead>
+  <InterviewDataGrid/>
   <InterviewDataGrid/>
         </Table>
         </TableContainer>
