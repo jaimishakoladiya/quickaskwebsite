@@ -11,8 +11,8 @@
 // import Registration from './component/account/register/Registartion'
 //import CompanyProfilePage from "./component/companyprofile/CompanyProfilePage";
 //import Navbar2 from './component/navbar/outernavbar/Navbar2'
-//  import { BrowserRouter } from 'react-router-dom';
-//  import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
+  import { BrowserRouter } from 'react-router-dom';
+  import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 //import Login from './component/account/login/Login';
 //import Forpass from './component/account/login/Forpass';
  //import { BrowserRouter } from 'react-router-dom';
@@ -20,19 +20,18 @@
 // import { BrowserRouter } from 'react-router-dom';
  //import InnerNavbar from './component/navbar/innernavbar/InnerNavbar'
 // import Navbar from './component/navbar/homenavbar/Navbar'
-//import CompanyProfilePage from './component/companyprofile/CompanyProfilePage'
+//import CompanyProfilePage from "./component/companyprofile/CompanyProfilePage";
 //import Navbar2 from './component/navbar/outernavbar/Navbar2'
-import Interviews from "./component/interviews/Interviews";
-
+// import Interviews from "./component/interviews/Interviews";
 //import Contact from './component/team/contact/Contact';
 //import InterviewDataGrid from './component/interviews/InterviewDataGrid';
 //import HomeNavbar from './component/navbar/homenavbar/HomeNavbar';
-
+import { Provider } from "react-redux";
+import store from "./redux/Store";
 function App() {
   return (
     <>
-    {/* <InterviewDataGrid/> */}
-      {/* <CompanyProfilePage /> */}
+      {/* <InterviewDataGrid/> */}
       {/* <Home/>  */}
       {/* <BrowserRouter>
         <InnerNavbar/>
@@ -42,19 +41,25 @@ function App() {
       {/* <Registration/> */}
       {/* <Login/> */}
       {/* <Navbar/> */}
-      {/* <BrowserRouter>
+      <Provider store={store}>
+      <BrowserRouter>
+   
       <HomeNavbar/> 
-      </BrowserRouter> */}
-      {/* <InterviewDataGrid/> */}
+     
+      </BrowserRouter>
+      </Provider>
       {/* <Login/> */}
       {/* <Navbar2/> */}
-      <Interviews />
+      {/* <Interviews /> */}
       {/* <Home/> */}
       {/* <Login/> */}
       {/* <Navbar/> */}
       {/* <Contact/> */}
       {/* <About/> */}
       {/* <QuestionsCard/> */}
+      {/* <Provider store={store}>
+          <CompanyProfilePage />
+     </Provider> */}
     </>
   );
 }

@@ -16,6 +16,9 @@ import AlertBox from "../../alert/AlertBox";
 import QuestionsCard from "./QuestionsCard";
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { adddepartmentque, deletedepartmentque } from "../../../redux/actions/companyprofile/companprofileAction";
+import { connect } from "react-redux"
+import DisplayQuestions from "../DisplayQuestions";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -27,11 +30,12 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: "#eef5f6",
   },
 }));
-export default function AddDepartment() {
+function AddDepartment(props) {
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
   const [newquestion, setnewquestion] = useState([]);
+  const [id,setId]=useState();
   const initialValues = {
     department: "",
     costcenter: "",
@@ -59,22 +63,7 @@ export default function AddDepartment() {
     );
   };
 
-  const addquestions = (question) => {
-    console.log(question);
-    setnewquestion((oldval) => {
-      return [...oldval, question];
-    });
-    console.log(newquestion);
-  };
-
-  const deletequestion=(id)=>{
-    console.log("delete")
-   return setnewquestion((oldval)=>{
-     return oldval.filter((arr,index)=>{
-       return index !== id;
-     })
-   })
-  }
+  
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -159,7 +148,7 @@ export default function AddDepartment() {
                           <h3>Time Allocated</h3>
                         </Grid>
                         {/* <Grid container spacing={3}> */}
-                          {newquestion.map((value, index) => {
+                          {/* {newquestion.map((value, index) => {
                             return (
                               <>
                                 <Grid item xs={6}>
@@ -173,13 +162,17 @@ export default function AddDepartment() {
                                 <Grid item xs={2}>
                                   <h3>
                                    <IconButton  aria-label="delete" variant="contained" id="delete_question"
-                                   onClick={deletequestion}><DeleteIcon /></IconButton>
+                                   onClick={()=>{
+                                     setId(index);
+                                     deletequestion()
+                                   }}><DeleteIcon /></IconButton>
                                   </h3>
                                 </Grid>
                               </>
                             );
-                          })}
+                          })} */}
                         </Grid>
+                        <DisplayQuestions question={props.departmentque} deletequestion={props.deletedepartmentque}/>
                       {/* </Grid> */}
                       <br />
                       {formik.touched.department && formik.errors.department
@@ -208,7 +201,7 @@ export default function AddDepartment() {
                         Save
                       </Button>
                     </Form>
-                    <QuestionsCard addquestions={addquestions} />
+                    <QuestionsCard addquestion={props.adddepartmentque} question={props.departmentque} />
                   </>
                 );
               }}
@@ -219,3 +212,18 @@ export default function AddDepartment() {
     </div>
   );
 }
+const mapStateToProps = state=>{
+  return{
+    departmentque:state.companyprofile
+  }
+}
+
+const mapDispatchToProps = dispatch=>{
+  return{
+    adddepartmentque:(newquestion)=>{dispatch(adddepartmentque(newquestion))},
+    deletedepartmentque:(id)=>{dispatch(deletedepartmentque(id))}
+    
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(AddDepartment);

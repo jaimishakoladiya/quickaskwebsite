@@ -28,7 +28,7 @@ const Step2 = () => {
               <TextField
                 variant="filled"
                 id="outlined-basic"
-                placeholder="Manager Name"
+                placeholder="FirstName"
               />
             </Grid>
             <Grid item xs={4} sm={4} xl={4} md={4} className="d-flex">
@@ -36,7 +36,7 @@ const Step2 = () => {
               <TextField
                 variant="filled"
                 id="outlined-basic"
-                placeholder="Manager Name"
+                placeholder="LastName"
               />
             </Grid>
             <Grid item xs={4} sm={4} xl={4} md={4} className="d-flex">
