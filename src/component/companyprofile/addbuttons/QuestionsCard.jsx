@@ -13,10 +13,11 @@ import AlertBox from "../../alert/AlertBox";
 function QuestionsCard(props) {
   const [openalert, setopenalert] = useState(false);
   const [newquestion, setnewquestion] = useState({
-    questions: "",
+    questions: '',
     minutes: "0" + 3,
-    seconds: "0" + 0,
-  });
+    seconds: "0" + 0
+  })
+
 
   const inputchange = (event) => {
     const { name, value } = event.target;
@@ -59,10 +60,10 @@ function QuestionsCard(props) {
     props.addquestion(newquestion);
     console.log(props.question);
     setnewquestion({
-      questions: "",
+      questions: '',
       minutes: "0" + 3,
-      seconds: "0" + 0,
-    });
+      seconds: "0" + 0
+    })
     onSubmitProps.resetForm();
   };
 
@@ -110,10 +111,9 @@ const erroralert = (error) => {
                       <InputLabel htmlFor="demo-customized-select-native">
                         min
                       </InputLabel>
-                      <Field
-                        as={NativeSelect}
+                      <Field as={NativeSelect}
                         value={newquestion.minutes}
-                        name="minutes"
+                        name='minutes'
                         onChange={inputchange}
                       >
                         <option value=""></option>
@@ -124,10 +124,9 @@ const erroralert = (error) => {
                       <InputLabel htmlFor="demo-customized-select-native">
                         sec
                       </InputLabel>
-                      <Field
-                        as={NativeSelect}
+                      <Field as={NativeSelect}
                         value={newquestion.seconds}
-                        name="seconds"
+                        name='seconds'
                         onChange={inputchange}
                       >
                         <option value=""></option>
