@@ -2,6 +2,7 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import AddDepartment from "./addbuttons/AddDepartment";
 import { connect } from "react-redux";
+import EditDepartment from "./editbuttons/EditDepartment";
 
 const Department = (props) => {
   return (
@@ -22,7 +23,7 @@ const Department = (props) => {
               <tr className="company-tr">
             <td className="company-td">{item.department}</td>
             <td className="company-td">{item.costcenter}</td>
-            <td className="company-td">minu</td>
+            <td className="company-td"><EditDepartment/></td>
           </tr>
               </>
             )
