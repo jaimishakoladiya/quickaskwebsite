@@ -9,14 +9,14 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import "../Company.css";
 import AlertBox from "../../alert/AlertBox";
-import { ChildCare } from "@material-ui/icons";
+
 
 function QuestionsCard(props) {
   const [openalert, setopenalert] = useState(false);
   const [newquestion, setnewquestion] = useState({
     questions: '',
-    minutes: "0"+3,
-    seconds: "0"+0
+    minutes: "0" + 3,
+    seconds: "0" + 0
   })
 
 
@@ -30,14 +30,14 @@ function QuestionsCard(props) {
     });
     console.log(newquestion);
   };
-  
+
   const SelectItem = () => {
     let items = [];
     for (let i = 0; i <= 60; i++) {
       if (i <= 9) {
         items.push(
-          <option key={i} value={"0"+i}>
-            {"0"+i}
+          <option key={i} value={"0" + i}>
+            {"0" + i}
           </option>
         );
       } else {
@@ -62,8 +62,8 @@ function QuestionsCard(props) {
     console.log(props.question)
     setnewquestion({
       questions: '',
-      minutes: "0"+3,
-      seconds: "0"+0
+      minutes: "0" + 3,
+      seconds: "0" + 0
     })
     onSubmitProps.resetForm();
   };
@@ -115,11 +115,11 @@ function QuestionsCard(props) {
                         min
                       </InputLabel>
                       <Field as={NativeSelect}
-                       value={newquestion.minutes}
-                       name='minutes'
-                       onChange={inputchange}
+                        value={newquestion.minutes}
+                        name='minutes'
+                        onChange={inputchange}
                       >
-                      <option value=""></option>
+                        <option value=""></option>
                         {SelectItem()}
                       </Field>
                     </FormControl>
@@ -128,11 +128,11 @@ function QuestionsCard(props) {
                         sec
                       </InputLabel>
                       <Field as={NativeSelect}
-                       value={newquestion.seconds}
-                       name='seconds'
-                       onChange={inputchange}
+                        value={newquestion.seconds}
+                        name='seconds'
+                        onChange={inputchange}
                       >
-                      <option value=""></option>
+                        <option value=""></option>
                         {SelectItem()}
                       </Field>
                     </FormControl>

@@ -20,7 +20,7 @@
 // import { BrowserRouter } from 'react-router-dom';
  //import InnerNavbar from './component/navbar/innernavbar/InnerNavbar'
 // import Navbar from './component/navbar/homenavbar/Navbar'
-//import CompanyProfilePage from "./component/companyprofile/CompanyProfilePage";
+import CompanyProfilePage from "./component/companyprofile/CompanyProfilePage";
 //import Navbar2 from './component/navbar/outernavbar/Navbar2'
 // import Interviews from "./component/interviews/Interviews";
 //import Contact from './component/team/contact/Contact';
@@ -41,13 +41,13 @@ function App() {
       {/* <Registration/> */}
       {/* <Login/> */}
       {/* <Navbar/> */}
-      <Provider store={store}>
+      {/* <Provider store={store}>
       <BrowserRouter>
    
       <HomeNavbar/> 
      
       </BrowserRouter>
-      </Provider>
+      </Provider> */}
       {/* <Login/> */}
       {/* <Navbar2/> */}
       {/* <Interviews /> */}
@@ -57,9 +57,10 @@ function App() {
       {/* <Contact/> */}
       {/* <About/> */}
       {/* <QuestionsCard/> */}
-      {/* <Provider store={store}>
+      <Provider store={store}>
           <CompanyProfilePage />
-     </Provider> */}
+          
+     </Provider>
     </>
   );
 }
