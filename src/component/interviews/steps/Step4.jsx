@@ -8,6 +8,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import QuestionsCard from "../../companyprofile/addbuttons/QuestionsCard";
 
 const Step4 = () => {
   const Selectitem = () => {
@@ -33,7 +34,7 @@ const Step4 = () => {
   return (
     <>
       <div className="step4">
-        <TextField
+        {/* <TextField
           style={{ width: "550px" }}
           id="standard-basic"
           placeholder="New Quetions"
@@ -56,8 +57,9 @@ const Step4 = () => {
           <br></br>
           <Button variant="contained" color="secondary">
             ADD
-          </Button>
-        </div>
+          </Button> */}
+          <QuestionsCard/>
+        
         <br></br>
         <div>
           <TableContainer>

@@ -4,6 +4,21 @@
   box-sizing: border-box;
 
 }
+.detail-data {
+  position: absolute;
+  margin: 15px auto;
+  margin-bottom: 100px;
+  margin-left: 450px;
+  margin-top: 30px;
+  justify-content: center;
+  padding: 15px 5px 10px 15px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
+  background-color: whitesmoke;
+  width: 1000px;
+  height: auto;
+  border-radius: 1px;
+  box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
+}
 .detail-header1 {
   height: 70px;
   width: 1000px;
@@ -28,6 +43,7 @@
   justify-content: right;
   align-items: center;
   display: flex;
+
 }
 
 .detail-header2 {
@@ -86,7 +102,7 @@
 }
 
 #create-btn {
-  margin-top: 180px;
+  margin-top: 110px;
   margin-bottom: -20px;
   margin-left: 370px;
   font-weight: bold;
@@ -180,6 +196,7 @@
 #Step4_heading {
   border: 1px solid black;
   border-radius: 4px;
+  background-color: white;
 }
 #btn_color {
   background-color: darkcyan;
@@ -247,6 +264,7 @@
   background:#eef5f6;
   font-size: 15px;
 
+
  
 }
 .grid-src .line{
@@ -307,3 +325,92 @@
 /* .arrowchange-down::before {
   transform: rotate(90deg);
 } */
+
+/* //new demo css */
+.demo{
+height:auto;
+width: auto;
+
+}
+
+/* VIEWRECORDCSSS */
+
+.view-data {
+  position: absolute;
+  margin: 15px auto;
+  margin-bottom: 100px;
+  margin-left: 300px;
+  margin-top: 130px;
+  justify-content: center;
+  padding: 15px 5px 10px 15px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
+  background-color: whitesmoke;
+  width: 1000px;
+  height: auto;
+  border-radius: 1px;
+  box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
+}
+.view-header1 {
+  
+  height: 80px;
+  width: 1400px;
+  margin: -17px;
+  color: rgb(8, 8, 8);
+  text-align: left;
+  font-weight: bold;
+  overflow: hidden;
+  background-color: darkcyan;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  border-radius: 3px;
+  font-size: 20px;
+}
+.view-header1 h5 {
+  margin-left: 20px;
+  font-size: 25pt;
+}
+.view-header2 {
+  height: 57px;
+  width: 1399px;
+  margin: -17px;
+  margin-left: 299px;
+  margin-top: 205px;
+  color: rgb(8, 8, 8);
+  background-color: rgb(245, 202, 92);
+}
+.view-header3 {
+  height: 230px;
+  width: 1399px;
+ 
+  margin-left: 299px;
+  margin-top: 16px;
+  color: rgb(102, 94, 94);
+ 
+}
+.view-pic {
+  height: 150px;
+  width: 1399px;
+ 
+  margin-left: 299px;
+  margin-top: 20px;
+  color: rgb(102, 94, 94);
+  background-color:#dee2e6;
+}
+#view-header4 {
+  height: 95px;
+  width: 1399px;
+  margin: -17px;
+  margin-left: 0px;
+  margin-top: -210px;
+ 
+  
+}
+.main_view{
+  margin-top: -37px;
+}
+#view-header4:nth-child(odd){
+  background:#f5f5f5;}
+
+  #view-header4:nth-child(even){
+  background:#dee2e6;}
