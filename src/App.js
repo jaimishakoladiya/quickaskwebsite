@@ -20,7 +20,7 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 // import Navbar from './component/navbar/homenavbar/Navbar'
 // import CompanyProfilePage from "./component/companyprofile/CompanyProfilePage";
 //import Navbar2 from './component/navbar/outernavbar/Navbar2'
- import Interviews from "./component/interviews/Interviews";
+ //import Interviews from "./component/interviews/Interviews";
 //import Contact from './component/team/contact/Contact';
 //import InterviewDataGrid from './component/interviews/InterviewDataGrid';
 //import HomeNavbar from './component/navbar/homenavbar/HomeNavbar';
@@ -55,8 +55,8 @@ function App() {
       {/* <About/> */}
       {/* <QuestionsCard/> */}
       <Provider store={store}>
-        {/* <CompanyProfilePage /> */}
-           <Interviews />
+        <CompanyProfilePage />
+           {/* <Interviews /> */}
       </Provider>
     </>
   );
