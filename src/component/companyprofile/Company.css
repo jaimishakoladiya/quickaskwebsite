@@ -292,3 +292,6 @@ bottom: 0;
 
 color:#dc3545;
 }
+#delete_question:hover{
+  background-color: lightcyan;
+}

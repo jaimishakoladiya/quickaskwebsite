@@ -190,12 +190,14 @@
   background-color: rgb(234, 234, 240);
 }
 #Step4_table {
-  font-size: 15px;
+  font-size: 17px;
   font-weight: bold;
+  color:darkcyan;
 }
 #Step4_heading {
   border: 1px solid black;
   border-radius: 4px;
+  font-size: 30px;
   background-color: white;
 }
 #btn_color {
