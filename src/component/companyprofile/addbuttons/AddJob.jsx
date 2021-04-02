@@ -16,7 +16,7 @@ import AlertBox from "../../alert/AlertBox";
 import QuestionsCard from "./QuestionsCard";
 import { connect } from "react-redux"
 import DisplayQuestions from "../DisplayQuestions";
-import { addjobquestion, deletejobquestion } from "../../../redux/actions/companyprofile/companprofileAction"
+import { addjobdata, addjobquestion, deletejobquestion } from "../../../redux/actions/companyprofile/companprofileAction"
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -34,18 +34,19 @@ function AddJob(props) {
   const [openalert, setopenalert] = useState(true);
 
   const initialValues = {
+    jobtitle: "",
     department: "",
-    costcenter: "",
   };
 
   const onSubmit = (values) => {
-    console.log(values);
+    // console.log(values)
+   props.addjobdata(values)
     setOpen(false);
   };
 
   const validationSchema = yup.object({
+    jobtitle: yup.string().required("All fields are required"),
     department: yup.string().required("All fields are required"),
-    costcenter: yup.string().required("All fields are required"),
   });
   const closealert = () => {
     setopenalert(false);
@@ -120,20 +121,20 @@ function AddJob(props) {
                         <Grid item xs={6}>
                           <Field
                             as={TextField}
-                            name="department"
+                            name="jobtitle"
                             className="dialog_input"
                             placeholder="Job title"
-                            id="department"
+                            id="jobtitle"
                             variant="standard"
                           />
                         </Grid>
                         <Grid item xs={6}>
                           <Field
                             as={TextField}
-                            name="costcenter"
+                            name="department"
                             className="dialog_input"
                             placeholder="Department"
-                            id="costcenter"
+                            id="department"
                             variant="standard"
                           />
                         </Grid>
@@ -144,12 +145,12 @@ function AddJob(props) {
                           <h3>Time Allocated</h3>
                         </Grid>
                       </Grid>
-                      <DisplayQuestions question={props.jobque.jobquestion} deletequestion={props.deletejobquestion} />
+                      <DisplayQuestions question={props.data.jobquestion} deletequestion={props.deletejobquestion} />
                       <br />
-                      {formik.touched.department && formik.errors.department
-                        ? erroralert(formik.errors.department)
-                        : formik.touched.costcenter && formik.errors.costcenter
-                          ? erroralert(formik.errors.costcenter)
+                      {formik.touched.jobtitle && formik.errors.jobtitle
+                        ? erroralert(formik.errors.jobtitle)
+                        : formik.touched.department && formik.errors.department
+                          ? erroralert(formik.errors.department)
                           : null}
 
                       <Button
@@ -172,7 +173,7 @@ function AddJob(props) {
                         Save
                       </Button>
                     </Form>
-                    <QuestionsCard question={props.jobque} addquestion={props.addjobquestion} />
+                    <QuestionsCard question={props.data} addquestion={props.addjobquestion} />
                   </>
                 );
               }}
@@ -185,14 +186,15 @@ function AddJob(props) {
 }
 const mapStateToProps = state => {
   return {
-    jobque: state.companyprofile
+    data: state.companyprofile
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     addjobquestion: (newquestion) => { dispatch(addjobquestion(newquestion)) },
-    deletejobquestion: (id) => { dispatch(deletejobquestion(id)) }
+    deletejobquestion: (id) => { dispatch(deletejobquestion(id)) },
+    addjobdata:(data) =>{dispatch(addjobdata(data))}
   }
 }
 
