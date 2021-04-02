@@ -50,7 +50,7 @@ function App() {
       </Provider> */}
       {/* <Login/> */}
       {/* <Navbar2/> */}
-      <Interviews />
+      {/* <Interviews /> */}
       {/* <Home/> */}
       {/* <Login/> */}
       {/* <Navbar/> */}

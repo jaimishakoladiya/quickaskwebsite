@@ -14,7 +14,7 @@ import "../Company.css";
 import { makeStyles } from "@material-ui/core";
 import AlertBox from "../../alert/AlertBox";
 import QuestionsCard from "./QuestionsCard";
-import { adddeptquestion,deletedeptquestion} from "../../../redux/actions/companyprofile/companprofileAction";
+import { adddeptdata, adddeptquestion,deletedeptquestion} from "../../../redux/actions/companyprofile/companprofileAction";
 import { connect } from "react-redux"
 import DisplayQuestions from "../DisplayQuestions";
 
@@ -32,8 +32,6 @@ function AddDepartment(props) {
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
-  const [newquestion, setnewquestion] = useState([]);
-  const [id, setId] = useState();
   const initialValues = {
     department: "",
     costcenter: "",
@@ -41,6 +39,8 @@ function AddDepartment(props) {
 
   const onSubmit = (values) => {
     // console.log(values);
+    props.adddeptdata(values)
+    // console.log(props.data.deptdata)
     setOpen(false);
   };
 
@@ -148,7 +148,7 @@ function AddDepartment(props) {
 
                       </Grid>
                     
-                      <DisplayQuestions question={props.question.deptquestion} deletequestion={props.deletedeptquestion}/>
+                      <DisplayQuestions question={props.data.deptquestion} deletequestion={props.deletedeptquestion}/>
                       {/* </Grid> */}
                       <br />
                       {formik.touched.department && formik.errors.department
@@ -178,7 +178,7 @@ function AddDepartment(props) {
                       </Button>
                     </Form>
                     {/* <QuestionsCard addquestions={addquestions} /> */}
-                    <QuestionsCard question={props.question.deptquestion} addquestion={props.adddeptquestion} />
+                    <QuestionsCard question={props.data.deptquestion} addquestion={props.adddeptquestion} />
                   </>
                 );
               }}
@@ -191,14 +191,16 @@ function AddDepartment(props) {
 }
 const mapStateToProps = state => {
   return {
-    question: state.companyprofile
+    data: state.companyprofile
+
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     adddeptquestion: (newquestion) => { dispatch(adddeptquestion(newquestion)) },
-    deletedeptquestion: (id) => { dispatch(deletedeptquestion(id)) }
+    deletedeptquestion: (id) => { dispatch(deletedeptquestion(id)) },
+    adddeptdata:(data)=>{dispatch(adddeptdata(data))}
   }
 }
 

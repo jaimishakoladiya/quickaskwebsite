@@ -1,12 +1,13 @@
 import {
     ADD_DEPT_QUESTIONS, DELETE_DEPT_QUESTIONS, ADD_JOB_QUESTIONS, DELETE_JOB_QUESTIONS
-    , ADD_MANAGER_QUESTIONS, DELETE_MANAGER_QUESTIONS
+    , ADD_MANAGER_QUESTIONS, DELETE_MANAGER_QUESTIONS, ADD_DEPT_DATA
 } from "../../types/companyprofile/companyprofileTypes";
 
 const intitialstate = {
     deptquestion: [],
     jobquestion: [],
-    managerquestion: []
+    managerquestion: [],
+    deptdata:[]
 }
 
 const companyprofileReducer = (state = intitialstate, action) => {
@@ -49,7 +50,12 @@ const companyprofileReducer = (state = intitialstate, action) => {
                 ...state,
                 managerquestion: state.managerquestion.filter((item, id) => id !== action.payload)
             }
-
+        
+        case ADD_DEPT_DATA:
+            return{
+                ...state,
+                deptdata:[...state.deptdata,action.payload]
+            }
         default:
             return {
                 ...state
