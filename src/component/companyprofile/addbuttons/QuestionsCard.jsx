@@ -10,7 +10,6 @@ import TextField from "@material-ui/core/TextField";
 import "../Company.css";
 import AlertBox from "../../alert/AlertBox";
 
-
 function QuestionsCard(props) {
   const [openalert, setopenalert] = useState(false);
   const [newquestion, setnewquestion] = useState({
@@ -52,14 +51,14 @@ function QuestionsCard(props) {
   };
   const initialValues = {
     questions: "",
-    minutes: '',
-    seconds: ''
+    minutes: "",
+    seconds: "",
   };
 
   const onSubmit = (values, onSubmitProps) => {
     console.log(values);
     props.addquestion(newquestion);
-    console.log(props.question)
+    console.log(props.question);
     setnewquestion({
       questions: '',
       minutes: "0" + 3,
@@ -70,14 +69,12 @@ function QuestionsCard(props) {
 
   const validationSchema = yup.object({
     questions: yup.string().required("Enter Default Question"),
-    // minutes:yup.string().required('All fields are required'),
-    // seconds:yup.string().required('All fields are required')
-  });
+ });
 
-  const closealert = () => {
+const closealert = () => {
     setopenalert(false);
-  };
-  const erroralert = (error) => {
+};
+const erroralert = (error) => {
     return (
       <AlertBox
         setopenalert={openalert}
@@ -85,7 +82,7 @@ function QuestionsCard(props) {
         error={error}
       />
     );
-  };
+};
   return (
     <div>
       <Formik
@@ -94,7 +91,7 @@ function QuestionsCard(props) {
         validationSchema={validationSchema}
       >
         {(formik) => {
-          console.log(formik)
+          console.log(formik);
           return (
             <>
               <Grid item xs={12}>
@@ -161,10 +158,3 @@ function QuestionsCard(props) {
 }
 
 export default QuestionsCard;
-
-
-
-
-
-
-

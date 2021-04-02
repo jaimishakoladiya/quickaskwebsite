@@ -42,11 +42,4 @@ export const deletemanagerquestion = (id) => {
         type: DELETE_MANAGER_QUESTIONS,
         payload: id
     }
-}
-
-export const adddeptdata=(data)=>{
-    return{
-        type:ADD_DEPT_DATA,
-        payload:data
-    }
-}
+} 
