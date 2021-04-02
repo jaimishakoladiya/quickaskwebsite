@@ -9,16 +9,14 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import "../Company.css";
 import AlertBox from "../../alert/AlertBox";
-import { ChildCare } from "@material-ui/icons";
 
 function QuestionsCard(props) {
   const [openalert, setopenalert] = useState(false);
   const [newquestion, setnewquestion] = useState({
-    questions: '',
-    minutes: "0"+3,
-    seconds: "0"+0
-  })
-
+    questions: "",
+    minutes: "0" + 3,
+    seconds: "0" + 0,
+  });
 
   const inputchange = (event) => {
     const { name, value } = event.target;
@@ -30,14 +28,14 @@ function QuestionsCard(props) {
     });
     console.log(newquestion);
   };
-  
+
   const SelectItem = () => {
     let items = [];
     for (let i = 0; i <= 60; i++) {
       if (i <= 9) {
         items.push(
-          <option key={i} value={"0"+i}>
-            {"0"+i}
+          <option key={i} value={"0" + i}>
+            {"0" + i}
           </option>
         );
       } else {
@@ -52,32 +50,30 @@ function QuestionsCard(props) {
   };
   const initialValues = {
     questions: "",
-    minutes: '',
-    seconds: ''
+    minutes: "",
+    seconds: "",
   };
 
   const onSubmit = (values, onSubmitProps) => {
     console.log(values);
     props.addquestion(newquestion);
-    console.log(props.question)
+    console.log(props.question);
     setnewquestion({
-      questions: '',
-      minutes: "0"+3,
-      seconds: "0"+0
-    })
+      questions: "",
+      minutes: "0" + 3,
+      seconds: "0" + 0,
+    });
     onSubmitProps.resetForm();
   };
 
   const validationSchema = yup.object({
     questions: yup.string().required("Enter Default Question"),
-    // minutes:yup.string().required('All fields are required'),
-    // seconds:yup.string().required('All fields are required')
-  });
+ });
 
-  const closealert = () => {
+const closealert = () => {
     setopenalert(false);
-  };
-  const erroralert = (error) => {
+};
+const erroralert = (error) => {
     return (
       <AlertBox
         setopenalert={openalert}
@@ -85,7 +81,7 @@ function QuestionsCard(props) {
         error={error}
       />
     );
-  };
+};
   return (
     <div>
       <Formik
@@ -94,7 +90,7 @@ function QuestionsCard(props) {
         validationSchema={validationSchema}
       >
         {(formik) => {
-          console.log(formik)
+          console.log(formik);
           return (
             <>
               <Grid item xs={12}>
@@ -114,12 +110,13 @@ function QuestionsCard(props) {
                       <InputLabel htmlFor="demo-customized-select-native">
                         min
                       </InputLabel>
-                      <Field as={NativeSelect}
-                       value={newquestion.minutes}
-                       name='minutes'
-                       onChange={inputchange}
+                      <Field
+                        as={NativeSelect}
+                        value={newquestion.minutes}
+                        name="minutes"
+                        onChange={inputchange}
                       >
-                      <option value=""></option>
+                        <option value=""></option>
                         {SelectItem()}
                       </Field>
                     </FormControl>
@@ -127,12 +124,13 @@ function QuestionsCard(props) {
                       <InputLabel htmlFor="demo-customized-select-native">
                         sec
                       </InputLabel>
-                      <Field as={NativeSelect}
-                       value={newquestion.seconds}
-                       name='seconds'
-                       onChange={inputchange}
+                      <Field
+                        as={NativeSelect}
+                        value={newquestion.seconds}
+                        name="seconds"
+                        onChange={inputchange}
                       >
-                      <option value=""></option>
+                        <option value=""></option>
                         {SelectItem()}
                       </Field>
                     </FormControl>
@@ -161,10 +159,3 @@ function QuestionsCard(props) {
 }
 
 export default QuestionsCard;
-
-
-
-
-
-
-
