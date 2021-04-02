@@ -29,6 +29,9 @@ const ButtonDelete = (props) => {
   // console.log(props.newrecords)
   return (
     <React.Fragment>
+      <Button variant="contained" color="secondary">
+                      <DeleteIcon/>
+                    </Button>
       
       <Dialog
         open={props.opendelete}

@@ -295,3 +295,17 @@ color:#dc3545;
 #delete_question:hover{
   background-color: lightcyan;
 }
+#edit_btn{
+  background-color: darkcyan  ;
+  height: 30px;
+}
+#delete_btn{
+  background-color: darkcyan  ;
+  height: 30px;
+  margin-left: 90px;
+  margin-top: -50px;
+}
+#Action_css{
+  justify-content: right;
+  text-align: right;
+}
