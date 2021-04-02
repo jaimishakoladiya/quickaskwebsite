@@ -1,8 +1,9 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import AddDepartment from "./addbuttons/AddDepartment";
+import { connect } from "react-redux";
 
-const Department = () => {
+const Department = (props) => {
   return (
     <>
       <div className="Department_card1">
@@ -14,11 +15,19 @@ const Department = () => {
             <th className="company-th">Action</th>
           </tr>
 
-          <tr className="company-tr">
-            <td className="company-td">kuku</td>
-            <td className="company-td">bhaw</td>
+        {
+          props.data.deptdata.map((item,index)=>{
+            return(
+              <>
+              <tr className="company-tr">
+            <td className="company-td">{item.department}</td>
+            <td className="company-td">{item.costcenter}</td>
             <td className="company-td">minu</td>
           </tr>
+              </>
+            )
+          })
+        }
         </table>
         <br></br> <AddDepartment />
         <br></br>
@@ -26,5 +35,9 @@ const Department = () => {
     </>
   );
 };
-
-export default Department;
+const mapStateToProps=state=>{
+  return{
+    data:state.companyprofile
+  }
+}
+export default connect(mapStateToProps)(Department);

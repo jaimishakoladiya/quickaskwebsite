@@ -14,6 +14,9 @@ import "../Company.css";
 import { makeStyles } from "@material-ui/core";
 import AlertBox from "../../alert/AlertBox";
 import QuestionsCard from "./QuestionsCard";
+import { connect } from "react-redux"
+import DisplayQuestions from "../DisplayQuestions";
+import { addjobquestion, deletejobquestion } from "../../../redux/actions/companyprofile/companprofileAction"
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -25,7 +28,7 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: "#eef5f6",
   },
 }));
-export default function AddJob() {
+function AddJob(props) {
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
@@ -134,19 +137,20 @@ export default function AddJob() {
                             variant="standard"
                           />
                         </Grid>
-                        <Grid item xs={7}>
+                        <Grid item xs={6}>
                           <h3>Default Question For Department</h3>
                         </Grid>
                         <Grid item xs={4}>
                           <h3>Time Allocated</h3>
                         </Grid>
                       </Grid>
+                      <DisplayQuestions question={props.jobque.jobquestion} deletequestion={props.deletejobquestion} />
                       <br />
                       {formik.touched.department && formik.errors.department
                         ? erroralert(formik.errors.department)
                         : formik.touched.costcenter && formik.errors.costcenter
-                        ? erroralert(formik.errors.costcenter)
-                        : null}
+                          ? erroralert(formik.errors.costcenter)
+                          : null}
 
                       <Button
                         id="dialog-cancel-btn"
@@ -168,7 +172,7 @@ export default function AddJob() {
                         Save
                       </Button>
                     </Form>
-                    <QuestionsCard />
+                    <QuestionsCard question={props.jobque} addquestion={props.addjobquestion} />
                   </>
                 );
               }}
@@ -179,3 +183,17 @@ export default function AddJob() {
     </div>
   );
 }
+const mapStateToProps = state => {
+  return {
+    jobque: state.companyprofile
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addjobquestion: (newquestion) => { dispatch(addjobquestion(newquestion)) },
+    deletejobquestion: (id) => { dispatch(deletejobquestion(id)) }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddJob)
