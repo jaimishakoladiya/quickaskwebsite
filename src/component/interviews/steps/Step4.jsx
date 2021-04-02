@@ -41,7 +41,7 @@ const Step4 = (props) => {
         </div>
         <DisplayQuestions
           deletequestion={props.deleteinterviewque}
-          question={props.interviewque}
+          question={props.interviewque.interviewque}
         />
       </div>
     </>
