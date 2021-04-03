@@ -55,8 +55,8 @@ function App() {
       {/* <About/> */}
       {/* <QuestionsCard/> */}
       <Provider store={store}>
-        {/* <CompanyProfilePage /> */}
-           <Interviews />
+        <CompanyProfilePage />
+           {/* <Interviews /> */}
       </Provider>
     </>
   );

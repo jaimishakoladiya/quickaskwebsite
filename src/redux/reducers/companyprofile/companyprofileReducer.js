@@ -9,7 +9,7 @@ const intitialstate = {
     jobquestion: [],
     managerquestion: [],
     deptdata:[],
-    managerdata:[]
+    managerdata:[],
     jobdata:[]
 }
 
