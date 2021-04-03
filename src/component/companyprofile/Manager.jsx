@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 import AddManager from "./addbuttons/AddManager";
 import { PinDropSharp } from "@material-ui/icons";
 import { connect } from "react-redux";
-
+import EditDelete from "./editbuttons/EditDelete";
 const Manager = (props) => {
   return (
     <>
@@ -17,7 +17,7 @@ const Manager = (props) => {
             <th className="company-th">Status</th>
             <th className="company-th">Date</th>
             <th className="company-th">Deleted</th>
-            <th className="company-th">Actions</th>
+            <th className="company-th" id="Action_css">Actions</th>
           </tr>
           {
             props.data.managerdata.map((item,index)=>{
@@ -30,7 +30,7 @@ const Manager = (props) => {
             <td className="company-td">hey</td>
             <td className="company-td">hey</td>
             <td className="company-td">hey</td>
-            <td className="company-td">hey</td>
+            <td className="company-td" id="Action_css"><EditDelete /></td>
           </tr>
           </>
           )
