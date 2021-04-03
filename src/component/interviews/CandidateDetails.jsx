@@ -16,20 +16,13 @@ import InterviewDataGrid from '../interviews/InterviewDataGrid'
 
 import CreateInterview from './CreateInterview';
 
-import DemoGrid from './DemoGrid';
-
+import CreateData from './CreateData';
 
 
 
 const CandidateDetails = () =>{
  
-  const headercss={
-    fontSize : "17px",
-    fontWeight:"bold",
-  
-   
-    
-  }
+ 
    const [open ,SetOpen] = useState(false);
    const OpenBox =()=>{
           if(open==false){
@@ -44,18 +37,23 @@ const CandidateDetails = () =>{
    const style = {
     fontSize: "17px",
     fontWeight: "bold",
+   
 
 
   }
   const style2 = {
     fontSize: "17px",
     fontWeight: "bold",
+    
+ 
 
   }
    const [openrow, setopen1] = useState(false);
+   const [openrow2, setopen2] = useState(false);
   const [expand, setexpand] = useState(<ArrowRightIcon style={{ color: "darkcyan", fontSize: "50px", cursor: "pointer" }} />);
+  const [expand1, setexpand1] = useState(<ArrowRightIcon style={{ color: "darkcyan", fontSize: "50px", cursor: "pointer" }} />);
 
-   const [open1, SetOpen1] = useState(false);
+ 
  
 
   const expandrowfunc = () => {
@@ -67,11 +65,27 @@ const CandidateDetails = () =>{
     else {
       setopen1(false)
       setexpand(<ArrowRightIcon style={{ color: "darkcyan", fontSize: "50px", cursor: "pointer" }} />)
+     
     }
 
   }
+  const expandrowfunc1 = () => {
+    // setopen(true);
+
+    if (openrow2 == false) {
+      setopen2(true);
+    }
+    else {
+      setopen2(false)
+     
+      setexpand1(<ArrowRightIcon style={{ color: "darkcyan", fontSize: "50px", cursor: "pointer" }} />)
+    }
+
+  }
+  
   const changeicon = () => {
     setexpand(<ArrowDropDownIcon style={{ color: "darkcyan", fontSize: "50px", cursor: "pointer" }} />)
+    setexpand1(<ArrowDropDownIcon style={{ color: "darkcyan", fontSize: "50px", cursor: "pointer" }} />)
   }
 return(
  
@@ -107,31 +121,61 @@ return(
        <div className="detail-header2">
        <TableContainer >
         <Table aria-label="customized table">
-        <TableHead style={headercss} >
-        
-            <TableCell></TableCell>
-              <TableCell style={headercss}>Date</TableCell>
-             <TableCell style={headercss} align="center">Job Title</TableCell>
-            <TableCell style={headercss} align="center">Department</TableCell>
-            <TableCell style={headercss} align="center">Manager</TableCell>
-            <TableCell style={headercss} align="center">Candidate</TableCell>
-            <TableCell style={headercss} align="center">Duration</TableCell>
-            <TableCell style={headercss} align="center">Action</TableCell>
-     
+        <TableHead id="headercss" >
+            <TableRow id="headercss" >
+            
+              <TableHead id="headercss">Date</TableHead>
+             <TableHead id="headercss" >JobTitle</TableHead>
+           <TableHead id="headercss" >Department</TableHead>
+            <TableHead id="headercss" >Manager</TableHead>
+            <TableHead id="headercss" >Candidate</TableHead>
+            <TableHead id="headercss" >Duration</TableHead>
+            <TableHead id="headercss" >Action</TableHead>
+            </TableRow>
           </TableHead>
+          <TableRow><CreateData/></TableRow>
+          
+
 
         {/* start new row */}
           
-              
-                <TableRow/>
- 
-                <TableRow style={style2}>
-                <TableCell style={style}><div onClick={() => {
+     
+        {/* <TableRow >
+     
+            <div onClick={() => {
                   changeicon()
                   expandrowfunc()
                   
                 }
-                }>{expand}</div></TableCell>
+                }>{expand}</div>
+                 <TableCell >2-1-20</TableCell>
+                <TableCell  align="center">web</TableCell>
+                <TableCell style={style2} align="center">Android</TableCell>
+                <TableCell style={style2} align="center">4k</TableCell>
+                <TableCell style={style2} align="center">4</TableCell>
+                <TableCell style={style2} align="center">2min</TableCell>
+                <TableCell style={style2} align="center">Action</TableCell>
+                 
+               
+              </TableRow>
+                  
+         
+             {openrow ? <>
+        
+        
+            
+           
+                </>:null} */}
+               
+            
+ {/* //////////////////////////////////////////////////////////////// */}
+                {/* <TableRow style={style2}>
+                <TableCell style={style}><div onClick={() => {
+                  changeicon()
+                  expandrowfunc1()
+                  
+                }
+                }>{expand1}</div></TableCell>
                 <TableCell style={style2}>2-1-20</TableCell>
                 <TableCell style={style2} align="center">web</TableCell>
                 <TableCell style={style2} align="center">Android</TableCell>
@@ -141,17 +185,18 @@ return(
                 <TableCell style={style2} align="center">Action</TableCell>
               </TableRow>
 
-              {openrow ? <> <div className="openbox"  > 
-               <InterviewDataGrid/> 
-              {/* <DemoGrid/> */}
+              {openrow2 ? <> <div className="openbox"  > 
+              <TableRow>
+              <InterviewDataGrid/>
+              </TableRow>
               </div>
                 </>:null}
-                
-              
-                <TableRow/>
+
+*/}
+
         </Table>
         
-        </TableContainer>
+        </TableContainer> 
       
        </div>
  
@@ -161,3 +206,6 @@ return(
     );
 }
 export default CandidateDetails;
+
+
+

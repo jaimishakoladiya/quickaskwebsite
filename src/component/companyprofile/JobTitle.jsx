@@ -1,8 +1,11 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import AddJob from "./addbuttons/AddJob";
+import EditDelete from './editbuttons/EditDelete'
+import Department from './Department';
+import { connect } from 'react-redux';
 
-const JobTitle = () => {
+const JobTitle = (props) => {
   return (
     <>
       <div className="JobTitle_card1">
@@ -11,14 +14,23 @@ const JobTitle = () => {
           <tr className="company-tr">
             <th className="company-th">Name</th>
             <th className="company-th">Depatment</th>
-            <th className="company-th">Action</th>
+            <th className="company-th" id="Action_css">Action</th>
           </tr>
-
+    {
+      props.data.jobdata.map((item,index)=>{
+        return(
+          <>
           <tr className="company-tr">
-            <td className="company-td">kuku</td>
-            <td className="company-td">bhaw</td>
-            <td className="company-td">minu</td>
-          </tr>
+        <td className="company-td">{item.jobtitle}</td>
+        <td className="company-td">{item.department}</td>
+        <td className="company-td" id="Action_css"><EditDelete/></td>
+      </tr>
+   
+          </>
+        )
+      })}
+        
+          
         </table>
         <br></br> <AddJob />
         <br></br>
@@ -26,5 +38,10 @@ const JobTitle = () => {
     </>
   );
 };
+const mapStateToProps=state=>{
+  return{
+    data:state.companyprofile
+  }
+}
 
-export default JobTitle;
+export default connect(mapStateToProps)(JobTitle);

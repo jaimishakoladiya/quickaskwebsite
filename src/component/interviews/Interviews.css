@@ -259,10 +259,10 @@
   display: block;
 }
 .openbox{
-  position: absolute;
+
   width: 1000px;
   height: auto;
-  position: absolute;
+  position:absolute;
   background:#eef5f6;
   font-size: 15px;
 
@@ -316,13 +316,44 @@
   color:darkcyan;
   font-size: 18px;
   font-weight: 700;
-  margin-left: 55px;
+  /* margin-left: 55px; */
 }
 #panel-css{
   color:darkcyan;
   font-size: 18px;
   font-weight: 700;
-  margin-left: 55px;
+  /* margin-left: 55px; */
+}
+#headercss{
+  font-family: "Helvetica";
+  color: #000;
+  font-size: 13pt;
+  line-height: 13pt;
+   box-sizing: content-box;
+   width: 200px;
+   text-align: inherit;
+   vertical-align: bottom;
+ padding: 8px 28px;
+  background-repeat: no-repeat;
+  background-position:center;
+  display: table-cell; 
+  font-weight: bold;
+}
+#tablerow{
+  font-family: "Helvetica";
+  color: #000;
+  font-size: 13pt;
+  line-height: 13pt;
+   box-sizing: content-box;
+   width: 200px;
+   text-align: inherit;
+   vertical-align: bottom;
+ padding: 20px 0px;
+  background-repeat: no-repeat;
+  background-position:center;
+  display: table-cell; 
+  font-weight: bold;
+
 }
 /* .arrowchange-down::before {
   transform: rotate(90deg);

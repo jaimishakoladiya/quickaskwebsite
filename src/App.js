@@ -3,7 +3,7 @@
 
 //import Login from './component/account/login/Login'
 //  import Home from "./component/home/Home";
-// import Interviews from './component/interviews/Interviews'
+import Interviews from './component/interviews/Interviews'
 //import About from "./component/team/about/About.jsx";
 // import Login from './component/account/login/Login'
 // import Registration from './component/account/register/Registartion'

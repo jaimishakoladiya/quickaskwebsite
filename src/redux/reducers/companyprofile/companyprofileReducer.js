@@ -1,6 +1,7 @@
 import {
     ADD_DEPT_QUESTIONS, DELETE_DEPT_QUESTIONS, ADD_JOB_QUESTIONS, DELETE_JOB_QUESTIONS
     , ADD_MANAGER_QUESTIONS, DELETE_MANAGER_QUESTIONS, ADD_DEPT_DATA,ADD_MANAGER_DATA
+    , ADD_MANAGER_QUESTIONS, DELETE_MANAGER_QUESTIONS, ADD_DEPT_DATA,ADD_JOB_DATA
 } from "../../types/companyprofile/companyprofileTypes";
 
 const intitialstate = {
@@ -9,6 +10,7 @@ const intitialstate = {
     managerquestion: [],
     deptdata:[],
     managerdata:[]
+    jobdata:[]
 }
 
 const companyprofileReducer = (state = intitialstate, action) => {
@@ -62,12 +64,20 @@ const companyprofileReducer = (state = intitialstate, action) => {
                     ...state,
                     managerdata:[...state.managerdata,action.payload]
                 }
+            case ADD_JOB_DATA:
+                return{
+                    ...state,
+                    jobdata:[...state.jobdata,action.payload]
+                }
+
         default:
             return {
                 ...state
             }
           
 
+
+            
     }
 }
 
