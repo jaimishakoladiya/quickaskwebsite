@@ -1,8 +1,10 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import AddManager from "./addbuttons/AddManager";
+import { PinDropSharp } from "@material-ui/icons";
+import { connect } from "react-redux";
 
-const Manager = () => {
+const Manager = (props) => {
   return (
     <>
       <div className="Manager_card1">
@@ -17,15 +19,23 @@ const Manager = () => {
             <th className="company-th">Deleted</th>
             <th className="company-th">Actions</th>
           </tr>
-
+          {
+            props.data.managerdata.map((item,index)=>{
+              return(
+                <>
+        
           <tr className="company-tr">
-            <td className="company-td">hey</td>
-            <td className="company-td">ck</td>
+            <td className="company-td">{item.firstname} {item.lastname}</td>
+            <td className="company-td">{item.email}</td>
             <td className="company-td">hey</td>
             <td className="company-td">hey</td>
             <td className="company-td">hey</td>
             <td className="company-td">hey</td>
           </tr>
+          </>
+          )
+            })
+          }
         </table>
 
         <br></br>
@@ -35,5 +45,10 @@ const Manager = () => {
     </>
   );
 };
+const mapStateToProps=state=>{
+  return{
+    data:state.companyprofile
+  }
+}
 
-export default Manager;
+export default connect(mapStateToProps)(Manager);

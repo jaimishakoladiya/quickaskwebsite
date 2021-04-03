@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import AddJob from "./addbuttons/AddJob";
-
+import EditDelete from './editbuttons/EditDelete'
 import Department from './Department';
 import { connect } from 'react-redux';
 
@@ -14,7 +14,7 @@ const JobTitle = (props) => {
           <tr className="company-tr">
             <th className="company-th">Name</th>
             <th className="company-th">Depatment</th>
-            <th className="company-th">Action</th>
+            <th className="company-th" id="Action_css">Action</th>
           </tr>
     {
       props.data.jobdata.map((item,index)=>{
@@ -23,7 +23,7 @@ const JobTitle = (props) => {
           <tr className="company-tr">
         <td className="company-td">{item.jobtitle}</td>
         <td className="company-td">{item.department}</td>
-        <td className="company-td">minu</td>
+        <td className="company-td" id="Action_css"><EditDelete/></td>
       </tr>
    
           </>

@@ -4,6 +4,7 @@ import { combineReducers} from 'redux';
 
 const RootReducer=combineReducers({
     companyprofile:companyprofileReducer,
+   
     interview:InterviewReducer
 })
 
