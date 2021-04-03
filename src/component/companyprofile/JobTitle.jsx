@@ -21,7 +21,7 @@ const JobTitle = (props) => {
         return(
           <>
           <tr className="company-tr">
-        <td className="company-td">{item.jobTitle}</td>
+        <td className="company-td">{item.jobtitle}</td>
         <td className="company-td">{item.department}</td>
         <td className="company-td">minu</td>
       </tr>

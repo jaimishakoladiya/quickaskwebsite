@@ -8,11 +8,11 @@ import Button from '@material-ui/core/Button';
 function ViewDelete() {
     return (
         <>
-      <button style={{backgroundColor:"darkcyan",color:"white",width:"40px",height:"35px",borderRadius:"6px", borderColor:" darkcyan" }}>
+      <button  id="edit_btn">
        <EditIcon/>
          </button>
          
-       <button style={{backgroundColor:" #f8384b",color:"white",width:"40px",height:"35px",marginLeft:"4px",borderRadius:"6px",borderColor:"#dc3545"}}>
+       <button id="delete_btn">
          <DeleteIcon/>
          </button>
          
