@@ -296,14 +296,21 @@ color:#dc3545;
   background-color: lightcyan;
 }
 #edit_btn{
-  background-color: darkcyan  ;
-  height: 30px;
+  background-color:darkcyan;
+  color:white;
+  width:40px;
+  height:35px;
+  border-radius:6px;
+ border-color: darkcyan;
 }
 #delete_btn{
-  background-color: darkcyan  ;
-  height: 30px;
-  margin-left: 90px;
-  margin-top: -50px;
+  background-color:#f8384b;
+  color:white;
+  width:40px;
+  height:35px;
+  border-radius:6px;
+ border-color: #dc3545;
+ margin-left: 10px;
 }
 #Action_css{
   justify-content: right;
