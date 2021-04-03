@@ -14,6 +14,7 @@ import '../Company.css';
 import { makeStyles } from "@material-ui/core";
 import AlertBox from "../../alert/AlertBox";
 import QuestionsCard from "../addbuttons/QuestionsCard";
+import EditIcon from '@material-ui/icons/Edit';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -75,12 +76,12 @@ export default function EditDepartment() {
     <div>
       <Button
         type="button"
-        style={{ marginBottom: "25px" }}
         variant="contained"
         color="secondary"
+        id="edit_btn"
         onClick={handleClickOpen}
-      >
-        Add Department
+      ><EditIcon id="edit_icon"/>  
+         
       </Button>
       <br />
 
@@ -94,7 +95,7 @@ export default function EditDepartment() {
         classes={{ paper: classes.dialogWrapper }}
       >
         <div className="AddDepartment_primaryHeader">
-          <h3>Add Department </h3>
+          <h3>Edit Department </h3>
           <div className="AddDepartment_closeicon">
             <CloseIcon style={{ color: "black" }} onClick={handleClose} />
           </div>
