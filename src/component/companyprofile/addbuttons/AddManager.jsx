@@ -14,7 +14,7 @@ import { Field, Formik, Form } from "formik";
 import * as yup from "yup";
 import AlertBox from "../../alert/AlertBox";
 import DisplayQuestions from "../DisplayQuestions";
-import { addmanagerquestion, deletemanagerquestion } from "../../../redux/actions/companyprofile/companprofileAction";
+import { addmanagerquestion,addmanagerdata, deletemanagerquestion } from "../../../redux/actions/companyprofile/companprofileAction";
 import { connect } from "react-redux";
 
 
@@ -40,7 +40,8 @@ function AddManager(props) {
   };
 
   const onSubmit = (values) => {
-    console.log(values);
+    // console.log(values);
+    props.addmanagerdata(values)
     setOpen(false);
   };
 
@@ -138,7 +139,7 @@ function AddManager(props) {
                               as={TextField}
                               name="firstname"
                               placeholder="Enter FirstName"
-                              id="standard-basic-input"
+                              id="firstname"
                               variant="standard"
                             />
                           </Grid>
@@ -147,7 +148,7 @@ function AddManager(props) {
                               as={TextField}
                               name="lastname"
                               placeholder="Enter LastName"
-                              id="standard-basic-input"
+                              id="lastname"
                               variant="standard"
                             />
                           </Grid>
@@ -156,7 +157,7 @@ function AddManager(props) {
                               as={TextField}
                               name="email"
                               placeholder="Enter Email"
-                              id="standard-basic-input"
+                              id="email"
                               variant="standard"
                             />
                           </Grid>
@@ -171,7 +172,7 @@ function AddManager(props) {
 
 
                       </Grid>
-                      <DisplayQuestions question={props.question.managerquestion} deletequestion={props.deletemanagerquestion} />
+                      <DisplayQuestions question={props.data.managerquestion} deletequestion={props.deletemanagerquestion} />
                       <br />
 
                       {formik.errors.firstname
@@ -204,7 +205,7 @@ function AddManager(props) {
                 );
               }}
             </Formik>
-            <QuestionsCard question={props.question} addquestion={props.addmanagerquestion} />
+            <QuestionsCard question={props.data} addquestion={props.addmanagerquestion} />
           </DialogContentText>
         </DialogContent>
       </Dialog>
@@ -214,13 +215,14 @@ function AddManager(props) {
 
 const mapStateToProps = state => {
   return {
-    question: state.companyprofile
+    data: state.companyprofile
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
     addmanagerquestion: (newquestion) => { dispatch(addmanagerquestion(newquestion)) },
-    deletemanagerquestion: (id) => { dispatch(deletemanagerquestion(id)) }
+    deletemanagerquestion: (id) => { dispatch(deletemanagerquestion(id)) },
+    addmanagerdata:(data)=>{dispatch(addmanagerdata(data))}
   }
 }
 

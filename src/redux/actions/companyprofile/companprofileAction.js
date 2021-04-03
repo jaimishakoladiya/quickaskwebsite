@@ -1,5 +1,6 @@
 import {
     ADD_DEPT_QUESTIONS, DELETE_DEPT_QUESTIONS, ADD_JOB_QUESTIONS, DELETE_JOB_QUESTIONS
+    , ADD_MANAGER_QUESTIONS, DELETE_MANAGER_QUESTIONS, ADD_DEPT_DATA, ADD_MANAGER_DATA
     , ADD_MANAGER_QUESTIONS, DELETE_MANAGER_QUESTIONS, ADD_DEPT_DATA,ADD_JOB_DATA
 } from "../../types/companyprofile/companyprofileTypes";
 
@@ -46,6 +47,12 @@ export const deletemanagerquestion = (id) => {
 export const adddeptdata=(data)=>{
     return {
         type:ADD_DEPT_DATA,
+        payload:data
+    }
+}
+export const addmanagerdata=(data)=>{
+    return{
+        type:ADD_MANAGER_DATA,
         payload:data
     }
 }
