@@ -32,15 +32,17 @@ function AddDepartment(props) {
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
+  const [newque,setnewque]=useState([])
   const initialValues = {
     department: "",
     costcenter: "",
+    
   };
 
   const onSubmit = (values) => {
-    // console.log(values);
-    props.adddeptdata(values)
-    // console.log(props.data.deptdata)
+    console.log(values);
+    props.adddeptdata({...values,newque})
+    setnewque([])
     setOpen(false);
   };
 
@@ -48,6 +50,15 @@ function AddDepartment(props) {
     department: yup.string().required("All fields are required"),
     costcenter: yup.string().required("All fields are required"),
   });
+
+  const addquestion=(newq)=>{
+    props.adddeptquestion(newq)
+   setnewque((olditem)=>{
+     return [...olditem,
+     newq]
+   })
+
+  }
   const closealert = () => {
     setopenalert(false);
   };
@@ -177,8 +188,9 @@ function AddDepartment(props) {
                         Save
                       </Button>
                     </Form>
-                    {/* <QuestionsCard addquestions={addquestions} /> */}
-                    <QuestionsCard question={props.data.deptquestion} addquestion={props.adddeptquestion} />
+                 
+                    {/* <QuestionsCard question={props.data.deptquestion} addquestion={props.adddeptquestion} /> */}
+                    <QuestionsCard question={props.data.deptquestion} addquestion={addquestion} />
                   </>
                 );
               }}
