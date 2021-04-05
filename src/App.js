@@ -31,7 +31,7 @@
  import { Provider } from "react-redux";
 import store from "./redux/Store";
 //import ViewRecord from './component/interviews/ViewRecord';
- import store from "./redux/Store";
+ //import store from "./redux/Store";
 function App() {
   return (
     <>
