@@ -7,7 +7,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
-
+import StarIcon from '@material-ui/icons/Star';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import img2 from "../../component/images/undraw_profile_pic_ic5t (2).svg"
@@ -16,11 +16,11 @@ function ViewRecord() {
  const rowcss = {
     fontSize : "19px",
     fontWeight:"bold",
+ 
  }
  const rowcss2 = {
     fontSize : "19px",
     fontWeight:"bold",
-
  
 }
 
@@ -42,9 +42,9 @@ function ViewRecord() {
         <TableHead style={rowcss} >
         
             <TableCell></TableCell>
-              <TableCell style={rowcss}>Questions</TableCell>
-             <TableCell style={rowcss} align="center">Name</TableCell>
-          <TableCell style={rowcss} align="center">Name</TableCell>
+              <TableCell style={rowcss} id="view_css">Questions</TableCell>
+
+          <TableCell style={rowcss} >Name</TableCell>
      
           </TableHead>
           </Table>
@@ -58,8 +58,9 @@ function ViewRecord() {
         <TableRow className="view-pic">
             {/* <TableCell></TableCell>
             <TableCell></TableCell><TableCell></TableCell><TableCell></TableCell><TableCell></TableCell> */}
-             <TableCell style={rowcss} ><img style={{height:"90px",marginLeft:"790px", width:"90px",marginTop:"-30px"}} src={img2}/></TableCell>
-          <TableCell style={rowcss}><img style={{height:"90px", width:"90px",marginLeft:"-190px",marginTop:"-30px"}} src={img2}/></TableCell>
+
+          <TableCell style={rowcss}><img style={{height:"90px", width:"90px",marginLeft:"1050px",marginTop:"-30px"}} src={img2}/></TableCell>
+          
           </TableRow>
           </TableHead>
           </Table>
@@ -72,21 +73,21 @@ function ViewRecord() {
         <TableRow id="view-header4">
             <TableCell></TableCell>
               <TableCell style={rowcss}>Questions</TableCell>
-             <TableCell style={rowcss} align="center">Name</TableCell>
-          <TableCell style={rowcss} align="center">Name</TableCell>
+            
+          <TableCell style={rowcss} align="center"><StarIcon style={{color:"black",margin: "-5px 5px"}}/>Name</TableCell>
           </TableRow>
 
           <TableRow id="view-header4">
             <TableCell></TableCell>
               <TableCell style={rowcss}>Questions</TableCell>
-             <TableCell style={rowcss} align="center">Name</TableCell>
-          <TableCell style={rowcss} align="center">Name</TableCell>
+            
+          <TableCell style={rowcss} align="center"><StarIcon style={{color:"black",margin: "-5px 5px"}}/>Name</TableCell>
           </TableRow>
           <TableRow id="view-header4">
             <TableCell></TableCell>
               <TableCell style={rowcss}>Questions</TableCell>
-             <TableCell style={rowcss} align="center">Name</TableCell>
-          <TableCell style={rowcss} align="center">Name</TableCell>
+             
+          <TableCell style={rowcss} align="center"><StarIcon style={{color:"black",margin: "-5px 5px"}}/>Name</TableCell>
           </TableRow>
           </TableHead>
           </Table>

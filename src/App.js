@@ -7,8 +7,10 @@ import Interviews from './component/interviews/Interviews'
 //import About from "./component/team/about/About.jsx";
 // import Login from './component/account/login/Login'
 // import Registration from './component/account/register/Registartion'
- import CompanyProfilePage from "./component/companyprofile/CompanyProfilePage";
+   import CompanyProfilePage from "./component/companyprofile/CompanyProfilePage";
 //import Navbar2 from './component/navbar/outernavbar/Navbar2'
+//import { BrowserRouter } from 'react-router-dom';
+//import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 // import { BrowserRouter } from 'react-router-dom';
 // import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 //import Login from './component/account/login/Login';
@@ -23,8 +25,11 @@ import Interviews from './component/interviews/Interviews'
 //import Contact from './component/team/contact/Contact';
 //import InterviewDataGrid from './component/interviews/InterviewDataGrid';
 //import HomeNavbar from './component/navbar/homenavbar/HomeNavbar';
+import CompanyFooter from './component/companyprofile/CompanyFooter';
  import { Provider } from "react-redux";
- import store from "./redux/Store";
+import store from "./redux/Store";
+//import ViewRecord from './component/interviews/ViewRecord';
+ //import store from "./redux/Store";
 function App() {
   return (
     <>
@@ -38,7 +43,7 @@ function App() {
       {/* <Registration/> */}
       {/* <Login/> */}
       {/* <Navbar/> */}
-      {/* <Provider store={store}>
+     {/* <Provider store={store}>
       <BrowserRouter>
    
       <HomeNavbar/> 
@@ -52,6 +57,7 @@ function App() {
       {/* <Login/> */}
       {/* <Navbar/> */}
       {/* <Contact/> */}
+      {/* <ViewRecord/> */}
       {/* <About/> */}
       {/* <QuestionsCard/> */}
       <Provider store={store}>

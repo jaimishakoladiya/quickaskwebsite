@@ -121,55 +121,35 @@ const CandidateDetails = () => {
             />
           </div>
         </div>
-        <div className="detail-header2">
-          <TableContainer>
-            <Table aria-label="customized table">
-              <TableHead id="headercss">
-                <TableRow id="headercss">
-                  <TableHead id="headercss">Date</TableHead>
-                  <TableHead id="headercss">JobTitle</TableHead>
-                  <TableHead id="headercss">Department</TableHead>
-                  <TableHead id="headercss">Manager</TableHead>
-                  <TableHead id="headercss">Candidate</TableHead>
-                  <TableHead id="headercss">Duration</TableHead>
-                  <TableHead id="headercss">Action</TableHead>
-                </TableRow>
-              </TableHead>
-              <TableRow>
-                <CreateData />
-              </TableRow>
-
-              {/* start new row */}
-
-              {/* <TableRow >
      
-            <div onClick={() => {
-                  changeicon()
-                  expandrowfunc()
-                  
-                }
-                }>{expand}</div>
-                 <TableCell >2-1-20</TableCell>
-                <TableCell  align="center">web</TableCell>
-                <TableCell style={style2} align="center">Android</TableCell>
-                <TableCell style={style2} align="center">4k</TableCell>
-                <TableCell style={style2} align="center">4</TableCell>
-                <TableCell style={style2} align="center">2min</TableCell>
-                <TableCell style={style2} align="center">Action</TableCell>
-                 
-               
-              </TableRow>
-                  
-         
-             {openrow ? <>
-        
-        
+       <div className="detail-header2">
+    
+       <TableContainer >
+        <Table aria-label="customized table">
+        <TableHead id="headercss" >
+            <TableRow id="headercss" >
             
-           
-                </>:null} */}
+              <TableHead id="headercss">Date</TableHead>
+             <TableHead id="headercss" >JobTitle</TableHead>
+           <TableHead id="headercss" >Department</TableHead>
+            <TableHead id="headercss" >Manager</TableHead>
+            <TableHead id="headercss" >Candidate</TableHead>
+            <TableHead id="headercss" >Duration</TableHead>
+            <TableHead id="headercss" >Action</TableHead>
+            </TableRow>
+          </TableHead>
+       
+          <TableRow>
+          <div className="interview_card1">
+         <CreateData/>    </div> </TableRow>
+          
+      
 
-              {/* //////////////////////////////////////////////////////////////// */}
-              {/* <TableRow style={style2}>
+        {/* start new row */}
+          
+            
+ {/* //////////////////////////////////////////////////////////////// */}
+                {/* <TableRow style={style2}>
                 <TableCell style={style}><div onClick={() => {
                   changeicon()
                   expandrowfunc1()
@@ -193,11 +173,16 @@ const CandidateDetails = () => {
                 </>:null}
 
 */}
-            </Table>
-          </TableContainer>
-        </div>
-      </div>
-    </>
-  );
-};
+
+        </Table>
+        
+        </TableContainer> 
+      
+    
+ 
+     </div>
+     </div>
+     </>
+    );
+}
 export default CandidateDetails;
