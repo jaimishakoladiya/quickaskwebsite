@@ -90,6 +90,7 @@ const CandidateDetails = () =>{
 return(
  
         <>
+
         <div id
         ="create-btn"><Button onClick = {OpenBox} variant="contained" color="secondary" >
         Create Interview
@@ -101,6 +102,7 @@ return(
         <br></br>
        
         <div className="detail-data">
+     
         <div className="detail-header1">
           <h5>ALLCANDIDATES</h5>
           <div className="detail-input">
@@ -118,7 +120,9 @@ return(
             />
           </div>
         </div>
+     
        <div className="detail-header2">
+    
        <TableContainer >
         <Table aria-label="customized table">
         <TableHead id="headercss" >
@@ -133,40 +137,15 @@ return(
             <TableHead id="headercss" >Action</TableHead>
             </TableRow>
           </TableHead>
-          <TableRow><CreateData/></TableRow>
+       
+          <TableRow>
+          <div className="interview_card1">
+         <CreateData/>    </div> </TableRow>
           
-
+      
 
         {/* start new row */}
           
-     
-        {/* <TableRow >
-     
-            <div onClick={() => {
-                  changeicon()
-                  expandrowfunc()
-                  
-                }
-                }>{expand}</div>
-                 <TableCell >2-1-20</TableCell>
-                <TableCell  align="center">web</TableCell>
-                <TableCell style={style2} align="center">Android</TableCell>
-                <TableCell style={style2} align="center">4k</TableCell>
-                <TableCell style={style2} align="center">4</TableCell>
-                <TableCell style={style2} align="center">2min</TableCell>
-                <TableCell style={style2} align="center">Action</TableCell>
-                 
-               
-              </TableRow>
-                  
-         
-             {openrow ? <>
-        
-        
-            
-           
-                </>:null} */}
-               
             
  {/* //////////////////////////////////////////////////////////////// */}
                 {/* <TableRow style={style2}>
@@ -198,10 +177,10 @@ return(
         
         </TableContainer> 
       
-       </div>
+    
  
      </div>
-     
+     </div>
      </>
     );
 }

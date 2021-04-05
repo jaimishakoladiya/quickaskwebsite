@@ -18,6 +18,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import TreeItem from '@material-ui/lab/TreeItem';
 import CreateInterview from './CreateInterview';
+import Paper from '@material-ui/core/Paper'
+
+import { makeStyles } from '@material-ui/core/styles';
 const InterviewDataGrid = () => {
 
   const style = {
@@ -39,23 +42,28 @@ const InterviewDataGrid = () => {
   const style4 = {
 
   }
+  
+const useStyles = makeStyles({
+  root: {
+   
+  
+    maxWidth: 700,
+  },
+});
 
-
+const classes = useStyles();
   return (
-
+  
     <>
 
-     
-           
-<Grid container spacing={0}>
-               
-               <Grid item xs={12} >
+     <div style={{width:"500px"}}>
+
 
             
             
                 <TableRow style={style}>
-                  <TreeView
-
+                  <TreeView 
+          
                     defaultCollapseIcon={<ArrowDropDownIcon style={{ fontSize: "29px", color: "darkcyan" }} />}
                     defaultExpandIcon={<ArrowRightIcon style={{ fontSize: "29px", color: "darkcyan" }} />}>
                     {/* Question List */}
@@ -63,15 +71,21 @@ const InterviewDataGrid = () => {
                       <TableHead>
                         <TableRow>
                           <TableCell align="left"><h3 style={{ color: "darkcyan", marginLeft: "19px", fontSize: "18px" }}>Questions</h3></TableCell>
-                       <TableCell ><h3 style={{  color: "darkcyan", fontSize: "18px" }}>Total Allowed</h3></TableCell>
+                       
+                     <TableCell ><h3 style={{  color: "darkcyan", fontSize: "18px" }}>Total Allowed</h3></TableCell>
+
                         </TableRow> </TableHead>
                       <TableCell id="name">1.kjk</TableCell>
+                      <TableCell></TableCell>
+                        
                       <TableCell id="question-box">   3mins<br />
                       </TableCell>
                       <TableRow><TableCell id="name">2.kk</TableCell>
                         <TableCell id="question-box">0 min</TableCell>
                       </TableRow>
                       <TableRow><TableCell id="name"></TableCell>
+              
+                      
                         <TableCell id="question-box">Duration: 3 mins
                       </TableCell>
                       </TableRow>
@@ -79,31 +93,40 @@ const InterviewDataGrid = () => {
 
                     
                       {/* Candidates */}
-                    <TreeItem nodeId="2" label="All Candidates" style={style3} > <TreeItem nodeId="5" />
-                      <TableHead>
-                        <TableRow >
+                    
+                    <TreeItem nodeId="2" label="All Candidates"   style={style3}>
+
+              
+                      <TableHead   >
+                         <TableRow className={classes.root} >
                           <TableCell id="candidate-css">Candidate</TableCell>
                           <TableCell id="candidate-css">Candidate ID</TableCell>
                           <TableCell id="candidate-css" >Interview Tries</TableCell>
-                          {/* <TableCell id="candidate-css">Email</TableCell>
-                          <TableCell id="candidate-css">Status</TableCell>
-                          <TableCell id="candidate-css">Action </TableCell> */}
-                        </TableRow>
+                          <TableCell id="candidate-css">Email</TableCell>
+                      
+                          <TableCell id="candidate-css">Action </TableCell>
+                        </TableRow> 
+                       
+
+ 
                         <TableRow >
                           <TableCell id="candidate-inline-css">1.kljk</TableCell>
-                          <TableCell id="candidate-inline-css"></TableCell>
-                          <TableCell id="candidate-inline-css" >0</TableCell>
-                          {/* <TableCell id="candidate-inline-css">Email@gmail.com</TableCell>
-                          <TableCell id="candidate-inline-css">khjk</TableCell>
-                          <TableCell id="candidate-inline-css">Edit </TableCell> */}
-                        </TableRow>
-                      </TableHead><br />
-                      <Button variant="contained" color="secondary" style={{ }}>
+                          <TableCell id="candidate-inline-css">2</TableCell>
+                 
+                          <TableCell id="candidate-inline-css">4</TableCell>
+                          <TableCell id="candidate-inline-css">chandanikhanesha@52229gamil.com</TableCell>
+                           <TableCell id="candidate-inline-css">Edit </TableCell>
+                        </TableRow> 
+                      </TableHead>
+                     
+                    <br />
+                      <Button variant="contained" color="secondary">
                         Add  </Button>
-
-
+                      
+                        </TreeItem>
+                      
                    {/* Panel Members */}
-                    </TreeItem>
+                 
                     <TreeItem nodeId="3" label="Panel Member" style={style3} > <TreeItem nodeId="6" />
                       <TableHead>
                         <TableRow >
@@ -130,12 +153,10 @@ const InterviewDataGrid = () => {
                   {/* <h1 style={{ marginBottom: "14px", lineHeight: "60px", marginLeft: "400px" }}>No Result found</h1> */}
                 </TableRow>
                
-             
+             <br></br>
               
-            
-              
-           </Grid>
-           </Grid>
+             </div>
+           
          
      
     </>

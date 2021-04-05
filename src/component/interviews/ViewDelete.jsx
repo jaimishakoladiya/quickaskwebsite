@@ -6,11 +6,11 @@ import Button from '@material-ui/core/Button';
 function ViewDelete() {
     return (
         <>
-      <button style={{backgroundColor:"darkcyan",color:"white",width:"40px",height:"35px",borderRadius:"6px", borderColor:" darkcyan" }}>
+      <button style={{backgroundColor:"darkcyan",color:"white",width:"40px",height:"35px",borderRadius:"6px", borderColor:" darkcyan",position:"relative" }}>
        <VisibilityIcon/>
          </button>
          
-       <button style={{backgroundColor:" #f8384b",color:"white",width:"40px",height:"35px",marginLeft:"4px",borderRadius:"6px",borderColor:"#dc3545"}}>
+       <button style={{backgroundColor:" #f8384b",color:"white",width:"40px",height:"35px",marginLeft:"4px",borderRadius:"6px",borderColor:"#dc3545",position:"relative"}}>
          <DeleteIcon/>
          </button>
          

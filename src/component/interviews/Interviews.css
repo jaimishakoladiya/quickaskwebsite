@@ -51,8 +51,7 @@
   width: 1000px;
   margin: -17px;
   margin-top: 15px;
-  color: rgb(8, 8, 8);
-  background-color: rgb(245, 202, 92);
+
 }
 
 .page {
@@ -306,6 +305,7 @@
   text-align: right;
  color:black;
  font-size: 14pt;
+
 }
 #panel-inline-css{
   text-align: right;
@@ -316,6 +316,8 @@
   color:darkcyan;
   font-size: 18px;
   font-weight: 700;
+ 
+
   /* margin-left: 55px; */
 }
 #panel-css{
@@ -338,21 +340,17 @@
   background-position:center;
   display: table-cell; 
   font-weight: bold;
+ 
+  background-color: rgb(245, 202, 92);
 }
 #tablerow{
   font-family: "Helvetica";
   color: #000;
   font-size: 13pt;
-  line-height: 13pt;
-   box-sizing: content-box;
    width: 200px;
-   text-align: inherit;
-   vertical-align: bottom;
- padding: 20px 0px;
-  background-repeat: no-repeat;
-  background-position:center;
-  display: table-cell; 
   font-weight: bold;
+
+  text-align: justify;
 
 }
 /* .arrowchange-down::before {
@@ -447,3 +445,32 @@ width: auto;
 
   #view-header4:nth-child(even){
   background:#dee2e6;}
+
+  .column {
+    float: left;
+    width: 15%;
+    padding: 10px;
+  }
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  .interview_card1{
+    margin: 20px auto;
+    margin-bottom: 100px;
+    margin-top:0px;
+    /* padding: 15px 5px 10px 15px; */
+    float: center;
+    width: auto;
+    /* width:auto; */
+    /* height: 1050px; */
+    padding: 15px 8px;
+    background:white;
+    
+    height: auto;
+
+    /* box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1); */
+  }
