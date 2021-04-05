@@ -8,6 +8,7 @@ import EditDepartment from "./editbuttons/EditDepartment";
 import AlertBox from "../alert/AlertBox";
 
 const Department = (props) => {
+  // console.log("dept" + props.data.deptdata.department)
   const [openedit, setopenedit] = useState(true);
   const closeedit = () => {
     setopenedit(false);
@@ -39,7 +40,12 @@ const Department = (props) => {
                   <td className="company-td">{item.department}</td>
                   <td className="company-td">{item.costcenter}</td>
                   <td className="company-td" id="Action_css">
-                    <EditDepartment/>
+                    {/* <button onClick={openeditdailog} id="edit_btn">
+                      <EditIcon />
+                    </button>
+                    <button id="delete_btn">
+                      <DeleteIcon /> </button>*/}
+                      <EditDepartment id={index}/>
                     
                   </td>
                 </tr>
