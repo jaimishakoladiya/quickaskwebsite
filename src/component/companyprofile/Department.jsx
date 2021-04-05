@@ -39,12 +39,7 @@ const Department = (props) => {
                   <td className="company-td">{item.department}</td>
                   <td className="company-td">{item.costcenter}</td>
                   <td className="company-td" id="Action_css">
-                    {/* <button onClick={openeditdailog} id="edit_btn">
-                      <EditIcon />
-                    </button>
-                    <button id="delete_btn">
-                      <DeleteIcon /> </button>*/}
-                      <EditDepartment/>
+                    <EditDepartment/>
                     
                   </td>
                 </tr>
