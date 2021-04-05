@@ -70,17 +70,16 @@ const classes = useStyles();
                     <TreeItem nodeId="1" label="Questions List" style={style3}> <TreeItem nodeId="4" />
                       <TableHead>
                         <TableRow>
-                          <TableCell align="left"><h3 style={{ color: "darkcyan", marginLeft: "19px", fontSize: "18px" }}>Questions</h3></TableCell>
+                          <TableCell align="left"><h3 style={{ color: "darkcyan", marginLeft: "19px",width:"350px", fontSize: "18px" }}>Questions</h3></TableCell>
                        
-                     <TableCell ><h3 style={{  color: "darkcyan", fontSize: "18px" }}>Total Allowed</h3></TableCell>
+                     <TableCell ><h3 style={{  color: "darkcyan", fontSize: "18px",marginLeft:"400px" }}>Total Allowed</h3></TableCell>
 
                         </TableRow> </TableHead>
-                      <TableCell id="name">1.kjk</TableCell>
-                      <TableCell></TableCell>
-                        
-                      <TableCell id="question-box">   3mins<br />
+                      <TableCell id="name" >1.what is react js and what is react routerand what is browseer router</TableCell>
+                     <TableCell id="question-box">   3mins<br />
                       </TableCell>
-                      <TableRow><TableCell id="name">2.kk</TableCell>
+
+                      <TableRow><TableCell id="name">jklndm</TableCell>
                         <TableCell id="question-box">0 min</TableCell>
                       </TableRow>
                       <TableRow><TableCell id="name"></TableCell>

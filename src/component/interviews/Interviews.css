@@ -281,11 +281,15 @@
   font-size: 20px;
 }
 #name{
- text-align: center;
+ text-align: left;
  font-size: 14pt;
  color:black;
  font-family: "Helvetica";
  font-weight: 400;
+ 
+
+
+
 }
 #inicon{
   color: darkcyan;
@@ -308,7 +312,7 @@
 
 }
 #panel-inline-css{
-  text-align: right;
+  text-align: left;
  color:black;
  font-size: 14pt;
 }
