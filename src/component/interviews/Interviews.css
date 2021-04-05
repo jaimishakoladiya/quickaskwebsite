@@ -307,7 +307,7 @@
 
 }
 #panel-inline-css{
-  text-align: left;
+text-align: right;
  color:black;
  font-size: 14pt;
 }
@@ -323,6 +323,7 @@
   color:darkcyan;
   font-size: 18px;
   font-weight: 700;
+
   /* margin-left: 55px; */
 }
 #headercss{
