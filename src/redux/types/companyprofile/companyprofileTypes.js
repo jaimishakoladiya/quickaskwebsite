@@ -8,4 +8,4 @@ export const ADD_DEPT_DATA="ADD_DEPT_DATA";
 export const ADD_MANAGER_DATA="ADD_MANAGER_DATA";
 export const ADD_JOB_DATA="ADD_JOB_DATA";
 export const EDIT_DEPT_DATA="EDIT_DEPT_DATA";
-
+export const EDIT_JOB_DATA="EDIT_JOB_DATA";

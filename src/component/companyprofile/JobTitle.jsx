@@ -1,10 +1,21 @@
-import React from "react";
+import React , { useState }from "react";
 import AddJob from "./addbuttons/AddJob";
 import { connect } from 'react-redux';
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
+// import EditDepartment from "./editbuttons/EditDepartment";
+import EditJob from "./editbuttons/EditJob";
 
 const JobTitle = (props) => {
+  const [openedit,setopenedit]=useState(true);
+   const closeedit=()=>{
+     setopenedit(false);
+   }
+
+  const openeditdailog=()=>{
+    setopenedit(true);
+    return <EditJob openedit={openedit} closeedit={closeedit}/>
+  }
   return (
     <>
       <div className="JobTitle_card1">
@@ -23,12 +34,13 @@ const JobTitle = (props) => {
         <td className="company-td">{item.jobtitle}</td>
         <td className="company-td">{item.department}</td>
         <td className="company-td" id="Action_css">
-        <button id="edit_btn">
+        {/* <button id="edit_btn">
                       <EditIcon />
                     </button>
                     <button id="delete_btn">
                       <DeleteIcon />
-                    </button>
+                    </button> */}
+                  <EditJob id={index}/>
         </td>
       </tr>
    
