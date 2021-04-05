@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import AddDepartment from "./addbuttons/AddDepartment";
 import { connect } from "react-redux";
-import EditDelete from "./editbuttons/EditDelete";
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
+import EditDepartment from "./editbuttons/EditDepartment";
+import AlertBox from "../alert/AlertBox";
 
 const Department = (props) => {
+  const [openedit, setopenedit] = useState(true);
+  const closeedit = () => {
+    setopenedit(false);
+  };
+
+  const openeditdailog = () => {
+    setopenedit(true);
+    console.log(openedit);
+  
+    return <EditDepartment openedit={openedit} closeedit={closeedit} />;
+  };
   return (
     <>
       <div className="Department_card1">
@@ -25,7 +39,13 @@ const Department = (props) => {
                   <td className="company-td">{item.department}</td>
                   <td className="company-td">{item.costcenter}</td>
                   <td className="company-td" id="Action_css">
-                    <EditDelete />
+                    {/* <button onClick={openeditdailog} id="edit_btn">
+                      <EditIcon />
+                    </button>
+                    <button id="delete_btn">
+                      <DeleteIcon /> </button>*/}
+                      <EditDepartment/>
+                    
                   </td>
                 </tr>
               </>

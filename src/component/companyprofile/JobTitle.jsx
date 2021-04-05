@@ -1,9 +1,8 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
 import AddJob from "./addbuttons/AddJob";
-import EditDelete from './editbuttons/EditDelete'
-import Department from './Department';
 import { connect } from 'react-redux';
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
 
 const JobTitle = (props) => {
   return (
@@ -23,7 +22,14 @@ const JobTitle = (props) => {
           <tr className="company-tr">
         <td className="company-td">{item.jobtitle}</td>
         <td className="company-td">{item.department}</td>
-        <td className="company-td" id="Action_css"><EditDelete/></td>
+        <td className="company-td" id="Action_css">
+        <button id="edit_btn">
+                      <EditIcon />
+                    </button>
+                    <button id="delete_btn">
+                      <DeleteIcon />
+                    </button>
+        </td>
       </tr>
    
           </>
