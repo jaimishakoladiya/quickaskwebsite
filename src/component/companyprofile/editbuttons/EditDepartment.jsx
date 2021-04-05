@@ -17,6 +17,7 @@ import QuestionsCard from "../addbuttons/QuestionsCard";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { connect } from "react-redux";
+import { editdeptdata } from "../../../redux/actions/companyprofile/companprofileAction";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -28,19 +29,26 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: "#eef5f6",
   },
 }));
- function EditDepartment() {
+ function EditDepartment(props) {
+   console.log(props.id)
+   console.log(props.editdata)
+  //  console.log(props.editdata.department)
+
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
 
   const initialValues = {
-    department: "",
-    costcenter: "",
+    department:props.editdata.department,
+    costcenter: props.editdata.costcenter,
   };
 
   const onSubmit = (values) => {
     console.log(values);
+    console.log(props.editdata)
+    props.editdeptdata(values,props.id)
     setOpen(false);
+    console.log(props.editdata)
   };
 
   const validationSchema = yup.object({
@@ -128,6 +136,7 @@ const useStyle = makeStyles((theme) => ({
                             placeholder="Department"
                             id="department"
                             variant="standard"
+                            value={formik.values.department}
                           />
                         </Grid>
                         <Grid item xs={6}>
@@ -138,6 +147,7 @@ const useStyle = makeStyles((theme) => ({
                             placeholder="Cost Center"
                             id="costcenter"
                             variant="standard"
+                            value={formik.values.costcenter}
                           />
                         </Grid>
                         <Grid item xs={7}>
@@ -185,9 +195,19 @@ const useStyle = makeStyles((theme) => ({
     </div>
   );
 }
-const mapStateToProps = state=>{
+const mapStateToProps = (state,ownprops)=>{
+  // const data=state.companyprofile.deptdata.filter((item,index)=>{
+  //   return index === ownprops.id
+  // })
   return{
-    editdata:state.companyprofile
+    editdata:state.companyprofile.deptdata[ownprops.id]
+
   }
 }
-export default connect (mapStateToProps)(EditDepartment)
+
+const mapDispatchToProps=disptach=>{
+  return {
+    editdeptdata:(data,id)=>{disptach(editdeptdata(data,id))}
+  }
+}
+export default connect (mapStateToProps,mapDispatchToProps)(EditDepartment)

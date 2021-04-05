@@ -8,6 +8,7 @@ import EditDepartment from "./editbuttons/EditDepartment";
 import AlertBox from "../alert/AlertBox";
 
 const Department = (props) => {
+  // console.log("dept" + props.data.deptdata.department)
   const [openedit, setopenedit] = useState(true);
   const closeedit = () => {
     setopenedit(false);
@@ -44,7 +45,7 @@ const Department = (props) => {
                     </button>
                     <button id="delete_btn">
                       <DeleteIcon /> </button>*/}
-                      <EditDepartment/>
+                      <EditDepartment id={index}/>
                     
                   </td>
                 </tr>
