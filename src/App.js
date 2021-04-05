@@ -3,15 +3,17 @@
 
 //import Login from './component/account/login/Login'
 //  import Home from "./component/home/Home";
-import Interviews from './component/interviews/Interviews'
+//import Interviews from './component/interviews/Interviews'
 //import About from "./component/team/about/About.jsx";
 // import Login from './component/account/login/Login'
 // import Registration from './component/account/register/Registartion'
 
  //import CompanyProfilePage from "./component/companyprofile/CompanyProfilePage";
 //import Navbar2 from './component/navbar/outernavbar/Navbar2'
-import { BrowserRouter } from 'react-router-dom';
-import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
+//import { BrowserRouter } from 'react-router-dom';
+//import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
+// import { BrowserRouter } from 'react-router-dom';
+// import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 //import Login from './component/account/login/Login';
 //import Forpass from './component/account/login/Forpass';
 //import { BrowserRouter } from 'react-router-dom';
@@ -21,11 +23,10 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 // import Navbar from './component/navbar/homenavbar/Navbar'
 // import CompanyProfilePage from "./component/companyprofile/CompanyProfilePage";
 //import Navbar2 from './component/navbar/outernavbar/Navbar2'
- //import Interviews from "./component/interviews/Interviews";
 //import Contact from './component/team/contact/Contact';
 //import InterviewDataGrid from './component/interviews/InterviewDataGrid';
 //import HomeNavbar from './component/navbar/homenavbar/HomeNavbar';
-import { Provider } from "react-redux";
+ import { Provider } from "react-redux";
 import store from "./redux/Store";
 import CompanyFooter from './component/companyprofile/CompanyFooter';
 import CompanyProfilePage from './component/companyprofile/CompanyProfilePage';
@@ -42,7 +43,7 @@ function App() {
       {/* <Registration/> */}
       {/* <Login/> */}
       {/* <Navbar/> */}
-      {/* <Provider store={store}>
+     {/* <Provider store={store}>
       <BrowserRouter>
    
       <HomeNavbar/> 
@@ -56,6 +57,7 @@ function App() {
       {/* <Login/> */}
       {/* <Navbar/> */}
       {/* <Contact/> */}
+      {/* <ViewRecord/> */}
       {/* <About/> */}
       {/* <QuestionsCard/> */}
       <Provider store={store}>

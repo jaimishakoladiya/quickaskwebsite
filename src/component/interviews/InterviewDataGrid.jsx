@@ -55,12 +55,8 @@ const classes = useStyles();
   return (
   
     <>
-
-     <div style={{width:"500px"}}>
-
-
-            
-            
+    <div style={{width:"500px"}}>
+         
                 <TableRow style={style}>
                   <TreeView 
           
@@ -70,13 +66,14 @@ const classes = useStyles();
                     <TreeItem nodeId="1" label="Questions List" style={style3}> <TreeItem nodeId="4" />
                       <TableHead>
                         <TableRow>
-                          <TableCell align="left"><h3 style={{ color: "darkcyan", marginLeft: "19px",width:"350px", fontSize: "18px" }}>Questions</h3></TableCell>
-                       
-                     <TableCell ><h3 style={{  color: "darkcyan", fontSize: "18px",marginLeft:"400px" }}>Total Allowed</h3></TableCell>
+                          <TableCell align="left"><h3 style={{ color: "darkcyan",marginLeft:"25px", fontSize: "18px" }}>Questions</h3></TableCell>
+                          <TableCell ><h3 style={{  color: "darkcyan", fontSize: "18px",marginLeft:"600px" }}>Total Allowed</h3></TableCell>
+                          
 
+                      
                         </TableRow> </TableHead>
-                      <TableCell id="name" >1.what is react js and what is react routerand what is browseer router</TableCell>
-                     <TableCell id="question-box">   3mins<br />
+                      <TableCell id="name">1.what is react</TableCell>
+                      <TableCell id="question-box">   3mins<br />
                       </TableCell>
 
                       <TableRow><TableCell id="name">jklndm</TableCell>
@@ -99,27 +96,23 @@ const classes = useStyles();
                       <TableHead   >
                          <TableRow className={classes.root} >
                           <TableCell id="candidate-css">Candidate</TableCell>
-                          <TableCell id="candidate-css">Candidate ID</TableCell>
-                          <TableCell id="candidate-css" >Interview Tries</TableCell>
-                          <TableCell id="candidate-css">Email</TableCell>
-                      
-                          <TableCell id="candidate-css">Action </TableCell>
-                        </TableRow> 
-                       
 
- 
+                          <TableCell id="candidate-css">Candidate ID</TableCell>
+                           <TableCell id="candidate-css" >Interview Tries</TableCell>  
+                          <TableCell id="candidate-css">Email</TableCell>
+                          {/* <TableCell id="candidate-css">Status</TableCell> */}
+                         <TableCell id="candidate-css">Action </TableCell> 
+                        </TableRow>
                         <TableRow >
-                          <TableCell id="candidate-inline-css">1.kljk</TableCell>
-                          <TableCell id="candidate-inline-css">2</TableCell>
-                 
-                          <TableCell id="candidate-inline-css">4</TableCell>
-                          <TableCell id="candidate-inline-css">chandanikhanesha@52229gamil.com</TableCell>
-                           <TableCell id="candidate-inline-css">Edit </TableCell>
-                        </TableRow> 
-                      </TableHead>
-                     
-                    <br />
-                      <Button variant="contained" color="secondary">
+                          <TableCell id="candidate-inline-css">1.k   ljk  isfdhk ksfhusk jfhsjfn</TableCell>
+                           <TableCell id="candidate-inline-css">gff</TableCell> 
+                           <TableCell id="candidate-inline-css" >0</TableCell>
+                         <TableCell id="candidate-inline-css">bansikhagrgfyhjfthytyam322565@gmail.com</TableCell>
+                          {/* <TableCell id="candidate-inline-css">khjk</TableCell>  */}
+                          <TableCell id="candidate-inline-css">Edit </TableCell>
+                        </TableRow>
+                      </TableHead><br />
+                      <Button variant="contained" color="secondary" style={{ }}>
                         Add  </Button>
                       
                         </TreeItem>
@@ -131,7 +124,7 @@ const classes = useStyles();
                         <TableRow >
                           <TableCell></TableCell>
                           <TableCell id="panel-css">Panel Member</TableCell>
-                          <TableCell id="panel-css"><h3 style={{  fontSize: "18px" }}>Email</h3></TableCell>
+                          <TableCell id="panel-css"><h3 style={{ marginLeft:"450px", fontSize: "18px" }}>Email</h3></TableCell>
                           <TableCell id="panel-css" >Action</TableCell>
                           <TableCell></TableCell>
                         </TableRow>
@@ -152,13 +145,15 @@ const classes = useStyles();
                   {/* <h1 style={{ marginBottom: "14px", lineHeight: "60px", marginLeft: "400px" }}>No Result found</h1> */}
                 </TableRow>
                
-             <br></br>
+             
+                </div>   
+            
               
-             </div>
-           
+          
          
      
     </>
   );
 }
 export default InterviewDataGrid;
+
