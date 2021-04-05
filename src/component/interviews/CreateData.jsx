@@ -46,6 +46,7 @@ function Row(props) {
   const [open, setOpen] = React.useState(false);
   const classes = useStyles();
   return (
+    <div >
     <React.Fragment>
       
       <TableRow className={classes.row}  >
@@ -55,18 +56,18 @@ function Row(props) {
              <ArrowRightIcon style={{ fontSize: "35px", color: "darkcyan",fontWeight: "900"}} />}
           </IconButton>
         </TableCell>
-      
+
         <TableCell   id="tablerow" component="th" scope="row">
         {row.date}
         </TableCell>
        
-      
         <TableCell id="tablerow">{row.jobtitle}</TableCell>
         <TableCell id="tablerow">{row.department}</TableCell>
         <TableCell id="tablerow">{row.manager}</TableCell>
         <TableCell id="tablerow">{row.candidate}</TableCell>
         <TableCell id="tablerow">{row.duration}</TableCell>
         <TableCell id="tablerow">{row.action}</TableCell>
+       
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -103,7 +104,9 @@ function Row(props) {
           </Collapse>
         </TableCell>
       </TableRow>
+      
     </React.Fragment>
+    </div>
   );
 }
 
@@ -122,10 +125,7 @@ Row.propTypes = {
 const rows = [
   createData('2021-2-3','web','android','ck',1,'3mins',<ViewDelete/>),
   createData('2021-2-3','web','android','ck',1,'3mins',<ViewDelete/>),
-
- 
- 
-];
+   ];
 
 export default function CollapsibleTable() {
   return (

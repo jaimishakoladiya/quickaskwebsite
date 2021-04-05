@@ -9,8 +9,10 @@ import CompanyFooter from './../companyprofile/CompanyFooter';
 const Interviews = ()=>{
     return(<>
            
+          
              <CandidateDetails/>
-{/*     
+         
+{/*           
              <CompanyFooter/> */}
             {/* <CreateInterview/> */}
             

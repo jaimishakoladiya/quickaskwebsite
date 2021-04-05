@@ -51,8 +51,7 @@
   width: 1000px;
   margin: -17px;
   margin-top: 15px;
-  color: rgb(8, 8, 8);
-  background-color: rgb(245, 202, 92);
+
 }
 
 .page {
@@ -74,7 +73,7 @@
   transform: scale(1.05, 1.05);
 }
 .detail-data {
-  position: absolute;
+  /* position: absolute; */
   margin: 15px auto;
   margin-bottom: 100px;
   margin-left: 450px;
@@ -250,14 +249,11 @@
   margin-top: 20px;
 }
 
-
 /* tree view data css */
 
 
 /* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
-.active {
-  display: block;
-}
+
 .openbox{
 
   width: 1000px;
@@ -273,8 +269,7 @@
   border-top: 2px solid #999;
 }
 .line{
-  margin-top: 1rem;
-    margin-bottom: 1rem;
+ 
     border: 0;
     width:850px;
 }
@@ -282,11 +277,15 @@
   font-size: 20px;
 }
 #name{
- text-align: center;
- font-size: 14pt;
+ text-align: left;
+ font-size: 12pt;
  color:black;
  font-family: "Helvetica";
  font-weight: 400;
+ 
+
+
+
 }
 #inicon{
   color: darkcyan;
@@ -294,41 +293,45 @@
   cursor: pointer;
   margin: -10px 0px;
   margin-left: 70px;
-  line-height: 50px;
-  margin-top: 13px;
+
 }
 #question-box{
   text-align: right;
  color:black;
- font-size: 14pt;
+ font-size: 12pt;
 }
 #candidate-inline-css{
   text-align: right;
  color:black;
- font-size: 14pt;
+ font-size: 12pt;
+
 }
 #panel-inline-css{
   text-align: right;
  color:black;
- font-size: 14pt;
+ font-size: 12pt;
 }
 #candidate-css{
   color:darkcyan;
   font-size: 18px;
   font-weight: 700;
+ 
+
   /* margin-left: 55px; */
 }
 #panel-css{
   color:darkcyan;
+  text-align: center;
   font-size: 18px;
   font-weight: 700;
+  
   /* margin-left: 55px; */
 }
 #headercss{
   font-family: "Helvetica";
   color: #000;
   font-size: 13pt;
-  line-height: 13pt;
+ margin: 20px 0px;
    box-sizing: content-box;
    width: 200px;
    text-align: inherit;
@@ -338,22 +341,21 @@
   background-position:center;
   display: table-cell; 
   font-weight: bold;
+ 
+  background-color: rgb(245, 202, 92);
 }
 #tablerow{
   font-family: "Helvetica";
   color: #000;
   font-size: 13pt;
-  line-height: 13pt;
-   box-sizing: content-box;
    width: 200px;
-   text-align: inherit;
-   vertical-align: bottom;
- padding: 20px 0px;
-  background-repeat: no-repeat;
-  background-position:center;
-  display: table-cell; 
   font-weight: bold;
 
+  text-align: justify;
+
+}
+#headercss::after{
+  
 }
 /* .arrowchange-down::before {
   transform: rotate(90deg);
@@ -373,7 +375,7 @@ width: auto;
   margin: 15px auto;
   margin-bottom: 100px;
   margin-left: 300px;
-  margin-top: 130px;
+  margin-top: -78px;
   justify-content: center;
   padding: 15px 5px 10px 15px;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
@@ -402,7 +404,9 @@ width: auto;
 .view-header1 h5 {
   margin-left: 20px;
   font-size: 25pt;
+  color: white;
 }
+
 .view-header2 {
   height: 57px;
   width: 1399px;
@@ -447,3 +451,36 @@ width: auto;
 
   #view-header4:nth-child(even){
   background:#dee2e6;}
+
+  .column {
+    float: left;
+    width: 15%;
+    padding: 10px;
+  }
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  .interview_card1{
+    margin: 20px auto;
+    margin-bottom: 100px;
+    margin-top:0px;
+    /* padding: 15px 5px 10px 15px; */
+    float: center;
+    width: auto;
+    /* width:auto; */
+    /* height: 1050px; */
+    padding: 15px 8px;
+    background:white;
+    
+    height: auto;
+
+    /* box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1); */
+ }
+
+  #view_css{
+    padding: 2px 69px;
+  }
