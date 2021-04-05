@@ -1,9 +1,8 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
 import AddManager from "./addbuttons/AddManager";
-import { PinDropSharp } from "@material-ui/icons";
 import { connect } from "react-redux";
-import EditDelete from "./editbuttons/EditDelete";
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
 const Manager = (props) => {
   return (
     <>
@@ -30,7 +29,14 @@ const Manager = (props) => {
             <td className="company-td">hey</td>
             <td className="company-td">hey</td>
             <td className="company-td">hey</td>
-            <td className="company-td" id="Action_css"><EditDelete /></td>
+            <td className="company-td" id="Action_css">
+            <button id="edit_btn">
+                      <EditIcon />
+                    </button>
+                    <button id="delete_btn">
+                      <DeleteIcon />
+                    </button>
+            </td>
           </tr>
           </>
           )

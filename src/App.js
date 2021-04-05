@@ -11,6 +11,8 @@
 //import Navbar2 from './component/navbar/outernavbar/Navbar2'
 //import { BrowserRouter } from 'react-router-dom';
 //import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
+// import { BrowserRouter } from 'react-router-dom';
+// import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 //import Login from './component/account/login/Login';
 //import Forpass from './component/account/login/Forpass';
 //import { BrowserRouter } from 'react-router-dom';
@@ -21,12 +23,15 @@
 //import CompanyProfilePage from "./component/companyprofile/CompanyProfilePage";
 //import Navbar2 from './component/navbar/outernavbar/Navbar2'
  import Interviews from "./component/interviews/Interviews";
+// import CompanyProfilePage from "./component/companyprofile/CompanyProfilePage";
+//import Navbar2 from './component/navbar/outernavbar/Navbar2'
 //import Contact from './component/team/contact/Contact';
 //import InterviewDataGrid from './component/interviews/InterviewDataGrid';
 //import HomeNavbar from './component/navbar/homenavbar/HomeNavbar';
  import { Provider } from "react-redux";
 import store from "./redux/Store";
 //import ViewRecord from './component/interviews/ViewRecord';
+ import store from "./redux/Store";
 function App() {
   return (
     <>
@@ -61,6 +66,7 @@ function App() {
         {/* <CompanyProfilePage /> */}
            <Interviews />
       </Provider> 
+
     </>
   );
 }

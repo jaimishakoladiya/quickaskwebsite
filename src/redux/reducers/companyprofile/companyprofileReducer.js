@@ -1,8 +1,9 @@
 import {
     ADD_DEPT_QUESTIONS, DELETE_DEPT_QUESTIONS, ADD_JOB_QUESTIONS, DELETE_JOB_QUESTIONS
    ,ADD_MANAGER_DATA
-    , ADD_MANAGER_QUESTIONS, DELETE_MANAGER_QUESTIONS, ADD_DEPT_DATA,ADD_JOB_DATA
+    , ADD_MANAGER_QUESTIONS, DELETE_MANAGER_QUESTIONS, ADD_DEPT_DATA,ADD_JOB_DATA, EDIT_DEPT_DATA
 } from "../../types/companyprofile/companyprofileTypes";
+import update from "react-addons-update"
 
 const intitialstate = {
     deptquestion: [],
@@ -69,7 +70,16 @@ const companyprofileReducer = (state = intitialstate, action) => {
                     ...state,
                     jobdata:[...state.jobdata,action.payload]
                 }
-
+            case EDIT_DEPT_DATA:
+                return update(state,{
+                       deptdata:{
+                           [action.id]:{
+                               $set :action.payload
+                           }
+                       }
+                   }
+                )
+                
         default:
             return {
                 ...state

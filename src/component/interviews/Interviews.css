@@ -74,7 +74,7 @@
   transform: scale(1.05, 1.05);
 }
 .detail-data {
-  position: absolute;
+  /* position: absolute; */
   margin: 15px auto;
   margin-bottom: 100px;
   margin-left: 450px;
@@ -446,7 +446,7 @@ width: auto;
   background:#f5f5f5;}
 
   #view-header4:nth-child(even){
-  background:#dee2e6;}
+  background:rgb(222, 226, 230), 226, 230), 226, 230), 226, 230), 226, 230);}
 
   #view_css{
     padding: 2px 69px;
