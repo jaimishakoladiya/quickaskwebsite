@@ -46,6 +46,7 @@ function Row(props) {
   const [open, setOpen] = React.useState(false);
   const classes = useStyles();
   return (
+    <div >
     <React.Fragment>
       
       <TableRow className={classes.row}  >
@@ -67,6 +68,7 @@ function Row(props) {
         <TableCell id="tablerow">{row.candidate}</TableCell>
         <TableCell id="tablerow">{row.duration}</TableCell>
         <TableCell id="tablerow">{row.action}</TableCell>
+        
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -103,7 +105,9 @@ function Row(props) {
           </Collapse>
         </TableCell>
       </TableRow>
+      
     </React.Fragment>
+    </div>
   );
 }
 

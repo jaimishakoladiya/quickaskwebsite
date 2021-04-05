@@ -44,15 +44,8 @@ const InterviewDataGrid = () => {
   return (
 
     <>
-
-     
-           
-<Grid container spacing={0}>
-               
-               <Grid item xs={12} >
-
-            
-            
+    <div style={{width:"500px"}}>
+         
                 <TableRow style={style}>
                   <TreeView
 
@@ -62,10 +55,13 @@ const InterviewDataGrid = () => {
                     <TreeItem nodeId="1" label="Questions List" style={style3}> <TreeItem nodeId="4" />
                       <TableHead>
                         <TableRow>
-                          <TableCell align="left"><h3 style={{ color: "darkcyan", marginLeft: "19px", fontSize: "18px" }}>Questions</h3></TableCell>
-                       <TableCell ><h3 style={{  color: "darkcyan", fontSize: "18px" }}>Total Allowed</h3></TableCell>
+                          <TableCell align="left"><h3 style={{ color: "darkcyan",marginLeft:"25px", fontSize: "18px" }}>Questions</h3></TableCell>
+                          <TableCell ><h3 style={{  color: "darkcyan", fontSize: "18px",marginLeft:"600px" }}>Total Allowed</h3></TableCell>
+                          
+
+                      
                         </TableRow> </TableHead>
-                      <TableCell id="name">1.kjk</TableCell>
+                      <TableCell id="name">1.what is react</TableCell>
                       <TableCell id="question-box">   3mins<br />
                       </TableCell>
                       <TableRow><TableCell id="name">2.kk</TableCell>
@@ -83,19 +79,20 @@ const InterviewDataGrid = () => {
                       <TableHead>
                         <TableRow >
                           <TableCell id="candidate-css">Candidate</TableCell>
+
                           <TableCell id="candidate-css">Candidate ID</TableCell>
-                          <TableCell id="candidate-css" >Interview Tries</TableCell>
-                          {/* <TableCell id="candidate-css">Email</TableCell>
-                          <TableCell id="candidate-css">Status</TableCell>
-                          <TableCell id="candidate-css">Action </TableCell> */}
+                           <TableCell id="candidate-css" >Interview Tries</TableCell>  
+                          <TableCell id="candidate-css">Email</TableCell>
+                          {/* <TableCell id="candidate-css">Status</TableCell> */}
+                         <TableCell id="candidate-css">Action </TableCell> 
                         </TableRow>
                         <TableRow >
-                          <TableCell id="candidate-inline-css">1.kljk</TableCell>
-                          <TableCell id="candidate-inline-css"></TableCell>
-                          <TableCell id="candidate-inline-css" >0</TableCell>
-                          {/* <TableCell id="candidate-inline-css">Email@gmail.com</TableCell>
-                          <TableCell id="candidate-inline-css">khjk</TableCell>
-                          <TableCell id="candidate-inline-css">Edit </TableCell> */}
+                          <TableCell id="candidate-inline-css">1.k   ljk  isfdhk ksfhusk jfhsjfn</TableCell>
+                           <TableCell id="candidate-inline-css">gff</TableCell> 
+                           <TableCell id="candidate-inline-css" >0</TableCell>
+                         <TableCell id="candidate-inline-css">bansikhagrgfyhjfthytyam322565@gmail.com</TableCell>
+                          {/* <TableCell id="candidate-inline-css">khjk</TableCell>  */}
+                          <TableCell id="candidate-inline-css">Edit </TableCell>
                         </TableRow>
                       </TableHead><br />
                       <Button variant="contained" color="secondary" style={{ }}>
@@ -109,7 +106,7 @@ const InterviewDataGrid = () => {
                         <TableRow >
                           <TableCell></TableCell>
                           <TableCell id="panel-css">Panel Member</TableCell>
-                          <TableCell id="panel-css"><h3 style={{  fontSize: "18px" }}>Email</h3></TableCell>
+                          <TableCell id="panel-css"><h3 style={{ marginLeft:"450px", fontSize: "18px" }}>Email</h3></TableCell>
                           <TableCell id="panel-css" >Action</TableCell>
                           <TableCell></TableCell>
                         </TableRow>
@@ -131,14 +128,14 @@ const InterviewDataGrid = () => {
                 </TableRow>
                
              
-              
+                </div>   
             
               
-           </Grid>
-           </Grid>
+          
          
      
     </>
   );
 }
 export default InterviewDataGrid;
+

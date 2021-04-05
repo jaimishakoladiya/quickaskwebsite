@@ -250,14 +250,11 @@
   margin-top: 20px;
 }
 
-
 /* tree view data css */
 
 
 /* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
-.active {
-  display: block;
-}
+
 .openbox{
 
   width: 1000px;
@@ -273,8 +270,7 @@
   border-top: 2px solid #999;
 }
 .line{
-  margin-top: 1rem;
-    margin-bottom: 1rem;
+ 
     border: 0;
     width:850px;
 }
@@ -294,8 +290,7 @@
   cursor: pointer;
   margin: -10px 0px;
   margin-left: 70px;
-  line-height: 50px;
-  margin-top: 13px;
+
 }
 #question-box{
   text-align: right;
@@ -328,7 +323,7 @@
   font-family: "Helvetica";
   color: #000;
   font-size: 13pt;
-  line-height: 13pt;
+ margin: 20px 0px;
    box-sizing: content-box;
    width: 200px;
    text-align: inherit;
@@ -355,6 +350,9 @@
   font-weight: bold;
 
 }
+#headercss::after{
+  
+}
 /* .arrowchange-down::before {
   transform: rotate(90deg);
 } */
@@ -373,7 +371,7 @@ width: auto;
   margin: 15px auto;
   margin-bottom: 100px;
   margin-left: 300px;
-  margin-top: 130px;
+  margin-top: -78px;
   justify-content: center;
   padding: 15px 5px 10px 15px;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
@@ -402,7 +400,9 @@ width: auto;
 .view-header1 h5 {
   margin-left: 20px;
   font-size: 25pt;
+  color: white;
 }
+
 .view-header2 {
   height: 57px;
   width: 1399px;
@@ -447,3 +447,7 @@ width: auto;
 
   #view-header4:nth-child(even){
   background:#dee2e6;}
+
+  #view_css{
+    padding: 2px 69px;
+  }
