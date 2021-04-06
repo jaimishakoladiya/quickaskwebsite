@@ -313,7 +313,7 @@
 }
 #candidate-css{
   color:darkcyan;
-  font-size: 18px;
+  font-size: 12pt;
   font-weight: 700;
  
 
@@ -322,7 +322,7 @@
 #panel-css{
   color:darkcyan;
   text-align: center;
-  font-size: 18px;
+  font-size: 12pt;
   font-weight: 700;
   
   /* margin-left: 55px; */
@@ -375,7 +375,7 @@ width: auto;
   margin: 15px auto;
   margin-bottom: 100px;
   margin-left: 300px;
-  margin-top: -78px;
+  margin-top: 158px;
   justify-content: center;
   padding: 15px 5px 10px 15px;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
@@ -402,7 +402,7 @@ width: auto;
   font-size: 20px;
 }
 .view-header1 h5 {
-  margin-left: 20px;
+  margin-left: 40px;
   font-size: 25pt;
   color: white;
 }
@@ -412,7 +412,7 @@ width: auto;
   width: 1399px;
   margin: -17px;
   margin-left: 299px;
-  margin-top: 205px;
+  margin-top: 236px;
   color: rgb(8, 8, 8);
   background-color: rgb(245, 202, 92);
 }
@@ -474,7 +474,7 @@ width: auto;
     /* width:auto; */
     /* height: 1050px; */
     padding: 15px 8px;
-    background:white;
+    background:#eef5f6;
     
     height: auto;
 

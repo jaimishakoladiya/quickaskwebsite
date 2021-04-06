@@ -8,7 +8,7 @@ import Login from './../../account/login/Login';
 import { useLocation } from 'react-router-dom';
 import Registration from './../../account/register/Registartion';
 import Forpass from './../../account/login/Forpass';
-// import ViewRecord from "../../interviews/ViewRecord";
+import ViewRecord from "../../interviews/ViewRecord";
 const InnerNavbar = () => {
   const location = useLocation();
   return (
@@ -37,6 +37,7 @@ const InnerNavbar = () => {
         <Route exact path="/login" component={Login} />
         <Route exact path="/forgotpassword" component={Forpass} />
         <Route exact path="/registartion" component={Registration} />
+        <Route exact path="/viewrecord" component={ViewRecord} /> 
       </Switch>
     </>
   );
