@@ -67,7 +67,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
  import VisibilityIcon from '@material-ui/icons/Visibility';
   import DeleteIcon from '@material-ui/icons/Delete';
  import { connect } from 'react-redux';
- import { deletecandidate} from "../../redux/actions/interview/InterviewAction"
+
 
 function  ViewDelete(props) {
   const [open, setOpen] = React.useState(false);

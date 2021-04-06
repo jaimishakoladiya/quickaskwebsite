@@ -29,13 +29,14 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: "#eef5f6",
   },
 }));
- function EditJob(props) {
+ function EditManager(props) {
    console.log(props.id)
    console.log(props.editdata)
   //  console.log(props.editdata.department)
 
   const classes = useStyle();
   const [open, setOpen] = useState(false);
+  const [opendelete, setOpendelete] = useState(false);
   const [openalert, setopenalert] = useState(true);
 
   const initialValues = {
@@ -67,14 +68,23 @@ const useStyle = makeStyles((theme) => ({
       />
     );
   };
-
   const handleClickOpen = () => {
     setOpen(true);
+   
   };
-
+  const handleClickOpen1 = () => {
+    
+    setOpendelete(true);
+  };
   const handleClose = () => {
     setOpen(false);
+   
   };
+  const handleClose1 = () => {
+ 
+    setOpendelete(false);
+  };
+
 
   return (
     <div>
@@ -87,11 +97,43 @@ const useStyle = makeStyles((theme) => ({
       >
         <EditIcon />
       </button>
-      <button id="delete_btn">
-        <DeleteIcon />{" "}
+      
+      <button id="delete_btn" onClick={handleClickOpen1}>
+        <DeleteIcon />
       </button>
       <br />
 
+      {/* delete manager */}
+
+      <Dialog
+        open={opendelete}
+        onClose={handleClose1}
+        aria-labelledby="max-width-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <div style={{borderTop:"10px solid darkcyan"}}>
+        <DialogTitle id="max-width-dialog-title"><h3>PLEASE CONFIRM</h3></DialogTitle>
+        <DialogContent style={{ width: "400px" }}>
+          <DialogContentText>
+      <h4>Are You Want To Sure Delete Data? </h4>
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+
+        
+          <Button onClick={handleClose1}
+         variant="contained" style={{ backgroundColor: "black",color:"white"}}  autoFocus>
+          <h3>Cancel</h3> 
+          </Button>
+          <Button
+         variant="contained" style={{ backgroundColor: "#dc3545",color:"white"}}  autoFocus>
+          <h3>Delete</h3> 
+          </Button>
+        </DialogActions>
+        </div>
+      </Dialog>
+
+{/* edit manager */}
       <Dialog
         open={open}
         onClose={handleClose}
@@ -210,4 +252,4 @@ const mapDispatchToProps=disptach=>{
     editjobdata:(data,id)=>{disptach(editjobdata(data,id))}
   }
 }
-export default connect (mapStateToProps,mapDispatchToProps)(EditJob)
+export default connect (mapStateToProps,mapDispatchToProps)(EditManager)

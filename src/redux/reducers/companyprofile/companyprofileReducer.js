@@ -1,11 +1,7 @@
 import {
     ADD_DEPT_QUESTIONS, DELETE_DEPT_QUESTIONS, ADD_JOB_QUESTIONS, DELETE_JOB_QUESTIONS
    ,ADD_MANAGER_DATA
-<<<<<<< HEAD
-    , ADD_MANAGER_QUESTIONS, DELETE_MANAGER_QUESTIONS, ADD_DEPT_DATA,ADD_JOB_DATA, EDIT_DEPT_DATA, EDIT_JOB_DATA, EDIT_MANAGER_DATA
-=======
-    , ADD_MANAGER_QUESTIONS, DELETE_MANAGER_QUESTIONS, ADD_DEPT_DATA,ADD_JOB_DATA, EDIT_DEPT_DATA, EDIT_JOB_DATA, DELETE_QUESTION
->>>>>>> 0196d1b5914096aee7902ebd0d584f49cec4b65e
+    , ADD_MANAGER_QUESTIONS, DELETE_MANAGER_QUESTIONS, ADD_DEPT_DATA,ADD_JOB_DATA, EDIT_DEPT_DATA,EDIT_MANAGER_DATA, EDIT_JOB_DATA, DELETE_QUESTION, DELETE_DEPT_DATA
 } from "../../types/companyprofile/companyprofileTypes";
 import update from "react-addons-update"
 
@@ -15,7 +11,8 @@ const intitialstate = {
     managerquestion: [],
     deptdata:[],
     managerdata:[],
-    jobdata:[]
+    jobdata:[],
+    deletedept:[],
 }
 
 const companyprofileReducer = (state = intitialstate, action) => {
@@ -92,14 +89,14 @@ const companyprofileReducer = (state = intitialstate, action) => {
                     }
                 }
             )
-            case EDIT_MANAGER_DATA:
-                return update(state,{
-                    managerdata:{
-                        [action.id]:{
-                            $set:action.payload
-                        }
-                    }
-                })
+            // case EDIT_MANAGER_DATA:
+            //     return update(state,{
+            //         managerdata:{
+            //             [action.id]:{
+            //                 $set:action.payload
+            //             }
+            //         }
+            //     })
             case DELETE_QUESTION:
               
                 switch(action.payload){
@@ -117,6 +114,11 @@ const companyprofileReducer = (state = intitialstate, action) => {
                         })
                        
                 }
+                case DELETE_DEPT_DATA:
+                    return{
+                        ...state,
+                        deletedept: state.deletedept.filter((item, id) => id !== action.payload)
+                    }
         default:
             return {
                 ...state

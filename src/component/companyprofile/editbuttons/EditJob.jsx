@@ -7,8 +7,11 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogActions from '@material-ui/core/DialogActions';
 import Slide from "@material-ui/core/Slide";
 import CloseIcon from "@material-ui/icons/Close";
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 import Grid from "@material-ui/core/Grid";
 import "../Company.css";
 import { makeStyles } from "@material-ui/core";
@@ -16,7 +19,8 @@ import AlertBox from "../../alert/AlertBox";
 import QuestionsCard from "../addbuttons/QuestionsCard"
 import { connect } from "react-redux"
 import DisplayQuestions from "../DisplayQuestions";
-import { addjobdata, addjobquestion, deletejobquestion } from "../../../redux/actions/companyprofile/companprofileAction"
+import {  editjobdata } from "../../../redux/actions/companyprofile/companprofileAction"
+import CreateData from './../../interviews/CreateData';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -35,6 +39,7 @@ const useStyle = makeStyles((theme) => ({
 
   const classes = useStyle();
   const [open, setOpen] = useState(false);
+  const [opendelete, setOpendelete] = useState(false);
   const [openalert, setopenalert] = useState(true);
 
   const initialValues = {
@@ -69,11 +74,21 @@ const useStyle = makeStyles((theme) => ({
 
   const handleClickOpen = () => {
     setOpen(true);
+   
   };
-
+  const handleClickOpen1 = () => {
+    
+    setOpendelete(true);
+  };
   const handleClose = () => {
     setOpen(false);
+   
   };
+  const handleClose1 = () => {
+ 
+    setOpendelete(false);
+  };
+
 
   return (
     <div>
@@ -86,11 +101,42 @@ const useStyle = makeStyles((theme) => ({
       >
         <EditIcon />
       </button>
-      <button id="delete_btn">
-        <DeleteIcon />{" "}
+      <button id="delete_btn"
+      onClick={handleClickOpen1}>
+        <DeleteIcon />
       </button>
       <br />
 
+{/* delete job */}
+<Dialog
+        open={opendelete}
+        onClose={handleClose1}
+        aria-labelledby="max-width-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <div style={{borderTop:"10px solid darkcyan"}}>
+        <DialogTitle id="max-width-dialog-title"><h3>PLEASE CONFIRM</h3></DialogTitle>
+        <DialogContent style={{ width: "400px" }}>
+          <DialogContentText>
+      <h4>Are You Want To Sure Delete Data? </h4>
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+
+        
+          <Button onClick={handleClose1}
+         variant="contained" style={{ backgroundColor: "black",color:"white"}}  autoFocus>
+          <h3>Cancel</h3> 
+          </Button>
+          <Button
+         variant="contained" style={{ backgroundColor: "#dc3545",color:"white"}}  autoFocus>
+          <h3>Delete</h3> 
+          </Button>
+        </DialogActions>
+        </div>
+      </Dialog>
+
+{/* //edit job */}
       <Dialog
         open={open}
         onClose={handleClose}
