@@ -130,8 +130,7 @@ const rows = [
   createData('2021-2-3','web','android','ck',1,'3mins',<ViewDelete/>),
    ];
 
-export default function CollapsibleTable() {
- 
+export default function CreateData() {
   return (
     <TableContainer component={Paper}>
       <Table aria-label="a dense table">

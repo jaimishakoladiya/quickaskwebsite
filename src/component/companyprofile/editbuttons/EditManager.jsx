@@ -10,14 +10,14 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
 import CloseIcon from "@material-ui/icons/Close";
 import Grid from "@material-ui/core/Grid";
-import NativeSelect from "@material-ui/core/NativeSelect";
 import "../Company.css";
 import { makeStyles } from "@material-ui/core";
 import AlertBox from "../../alert/AlertBox";
-import QuestionsCard from "./QuestionsCard";
-import { connect } from "react-redux"
-import DisplayQuestions from "../DisplayQuestions";
-import { addjobdata, addjobquestion, deletejobquestion } from "../../../redux/actions/companyprofile/companprofileAction"
+import QuestionsCard from "../addbuttons/QuestionsCard";
+import EditIcon from "@material-ui/icons/Edit";
+import DeleteIcon from "@material-ui/icons/Delete";
+import { connect } from "react-redux";
+import { editdeptdata, editjobdata } from "../../../redux/actions/companyprofile/companprofileAction";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -29,27 +29,26 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: "#eef5f6",
   },
 }));
-function AddJob(props) {
+ function EditJob(props) {
+   console.log(props.id)
+   console.log(props.editdata)
+  //  console.log(props.editdata.department)
+
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
 
-  const SelectItem = () => {
-    let items = [];
-    props.data.deptdata.map((item,index)=>{
-      items.push(<option value={item.department}>{item.department}</option>)
-    })
-    return items;
-  };
   const initialValues = {
-    jobtitle: "",
-    department: "",
+    jobtitle:props.editdata.jobtitle,
+    department: props.editdata.department,
   };
 
   const onSubmit = (values) => {
-    // console.log(values)
-   props.addjobdata(values)
+    console.log(values);
+    console.log(props.editdata)
+    props.editjobdata(values,props.id)
     setOpen(false);
+    console.log(props.editdata)
   };
 
   const validationSchema = yup.object({
@@ -79,15 +78,18 @@ function AddJob(props) {
 
   return (
     <div>
-      <Button
+      <button
         type="button"
-        style={{ marginBottom: "25px" }}
         variant="contained"
         color="secondary"
+        id="edit_btn"
         onClick={handleClickOpen}
       >
-        Add Job
-      </Button>
+        <EditIcon />
+      </button>
+      <button id="delete_btn">
+        <DeleteIcon />{" "}
+      </button>
       <br />
 
       <Dialog
@@ -99,9 +101,9 @@ function AddJob(props) {
         maxWidth="md"
         classes={{ paper: classes.dialogWrapper }}
       >
-        <div className="AddJob_primaryHeader">
-          <h3>Add Job </h3>
-          <div className="AddJob_closeicon">
+        <div className="AddDepartment_primaryHeader">
+          <h3>Edit Job </h3>
+          <div className="AddDepartment_closeicon">
             <CloseIcon style={{ color: "black" }} onClick={handleClose} />
           </div>
         </div>
@@ -121,45 +123,46 @@ function AddJob(props) {
                     <Form>
                       <Grid container spacing={3}>
                         <Grid item xs={6}>
-                          <h3>Job title</h3>
+                          <h3>JOB TITLE</h3>
                         </Grid>
                         <Grid item xs={6}>
-                          <h3>Department</h3>
+                          <h3>DEPARTMENT</h3>
                         </Grid>
                         <Grid item xs={6}>
                           <Field
                             as={TextField}
                             name="jobtitle"
                             className="dialog_input"
-                            placeholder="Job title"
+                            placeholder="jobtitle"
                             id="jobtitle"
                             variant="standard"
+                            value={formik.values.jobtitle}
                           />
                         </Grid>
                         <Grid item xs={6}>
-                        <Field as={NativeSelect}
-                        style={{ marginLeft: "10px", width: "350px" }}
-                        name='department'
-                        
-                      >
-                        <option value="null">--Select Department--</option>
-                        {SelectItem()}
-                      </Field>
+                          <Field
+                            as={TextField}
+                            name="department"
+                            className="dialog_input"
+                            placeholder="department"
+                            id="department"
+                            variant="standard"
+                            value={formik.values.department}
+                          />
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item xs={7}>
                           <h3>Default Question For Department</h3>
                         </Grid>
                         <Grid item xs={4}>
                           <h3>Time Allocated</h3>
                         </Grid>
                       </Grid>
-                      <DisplayQuestions question={props.data.jobquestion} deletequestion={props.deletejobquestion} />
                       <br />
-                      {formik.touched.jobtitle && formik.errors.jobtitle
-                        ? erroralert(formik.errors.jobtitle)
-                        : formik.touched.department && formik.errors.department
-                          ? erroralert(formik.errors.department)
-                          : null}
+                      {formik.touched.department && formik.errors.department
+                        ? erroralert(formik.errors.department)
+                        : formik.touched.costcenter && formik.errors.costcenter
+                        ? erroralert(formik.errors.costcenter)
+                        : null}
 
                       <Button
                         id="dialog-cancel-btn"
@@ -181,7 +184,7 @@ function AddJob(props) {
                         Save
                       </Button>
                     </Form>
-                    <QuestionsCard question={props.data} addquestion={props.addjobquestion} />
+                    <QuestionsCard />
                   </>
                 );
               }}
@@ -192,18 +195,19 @@ function AddJob(props) {
     </div>
   );
 }
-const mapStateToProps = state => {
-  return {
-    data: state.companyprofile
+const mapStateToProps = (state,ownprops)=>{
+  // const data=state.companyprofile.deptdata.filter((item,index)=>{
+  //   return index === ownprops.id
+  // })
+  return{
+    editdata:state.companyprofile.jobdata[ownprops.id]
+
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps=disptach=>{
   return {
-    addjobquestion: (newquestion) => { dispatch(addjobquestion(newquestion)) },
-    deletejobquestion: (id) => { dispatch(deletejobquestion(id)) },
-    addjobdata:(data) =>{dispatch(addjobdata(data))}
+    editjobdata:(data,id)=>{disptach(editjobdata(data,id))}
   }
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(AddJob)
+export default connect (mapStateToProps,mapDispatchToProps)(EditJob)

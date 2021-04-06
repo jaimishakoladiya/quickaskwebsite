@@ -301,7 +301,7 @@
  font-size: 12pt;
 }
 #candidate-inline-css{
-  text-align: right;
+  text-align: left;
  color:black;
  font-size: 12pt;
 
@@ -354,9 +354,7 @@
   text-align: justify;
 
 }
-#headercss::after{
-  
-}
+
 /* .arrowchange-down::before {
   transform: rotate(90deg);
 } */
@@ -466,11 +464,11 @@ width: auto;
   
   .interview_card1{
     margin: 20px auto;
-    margin-bottom: 100px;
+    margin-bottom: 150px;
     margin-top:0px;
     /* padding: 15px 5px 10px 15px; */
     float: center;
-    width: auto;
+    width:auto;
     /* width:auto; */
     /* height: 1050px; */
     padding: 15px 8px;
@@ -483,4 +481,24 @@ width: auto;
 
   #view_css{
     padding: 2px 69px;
+  }
+
+  #edit_btn{
+    background-color:darkcyan;
+    color:white;
+    width:40px;
+    height:35px;
+    border-radius:6px;
+   border-color: darkcyan;
+   position: relative;
+  }
+  #delete_btn{
+    background-color:#f8384b;
+    color:white;
+    width:40px;
+    height:35px;
+    border-radius:6px;
+   border-color: #dc3545;
+   margin-left: 4px;
+   position: relative;
   }

@@ -11,6 +11,7 @@ import "../Company.css";
 import AlertBox from "../../alert/AlertBox";
 
 function QuestionsCard(props) {
+ 
   const [openalert, setopenalert] = useState(false);
   const [newquestion, setnewquestion] = useState({
     questions: '',
@@ -56,9 +57,9 @@ function QuestionsCard(props) {
   };
 
   const onSubmit = (values, onSubmitProps) => {
-    console.log(values);
+    
     props.addquestion(newquestion);
-    console.log(props.question);
+  
     setnewquestion({
       questions: '',
       minutes: "0" + 3,

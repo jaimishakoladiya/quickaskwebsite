@@ -4,13 +4,11 @@ import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 
 function DisplayQuestions(props) {
-  console.log(props.question);
+
   return (
     <div>
       {props.question.map((arr, id) => {
-        {
-          /* console.log(props.question) */
-        }
+
         return (
           <>
             <Grid container spacing={3}>
@@ -19,7 +17,7 @@ function DisplayQuestions(props) {
               </Grid>
               <Grid item xs={4}>
 
-                
+
                 <h3>
                   {arr.minutes}:{arr.seconds}
                 </h3>
@@ -30,7 +28,9 @@ function DisplayQuestions(props) {
                     aria-label="delete"
                     variant="contained"
                     id="delete_question"
-                    onClick={() => props.deletequestion(id)}
+                    onClick={() =>{ 
+                      console.log("hii")
+                      props.deletequestion(id)}}
                   >
                     <DeleteIcon />
                   </IconButton>
