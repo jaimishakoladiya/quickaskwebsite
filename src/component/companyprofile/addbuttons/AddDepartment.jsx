@@ -14,7 +14,7 @@ import "../Company.css";
 import { makeStyles } from "@material-ui/core";
 import AlertBox from "../../alert/AlertBox";
 import QuestionsCard from "./QuestionsCard";
-import { adddeptdata, adddeptquestion,deletedeptquestion} from "../../../redux/actions/companyprofile/companprofileAction";
+import { adddeptdata, adddeptquestion, deletedeptquestion } from "../../../redux/actions/companyprofile/companprofileAction";
 import { connect } from "react-redux"
 import DisplayQuestions from "../DisplayQuestions";
 
@@ -32,16 +32,18 @@ function AddDepartment(props) {
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
-  const [newque,setnewque]=useState([])
+  const [newque, setnewque] = useState([])
   const initialValues = {
     department: "",
     costcenter: "",
-    
+
   };
 
   const onSubmit = (values) => {
-    console.log(values);
-    props.adddeptdata({...values,newque})
+
+    props.adddeptdata({ ...values, newque })
+    props.adddeptquestion(newque)
+    console.log(props.data.deptquestion)
     setnewque([])
     setOpen(false);
   };
@@ -51,12 +53,12 @@ function AddDepartment(props) {
     costcenter: yup.string().required("All fields are required"),
   });
 
-  const addquestion=(newq)=>{
-    props.adddeptquestion(newq)
-   setnewque((olditem)=>{
-     return [...olditem,
-     newq]
-   })
+  const addquestion = (newq) => {
+   
+    setnewque((olditem) => {
+      return [...olditem,
+        newq]
+    })
 
   }
   const closealert = () => {
@@ -118,7 +120,7 @@ function AddDepartment(props) {
               validationSchema={validationSchema}
             >
               {(formik) => {
-                console.log(formik);
+
 
                 return (
                   <>
@@ -158,9 +160,9 @@ function AddDepartment(props) {
                         </Grid>
 
                       </Grid>
+
+                      <DisplayQuestions question={newque} deletequestion={props.deletedeptquestion} />
                     
-                      <DisplayQuestions question={props.data.deptquestion} deletequestion={props.deletedeptquestion}/>
-                      {/* </Grid> */}
                       <br />
                       {formik.touched.department && formik.errors.department
                         ? erroralert(formik.errors.department)
@@ -188,8 +190,6 @@ function AddDepartment(props) {
                         Save
                       </Button>
                     </Form>
-                 
-                    {/* <QuestionsCard question={props.data.deptquestion} addquestion={props.adddeptquestion} /> */}
                     <QuestionsCard question={props.data.deptquestion} addquestion={addquestion} />
                   </>
                 );
@@ -212,7 +212,7 @@ const mapDispatchToProps = dispatch => {
   return {
     adddeptquestion: (newquestion) => { dispatch(adddeptquestion(newquestion)) },
     deletedeptquestion: (id) => { dispatch(deletedeptquestion(id)) },
-    adddeptdata:(data)=>{dispatch(adddeptdata(data))}
+    adddeptdata: (data) => { dispatch(adddeptdata(data)) }
   }
 }
 

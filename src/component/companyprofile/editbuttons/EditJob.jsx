@@ -13,7 +13,7 @@ import Grid from "@material-ui/core/Grid";
 import "../Company.css";
 import { makeStyles } from "@material-ui/core";
 import AlertBox from "../../alert/AlertBox";
-import QuestionsCard from "./QuestionsCard";
+import QuestionsCard from "../addbuttons/QuestionsCard"
 import { connect } from "react-redux"
 import DisplayQuestions from "../DisplayQuestions";
 import { addjobdata, addjobquestion, deletejobquestion } from "../../../redux/actions/companyprofile/companprofileAction"

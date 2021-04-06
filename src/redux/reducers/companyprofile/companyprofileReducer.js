@@ -1,7 +1,7 @@
 import {
     ADD_DEPT_QUESTIONS, DELETE_DEPT_QUESTIONS, ADD_JOB_QUESTIONS, DELETE_JOB_QUESTIONS
    ,ADD_MANAGER_DATA
-    , ADD_MANAGER_QUESTIONS, DELETE_MANAGER_QUESTIONS, ADD_DEPT_DATA,ADD_JOB_DATA, EDIT_DEPT_DATA, EDIT_JOB_DATA
+    , ADD_MANAGER_QUESTIONS, DELETE_MANAGER_QUESTIONS, ADD_DEPT_DATA,ADD_JOB_DATA, EDIT_DEPT_DATA, EDIT_JOB_DATA, DELETE_QUESTION
 } from "../../types/companyprofile/companyprofileTypes";
 import update from "react-addons-update"
 
@@ -87,7 +87,23 @@ const companyprofileReducer = (state = intitialstate, action) => {
                         }
                     }
                 })
-                
+            case DELETE_QUESTION:
+              
+                switch(action.payload){
+                    case "dept" :
+                        const n=state.deptdata[action.userid].newque.filter((item,index)=>index !== action.queid)
+                       
+                        return update(state,{
+                            deptdata:{
+                                [action.userid]:{
+                                        newque:{
+                                            $set:n
+                                        }
+                                }
+                            }
+                        })
+                       
+                }
         default:
             return {
                 ...state

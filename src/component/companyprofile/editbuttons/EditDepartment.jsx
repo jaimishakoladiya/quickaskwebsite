@@ -17,7 +17,7 @@ import QuestionsCard from "../addbuttons/QuestionsCard";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { connect } from "react-redux";
-import { editdeptdata } from "../../../redux/actions/companyprofile/companprofileAction";
+import { editdeptdata, deletequestion } from "../../../redux/actions/companyprofile/companprofileAction";
 import DisplayQuestions from "../DisplayQuestions";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -31,19 +31,34 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 function EditDepartment(props) {
-  console.log(props.editdata.newque)
+ 
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
   const [newque, setnewque] = useState(props.editdata.newque)
-  console.log(newque)
+  
 
-  const addquestion=(newq)=>{
-    setnewque((olditem)=>{
-      return[...olditem,newq]
+  const addquestion = (newq) => {
+    setnewque((olditem) => {
+      return [...olditem, newq]
     })
-    
+    props.editdeptdata({ ...props.editdata, ...props.editdata.newque.push(newq) }, props.id)
+
+
   }
+
+  const deletequestion = (id) => {
+    console.log(id)
+    setnewque((olditem) => {
+      return olditem.filter((arr, index) => {
+        return index !== id;
+      })
+    })
+
+    props.deletequestion("dept", props.id, id)
+
+  }
+
   const initialValues = {
     department: props.editdata.department,
     costcenter: props.editdata.costcenter,
@@ -93,7 +108,7 @@ function EditDepartment(props) {
         <EditIcon />
       </button>
       <button id="delete_btn">
-        <DeleteIcon />{" "}
+        <DeleteIcon />
       </button>
       <br />
 
@@ -162,7 +177,7 @@ function EditDepartment(props) {
                           <h3>Time Allocated</h3>
                         </Grid>
                       </Grid>
-                      <DisplayQuestions question={props.editdata.newque} />
+                      <DisplayQuestions question={props.editdata.newque} deletequestion={deletequestion} />
                       <br />
                       {formik.touched.department && formik.errors.department
                         ? erroralert(formik.errors.department)
@@ -213,7 +228,8 @@ const mapStateToProps = (state, ownprops) => {
 
 const mapDispatchToProps = disptach => {
   return {
-    editdeptdata: (data, id) => { disptach(editdeptdata(data, id)) }
+    editdeptdata: (data, id) => { disptach(editdeptdata(data, id)) },
+    deletequestion: (section, uid, qid) => { disptach(deletequestion(section, uid, qid)) }
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(EditDepartment)
