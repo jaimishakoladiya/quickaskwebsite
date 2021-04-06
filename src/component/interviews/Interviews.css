@@ -278,7 +278,7 @@
 }
 #name{
  text-align: left;
- font-size: 14pt;
+ font-size: 12pt;
  color:black;
  font-family: "Helvetica";
  font-weight: 400;
@@ -298,22 +298,22 @@
 #question-box{
   text-align: right;
  color:black;
- font-size: 14pt;
+ font-size: 12pt;
 }
 #candidate-inline-css{
   text-align: right;
  color:black;
- font-size: 14pt;
+ font-size: 12pt;
 
 }
 #panel-inline-css{
-text-align: right;
+  text-align: right;
  color:black;
- font-size: 14pt;
+ font-size: 12pt;
 }
 #candidate-css{
   color:darkcyan;
-  font-size: 18px;
+  font-size: 12pt;
   font-weight: 700;
  
 
@@ -321,9 +321,10 @@ text-align: right;
 }
 #panel-css{
   color:darkcyan;
+  text-align: center;
   font-size: 18px;
   font-weight: 700;
-
+  
   /* margin-left: 55px; */
 }
 #headercss{

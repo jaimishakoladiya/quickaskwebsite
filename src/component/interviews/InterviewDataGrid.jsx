@@ -57,9 +57,9 @@ const InterviewDataGrid = () => {
               <ArrowRightIcon style={{ fontSize: '29px', color: 'darkcyan' }} />
             }
           >
-            {/* Question List */}
+            {/* {/ Question List /} */}
             <TreeItem nodeId="1" label="Questions List" style={style3}>
-          
+              {' '}
               <TreeItem nodeId="4" />
               <TableHead>
                 <TableRow>
@@ -68,7 +68,8 @@ const InterviewDataGrid = () => {
                       style={{
                         color: 'darkcyan',
                         marginLeft: '25px',
-                        fontSize: '18px',
+                        width: '400px',
+                        fontSize: '12pt',
                       }}
                     >
                       Questions
@@ -78,20 +79,23 @@ const InterviewDataGrid = () => {
                     <h3
                       style={{
                         color: 'darkcyan',
-                        fontSize: '18px',
-                        marginLeft: '600px',
+                        fontSize: '14px',
+                        marginLeft: '300px',
                       }}
                     >
                       Total Allowed
                     </h3>
                   </TableCell>
-                </TableRow>
+                </TableRow>{' '}
               </TableHead>
-              <TableCell id="name">1.what is react cgfg fgdgfd fgfdg</TableCell>
+              <TableCell id="name">
+                1.what is react dbmh nhsdg jywr yugw jwery jywetr hjwgr hjr
+                hjwery nhgtrweh guwrer nhtweu
+              </TableCell>
               <TableCell id="question-box">
-             
+                {' '}
                 3mins
-             
+                <br />
               </TableCell>
               <TableRow>
                 <TableCell id="name">jklndm</TableCell>
@@ -104,39 +108,38 @@ const InterviewDataGrid = () => {
               </TableRow>
             </TreeItem>
 
-            {/* Candidates */}
+            {/* {/ Candidates /} */}
 
             <TreeItem nodeId="2" label="All Candidates" style={style3}>
               <TableHead>
                 <TableRow className={classes.root}>
-                  <TableCell id="candidate-css">Candidate</TableCell>
-
-                  <TableCell id="candidate-css">Candidate ID</TableCell>
+                 <TableCell id="candidate-css">Candidate</TableCell>
+                   <TableCell id="candidate-css">Candidate ID</TableCell>
                   <TableCell id="candidate-css">Interview Tries</TableCell>
                   <TableCell id="candidate-css">Email</TableCell>
-                  {/* <TableCell id="candidate-css">Status</TableCell> */}
-                  <TableCell id="candidate-css">Action </TableCell>
+                 <TableCell id="candidate-css">Action </TableCell>
                 </TableRow>
+
                 <TableRow>
-                  <TableCell id="candidate-inline-css">
-                    1.k ljk isfdhk ksfhusk jfhsjfn
-                  </TableCell>
+                  <TableCell id="candidate-inline-css"> 1.k ljk isfdhk ksfhusk jfhsjfn </TableCell>
                   <TableCell id="candidate-inline-css">gff</TableCell>
                   <TableCell id="candidate-inline-css">0</TableCell>
-                  <TableCell id="candidate-inline-css">
-                    bansikhagrgfyhjfthytyam322565@gmail.com
-                  </TableCell>
-                  {/* <TableCell id="candidate-inline-css">khjk</TableCell>  */}
+                  <TableCell id="candidate-inline-css"> bansikhagrgfyhjfthytyam322565@gmail.com </TableCell>
                   <TableCell id="candidate-inline-css">Edit </TableCell>
                 </TableRow>
+                
               </TableHead>
               <br />
-              <Button variant="contained" color="secondary" style={{}}>
+              <Button
+                variant="contained"
+                color="secondary"
+                style={{ marginLeft: '25px' }}
+              >
                 Add{' '}
               </Button>
             </TreeItem>
 
-            {/* Panel Members */}
+            {/* {/ Panel Members /} */}
 
             <TreeItem nodeId="3" label="Panel Member" style={style3}>
               {' '}
@@ -144,9 +147,20 @@ const InterviewDataGrid = () => {
               <TableHead>
                 <TableRow>
                   <TableCell></TableCell>
-                  <TableCell id="panel-css">Panel Member</TableCell>
+                  <TableCell id="panel-css" align="left">
+                    <h3
+                      style={{
+                        color: 'darkcyan',
+                        marginLeft: '-105px',
+                        width: '300px',
+                        fontSize: '12pt',
+                      }}
+                    >
+                      Panel Member
+                    </h3>
+                  </TableCell>
                   <TableCell id="panel-css">
-                    <h3 style={{ marginLeft: '250px', fontSize: '18px' }}>
+                    <h3 style={{ marginLeft: '350px', fontSize: '18px' }}>
                       Email
                     </h3>
                   </TableCell>
@@ -155,9 +169,16 @@ const InterviewDataGrid = () => {
                 </TableRow>
                 <TableRow>
                   <TableCell></TableCell>
-                  <TableCell id="panel-inline-css">1.khjhj</TableCell>
+                  <TableCell
+                    id="panel-inline-css"
+                    style={{ textAlign: 'left' }}
+                  >
+                    chandani khanesha
+                  </TableCell>
 
-                  <TableCell id="panel-inline-css">email@gmail.com</TableCell>
+                  <TableCell id="panel-inline-css">
+                    chandanikhaneshaemail@.com
+                  </TableCell>
                   <TableCell id="panel-inline-css">Action</TableCell>
                   <TableCell></TableCell>
                 </TableRow>
@@ -172,7 +193,7 @@ const InterviewDataGrid = () => {
               </Button>
             </TreeItem>
           </TreeView>
-          {/* <h1 style={{ marginBottom: "14px", lineHeight: "60px", marginLeft: "400px" }}>No Result found</h1> */}
+          {/* {/ <h1 style={{ marginBottom: "14px", lineHeight: "60px", marginLeft: "400px" }}>No Result found</h1> /} */}
         </TableRow>
       </div>
     </>

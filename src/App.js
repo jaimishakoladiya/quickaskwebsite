@@ -3,7 +3,7 @@
 
 //import Login from './component/account/login/Login'
 //  import Home from "./component/home/Home";
-//import Interviews from './component/interviews/Interviews'
+import Interviews from './component/interviews/Interviews'
 //import About from "./component/team/about/About.jsx";
 // import Login from './component/account/login/Login'
 // import Registration from './component/account/register/Registartion'
@@ -26,12 +26,13 @@
 //import Contact from './component/team/contact/Contact';
 //import InterviewDataGrid from './component/interviews/InterviewDataGrid';
 //import HomeNavbar from './component/navbar/homenavbar/HomeNavbar';
+
  import { Provider } from "react-redux";
 import store from "./redux/Store";
 
 import CompanyFooter from './component/companyprofile/CompanyFooter';
 import CompanyProfilePage from './component/companyprofile/CompanyProfilePage';
-import Interviews from './component/interviews/Interviews';
+
 function App() {
   return (
     <>
@@ -65,7 +66,7 @@ function App() {
       <Provider store={store}>
       {/* <CompanyProfilePage/> */}
            <Interviews />
-           <CompanyFooter/>
+            <CompanyFooter/> 
       </Provider>
     </>
   );
