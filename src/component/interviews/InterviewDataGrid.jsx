@@ -127,7 +127,7 @@ const InterviewDataGrid = () => {
                   <TableCell id="candidate-inline-css"> bansikhagrgfyhjfthytyam322565@gmail.com </TableCell>
                   <TableCell id="candidate-inline-css">Edit </TableCell>
                 </TableRow>
-                
+
               </TableHead>
               <br />
               <Button
@@ -159,7 +159,7 @@ const InterviewDataGrid = () => {
                       Panel Member
                     </h3>
                   </TableCell>
-                  <TableCell id="panel-css">
+                  <TableCell id="panel-css" >
                     <h3 style={{ marginLeft: '350px', fontSize: '18px' }}>
                       Email
                     </h3>
