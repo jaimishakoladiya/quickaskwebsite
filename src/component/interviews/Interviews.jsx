@@ -12,9 +12,9 @@ const Interviews = ()=>{
           
              <CandidateDetails/>
          
-{/*           
-             <CompanyFooter/> */}
-            {/* <CreateInterview/> */}
+          
+             <CompanyFooter/>
+         
             
         </>
     );

@@ -9,11 +9,13 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 
 const ButtonDelete = (props) => {
-  const [open, SetOpen] = useState(false);
-  const [Yesopen, SetYesopen] = useState(false);
 
+
+  
   const handleClickClose = () => {
-    SetOpen(false);
+
+    props.closedelete();
+  
   };
   // const YesFunction = () => {
   //   SetYesopen(true);
@@ -26,11 +28,12 @@ const ButtonDelete = (props) => {
   // const handleDelete = () => {};
   // console.log(props.newrecords)
   return (
-    <React.Fragment>
-      <Button variant="contained" color="secondary">
-        <DeleteIcon />
-      </Button>
-
+    <div>
+    
+      {/* <Button variant="contained" color="secondary">
+                      <DeleteIcon/>
+                    </Button> */}
+     
       <Dialog
         open={props.opendelete}
         //onClose={handleClickClose}
@@ -79,7 +82,7 @@ const ButtonDelete = (props) => {
           <DialogContent />
         </DialogContent>
       </Dialog>
-    </React.Fragment>
+    </div>
   );
 };
 export default ButtonDelete;
