@@ -10,6 +10,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
 import CloseIcon from "@material-ui/icons/Close";
 import Grid from "@material-ui/core/Grid";
+import NativeSelect from "@material-ui/core/NativeSelect";
 import "../Company.css";
 import { makeStyles } from "@material-ui/core";
 import AlertBox from "../../alert/AlertBox";
@@ -33,6 +34,13 @@ function AddJob(props) {
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
 
+  const SelectItem = () => {
+    let items = [];
+    props.data.deptdata.map((item,index)=>{
+      items.push(<option value={item.department}>{item.department}</option>)
+    })
+    return items;
+  };
   const initialValues = {
     jobtitle: "",
     department: "",
@@ -129,14 +137,14 @@ function AddJob(props) {
                           />
                         </Grid>
                         <Grid item xs={6}>
-                          <Field
-                            as={TextField}
-                            name="department"
-                            className="dialog_input"
-                            placeholder="Department"
-                            id="department"
-                            variant="standard"
-                          />
+                        <Field as={NativeSelect}
+                        style={{ marginLeft: "10px", width: "350px" }}
+                        name='department'
+                        
+                      >
+                        <option value="null">--Select Department--</option>
+                        {SelectItem()}
+                      </Field>
                         </Grid>
                         <Grid item xs={6}>
                           <h3>Default Question For Department</h3>

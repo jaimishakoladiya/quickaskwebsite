@@ -1,6 +1,10 @@
 import {
     ADD_DEPT_QUESTIONS, DELETE_DEPT_QUESTIONS, ADD_JOB_QUESTIONS, DELETE_JOB_QUESTIONS
+<<<<<<< HEAD
 , ADD_MANAGER_DATA   , ADD_MANAGER_QUESTIONS, DELETE_MANAGER_QUESTIONS, ADD_DEPT_DATA,ADD_JOB_DATA, EDIT_DEPT_DATA, EDIT_JOB_DATA, EDIT_MANAGER_DATA
+=======
+, ADD_MANAGER_DATA   , ADD_MANAGER_QUESTIONS, DELETE_MANAGER_QUESTIONS, ADD_DEPT_DATA,ADD_JOB_DATA, EDIT_DEPT_DATA, EDIT_JOB_DATA,DELETE_QUESTION
+>>>>>>> 0196d1b5914096aee7902ebd0d584f49cec4b65e
 } from "../../types/companyprofile/companyprofileTypes";
 
 export const adddeptquestion = (newquestion) => {
@@ -77,6 +81,7 @@ export const editjobdata=(data,id)=>{
         id:id
     }
 }
+<<<<<<< HEAD
 export const editmanagerdata=(data,id)=>{
     return{
         type:EDIT_MANAGER_DATA,
@@ -85,3 +90,13 @@ export const editmanagerdata=(data,id)=>{
     }
 }
 
+=======
+export const deletequestion=(section,userid,queid)=>{
+    return{
+        type:DELETE_QUESTION,
+        payload:section,
+        userid:userid,
+        queid:queid
+    }
+}
+>>>>>>> 0196d1b5914096aee7902ebd0d584f49cec4b65e

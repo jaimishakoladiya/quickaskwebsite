@@ -17,7 +17,8 @@ import QuestionsCard from "../addbuttons/QuestionsCard";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { connect } from "react-redux";
-import { editdeptdata } from "../../../redux/actions/companyprofile/companprofileAction";
+import { editdeptdata, deletequestion } from "../../../redux/actions/companyprofile/companprofileAction";
+import DisplayQuestions from "../DisplayQuestions";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -29,26 +30,45 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: "#eef5f6",
   },
 }));
- function EditDepartment(props) {
-   console.log(props.id)
-   console.log(props.editdata)
-  //  console.log(props.editdata.department)
-
+function EditDepartment(props) {
+ 
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
+  const [newque, setnewque] = useState(props.editdata.newque)
+  
+
+  const addquestion = (newq) => {
+    setnewque((olditem) => {
+      return [...olditem, newq]
+    })
+    props.editdeptdata({ ...props.editdata, ...props.editdata.newque.push(newq) }, props.id)
+
+
+  }
+
+  const deletequestion = (id) => {
+    console.log(id)
+    setnewque((olditem) => {
+      return olditem.filter((arr, index) => {
+        return index !== id;
+      })
+    })
+
+    props.deletequestion("dept", props.id, id)
+
+  }
 
   const initialValues = {
-    department:props.editdata.department,
+    department: props.editdata.department,
     costcenter: props.editdata.costcenter,
-  };
+  }
 
   const onSubmit = (values) => {
-    console.log(values);
-    console.log(props.editdata)
-    props.editdeptdata(values,props.id)
+
+    props.editdeptdata({ ...values, newque }, props.id)
     setOpen(false);
-    console.log(props.editdata)
+
   };
 
   const validationSchema = yup.object({
@@ -88,7 +108,7 @@ const useStyle = makeStyles((theme) => ({
         <EditIcon />
       </button>
       <button id="delete_btn">
-        <DeleteIcon />{" "}
+        <DeleteIcon />
       </button>
       <br />
 
@@ -157,12 +177,13 @@ const useStyle = makeStyles((theme) => ({
                           <h3>Time Allocated</h3>
                         </Grid>
                       </Grid>
+                      <DisplayQuestions question={props.editdata.newque} deletequestion={deletequestion} />
                       <br />
                       {formik.touched.department && formik.errors.department
                         ? erroralert(formik.errors.department)
                         : formik.touched.costcenter && formik.errors.costcenter
-                        ? erroralert(formik.errors.costcenter)
-                        : null}
+                          ? erroralert(formik.errors.costcenter)
+                          : null}
 
                       <Button
                         id="dialog-cancel-btn"
@@ -184,7 +205,7 @@ const useStyle = makeStyles((theme) => ({
                         Save
                       </Button>
                     </Form>
-                    <QuestionsCard />
+                    <QuestionsCard addquestion={addquestion} />
                   </>
                 );
               }}
@@ -195,19 +216,20 @@ const useStyle = makeStyles((theme) => ({
     </div>
   );
 }
-const mapStateToProps = (state,ownprops)=>{
+const mapStateToProps = (state, ownprops) => {
   // const data=state.companyprofile.deptdata.filter((item,index)=>{
   //   return index === ownprops.id
   // })
-  return{
-    editdata:state.companyprofile.deptdata[ownprops.id]
-
-  }
-}
-
-const mapDispatchToProps=disptach=>{
   return {
-    editdeptdata:(data,id)=>{disptach(editdeptdata(data,id))}
+    editdata: state.companyprofile.deptdata[ownprops.id]
+
   }
 }
-export default connect (mapStateToProps,mapDispatchToProps)(EditDepartment)
+
+const mapDispatchToProps = disptach => {
+  return {
+    editdeptdata: (data, id) => { disptach(editdeptdata(data, id)) },
+    deletequestion: (section, uid, qid) => { disptach(deletequestion(section, uid, qid)) }
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(EditDepartment)

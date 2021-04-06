@@ -56,9 +56,9 @@ function QuestionsCard(props) {
   };
 
   const onSubmit = (values, onSubmitProps) => {
-    console.log(values);
+    
     props.addquestion(newquestion);
-    console.log(props.question);
+  
     setnewquestion({
       questions: '',
       minutes: "0" + 3,
