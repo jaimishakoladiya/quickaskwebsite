@@ -8,8 +8,6 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 
-
-
 const ButtonDelete = (props) => {
 
 
@@ -57,7 +55,7 @@ const ButtonDelete = (props) => {
             <Button variant="contained" color="secondary">
               Delete
             </Button>
-             
+
             {/* <Dialog
               open={Yesopen}
               onClose={handleClickClose}
@@ -80,10 +78,8 @@ const ButtonDelete = (props) => {
               </Button>
             </Dialog> */}
           </DialogActions>
-        
-        
-        
-         <DialogContent />
+
+          <DialogContent />
         </DialogContent>
       </Dialog>
     </div>

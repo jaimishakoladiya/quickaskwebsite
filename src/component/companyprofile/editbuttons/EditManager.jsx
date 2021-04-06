@@ -13,10 +13,11 @@ import Grid from "@material-ui/core/Grid";
 import "../Company.css";
 import { makeStyles } from "@material-ui/core";
 import AlertBox from "../../alert/AlertBox";
-import QuestionsCard from "../addbuttons/QuestionsCard"
-import { connect } from "react-redux"
-import DisplayQuestions from "../DisplayQuestions";
-import { addjobdata, addjobquestion, deletejobquestion } from "../../../redux/actions/companyprofile/companprofileAction"
+import QuestionsCard from "../addbuttons/QuestionsCard";
+import EditIcon from "@material-ui/icons/Edit";
+import DeleteIcon from "@material-ui/icons/Delete";
+import { connect } from "react-redux";
+import { editdeptdata, editjobdata } from "../../../redux/actions/companyprofile/companprofileAction";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
