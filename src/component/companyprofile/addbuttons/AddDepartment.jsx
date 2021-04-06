@@ -40,9 +40,10 @@ function AddDepartment(props) {
   };
 
   const onSubmit = (values) => {
-
+    
     props.adddeptdata({ ...values, newque })
-    props.adddeptquestion(newque)
+   
+    console.log(newque)
     console.log(props.data.deptquestion)
     setnewque([])
     setOpen(false);
@@ -54,12 +55,19 @@ function AddDepartment(props) {
   });
 
   const addquestion = (newq) => {
-   
+    
     setnewque((olditem) => {
       return [...olditem,
         newq]
     })
-
+    props.adddeptquestion(newq)
+  }
+  const deletedeptquestion=(id)=>{
+    setnewque((olditem)=>{
+      return olditem.filter((item,index)=>{
+        return index !== id
+      })
+    })
   }
   const closealert = () => {
     setopenalert(false);
@@ -81,6 +89,7 @@ function AddDepartment(props) {
   ;
   const handleClose = () => {
     setOpen(false);
+    setnewque([])
   };
 
   return (
@@ -161,7 +170,7 @@ function AddDepartment(props) {
 
                       </Grid>
 
-                      <DisplayQuestions question={newque} deletequestion={props.deletedeptquestion} />
+                      <DisplayQuestions question={newque} deletequestion={deletedeptquestion} />
                     
                       <br />
                       {formik.touched.department && formik.errors.department
