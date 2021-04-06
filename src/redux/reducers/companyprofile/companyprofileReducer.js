@@ -86,7 +86,16 @@ const companyprofileReducer = (state = intitialstate, action) => {
                             $set:action.payload
                         }
                     }
-                })
+                }
+            )
+            // case EDIT_MANAGER_DATA:
+            //     return update(state,{
+            //         managerdata:{
+            //             [action.id]:{
+            //                 $set:action.payload
+            //             }
+            //         }
+            //     })
             case DELETE_QUESTION:
               
                 switch(action.payload){

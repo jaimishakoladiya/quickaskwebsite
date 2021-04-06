@@ -77,6 +77,14 @@ export const editjobdata=(data,id)=>{
         id:id
     }
 }
+// export const editmanagerdata=(data,id)=>{
+//     return{
+//         type:EDIT_MANAGER_DATA,
+//         payload:data,
+//         id:id
+//     }
+// }
+
 export const deletequestion=(section,userid,queid)=>{
     return{
         type:DELETE_QUESTION,

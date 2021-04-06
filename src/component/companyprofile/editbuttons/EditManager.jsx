@@ -10,7 +10,6 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
 import CloseIcon from "@material-ui/icons/Close";
 import Grid from "@material-ui/core/Grid";
-import NativeSelect from "@material-ui/core/NativeSelect";
 import "../Company.css";
 import { makeStyles } from "@material-ui/core";
 import AlertBox from "../../alert/AlertBox";
@@ -18,10 +17,7 @@ import QuestionsCard from "../addbuttons/QuestionsCard";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { connect } from "react-redux";
-import {
-  editdeptdata,
-  editjobdata,
-} from "../../../redux/actions/companyprofile/companprofileAction";
+import { editdeptdata, editjobdata } from "../../../redux/actions/companyprofile/companprofileAction";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -33,17 +29,9 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: "#eef5f6",
   },
 }));
-function EditJob(props) {
-  const SelectItem=()=>{
-    let items=[];
-    props.data.deptdata.map((item,index)=>{
-      items.push(<option value={item.department}>{item.department}</option>)
-      
-    })
-    return items;
-  }
-  console.log(props.id);
-  console.log(props.editdata);
+ function EditJob(props) {
+   console.log(props.id)
+   console.log(props.editdata)
   //  console.log(props.editdata.department)
 
   const classes = useStyle();
@@ -51,16 +39,16 @@ function EditJob(props) {
   const [openalert, setopenalert] = useState(true);
 
   const initialValues = {
-    jobtitle: props.editdata.jobtitle,
+    jobtitle:props.editdata.jobtitle,
     department: props.editdata.department,
   };
 
   const onSubmit = (values) => {
     console.log(values);
-    console.log(props.editdata);
-    props.editjobdata(values, props.id);
+    console.log(props.editdata)
+    props.editjobdata(values,props.id)
     setOpen(false);
-    console.log(props.editdata);
+    console.log(props.editdata)
   };
 
   const validationSchema = yup.object({
@@ -153,13 +141,14 @@ function EditJob(props) {
                         </Grid>
                         <Grid item xs={6}>
                           <Field
-                            as={NativeSelect}
-                            style={{ marginLeft: "10px", width: "350px" }}
+                            as={TextField}
                             name="department"
-                          >
-                            <option value="null">--Select Department--</option>
-                            {SelectItem()}
-                          </Field>
+                            className="dialog_input"
+                            placeholder="department"
+                            id="department"
+                            variant="standard"
+                            value={formik.values.department}
+                          />
                         </Grid>
                         <Grid item xs={7}>
                           <h3>Default Question For Department</h3>
@@ -206,21 +195,19 @@ function EditJob(props) {
     </div>
   );
 }
-const mapStateToProps = (state, ownprops) => {
+const mapStateToProps = (state,ownprops)=>{
   // const data=state.companyprofile.deptdata.filter((item,index)=>{
   //   return index === ownprops.id
   // })
-  return {
-    editdata: state.companyprofile.jobdata[ownprops.id],
-    data:state.companyprofile
-  };
-};
+  return{
+    editdata:state.companyprofile.jobdata[ownprops.id]
 
-const mapDispatchToProps = (disptach) => {
+  }
+}
+
+const mapDispatchToProps=disptach=>{
   return {
-    editjobdata: (data, id) => {
-      disptach(editjobdata(data, id));
-    },
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(EditJob);
+    editjobdata:(data,id)=>{disptach(editjobdata(data,id))}
+  }
+}
+export default connect (mapStateToProps,mapDispatchToProps)(EditJob)
