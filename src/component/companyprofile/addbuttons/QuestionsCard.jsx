@@ -11,6 +11,7 @@ import "../Company.css";
 import AlertBox from "../../alert/AlertBox";
 
 function QuestionsCard(props) {
+ 
   const [openalert, setopenalert] = useState(false);
   const [newquestion, setnewquestion] = useState({
     questions: '',

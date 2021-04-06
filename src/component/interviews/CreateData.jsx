@@ -28,6 +28,7 @@ const useStyles = makeStyles({
 });
 
 function createData( date, jobtitle, department,manager,candidate,duration,action) {
+ 
   return {
 
     date,
@@ -42,8 +43,10 @@ function createData( date, jobtitle, department,manager,candidate,duration,actio
 }
 
 function Row(props) {
+  
   const { row } = props;
   const [open, setOpen] = React.useState(false);
+ 
   const classes = useStyles();
   return (
     <div >
@@ -123,7 +126,7 @@ Row.propTypes = {
 };
 
 const rows = [
-  createData('2021-2-3','web','android','ck',1,'3mins',<ViewDelete/>),
+  createData('2021-2-3','web','android','ck',1,'3mins',<ViewDelete   />),
   createData('2021-2-3','web','android','ck',1,'3mins',<ViewDelete/>),
    ];
 

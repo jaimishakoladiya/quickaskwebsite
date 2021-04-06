@@ -28,7 +28,9 @@ function DisplayQuestions(props) {
                     aria-label="delete"
                     variant="contained"
                     id="delete_question"
-                    onClick={() => props.deletequestion(id)}
+                    onClick={() =>{ 
+                      console.log("hii")
+                      props.deletequestion(id)}}
                   >
                     <DeleteIcon />
                   </IconButton>
