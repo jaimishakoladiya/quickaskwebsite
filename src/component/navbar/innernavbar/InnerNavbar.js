@@ -8,12 +8,7 @@ import Login from './../../account/login/Login';
 import { useLocation } from 'react-router-dom';
 import Registration from './../../account/register/Registartion';
 import Forpass from './../../account/login/Forpass';
-<<<<<<< HEAD
 import ViewRecord from "../../interviews/ViewRecord";
-=======
-// import ViewRecord from "../../interviews/ViewRecord";
-
->>>>>>> 4e6e5c50b32196973c5cc8f7ef5ba4d8675a986c
 const InnerNavbar = () => {
   const location = useLocation();
   return (
@@ -42,13 +37,8 @@ const InnerNavbar = () => {
         <Route exact path="/login" component={Login} />
         <Route exact path="/forgotpassword" component={Forpass} />
         <Route exact path="/registartion" component={Registration} />
-<<<<<<< HEAD
         <Route exact path="/viewrecord" component={ViewRecord} /> 
       </Switch>
-=======
-       
-           </Switch>
->>>>>>> 4e6e5c50b32196973c5cc8f7ef5ba4d8675a986c
     </>
   );
 };

@@ -18,8 +18,8 @@ import "../Company.css";
 import { makeStyles } from "@material-ui/core";
 import AlertBox from "../../alert/AlertBox";
 import QuestionsCard from "../addbuttons/QuestionsCard";
-import EditIcon from "@material-ui/icons/Edit";
-import DeleteIcon from "@material-ui/icons/Delete";
+
+
 import { connect } from "react-redux";
 import {
   editdeptdata,
