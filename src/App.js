@@ -60,8 +60,13 @@ function App() {
       {/* <About/> */}
       {/* <QuestionsCard/> */}
       <Provider store={store}>
-      <CompanyProfilePage/>
+      {/* <CompanyProfilePage/> */}
            {/* <Interviews /> */}
+           <BrowserRouter>
+   
+      <HomeNavbar/> 
+     
+      </BrowserRouter> 
             
       </Provider>
     </>
