@@ -130,7 +130,7 @@ const companyprofileReducer = (state = intitialstate, action) => {
                 case DELETE_DEPT_DATA:
                     return{
                         ...state,
-                        deptdata: state.deptdata.filter((item, id) => id !== action.payload)
+                       deptdata: state.deptdata.filter((item, id) => id !== action.payload)
                     }
                     case DELETE_JOB_DATA:
                         return{

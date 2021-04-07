@@ -40,7 +40,7 @@ function EditDepartment(props) {
   const [opendelete, setOpendelete] = useState(false);
   const [openalert, setopenalert] = useState(true);
   const [newque, setnewque] = useState(props.editdata.newque)
-  
+  const [Yesopen, SetYesopen] = useState(false);
 
   const addquestion = (newq) => {
     setnewque((olditem) => {
@@ -64,10 +64,12 @@ function EditDepartment(props) {
   }
 
   const deletedata=()=>{
+    handleClose1()
     props.deletedeptdata(props.id)
-    handleClose1();
-   
+
+    
   }
+
   const initialValues = {
     department: props.editdata.department,
     costcenter: props.editdata.costcenter,
@@ -111,7 +113,7 @@ function EditDepartment(props) {
   };
 
   const handleClose1 = () => {
-   props.deletedeptdata(props.id)
+
     setOpendelete(false);
   };
   return (
@@ -125,7 +127,7 @@ function EditDepartment(props) {
       >
         <EditIcon />
       </button>
-      <button id="delete_btn"   onClick={handleClickOpen1}>
+      <button id="delete_btn"  onClick={handleClickOpen1}>
         <DeleteIcon />
       </button>
       <br />
@@ -146,7 +148,7 @@ function EditDepartment(props) {
         <DialogActions>
 
         
-          <Button
+          <Button  onClick={handleClose1}
          variant="contained" style={{ backgroundColor: "black",color:"white"}}  autoFocus>
           <h3>Cancel</h3> 
           </Button>
