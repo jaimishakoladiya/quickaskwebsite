@@ -4,6 +4,7 @@ import * as yup from "yup";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
+
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContentText from "@material-ui/core/DialogContentText";
@@ -18,8 +19,9 @@ import QuestionsCard from "../addbuttons/QuestionsCard";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { connect } from "react-redux";
+import { editdeptdata, editjobdata,deletemanagerdata ,editmanagerdata } from "../../../redux/actions/companyprofile/companprofileAction";
 import DisplayQuestions from "../DisplayQuestions"
-import { editdeptdata, editjobdata, editmanagerdata } from "../../../redux/actions/companyprofile/companprofileAction";
+
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -87,7 +89,10 @@ const useStyle = makeStyles((theme) => ({
  
     setOpendelete(false);
   };
-
+  const managerdata  = () => {
+    props.deletemanagerdata(props.id);
+    handleClose1()
+  }
 
   return (
     <div>
@@ -129,7 +134,7 @@ const useStyle = makeStyles((theme) => ({
           <h3>Cancel</h3> 
           </Button>
           <Button
-         variant="contained" style={{ backgroundColor: "#dc3545",color:"white"}}  autoFocus>
+         variant="contained"  onClick={managerdata}  style={{ backgroundColor: "#dc3545",color:"white"}}  autoFocus>
           <h3>Delete</h3> 
           </Button>
         </DialogActions>
@@ -272,14 +277,18 @@ const mapStateToProps = (state,ownprops)=>{
   //   return index === ownprops.id
   // })
   return{
+    editdata:state.companyprofile.jobdata[ownprops.id],
+    
     editdata:state.companyprofile.managerdata[ownprops.id]
 
   }
 }
 
-const mapDispatchToProps=disptach=>{
+const mapDispatchToProps= dispatch =>{
   return {
-    editmanagerdata:(data,id)=>{disptach(editmanagerdata(data,id))}
+    editjobdata:(data,id)=>{dispatch(editjobdata(data,id))},
+   deletemanagerdata:(id)=>{dispatch(deletemanagerdata(id))},
+    editmanagerdata:(data,id)=>{dispatch(editmanagerdata(data,id))}
   }
 }
 export default connect (mapStateToProps,mapDispatchToProps)(EditManager)

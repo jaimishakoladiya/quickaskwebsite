@@ -1,7 +1,9 @@
 import React from "react";
 import AddManager from "./addbuttons/AddManager";
 import { connect } from "react-redux";
-import EditManager from "./editbuttons/EditManager"
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
+import EditManager from "./editbuttons/EditManager";
 const Manager = (props) => {
   return (
     <>
