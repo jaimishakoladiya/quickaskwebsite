@@ -68,6 +68,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
   import DeleteIcon from '@material-ui/icons/Delete';
  import { connect } from 'react-redux';
 
+
+
 function  ViewDelete(props) {
   const [open, setOpen] = React.useState(false);
 
@@ -116,9 +118,9 @@ function  ViewDelete(props) {
   );
 }
 
-const mapDispatchToProps = dispatch =>{
-  return{
-    deletecandidate:(id)=>{dispatch(deletecandidate(id))}
-  }
-}
-export default  connect(mapDispatchToProps)(ViewDelete)
+// const mapDispatchToProps = dispatch =>{
+//   return{
+//     deletecandidate:(id)=>{dispatch(deletecandidate(id))}
+//   }
+// }
+export default ViewDelete
