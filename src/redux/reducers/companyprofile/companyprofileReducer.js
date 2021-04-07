@@ -89,14 +89,14 @@ const companyprofileReducer = (state = intitialstate, action) => {
                     }
                 }
             )
-            // case EDIT_MANAGER_DATA:
-            //     return update(state,{
-            //         managerdata:{
-            //             [action.id]:{
-            //                 $set:action.payload
-            //             }
-            //         }
-            //     })
+            case EDIT_MANAGER_DATA:
+                return update(state,{
+                    managerdata:{
+                        [action.id]:{
+                            $set:action.payload
+                        }
+                    }
+                })
             case DELETE_QUESTION:
               
                 switch(action.payload){
@@ -112,7 +112,18 @@ const companyprofileReducer = (state = intitialstate, action) => {
                                 }
                             }
                         })
-                       
+                     case "job":
+                         const n1=state.jobdata[action.userid].newque.filter((item,index)=>index !== action.queid) 
+
+                         return update(state,{
+                             jobdata:{
+                                 [action.userid]:{
+                                     newque:{
+                                         $set:n1
+                                     }
+                                 }
+                             }
+                         })
                 }
                 case DELETE_DEPT_DATA:
                     return{
