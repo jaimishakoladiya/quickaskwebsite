@@ -16,7 +16,7 @@ import AlertBox from '../../alert/AlertBox';
 function Forpass()
  {
    const [openalert,setopenalert] = useState(false);
-   const intialValues = {
+   const initialValues = {
      email:''
    }
    const onSubmit = (values,onsubmitprops) =>{
@@ -39,7 +39,7 @@ function Forpass()
    
   
     <Formik
-    intialValues={intialValues}
+    initialValues={initialValues}
     onSubmit={onSubmit}
     validationSchema={validationSchema}
     >
@@ -48,6 +48,7 @@ function Forpass()
       
       </Switch> */}
       {formik=>{
+        console.log(formik)
         return(
           <>
        
@@ -57,18 +58,18 @@ function Forpass()
           <img src={image2} className="img-fluid animated" alt="images"></img>
         </div>
         <div className="forpass-container">
-         <Form><br/>
+         <Form className="forgot-form"><br/>
           <img src={image3} className="forgot-avatar"></img>
        
           
-          <div className="input-group"><br/><br/><br/><br/><br/><br/>
+          <div className="input-group"><br/><br/>
           <div className="for-inpput-div one focus">
             <div className="i">
              <MailOutlineIcon className="per" />
             </div>
             <div>
               <h5>Email</h5>
-              <Field type="email" id="email" name="email" className="input"/>
+              <Field type="text" id="email" name="email" className="input"/>
             </div>
           </div>
           

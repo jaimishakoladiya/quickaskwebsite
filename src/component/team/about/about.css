@@ -1,88 +1,80 @@
-    /* //about page */
+/* //about page */
 
-    .title{
-        margin-top: 70px;
-         margin-left: 50px;
-         
-       }
-     
-      .about-img1{
-        height: 390px;
-        float:right;
-      margin-right: 50px;
-        width:auto;
-      border-radius: 10pt;
-     
-    }
-    .about-img2{
-height:300px;
-width:450px;
-margin-left:100px
-    }
-    .aboutfooter {
-   
-        left: 0;
-        bottom: 0;
-        height:270px;
-        display:flex;
-        background-color:darkcyan;
-        font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        color:black;
-        margin-bottom: 50px;
-      
-        width: 100%;
-      }
-      
-  .about-col-8{
-    width:100%;
-    float:left;
-}
-.about-title
-{
-font-size:60px;
-color:darkcyan;
-font-family:'DIN';
-letter-spacing: -3px;
-line-height: 60px;
-
-
-}
-.about-title-border
-{
-    border-bottom:7px solid darkcyan;
-        margin-right:950px
-}
-.about-red-title{
-    color: red;
-    font-size:25px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    letter-spacing: -1px;
-}
-.about-inner-text{
-    font-size: 20px;
-    font-family: 'DIN';
-    font-weight: 300;
-
-}
-.about-footer-title{
-color:white;
-font-size:60px;
-margin-left:60px;
-margin-top:20px
-}
-.about-footer-text{
-
-    margin-left: 70px;
-    font-size: 25px;
-    font-family: 'DIN';
-    margin-top: 30px;
+.title {
+  margin-top: -140px;
+  margin-left: 50px;
+ 
 }
 
+.about-img1 {
+  height: 390px;
+  float: right;
+  margin-right: 50px;
+  width: auto;
+  border-radius: 10pt;
+}
+.about-img2 {
+  height: 300px;
+  width: 450px;
+  margin-left: 100px;
+}
+.aboutfooter {
+  left: 0;
+  bottom: 0;
+  height: 270px;
+  display: flex;
+  background-color: darkcyan;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: black;
+  margin-bottom: 50px;
+
+  width: 100%;
+}
+
+.about-col-8 {
+  width: 100%;
+  float: left;
+}
+.about-title {
+  font-size: 60px;
+  color: darkcyan;
+  font-family: "DIN";
+  letter-spacing: -3px;
+  line-height: 60px;
+}
+.about-title-border {
+  border-bottom: 7px solid darkcyan;
+  margin-right: 1000px;
+}
+.about-red-title {
+  color: red;
+  font-size: 25px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  letter-spacing: -1px;
+}
+.about-inner-text {
+  font-size: 20px;
+  font-family: "DIN";
+  font-weight: 300;
+}
+.about-footer-title {
+  color: white;
+  font-size: 60px;
+  margin-left: 60px;
+  margin-top: 20px;
+}
+.about-footer-text {
+  margin-left: 70px;
+  font-size: 25px;
+  font-family: "DIN";
+  margin-top: 30px;
+}
 
 /* ========================== */
-   
-   
-  /* .container{
+
+/* .container{
       width: 1140px;
       margin: 0 auto;
   }
@@ -107,4 +99,3 @@ margin-top:20px
       margin-top:50px;
       width:100%;
   } */
- 

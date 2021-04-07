@@ -2,7 +2,7 @@ import React from 'react'
 import './navbar2.css'
 import DehazeIcon from '@material-ui/icons/Dehaze';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import img from '../../images/logo.png'
+import img from '../../images/logo2.png'
 import { NavLink } from 'react-router-dom';
 function Navbar2() {
   return (
@@ -15,30 +15,53 @@ function Navbar2() {
           <ul>
             {/* <li><a href="#" className="a">INTERVIEWS</a></li> */}
 
-            <li><NavLink to="/interviews" className="a" >INTERVIEWS</NavLink></li>
+            <li>
+              <NavLink to="/interviews" className="a">
+                INTERVIEWS
+              </NavLink>
+            </li>
 
-            <li className="sub-menu"><a href="#" className="a">LOGOOUT </a></li>
-            <li><a href="#" className="a">NAME</a></li>
+            <li className="sub-menu">
+              <NavLink to="/login" className="a">
+                LOGOUT
+              </NavLink>
+            </li>
+            <li>
+              <a href="#" className="activename">
+                NAME
+              </a>
+            </li>
           </ul>
         </nav>
         <nav className="second">
           <ul>
-            <li><a href="#" className="a">INTERVIEW DASHBOARD</a></li>
+            <li>
+              <a href="#" className="a">
+                INTERVIEW DASHBOARD
+              </a>
+            </li>
             {/* <li className="sub-menu"><a href="#" className="a">COMPANY PROFILE </a>
 
             </li> */}
-            <li><NavLink to="/companyprofilepage" className="a" >COMPANY PROFILE</NavLink></li> 
-
-            <li className="sub-menu"><a href="#" className="a">INVOICE </a>
-
+            <li>
+              <NavLink to="/companyprofilepage" className="a">
+                COMPANY PROFILE
+              </NavLink>
             </li>
 
+            <li className="sub-menu">
+              <a href="#" className="a">
+                INVOICE
+              </a>
+            </li>
           </ul>
         </nav>
-        <div className="icon"><DehazeIcon /></div>
+        <div className="icon">
+          <DehazeIcon />
+        </div>
       </header>
     </div>
-  )
+  );
 }
 
-export default Navbar2
+export default Navbar2;

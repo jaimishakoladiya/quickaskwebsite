@@ -1,105 +1,170 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
-import { Field, Formik,Form } from "formik";
+import { Field, Formik, Form } from "formik";
 import FormControl from "@material-ui/core/FormControl";
 import NativeSelect from "@material-ui/core/NativeSelect";
 import InputLabel from "@material-ui/core/InputLabel";
 import * as yup from "yup";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import '../Company.css';
-import AlertBox from '../../alert/AlertBox';
+import "../Company.css";
+import AlertBox from "../../alert/AlertBox";
+import { ChildCare } from "@material-ui/icons";
+
+function QuestionsCard(props) {
+  const [openalert, setopenalert] = useState(false);
+  const [newquestion, setnewquestion] = useState({
+    questions: '',
+    minutes: "0"+3,
+    seconds: "0"+0
+  })
 
 
-function QuestionsCard() {
-    const [openalert,setopenalert]=useState(false);
-    const initialValues={
-        
-        questions:'',
-        // minutes:'',
-        // seconds:''
+  const inputchange = (event) => {
+    const { name, value } = event.target;
+    setnewquestion((oldval) => {
+      return {
+        ...oldval,
+        [name]: value,
+      };
+    });
+    console.log(newquestion);
+  };
+  
+  const SelectItem = () => {
+    let items = [];
+    for (let i = 0; i <= 60; i++) {
+      if (i <= 9) {
+        items.push(
+          <option key={i} value={"0"+i}>
+            {"0"+i}
+          </option>
+        );
+      } else {
+        items.push(
+          <option key={i} value={i}>
+            {i}
+          </option>
+        );
       }
-    
-      const onSubmit=(values,onSubmitProps)=>{
-        console.log(values);
-        onSubmitProps.resetForm()
     }
-      
-      const validationSchema=yup.object({
-        questions:yup.string().required('Enter Default Question'),
-        // minutes:yup.string().required('All fields are required'),
-        // seconds:yup.string().required('All fields are required')
-      })
+    return items;
+  };
+  const initialValues = {
+    questions: "",
+    minutes: '',
+    seconds: ''
+  };
 
-      const closealert=()=>{
-        setopenalert(false);
-      }
-      const erroralert=(error)=>{
-          return (
-              <AlertBox setopenalert={openalert} closealert={closealert} error={error}/>
-          )
-      }
+  const onSubmit = (values, onSubmitProps) => {
+    console.log(values);
+    props.addquestion(newquestion);
+    console.log(props.question)
+    setnewquestion({
+      questions: '',
+      minutes: "0"+3,
+      seconds: "0"+0
+    })
+    onSubmitProps.resetForm();
+  };
+
+  const validationSchema = yup.object({
+    questions: yup.string().required("Enter Default Question"),
+    // minutes:yup.string().required('All fields are required'),
+    // seconds:yup.string().required('All fields are required')
+  });
+
+  const closealert = () => {
+    setopenalert(false);
+  };
+  const erroralert = (error) => {
     return (
-        <div>
-        <Formik
+      <AlertBox
+        setopenalert={openalert}
+        closealert={closealert}
+        error={error}
+      />
+    );
+  };
+  return (
+    <div>
+      <Formik
         initialValues={initialValues}
-          onSubmit={onSubmit}
-          validationSchema={validationSchema}
-          >
-           {formik=>{
-               return(
-                   <>
-                   <Grid item xs={12}>
+        onSubmit={onSubmit}
+        validationSchema={validationSchema}
+      >
+        {(formik) => {
+          console.log(formik)
+          return (
+            <>
+              <Grid item xs={12}>
                 <div className="questions_card1">
-                <Form>
-                  <Field
-                    as={TextField}
-                    name="questions"
-                    style={{ marginLeft: "10px", width: "500px" }}
-                    id="questions"
-                    label="New Question"
-                    variant="standard"
-                  />
-               
-                  <FormControl style={{ marginLeft: "30px" }}>
-                    <InputLabel htmlFor="demo-customized-select-native">
-                      min
-                    </InputLabel>
-                    <Field as={NativeSelect} id="demo-customized-select-native">
-                      <option value={10}>03</option>
-                      <option value={20}>0</option>
-                      <option value={30}>1</option>
-                    </Field>
-                  </FormControl>
+                  <Form>
+                    <Field
+                      as={TextField}
+                      name="questions"
+                      style={{ marginLeft: "10px", width: "500px" }}
+                      id="questions"
+                      label="New Question"
+                      variant="standard"
+                      onInput={inputchange}
+                    />
 
-                  <FormControl style={{ marginLeft: "30px" }}>
-                    <InputLabel htmlFor="demo-customized-select-native">
-                      sec
-                    </InputLabel>
-                    <Field as={NativeSelect} id="demo-customized-select-native">
-                      <option value={10}>03</option>
-                      <option value={20}>0</option>
-                      <option value={30}>1</option>
-                    </Field>
-                  </FormControl>
-                  <br />
-                  <br />
-                    {formik.errors.questions?erroralert(formik.errors.questions):null}
-                  <Button
-                  onClick={()=>setopenalert(true)}
-                    variant="contained"
-                    color="secondary"
-                    type="submit">
-                    Save
-                  </Button>
+                    <FormControl style={{ marginLeft: "30px" }}>
+                      <InputLabel htmlFor="demo-customized-select-native">
+                        min
+                      </InputLabel>
+                      <Field as={NativeSelect}
+                       value={newquestion.minutes}
+                       name='minutes'
+                       onChange={inputchange}
+                      >
+                      <option value=""></option>
+                        {SelectItem()}
+                      </Field>
+                    </FormControl>
+                    <FormControl style={{ marginLeft: "30px" }}>
+                      <InputLabel htmlFor="demo-customized-select-native">
+                        sec
+                      </InputLabel>
+                      <Field as={NativeSelect}
+                       value={newquestion.seconds}
+                       name='seconds'
+                       onChange={inputchange}
+                      >
+                      <option value=""></option>
+                        {SelectItem()}
+                      </Field>
+                    </FormControl>
+                    <br />
+                    <br />
+                    {formik.touched.questions && formik.errors.questions
+                      ? erroralert(formik.errors.questions)
+                      : null}
+                    <Button
+                      onClick={() => setopenalert(true)}
+                      variant="contained"
+                      color="secondary"
+                      type="submit"
+                    >
+                      Save
+                    </Button>
                   </Form>
                 </div>
               </Grid>
-               </>)
-           }}
-              </Formik>
-        </div>
-    )
+            </>
+          );
+        }}
+      </Formik>
+    </div>
+  );
 }
 
-export default QuestionsCard
+export default QuestionsCard;
+
+
+
+
+
+
+

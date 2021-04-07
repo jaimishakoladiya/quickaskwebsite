@@ -34,7 +34,7 @@
   margin: -17px;
   margin-top: 15px;
   color: rgb(8, 8, 8);
-  background-color:rgb(245, 202, 92);;
+  background-color: rgb(245, 202, 92);
 }
 
 .page {
@@ -56,8 +56,11 @@
   transform: scale(1.05, 1.05);
 }
 .detail-data {
+  position: absolute;
   margin: 15px auto;
   margin-bottom: 100px;
+  margin-left: 370
+  px;
   margin-top: 30px;
   justify-content: center;
   padding: 15px 5px 10px 15px;
@@ -74,18 +77,20 @@
   display: block;
   justify-content: space-between;
   text-align: center;
+ 
 }
 .detail-found-data {
   text-align: center;
   margin-top: 30px;
 }
 
-.create-btn {
-  padding-top: 100px;
-  padding-left: 183px;
-  margin-top: -20px;
+#create-btn {
+  margin-top: 180px;
+  margin-bottom: -20px;
+  margin-left: 370px;
+  font-weight: bold;
+  color: white;
 }
-
 
 .interview-Mainbox {
   width: 1000px;
@@ -94,6 +99,7 @@
   justify-content: left;
   text-align: left;
   margin: 15px auto;
+  margin-top: 50px;
   border: 1px solid black;
   border-radius: 3px;
 }
@@ -108,7 +114,7 @@
   padding: 15px 5px 10px 15px;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
   /* background-color: rgb(209, 245, 245); */
-  background-color:rgb(250, 252, 252);
+  background-color: rgb(250, 252, 252);
   /* background-color: whitesmoke; */
   width: 900px;
   height: auto;
@@ -116,12 +122,11 @@
   box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
 }
 
-.step1-Add ,
+.step1-Add,
 .step2-Add,
-.step3-Add{
+.step3-Add {
   margin: 20px;
   width: 30px;
-
 }
 .step2 {
   margin: 15px auto;
@@ -130,7 +135,7 @@
   justify-content: center;
   padding: 15px 5px 10px 15px;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
-  background-color:rgb(250, 252, 252);
+  background-color: rgb(250, 252, 252);
   width: 900px;
   height: auto;
   border-radius: 1px;
@@ -157,37 +162,45 @@
 .step2-mt-3 {
   margin-top: 30px;
 }
-.Step4_Dropdown{
+.Step4_Dropdown {
   margin-left: 60px;
   width: 50px;
   box-shadow: 10px 13px 10px -7px rgba(0, 0, 0, 0.1);
   background-color: rgb(234, 234, 240);
 }
-.Step4_Dropdown1{
+.Step4_Dropdown1 {
   width: 50px;
   background-color: rgb(234, 234, 240);
-
 }
-#Step4_table{
+#Step4_table {
   font-size: 15px;
   font-weight: bold;
-
 }
-#Step4_heading{
+#Step4_heading {
   border: 1px solid black;
   border-radius: 4px;
+  background-color: white;
 }
-#btn_color{
+#btn_color {
   background-color: darkcyan;
   font-weight: bold;
 }
-#stepper_css{
+#stepper_css {
   color: black;
   background-color: white;
 }
-#stepper_font{
+#stepper_font {
   font-size: 20px;
   color: black;
+}
+#Delete_dailog{
+  width: 900px;
+  height: 400px;
+  justify-content: center;
+  
+  border: 1px solid black;
+  border-radius: 4px;
+
 }
 /* .Step1_Input_box{
   height: auto;
@@ -211,9 +224,86 @@
   color:black;
 
 } */
-#Chip_box{
+#Chip_box {
   margin-left: 30px;
   font-size: 15px;
   font-weight: bold;
   margin-top: 20px;
 }
+
+
+/* tree view data css */
+
+
+/* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
+.active {
+  display: block;
+}
+.openbox{
+  position: absolute;
+  width: 1000px;
+  height: auto;
+  position: absolute;
+  background:#eef5f6;
+  font-size: 15px;
+
+ 
+}
+.grid-src .line{
+  border-top: 2px solid #999;
+}
+.line{
+  margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    width:850px;
+}
+#tablefont{
+  font-size: 20px;
+}
+#name{
+ text-align: center;
+ font-size: 14pt;
+ color:black;
+ font-family: "Helvetica";
+ font-weight: 400;
+}
+#inicon{
+  color: darkcyan;
+  font-size: 35px;
+  cursor: pointer;
+  margin: -10px 0px;
+  margin-left: 70px;
+  line-height: 50px;
+  margin-top: 13px;
+}
+#question-box{
+  text-align: right;
+ color:black;
+ font-size: 14pt;
+}
+#candidate-inline-css{
+  text-align: right;
+ color:black;
+ font-size: 14pt;
+}
+#panel-inline-css{
+  text-align: right;
+ color:black;
+ font-size: 14pt;
+}
+#candidate-css{
+  color:darkcyan;
+  font-size: 18px;
+  font-weight: 700;
+  margin-left: 55px;
+}
+#panel-css{
+  color:darkcyan;
+  font-size: 18px;
+  font-weight: 700;
+  margin-left: 55px;
+}
+/* .arrowchange-down::before {
+  transform: rotate(90deg);
+} */

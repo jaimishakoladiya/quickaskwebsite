@@ -7,6 +7,7 @@ import StepContent from "@material-ui/core/StepContent";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
+
 import "./Interviews.css";
 import Step1 from "./steps/Step1";
 import Step2 from "./steps/Step2";
@@ -22,7 +23,6 @@ const CreateInterview = () => {
       marginTop: theme.spacing(1),
       marginRight: theme.spacing(1),
       float: "right",
-      
     },
     actionsContainer: {
       marginBottom: theme.spacing(2),
@@ -81,10 +81,10 @@ const CreateInterview = () => {
           {steps.map((label, index) => (
             <Step key={label}>
               <StepLabel>{label}</StepLabel>
-              <StepContent id="stepper_font" >
+              <StepContent id="stepper_font">
                 <Typography>{getStepContent(index)}</Typography>
 
-                <div  className={classes.actionsContainer}>
+                <div className={classes.actionsContainer}>
                   <div>
                     <Button
                       style={{
@@ -122,7 +122,9 @@ const CreateInterview = () => {
           ></Paper>
         )}
       </div>
+     
     </div>
+  
   );
 };
 export default CreateInterview;

@@ -6,69 +6,78 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 
-const ButtonDelete = () => {
+
+
+const ButtonDelete = (props) => {
   const [open, SetOpen] = useState(false);
-  const [Yesopen , SetYesopen] = useState(false);
-  const HandleClickOpen = () => {
-    SetOpen(true);
-  };
+  const [Yesopen, SetYesopen] = useState(false);
+ 
   const handleClickClose = () => {
     SetOpen(false);
   };
-  const YesFunction = () =>{
-  
-     SetYesopen(true);
-  }
-  const OKFunction =()=>{
-    SetYesopen(false);
-    SetOpen(false);
-  }
+  // const YesFunction = () => {
+  //   SetYesopen(true);
+  // };
+  // const OKFunction = () => {
+  //   SetYesopen(false);
+  //   SetOpen(false);
+  //   props.deletefunction(props.id);
+  // };
+  // const handleDelete = () => {};
+  // console.log(props.newrecords)
   return (
     <React.Fragment>
-      <Button onClick={HandleClickOpen} variant="contained" color="secondary">
-        <DeleteIcon />
-      </Button>
+      
       <Dialog
-        open={open}
-        onClose={handleClickClose}
+        open={props.opendelete}
+        //onClose={handleClickClose}
         aria-labelledby="max-width-dialog-title"
       >
         <DialogTitle id="max-width-dialog-title">PLEASE CONFIRM</DialogTitle>
         <DialogContent>
-          <DialogContentText>Are You Sure ! You Want To Remove Candidate ..?</DialogContentText>
+          <DialogContentText>
+            Are You Sure ! You Want To Remove Candidate ..?
+          </DialogContentText>
           <DialogActions>
             <Button
               onClick={handleClickClose}
               variant="contained"
-              color="primary">
+              color="primary"
+            >
               Cancle
             </Button>
-            <Button
-              onClick={YesFunction}
-              variant="contained"
-              color="secondary">
+            <Button variant="contained" color="secondary">
               Delete
             </Button>
-            <Dialog
-            open={Yesopen}
-            onClose={handleClickClose}
-            aria-labelledby="max-width-dialog-title" >
-                      <DialogTitle id="max-width-dialog-title">Deleted Successfully</DialogTitle>
-                      <DialogContent>
-                      <DialogContentText><CheckCircleIcon/></DialogContentText>
-                      </DialogContent>
-                      <Button
-              onClick={OKFunction}
-              variant="contained"
-              color="secondary">
-              OK
-            </Button>
-            </Dialog>
+             
+            {/* <Dialog
+              open={Yesopen}
+              onClose={handleClickClose}
+              aria-labelledby="max-width-dialog-title"
+            >
+              <DialogTitle id="max-width-dialog-title">
+                Deleted Successfully
+              </DialogTitle>
+              <DialogContent>
+                <DialogContentText>
+                  <CheckCircleIcon />
+                </DialogContentText>
+              </DialogContent>
+              <Button
+                onClick={OKFunction}
+                variant="contained"
+                color="secondary"
+              >
+                OK
+              </Button>
+            </Dialog> */}
           </DialogActions>
-
-          <DialogContent />
+        
+        
+        
+         <DialogContent />
         </DialogContent>
       </Dialog>
     </React.Fragment>

@@ -1,4 +1,4 @@
-import react, { useState } from 'react';
+import react, { useState } from "react";
 // import Select from 'react-select';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -8,11 +8,20 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import './Interviews.css';
+import InterviewDataGrid from '../interviews/InterviewDataGrid'
+
 import CreateInterview from './CreateInterview';
+
+
+
+
 const CandidateDetails = () =>{
-  const style={
+ 
+  const headercss={
     fontSize : "17px",
-    fontWeight:"bold"
+    fontWeight:"bold",
+  
+   
     
   }
    const [open ,SetOpen] = useState(false);
@@ -25,9 +34,10 @@ const CandidateDetails = () =>{
           }
    }
 return(
-     
+ 
         <>
-        <div className="create-btn"><Button onClick = {OpenBox} variant="contained" color="secondary" >
+        <div id
+        ="create-btn"><Button onClick = {OpenBox} variant="contained" color="secondary" >
         Create Interview
         </Button></div><br></br>
         {open==true?
@@ -36,32 +46,46 @@ return(
         <br></br>
         <div className="detail-data">
         <div className="detail-header1">
-           <h5>ALLCANDIDATES</h5>
-           <div className='detail-input'>Search
-             <TextField  type="date" style={{ margin:'15px'}} id="outlined-basic"  variant="outlined" />
-             <TextField   id="outlined-basic" label="By Name or ID" variant="outlined" />
-           </div>
+          <h5>ALLCANDIDATES</h5>
+          <div className="detail-input">
+            Search
+            <TextField
+              type="date"
+              style={{ margin: "15px" }}
+              id="outlined-basic"
+              variant="outlined"
+            />
+            <TextField
+              id="outlined-basic"
+              label="By Name or ID"
+              variant="outlined"
+            />
+          </div>
         </div>
        <div className="detail-header2">
        <TableContainer >
         <Table aria-label="customized table">
-        <TableHead style={style} >
-          <TableRow style={style}>
-            <TableCell style={style}>Date</TableCell>
-            <TableCell style={style} align="center">Job Title</TableCell>
-            <TableCell style={style} align="center">Department</TableCell>
-            <TableCell style={style} align="center">Manager</TableCell>
-            <TableCell style={style} align="center">Candidate</TableCell>
-            <TableCell style={style} align="center">Duration</TableCell>
-            <TableCell style={style} align="center">Action</TableCell>
-          </TableRow>
-        </TableHead>
+        <TableHead style={headercss} >
+        
+            <TableCell></TableCell>
+              <TableCell style={headercss}>Date</TableCell>
+             <TableCell style={headercss} align="center">Job Title</TableCell>
+            <TableCell style={headercss} align="center">Department</TableCell>
+            <TableCell style={headercss} align="center">Manager</TableCell>
+            <TableCell style={headercss} align="center">Candidate</TableCell>
+            <TableCell style={headercss} align="center">Duration</TableCell>
+            <TableCell style={headercss} align="center">Action</TableCell>
+     
+          </TableHead>
+  <InterviewDataGrid/>
+  <InterviewDataGrid/>
         </Table>
         </TableContainer>
        
        </div>
-       <h1 className="detail-found-data">No Data Found</h1>
+ 
      </div>
+     
      </>
     );
 }
