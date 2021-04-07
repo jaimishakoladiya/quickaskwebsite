@@ -288,7 +288,7 @@ const mapDispatchToProps= dispatch =>{
   return {
     editjobdata:(data,id)=>{dispatch(editjobdata(data,id))},
    deletemanagerdata:(id)=>{dispatch(deletemanagerdata(id))},
-    editmanagerdata:(data,id)=>{disptach(editmanagerdata(data,id))}
+    editmanagerdata:(data,id)=>{dispatch(editmanagerdata(data,id))}
   }
 }
 export default connect (mapStateToProps,mapDispatchToProps)(EditManager)
