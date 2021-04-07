@@ -19,7 +19,6 @@ import { makeStyles } from "@material-ui/core";
 import AlertBox from "../../alert/AlertBox";
 import QuestionsCard from "../addbuttons/QuestionsCard";
 
-
 import { connect } from "react-redux";
 import {
   editdeptdata,
