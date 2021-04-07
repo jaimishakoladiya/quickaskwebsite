@@ -12,10 +12,10 @@
 import CompanyProfilePage from "./component/companyprofile/CompanyProfilePage";
 //import Navbar2 from './component/navbar/outernavbar/Navbar2'
   // import { BrowserRouter } from 'react-router-dom';
-  // import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
+   import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 //import Login from './component/account/login/Login';
 //import Forpass from './component/account/login/Forpass';
- //import { BrowserRouter } from 'react-router-dom';
+ import { BrowserRouter } from 'react-router-dom';
  //import InnerNavbar from './component/navbar/innernavbar/InnerNavbar'
 // import { BrowserRouter } from 'react-router-dom';
  //import InnerNavbar from './component/navbar/innernavbar/InnerNavbar'
@@ -41,9 +41,7 @@ function App() {
       {/* <Registration/> */}
       {/* <Login/> */}
       {/* <Navbar/> */}
-      {/* <BrowserRouter>
-      <HomeNavbar/> 
-      </BrowserRouter> */}
+      
       {/* <Login/> */}
       {/* <Navbar2/> */}
       {/* <Interviews /> */}
@@ -54,8 +52,11 @@ function App() {
       {/* <About/> */}
       {/* <QuestionsCard/> */}
       <Provider store={store}>
-          <CompanyProfilePage />
-     </Provider>
+      <BrowserRouter>
+      <HomeNavbar/> 
+      </BrowserRouter>
+          {/* <CompanyProfilePage /> */}
+     </Provider>/
     </>
   );
 }
