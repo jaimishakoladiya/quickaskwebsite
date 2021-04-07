@@ -31,13 +31,7 @@ const Manager = (props) => {
             <td className="company-td">hey</td>
             <td className="company-td">hey</td>
             <td className="company-td" id="Action_css">
-            {/* <button id="edit_btn">
-                      <EditIcon />
-                    </button>
-                    <button id="delete_btn">
-                      <DeleteIcon />
-                    </button> */}
-                    <EditManager id={index}/>
+           <EditManager id={index}/>
             </td>
           </tr>
           </>

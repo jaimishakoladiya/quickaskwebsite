@@ -63,6 +63,11 @@ function EditDepartment(props) {
 
   }
 
+  const deletedata=()=>{
+    props.deletedeptdata(props.id)
+    handleClose1();
+   
+  }
   const initialValues = {
     department: props.editdata.department,
     costcenter: props.editdata.costcenter,
@@ -145,7 +150,7 @@ function EditDepartment(props) {
          variant="contained" style={{ backgroundColor: "black",color:"white"}}  autoFocus>
           <h3>Cancel</h3> 
           </Button>
-          <Button onClick={handleClose1}
+          <Button onClick={deletedata}
          variant="contained" style={{ backgroundColor: "#dc3545",color:"white"}}  autoFocus>
           <h3>Delete</h3> 
           </Button>
