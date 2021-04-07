@@ -112,7 +112,18 @@ const companyprofileReducer = (state = intitialstate, action) => {
                                 }
                             }
                         })
-                       
+                     case "job":
+                         const n1=state.jobdata[action.userid].newque.filter((item,index)=>index !== action.queid) 
+
+                         return update(state,{
+                             jobdata:{
+                                 [action.userid]:{
+                                     newque:{
+                                         $set:n1
+                                     }
+                                 }
+                             }
+                         })
                 }
                 case DELETE_DEPT_DATA:
                     return{
