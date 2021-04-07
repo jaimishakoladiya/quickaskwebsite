@@ -124,10 +124,14 @@ Row.propTypes = {
     protein: PropTypes.number.isRequired,
   }).isRequired,
 };
-
+const n=[1,2,3]
 const rows = [
+
   createData('2021-2-3','web','android','ck',1,'3mins',<ViewDelete   />),
   createData('2021-2-3','web','android','ck',1,'3mins',<ViewDelete/>),
+  n.map((item,index)=>{
+     createData('2021-2-3','web','android','ck',1,'3mins',<ViewDelete/>)
+  })
    ];
 
 export default function CreateData() {

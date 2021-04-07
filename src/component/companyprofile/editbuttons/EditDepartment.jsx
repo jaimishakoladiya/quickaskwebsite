@@ -111,7 +111,7 @@ function EditDepartment(props) {
   };
 
   const handleClose1 = () => {
-   props.deletedeptdata(props.id)
+  
     setOpendelete(false);
   };
   return (
@@ -147,7 +147,7 @@ function EditDepartment(props) {
 
         
           <Button
-         variant="contained" style={{ backgroundColor: "black",color:"white"}}  autoFocus>
+         variant="contained" onClick={handleClose1} style={{ backgroundColor: "black",color:"white"}}  autoFocus>
           <h3>Cancel</h3> 
           </Button>
           <Button onClick={deletedata}
