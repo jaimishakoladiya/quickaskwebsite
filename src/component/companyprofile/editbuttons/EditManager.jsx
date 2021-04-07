@@ -41,8 +41,8 @@ const useStyle = makeStyles((theme) => ({
   const [openalert, setopenalert] = useState(true);
 
   const initialValues = {
-    jobtitle:props.editdata.jobtitle,
-    department: props.editdata.department,
+    // jobtitle:props.editdata.jobtitle,
+    // department: props.editdata.department,
   };
 
   const onSubmit = (values) => {
@@ -251,9 +251,9 @@ const mapStateToProps = (state,ownprops)=>{
   }
 }
 
-const mapDispatchToProps= disptach =>{
+const mapDispatchToProps= dispatch =>{
   return {
-    editjobdata:(data,id)=>{disptach(editjobdata(data,id))},
+    editjobdata:(data,id)=>{dispatch(editjobdata(data,id))},
    deletemanagerdata:(id)=>{dispatch(deletemanagerdata(id))}
   }
 }
