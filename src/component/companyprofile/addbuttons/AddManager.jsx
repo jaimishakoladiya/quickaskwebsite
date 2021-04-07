@@ -14,7 +14,7 @@ import { Field, Formik, Form } from "formik";
 import * as yup from "yup";
 import AlertBox from "../../alert/AlertBox";
 import DisplayQuestions from "../DisplayQuestions";
-import { addmanagerquestion,addmanagerdata, deletemanagerquestion } from "../../../redux/actions/companyprofile/companprofileAction";
+import { addmanagerquestion,addmanagerdata, deletemanagerquestion} from "../../../redux/actions/companyprofile/companprofileAction";
 import { connect } from "react-redux";
 
 
@@ -73,6 +73,7 @@ function AddManager(props) {
   const handleClose = () => {
     setOpen(false);
   };
+ 
 
   return (
     <div>
@@ -222,7 +223,8 @@ const mapDispatchToProps = dispatch => {
   return {
     addmanagerquestion: (newquestion) => { dispatch(addmanagerquestion(newquestion)) },
     deletemanagerquestion: (id) => { dispatch(deletemanagerquestion(id)) },
-    addmanagerdata:(data)=>{dispatch(addmanagerdata(data))}
+    addmanagerdata:(data)=>{dispatch(addmanagerdata(data))},
+   
   }
 }
 

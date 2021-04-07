@@ -23,6 +23,7 @@ import { connect } from "react-redux";
 import {
   editdeptdata,
   editjobdata,
+  deletejobdata
 } from "../../../redux/actions/companyprofile/companprofileAction";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -99,7 +100,11 @@ function EditJob(props) {
  
     setOpendelete(false);
   };
-
+ const deletejob = () => {
+   props.deletejobdata(props.id)
+   handleClose1()
+   alert("deleted success");
+ }
 
   return (
     <div>
@@ -140,7 +145,7 @@ function EditJob(props) {
           <h3>Cancel</h3> 
           </Button>
           <Button
-         variant="contained" style={{ backgroundColor: "#dc3545",color:"white"}}  autoFocus>
+         variant="contained" onClick={deletejob} style={{ backgroundColor: "#dc3545",color:"white"}}   autoFocus>
           <h3>Delete</h3> 
           </Button>
         </DialogActions>
@@ -262,9 +267,10 @@ const mapStateToProps = (state, ownprops) => {
 
 const mapDispatchToProps = (disptach) => {
   return {
-    editjobdata: (data, id) => {
-      disptach(editjobdata(data, id));
-    },
+    editjobdata: (data, id) => { disptach(editjobdata(data, id))},
+      deletejobdata: (id) => { disptach(deletejobdata(id))}
+      
+    
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(EditJob);

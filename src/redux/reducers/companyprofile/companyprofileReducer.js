@@ -1,7 +1,8 @@
 import {
     ADD_DEPT_QUESTIONS, DELETE_DEPT_QUESTIONS, ADD_JOB_QUESTIONS, DELETE_JOB_QUESTIONS
    ,ADD_MANAGER_DATA
-    , ADD_MANAGER_QUESTIONS, DELETE_MANAGER_QUESTIONS, ADD_DEPT_DATA,ADD_JOB_DATA, EDIT_DEPT_DATA,EDIT_MANAGER_DATA, EDIT_JOB_DATA, DELETE_QUESTION, DELETE_DEPT_DATA
+    , ADD_MANAGER_QUESTIONS, DELETE_MANAGER_QUESTIONS, ADD_DEPT_DATA,ADD_JOB_DATA, EDIT_DEPT_DATA,
+    EDIT_MANAGER_DATA,DELETE_JOB_DATA, EDIT_JOB_DATA, DELETE_QUESTION, DELETE_DEPT_DATA,DELETE_MANAGER_DATA
 } from "../../types/companyprofile/companyprofileTypes";
 import update from "react-addons-update"
 
@@ -13,6 +14,7 @@ const intitialstate = {
     managerdata:[],
     jobdata:[],
     deletedept:[],
+    deletejobdata:[],
 }
 
 const companyprofileReducer = (state = intitialstate, action) => {
@@ -119,6 +121,17 @@ const companyprofileReducer = (state = intitialstate, action) => {
                         ...state,
                         deletedept: state.deletedept.filter((item, id) => id !== action.payload)
                     }
+                    case DELETE_JOB_DATA:
+                        return{
+                            ...state,
+                            jobdata: state.jobdata.filter((item, id) => id !== action.payload)
+                        }
+                        case DELETE_MANAGER_DATA:
+                            return{
+                                ...state,
+                                managerdata: state.managerdata.filter((item,id) => id !== action.payload)
+
+                            }
         default:
             return {
                 ...state
