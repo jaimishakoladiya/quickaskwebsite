@@ -33,7 +33,7 @@ function AddJob(props) {
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
-
+  const[newque,setnewque]=useState([])
   const SelectItem = () => {
     let items = [];
     props.data.deptdata.map((item,index)=>{
@@ -41,6 +41,23 @@ function AddJob(props) {
     })
     return items;
   };
+  const addquestion=(newq)=>{
+    setnewque((olditem)=>{
+      return[
+        ...olditem,
+        newq
+      ]
+    })
+   
+    props.addjobquestion(newq)
+  }
+  const deletequestions =(id)=>{
+    setnewque((olditem)=>{
+      return olditem.filter((arr,index)=>{
+        return index !== id;
+      })
+    })
+  }
   const initialValues = {
     jobtitle: "",
     department: "",
@@ -48,8 +65,9 @@ function AddJob(props) {
 
   const onSubmit = (values) => {
     // console.log(values)
-   props.addjobdata(values)
+   props.addjobdata({...values,newque});
     setOpen(false);
+    setnewque([]);
   };
 
   const validationSchema = yup.object({
@@ -153,7 +171,7 @@ function AddJob(props) {
                           <h3>Time Allocated</h3>
                         </Grid>
                       </Grid>
-                      <DisplayQuestions question={props.data.jobquestion} deletequestion={props.deletejobquestion} />
+                      <DisplayQuestions question={newque} deletequestion={deletequestions} />
                       <br />
                       {formik.touched.jobtitle && formik.errors.jobtitle
                         ? erroralert(formik.errors.jobtitle)
@@ -181,7 +199,7 @@ function AddJob(props) {
                         Save
                       </Button>
                     </Form>
-                    <QuestionsCard question={props.data} addquestion={props.addjobquestion} />
+                    <QuestionsCard question={props.data} addquestion={addquestion} />
                   </>
                 );
               }}

@@ -18,6 +18,9 @@ function ViewRecord() {
     fontWeight:"bold",
  
  }
+ const printfun = () =>{
+   window.print();
+ }
  const rowcss2 = {
     fontSize : "19px",
     fontWeight:"bold",
@@ -30,7 +33,7 @@ function ViewRecord() {
         <div className="view-data">
         <div className="view-header1">
           <h5>WEB</h5>
-          <Button variant="contained" color="secondary" style={{marginLeft:"1000px",fontSize:"12pt",height:"50px"}}>
+          <Button variant="contained"  onClick={printfun} color="secondary" style={{marginLeft:"1000px",fontSize:"12pt",height:"50px"}}>
               Print</Button>
               <Button variant="contained" color="secondary" style={{marginLeft:"30px",fontSize:"12pt",height:"50px"}}>
               Share Grid</Button>

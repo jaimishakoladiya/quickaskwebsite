@@ -7,8 +7,9 @@ import Step1AddField from "./Step1AddField";
 import * as yup from "yup";
 import { Form, Formik, Field } from "formik";
 import AlertBox from "../../alert/AlertBox";
-
-const Step1 = () => {
+import {addcandidatedata} from "../../../redux/actions/interview/InterviewAction"; 
+import { connect } from "react-redux";
+const Step1 = (props) => {
   const [openalert, setopenalert] = useState(false);
   const [Candidate, SetCandidate] = useState({
     firstname: "",
@@ -50,13 +51,19 @@ const Step1 = () => {
   };
   const onSubmit = (values, onSubmitprops) => {
     console.log(values);
+    props.addcandidatedata(values)
     addcandidate(values);
     SetCandidate({
       firstname: "",
       lastname: "",
     });
     onSubmitprops.resetForm();
+   
+    console.log(props.newdata);
+
+  
   };
+ 
   const validationSchema = yup.object({
     firstname: yup.string().required("First Name Required!!"),
     lastname: yup.string().required("Last Name Required!!"),
@@ -178,18 +185,20 @@ const Step1 = () => {
                         color="secondary"
                       >
                         ADD
-                      </Button>
+                      </Button><br/><br/>
+                     
                     </div>
                     <div>
-                      {CandidateArray.map((candidate, index) => {
-                        return (
+                      
+                       {
+                         props.newdata.candidatedata.map((item,index)=>{
+                           return(
                           <Step1AddField
                             id={index}
                             deletefunction={deletefunction}
-                            newrecords={candidate}
+                            newrecords={props.newdata.candidatedata[index]}
                           />
-                        );
-                      })}
+                          ) })}
                     </div>
                   </div>
                 </Form>
@@ -201,4 +210,15 @@ const Step1 = () => {
     </>
   );
 };
-export default Step1;
+const mapStateToProps = state =>{
+  return{
+  newdata:state.interview
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return{
+    addcandidatedata: (newdata) => {dispatch(addcandidatedata(newdata))}
+  }
+
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Step1);

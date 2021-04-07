@@ -1,7 +1,8 @@
-import { ADD_INTERVIEW_QUESTION , DELETE_CANDIDATE_DATA, DELETE_INTERVIEW_QUESTION } from "../../types/interview/InterviewTypes"
+import { ADD_INTERVIEW_QUESTION , DELETE_INTERVIEW_QUESTION,ADD_CANDIDATE_DATA,ADD_PANEL_DATA } from "../../types/interview/InterviewTypes"
 const initialstate = {
     interviewque:[],
-    candidatedel:[]
+    candidatedata:[],
+    paneldata:[],
 }
 
 const InterviewReducer =(state=initialstate,action)=>{
@@ -16,13 +17,17 @@ const InterviewReducer =(state=initialstate,action)=>{
                 ...state,
                     interviewque:state.interviewque.filter((item,id)=> id !== action.payload)
             }
-
-            case DELETE_CANDIDATE_DATA:
+            case ADD_CANDIDATE_DATA :
                 return{
                     ...state,
-                    candidatedel:state.candidatedel.filter((item,id) => id !==action.payload)
-
+                    candidatedata:[...state.candidatedata,action.payload]
                 }
+                case ADD_PANEL_DATA :
+                    return{
+                        ...state,
+                        paneldata:[...state.paneldata,action.payload]
+
+                    }
         default : 
             return{
                 ...state

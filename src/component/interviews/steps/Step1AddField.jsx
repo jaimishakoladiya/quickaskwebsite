@@ -11,6 +11,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 
 const Step1AddField = (props) => {
+  console.log(props.newrecords)
   const [open, SetOpen] = useState(false);
   const [Yesopen, SetYesopen] = useState(false);
   const handleClickOpen = () => {
@@ -28,7 +29,7 @@ const Step1AddField = (props) => {
     props.deletefunction(props.id);
   };
   const handleDelete = () => {};
-  console.log(props.newrecords)
+
   return (
 
     <>
