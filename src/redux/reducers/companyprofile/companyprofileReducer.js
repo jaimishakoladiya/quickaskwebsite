@@ -89,14 +89,14 @@ const companyprofileReducer = (state = intitialstate, action) => {
                     }
                 }
             )
-            // case EDIT_MANAGER_DATA:
-            //     return update(state,{
-            //         managerdata:{
-            //             [action.id]:{
-            //                 $set:action.payload
-            //             }
-            //         }
-            //     })
+            case EDIT_MANAGER_DATA:
+                return update(state,{
+                    managerdata:{
+                        [action.id]:{
+                            $set:action.payload
+                        }
+                    }
+                })
             case DELETE_QUESTION:
               
                 switch(action.payload){
@@ -128,7 +128,7 @@ const companyprofileReducer = (state = intitialstate, action) => {
                 case DELETE_DEPT_DATA:
                     return{
                         ...state,
-                        deletedept: state.deletedept.filter((item, id) => id !== action.payload)
+                        deptdata: state.deptdata.filter((item, id) => id !== action.payload)
                     }
         default:
             return {
