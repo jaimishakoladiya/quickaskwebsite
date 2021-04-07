@@ -13,6 +13,10 @@ import { makeStyles } from "@material-ui/core";
 import { Field, Formik, Form } from "formik";
 import * as yup from "yup";
 import AlertBox from "../../alert/AlertBox";
+import DisplayQuestions from "../DisplayQuestions";
+import { addmanagerquestion,addmanagerdata, deletemanagerquestion } from "../../../redux/actions/companyprofile/companprofileAction";
+import { connect } from "react-redux";
+
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -24,7 +28,7 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: "#eef5f6",
   },
 }));
-export default function AddManager() {
+function AddManager(props) {
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(false);
@@ -36,7 +40,8 @@ export default function AddManager() {
   };
 
   const onSubmit = (values) => {
-    console.log(values);
+    // console.log(values);
+    props.addmanagerdata(values)
     setOpen(false);
   };
 
@@ -134,7 +139,7 @@ export default function AddManager() {
                               as={TextField}
                               name="firstname"
                               placeholder="Enter FirstName"
-                              id="standard-basic-input"
+                              id="firstname"
                               variant="standard"
                             />
                           </Grid>
@@ -143,7 +148,7 @@ export default function AddManager() {
                               as={TextField}
                               name="lastname"
                               placeholder="Enter LastName"
-                              id="standard-basic-input"
+                              id="lastname"
                               variant="standard"
                             />
                           </Grid>
@@ -152,33 +157,31 @@ export default function AddManager() {
                               as={TextField}
                               name="email"
                               placeholder="Enter Email"
-                              id="standard-basic-input"
+                              id="email"
                               variant="standard"
                             />
                           </Grid>
                         </Grid>
-                        <Grid
-                          container
-                          spacing={3}
-                          style={{ marginTop: "10px", marginLeft: "10px" }}
-                        >
-                          <Grid item xs={7}>
-                            <h3>Default Question For Department</h3>
-                          </Grid>
-                          <Grid item xs={4}>
-                            <h3>Time Allocated</h3>
-                          </Grid>
+
+                        <Grid item xs={6}>
+                          <h3>Default Question For Department</h3>
                         </Grid>
+                        <Grid item xs={4}>
+                          <h3>Time Allocated</h3>
+                        </Grid>
+
+
                       </Grid>
+                      <DisplayQuestions question={props.data.managerquestion} deletequestion={props.deletemanagerquestion} />
                       <br />
 
                       {formik.errors.firstname
                         ? erroralert(formik.errors.firstname)
                         : formik.errors.lastname
-                        ? erroralert(formik.errors.lastname)
-                        : formik.errors.email
-                        ? erroralert(formik.errors.email)
-                        : null}
+                          ? erroralert(formik.errors.lastname)
+                          : formik.errors.email
+                            ? erroralert(formik.errors.email)
+                            : null}
 
                       <Button
                         onClick={handleClose}
@@ -202,10 +205,25 @@ export default function AddManager() {
                 );
               }}
             </Formik>
-            <QuestionsCard />
+            <QuestionsCard question={props.data} addquestion={props.addmanagerquestion} />
           </DialogContentText>
         </DialogContent>
       </Dialog>
     </div>
   );
 }
+
+const mapStateToProps = state => {
+  return {
+    data: state.companyprofile
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    addmanagerquestion: (newquestion) => { dispatch(addmanagerquestion(newquestion)) },
+    deletemanagerquestion: (id) => { dispatch(deletemanagerquestion(id)) },
+    addmanagerdata:(data)=>{dispatch(addmanagerdata(data))}
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddManager)

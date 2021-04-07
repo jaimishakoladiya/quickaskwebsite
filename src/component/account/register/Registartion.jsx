@@ -39,6 +39,7 @@ function Registration() {
   };
   const onSubmit = (values, onsubmitprops) => {
     // onsubmitprops.resetForm();
+    history.push("/innernavbar")
 
   };
 

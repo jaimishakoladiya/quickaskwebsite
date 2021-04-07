@@ -29,8 +29,8 @@ function AlertBox(props) {
           </DialogContent>
           <DialogActions>
             <Button style={{ backgroundColor: "#008b8b" }} onClick={closebox}>
-              {" "}
-              Ok
+          
+             <h3>Ok</h3> 
             </Button>
           </DialogActions>
         </div>

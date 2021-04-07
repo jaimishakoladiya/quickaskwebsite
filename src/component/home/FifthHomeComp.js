@@ -21,7 +21,7 @@ function FifthHomeComp() {
     return (
         <>
             <h1 className="home-comment-name">What Are They Saying About Us....</h1>
-            <Swiper
+            <Swiper id="fifthhomecomp" 
 
                 spaceBetween={50}
                 slidesPerView={2}
@@ -29,6 +29,7 @@ function FifthHomeComp() {
                 pagination={{ clickable: true }}
                 scrollbar={{ draggable: true }}
                 onSlideChange={() => console.log('slide change')}
+                on
                 onSwiper={(swiper) => console.log(swiper)}
             >
 

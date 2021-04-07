@@ -13,10 +13,11 @@ import Grid from "@material-ui/core/Grid";
 import "../Company.css";
 import { makeStyles } from "@material-ui/core";
 import AlertBox from "../../alert/AlertBox";
-import QuestionsCard from "./QuestionsCard";
-import { adddeptdata, adddeptquestion, deletedeptquestion } from "../../../redux/actions/companyprofile/companprofileAction";
-import { connect } from "react-redux"
-import DisplayQuestions from "../DisplayQuestions";
+import QuestionsCard from "../addbuttons/QuestionsCard";
+import EditIcon from "@material-ui/icons/Edit";
+import DeleteIcon from "@material-ui/icons/Delete";
+import { connect } from "react-redux";
+import { editdeptdata, editjobdata } from "../../../redux/actions/companyprofile/companprofileAction";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -28,47 +29,33 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: "#eef5f6",
   },
 }));
-function AddDepartment(props) {
+ function EditManager(props) {
+   console.log(props.id)
+   console.log(props.editdata)
+  //  console.log(props.editdata.department)
+
   const classes = useStyle();
   const [open, setOpen] = useState(false);
+  const [opendelete, setOpendelete] = useState(false);
   const [openalert, setopenalert] = useState(true);
-  const [newque, setnewque] = useState([])
-  const initialValues = {
-    department: "",
-    costcenter: "",
 
+  const initialValues = {
+    jobtitle:props.editdata.jobtitle,
+    department: props.editdata.department,
   };
 
   const onSubmit = (values) => {
-    
-    props.adddeptdata({ ...values, newque })
-   
-    console.log(newque)
-    console.log(props.data.deptquestion)
-    setnewque([])
+    console.log(values);
+    console.log(props.editdata)
+    props.editjobdata(values,props.id)
     setOpen(false);
+    console.log(props.editdata)
   };
 
   const validationSchema = yup.object({
+    jobtitle: yup.string().required("All fields are required"),
     department: yup.string().required("All fields are required"),
-    costcenter: yup.string().required("All fields are required"),
   });
-
-  const addquestion = (newq) => {
-    
-    setnewque((olditem) => {
-      return [...olditem,
-        newq]
-    })
-    props.adddeptquestion(newq)
-  }
-  const deletedeptquestion=(id)=>{
-    setnewque((olditem)=>{
-      return olditem.filter((item,index)=>{
-        return index !== id
-      })
-    })
-  }
   const closealert = () => {
     setopenalert(false);
   };
@@ -81,30 +68,72 @@ function AddDepartment(props) {
       />
     );
   };
-
-
   const handleClickOpen = () => {
     setOpen(true);
+   
   };
-  ;
+  const handleClickOpen1 = () => {
+    
+    setOpendelete(true);
+  };
   const handleClose = () => {
     setOpen(false);
-    setnewque([])
+   
   };
+  const handleClose1 = () => {
+ 
+    setOpendelete(false);
+  };
+
 
   return (
     <div>
-      <Button
+      <button
         type="button"
-        style={{ marginBottom: "25px" }}
         variant="contained"
         color="secondary"
+        id="edit_btn"
         onClick={handleClickOpen}
       >
-        Add Department
-      </Button>
+        <EditIcon />
+      </button>
+      
+      <button id="delete_btn" onClick={handleClickOpen1}>
+        <DeleteIcon />
+      </button>
       <br />
 
+      {/* delete manager */}
+
+      <Dialog
+        open={opendelete}
+        onClose={handleClose1}
+        aria-labelledby="max-width-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <div style={{borderTop:"10px solid darkcyan"}}>
+        <DialogTitle id="max-width-dialog-title"><h3>PLEASE CONFIRM</h3></DialogTitle>
+        <DialogContent style={{ width: "400px" }}>
+          <DialogContentText>
+      <h4>Are You Want To Sure Delete Data? </h4>
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+
+        
+          <Button onClick={handleClose1}
+         variant="contained" style={{ backgroundColor: "black",color:"white"}}  autoFocus>
+          <h3>Cancel</h3> 
+          </Button>
+          <Button
+         variant="contained" style={{ backgroundColor: "#dc3545",color:"white"}}  autoFocus>
+          <h3>Delete</h3> 
+          </Button>
+        </DialogActions>
+        </div>
+      </Dialog>
+
+{/* edit manager */}
       <Dialog
         open={open}
         onClose={handleClose}
@@ -115,7 +144,7 @@ function AddDepartment(props) {
         classes={{ paper: classes.dialogWrapper }}
       >
         <div className="AddDepartment_primaryHeader">
-          <h3>Add Department </h3>
+          <h3>Edit Job </h3>
           <div className="AddDepartment_closeicon">
             <CloseIcon style={{ color: "black" }} onClick={handleClose} />
           </div>
@@ -129,55 +158,53 @@ function AddDepartment(props) {
               validationSchema={validationSchema}
             >
               {(formik) => {
-
+                console.log(formik);
 
                 return (
                   <>
                     <Form>
                       <Grid container spacing={3}>
                         <Grid item xs={6}>
-                          <h3>Department</h3>
+                          <h3>JOB TITLE</h3>
                         </Grid>
                         <Grid item xs={6}>
-                          <h3>Cost Center</h3>
+                          <h3>DEPARTMENT</h3>
+                        </Grid>
+                        <Grid item xs={6}>
+                          <Field
+                            as={TextField}
+                            name="jobtitle"
+                            className="dialog_input"
+                            placeholder="jobtitle"
+                            id="jobtitle"
+                            variant="standard"
+                            value={formik.values.jobtitle}
+                          />
                         </Grid>
                         <Grid item xs={6}>
                           <Field
                             as={TextField}
                             name="department"
                             className="dialog_input"
-                            placeholder="Department"
+                            placeholder="department"
                             id="department"
                             variant="standard"
+                            value={formik.values.department}
                           />
                         </Grid>
-                        <Grid item xs={6}>
-                          <Field
-                            as={TextField}
-                            name="costcenter"
-                            className="dialog_input"
-                            placeholder="Cost Center"
-                            id="costcenter"
-                            variant="standard"
-                          />
-                        </Grid>
-                        <Grid item xs={6}>
+                        <Grid item xs={7}>
                           <h3>Default Question For Department</h3>
                         </Grid>
                         <Grid item xs={4}>
                           <h3>Time Allocated</h3>
                         </Grid>
-
                       </Grid>
-
-                      <DisplayQuestions question={newque} deletequestion={deletedeptquestion} />
-                    
                       <br />
                       {formik.touched.department && formik.errors.department
                         ? erroralert(formik.errors.department)
                         : formik.touched.costcenter && formik.errors.costcenter
-                          ? erroralert(formik.errors.costcenter)
-                          : null}
+                        ? erroralert(formik.errors.costcenter)
+                        : null}
 
                       <Button
                         id="dialog-cancel-btn"
@@ -199,7 +226,7 @@ function AddDepartment(props) {
                         Save
                       </Button>
                     </Form>
-                    <QuestionsCard question={props.data.deptquestion} addquestion={addquestion} />
+                    <QuestionsCard />
                   </>
                 );
               }}
@@ -210,19 +237,19 @@ function AddDepartment(props) {
     </div>
   );
 }
-const mapStateToProps = state => {
-  return {
-    data: state.companyprofile
+const mapStateToProps = (state,ownprops)=>{
+  // const data=state.companyprofile.deptdata.filter((item,index)=>{
+  //   return index === ownprops.id
+  // })
+  return{
+    editdata:state.companyprofile.jobdata[ownprops.id]
 
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps=disptach=>{
   return {
-    adddeptquestion: (newquestion) => { dispatch(adddeptquestion(newquestion)) },
-    deletedeptquestion: (id) => { dispatch(deletedeptquestion(id)) },
-    adddeptdata: (data) => { dispatch(adddeptdata(data)) }
+    editjobdata:(data,id)=>{disptach(editjobdata(data,id))}
   }
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(AddDepartment)
+export default connect (mapStateToProps,mapDispatchToProps)(EditManager)

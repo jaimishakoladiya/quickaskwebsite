@@ -16,7 +16,7 @@ function Navbar2() {
             {/* <li><a href="#" className="a">INTERVIEWS</a></li> */}
 
             <li>
-              <NavLink to="/interviews" className="a">
+              <NavLink to="/interview" className="a">
                 INTERVIEWS
               </NavLink>
             </li>
