@@ -1,7 +1,8 @@
 import {
     ADD_DEPT_QUESTIONS, DELETE_DEPT_QUESTIONS, ADD_JOB_QUESTIONS, DELETE_JOB_QUESTIONS
-, ADD_MANAGER_DATA   , ADD_MANAGER_QUESTIONS, DELETE_MANAGER_QUESTIONS, ADD_DEPT_DATA,ADD_JOB_DATA, EDIT_DEPT_DATA, EDIT_JOB_DATA,EDIT_MANAGER_DATA,DELETE_QUESTION
-,DELETE_DEPT_DATA
+, ADD_MANAGER_DATA   , ADD_MANAGER_QUESTIONS, DELETE_MANAGER_QUESTIONS,
+ ADD_DEPT_DATA,ADD_JOB_DATA, EDIT_DEPT_DATA, EDIT_JOB_DATA,EDIT_MANAGER_DATA,DELETE_QUESTION
+,DELETE_DEPT_DATA,DELETE_JOB_DATA,DELETE_MANAGER_DATA
 } from "../../types/companyprofile/companyprofileTypes";
 
 export const adddeptquestion = (newquestion) => {
@@ -78,13 +79,13 @@ export const editjobdata=(data,id)=>{
         id:id
     }
 }
-// export const editmanagerdata=(data,id)=>{
-//     return{
-//         type:EDIT_MANAGER_DATA,
-//         payload:data,
-//         id:id
-//     }
-// }
+export const editmanagerdata=(data,id)=>{
+    return{
+        type:EDIT_MANAGER_DATA,
+        payload:data,
+        id:id
+    }
+}
 
 export const deletedeptdata=(id)=>{
     return{
@@ -93,7 +94,18 @@ export const deletedeptdata=(id)=>{
        
     }
 }
-
+export const deletejobdata=(id)=>{
+    return{
+      type:DELETE_JOB_DATA,
+      payload:id,
+    }
+}
+export const deletemanagerdata=(id)=>{
+    return{
+        type:DELETE_MANAGER_DATA,
+        payload:id,
+    }
+}
 export const deletequestion=(section,userid,queid)=>{
     return{
         type:DELETE_QUESTION,

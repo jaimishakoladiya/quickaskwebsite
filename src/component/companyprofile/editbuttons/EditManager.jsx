@@ -4,7 +4,9 @@ import * as yup from "yup";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
+
 import DialogContent from "@material-ui/core/DialogContent";
+import DialogActions from "@material-ui/core/DialogActions";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
@@ -17,7 +19,9 @@ import QuestionsCard from "../addbuttons/QuestionsCard";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { connect } from "react-redux";
-import { editdeptdata, editjobdata } from "../../../redux/actions/companyprofile/companprofileAction";
+import { editdeptdata, editjobdata,deletemanagerdata ,editmanagerdata } from "../../../redux/actions/companyprofile/companprofileAction";
+import DisplayQuestions from "../DisplayQuestions"
+
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -32,7 +36,7 @@ const useStyle = makeStyles((theme) => ({
  function EditManager(props) {
    console.log(props.id)
    console.log(props.editdata)
-  //  console.log(props.editdata.department)
+ 
 
   const classes = useStyle();
   const [open, setOpen] = useState(false);
@@ -40,8 +44,9 @@ const useStyle = makeStyles((theme) => ({
   const [openalert, setopenalert] = useState(true);
 
   const initialValues = {
-    jobtitle:props.editdata.jobtitle,
-    department: props.editdata.department,
+    firstname: props.editdata.firstname,
+    lastname: props.editdata.lastname,
+    email: props.editdata.email,
   };
 
   const onSubmit = (values) => {
@@ -84,7 +89,10 @@ const useStyle = makeStyles((theme) => ({
  
     setOpendelete(false);
   };
-
+  const managerdata  = () => {
+    props.deletemanagerdata(props.id);
+    handleClose1()
+  }
 
   return (
     <div>
@@ -126,7 +134,7 @@ const useStyle = makeStyles((theme) => ({
           <h3>Cancel</h3> 
           </Button>
           <Button
-         variant="contained" style={{ backgroundColor: "#dc3545",color:"white"}}  autoFocus>
+         variant="contained"  onClick={managerdata}  style={{ backgroundColor: "#dc3545",color:"white"}}  autoFocus>
           <h3>Delete</h3> 
           </Button>
         </DialogActions>
@@ -134,7 +142,8 @@ const useStyle = makeStyles((theme) => ({
       </Dialog>
 
 {/* edit manager */}
-      <Dialog
+      
+<Dialog
         open={open}
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
@@ -143,9 +152,9 @@ const useStyle = makeStyles((theme) => ({
         maxWidth="md"
         classes={{ paper: classes.dialogWrapper }}
       >
-        <div className="AddDepartment_primaryHeader">
-          <h3>Edit Job </h3>
-          <div className="AddDepartment_closeicon">
+        <div className="AddManager_primaryHeader">
+          <h2>Edit Manager </h2>
+          <div className="AddManager_closeicon">
             <CloseIcon style={{ color: "black" }} onClick={handleClose} />
           </div>
         </div>
@@ -158,79 +167,105 @@ const useStyle = makeStyles((theme) => ({
               validationSchema={validationSchema}
             >
               {(formik) => {
-                console.log(formik);
-
                 return (
                   <>
                     <Form>
                       <Grid container spacing={3}>
-                        <Grid item xs={6}>
-                          <h3>JOB TITLE</h3>
+                        <Grid
+                          container
+                          spacing={3}
+                          style={{ marginLeft: "10px" }}
+                        >
+                          <Grid item xs>
+                            <h3>First Name</h3>
+                          </Grid>
+                          <Grid item xs>
+                            <h3>Last Name</h3>
+                          </Grid>
+                          <Grid item xs>
+                            <h3>Email</h3>
+                          </Grid>
                         </Grid>
-                        <Grid item xs={6}>
-                          <h3>DEPARTMENT</h3>
+                        <Grid
+                          container
+                          spacing={3}
+                          style={{ marginLeft: "10px" }}
+                        >
+                          <Grid item xs>
+                            <Field
+                              as={TextField}
+                              name="firstname"
+                              placeholder="Enter FirstName"
+                              id="firstname"
+                              variant="standard"
+                              values={formik.values.firstname}
+                            />
+                          </Grid>
+                          <Grid item xs>
+                            <Field
+                              as={TextField}
+                              name="lastname"
+                              placeholder="Enter LastName"
+                              id="lastname"
+                              variant="standard"
+                              values={formik.values.lastname}
+                            />
+                          </Grid>
+                          <Grid item xs>
+                            <Field
+                              as={TextField}
+                              name="email"
+                              placeholder="Enter Email"
+                              id="email"
+                              variant="standard"
+                              values={formik.values.email}
+                            />
+                          </Grid>
                         </Grid>
+
                         <Grid item xs={6}>
-                          <Field
-                            as={TextField}
-                            name="jobtitle"
-                            className="dialog_input"
-                            placeholder="jobtitle"
-                            id="jobtitle"
-                            variant="standard"
-                            value={formik.values.jobtitle}
-                          />
-                        </Grid>
-                        <Grid item xs={6}>
-                          <Field
-                            as={TextField}
-                            name="department"
-                            className="dialog_input"
-                            placeholder="department"
-                            id="department"
-                            variant="standard"
-                            value={formik.values.department}
-                          />
-                        </Grid>
-                        <Grid item xs={7}>
                           <h3>Default Question For Department</h3>
                         </Grid>
                         <Grid item xs={4}>
                           <h3>Time Allocated</h3>
                         </Grid>
+
+
                       </Grid>
+                      {/* <DisplayQuestions question={props.data.managerquestion} deletequestion={props.deletemanagerquestion} /> */}
                       <br />
-                      {formik.touched.department && formik.errors.department
-                        ? erroralert(formik.errors.department)
-                        : formik.touched.costcenter && formik.errors.costcenter
-                        ? erroralert(formik.errors.costcenter)
-                        : null}
+
+                      {formik.errors.firstname
+                        ? erroralert(formik.errors.firstname)
+                        : formik.errors.lastname
+                          ? erroralert(formik.errors.lastname)
+                          : formik.errors.email
+                            ? erroralert(formik.errors.email)
+                            : null}
 
                       <Button
-                        id="dialog-cancel-btn"
                         onClick={handleClose}
+                        id="dialog-cancel-btn"
                         variant="contained"
-                        color="secondary"
+                        color="primary"
                       >
                         Cancel
                       </Button>
                       <Button
                         type="submit"
+                        onClick={() => setopenalert(true)}
                         id="dialog-save-btn"
-                        onClick={() => {
-                          setopenalert(true);
-                        }}
                         variant="contained"
-                        color="primary"
+                        color="secondary"
                       >
                         Save
                       </Button>
                     </Form>
-                    <QuestionsCard />
                   </>
                 );
               }}
             </Formik>
+            <QuestionsCard question={props.data} addquestion={props.addmanagerquestion} />
           </DialogContentText>
         </DialogContent>
       </Dialog>
@@ -242,14 +277,18 @@ const mapStateToProps = (state,ownprops)=>{
   //   return index === ownprops.id
   // })
   return{
-    editdata:state.companyprofile.jobdata[ownprops.id]
+    editdata:state.companyprofile.jobdata[ownprops.id],
+    
+    editdata:state.companyprofile.managerdata[ownprops.id]
 
   }
 }
 
-const mapDispatchToProps=disptach=>{
+const mapDispatchToProps= dispatch =>{
   return {
-    editjobdata:(data,id)=>{disptach(editjobdata(data,id))}
+    editjobdata:(data,id)=>{dispatch(editjobdata(data,id))},
+   deletemanagerdata:(id)=>{dispatch(deletemanagerdata(id))},
+    editmanagerdata:(data,id)=>{dispatch(editmanagerdata(data,id))}
   }
 }
 export default connect (mapStateToProps,mapDispatchToProps)(EditManager)

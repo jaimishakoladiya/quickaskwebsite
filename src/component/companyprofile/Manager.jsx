@@ -3,6 +3,7 @@ import AddManager from "./addbuttons/AddManager";
 import { connect } from "react-redux";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
+import EditManager from "./editbuttons/EditManager";
 const Manager = (props) => {
   return (
     <>
@@ -30,12 +31,7 @@ const Manager = (props) => {
             <td className="company-td">hey</td>
             <td className="company-td">hey</td>
             <td className="company-td" id="Action_css">
-            <button id="edit_btn">
-                      <EditIcon />
-                    </button>
-                    <button id="delete_btn">
-                      <DeleteIcon />
-                    </button>
+           <EditManager id={index}/>
             </td>
           </tr>
           </>
