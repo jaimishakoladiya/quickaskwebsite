@@ -108,7 +108,10 @@ const Contact = () => {
           <img style={{height:"750px"}} src={img1} />
         </div>
       </div>
+
     </body>
+   
+
   );
 };
 export default Contact;
