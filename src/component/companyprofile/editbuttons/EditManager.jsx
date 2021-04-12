@@ -285,7 +285,7 @@ const mapStateToProps = (state,ownprops)=>{
 }
 
 const mapDispatchToProps= dispatch =>{
-  return {
+  return { 
     editjobdata:(data,id)=>{dispatch(editjobdata(data,id))},
    deletemanagerdata:(id)=>{dispatch(deletemanagerdata(id))},
     editmanagerdata:(data,id)=>{dispatch(editmanagerdata(data,id))}
