@@ -21,7 +21,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { connect } from "react-redux";
 import { editdeptdata, editjobdata,deletemanagerdata ,editmanagerdata } from "../../../redux/actions/companyprofile/companprofileAction";
 import DisplayQuestions from "../DisplayQuestions"
-
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -42,6 +42,7 @@ const useStyle = makeStyles((theme) => ({
   const [open, setOpen] = useState(false);
   const [opendelete, setOpendelete] = useState(false);
   const [openalert, setopenalert] = useState(true);
+  const [Yesopen, SetYesopen] = useState(false);
 
   const initialValues = {
     firstname: props.editdata.firstname,
@@ -89,9 +90,14 @@ const useStyle = makeStyles((theme) => ({
  
     setOpendelete(false);
   };
+  const YesFunction = () => {
+    SetYesopen(true);
+  };
   const managerdata  = () => {
     props.deletemanagerdata(props.id);
+    SetYesopen(false);
     handleClose1()
+
   }
 
   return (
@@ -134,12 +140,34 @@ const useStyle = makeStyles((theme) => ({
           <h3>Cancel</h3> 
           </Button>
           <Button
-         variant="contained"  onClick={managerdata}  style={{ backgroundColor: "#dc3545",color:"white"}}  autoFocus>
+         variant="contained"  onClick={YesFunction}  style={{ backgroundColor: "#dc3545",color:"white"}}  autoFocus>
           <h3>Delete</h3> 
           </Button>
         </DialogActions>
         </div>
+        <Dialog
+              open={Yesopen}
+            onClose={handleClose1}
+              aria-labelledby="max-width-dialog-title"
+            >
+              <DialogTitle id="max-width-dialog-title">
+              <h3> Data Deleted Successfully</h3>
+           
+              </DialogTitle>
+              <DialogContent>
+                <DialogContentText>
+                  <CheckCircleIcon style={{ color: "green"}} />
+                </DialogContentText>
+              </DialogContent>
+              <Button
+                onClick={managerdata}
+                variant="contained"
+                style={{ backgroundColor: "darkcyan",color:"white" ,fontSize:"20px"}} >
+                OK
+              </Button>
+            </Dialog>
       </Dialog>
+
 
 {/* edit manager */}
       

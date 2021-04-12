@@ -143,36 +143,7 @@ const CandidateDetails = () => {
           <div className="interview_card1">
          <CreateData/>    </div> </TableRow>
           
-      
-
-        {/* start new row */}
-          
-            
- {/* //////////////////////////////////////////////////////////////// */}
-                {/* <TableRow style={style2}>
-                <TableCell style={style}><div onClick={() => {
-                  changeicon()
-                  expandrowfunc1()
-                  
-                }
-                }>{expand1}</div></TableCell>
-                <TableCell style={style2}>2-1-20</TableCell>
-                <TableCell style={style2} align="center">web</TableCell>
-                <TableCell style={style2} align="center">Android</TableCell>
-                <TableCell style={style2} align="center">4k</TableCell>
-                <TableCell style={style2} align="center">4</TableCell>
-                <TableCell style={style2} align="center">2min</TableCell>
-                <TableCell style={style2} align="center">Action</TableCell>
-              </TableRow>
-
-              {openrow2 ? <> <div className="openbox"  > 
-              <TableRow>
-              <InterviewDataGrid/>
-              </TableRow>
-              </div>
-                </>:null}
-
-*/}
+ 
 
         </Table>
         

@@ -9,6 +9,14 @@
 // import Registration from './component/account/register/Registartion'
    //import CompanyProfilePage from "./component/companyprofile/CompanyProfilePage";
 //import Navbar2 from './component/navbar/outernavbar/Navbar2'
+
+  // import { BrowserRouter } from 'react-router-dom';
+  //  import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
+//import Login from './component/account/login/Login';
+//import Forpass from './component/account/login/Forpass';
+//  import { BrowserRouter } from 'react-router-dom';
+ //import InnerNavbar from './component/navbar/innernavbar/InnerNavbar'
+
 import { BrowserRouter } from 'react-router-dom';
 // import { BrowserRouter } from 'react-router-dom';
 import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
@@ -16,6 +24,7 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 //import Forpass from './component/account/login/Forpass';
 //import { BrowserRouter } from 'react-router-dom';
 //import InnerNavbar from './component/navbar/innernavbar/InnerNavbar'
+
 // import { BrowserRouter } from 'react-router-dom';
 //import InnerNavbar from './component/navbar/innernavbar/InnerNavbar'
 // import Navbar from './component/navbar/homenavbar/Navbar'
@@ -42,13 +51,17 @@ function App() {
       {/* <Registration/> */}
       {/* <Login/> */}
       {/* <Navbar/> */}
-     {/* <Provider store={store}>
+
+      
+
+     <Provider store={store}>
       <BrowserRouter>
    
       <HomeNavbar/> 
      
       </BrowserRouter>
-      </Provider> */}
+      </Provider>
+
       {/* <Login/> */}
       {/* <Navbar2/> */}
       {/* <Interviews /> */}
@@ -59,16 +72,9 @@ function App() {
       {/* <ViewRecord/> */}
       {/* <About/> */}
       {/* <QuestionsCard/> */}
-      <Provider store={store}>
-      {/* <CompanyProfilePage/> */}
-           {/* <Interviews /> */}
-           <BrowserRouter>
-   
-      <HomeNavbar/> 
-     
-      </BrowserRouter> 
+    
             
-      </Provider>
+    
     </>
   );
 }

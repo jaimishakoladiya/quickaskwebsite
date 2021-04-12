@@ -76,7 +76,7 @@
   /* position: absolute; */
   margin: 15px auto;
   margin-bottom: 100px;
-  margin-left: 450px;
+  margin-left: 300px;
   margin-top: 30px;
   justify-content: center;
   padding: 15px 5px 10px 15px;
@@ -103,7 +103,7 @@
 #create-btn {
   margin-top: 110px;
   margin-bottom: -20px;
-  margin-left: 370px;
+  margin-left: 300px;
   font-weight: bold;
   color: white;
 }

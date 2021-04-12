@@ -89,18 +89,7 @@ function Row(props) {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {/* {row.history.map((historyRow) => (
-                    <TableRow key={historyRow.date}> */}
-                      {/* <TableCell component="th" scope="row">
-                        {historyRow.date}
-                      </TableCell>
-                      <TableCell>{historyRow.customerId}</TableCell>
-                      <TableCell align="right">{historyRow.amount}</TableCell>
-                      <TableCell align="right">
-                        {Math.round(historyRow.amount * row.price * 100) / 100}
-                      </TableCell> */}
-                    {/* </TableRow> */}
-                  {/* ))} */}
+                
                 </TableBody>
               </Table>
             </Box>
@@ -124,10 +113,14 @@ Row.propTypes = {
     protein: PropTypes.number.isRequired,
   }).isRequired,
 };
-
+const n=[1,2,3]
 const rows = [
+
   createData('2021-2-3','web','android','ck',1,'3mins',<ViewDelete   />),
   createData('2021-2-3','web','android','ck',1,'3mins',<ViewDelete/>),
+  n.map((item,index)=>{
+     createData('2021-2-3','web','android','ck',1,'3mins',<ViewDelete/>)
+  })
    ];
 
 export default function CreateData() {
