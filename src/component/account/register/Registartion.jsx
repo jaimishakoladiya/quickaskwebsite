@@ -43,7 +43,7 @@ function Registration() {
     // onsubmitprops.resetForm();
     makePostRequest(values);
     console.log(values);
-    history.push("/innernavbar")
+    history.push("/login")
 
   };
 
