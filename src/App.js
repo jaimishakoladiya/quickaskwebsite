@@ -17,6 +17,7 @@
 //import Forpass from './component/account/login/Forpass';
 //import { BrowserRouter } from 'react-router-dom';
 //import InnerNavbar from './component/navbar/innernavbar/InnerNavbar'
+
 // import { BrowserRouter } from 'react-router-dom';
 //import InnerNavbar from './component/navbar/innernavbar/InnerNavbar'
 // import Navbar from './component/navbar/homenavbar/Navbar'
@@ -43,6 +44,9 @@ function App() {
       {/* <Registration/> */}
       {/* <Login/> */}
       {/* <Navbar/> */}
+
+      
+
      <Provider store={store}>
       <BrowserRouter>
    
@@ -50,6 +54,7 @@ function App() {
      
       </BrowserRouter>
       </Provider>
+
       {/* <Login/> */}
       {/* <Navbar2/> */}
       {/* <Interviews /> */}

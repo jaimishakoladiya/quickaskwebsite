@@ -20,7 +20,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { connect } from "react-redux";
 import { editdeptdata, deletequestion ,deletedeptdata } from "../../../redux/actions/companyprofile/companprofileAction";
 import DisplayQuestions from "../DisplayQuestions";
-
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -40,7 +40,7 @@ function EditDepartment(props) {
   const [opendelete, setOpendelete] = useState(false);
   const [openalert, setopenalert] = useState(true);
   const [newque, setnewque] = useState(props.editdata.newque)
-  
+  const [Yesopen, SetYesopen] = useState(false);
 
   const addquestion = (newq) => {
     setnewque((olditem) => {
@@ -63,6 +63,18 @@ function EditDepartment(props) {
 
   }
 
+  const deletedata=()=>{
+    handleClose1();
+    SetYesopen(false);
+    props.deletedeptdata(props.id)
+
+
+    
+  }
+  const YesFunction = () => {
+    SetYesopen(true);
+  };
+
   const initialValues = {
     department: props.editdata.department,
     costcenter: props.editdata.costcenter,
@@ -72,6 +84,7 @@ function EditDepartment(props) {
 
     props.editdeptdata({ ...values, newque }, props.id)
     setOpen(false);
+  
 
   };
 
@@ -106,7 +119,7 @@ function EditDepartment(props) {
   };
 
   const handleClose1 = () => {
-   props.deletedeptdata(props.id)
+  
     setOpendelete(false);
   };
   return (
@@ -120,11 +133,13 @@ function EditDepartment(props) {
       >
         <EditIcon />
       </button>
-      <button id="delete_btn"   onClick={handleClickOpen1}>
+      <button id="delete_btn"  onClick={handleClickOpen1}>
         <DeleteIcon />
       </button>
       <br />
 {/* delete department */}
+
+
 <Dialog
         open={opendelete}
         onClose={handleClose1}
@@ -141,17 +156,40 @@ function EditDepartment(props) {
         <DialogActions>
 
         
-          <Button
+          <Button  onClick={handleClose1}
          variant="contained" style={{ backgroundColor: "black",color:"white"}}  autoFocus>
           <h3>Cancel</h3> 
           </Button>
-          <Button onClick={handleClose1}
-         variant="contained" style={{ backgroundColor: "#dc3545",color:"white"}}  autoFocus>
+          <Button onClick={YesFunction}
+         variant="contained" style={{ backgroundColor: "#dc3545",color:"white"}}  >
           <h3>Delete</h3> 
           </Button>
         </DialogActions>
         </div>
+        <Dialog
+              open={Yesopen}
+            onClose={handleClose1}
+              aria-labelledby="max-width-dialog-title"
+            >
+              <DialogTitle id="max-width-dialog-title">
+              <h3> Data Deleted Successfully</h3>
+           
+              </DialogTitle>
+              <DialogContent>
+                <DialogContentText>
+                  <CheckCircleIcon style={{ color: "green"}} />
+                </DialogContentText>
+              </DialogContent>
+              <Button
+                onClick={deletedata}
+                variant="contained"
+                style={{ backgroundColor: "darkcyan",color:"white" ,fontSize:"20px"}} >
+                OK
+              </Button>
+            </Dialog>
       </Dialog>
+
+
 
  {/* edit department */}
       <Dialog

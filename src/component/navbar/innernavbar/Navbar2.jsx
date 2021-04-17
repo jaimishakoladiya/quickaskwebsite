@@ -49,11 +49,11 @@ function Navbar2() {
               </NavLink>
             </li>
 
-            <li className="sub-menu">
+            {/* <li className="sub-menu">
               <a href="#" className="a">
                 INVOICE
               </a>
-            </li>
+            </li> */}
           </ul>
         </nav>
         <div className="icon">

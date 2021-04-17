@@ -21,7 +21,9 @@ import CreateInterview from './CreateInterview';
 import Paper from '@material-ui/core/Paper';
 
 import { makeStyles } from '@material-ui/core/styles';
-const InterviewDataGrid = () => {
+import { connect } from "react-redux";
+const InterviewDataGrid = (props) => {
+  
   const style = {
     fontSize: '17px',
     fontWeight: 'bold',
@@ -86,17 +88,20 @@ const InterviewDataGrid = () => {
                       Total Allowed
                     </h3>
                   </TableCell>
-                </TableRow>{' '}
+                </TableRow>
               </TableHead>
               <TableCell id="name">
                 1.what is react dbmh nhsdg jywr yugw jwery jywetr hjwgr hjr
                 hjwery nhgtrweh guwrer nhtweu
               </TableCell>
               <TableCell id="question-box">
-                {' '}
+               
                 3mins
                 <br />
               </TableCell>
+              
+               
+            
               <TableRow>
                 <TableCell id="name">jklndm</TableCell>
                 <TableCell id="question-box">0 min</TableCell>
@@ -199,4 +204,10 @@ const InterviewDataGrid = () => {
     </>
   );
 };
-export default InterviewDataGrid;
+
+const mapStateToProps=state=>{
+  return {
+    data:state.companyprofile
+  }
+}
+export default connect(mapStateToProps)(InterviewDataGrid);

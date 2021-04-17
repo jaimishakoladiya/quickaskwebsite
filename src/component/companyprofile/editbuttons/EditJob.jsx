@@ -19,11 +19,13 @@ import { makeStyles } from "@material-ui/core";
 import AlertBox from "../../alert/AlertBox";
 import QuestionsCard from "../addbuttons/QuestionsCard";
 import DisplayQuestions from '../DisplayQuestions';
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 
 import { connect } from "react-redux";
 import {
   deletequestion,
   editjobdata,
+  deletejobdata
 } from "../../../redux/actions/companyprofile/companprofileAction";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -71,6 +73,7 @@ function EditJob(props) {
   const [open, setOpen] = useState(false);
   const [opendelete, setOpendelete] = useState(false);
   const [openalert, setopenalert] = useState(true);
+  const [Yesopen, SetYesopen] = useState(false);
 
   const initialValues = {
     jobtitle: props.editdata.jobtitle,
@@ -118,7 +121,15 @@ function EditJob(props) {
  
     setOpendelete(false);
   };
-
+ const deletejob = () => {
+   props.deletejobdata(props.id)
+   handleClose1()
+   SetYesopen(false);
+  
+ }
+ const YesFunction = () => {
+  SetYesopen(true);
+};
 
   return (
     <div>
@@ -159,12 +170,35 @@ function EditJob(props) {
           <h3>Cancel</h3> 
           </Button>
           <Button
-         variant="contained" style={{ backgroundColor: "#dc3545",color:"white"}}  autoFocus>
+         variant="contained" onClick={YesFunction} style={{ backgroundColor: "#dc3545",color:"white"}}   autoFocus>
           <h3>Delete</h3> 
           </Button>
         </DialogActions>
         </div>
+     
+      <Dialog
+              open={Yesopen}
+            onClose={handleClose1}
+              aria-labelledby="max-width-dialog-title"
+            >
+              <DialogTitle id="max-width-dialog-title">
+              <h3> Data Deleted Successfully</h3>
+           
+              </DialogTitle>
+              <DialogContent>
+                <DialogContentText>
+                  <CheckCircleIcon style={{ color: "green"}} />
+                </DialogContentText>
+              </DialogContent>
+              <Button
+                onClick={deletejob}
+                variant="contained"
+                style={{ backgroundColor: "darkcyan",color:"white" ,fontSize:"20px"}} >
+                OK
+              </Button>
+            </Dialog>
       </Dialog>
+
 
 {/* //edit job */}
       <Dialog
@@ -282,9 +316,11 @@ const mapStateToProps = (state, ownprops) => {
 
 const mapDispatchToProps = (disptach) => {
   return {
-    editjobdata: (data, id) => {
-      disptach(editjobdata(data, id));
-    },
+    editjobdata: (data, id) => { disptach(editjobdata(data, id))},
+      deletejobdata: (id) => { disptach(deletejobdata(id))},
+      
+    
+   
     deletequestion:(section,uid,qid)=>{disptach(deletequestion(section,uid,qid))}
   };
 };
