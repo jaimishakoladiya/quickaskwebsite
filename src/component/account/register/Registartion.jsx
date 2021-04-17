@@ -9,14 +9,15 @@ import "./registarion.css";
 import { Route, Switch, useHistory } from "react-router-dom";
 import * as yup from "yup";
 import PersonIcon from "@material-ui/icons/Person";
-
-import InsertPhotoIcon from "@material-ui/icons/InsertPhoto";
-import LockIcon from "@material-ui/icons/Lock";
-import { colors } from "@material-ui/core";
+import axios from 'axios';
 import AlertBox from "../../alert/AlertBox";
 
 function Registration() {
   const [openalert, setopenalert] = useState(false);
+  async function makePostRequest(data){
+    let res=await axios.post("http://localhost:2002/register",data)
+    console.log(res.data)
+  }
   const history = useHistory();
 
   const closealert = () => {
@@ -33,18 +34,22 @@ function Registration() {
     );
   };
   const initialValues = {
+    email:"",
     firstname: "",
     lastname: "",
     companyemail: "",
   };
   const onSubmit = (values, onsubmitprops) => {
     // onsubmitprops.resetForm();
+    makePostRequest(values);
+    console.log(values);
     history.push("/innernavbar")
 
   };
 
   const validationSchema = yup.object({
-    firstname: yup.string().required("Firstname is required"),
+    email: yup.string().required("email is required"),
+   firstname: yup.string().required("Firstname is required"),
     lastname: yup.string().required("Lastname is required"),
     companyemail: yup
       .string()
@@ -81,6 +86,14 @@ function Registration() {
 
                   <div className="input-group">
                     <div className="registation-div one focus">
+                    <div>
+                        <h5> Email</h5>
+                        <Field
+                          type="text"
+                          name="email"
+                          className="input"
+                        />
+                      </div>
                       <div className="icons">
                         <PersonIcon className="person" />
                       </div>
