@@ -7,8 +7,9 @@ import * as yup from "yup";
 import AlertBox from "../../alert/AlertBox";
 import { Form, Formik, Field } from "formik";
 import Step1AddField from "./Step1AddField";
-
-const Step3 = () => {
+import {addpaneldata} from "../../../redux/actions/interview/InterviewAction";
+import { connect } from "react-redux";
+const Step3 = (props) => {
   const [open, setopenalert] = useState(false);
   const [panelcandidate , setpanelcandidate] = useState({
   firstname:"",
@@ -43,6 +44,7 @@ const deletefunction=(id)=>{
   };
   const onSubmit = (values, onSubmitprops) => {
     console.log(values);
+    props.addpaneldata(values);
     AddpanelCandidate();
     onSubmitprops.resetForm();
   };
@@ -142,17 +144,16 @@ const deletefunction=(id)=>{
                     </Button>
                   </div>
                   <div>
-                    {
-                      panelArray.map((panelcandidate,index)=>{
-                        return (
-                          <>
-                           <Step1AddField newrecords={panelcandidate}
+                   
+                           {
+                             props.newdata.paneldata.map((item,index)=>{
+                               return(
+                             <Step1AddField newrecords={panelcandidate}
                            deletefunction={deletefunction}
-                           id={index}/>
-                          </>
-                        )
-                      })
-                    }
+                           newrecords={props.newdata.paneldata[index]}
+                           id={index}/>)
+                         })}
+                    
                   </div>
                 </div>
               </Form>
@@ -163,4 +164,14 @@ const deletefunction=(id)=>{
     </Formik>
   );
 };
-export default Step3;
+const mapStateToProps = state =>{
+  return{
+    newdata:state.interview
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return{
+    addpaneldata: (newdata) => {dispatch(addpaneldata(newdata))}
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Step3);

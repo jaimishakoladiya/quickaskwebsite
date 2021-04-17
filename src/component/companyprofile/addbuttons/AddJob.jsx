@@ -10,10 +10,14 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
 import CloseIcon from "@material-ui/icons/Close";
 import Grid from "@material-ui/core/Grid";
+import NativeSelect from "@material-ui/core/NativeSelect";
 import "../Company.css";
 import { makeStyles } from "@material-ui/core";
 import AlertBox from "../../alert/AlertBox";
 import QuestionsCard from "./QuestionsCard";
+import { connect } from "react-redux"
+import DisplayQuestions from "../DisplayQuestions";
+import { addjobdata, addjobquestion, deletejobquestion } from "../../../redux/actions/companyprofile/companprofileAction"
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -25,24 +29,50 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: "#eef5f6",
   },
 }));
-export default function AddJob() {
+function AddJob(props) {
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
-
+  const[newque,setnewque]=useState([])
+  const SelectItem = () => {
+    let items = [];
+    props.data.deptdata.map((item,index)=>{
+      items.push(<option value={item.department}>{item.department}</option>)
+    })
+    return items;
+  };
+  const addquestion=(newq)=>{
+    setnewque((olditem)=>{
+      return[
+        ...olditem,
+        newq
+      ]
+    })
+   
+    props.addjobquestion(newq)
+  }
+  const deletequestions =(id)=>{
+    setnewque((olditem)=>{
+      return olditem.filter((arr,index)=>{
+        return index !== id;
+      })
+    })
+  }
   const initialValues = {
+    jobtitle: "",
     department: "",
-    costcenter: "",
   };
 
   const onSubmit = (values) => {
-    console.log(values);
+    // console.log(values)
+   props.addjobdata({...values,newque});
     setOpen(false);
+    setnewque([]);
   };
 
   const validationSchema = yup.object({
+    jobtitle: yup.string().required("All fields are required"),
     department: yup.string().required("All fields are required"),
-    costcenter: yup.string().required("All fields are required"),
   });
   const closealert = () => {
     setopenalert(false);
@@ -117,36 +147,37 @@ export default function AddJob() {
                         <Grid item xs={6}>
                           <Field
                             as={TextField}
-                            name="department"
+                            name="jobtitle"
                             className="dialog_input"
                             placeholder="Job title"
-                            id="department"
+                            id="jobtitle"
                             variant="standard"
                           />
                         </Grid>
                         <Grid item xs={6}>
-                          <Field
-                            as={TextField}
-                            name="costcenter"
-                            className="dialog_input"
-                            placeholder="Department"
-                            id="costcenter"
-                            variant="standard"
-                          />
+                        <Field as={NativeSelect}
+                        style={{ marginLeft: "10px", width: "350px" }}
+                        name='department'
+                        
+                      >
+                        <option value="null">--Select Department--</option>
+                        {SelectItem()}
+                      </Field>
                         </Grid>
-                        <Grid item xs={7}>
+                        <Grid item xs={6}>
                           <h3>Default Question For Department</h3>
                         </Grid>
                         <Grid item xs={4}>
                           <h3>Time Allocated</h3>
                         </Grid>
                       </Grid>
+                      <DisplayQuestions question={newque} deletequestion={deletequestions} />
                       <br />
-                      {formik.touched.department && formik.errors.department
-                        ? erroralert(formik.errors.department)
-                        : formik.touched.costcenter && formik.errors.costcenter
-                        ? erroralert(formik.errors.costcenter)
-                        : null}
+                      {formik.touched.jobtitle && formik.errors.jobtitle
+                        ? erroralert(formik.errors.jobtitle)
+                        : formik.touched.department && formik.errors.department
+                          ? erroralert(formik.errors.department)
+                          : null}
 
                       <Button
                         id="dialog-cancel-btn"
@@ -168,7 +199,7 @@ export default function AddJob() {
                         Save
                       </Button>
                     </Form>
-                    <QuestionsCard />
+                    <QuestionsCard question={props.data} addquestion={addquestion} />
                   </>
                 );
               }}
@@ -179,3 +210,18 @@ export default function AddJob() {
     </div>
   );
 }
+const mapStateToProps = state => {
+  return {
+    data: state.companyprofile
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addjobquestion: (newquestion) => { dispatch(addjobquestion(newquestion)) },
+    deletejobquestion: (id) => { dispatch(deletejobquestion(id)) },
+    addjobdata:(data) =>{dispatch(addjobdata(data))}
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddJob)

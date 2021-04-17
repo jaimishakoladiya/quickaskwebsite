@@ -1,8 +1,9 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
 import AddManager from "./addbuttons/AddManager";
-
-const Manager = () => {
+import { connect } from "react-redux";
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
+const Manager = (props) => {
   return (
     <>
       <div className="Manager_card1">
@@ -15,17 +16,32 @@ const Manager = () => {
             <th className="company-th">Status</th>
             <th className="company-th">Date</th>
             <th className="company-th">Deleted</th>
-            <th className="company-th">Actions</th>
+            <th className="company-th" id="Action_css">Actions</th>
           </tr>
-
+          {
+            props.data.managerdata.map((item,index)=>{
+              return(
+                <>
+        
           <tr className="company-tr">
-            <td className="company-td">hey</td>
-            <td className="company-td">ck</td>
-            <td className="company-td">hey</td>
-            <td className="company-td">hey</td>
+            <td className="company-td">{item.firstname} {item.lastname}</td>
+            <td className="company-td">{item.email}</td>
             <td className="company-td">hey</td>
             <td className="company-td">hey</td>
+            <td className="company-td">hey</td>
+            <td className="company-td" id="Action_css">
+            <button id="edit_btn">
+                      <EditIcon />
+                    </button>
+                    <button id="delete_btn">
+                      <DeleteIcon />
+                    </button>
+            </td>
           </tr>
+          </>
+          )
+            })
+          }
         </table>
 
         <br></br>
@@ -35,5 +51,10 @@ const Manager = () => {
     </>
   );
 };
+const mapStateToProps=state=>{
+  return{
+    data:state.companyprofile
+  }
+}
 
-export default Manager;
+export default connect(mapStateToProps)(Manager);

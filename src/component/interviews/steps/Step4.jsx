@@ -1,65 +1,26 @@
 import React from "react";
-import TextField from "@material-ui/core/TextField";
-import NativeSelect from "@material-ui/core/NativeSelect";
-import Button from "@material-ui/core/Button";
 import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import QuestionsCard from "../../companyprofile/addbuttons/QuestionsCard";
+import {
+  addinterviewque,
+  deleteinterviewque,
+} from "../../../redux/actions/interview/InterviewAction";
+import DisplayQuestions from "../../companyprofile/DisplayQuestions";
+import { connect } from "react-redux";
 
-const Step4 = () => {
-  const Selectitem = () => {
-    let items = [];
-    for (let i = 0; i <= 60; i++) {
-      if (i <= 9) {
-        items.push(
-          <option key={i} value={i}>
-            0{i}
-          </option>
-        );
-      } else {
-        items.push(
-          <option key={i} value={i}>
-            {i}
-          </option>
-        );
-      }
-    }
-    return items;
-  };
-
+const Step4 = (props) => {
   return (
     <>
       <div className="step4">
-        {/* <TextField
-          style={{ width: "550px" }}
-          id="standard-basic"
-          placeholder="New Quetions"
+        <QuestionsCard
+          addquestion={props.addinterviewque}
+          question={props.interviewque}
         />
-        <NativeSelect
-          id="demo-customized-select-native"
-          className="Step4_Dropdown"
-        >
-          {Selectitem()}
-        </NativeSelect>{" "}
-        :
-        <NativeSelect
-          id="demo-customized-select-native"
-          className="Step4_Dropdown1"
-        >
-          {Selectitem()}
-        </NativeSelect>
-        <div className="Add">
-          {" "}
-          <br></br>
-          <Button variant="contained" color="secondary">
-            ADD
-          </Button> */}
-          <QuestionsCard/>
-        
+        {/* <QuestionsCard/> */}
         <br></br>
         <div>
           <TableContainer>
@@ -78,9 +39,29 @@ const Step4 = () => {
             </Table>
           </TableContainer>
         </div>
+        <DisplayQuestions
+          deletequestion={props.deleteinterviewque}
+          question={props.interviewque.interviewque}
+        />
       </div>
     </>
   );
 };
+const mapStateToProps = (state) => {
+  return {
+    interviewque: state.interview,
+  };
+};
 
-export default Step4;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addinterviewque: (newquestion) => {
+      dispatch(addinterviewque(newquestion));
+    },
+    deleteinterviewque: (id) => {
+      dispatch(deleteinterviewque(id));
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Step4);
+

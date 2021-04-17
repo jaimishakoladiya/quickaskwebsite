@@ -105,6 +105,7 @@ const CreateInterview = () => {
                       id="btn_color"
                       onClick={handleNext}
                       className={classes.button}
+                    
                     >
                       {activeStep === steps.length - 1 ? "submit" : "Next"}
                     </Button>
