@@ -79,21 +79,22 @@ function Registration() {
                   <br />
                   <img src={image3} className="registration-face"></img>
                   <br />
-                  <h2 style={{ fontFamily: "DIN", marginTop: "5px" }}>
-                    Register...
-                  </h2>
+                 
                   <br></br>
 
                   <div className="input-group">
-                    <div className="registation-div one focus">
-                    <div>
-                        <h5> Email</h5>
-                        <Field
-                          type="text"
-                          name="email"
-                          className="input"
-                        />
+                  <div className="registation-div one focus">
+                   
+                      <div className="icons">
+                        <MailOutlineIcon className="person" />
                       </div>
+                      <div>
+                        <h5>Email.</h5>
+                        <Field type="text" name="firstname" className="input" />
+                      </div>
+                    </div>
+                    <div className="registation-div one focus">
+                   
                       <div className="icons">
                         <PersonIcon className="person" />
                       </div>
