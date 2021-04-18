@@ -1,20 +1,14 @@
 import React from "react";
 import { Route, Switch } from "react-router";
 import Navbar from "./Navbar";
-
 import Registration from "../../account/register/Registartion";
 import Login from "../../account/login/Login";
-
 import Forpass from "../../account/login/Forpass";
-import About from "../../team/about/About";
-import Contact from "../../team/contact/Contact";
 import Home from "../../home/Home";
 import { BrowserRouter, useLocation } from "react-router-dom";
 import InnerNavbar from './../innernavbar/InnerNavbar';
-import CompanyProfilePage from "../../companyprofile/CompanyProfilePage";
-import Interviews from "../../interviews/Interviews";
 import Team from "../../team/Team";
-// import FifthHomeComp from '../../home/FifthHomeComp';
+import ResetPassword from '../../account/register/ResetPassword'
 function HomeNavbar() {
   const location = useLocation();
   return (
@@ -22,6 +16,7 @@ function HomeNavbar() {
       {location.pathname === "/login" ||
       location.pathname === "/registartion" ||
       location.pathname === "/forgotpassword" ||
+      location.pathname ==="/reset-password" ||
       location.pathname ==="/innernavbar"? null : (
         <Navbar />
         
@@ -36,6 +31,7 @@ function HomeNavbar() {
         <Route exact path="/team" component={Team}/>
         {/* <Route exact path="/fifthhomecomp" component={FifthHomeComp}/> */}
         <Route exact path="/forgotpassword" component={Forpass} />
+        <Route   exact path="/reset-password" component={ResetPassword} />
         <Route exact path="/innernavbar" render={()=>
           <BrowserRouter><InnerNavbar name={"innernavbar"}/></BrowserRouter>
         }/>

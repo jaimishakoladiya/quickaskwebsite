@@ -1,21 +1,29 @@
 
 import React, { useState } from 'react'
 import image1 from '../../images/wave.png';
-import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import image2 from '../../images/undraw_mobile_user_7oqo (3).svg';
 import * as yup from "yup";
 import image3 from '../../images/undraw_profile_pic_ic5t (2).svg';
-// import Loginpage from './Loginpage';
 import "./resetpass.css"
-import {Route,Switch,useHistory} from 'react-router-dom';
-import PersonIcon from '@material-ui/icons/Person';
-import InsertPhotoIcon from '@material-ui/icons/InsertPhoto';
+import {useHistory,useLocation,useParams} from 'react-router-dom';
 import LockIcon from '@material-ui/icons/Lock';
 import { Field, Form, Formik } from 'formik';
 import AlertBox from '../../alert/AlertBox';
+import axios from 'axios';
+
 function ResetPassword()
  {
+ const location =useLocation()
+ 
+ var id=new URLSearchParams(location.search).get('id')
+
    const [openalert,setopenalert] = useState(false);
+   async function verifyemail(){
+
+     let res=await axios.get(`http://localhost:2002/verifyemail?id=${id}`);
+     console.log(res.data)
+   }
+   verifyemail()
    const initialValues = {
      email:''
    }
