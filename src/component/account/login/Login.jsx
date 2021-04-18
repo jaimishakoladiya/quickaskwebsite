@@ -13,6 +13,7 @@ import { BrowserRouter, Route, Switch, NavLink } from "react-router-dom";
 import { Field, Form, Formik } from "formik";
 import AlertBox from "../../alert/AlertBox";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 // import Registration from './Registartion';
 const useStyles = makeStyles((theme) => ({
@@ -33,20 +34,37 @@ const useStyles = makeStyles((theme) => ({
 
 function Login() {
   const [openalert, setopenalert] = useState(false);
+  const [success, setsuccess] = useState(true);
+  const [error,seterror]=useState()
   const history = useHistory();
+  async function makePostRequest(data){
+    let res =await axios.post("http://localhost:2002/login",data);
+    // console.log(res.data.success);
+    // res.data.success?null:erroralert(res.data.message)
+if(res.data.success==false){
+  setsuccess(res.data.success)
+  seterror(res.data.message)
+}
+else{
+  history.push('/innernavbar')
+}
+
+  }
+ 
   const initialValues = {
-    username: "",
+    email: "",
     password: "",
   };
 
   const onSubmit = (values, onSubmitprops) => {
     console.log(values);
-    onSubmitprops.resetForm();
-    history.push("/innernavbar")
+    makePostRequest(values)
+    
+    
   };
 
   const validationSchema = yup.object({
-    username: yup
+    email: yup
       .string()
       .email("Enter valid email")
       .required("Username is requied"),
@@ -56,6 +74,7 @@ function Login() {
     setopenalert(false);
   };
   const erroralert = (error) => {
+    console.log(error)
     return (
       <AlertBox
         setopenalert={openalert}
@@ -65,9 +84,22 @@ function Login() {
     );
   };
 
+  const validalert = (error) => {
+    console.log(error)
+    return (
+      // <AlertBox
+      //   setopenalert={openalert}
+      //   closealert={closealert}
+      //   error={error}
+      // />
+      <h1>{error}</h1>
+    );
+  };
+
   const classes = useStyles();
 
   return (
+    
     <Formik
       initialValues={initialValues}
       onSubmit={onSubmit}
@@ -94,7 +126,7 @@ function Login() {
                     </div>
                     <div>
                       <h5>UserName.</h5>
-                      <Field name="username" type="text" className="input" />
+                      <Field name="email" type="text" className="input" />
                     </div>
                   </div>
                   <div className="inpput-div1 two focus">
@@ -118,10 +150,12 @@ function Login() {
                     Forget Password..?
                   </a>
                   {formik.errors.username
-                    ? erroralert(formik.errors.username)
+                    ? erroralert(formik.errors.email)
                     : formik.errors.password
                     ? erroralert(formik.errors.password)
                     : null}
+
+                     {success===false? erroralert(error):null}
 
                   <input
                     type="submit"
