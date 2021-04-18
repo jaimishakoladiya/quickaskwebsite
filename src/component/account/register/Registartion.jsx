@@ -43,7 +43,7 @@ function Registration() {
     // onsubmitprops.resetForm();
     makePostRequest(values);
     console.log(values);
-    history.push("/innernavbar")
+    history.push("/login")
 
   };
 
@@ -90,7 +90,7 @@ function Registration() {
                       </div>
                       <div>
                         <h5>Email.</h5>
-                        <Field type="text" name=" " className="input" />
+                        <Field type="text" name="email" className="input" />
                       </div>
                     </div>
                     <div className="registation-div one focus">
