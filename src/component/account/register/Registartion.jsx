@@ -90,7 +90,7 @@ function Registration() {
                       </div>
                       <div>
                         <h5>Email.</h5>
-                        <Field type="text" name="firstname" className="input" />
+                        <Field type="text" name=" " className="input" />
                       </div>
                     </div>
                     <div className="registation-div one focus">
