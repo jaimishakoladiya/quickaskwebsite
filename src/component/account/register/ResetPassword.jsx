@@ -109,13 +109,9 @@ function ResetPassword()
            
             </div>
             <div>
-<<<<<<< HEAD
-            {formik.errors.password?erroralert(formik.errors.password):null}
-=======
             {formik.errors.password?erroralert(formik.errors.password):
             formik.errors.cpassword?erroralert(formik.errors.cpassword)
             :null}
->>>>>>> 1face615d992caedb6f92c0b5aa81f2045caf1ff
             <input type="submit" onClick={()=>setopenalert(true)} className="tn" value="Reset Password"/>
             </div>
            <br/>
