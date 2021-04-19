@@ -31,7 +31,8 @@ function ResetPassword()
     onsubmitprops.resetForm();
    }
    const validationSchema=yup.object({
-     email:yup.string().email("Enter Valid Email").required("Email Is Required")
+     password:yup.string().required("password Is Required")
+
 
    })
    const erroralert=(error)=>{
@@ -108,7 +109,8 @@ function ResetPassword()
         </div>
       </div>
       </>
-      )
+      ) 
+
       }}
       </Formik>
    
