@@ -26,7 +26,7 @@ const JobTitle = (props) => {
             <th className="company-th">Depatment</th>
             <th className="company-th" id="Action_css">Action</th>
           </tr>
-    {
+    {/* {
       props.data.jobdata.map((item,index)=>{
         return(
           <>
@@ -34,12 +34,7 @@ const JobTitle = (props) => {
         <td className="company-td">{item.jobtitle}</td>
         <td className="company-td">{item.department}</td>
         <td className="company-td" id="Action_css">
-        {/* <button id="edit_btn">
-                      <EditIcon />
-                    </button>
-                    <button id="delete_btn">
-                      <DeleteIcon />
-                    </button> */}
+        
                   <EditJob id={index}/>
         </td>
       </tr>
@@ -47,7 +42,7 @@ const JobTitle = (props) => {
           </>
         )
       })}
-        
+         */}
           
         </table>
         <br></br> <AddJob />

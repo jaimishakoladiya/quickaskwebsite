@@ -9,7 +9,6 @@ import Tooltip from "@material-ui/core/Tooltip";
 import PersonIcon from "@material-ui/icons/Person";
 import LockIcon from "@material-ui/icons/Lock";
 import * as yup from "yup";
-import { BrowserRouter, Route, Switch, NavLink } from "react-router-dom";
 import { Field, Form, Formik } from "formik";
 import AlertBox from "../../alert/AlertBox";
 import { useHistory } from "react-router-dom";
@@ -35,39 +34,38 @@ const useStyles = makeStyles((theme) => ({
 function Login() {
   const [openalert, setopenalert] = useState(false);
   const [success, setsuccess] = useState(true);
-  const [error,seterror]=useState()
+  const [error, seterror] = useState()
   const history = useHistory();
-  async function makePostRequest(data){
-    let res =await axios.post("http://localhost:2002/login",data);
-    // console.log(res.data.success);
-    // res.data.success?null:erroralert(res.data.message)
-if(res.data.success==false){
-  setsuccess(res.data.success)
-  seterror(res.data.message)
-}
-else{
-  history.push('/innernavbar')
-}
+  async function makePostRequest(data) {
+    let res = await axios.post("http://localhost:2002/login", data);
+
+    if (res.data.success == false) {
+      setsuccess(res.data.success)
+      seterror(res.data.message)
+    }
+    else {
+      setopenalert(false)
+      console.log(res.data);
+      localStorage.setItem("user",JSON.stringify(res.data))
+      history.push('/innernavbar')
+    }
 
   }
- 
+
   const initialValues = {
     email: "",
     password: "",
   };
 
   const onSubmit = (values, onSubmitprops) => {
-    console.log(values);
+
     makePostRequest(values)
-    
-    
+
+
   };
 
   const validationSchema = yup.object({
-    email: yup
-      .string()
-      .email("Enter valid email")
-      .required("Username is requied"),
+    email: yup.string().email("Enter valid email").required("email is requied"),
     password: yup.string().required("Enter password"),
   });
   const closealert = () => {
@@ -99,7 +97,7 @@ else{
   const classes = useStyles();
 
   return (
-    
+
     <Formik
       initialValues={initialValues}
       onSubmit={onSubmit}
@@ -149,13 +147,13 @@ else{
                   >
                     Forget Password..?
                   </a>
-                  {formik.errors.username
+                  {formik.errors.email
                     ? erroralert(formik.errors.email)
                     : formik.errors.password
-                    ? erroralert(formik.errors.password)
-                    : null}
+                      ? erroralert(formik.errors.password)
+                      : null}
 
-                     {success===false? erroralert(error):null}
+                  {success === false ? erroralert(error) : null}
 
                   <input
                     type="submit"
@@ -165,29 +163,25 @@ else{
                   />
                   <br />
 
-                  {/* <input type="submit" className="button"  value="Create Account" /> */}
+
 
                   <Tooltip
                     classes={{ tooltip: classes.customWidth }}
                     title="Click Here When You Are Ready To Create Your Full Profile And Start Saving Time"
                     placement="top"
                   >
-                    {/* <NavLink to="/Registration" > */}
+
                     <div
                       className="caccount"
                       onClick={() => history.push("/registartion")}
                     >
-                      {/* <a href={<Registartion/>} value="Create Account">CreateAccount</a><br /><br /> */}
+                    <h1 className="anker">CreateAccount</h1>
 
-                      <h1 className="anker">CreateAccount</h1>
-
-                      <img src={image4} className="anker-image" />
+                    <img src={image4} className="anker-image" />
                     </div>
-                    {/* </NavLink> */}
-                  </Tooltip>
-                  {/* <NavLink to="/" className="navlink" className="a">home  </NavLink><br /><br /> */}
 
-                  {/* <input type="submit" className="tn" value="Craete Account"/> */}
+                  </Tooltip>
+
                 </Form>
               </div>
             </div>
