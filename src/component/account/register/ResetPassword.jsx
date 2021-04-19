@@ -24,14 +24,24 @@ function ResetPassword()
      console.log(res.data)
    }
    verifyemail()
+
+   async function resetpassword(pass){
+      let data=(password.pass)
+        let res=await axios.post(`http://localhost:2002/reset/${id}`,data);
+        console.log(res.data)
+
+   }
    const initialValues = {
-     email:''
+     password:"",
+     cpassword:""
    }
    const onSubmit = (values,onsubmitprops) =>{
+     resetpassword(values.password)
     onsubmitprops.resetForm();
    }
    const validationSchema=yup.object({
-     email:yup.string().email("Enter Valid Email").required("Email Is Required")
+     password:yup.string().required("password Is Required")
+     cpassword:yup.string().oneOf([yup.ref('password'),null],"passwords myst match")
 
    })
    const erroralert=(error)=>{
@@ -77,7 +87,7 @@ function ResetPassword()
             </div>
             <div>
               <h5>Password</h5>
-              <Field type="text" id="email" name="email" className="input"/>
+              <Field type="password" id="password" name="password" className="input"/>
               
             </div>
             
@@ -88,7 +98,7 @@ function ResetPassword()
             </div>
             <div>
               <h5> Confirm Password</h5>
-              <Field type="text" id="email" name="email" className="input"/>
+              <Field type="password" id="cpassword" name="cpassword" className="input"/>
               
             </div>
             
@@ -98,7 +108,7 @@ function ResetPassword()
            
             </div>
             <div>
-            {formik.errors.email?erroralert(formik.errors.email):null}
+            {formik.errors.password?erroralert(formik.errors.password):null}
             <input type="submit" onClick={()=>setopenalert(true)} className="tn" value="Reset Password"/>
             </div>
            <br/>

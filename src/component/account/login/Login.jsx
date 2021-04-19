@@ -84,17 +84,17 @@ else{
     );
   };
 
-  const validalert = (error) => {
-    console.log(error)
-    return (
+  // const validalert = (error) => {
+   // console.log(error)
+    //return (
       // <AlertBox
       //   setopenalert={openalert}
       //   closealert={closealert}
       //   error={error}
       // />
-      <h1>{error}</h1>
-    );
-  };
+      //<h1>{error}</h1>
+    //);
+  //};
 
   const classes = useStyles();
 
