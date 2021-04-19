@@ -80,7 +80,7 @@ header .first ul li .a.active
   font-size: 25px;
 }
 header .second {
-  margin-left: 458px;
+  margin-left: 300px;
 }
 header .second ul {
   margin: 0;
@@ -99,7 +99,8 @@ header .second ul li .a {
   line-height: 50px;
   height: 50px;
   margin-top: 20px;
-  padding: 0 20px;
+  padding: 0 15px;
+  margin-right: 20px;
   color: #000;
   font-family: "Helvetica";
   font-weight: 700;

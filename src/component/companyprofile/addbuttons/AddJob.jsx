@@ -37,7 +37,7 @@ function AddJob(props) {
   const SelectItem = () => {
     let items = [];
     props.data.deptdata.map((item,index)=>{
-      items.push(<option value={item.department}>{item.department}</option>)
+      items.push(<option value={item.name}>{item.name}</option>)
     })
     return items;
   };

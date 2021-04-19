@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import Button from "@material-ui/core/Button";
+
 import AddDepartment from "./addbuttons/AddDepartment";
 import { connect } from "react-redux";
-import DeleteIcon from "@material-ui/icons/Delete";
-import EditIcon from "@material-ui/icons/Edit";
+
 import EditDepartment from "./editbuttons/EditDepartment";
-import AlertBox from "../alert/AlertBox";
+
 
 const Department = (props) => {
+  console.log(props.data.users)
   // console.log("dept" + props.data.deptdata.department)
   const [openedit, setopenedit] = useState(true);
   const closeedit = () => {
@@ -18,7 +18,7 @@ const Department = (props) => {
     setopenedit(true);
     console.log(openedit);
   
-    return <EditDepartment openedit={openedit} closeedit={closeedit} />;
+   
   };
   return (
     <>
@@ -33,15 +33,16 @@ const Department = (props) => {
             </th>
           </tr>
 
-          {props.data.deptdata.map((item, index) => {
+          {
+            props.data.users.map((item, index) => {
             return (
               <>
                 <tr className="company-tr">
-                  <td className="company-td">{item.department}</td>
-                  <td className="company-td">{item.costcenter}</td>
+                  <td className="company-td">{item.name}</td>
+                  <td className="company-td">{item.cost_center}</td>
                   <td className="company-td" id="Action_css">
                   
-                      <EditDepartment id={index}/>
+                      {/* <EditDepartment id={index}/> */}
                     
                   </td>
                 </tr>

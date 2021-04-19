@@ -1,8 +1,7 @@
 import React from "react";
 import AddManager from "./addbuttons/AddManager";
 import { connect } from "react-redux";
-import DeleteIcon from "@material-ui/icons/Delete";
-import EditIcon from "@material-ui/icons/Edit";
+
 import EditManager from "./editbuttons/EditManager";
 const Manager = (props) => {
   return (
@@ -19,7 +18,7 @@ const Manager = (props) => {
             <th className="company-th">Deleted</th>
             <th className="company-th" id="Action_css">Actions</th>
           </tr>
-          {
+          {/* {
             props.data.managerdata.map((item,index)=>{
               return(
                 <>
@@ -37,7 +36,7 @@ const Manager = (props) => {
           </>
           )
             })
-          }
+          } */}
         </table>
 
         <br></br>
