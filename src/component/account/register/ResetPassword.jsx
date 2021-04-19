@@ -14,7 +14,7 @@ import axios from 'axios';
 function ResetPassword()
  {
  const location =useLocation()
- 
+ const history=useHistory();
  var id=new URLSearchParams(location.search).get('id')
 
    const [openalert,setopenalert] = useState(false);
@@ -26,22 +26,23 @@ function ResetPassword()
    verifyemail()
 
    async function resetpassword(pass){
-      let data=(password.pass)
-        let res=await axios.post(`http://localhost:2002/reset/${id}`,data);
-        console.log(res.data)
-
+      let data={password:pass}
+     let res= await axios.post(`http://localhost:2002/reset/${id}`,data);
+     history.push('./login')
+     console.log(res.data)
    }
    const initialValues = {
-     password:"",
-     cpassword:""
+     password:'',
+     cpassword:''
    }
    const onSubmit = (values,onsubmitprops) =>{
-     resetpassword(values.password)
+     
+    resetpassword(values.password)
     onsubmitprops.resetForm();
    }
    const validationSchema=yup.object({
-     password:yup.string().required("password Is Required")
-     cpassword:yup.string().oneOf([yup.ref('password'),null],"passwords myst match")
+     password:yup.string().required("password Is Required"),
+     cpassword:yup.string().oneOf([yup.ref('password'), null], 'Passwords must match')
 
    })
    const erroralert=(error)=>{
@@ -52,7 +53,7 @@ function ResetPassword()
    const closealert = () =>{
     setopenalert(false)
   }
- const history=useHistory();
+ 
   return (
    
   
@@ -108,7 +109,13 @@ function ResetPassword()
            
             </div>
             <div>
+<<<<<<< HEAD
             {formik.errors.password?erroralert(formik.errors.password):null}
+=======
+            {formik.errors.password?erroralert(formik.errors.password):
+            formik.errors.cpassword?erroralert(formik.errors.cpassword)
+            :null}
+>>>>>>> 1face615d992caedb6f92c0b5aa81f2045caf1ff
             <input type="submit" onClick={()=>setopenalert(true)} className="tn" value="Reset Password"/>
             </div>
            <br/>
