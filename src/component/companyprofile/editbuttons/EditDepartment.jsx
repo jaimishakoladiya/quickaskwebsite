@@ -21,6 +21,7 @@ import { connect } from "react-redux";
 import { editdeptdata, deletequestion ,deletedeptdata } from "../../../redux/actions/companyprofile/companprofileAction";
 import DisplayQuestions from "../DisplayQuestions";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import axios from "axios";
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -34,7 +35,7 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 function EditDepartment(props) {
- 
+  console.log(props.editdata)
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [opendelete, setOpendelete] = useState(false);
@@ -42,6 +43,11 @@ function EditDepartment(props) {
   const [newque, setnewque] = useState(props.editdata.newque)
   const [Yesopen, SetYesopen] = useState(false);
 
+  async function deletedepartment(){
+    console.log(props.editdata.departmentId)
+    var res=await axios.post(`http://localhost:2002/delete-department/${props.editdata.departmentId}`)
+    console.log(res.data)
+  }
   const addquestion = (newq) => {
     setnewque((olditem) => {
       return [...olditem, newq]
@@ -66,8 +72,8 @@ function EditDepartment(props) {
   const deletedata=()=>{
     handleClose1();
     SetYesopen(false);
-    props.deletedeptdata(props.id)
-
+    // props.deletedeptdata(props.id)
+    deletedepartment()
 
     
   }
@@ -76,8 +82,8 @@ function EditDepartment(props) {
   };
 
   const initialValues = {
-    department: props.editdata.department,
-    costcenter: props.editdata.costcenter,
+    name: props.editdata.name,
+    costCenter: props.editdata.cost_center,
   }
 
   const onSubmit = (values) => {
@@ -89,8 +95,8 @@ function EditDepartment(props) {
   };
 
   const validationSchema = yup.object({
-    department: yup.string().required("All fields are required"),
-    costcenter: yup.string().required("All fields are required"),
+    name: yup.string().required("All fields are required"),
+    costCenter: yup.string().required("All fields are required"),
   });
   const closealert = () => {
     setopenalert(false);
@@ -216,7 +222,7 @@ function EditDepartment(props) {
               validationSchema={validationSchema}
             >
               {(formik) => {
-                console.log(formik);
+                 
 
                 return (
                   <>
@@ -231,23 +237,23 @@ function EditDepartment(props) {
                         <Grid item xs={6}>
                           <Field
                             as={TextField}
-                            name="department"
+                            name="name"
                             className="dialog_input"
                             placeholder="Department"
-                            id="department"
+                            id="name"
                             variant="standard"
-                            value={formik.values.department}
+                            value={formik.values.name}
                           />
                         </Grid>
                         <Grid item xs={6}>
                           <Field
                             as={TextField}
-                            name="costcenter"
+                            name="costCenter"
                             className="dialog_input"
                             placeholder="Cost Center"
-                            id="costcenter"
+                            id="costCenter"
                             variant="standard"
-                            value={formik.values.costcenter}
+                            value={formik.values.costCenter}
                           />
                         </Grid>
                         <Grid item xs={7}>
@@ -257,12 +263,12 @@ function EditDepartment(props) {
                           <h3>Time Allocated</h3>
                         </Grid>
                       </Grid>
-                      <DisplayQuestions question={props.editdata.newque} deletequestion={deletequestion} />
+                      <DisplayQuestions question={props.editdata.questions} deletequestion={deletequestion} />
                       <br />
-                      {formik.touched.department && formik.errors.department
-                        ? erroralert(formik.errors.department)
-                        : formik.touched.costcenter && formik.errors.costcenter
-                          ? erroralert(formik.errors.costcenter)
+                      {formik.touched.name && formik.errors.name
+                        ? erroralert(formik.errors.name)
+                        : formik.touched.costCenter && formik.errors.costCenter
+                          ? erroralert(formik.errors.costCenter)
                           : null}
 
                       <Button
@@ -301,7 +307,7 @@ const mapStateToProps = (state, ownprops) => {
   //   return index === ownprops.id
   // })
   return {
-    editdata: state.companyprofile.deptdata[ownprops.id]
+    editdata: state.companyprofile.users[ownprops.id]
 
   }
 }

@@ -36,7 +36,7 @@ function AddJob(props) {
   const[newque,setnewque]=useState([])
   const SelectItem = () => {
     let items = [];
-    props.data.deptdata.map((item,index)=>{
+    props.data.users.map((item,index)=>{
       items.push(<option value={item.name}>{item.name}</option>)
     })
     return items;
