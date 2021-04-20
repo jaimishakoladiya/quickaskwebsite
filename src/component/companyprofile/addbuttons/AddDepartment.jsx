@@ -32,22 +32,22 @@ const useStyle = makeStyles((theme) => ({
 function AddDepartment(props) {
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
-  // useEffect(() => {
-  //   async function getData() {
-  //     const result = await axios({
-  //       method: 'get',
-  //       url: "http://localhost:2002/get-department",
+   useEffect(() => {
+     async function getData() {
+       const result = await axios({
+         method: 'get',
+         url: "http://localhost:2002/get-department",
 
-  //       headers: {
-  //         Authorization: token
-  //       }
-  //     })
-  //     console.log(result);
-  //     props.getdeptdata(result.data.result)
+        headers: {
+          Authorization: token
+        }
+      })
+       console.log(result);
+      props.getdeptdata(result.data.result)
 
-  //   }
-  //   getData();
-  // })
+     }
+     getData();
+   })
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);

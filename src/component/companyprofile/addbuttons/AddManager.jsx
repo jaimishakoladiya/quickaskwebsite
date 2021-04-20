@@ -29,6 +29,7 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 function AddManager(props) {
+  
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(false);

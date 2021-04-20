@@ -44,7 +44,8 @@ function EditDepartment(props) {
   const [Yesopen, SetYesopen] = useState(false);
 
   async function deletedepartment(){
-    console.log(props.editdata.departmentId)
+    console.log(props.editdata)
+    console.log(props.id)
     var res=await axios.post(`http://localhost:2002/delete-department/${props.editdata.departmentId}`)
     console.log(res.data)
   }
