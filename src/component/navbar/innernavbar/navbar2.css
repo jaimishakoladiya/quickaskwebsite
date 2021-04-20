@@ -78,19 +78,11 @@ header {
   line-height: 50px;
   cursor: pointer;
   font-size: 25px;
-<<<<<<< HEAD
-  }
-  header .second {
-  margin-left: 300px;
-  }
-  header .second ul {
-=======
 }
 header .second {
   margin-left: 300px;
 }
 header .second ul {
->>>>>>> 937ad33bd95d27ba8ed28fe04ba3b588f1b23451
   margin: 0;
   padding: 0;
   display: flex;
@@ -98,10 +90,6 @@ header .second ul {
   header .second ul li {
   list-style: none;
   position: relative;
-<<<<<<< HEAD
-  }
-  header .second ul li:hover ul {
-=======
 }
 header .second ul li:hover ul {
   display: block;
@@ -118,7 +106,6 @@ header .second ul li .a {
   font-weight: 700;
   font-size: 12pt;
   text-decoration: none;
->>>>>>> 937ad33bd95d27ba8ed28fe04ba3b588f1b23451
   display: block;
   }
   
