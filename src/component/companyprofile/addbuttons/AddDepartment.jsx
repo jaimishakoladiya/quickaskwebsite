@@ -42,7 +42,7 @@ function AddDepartment(props) {
           Authorization: token
         }
       })
-      console.log(result);
+      // console.log(result);
       props.getdeptdata(result.data.result)
 
     }
