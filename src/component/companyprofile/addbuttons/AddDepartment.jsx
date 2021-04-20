@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { Field, Formik, Form } from "formik";
 import * as yup from "yup";
+import axios from "axios";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -14,7 +15,7 @@ import "../Company.css";
 import { makeStyles } from "@material-ui/core";
 import AlertBox from "../../alert/AlertBox";
 import QuestionsCard from "./QuestionsCard";
-import { adddeptdata, adddeptquestion, deletedeptquestion } from "../../../redux/actions/companyprofile/companprofileAction";
+import { adddeptdata, adddeptquestion, deletedeptquestion, getdeptdata } from "../../../redux/actions/companyprofile/companprofileAction";
 import { connect } from "react-redux"
 import DisplayQuestions from "../DisplayQuestions";
 
@@ -29,29 +30,61 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 function AddDepartment(props) {
+  useEffect(()=>{
+    getdepartment()
+},[])
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
-  const [newque, setnewque] = useState([])
+  const [questions, setnewque] = useState([])
   const initialValues = {
-    department: "",
-    costcenter: "",
-
-  };
-
-  const onSubmit = (values) => {
+    name: "",
+    costCenter: "",
     
-    props.adddeptdata({ ...values, newque })
+  };
+  const user=JSON.parse(localStorage.getItem("user"));
+    const token=user.token;
+  async function savedepartment(data){
    
-    console.log(newque)
+ console.log(token);
+  var res = await  axios({
+      method: 'post', 
+      url: "http://localhost:2002/save-department",
+      data:data,
+      headers: {
+        Authorization: token
+      }
+    })
+    
+
+  }
+  async function getdepartment(){
+   
+    var res1= await axios({
+      method: 'get', 
+      url: "http://localhost:2002/get-department",
+     
+      headers: {
+        Authorization: token
+      }
+    })
+ console.log(res1.data);
+ props.getdeptdata(res1.data.result)
+     }
+  const onSubmit = (values) => {
+    // props.adddeptdata({ ...values, questions })
+  savedepartment({ ...values, questions });
+ var data= { ...values, questions }
+   
+    console.log(data)
     console.log(props.data.deptquestion)
     setnewque([])
     setOpen(false);
   };
 
   const validationSchema = yup.object({
-    department: yup.string().required("All fields are required"),
-    costcenter: yup.string().required("All fields are required"),
+    name: yup.string().required("All fields are required"),
+    costCenter: yup.string().required("All fields are required"),
   });
 
   const addquestion = (newq) => {
@@ -144,20 +177,20 @@ function AddDepartment(props) {
                         <Grid item xs={6}>
                           <Field
                             as={TextField}
-                            name="department"
+                            name="name"
                             className="dialog_input"
                             placeholder="Department"
-                            id="department"
+                            id="name"
                             variant="standard"
                           />
                         </Grid>
                         <Grid item xs={6}>
                           <Field
                             as={TextField}
-                            name="costcenter"
+                            name="costCenter"
                             className="dialog_input"
                             placeholder="Cost Center"
-                            id="costcenter"
+                            id="costCenter"
                             variant="standard"
                           />
                         </Grid>
@@ -170,13 +203,13 @@ function AddDepartment(props) {
 
                       </Grid>
 
-                      <DisplayQuestions question={newque} deletequestion={deletedeptquestion} />
+                      <DisplayQuestions question={questions} deletequestion={deletedeptquestion} />
                     
                       <br />
-                      {formik.touched.department && formik.errors.department
-                        ? erroralert(formik.errors.department)
-                        : formik.touched.costcenter && formik.errors.costcenter
-                          ? erroralert(formik.errors.costcenter)
+                      {formik.touched.name && formik.errors.name
+                        ? erroralert(formik.errors.name)
+                        : formik.touched.costCenter && formik.errors.costCenter
+                          ? erroralert(formik.errors.costCenter)
                           : null}
 
                       <Button
@@ -199,7 +232,7 @@ function AddDepartment(props) {
                         Save
                       </Button>
                     </Form>
-                    <QuestionsCard question={props.data.deptquestion} addquestion={addquestion} />
+                    <QuestionsCard addquestion={addquestion} />
                   </>
                 );
               }}
@@ -219,9 +252,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    adddeptquestion: (newquestion) => { dispatch(adddeptquestion(newquestion)) },
-    deletedeptquestion: (id) => { dispatch(deletedeptquestion(id)) },
-    adddeptdata: (data) => { dispatch(adddeptdata(data)) }
+    // adddeptquestion: (newquestion) => { dispatch(adddeptquestion(newquestion)) },
+    // deletedeptquestion: (id) => { dispatch(deletedeptquestion(id)) },
+    // adddeptdata: (data) => { dispatch(adddeptdata(data)) },
+    getdeptdata:(data)=>{dispatch(getdeptdata(data))}
   }
 }
 

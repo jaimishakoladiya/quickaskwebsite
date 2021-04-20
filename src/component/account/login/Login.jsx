@@ -45,6 +45,8 @@ function Login() {
     }
     else {
       setopenalert(false)
+      console.log(res.data);
+      localStorage.setItem("user",JSON.stringify(res.data))
       history.push('/innernavbar')
     }
 
