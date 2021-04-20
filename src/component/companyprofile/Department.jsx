@@ -35,6 +35,7 @@ const Department = (props) => {
 
           {
             props.data.users.map((item, index) => {
+              console.log(index)
             return (
               <>
                 <tr className="company-tr">
@@ -42,7 +43,7 @@ const Department = (props) => {
                   <td className="company-td">{item.cost_center}</td>
                   <td className="company-td" id="Action_css">
                   
-                      {/* <EditDepartment id={index}/> */}
+                      <EditDepartment id={index}/>
                     
                   </td>
                 </tr>

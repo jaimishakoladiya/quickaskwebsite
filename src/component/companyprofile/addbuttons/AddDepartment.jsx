@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Field, Formik, Form } from "formik";
 import * as yup from "yup";
 import axios from "axios";
@@ -30,9 +30,24 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 function AddDepartment(props) {
-  useEffect(()=>{
-    getdepartment()
-},[])
+  const user = JSON.parse(localStorage.getItem("user"));
+  const token = user.token;
+  useEffect(() => {
+    async function getData() {
+      const result = await axios({
+        method: 'get',
+        url: "http://localhost:2002/get-department",
+
+        headers: {
+          Authorization: token
+        }
+      })
+      console.log(result);
+      props.getdeptdata(result.data.result)
+
+    }
+    getData();
+  })
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
@@ -40,43 +55,28 @@ function AddDepartment(props) {
   const initialValues = {
     name: "",
     costCenter: "",
-    
+
   };
-  const user=JSON.parse(localStorage.getItem("user"));
-    const token=user.token;
-  async function savedepartment(data){
-   
- console.log(token);
-  var res = await  axios({
-      method: 'post', 
+
+  async function savedepartment(data) {
+
+    console.log(token);
+    var res = await axios({
+      method: 'post',
       url: "http://localhost:2002/save-department",
-      data:data,
+      data: data,
       headers: {
         Authorization: token
       }
     })
-    
+
 
   }
-  async function getdepartment(){
-   
-    var res1= await axios({
-      method: 'get', 
-      url: "http://localhost:2002/get-department",
-     
-      headers: {
-        Authorization: token
-      }
-    })
- console.log(res1.data);
- props.getdeptdata(res1.data.result)
-     }
+
   const onSubmit = (values) => {
     // props.adddeptdata({ ...values, questions })
-  savedepartment({ ...values, questions });
- var data= { ...values, questions }
-   
-    console.log(data)
+    savedepartment({ ...values, questions });
+
     console.log(props.data.deptquestion)
     setnewque([])
     setOpen(false);
@@ -88,16 +88,16 @@ function AddDepartment(props) {
   });
 
   const addquestion = (newq) => {
-    
+
     setnewque((olditem) => {
       return [...olditem,
         newq]
     })
     props.adddeptquestion(newq)
   }
-  const deletedeptquestion=(id)=>{
-    setnewque((olditem)=>{
-      return olditem.filter((item,index)=>{
+  const deletedeptquestion = (id) => {
+    setnewque((olditem) => {
+      return olditem.filter((item, index) => {
         return index !== id
       })
     })
@@ -204,7 +204,7 @@ function AddDepartment(props) {
                       </Grid>
 
                       <DisplayQuestions question={questions} deletequestion={deletedeptquestion} />
-                    
+
                       <br />
                       {formik.touched.name && formik.errors.name
                         ? erroralert(formik.errors.name)
@@ -255,7 +255,7 @@ const mapDispatchToProps = dispatch => {
     // adddeptquestion: (newquestion) => { dispatch(adddeptquestion(newquestion)) },
     // deletedeptquestion: (id) => { dispatch(deletedeptquestion(id)) },
     // adddeptdata: (data) => { dispatch(adddeptdata(data)) },
-    getdeptdata:(data)=>{dispatch(getdeptdata(data))}
+    getdeptdata: (data) => { dispatch(getdeptdata(data)) }
   }
 }
 
