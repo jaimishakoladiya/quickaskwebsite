@@ -32,11 +32,13 @@ const useStyle = makeStyles((theme) => ({
 function AddDepartment(props) {
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
-   useEffect(() => {
-     async function getData() {
-       const result = await axios({
-         method: 'get',
-         url: "http://localhost:2002/get-department",
+  const [message,setmessage]=useState();
+  const [status,setstatus]=useState(null);
+  useEffect(() => {
+    async function getData() {
+      const result = await axios({
+        method: 'get',
+        url: "http://localhost:2002/get-department",
 
         headers: {
           Authorization: token
@@ -69,6 +71,8 @@ function AddDepartment(props) {
         Authorization: "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwYWhsYThja25wcW5xMnYiLCJ0eXBlIjoiYWRtaW4iLCJkYXRhIjp7ImVtYWlsIjoiYmFuc2lraGFncmFtMzJAZ21haWwuY29tIiwiZmlyc3RuYW1lIjoiYmFuc2kiLCJsYXN0bmFtZSI6ImtqaGciLCJjb21wYW55ZW1haWwiOiJqaGJoQGhnLmNvbSIsInN0YXR1cyI6InZlcmlmeSIsInBhc3N3b3JkIjoiNjY5YTIyMzBjMWNkNjRkMTQxMWZjMWJmYTFjZDMyZjI0NDRiZGJkZGI1NGFhMmZmOTc4YWM2OTFhNDZiYWFlNkl1NTdBTzA4VmQ4V3BieWlDZHM2N3c9PSJ9LCJpYXQiOjE2MTg5MDY4NzQsImV4cCI6MTYxODk5MzI3NH0.50CY2KSyIwY4HqS1xgviVVimpQ6wv7GMDY69mQERPys"
       }
     })
+    setstatus(res.data.status);
+    setmessage(res.data.message)
 
 
   }
@@ -137,7 +141,7 @@ function AddDepartment(props) {
         Add Department
       </Button>
       <br />
-
+{status!=null?erroralert(message):null}
       <Dialog
         open={open}
         onClose={handleClose}
@@ -210,7 +214,7 @@ function AddDepartment(props) {
                         ? erroralert(formik.errors.name)
                         : formik.touched.costCenter && formik.errors.costCenter
                           ? erroralert(formik.errors.costCenter)
-                          : null}
+                          :null}
 
                       <Button
                         id="dialog-cancel-btn"

@@ -7,19 +7,14 @@ import EditDepartment from "./editbuttons/EditDepartment";
 
 
 const Department = (props) => {
- 
+  console.log(props.data)
   // console.log("dept" + props.data.deptdata.department)
   const [openedit, setopenedit] = useState(true);
   const closeedit = () => {
     setopenedit(false);
   };
 
-  const openeditdailog = () => {
-    setopenedit(true);
-    console.log(openedit);
   
-   
-  };
   return (
     <>
       <div className="Department_card1">
@@ -35,7 +30,7 @@ const Department = (props) => {
 
            {
             props.data.users.map((item, index) => {
-             
+              
             return (
               <>
                 <tr className="company-tr">
