@@ -35,8 +35,7 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 function EditDepartment(props) {
-  console.log(props.editdata)
-  const classes = useStyle();
+   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [opendelete, setOpendelete] = useState(false);
   const [openalert, setopenalert] = useState(true);
@@ -44,10 +43,8 @@ function EditDepartment(props) {
   const [Yesopen, SetYesopen] = useState(false);
 
   async function deletedepartment(){
-    console.log(props.editdata)
-    console.log(props.id)
-    var res=await axios.post(`http://localhost:2002/delete-department/${props.editdata.departmentId}`)
-    console.log(res.data)
+         var res=await axios.post(`http://localhost:2002/delete-department/${props.editdata.departmentId}`)
+    
   }
   const addquestion = (newq) => {
     setnewque((olditem) => {

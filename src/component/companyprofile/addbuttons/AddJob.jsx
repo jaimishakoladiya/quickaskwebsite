@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Field, Formik, Form } from "formik";
 import * as yup from "yup";
 import Button from "@material-ui/core/Button";
@@ -12,12 +12,13 @@ import CloseIcon from "@material-ui/icons/Close";
 import Grid from "@material-ui/core/Grid";
 import NativeSelect from "@material-ui/core/NativeSelect";
 import "../Company.css";
+import axios from "axios";
 import { makeStyles } from "@material-ui/core";
 import AlertBox from "../../alert/AlertBox";
 import QuestionsCard from "./QuestionsCard";
 import { connect } from "react-redux"
 import DisplayQuestions from "../DisplayQuestions";
-import { addjobdata, addjobquestion, deletejobquestion } from "../../../redux/actions/companyprofile/companprofileAction"
+import { addjobdata, addjobquestion, deletejobquestion,getjobdata } from "../../../redux/actions/companyprofile/companprofileAction"
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -30,10 +31,27 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 function AddJob(props) {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const token = user.token;
+  useEffect(()=>{
+    async function getData(){
+      const result = await axios({
+        method:'get',
+        url:"http://localhost:2002/get-job-detail",
+        headers:{
+          Authorization:token
+        }
+      })
+      props.getjobdata(result.data.result)
+      console.log(result.data);
+    }
+
+    getData();
+  })
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
-  const[newque,setnewque]=useState([])
+  const[questions,setnewque]=useState([])
   const SelectItem = () => {
     let items = [];
     props.data.users.map((item,index)=>{
@@ -59,19 +77,33 @@ function AddJob(props) {
     })
   }
   const initialValues = {
-    jobtitle: "",
+    title: "",
     department: "",
   };
+  async function savejobdata(data){
+    console.log(token);
+    var res = await axios({
+      method:'post',
+      url:"http://localhost:2002/save-job-detail",
+      data:data,
+      headers:{
+        Authorization: token,
+      }
+    })
+    console.log(res.data);
+  }
 
   const onSubmit = (values) => {
     // console.log(values)
-   props.addjobdata({...values,newque});
+  //  props.addjobdata({...values,questions});
+  console.log({...values,questions})
+   savejobdata({...values,questions});
     setOpen(false);
     setnewque([]);
   };
 
   const validationSchema = yup.object({
-    jobtitle: yup.string().required("All fields are required"),
+     title: yup.string().required("All fields are required"),
     department: yup.string().required("All fields are required"),
   });
   const closealert = () => {
@@ -132,7 +164,7 @@ function AddJob(props) {
               validationSchema={validationSchema}
             >
               {(formik) => {
-                console.log(formik);
+               
 
                 return (
                   <>
@@ -147,10 +179,10 @@ function AddJob(props) {
                         <Grid item xs={6}>
                           <Field
                             as={TextField}
-                            name="jobtitle"
+                            name="title"
                             className="dialog_input"
                             placeholder="Job title"
-                            id="jobtitle"
+                            id="title"
                             variant="standard"
                           />
                         </Grid>
@@ -171,10 +203,10 @@ function AddJob(props) {
                           <h3>Time Allocated</h3>
                         </Grid>
                       </Grid>
-                      <DisplayQuestions question={newque} deletequestion={deletequestions} />
+                      <DisplayQuestions question={questions} deletequestion={deletequestions} />
                       <br />
-                      {formik.touched.jobtitle && formik.errors.jobtitle
-                        ? erroralert(formik.errors.jobtitle)
+                      {formik.touched.title && formik.errors.title
+                        ? erroralert(formik.errors.title)
                         : formik.touched.department && formik.errors.department
                           ? erroralert(formik.errors.department)
                           : null}
@@ -218,10 +250,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addjobquestion: (newquestion) => { dispatch(addjobquestion(newquestion)) },
-    deletejobquestion: (id) => { dispatch(deletejobquestion(id)) },
-    addjobdata:(data) =>{dispatch(addjobdata(data))}
-  }
+  //   addjobquestion: (newquestion) => { dispatch(addjobquestion(newquestion)) },
+  //   deletejobquestion: (id) => { dispatch(deletejobquestion(id)) },
+  //   addjobdata:(data) =>{dispatch(addjobdata(data))}
+  getjobdata:(data)=>{dispatch(getjobdata(data))}  
+}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddJob)

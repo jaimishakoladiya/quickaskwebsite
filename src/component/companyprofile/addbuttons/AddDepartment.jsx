@@ -42,7 +42,7 @@ function AddDepartment(props) {
           Authorization: token
         }
       })
-       console.log(result);
+       
       props.getdeptdata(result.data.result)
 
      }
@@ -60,7 +60,7 @@ function AddDepartment(props) {
 
   async function savedepartment(data) {
 
-    console.log(token);
+    
     var res = await axios({
       method: 'post',
       url: "http://localhost:2002/save-department",
