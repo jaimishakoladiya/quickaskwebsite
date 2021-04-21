@@ -126,6 +126,7 @@ export const getjobdata=(data)=>{
         type:GET_JOB_DATA,
         payload:data
     }
+}
 export const getmanagerdata=(data)=>{
     return{
         type:GET_MANAGER_DATA,
