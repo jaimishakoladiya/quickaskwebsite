@@ -35,7 +35,9 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 function EditDepartment(props) {
-  console.log(props.editdata)
+
+  const user=JSON.parse(localStorage.getItem("user"));
+  const token=user.token;
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [opendelete, setOpendelete] = useState(false);
@@ -43,10 +45,18 @@ function EditDepartment(props) {
   const [newque, setnewque] = useState(props.editdata.newque)
   const [Yesopen, SetYesopen] = useState(false);
 
-  async function deletedepartment(){
-    console.log(props.editdata)
-    console.log(props.id)
-    var res=await axios.post(`http://localhost:2002/delete-department/${props.editdata.departmentId}`)
+  async function deletedepartment(id){
+    console.log(id)
+    console.log(props.editdata.departmentId)
+   
+    var res=await axios({
+      method: 'post',
+      url: `http://localhost:2002/delete-department/${props.editdata.departmentId}`,
+
+      headers: {
+        Authorization: token
+      }
+    })
     console.log(res.data)
   }
   const addquestion = (newq) => {
@@ -74,7 +84,7 @@ function EditDepartment(props) {
     handleClose1();
     SetYesopen(false);
     // props.deletedeptdata(props.id)
-    deletedepartment()
+     deletedepartment(props.id)
 
     
   }

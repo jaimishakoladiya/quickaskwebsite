@@ -32,6 +32,8 @@ const useStyle = makeStyles((theme) => ({
 function AddDepartment(props) {
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
+  const [message,setmessage]=useState();
+  const [status,setstatus]=useState(null);
   useEffect(() => {
     async function getData() {
       const result = await axios({
@@ -60,7 +62,7 @@ function AddDepartment(props) {
 
   async function savedepartment(data) {
 
-    console.log(token);
+    
     var res = await axios({
       method: 'post',
       url: "http://localhost:2002/save-department",
@@ -69,6 +71,8 @@ function AddDepartment(props) {
         Authorization: token
       }
     })
+    setstatus(res.data.status);
+    setmessage(res.data.message)
 
 
   }
@@ -137,7 +141,7 @@ function AddDepartment(props) {
         Add Department
       </Button>
       <br />
-
+{status!=null?erroralert(message):null}
       <Dialog
         open={open}
         onClose={handleClose}
@@ -210,7 +214,7 @@ function AddDepartment(props) {
                         ? erroralert(formik.errors.name)
                         : formik.touched.costCenter && formik.errors.costCenter
                           ? erroralert(formik.errors.costCenter)
-                          : null}
+                          :null}
 
                       <Button
                         id="dialog-cancel-btn"
