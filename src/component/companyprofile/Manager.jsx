@@ -20,15 +20,16 @@ const Manager = (props) => {
           </tr>
           {
             props.data.manager.map((item,index)=>{
+              var date=new Date(item.created_at)
               return(
                 <>
         
-          <tr className="company-tr">
+          <tr className="company-tr" style={{fontSize:"15px"}}>
             <td className="company-td">{item.firstname} {item.lastname}</td>
             <td className="company-td">{item.email}</td>
-            <td className="company-td">hey</td>
-            <td className="company-td">hey</td>
-            <td className="company-td">hey</td>
+            <td className="company-td">{item.registration_status}</td>
+            <td className="company-td">{date.toLocaleDateString() + date.toLocaleTimeString()}</td>
+            <td className="company-td">{item.isDeleted?"Deleted":"not deleted"}</td>
             <td className="company-td" id="Action_css">
            <EditManager id={index}/>
             </td>

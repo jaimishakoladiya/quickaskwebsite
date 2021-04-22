@@ -7,12 +7,14 @@ import EditDepartment from "./editbuttons/EditDepartment";
 
 
 const Department = (props) => {
-  
+  console.log(props.data)
+  // console.log("dept" + props.data.deptdata.department)
   const [openedit, setopenedit] = useState(true);
   const closeedit = () => {
     setopenedit(false);
   };
 
+  
   return (
     <>
       <div className="Department_card1">
@@ -26,9 +28,9 @@ const Department = (props) => {
             </th>
           </tr>
 
-          {
+           {
             props.data.users.map((item, index) => {
-            
+              
             return (
               <>
                 <tr className="company-tr">
@@ -42,7 +44,7 @@ const Department = (props) => {
                 </tr>
               </>
             );
-          })}
+          })} 
         </table>
         <br></br> <AddDepartment />
         <br></br>

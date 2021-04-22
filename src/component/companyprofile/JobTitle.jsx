@@ -26,23 +26,23 @@ const JobTitle = (props) => {
             <th className="company-th">Depatment</th>
             <th className="company-th" id="Action_css">Action</th>
           </tr>
-    {/* {
-      props.data.jobdata.map((item,index)=>{
+     {
+      props.data.job.map((item,index)=>{
         return(
           <>
           <tr className="company-tr">
-        <td className="company-td">{item.jobtitle}</td>
+        <td className="company-td">{item.title}</td>
         <td className="company-td">{item.department}</td>
         <td className="company-td" id="Action_css">
         
-                  <EditJob id={index}/>
+                   <EditJob id={index}/> 
         </td>
       </tr>
    
           </>
         )
       })}
-         */}
+        
           
         </table>
         <br></br> <AddJob />

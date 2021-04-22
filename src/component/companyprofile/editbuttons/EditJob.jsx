@@ -59,8 +59,8 @@ function EditJob(props) {
   }
   const SelectItem=()=>{
     let items=[];
-    props.data.deptdata.map((item,index)=>{
-      items.push(<option value={item.department}>{item.department}</option>)
+    props.data.users.map((item,index)=>{
+      items.push(<option value={item.name}>{item.name}</option>)
       
     })
     return items;
@@ -76,7 +76,7 @@ function EditJob(props) {
   const [Yesopen, SetYesopen] = useState(false);
 
   const initialValues = {
-    jobtitle: props.editdata.jobtitle,
+    title: props.editdata.title,
     department: props.editdata.department,
   };
 
@@ -89,7 +89,7 @@ function EditJob(props) {
   };
 
   const validationSchema = yup.object({
-    jobtitle: yup.string().required("All fields are required"),
+    title: yup.string().required("All fields are required"),
     department: yup.string().required("All fields are required"),
   });
   const closealert = () => {
@@ -240,12 +240,12 @@ function EditJob(props) {
                         <Grid item xs={6}>
                           <Field
                             as={TextField}
-                            name="jobtitle"
+                            name="title"
                             className="dialog_input"
-                            placeholder="jobtitle"
-                            id="jobtitle"
+                            placeholder="Jobtitle"
+                            id="title"
                             variant="standard"
-                            value={formik.values.jobtitle}
+                            value={formik.values.title}
                           />
                         </Grid>
                         <Grid item xs={6}>
@@ -253,7 +253,9 @@ function EditJob(props) {
                             as={NativeSelect}
                             style={{ marginLeft: "10px", width: "350px" }}
                             name="department"
+                            value={formik.values.department}
                           >
+                          
                             <option value="null">--Select Department--</option>
                             {SelectItem()}
                           </Field>
@@ -265,7 +267,7 @@ function EditJob(props) {
                           <h3>Time Allocated</h3>
                         </Grid>
                       </Grid>
-                      <DisplayQuestions question={props.editdata.newque} deletequestion={deletequestion}/>
+                      {/* <DisplayQuestions question={props.editdata.newque} deletequestion={deletequestion}/> */}
                       <br />
                       {formik.touched.department && formik.errors.department
                         ? erroralert(formik.errors.department)
@@ -309,7 +311,7 @@ const mapStateToProps = (state, ownprops) => {
   //   return index === ownprops.id
   // })
   return {
-    editdata: state.companyprofile.jobdata[ownprops.id],
+    editdata: state.companyprofile.job[ownprops.id],
     data:state.companyprofile
   };
 };

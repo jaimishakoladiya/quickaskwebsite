@@ -14,9 +14,15 @@ import { Field, Formik, Form } from "formik";
 import * as yup from "yup";
 import AlertBox from "../../alert/AlertBox";
 import DisplayQuestions from "../DisplayQuestions";
+<<<<<<< HEAD
 import { addmanagerquestion,addmanagerdata, deletemanagerquestion, getmanagerdata} from "../../../redux/actions/companyprofile/companprofileAction";
 import { connect } from "react-redux";
 import axios from "axios";
+=======
+import { addmanagerquestion,getmanagerdata, deletemanagerquestion} from "../../../redux/actions/companyprofile/companprofileAction";
+import { connect } from "react-redux";
+import axios from 'axios'
+>>>>>>> 67ae52ae54506740de19cb191dd6d1e4d6fc03bf
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -30,31 +36,27 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 function AddManager(props) {
- const user = JSON.parse(localStorage.getItem("user"));
-  const token = user.token;
+  const user = JSON.parse(localStorage.getItem('user'));
+  const token=user.token;
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(false);
-  const [questions,setnewque] = useState([])
-useEffect(()=>{
-  async function getdata(){
-      var res = await axios({
-        method:"get",
+  const [questions,setnewque] = useState([]);
+  useEffect(()=>{
+    async function getdata(){
+      var res =await axios({
+        method:'get',
         url:"http://localhost:2002/get-manager",
         headers:{
           Authorization:token
         }
-        })
-      console.log(res.data);
+      })
+      
       props.getmanagerdata(res.data.data)
-  }
-  getdata();
+    }
+    getdata();
 })
-  const initialValues = {
-    firstname: "",
-    lastname: "",
-    email: "",
-  };
+
   async function savemanager(data){
     var res = await axios({
       method:'post',
@@ -68,21 +70,24 @@ useEffect(()=>{
   }
 
  
+  const initialValues = {
+    firstname: "",
+    lastname: "",
+    email: "",
+  };
   const addquestion=(newq)=>{
-    setnewque((olditem)=>{
-      return [
-        ...olditem,
+    setnewque((oldval)=>{
+      return[
+        ...oldval,
         newq
       ]
     })
-    props.addmanagerquestion(newq);
   }
   const onSubmit = (values) => {
-   
+    // console.log(values);
     //props.addmanagerdata(values)
-    savemanager({...values.questions})
-    //console.log(props.data.managerquestion)
-    
+    savemanager({...values,questions})
+    setnewque([]);
     setOpen(false);
   };
 
@@ -214,7 +219,7 @@ useEffect(()=>{
 
 
                       </Grid>
-                      <DisplayQuestions question={questions} deletequestion={deletemanagerquestion} />
+                      <DisplayQuestions question={questions} deletequestion={props.deletemanagerquestion} />
                       <br />
 
                       {formik.errors.firstname
@@ -247,7 +252,7 @@ useEffect(()=>{
                 );
               }}
             </Formik>
-            <QuestionsCard addquestion={addquestion}  />
+            <QuestionsCard question={props.data} addquestion={addquestion} />
           </DialogContentText>
         </DialogContent>
       </Dialog>
@@ -263,7 +268,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     addmanagerquestion: (newquestion) => { dispatch(addmanagerquestion(newquestion)) },
-    //deletemanagerquestion: (id) => { dispatch(deletemanagerquestion(id)) },
+    deletemanagerquestion: (id) => { dispatch(deletemanagerquestion(id)) },
     //addmanagerdata:(data)=>{dispatch(addmanagerdata(data))},
    getmanagerdata:(data)=>{dispatch(getmanagerdata(data))}
   }

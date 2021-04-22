@@ -2,7 +2,9 @@ import {
     ADD_DEPT_QUESTIONS, DELETE_DEPT_QUESTIONS, ADD_JOB_QUESTIONS, DELETE_JOB_QUESTIONS
     , ADD_MANAGER_DATA
     , ADD_MANAGER_QUESTIONS, DELETE_MANAGER_QUESTIONS, ADD_DEPT_DATA, ADD_JOB_DATA, EDIT_DEPT_DATA,
-    EDIT_MANAGER_DATA, DELETE_JOB_DATA, EDIT_JOB_DATA, DELETE_QUESTION, DELETE_DEPT_DATA, DELETE_MANAGER_DATA, GET_DEPT_DATA, GET_MANAGER_DATA
+    EDIT_MANAGER_DATA, DELETE_JOB_DATA,
+    EDIT_JOB_DATA, DELETE_QUESTION, DELETE_DEPT_DATA,
+    DELETE_MANAGER_DATA, GET_DEPT_DATA, GET_JOB_DATA, GET_MANAGER_DATA
 } from "../../types/companyprofile/companyprofileTypes";
 import update from "react-addons-update"
 
@@ -16,7 +18,9 @@ const intitialstate = {
     deletedept: [],
     deletejobdata: [],
     users: [],
-    manager:[]
+    job: [],
+    manager: []
+
 }
 
 const companyprofileReducer = (state = intitialstate, action) => {
@@ -119,41 +123,21 @@ const companyprofileReducer = (state = intitialstate, action) => {
                 case "job":
                     const n1 = state.jobdata[action.userid].newque.filter((item, index) => index !== action.queid)
 
-                    return update(state, {
-                        jobdata: {
-                            [action.userid]: {
-                                newque: {
-                                    $set: n1
-                                }
-                            }
-                        }
-                    })
-            }
-        case DELETE_DEPT_DATA:
-            return {
-                ...state,
-                deptdata: state.deptdata.filter((item, id) => id !== action.payload)
-            }
-        case DELETE_JOB_DATA:
-            return {
-                ...state,
-                jobdata: state.jobdata.filter((item, id) => id !== action.payload)
-            }
-        case DELETE_MANAGER_DATA:
-            return {
-                ...state,
-                managerdata: state.managerdata.filter((item, id) => id !== action.payload)
-
             }
         case GET_DEPT_DATA:
             return {
                 ...state,
                 users: action.payload
             }
-        case GET_MANAGER_DATA:
-            return{
+        case GET_JOB_DATA:
+            return {
                 ...state,
-                manager:action.payload
+                job: action.payload
+            }
+        case GET_MANAGER_DATA:
+            return {
+                ...state,
+                manager: action.payload
             }
         default:
             return {
