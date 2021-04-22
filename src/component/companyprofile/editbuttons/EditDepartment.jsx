@@ -45,10 +45,10 @@ function EditDepartment(props) {
   const [questions, setnewque] = useState(props.editdata.questions)
   const [Yesopen, SetYesopen] = useState(false);
 
-  async function deletedepartment(id){
-    console.log(id)
-    console.log(props.editdata.departmentId)
-   
+
+  async function deletedepartment(){
+         var res=await axios.post(`http://localhost:2002/delete-department/${props.editdata.departmentId}`)
+    
     var res=await axios({
       method: 'post',
       url: `http://localhost:2002/delete-department/${props.editdata.departmentId}`,
@@ -58,6 +58,7 @@ function EditDepartment(props) {
       }
     })
     console.log(res.data)
+
   }
 
   async function updatedepartment(data){
@@ -75,7 +76,6 @@ function EditDepartment(props) {
   }
   const addquestion = (newq) => {
     setnewque((olditem) => {
-      return [...olditem, newq]
     })
     // props.editdeptdata({ ...props.editdata, ...props.editdata.newque.push(newq) }, props.id)
 

@@ -28,7 +28,7 @@ const Department = (props) => {
             </th>
           </tr>
 
-          {
+           {
             props.data.users.map((item, index) => {
               
             return (
@@ -44,7 +44,7 @@ const Department = (props) => {
                 </tr>
               </>
             );
-          })}
+          })} 
         </table>
         <br></br> <AddDepartment />
         <br></br>
