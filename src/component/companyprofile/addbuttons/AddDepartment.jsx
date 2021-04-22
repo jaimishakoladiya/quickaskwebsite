@@ -44,7 +44,7 @@ function AddDepartment(props) {
           Authorization: token
         }
       })
-       console.log(result);
+       
       props.getdeptdata(result.data.result)
 
      }
@@ -68,7 +68,7 @@ function AddDepartment(props) {
       url: "http://localhost:2002/save-department",
       data: data,
       headers: {
-        Authorization: "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwYWhsYThja25wcW5xMnYiLCJ0eXBlIjoiYWRtaW4iLCJkYXRhIjp7ImVtYWlsIjoiYmFuc2lraGFncmFtMzJAZ21haWwuY29tIiwiZmlyc3RuYW1lIjoiYmFuc2kiLCJsYXN0bmFtZSI6ImtqaGciLCJjb21wYW55ZW1haWwiOiJqaGJoQGhnLmNvbSIsInN0YXR1cyI6InZlcmlmeSIsInBhc3N3b3JkIjoiNjY5YTIyMzBjMWNkNjRkMTQxMWZjMWJmYTFjZDMyZjI0NDRiZGJkZGI1NGFhMmZmOTc4YWM2OTFhNDZiYWFlNkl1NTdBTzA4VmQ4V3BieWlDZHM2N3c9PSJ9LCJpYXQiOjE2MTg5MDY4NzQsImV4cCI6MTYxODk5MzI3NH0.50CY2KSyIwY4HqS1xgviVVimpQ6wv7GMDY69mQERPys"
+        Authorization: token
       }
     })
     setstatus(res.data.status);

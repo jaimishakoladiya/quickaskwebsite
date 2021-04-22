@@ -46,7 +46,7 @@ function AddManager(props) {
         }
       })
       
-      props.getmanagerdata(res.data.data)
+      // props.getmanagerdata(res.data.data)
     }
     getdata();
 })
@@ -60,7 +60,7 @@ function AddManager(props) {
         Authorization:token
       }
     })
-    console.log(res.data)
+    // console.log(res.data)
   }
 
  
