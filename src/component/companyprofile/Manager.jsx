@@ -18,8 +18,8 @@ const Manager = (props) => {
             <th className="company-th">Deleted</th>
             <th className="company-th" id="Action_css">Actions</th>
           </tr>
-          {/* {
-            props.data.managerdata.map((item,index)=>{
+          {
+            props.data.manager.map((item,index)=>{
               return(
                 <>
         
@@ -36,7 +36,7 @@ const Manager = (props) => {
           </>
           )
             })
-          } */}
+          }
         </table>
 
         <br></br>

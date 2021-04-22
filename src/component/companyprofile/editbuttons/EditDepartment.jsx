@@ -35,7 +35,7 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 function EditDepartment(props) {
-  console.log(props.editdata)
+  
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [opendelete, setOpendelete] = useState(false);
@@ -44,7 +44,6 @@ function EditDepartment(props) {
   const [Yesopen, SetYesopen] = useState(false);
 
   async function deletedepartment(){
-    console.log(props.editdata.departmentId)
     var res=await axios.post(`http://localhost:2002/delete-department/${props.editdata.departmentId}`)
     console.log(res.data)
   }

@@ -305,9 +305,8 @@ const mapStateToProps = (state,ownprops)=>{
   //   return index === ownprops.id
   // })
   return{
-    editdata:state.companyprofile.jobdata[ownprops.id],
     
-    editdata:state.companyprofile.managerdata[ownprops.id]
+    editdata:state.companyprofile.manager[ownprops.id]
 
   }
 }
