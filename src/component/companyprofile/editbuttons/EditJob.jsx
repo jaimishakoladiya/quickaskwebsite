@@ -27,6 +27,7 @@ import {
   editjobdata,
   deletejobdata
 } from "../../../redux/actions/companyprofile/companprofileAction";
+import axios from "axios";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -74,6 +75,17 @@ function EditJob(props) {
   const [openalert, setopenalert] = useState(true);
   const [Yesopen, SetYesopen] = useState(false);
 
+  async function deletjobdata(){
+    console.log(props.editdata.job_detail_id);
+    var res = await axios({
+      method:'post',
+      url:`http://localhost:2002/delete-job-detail/${props.editdata.job_detail_id}`,
+      headers:{
+        Authorization:token
+      }
+    })
+    console.log(res.data);
+  }
   const initialValues = {
     title: props.editdata.title,
     department: props.editdata.department,
@@ -121,10 +133,11 @@ function EditJob(props) {
     setOpendelete(false);
   };
  const deletejob = () => {
-   props.deletejobdata(props.id)
+  // props.deletejobdata(props.id)
+ 
    handleClose1()
    SetYesopen(false);
-  
+   deletjobdata(props.id)
  }
  const YesFunction = () => {
   SetYesopen(true);

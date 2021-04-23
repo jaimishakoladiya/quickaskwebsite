@@ -52,7 +52,7 @@ function AddManager({data,fetchdata}) {
     fetchdata()
 },[])
 
-  async function savemanager(data){
+ async function savemanager(data){
     var res = await axios({
       method:'post',
       url:"http://localhost:2002/save-manager",

@@ -35,20 +35,7 @@ function AddDepartment({data,fetchdata}) {
   const [message,setmessage]=useState();
   const [status,setstatus]=useState(null);
   useEffect(() => {
-    // async function getData() {
-    //   const result = await axios({
-    //     method: 'get',
-    //     url: "http://localhost:2002/get-department",
-
-    //     headers: {
-    //       Authorization: token
-    //     }
-    //   })
-       
-    //   props.getdeptdata(result.data.result)
-
-    //  }
-    //  getData();
+    
     fetchdata()
    },[])
   const classes = useStyle();
@@ -72,6 +59,18 @@ function AddDepartment({data,fetchdata}) {
         Authorization: token
       }
     })
+    const result = await axios({
+      method: 'get',
+      url: "http://localhost:2002/get-department",
+
+      headers: {
+        Authorization: token
+      }
+    })
+     
+    props.getdeptdata(result.data.result)
+
+   
     setstatus(res.data.status);
     setmessage(res.data.message)
     fetchdata()
