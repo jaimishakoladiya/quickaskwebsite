@@ -112,7 +112,7 @@ function EditDepartment(props) {
   }
 
   const onSubmit = (values) => {
-
+console.log({...values,questions})
     // props.editdeptdata({ ...values, newque }, props.id)
      updatedepartment({...values,questions})
     setOpen(false);

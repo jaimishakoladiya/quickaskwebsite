@@ -5,7 +5,7 @@ import {
 ,DELETE_DEPT_DATA,DELETE_JOB_DATA,
 DELETE_MANAGER_DATA, GET_DEPT_DATA,GET_JOB_DATA,GET_MANAGER_DATA
 } from "../../types/companyprofile/companyprofileTypes";
-
+import axios from "axios";
 export const adddeptquestion = (newquestion) => {
     return {
         type: ADD_DEPT_QUESTIONS,
@@ -131,5 +131,32 @@ export const getmanagerdata=(data)=>{
     return{
         type:GET_MANAGER_DATA,
         payload:data
+    }
+}
+const user = JSON.parse(localStorage.getItem("user"));
+const token = user.token;
+export const fetchdept =  () => {
+    return async dispatch => {
+        try {
+            let dept = await axios({
+                method:'get',
+                url:"http://localhost:2002/get-department",
+                headers:{
+                  Authorization:token
+                }
+              })
+              let job = await axios({
+                method:'get',
+                url:"http://localhost:2002/get-job-detail",
+                headers:{
+                  Authorization:token
+                }
+              })
+           dispatch(getdeptdata(dept.data.result))
+           dispatch(getjobdata(job.data.result))
+        }
+        catch(e){
+            console.log(e)
+        }
     }
 }

@@ -36,20 +36,20 @@ function AddManager(props) {
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(false);
   const [questions,setnewque] = useState([]);
-  useEffect(()=>{
-    async function getdata(){
-      var res =await axios({
-        method:'get',
-        url:"http://localhost:2002/get-manager",
-        headers:{
-          Authorization:token
-        }
-      })
+//   useEffect(()=>{
+//     async function getdata(){
+//       var res =await axios({
+//         method:'get',
+//         url:"http://localhost:2002/get-manager",
+//         headers:{
+//           Authorization:token
+//         }
+//       })
       
-      // props.getmanagerdata(res.data.data)
-    }
-    getdata();
-})
+//        props.getmanagerdata(res.data.data)
+//     }
+//     getdata();
+// })
 
   async function savemanager(data){
     var res = await axios({
@@ -60,8 +60,17 @@ function AddManager(props) {
         Authorization:token
       }
     })
-    // console.log(res.data)
+    var res1 =await axios({
+      method:'get',
+      url:"http://localhost:2002/get-manager",
+      headers:{
+        Authorization:token
+      }
+    })
+    
+    props.getmanagerdata(res1.data.data)
   }
+  
 
  
   const initialValues = {

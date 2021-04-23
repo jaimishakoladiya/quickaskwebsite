@@ -65,9 +65,8 @@ function EditJob(props) {
     })
     return items;
   }
-  console.log(props.id);
-  console.log(props.editdata);
-  //  console.log(props.editdata.department)
+  
+  
 
   const classes = useStyle();
   const [open, setOpen] = useState(false);
