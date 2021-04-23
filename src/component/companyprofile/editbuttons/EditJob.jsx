@@ -68,11 +68,13 @@ function EditJob(props) {
   }
   
   
-
+  const user=JSON.parse(localStorage.getItem("user"));
+  const token=user.token;
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [opendelete, setOpendelete] = useState(false);
   const [openalert, setopenalert] = useState(true);
+  //const[questions,setwque] = useState(props.editdata.questions)
   const [Yesopen, SetYesopen] = useState(false);
 
   async function deletjobdata(){
@@ -86,17 +88,30 @@ function EditJob(props) {
     })
     console.log(res.data);
   }
+  async function updatejobdata(data){
+    console.log(data);
+    console.log(props.editdata.job_detail_id)
+    var res=await axios({
+      method:'post',
+      url:`http://localhost:2002/update-job-detail/${props.editdata.job_detail_id}`,
+      data:data,
+      headers:{
+        Authorization:token
+      }
+    })
+    console.log(res.data)
+  }
   const initialValues = {
     title: props.editdata.title,
     department: props.editdata.department,
   };
 
   const onSubmit = (values) => {
-    console.log(values);
-    console.log(props.editdata);
-    props.editjobdata({...values,newque }, props.id);
+    console.log({...values,newque})
+    //props.editjobdata({...values,newque }, props.id);
+    updatejobdata({...values,newque})
     setOpen(false);
-    console.log(props.editdata);
+    
   };
 
   const validationSchema = yup.object({

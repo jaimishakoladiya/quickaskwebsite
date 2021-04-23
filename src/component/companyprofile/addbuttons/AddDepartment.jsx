@@ -80,8 +80,7 @@ function AddDepartment({fetchdept}) {
       }
     })
      
-    props.getdeptdata(result.data.result)
-
+    
    
     setstatus(res.data.status);
     setmessage(res.data.message)
