@@ -104,7 +104,7 @@ function Login() {
       validationSchema={validationSchema}
     >
       {(formik) => {
-        console.log(formik);
+        
         return (
           <>
             <img src={image1} className="Wave1"></img>

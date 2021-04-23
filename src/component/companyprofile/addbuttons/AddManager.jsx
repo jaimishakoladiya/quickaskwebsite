@@ -46,12 +46,16 @@ function AddManager(props) {
 //         }
 //       })
       
+<<<<<<< HEAD
 //       // props.getmanagerdata(res.data.data)
+=======
+//       props.getmanagerdata(res.data.data)
+>>>>>>> c3531867f21e0bd55f6167133768b4b27102a8ca
 //     }
 //     getdata();
 // })
 
-  async function savemanager(data){
+ async function savemanager(data){
     var res = await axios({
       method:'post',
       url:"http://localhost:2002/save-manager",
@@ -60,6 +64,7 @@ function AddManager(props) {
         Authorization:token
       }
     })
+<<<<<<< HEAD
     // console.log(res.data)
     var res =await axios({
       method:'get',
@@ -74,6 +79,20 @@ function AddManager(props) {
   }
 
 
+=======
+   
+      var res =await axios({
+        method:'get',
+        url:"http://localhost:2002/get-manager",
+        headers:{
+          Authorization:token
+        }
+      })
+      
+      props.getmanagerdata(res.data.data)
+ }
+    
+>>>>>>> c3531867f21e0bd55f6167133768b4b27102a8ca
  
   const initialValues = {
     firstname: "",

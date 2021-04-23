@@ -47,7 +47,6 @@ function EditDepartment(props) {
 
 
   async function deletedepartment(){
-         var res=await axios.post(`http://localhost:2002/delete-department/${props.editdata.departmentId}`)
     
     var res=await axios({
       method: 'post',
@@ -112,7 +111,7 @@ function EditDepartment(props) {
   }
 
   const onSubmit = (values) => {
-
+console.log({...values,questions})
     // props.editdeptdata({ ...values, newque }, props.id)
      updatedepartment({...values,questions})
     setOpen(false);

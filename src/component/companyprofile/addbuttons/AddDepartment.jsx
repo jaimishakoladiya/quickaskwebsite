@@ -15,7 +15,7 @@ import "../Company.css";
 import { makeStyles } from "@material-ui/core";
 import AlertBox from "../../alert/AlertBox";
 import QuestionsCard from "./QuestionsCard";
-import { adddeptdata, adddeptquestion, deletedeptquestion, getdeptdata } from "../../../redux/actions/companyprofile/companprofileAction";
+import { adddeptdata, adddeptquestion, deletedeptquestion, fetchdept, getdeptdata } from "../../../redux/actions/companyprofile/companprofileAction";
 import { connect } from "react-redux"
 import DisplayQuestions from "../DisplayQuestions";
 
@@ -29,11 +29,16 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: "#eef5f6",
   },
 }));
-function AddDepartment(props) {
+function AddDepartment({fetchdept}) {
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
+<<<<<<< HEAD
   const [message, setmessage] = useState();
   const [status, setstatus] = useState(null);
+=======
+  const [message,setmessage]=useState();
+  const [status,setstatus]=useState(null);
+>>>>>>> c3531867f21e0bd55f6167133768b4b27102a8ca
   // useEffect(() => {
   //   async function getData() {
   //     const result = await axios({
@@ -44,7 +49,11 @@ function AddDepartment(props) {
   //         Authorization: token
   //       }
   //     })
+<<<<<<< HEAD
 
+=======
+       
+>>>>>>> c3531867f21e0bd55f6167133768b4b27102a8ca
   //     props.getdeptdata(result.data.result)
 
   //    }
@@ -78,9 +87,31 @@ function AddDepartment(props) {
         Authorization: token
       }
     })
+<<<<<<< HEAD
     props.getdeptdata(result.data.result)
     setstatus(res.data.status);
     setmessage(res.data.message)
+=======
+     
+    props.getdeptdata(result.data.result)
+
+   
+    setstatus(res.data.status);
+    setmessage(res.data.message)
+
+    // const result = await axios({
+    //   method: 'get',
+    //   url: "http://localhost:2002/get-department",
+
+    //   headers: {
+    //     Authorization: token
+    //   }
+    // })
+     
+    // props.getdeptdata(result.data.result)
+
+   
+>>>>>>> c3531867f21e0bd55f6167133768b4b27102a8ca
   }
 
 
@@ -88,7 +119,7 @@ function AddDepartment(props) {
     // props.adddeptdata({ ...values, questions })
     savedepartment({ ...values, questions });
 
-    console.log(props.data.deptquestion)
+    
     setnewque([])
     setOpen(false);
   };
@@ -104,7 +135,7 @@ function AddDepartment(props) {
       return [...olditem,
         newq]
     })
-    props.adddeptquestion(newq)
+    // props.adddeptquestion(newq)
   }
   const deletedeptquestion = (id) => {
     setnewque((olditem) => {
@@ -266,7 +297,8 @@ const mapDispatchToProps = dispatch => {
     // adddeptquestion: (newquestion) => { dispatch(adddeptquestion(newquestion)) },
     // deletedeptquestion: (id) => { dispatch(deletedeptquestion(id)) },
     // adddeptdata: (data) => { dispatch(adddeptdata(data)) },
-    getdeptdata: (data) => { dispatch(getdeptdata(data)) }
+    getdeptdata: (data) => { dispatch(getdeptdata(data)) },
+    fetchdept:()=>{dispatch(fetchdept())}
   }
 }
 

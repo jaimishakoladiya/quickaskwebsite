@@ -1,11 +1,17 @@
-import React from "react";
+import React,{useEffect} from "react";
 import CompanyFields from "./CompanyFields";
 import Department from "./Department";
 import JobTitle from "./JobTitle";
 import Manager from "./Manager";
 import "../companyprofile/Company.css";
+import { getdeptdata,getmanagerdata } from "../../redux/actions/companyprofile/companprofileAction";
+import { connect } from "react-redux";
+import axios from 'axios';
 
-const CompanyProfileForm = () => {
+const CompanyProfileForm = (props) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const token = user.token;
+  
   return (
     <>
       <br></br>
@@ -24,5 +30,6 @@ const CompanyProfileForm = () => {
     </>
   );
 };
+
 
 export default CompanyProfileForm;
