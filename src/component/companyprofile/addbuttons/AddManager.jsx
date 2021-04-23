@@ -36,8 +36,31 @@ function AddManager(props) {
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(false);
   const [questions,setnewque] = useState([]);
-  useEffect(()=>{
-    async function getdata(){
+//   useEffect(()=>{
+//     async function getdata(){
+//       var res =await axios({
+//         method:'get',
+//         url:"http://localhost:2002/get-manager",
+//         headers:{
+//           Authorization:token
+//         }
+//       })
+      
+//       props.getmanagerdata(res.data.data)
+//     }
+//     getdata();
+// })
+
+ async function savemanager(data){
+    var res = await axios({
+      method:'post',
+      url:"http://localhost:2002/save-manager",
+      data:data,
+      headers:{
+        Authorization:token
+      }
+    })
+   
       var res =await axios({
         method:'get',
         url:"http://localhost:2002/get-manager",
@@ -47,22 +70,8 @@ function AddManager(props) {
       })
       
       props.getmanagerdata(res.data.data)
-    }
-    getdata();
-})
-
-  async function savemanager(data){
-    var res = await axios({
-      method:'post',
-      url:"http://localhost:2002/save-manager",
-      data:data,
-      headers:{
-        Authorization:token
-      }
-    })
-    console.log(res.data)
-  }
-
+ }
+    
  
   const initialValues = {
     firstname: "",

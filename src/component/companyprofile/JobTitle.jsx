@@ -1,8 +1,6 @@
 import React , { useState }from "react";
 import AddJob from "./addbuttons/AddJob";
 import { connect } from 'react-redux';
-import DeleteIcon from "@material-ui/icons/Delete";
-import EditIcon from "@material-ui/icons/Edit";
 // import EditDepartment from "./editbuttons/EditDepartment";
 import EditJob from "./editbuttons/EditJob";
 

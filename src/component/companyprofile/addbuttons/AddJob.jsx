@@ -33,21 +33,23 @@ const useStyle = makeStyles((theme) => ({
 function AddJob(props) {
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
-  useEffect(()=>{
-    async function getData(){
-      const result = await axios({
-        method:'get',
-        url:"http://localhost:2002/get-job-detail",
-        headers:{
-          Authorization:token
-        }
-      })
-      props.getjobdata(result.data.result)
-      console.log(result.data);
-    }
+  const[message,setmessege]=useState();
+  const[status,setstatus]=useState(null);
+  // useEffect(()=>{
+  //   async function getData(){
+  //     const result = await axios({
+  //       method:'get',
+  //       url:"http://localhost:2002/get-job-detail",
+  //       headers:{
+  //         Authorization:token
+  //       }
+  //     })
+  //     props.getjobdata(result.data.result)
+  //     console.log(result.data);
+  //   }
 
-    getData();
-  })
+  //   getData();
+  // })
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
@@ -81,7 +83,7 @@ function AddJob(props) {
     department: "",
   };
   async function savejobdata(data){
-    console.log(token);
+  
     var res = await axios({
       method:'post',
       url:"http://localhost:2002/save-job-detail",
@@ -90,7 +92,19 @@ function AddJob(props) {
         Authorization: token,
       }
     })
-    console.log(res.data);
+    
+      const result = await axios({
+        method:'get',
+        url:"http://localhost:2002/get-job-detail",
+        headers:{
+          Authorization:token
+        }
+      })
+      props.getjobdata(result.data.result)
+     
+   
+      setstatus(res.data.status);
+      setmessege(res.data.message);
   }
 
   const onSubmit = (values) => {
@@ -104,7 +118,7 @@ function AddJob(props) {
 
   const validationSchema = yup.object({
      title: yup.string().required("All fields are required"),
-    department: yup.string().required("All fields are required"),
+    // department: yup.string().required("All fields are required"),
   });
   const closealert = () => {
     setopenalert(false);
@@ -139,7 +153,7 @@ function AddJob(props) {
         Add Job
       </Button>
       <br />
-
+  {status!=null?erroralert(message):null}
       <Dialog
         open={open}
         onClose={handleClose}
