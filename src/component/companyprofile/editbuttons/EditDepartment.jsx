@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Field, Formik, Form } from "formik";
 import * as yup from "yup";
 import Button from "@material-ui/core/Button";
@@ -18,7 +18,7 @@ import QuestionsCard from "../addbuttons/QuestionsCard";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { connect } from "react-redux";
-import { editdeptdata, deletequestion ,deletedeptdata } from "../../../redux/actions/companyprofile/companprofileAction";
+import { editdeptdata, deletequestion ,deletedeptdata, fetchdata } from "../../../redux/actions/companyprofile/companprofileAction";
 import DisplayQuestions from "../DisplayQuestions";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import axios from "axios";
@@ -35,7 +35,7 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 function EditDepartment(props) {
-
+  
   const user=JSON.parse(localStorage.getItem("user"));
   const token=user.token;
   const classes = useStyle();
@@ -45,11 +45,10 @@ function EditDepartment(props) {
   const [questions, setnewque] = useState(props.editdata.questions)
   const [Yesopen, SetYesopen] = useState(false);
 
-
+  
   async function deletedepartment(){
-         var res=await axios.post(`http://localhost:2002/delete-department/${props.editdata.departmentId}`)
-    
-    var res=await axios({
+       
+      var res=await axios({
       method: 'post',
       url: `http://localhost:2002/delete-department/${props.editdata.departmentId}`,
 
@@ -57,7 +56,7 @@ function EditDepartment(props) {
         Authorization: token
       }
     })
-    console.log(res.data)
+    props.fetchdata()
 
   }
 
@@ -72,7 +71,7 @@ function EditDepartment(props) {
         Authorization:token
       }
     })
-    console.log(res.data)
+    props.fetchdata()
   }
   const addquestion = (newq) => {
     setnewque((olditem) => {
@@ -342,7 +341,8 @@ const mapDispatchToProps = disptach => {
   return {
     editdeptdata: (data, id) => { disptach(editdeptdata(data, id)) },
     deletequestion: (section, uid, qid) => { disptach(deletequestion(section, uid, qid)) },
-    deletedeptdata:(id) =>{disptach(deletedeptdata(id))}
+    deletedeptdata:(id) =>{disptach(deletedeptdata(id))},
+    fetchdata:()=>{disptach(fetchdata())}
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(EditDepartment)

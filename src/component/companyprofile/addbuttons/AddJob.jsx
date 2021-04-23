@@ -18,7 +18,7 @@ import AlertBox from "../../alert/AlertBox";
 import QuestionsCard from "./QuestionsCard";
 import { connect } from "react-redux"
 import DisplayQuestions from "../DisplayQuestions";
-import { addjobdata, addjobquestion, deletejobquestion,getjobdata,fetchdept } from "../../../redux/actions/companyprofile/companprofileAction"
+import { addjobdata, addjobquestion, deletejobquestion,getjobdata,fetchdata } from "../../../redux/actions/companyprofile/companprofileAction"
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -30,7 +30,7 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: "#eef5f6",
   },
 }));
-function AddJob({data,fetchdept}) {
+function AddJob({data,fetchdata}) {
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
   const classes = useStyle();
@@ -51,12 +51,12 @@ function AddJob({data,fetchdept}) {
     // }
 
     // getData();
-    fetchdept()
+    fetchdata()
   },[])
  
   const SelectItem = () => {
     let items = [];
-    data.users.map((item,index)=>{
+    data.dept.map((item,index)=>{
       items.push(<option value={item.name}>{item.name}</option>)
     })
     return items;
@@ -92,6 +92,7 @@ function AddJob({data,fetchdept}) {
         Authorization: token,
       }
     })
+    fetchdata()
     //  const result = await axios({
     //     method:'get',
     //     url:"http://localhost:2002/get-job-detail",
@@ -267,7 +268,7 @@ const mapDispatchToProps = dispatch => {
   //   deletejobquestion: (id) => { dispatch(deletejobquestion(id)) },
   //   addjobdata:(data) =>{dispatch(addjobdata(data))}
   getjobdata:(data)=>{dispatch(getjobdata(data))}  ,
-  fetchdept:()=>{dispatch(fetchdept())}
+  fetchdata:()=>{dispatch(fetchdata())}
 }
 }
 

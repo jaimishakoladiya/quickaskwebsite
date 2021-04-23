@@ -19,7 +19,8 @@ const intitialstate = {
     deletejobdata:[],
     users:[],
     job:[],
-    manager:[]
+    manager:[],
+    dept:[]
 
 }
 
@@ -152,7 +153,10 @@ const companyprofileReducer = (state = intitialstate, action) => {
                             case GET_DEPT_DATA:
                                 return {
                                     ...state,
-                                    users:action.payload
+                                    users:action.payload,
+                                    dept:action.payload.map((item)=>({
+                                        name:item.name
+                                    }))
                                 }
                                 case GET_JOB_DATA:
                                     return{

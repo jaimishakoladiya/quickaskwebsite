@@ -15,7 +15,7 @@ import "../Company.css";
 import { makeStyles } from "@material-ui/core";
 import AlertBox from "../../alert/AlertBox";
 import QuestionsCard from "./QuestionsCard";
-import { adddeptdata, adddeptquestion, deletedeptquestion, fetchdept, getdeptdata } from "../../../redux/actions/companyprofile/companprofileAction";
+import { adddeptdata, adddeptquestion, deletedeptquestion, fetchdata, getdeptdata } from "../../../redux/actions/companyprofile/companprofileAction";
 import { connect } from "react-redux"
 import DisplayQuestions from "../DisplayQuestions";
 
@@ -29,7 +29,7 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: "#eef5f6",
   },
 }));
-function AddDepartment({fetchdept}) {
+function AddDepartment({data,fetchdata}) {
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
   const [message,setmessage]=useState();
@@ -49,8 +49,8 @@ function AddDepartment({fetchdept}) {
 
     //  }
     //  getData();
-    fetchdept()
-   })
+    fetchdata()
+   },[])
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
@@ -74,7 +74,7 @@ function AddDepartment({fetchdept}) {
     })
     setstatus(res.data.status);
     setmessage(res.data.message)
-
+    fetchdata()
     // const result = await axios({
     //   method: 'get',
     //   url: "http://localhost:2002/get-department",
@@ -272,7 +272,7 @@ const mapDispatchToProps = dispatch => {
     // deletedeptquestion: (id) => { dispatch(deletedeptquestion(id)) },
     // adddeptdata: (data) => { dispatch(adddeptdata(data)) },
     getdeptdata: (data) => { dispatch(getdeptdata(data)) },
-    fetchdept:()=>{dispatch(fetchdept())}
+    fetchdata:()=>{dispatch(fetchdata())}
   }
 }
 
