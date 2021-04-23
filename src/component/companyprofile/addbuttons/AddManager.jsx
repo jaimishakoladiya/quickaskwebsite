@@ -46,12 +46,16 @@ function AddManager(props) {
 //         }
 //       })
       
-//       // props.getmanagerdata(res.data.data)
+//       props.getmanagerdata(res.data.data)
 //     }
 //     getdata();
 // })
-
-  async function savemanager(data){
+const initialValues = {
+  firstname: "",
+  lastname: "",
+  email: "",
+};
+ async function savemanager(data){
     var res = await axios({
       method:'post',
       url:"http://localhost:2002/save-manager",
@@ -60,26 +64,20 @@ function AddManager(props) {
         Authorization:token
       }
     })
-    // console.log(res.data)
-    var res =await axios({
+    console.log(res.data)
+   
+    const result=await axios({
       method:'get',
       url:"http://localhost:2002/get-manager",
       headers:{
         Authorization:token
       }
     })
+      props.getmanagerdata(result.data.data)
+ }
     
-    // props.getmanagerdata(res.data.data)
-  }
-  }
-
-
  
-  const initialValues = {
-    firstname: "",
-    lastname: "",
-    email: "",
-  };
+  
   const addquestion=(newq)=>{
     setnewque((oldval)=>{
       return[
@@ -263,7 +261,7 @@ function AddManager(props) {
       </Dialog>
     </div>
   );
-
+}
 
 const mapStateToProps = state => {
   return {

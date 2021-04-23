@@ -50,6 +50,7 @@ function AddJob({data,fetchdept}) {
 
   //   getData();
   // })
+  
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
@@ -117,13 +118,12 @@ function AddJob({data,fetchdept}) {
           Authorization:token
         }
       })
-      props.getjobdata(result.data.result)
+      
      
    
       setstatus(res.data.status);
       setmessege(res.data.message);
   }
-  
 
   const onSubmit = (values) => {
     // console.log(values)
@@ -157,8 +157,9 @@ function AddJob({data,fetchdept}) {
 
   const handleClose = () => {
     setOpen(false);
-  };}
- return (
+  };
+
+  return (
     <div>
       <Button
         type="button"
@@ -272,7 +273,7 @@ function AddJob({data,fetchdept}) {
       </Dialog>
     </div>
   );
-
+}
 const mapStateToProps = state => {
   return {
     data: state.companyprofile
