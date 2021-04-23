@@ -42,7 +42,7 @@ function EditDepartment(props) {
   const [open, setOpen] = useState(false);
   const [opendelete, setOpendelete] = useState(false);
   const [openalert, setopenalert] = useState(true);
-  const [newque, setnewque] = useState(props.editdata.newque)
+  const [questions, setnewque] = useState(props.editdata.questions)
   const [Yesopen, SetYesopen] = useState(false);
 
 
@@ -59,10 +59,24 @@ function EditDepartment(props) {
     console.log(res.data)
 
   }
+
+  async function updatedepartment(data){
+    console.log(data)
+    console.log(props.editdata.departmentId)
+    var res=await axios({
+      method:'post',
+      url:`http://localhost:2002/update-department/${props.editdata.departmentId}`,
+      data:data,
+      headers:{
+        Authorization:token
+      }
+    })
+    console.log(res.data)
+  }
   const addquestion = (newq) => {
     setnewque((olditem) => {
     })
-    props.editdeptdata({ ...props.editdata, ...props.editdata.newque.push(newq) }, props.id)
+    // props.editdeptdata({ ...props.editdata, ...props.editdata.newque.push(newq) }, props.id)
 
 
   }
@@ -97,8 +111,9 @@ function EditDepartment(props) {
   }
 
   const onSubmit = (values) => {
-
-    props.editdeptdata({ ...values, newque }, props.id)
+console.log({...values,questions})
+    // props.editdeptdata({ ...values, newque }, props.id)
+     updatedepartment({...values,questions})
     setOpen(false);
   
 

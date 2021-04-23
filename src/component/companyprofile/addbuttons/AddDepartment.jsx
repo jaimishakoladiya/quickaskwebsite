@@ -15,7 +15,7 @@ import "../Company.css";
 import { makeStyles } from "@material-ui/core";
 import AlertBox from "../../alert/AlertBox";
 import QuestionsCard from "./QuestionsCard";
-import { adddeptdata, adddeptquestion, deletedeptquestion, getdeptdata } from "../../../redux/actions/companyprofile/companprofileAction";
+import { adddeptdata, adddeptquestion, deletedeptquestion, fetchdept, getdeptdata } from "../../../redux/actions/companyprofile/companprofileAction";
 import { connect } from "react-redux"
 import DisplayQuestions from "../DisplayQuestions";
 
@@ -29,7 +29,7 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: "#eef5f6",
   },
 }));
-function AddDepartment(props) {
+function AddDepartment({fetchdept}) {
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
   const [message,setmessage]=useState();
@@ -86,14 +86,25 @@ function AddDepartment(props) {
     setstatus(res.data.status);
     setmessage(res.data.message)
 
+    // const result = await axios({
+    //   method: 'get',
+    //   url: "http://localhost:2002/get-department",
 
+    //   headers: {
+    //     Authorization: token
+    //   }
+    // })
+     
+    // props.getdeptdata(result.data.result)
+
+   
   }
 
   const onSubmit = (values) => {
     // props.adddeptdata({ ...values, questions })
     savedepartment({ ...values, questions });
 
-    console.log(props.data.deptquestion)
+    
     setnewque([])
     setOpen(false);
   };
@@ -109,7 +120,7 @@ function AddDepartment(props) {
       return [...olditem,
         newq]
     })
-    props.adddeptquestion(newq)
+    // props.adddeptquestion(newq)
   }
   const deletedeptquestion = (id) => {
     setnewque((olditem) => {
@@ -271,7 +282,8 @@ const mapDispatchToProps = dispatch => {
     // adddeptquestion: (newquestion) => { dispatch(adddeptquestion(newquestion)) },
     // deletedeptquestion: (id) => { dispatch(deletedeptquestion(id)) },
     // adddeptdata: (data) => { dispatch(adddeptdata(data)) },
-    getdeptdata: (data) => { dispatch(getdeptdata(data)) }
+    getdeptdata: (data) => { dispatch(getdeptdata(data)) },
+    fetchdept:()=>{dispatch(fetchdept())}
   }
 }
 

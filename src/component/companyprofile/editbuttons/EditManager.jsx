@@ -34,8 +34,7 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
  function EditManager(props) {
-   console.log(props.id)
-   console.log(props.editdata)
+   
  
 
   const classes = useStyle();
