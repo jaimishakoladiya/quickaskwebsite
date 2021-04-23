@@ -32,24 +32,24 @@ const useStyle = makeStyles((theme) => ({
 function AddDepartment(props) {
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
-  const [message,setmessage]=useState();
-  const [status,setstatus]=useState(null);
-  useEffect(() => {
-    async function getData() {
-      const result = await axios({
-        method: 'get',
-        url: "http://localhost:2002/get-department",
+  const [message, setmessage] = useState();
+  const [status, setstatus] = useState(null);
+  // useEffect(() => {
+  //   async function getData() {
+  //     const result = await axios({
+  //       method: 'get',
+  //       url: "http://localhost:2002/get-department",
 
-        headers: {
-          Authorization: token
-        }
-      })
-       
-      props.getdeptdata(result.data.result)
+  //       headers: {
+  //         Authorization: token
+  //       }
+  //     })
 
-     }
-     getData();
-   })
+  //     props.getdeptdata(result.data.result)
+
+  //    }
+  //    getData();
+  //  })
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
@@ -62,7 +62,6 @@ function AddDepartment(props) {
 
   async function savedepartment(data) {
 
-    
     var res = await axios({
       method: 'post',
       url: "http://localhost:2002/save-department",
@@ -71,11 +70,19 @@ function AddDepartment(props) {
         Authorization: token
       }
     })
+    const result = await axios({
+      method: 'get',
+      url: "http://localhost:2002/get-department",
+
+      headers: {
+        Authorization: token
+      }
+    })
+    props.getdeptdata(result.data.result)
     setstatus(res.data.status);
     setmessage(res.data.message)
-
-
   }
+
 
   const onSubmit = (values) => {
     // props.adddeptdata({ ...values, questions })
@@ -141,7 +148,7 @@ function AddDepartment(props) {
         Add Department
       </Button>
       <br />
-{status!=null?erroralert(message):null}
+      {status != null ? erroralert(message) : null}
       <Dialog
         open={open}
         onClose={handleClose}
@@ -214,7 +221,7 @@ function AddDepartment(props) {
                         ? erroralert(formik.errors.name)
                         : formik.touched.costCenter && formik.errors.costCenter
                           ? erroralert(formik.errors.costCenter)
-                          :null}
+                          : null}
 
                       <Button
                         id="dialog-cancel-btn"

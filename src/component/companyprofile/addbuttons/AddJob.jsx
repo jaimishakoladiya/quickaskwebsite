@@ -33,21 +33,21 @@ const useStyle = makeStyles((theme) => ({
 function AddJob(props) {
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
-  useEffect(()=>{
-    async function getData(){
-      const result = await axios({
-        method:'get',
-        url:"http://localhost:2002/get-job-detail",
-        headers:{
-          Authorization:token
-        }
-      })
-      props.getjobdata(result.data.result)
-      console.log(result.data);
-    }
+  // useEffect(()=>{
+  //   async function getData(){
+  //     const result = await axios({
+  //       method:'get',
+  //       url:"http://localhost:2002/get-job-detail",
+  //       headers:{
+  //         Authorization:token
+  //       }
+  //     })
+  //     props.getjobdata(result.data.result)
+  //     console.log(result.data);
+  //   }
 
-    getData();
-  })
+  //   getData();
+  // })
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
@@ -91,7 +91,17 @@ function AddJob(props) {
       }
     })
     console.log(res.data);
+    const result = await axios({
+      method:'get',
+      url:"http://localhost:2002/get-job-detail",
+      headers:{
+        Authorization:token
+      }
+    })
+  //  getjobdata(result.data.result)
+    console.log(result.data);
   }
+  
 
   const onSubmit = (values) => {
     // console.log(values)
@@ -125,9 +135,8 @@ function AddJob(props) {
 
   const handleClose = () => {
     setOpen(false);
-  };
-
-  return (
+  };}
+ return (
     <div>
       <Button
         type="button"
@@ -241,7 +250,7 @@ function AddJob(props) {
       </Dialog>
     </div>
   );
-}
+
 const mapStateToProps = state => {
   return {
     data: state.companyprofile
