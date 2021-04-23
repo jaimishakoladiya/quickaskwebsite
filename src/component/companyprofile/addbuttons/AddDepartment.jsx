@@ -32,13 +32,8 @@ const useStyle = makeStyles((theme) => ({
 function AddDepartment({fetchdept}) {
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
-<<<<<<< HEAD
-  const [message, setmessage] = useState();
-  const [status, setstatus] = useState(null);
-=======
   const [message,setmessage]=useState();
   const [status,setstatus]=useState(null);
->>>>>>> c3531867f21e0bd55f6167133768b4b27102a8ca
   // useEffect(() => {
   //   async function getData() {
   //     const result = await axios({
@@ -49,11 +44,7 @@ function AddDepartment({fetchdept}) {
   //         Authorization: token
   //       }
   //     })
-<<<<<<< HEAD
-
-=======
        
->>>>>>> c3531867f21e0bd55f6167133768b4b27102a8ca
   //     props.getdeptdata(result.data.result)
 
   //    }
@@ -87,11 +78,6 @@ function AddDepartment({fetchdept}) {
         Authorization: token
       }
     })
-<<<<<<< HEAD
-    props.getdeptdata(result.data.result)
-    setstatus(res.data.status);
-    setmessage(res.data.message)
-=======
      
     props.getdeptdata(result.data.result)
 
@@ -111,7 +97,6 @@ function AddDepartment({fetchdept}) {
     // props.getdeptdata(result.data.result)
 
    
->>>>>>> c3531867f21e0bd55f6167133768b4b27102a8ca
   }
 
 
