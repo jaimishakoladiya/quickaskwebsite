@@ -14,15 +14,9 @@ import { Field, Formik, Form } from "formik";
 import * as yup from "yup";
 import AlertBox from "../../alert/AlertBox";
 import DisplayQuestions from "../DisplayQuestions";
-<<<<<<< HEAD
-import { addmanagerquestion,addmanagerdata, deletemanagerquestion, getmanagerdata} from "../../../redux/actions/companyprofile/companprofileAction";
-import { connect } from "react-redux";
-import axios from "axios";
-=======
 import { addmanagerquestion,getmanagerdata, deletemanagerquestion} from "../../../redux/actions/companyprofile/companprofileAction";
 import { connect } from "react-redux";
 import axios from 'axios'
->>>>>>> 67ae52ae54506740de19cb191dd6d1e4d6fc03bf
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -43,18 +37,18 @@ function AddManager(props) {
   const [openalert, setopenalert] = useState(false);
   const [questions,setnewque] = useState([]);
   useEffect(()=>{
-    async function getdata(){
-      var res =await axios({
-        method:'get',
-        url:"http://localhost:2002/get-manager",
-        headers:{
-          Authorization:token
-        }
-      })
-      
-      props.getmanagerdata(res.data.data)
-    }
-    getdata();
+    // async function getdata(){
+    //   var res =await axios({
+    //     method:'get',
+    //     url:"http://localhost:2002/get-manager",
+    //     headers:{
+    //       Authorization:token
+    //     }
+    //   })
+    //   // console.log(res.data)
+    //   props.getmanagerdata(res.data.data)
+    // }
+    // getdata();
 })
 
   async function savemanager(data){
@@ -66,7 +60,18 @@ function AddManager(props) {
         Authorization:token
       }
     })
-    console.log(res.data)
+    // console.log(res.data)
+    var res =await axios({
+      method:'get',
+      url:"http://localhost:2002/get-manager",
+      headers:{
+        Authorization:token
+      }
+    })
+    // console.log(res.data)
+    props.getmanagerdata(res.data.data)
+  }
+  getdata();
   }
 
  
@@ -84,8 +89,7 @@ function AddManager(props) {
     })
   }
   const onSubmit = (values) => {
-    // console.log(values);
-    //props.addmanagerdata(values)
+ 
     savemanager({...values,questions})
     setnewque([]);
     setOpen(false);

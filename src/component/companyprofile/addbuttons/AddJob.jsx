@@ -43,7 +43,7 @@ function AddJob(props) {
         }
       })
       props.getjobdata(result.data.result)
-      console.log(result.data);
+      // console.log(result.data);
     }
 
     getData();
@@ -90,13 +90,13 @@ function AddJob(props) {
         Authorization: token,
       }
     })
-    console.log(res.data);
+    // console.log(res.data);
   }
 
   const onSubmit = (values) => {
     // console.log(values)
   //  props.addjobdata({...values,questions});
-  console.log({...values,questions})
+  // console.log({...values,questions})
    savejobdata({...values,questions});
     setOpen(false);
     setnewque([]);
