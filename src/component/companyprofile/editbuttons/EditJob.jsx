@@ -40,6 +40,14 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 function EditJob(props) {
+  const user = JSON.parse(localStorage.getItem('user'));
+  const token=user.token;
+  const classes = useStyle();
+  const [open, setOpen] = useState(false);
+  const [opendelete, setOpendelete] = useState(false);
+  const [openalert, setopenalert] = useState(true);
+  const [Yesopen, SetYesopen] = useState(false);
+
   const [newque,setnewque]=useState(props.editdata.newque);
   const addquestion=(newq)=>{
       setnewque((olditem)=>{
@@ -68,13 +76,7 @@ function EditJob(props) {
   }
   
   
-
-  const classes = useStyle();
-  const [open, setOpen] = useState(false);
-  const [opendelete, setOpendelete] = useState(false);
-  const [openalert, setopenalert] = useState(true);
-  const [Yesopen, SetYesopen] = useState(false);
-
+  
   async function deletjobdata(){
     console.log(props.editdata.job_detail_id);
     var res = await axios({

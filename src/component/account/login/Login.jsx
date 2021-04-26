@@ -45,7 +45,7 @@ function Login() {
     }
     else {
       setopenalert(false)
-      console.log(res.data);
+      
       localStorage.setItem("user",JSON.stringify(res.data))
       history.push('/innernavbar')
     }
@@ -72,7 +72,7 @@ function Login() {
     setopenalert(false);
   };
   const erroralert = (error) => {
-    console.log(error)
+   
     return (
       <AlertBox
         setopenalert={openalert}
@@ -82,18 +82,7 @@ function Login() {
     );
   };
 
-  const validalert = (error) => {
-    console.log(error)
-    return (
-      // <AlertBox
-      //   setopenalert={openalert}
-      //   closealert={closealert}
-      //   error={error}
-      // />
-      <h1>{error}</h1>
-    );
-  };
-
+ 
   const classes = useStyles();
 
   return (

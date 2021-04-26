@@ -35,20 +35,9 @@ function AddManager({data,fetchdata}) {
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(false);
-  const [questions,setnewque] = useState([]);
+  const [question,setnewque] = useState([]);
   useEffect(()=>{
-    // async function getdata(){
-    //   var res =await axios({
-    //     method:'get',
-    //     url:"http://localhost:2002/get-manager",
-    //     headers:{
-    //       Authorization:token
-    //     }
-    //   })
-      
-    //    props.getmanagerdata(res.data.data)
-    // }
-    // getdata();
+    
     fetchdata()
 },[])
 
@@ -61,6 +50,7 @@ function AddManager({data,fetchdata}) {
         Authorization:token
       }
     })
+    console.log(res.data)
     fetchdata()
   }
   
@@ -85,7 +75,7 @@ function AddManager({data,fetchdata}) {
   const onSubmit = (values) => {
     // console.log(values);
     //props.addmanagerdata(values)
-    savemanager({...values,questions})
+    savemanager({...values,question})
     setnewque([]);
     setOpen(false);
   };
@@ -218,7 +208,7 @@ function AddManager({data,fetchdata}) {
 
 
                       </Grid>
-                      <DisplayQuestions question={questions} deletequestion={deletequestion} />
+                      <DisplayQuestions question={question} deletequestion={deletequestion} />
                       <br />
 
                       {formik.errors.firstname

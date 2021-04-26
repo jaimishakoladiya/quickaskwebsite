@@ -116,19 +116,23 @@ export const deletequestion=(section,userid,queid)=>{
     }
 }
 export const getdeptdata=(data)=>{
+    
     return {
         type:GET_DEPT_DATA,
         payload:data
     }
 }
 export const getjobdata=(data)=>{
+    
     return{
         type:GET_JOB_DATA,
         payload:data
     }
+
 }
 export const getmanagerdata=(data)=>{
-    return{
+    
+     return{
         type:GET_MANAGER_DATA,
         payload:data
     }
@@ -159,8 +163,8 @@ export const fetchdata =  () => {
                   Authorization:token
                 }
               })
-           dispatch(getdeptdata(dept.data.result))
-           dispatch(getjobdata(job.data.result))
+           dispatch(getdeptdata(dept.data))
+           dispatch(getjobdata(job.data))
            dispatch(getmanagerdata(manager.data.data))
         }
         catch(e){
