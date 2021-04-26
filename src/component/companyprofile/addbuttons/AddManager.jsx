@@ -77,11 +77,7 @@ function AddManager({ data, fetchdata }) {
   const onSubmit = (values) => {
     // console.log(values);
     //props.addmanagerdata(values)
-<<<<<<< HEAD
     savemanager({...values,question})
-=======
-    savemanager({ ...values, questions })
->>>>>>> 22d16e6150fd3ed3ea168535a9d2a4805e426626
     setnewque([]);
     setOpen(false);
   };
