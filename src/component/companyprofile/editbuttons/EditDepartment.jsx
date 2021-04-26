@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Field, Formik, Form } from "formik";
 import * as yup from "yup";
 import Button from "@material-ui/core/Button";
@@ -18,7 +18,7 @@ import QuestionsCard from "../addbuttons/QuestionsCard";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { connect } from "react-redux";
-import { editdeptdata, deletequestion ,deletedeptdata } from "../../../redux/actions/companyprofile/companprofileAction";
+import { editdeptdata, deletequestion ,deletedeptdata, fetchdata } from "../../../redux/actions/companyprofile/companprofileAction";
 import DisplayQuestions from "../DisplayQuestions";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import axios from "axios";
@@ -35,21 +35,20 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 function EditDepartment(props) {
-
+  
   const user=JSON.parse(localStorage.getItem("user"));
   const token=user.token;
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [opendelete, setOpendelete] = useState(false);
   const [openalert, setopenalert] = useState(true);
-  const [newque, setnewque] = useState(props.editdata.newque)
+  const [questions, setnewque] = useState(props.editdata.questions)
   const [Yesopen, SetYesopen] = useState(false);
 
-
+  
   async function deletedepartment(){
-         var res=await axios.post(`http://localhost:2002/delete-department/${props.editdata.departmentId}`)
-    
-    var res=await axios({
+       
+      var res=await axios({
       method: 'post',
       url: `http://localhost:2002/delete-department/${props.editdata.departmentId}`,
 
@@ -57,16 +56,33 @@ function EditDepartment(props) {
         Authorization: token
       }
     })
-    console.log(res.data)
+    props.fetchdata()
 
+  }
+
+  async function updatedepartment(data){
+    console.log(data)
+    console.log(props.editdata.departmentId)
+    var res=await axios({
+      method:'post',
+      url:`http://localhost:2002/update-department/${props.editdata.departmentId}`,
+      data:data,
+      headers:{
+        Authorization:token
+      }
+    })
+    console.log(res.data)
+    props.fetchdata()
   }
   const addquestion = (newq) => {
     setnewque((olditem) => {
+      return [
+        ...olditem,
+        newq
+      ]
     })
-    props.editdeptdata({ ...props.editdata, ...props.editdata.newque.push(newq) }, props.id)
-
-
-  }
+   
+ }
 
   const deletequestion = (id) => {
     setnewque((olditem) => {
@@ -75,15 +91,14 @@ function EditDepartment(props) {
       })
     })
 
-    props.deletequestion("dept", props.id, id)
+   
 
   }
 
   const deletedata=()=>{
     handleClose1();
     SetYesopen(false);
-    // props.deletedeptdata(props.id)
-     deletedepartment(props.id)
+    deletedepartment(props.id)
 
     
   }
@@ -97,8 +112,9 @@ function EditDepartment(props) {
   }
 
   const onSubmit = (values) => {
-
-    props.editdeptdata({ ...values, newque }, props.id)
+console.log({...values,questions})
+    
+     updatedepartment({...values,questions})
     setOpen(false);
   
 
@@ -273,7 +289,7 @@ function EditDepartment(props) {
                           <h3>Time Allocated</h3>
                         </Grid>
                       </Grid>
-                      <DisplayQuestions question={props.editdata.questions} deletequestion={deletequestion} />
+                      <DisplayQuestions question={questions} deletequestion={deletequestion} />
                       <br />
                       {formik.touched.name && formik.errors.name
                         ? erroralert(formik.errors.name)
@@ -324,9 +340,7 @@ const mapStateToProps = (state, ownprops) => {
 
 const mapDispatchToProps = disptach => {
   return {
-    editdeptdata: (data, id) => { disptach(editdeptdata(data, id)) },
-    deletequestion: (section, uid, qid) => { disptach(deletequestion(section, uid, qid)) },
-    deletedeptdata:(id) =>{disptach(deletedeptdata(id))}
+   fetchdata:()=>{disptach(fetchdata())}
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(EditDepartment)

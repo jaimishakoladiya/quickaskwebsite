@@ -15,7 +15,7 @@ import "../Company.css";
 import { makeStyles } from "@material-ui/core";
 import AlertBox from "../../alert/AlertBox";
 import QuestionsCard from "./QuestionsCard";
-import { adddeptdata, adddeptquestion, deletedeptquestion, getdeptdata } from "../../../redux/actions/companyprofile/companprofileAction";
+import {  fetchdata } from "../../../redux/actions/companyprofile/companprofileAction";
 import { connect } from "react-redux"
 import DisplayQuestions from "../DisplayQuestions";
 
@@ -29,27 +29,16 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: "#eef5f6",
   },
 }));
-function AddDepartment(props) {
+function AddDepartment({data,fetchdata}) {
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
   const [message,setmessage]=useState();
   const [status,setstatus]=useState(null);
+
   useEffect(() => {
-    async function getData() {
-      const result = await axios({
-        method: 'get',
-        url: "http://localhost:2002/get-department",
+    fetchdata()
+   },[])
 
-        headers: {
-          Authorization: token
-        }
-      })
-       
-      props.getdeptdata(result.data.result)
-
-     }
-     getData();
-   })
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
@@ -62,26 +51,31 @@ function AddDepartment(props) {
 
   async function savedepartment(data) {
 
-    
     var res = await axios({
       method: 'post',
       url: "http://localhost:2002/save-department",
       data: data,
       headers: {
-        Authorization: "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwYWhsYThja25wcW5xMnYiLCJ0eXBlIjoiYWRtaW4iLCJkYXRhIjp7ImVtYWlsIjoiYmFuc2lraGFncmFtMzJAZ21haWwuY29tIiwiZmlyc3RuYW1lIjoiYmFuc2kiLCJsYXN0bmFtZSI6ImtqaGciLCJjb21wYW55ZW1haWwiOiJqaGJoQGhnLmNvbSIsInN0YXR1cyI6InZlcmlmeSIsInBhc3N3b3JkIjoiNjY5YTIyMzBjMWNkNjRkMTQxMWZjMWJmYTFjZDMyZjI0NDRiZGJkZGI1NGFhMmZmOTc4YWM2OTFhNDZiYWFlNkl1NTdBTzA4VmQ4V3BieWlDZHM2N3c9PSJ9LCJpYXQiOjE2MTg5MDY4NzQsImV4cCI6MTYxODk5MzI3NH0.50CY2KSyIwY4HqS1xgviVVimpQ6wv7GMDY69mQERPys"
+        Authorization: token
       }
     })
+   
+
+   
     setstatus(res.data.status);
     setmessage(res.data.message)
+    fetchdata()
+    
 
-
+   
   }
 
+
   const onSubmit = (values) => {
-    // props.adddeptdata({ ...values, questions })
+   
     savedepartment({ ...values, questions });
 
-    console.log(props.data.deptquestion)
+    
     setnewque([])
     setOpen(false);
   };
@@ -97,7 +91,7 @@ function AddDepartment(props) {
       return [...olditem,
         newq]
     })
-    props.adddeptquestion(newq)
+    // props.adddeptquestion(newq)
   }
   const deletedeptquestion = (id) => {
     setnewque((olditem) => {
@@ -141,7 +135,7 @@ function AddDepartment(props) {
         Add Department
       </Button>
       <br />
-{status!=null?erroralert(message):null}
+      {status != null ? erroralert(message) : null}
       <Dialog
         open={open}
         onClose={handleClose}
@@ -214,7 +208,7 @@ function AddDepartment(props) {
                         ? erroralert(formik.errors.name)
                         : formik.touched.costCenter && formik.errors.costCenter
                           ? erroralert(formik.errors.costCenter)
-                          :null}
+                          : null}
 
                       <Button
                         id="dialog-cancel-btn"
@@ -256,10 +250,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    // adddeptquestion: (newquestion) => { dispatch(adddeptquestion(newquestion)) },
-    // deletedeptquestion: (id) => { dispatch(deletedeptquestion(id)) },
-    // adddeptdata: (data) => { dispatch(adddeptdata(data)) },
-    getdeptdata: (data) => { dispatch(getdeptdata(data)) }
+   
+    fetchdata:()=>{dispatch(fetchdata())}
   }
 }
 

@@ -45,7 +45,7 @@ function Login() {
     }
     else {
       setopenalert(false)
-      console.log(res.data);
+      
       localStorage.setItem("user",JSON.stringify(res.data))
       history.push('/innernavbar')
     }
@@ -72,7 +72,7 @@ function Login() {
     setopenalert(false);
   };
   const erroralert = (error) => {
-    console.log(error)
+   
     return (
       <AlertBox
         setopenalert={openalert}
@@ -82,6 +82,7 @@ function Login() {
     );
   };
 
+<<<<<<< HEAD
   // const validalert = (error) => {
    // console.log(error)
     //return (
@@ -94,6 +95,9 @@ function Login() {
     //);
   //};
 
+=======
+ 
+>>>>>>> c8f1db2575f0dfed1bda4e245e9f24c8caa5e981
   const classes = useStyles();
 
   return (
@@ -104,7 +108,7 @@ function Login() {
       validationSchema={validationSchema}
     >
       {(formik) => {
-        console.log(formik);
+        
         return (
           <>
             <img src={image1} className="Wave1"></img>

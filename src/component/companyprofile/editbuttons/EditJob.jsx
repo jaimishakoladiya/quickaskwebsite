@@ -27,6 +27,7 @@ import {
   editjobdata,
   deletejobdata
 } from "../../../redux/actions/companyprofile/companprofileAction";
+import axios from "axios";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -39,6 +40,14 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 function EditJob(props) {
+  const user = JSON.parse(localStorage.getItem('user'));
+  const token=user.token;
+  const classes = useStyle();
+  const [open, setOpen] = useState(false);
+  const [opendelete, setOpendelete] = useState(false);
+  const [openalert, setopenalert] = useState(true);
+  const [Yesopen, SetYesopen] = useState(false);
+
   const [newque,setnewque]=useState(props.editdata.newque);
   const addquestion=(newq)=>{
       setnewque((olditem)=>{
@@ -65,16 +74,20 @@ function EditJob(props) {
     })
     return items;
   }
-  console.log(props.id);
-  console.log(props.editdata);
-  //  console.log(props.editdata.department)
-
-  const classes = useStyle();
-  const [open, setOpen] = useState(false);
-  const [opendelete, setOpendelete] = useState(false);
-  const [openalert, setopenalert] = useState(true);
-  const [Yesopen, SetYesopen] = useState(false);
-
+  
+  
+  
+  async function deletjobdata(){
+    console.log(props.editdata.job_detail_id);
+    var res = await axios({
+      method:'post',
+      url:`http://localhost:2002/delete-job-detail/${props.editdata.job_detail_id}`,
+      headers:{
+        Authorization:token
+      }
+    })
+    console.log(res.data);
+  }
   const initialValues = {
     title: props.editdata.title,
     department: props.editdata.department,
@@ -122,10 +135,11 @@ function EditJob(props) {
     setOpendelete(false);
   };
  const deletejob = () => {
-   props.deletejobdata(props.id)
+  // props.deletejobdata(props.id)
+ 
    handleClose1()
    SetYesopen(false);
-  
+   deletjobdata(props.id)
  }
  const YesFunction = () => {
   SetYesopen(true);

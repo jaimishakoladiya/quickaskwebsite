@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -14,7 +14,7 @@ import { Field, Formik, Form } from "formik";
 import * as yup from "yup";
 import AlertBox from "../../alert/AlertBox";
 import DisplayQuestions from "../DisplayQuestions";
-import { addmanagerquestion,getmanagerdata, deletemanagerquestion} from "../../../redux/actions/companyprofile/companprofileAction";
+import { addmanagerquestion, getmanagerdata, deletemanagerquestion, fetchdata } from "../../../redux/actions/companyprofile/companprofileAction";
 import { connect } from "react-redux";
 import axios from 'axios'
 
@@ -29,68 +29,55 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: "#eef5f6",
   },
 }));
-function AddManager(props) {
+function AddManager({ data, fetchdata }) {
   const user = JSON.parse(localStorage.getItem('user'));
-  const token=user.token;
+  const token = user.token;
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(false);
-  const [questions,setnewque] = useState([]);
+  const [question,setnewque] = useState([]);
   useEffect(()=>{
-    // async function getdata(){
-    //   var res =await axios({
-    //     method:'get',
-    //     url:"http://localhost:2002/get-manager",
-    //     headers:{
-    //       Authorization:token
-    //     }
-    //   })
-    //   // console.log(res.data)
-    //   props.getmanagerdata(res.data.data)
-    // }
-    // getdata();
-})
-
-  async function savemanager(data){
-    var res = await axios({
-      method:'post',
-      url:"http://localhost:2002/save-manager",
-      data:data,
-      headers:{
-        Authorization:token
-      }
-    })
-    // console.log(res.data)
-    var res =await axios({
-      method:'get',
-      url:"http://localhost:2002/get-manager",
-      headers:{
-        Authorization:token
-      }
-    })
-    // console.log(res.data)
-    props.getmanagerdata(res.data.data)
-  }
-  getdata();
-  }
-
- 
+    
+    fetchdata()
+  }, [])
   const initialValues = {
-    firstname: "",
-    lastname: "",
-    email: "",
-  };
-  const addquestion=(newq)=>{
-    setnewque((oldval)=>{
-      return[
+    firstname: '',
+    lastname: '',
+    email: ''
+  }
+
+  async function savemanager(data) {
+    var res = await axios({
+      method: 'post',
+      url: "http://localhost:2002/save-manager",
+      data: data,
+      headers: {
+        Authorization: token
+      }
+    })
+    console.log(res.data)
+    fetchdata()
+  }
+
+
+
+
+
+  const addquestion = (newq) => {
+    setnewque((oldval) => {
+      return [
         ...oldval,
         newq
       ]
     })
   }
+  const deletequestion = () => {
+
+  }
   const onSubmit = (values) => {
- 
-    savemanager({...values,questions})
+    // console.log(values);
+    //props.addmanagerdata(values)
+    savemanager({...values,question})
     setnewque([]);
     setOpen(false);
   };
@@ -123,7 +110,7 @@ function AddManager(props) {
   const handleClose = () => {
     setOpen(false);
   };
- 
+
 
   return (
     <div>
@@ -223,7 +210,7 @@ function AddManager(props) {
 
 
                       </Grid>
-                      <DisplayQuestions question={questions} deletequestion={props.deletemanagerquestion} />
+                      <DisplayQuestions question={question} deletequestion={deletequestion} />
                       <br />
 
                       {formik.errors.firstname
@@ -256,7 +243,7 @@ function AddManager(props) {
                 );
               }}
             </Formik>
-            <QuestionsCard question={props.data} addquestion={addquestion} />
+            <QuestionsCard addquestion={addquestion} />
           </DialogContentText>
         </DialogContent>
       </Dialog>
@@ -274,7 +261,8 @@ const mapDispatchToProps = dispatch => {
     addmanagerquestion: (newquestion) => { dispatch(addmanagerquestion(newquestion)) },
     deletemanagerquestion: (id) => { dispatch(deletemanagerquestion(id)) },
     //addmanagerdata:(data)=>{dispatch(addmanagerdata(data))},
-   getmanagerdata:(data)=>{dispatch(getmanagerdata(data))}
+    getmanagerdata: (data) => { dispatch(getmanagerdata(data)) },
+    fetchdata: () => { dispatch(fetchdata()) }
   }
 }
 

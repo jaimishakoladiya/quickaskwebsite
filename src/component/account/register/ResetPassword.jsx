@@ -67,7 +67,7 @@ function ResetPassword()
       
       </Switch> */}
       {formik=>{
-        console.log(formik)
+       
         return(
           <>
        

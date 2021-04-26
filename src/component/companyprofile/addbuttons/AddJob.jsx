@@ -18,7 +18,7 @@ import AlertBox from "../../alert/AlertBox";
 import QuestionsCard from "./QuestionsCard";
 import { connect } from "react-redux"
 import DisplayQuestions from "../DisplayQuestions";
-import { addjobdata, addjobquestion, deletejobquestion,getjobdata } from "../../../redux/actions/companyprofile/companprofileAction"
+import { addjobdata, addjobquestion, deletejobquestion,getjobdata,fetchdata } from "../../../redux/actions/companyprofile/companprofileAction"
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -30,31 +30,52 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: "#eef5f6",
   },
 }));
-function AddJob(props) {
+function AddJob({data,fetchdata}) {
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
-  useEffect(()=>{
-    async function getData(){
-      const result = await axios({
-        method:'get',
-        url:"http://localhost:2002/get-job-detail",
-        headers:{
-          Authorization:token
-        }
-      })
-      props.getjobdata(result.data.result)
-      // console.log(result.data);
-    }
+  const[message,setmessege]=useState();
+  const[status,setstatus]=useState(null);
+  // useEffect(()=>{
+  //   async function getData(){
+  //     const result = await axios({
+  //       method:'get',
+  //       url:"http://localhost:2002/get-job-detail",
+  //       headers:{
+  //         Authorization:token
+  //       }
+  //     })
+  //     props.getjobdata(result.data.result)
+  //     console.log(result.data);
+  //   }
 
-    getData();
-  })
+  //   getData();
+  // })
+  
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
   const[questions,setnewque]=useState([])
+  useEffect(()=>{
+    // async function getData(){
+    //   const result = await axios({
+    //     method:'get',
+    //     url:"http://localhost:2002/get-job-detail",
+    //     headers:{
+    //       Authorization:token
+    //     }
+    //   })
+    //   props.getjobdata(result.data.result)
+      
+    // }
+
+    // getData();
+    fetchdata()
+    console.log("called add job useEffect");
+  },[])
+ 
   const SelectItem = () => {
     let items = [];
-    props.data.users.map((item,index)=>{
+    data.dept.map((item,index)=>{
       items.push(<option value={item.name}>{item.name}</option>)
     })
     return items;
@@ -67,7 +88,7 @@ function AddJob(props) {
       ]
     })
    
-    props.addjobquestion(newq)
+    // props.addjobquestion(newq)
   }
   const deletequestions =(id)=>{
     setnewque((olditem)=>{
@@ -81,7 +102,7 @@ function AddJob(props) {
     department: "",
   };
   async function savejobdata(data){
-    console.log(token);
+  
     var res = await axios({
       method:'post',
       url:"http://localhost:2002/save-job-detail",
@@ -90,13 +111,15 @@ function AddJob(props) {
         Authorization: token,
       }
     })
-    // console.log(res.data);
+    fetchdata()
+    
+      setstatus(res.data.status);
+      setmessege(res.data.message);
   }
 
   const onSubmit = (values) => {
-    // console.log(values)
-  //  props.addjobdata({...values,questions});
-  // console.log({...values,questions})
+    
+  console.log({...values,questions})
    savejobdata({...values,questions});
     setOpen(false);
     setnewque([]);
@@ -104,7 +127,7 @@ function AddJob(props) {
 
   const validationSchema = yup.object({
      title: yup.string().required("All fields are required"),
-    department: yup.string().required("All fields are required"),
+    // department: yup.string().required("All fields are required"),
   });
   const closealert = () => {
     setopenalert(false);
@@ -139,7 +162,7 @@ function AddJob(props) {
         Add Job
       </Button>
       <br />
-
+  {status!=null?erroralert(message):null}
       <Dialog
         open={open}
         onClose={handleClose}
@@ -231,7 +254,7 @@ function AddJob(props) {
                         Save
                       </Button>
                     </Form>
-                    <QuestionsCard question={props.data} addquestion={addquestion} />
+                    <QuestionsCard addquestion={addquestion} />
                   </>
                 );
               }}
@@ -253,7 +276,8 @@ const mapDispatchToProps = dispatch => {
   //   addjobquestion: (newquestion) => { dispatch(addjobquestion(newquestion)) },
   //   deletejobquestion: (id) => { dispatch(deletejobquestion(id)) },
   //   addjobdata:(data) =>{dispatch(addjobdata(data))}
-  getjobdata:(data)=>{dispatch(getjobdata(data))}  
+  getjobdata:(data)=>{dispatch(getjobdata(data))}  ,
+  fetchdata:()=>{dispatch(fetchdata())}
 }
 }
 
