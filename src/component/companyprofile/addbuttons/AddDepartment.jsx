@@ -51,7 +51,6 @@ function AddDepartment({data,fetchdata}) {
 
   async function savedepartment(data) {
 
-    
     var res = await axios({
       method: 'post',
       url: "http://localhost:2002/save-department",
@@ -70,6 +69,7 @@ function AddDepartment({data,fetchdata}) {
 
    
   }
+
 
   const onSubmit = (values) => {
    
@@ -135,7 +135,7 @@ function AddDepartment({data,fetchdata}) {
         Add Department
       </Button>
       <br />
-{status!=null?erroralert(message):null}
+      {status != null ? erroralert(message) : null}
       <Dialog
         open={open}
         onClose={handleClose}
@@ -208,7 +208,7 @@ function AddDepartment({data,fetchdata}) {
                         ? erroralert(formik.errors.name)
                         : formik.touched.costCenter && formik.errors.costCenter
                           ? erroralert(formik.errors.costCenter)
-                          :null}
+                          : null}
 
                       <Button
                         id="dialog-cancel-btn"

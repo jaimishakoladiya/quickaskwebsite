@@ -50,6 +50,7 @@ function AddJob({data,fetchdata}) {
 
   //   getData();
   // })
+  
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
