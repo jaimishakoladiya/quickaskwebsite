@@ -68,7 +68,9 @@ function EditJob(props) {
   }
   
   
-
+ 
+  const user = JSON.parse(localStorage.getItem("user"));
+  const token = user.token;
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [opendelete, setOpendelete] = useState(false);

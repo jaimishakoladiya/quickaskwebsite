@@ -127,7 +127,7 @@ function AddJob({data,fetchdata}) {
           Authorization:token
         }
       })
-      props.getjobdata(result.data.result)
+      // props.getjobdata(result.data.result)
      
    
       setstatus(res.data.status);

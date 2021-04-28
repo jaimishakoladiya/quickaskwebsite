@@ -41,11 +41,14 @@ function Login() {
 
     if (res.data.success == false) {
       setsuccess(res.data.success)
+      
       seterror(res.data.message)
+    
     }
     else {
       setopenalert(false)
       console.log(res.data);
+     
       localStorage.setItem("user",JSON.stringify(res.data))
       history.push('/innernavbar')
     }
