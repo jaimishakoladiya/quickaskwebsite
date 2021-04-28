@@ -53,19 +53,15 @@ const CompanyFields = (props) => {
 //   console.log(result.data)
   
 // }
-// async function getdata(){
-//   var res=await axios({
-//     method:"get",
-//     url:"http://localhost:2002/get-company-info",
-//     headers:{
-//       Authorization:token
-//     }
-//   })
-//   console.log(res.data);
-//   setupdateval(res.data.admin);
-//   console.log(updateval)
-// }
 
+// const updatecompany=(values)=>{
+//   console.log(inputvalue);
+//   setupdateval((oldval)=>{
+//     // return [...oldval,updateval]
+//   });
+//   // console.log(updateval);
+//   updatecompanyprofile(inputvalue);
+// }
 async function getdata(){
    var res=await axios({
      method:"get",
