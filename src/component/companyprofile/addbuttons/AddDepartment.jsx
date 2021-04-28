@@ -63,7 +63,9 @@ function AddDepartment({data,fetchdata}) {
 
    
     setstatus(res.data.status);
+    
     setmessage(res.data.message)
+    console.log(message)
     fetchdata()
     
 
