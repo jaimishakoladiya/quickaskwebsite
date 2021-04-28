@@ -21,7 +21,8 @@ const Manager = (props) => {
           {
             props.data.manager.map((item,index)=>{
               var date=new Date(item.created_at)
-              return(
+              if(item.isDeleted===false)
+             { return(
                 <>
         
           <tr className="company-tr" style={{fontSize:"15px"}}>
@@ -35,7 +36,7 @@ const Manager = (props) => {
             </td>
           </tr>
           </>
-          )
+          )}
             })
           }
         </table>

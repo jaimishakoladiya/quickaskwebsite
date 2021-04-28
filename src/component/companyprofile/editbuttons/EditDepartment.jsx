@@ -71,15 +71,18 @@ function EditDepartment(props) {
         Authorization:token
       }
     })
+    console.log(res.data)
     props.fetchdata()
   }
   const addquestion = (newq) => {
     setnewque((olditem) => {
+      return [
+        ...olditem,
+        newq
+      ]
     })
-    // props.editdeptdata({ ...props.editdata, ...props.editdata.newque.push(newq) }, props.id)
-
-
-  }
+   
+ }
 
   const deletequestion = (id) => {
     console.log(id)
@@ -89,15 +92,14 @@ function EditDepartment(props) {
       })
     })
 
-    props.deletequestion("dept", props.id, id)
+   
 
   }
 
   const deletedata=()=>{
     handleClose1();
     SetYesopen(false);
-    // props.deletedeptdata(props.id)
-     deletedepartment(props.id)
+    deletedepartment(props.id)
 
     
   }
@@ -112,7 +114,7 @@ function EditDepartment(props) {
 
   const onSubmit = (values) => {
 console.log({...values,questions})
-    // props.editdeptdata({ ...values, newque }, props.id)
+    
      updatedepartment({...values,questions})
     setOpen(false);
   
@@ -288,7 +290,7 @@ console.log({...values,questions})
                           <h3>Time Allocated</h3>
                         </Grid>
                       </Grid>
-                      <DisplayQuestions question={props.editdata.questions} deletequestion={deletequestion} />
+                      <DisplayQuestions question={questions} deletequestion={deletequestion} />
                       <br />
                       {formik.touched.name && formik.errors.name
                         ? erroralert(formik.errors.name)
@@ -339,10 +341,7 @@ const mapStateToProps = (state, ownprops) => {
 
 const mapDispatchToProps = disptach => {
   return {
-    editdeptdata: (data, id) => { disptach(editdeptdata(data, id)) },
-    deletequestion: (section, uid, qid) => { disptach(deletequestion(section, uid, qid)) },
-    deletedeptdata:(id) =>{disptach(deletedeptdata(id))},
-    fetchdata:()=>{disptach(fetchdata())}
+   fetchdata:()=>{disptach(fetchdata())}
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(EditDepartment)

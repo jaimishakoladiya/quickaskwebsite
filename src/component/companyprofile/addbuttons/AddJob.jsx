@@ -50,6 +50,7 @@ function AddJob({data,fetchdata}) {
 
   //   getData();
   // })
+  
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
@@ -69,6 +70,7 @@ function AddJob({data,fetchdata}) {
 
     // getData();
     fetchdata()
+    console.log("called add job useEffect");
   },[])
  
   const SelectItem = () => {
@@ -110,16 +112,8 @@ function AddJob({data,fetchdata}) {
       }
     })
     fetchdata()
-    //  const result = await axios({
-    //     method:'get',
-    //     url:"http://localhost:2002/get-job-detail",
-    //     headers:{
-    //       Authorization:token
-    //     }
-    //   })
-    //   props.getjobdata(result.data.result)
-      
     
+<<<<<<< HEAD
       const result = await axios({
         method:'get',
         url:"http://localhost:2002/get-job-detail",
@@ -130,13 +124,14 @@ function AddJob({data,fetchdata}) {
       // props.getjobdata(result.data.result)
      
    
+=======
+>>>>>>> c1d8f8aacf897d1c2de2017b46edba4e2d95a596
       setstatus(res.data.status);
       setmessege(res.data.message);
   }
 
   const onSubmit = (values) => {
-    // console.log(values)
-  //  props.addjobdata({...values,questions});
+    
   console.log({...values,questions})
    savejobdata({...values,questions});
     setOpen(false);
