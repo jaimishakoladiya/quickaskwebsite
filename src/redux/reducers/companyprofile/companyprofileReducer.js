@@ -152,10 +152,11 @@ const companyprofileReducer = (state = intitialstate, action) => {
         //                     }
                          case GET_DEPT_DATA:
                             if(action.payload.status)
-                               { return {
+                               { 
+                                   return {
                                     ...state,
-                                    users:action.payload,
-                                    dept:action.payload.map((item)=>({
+                                    users:action.payload.result,
+                                    dept:action.payload.result.map((item)=>({
                                         name:item.name
                                     }))
                                 }}

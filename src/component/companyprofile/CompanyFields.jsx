@@ -8,14 +8,12 @@ import Button from "@material-ui/core/Button";
 import axios from "axios";
 
 const CompanyFields = (props) => {
-  useEffect(()=>{
-    getdata()
-  },[])
+  
   const user=JSON.parse(localStorage.getItem('user'));
   const token=user.token;
   const field1 = { margin: "30px", marginTop: "50px", };
   const field = { margin: "30px", marginTop: "-40px", width: 195 };
-  const[value,setvalue] = useState({
+  const[inputvalue,setvalue] = useState({
     email:'',
     firstname:'',
     lastname:'',
@@ -28,40 +26,42 @@ const CompanyFields = (props) => {
     address2:'', 
     zip:''
   });
-// const [updateval,setupdateval]=useState([]);
+  useEffect(()=>{
+    getdata()
+  },[])
 
-  // const inputfieldfunction=(event)=>{
-  //   const {name,value}=event.target;
-  //   console.log(name + value)
-  //   setinputvalue((preval)=>{
-  //     return{
-  //       [name]:value,
-  //     };
-  //   })
-    // console.log(inputvalue)
-// }
 
-// async function updatecompanyprofile(data){
-//   var result=await axios({
-//     method:"post",
-//     url:"http://localhost:2002/update-company",
-//     data:data,
-//     headers:{
-//       Authorization:token
-//     }
-//   })
-//   console.log(result.data)
-  
-// }
+  const inputfieldfunction=(event)=>{
+    const {name,value}=event.target;
+    console.log(name + value)
+    setvalue((preval)=>{
+      return{
+        ...preval,
+        [name]:value,
+      };
+    })
+    console.log(inputvalue)
+}
 
-// const updatecompany=(values)=>{
-//   console.log(inputvalue);
-//   setupdateval((oldval)=>{
-//     // return [...oldval,updateval]
-//   });
-//   // console.log(updateval);
-//   updatecompanyprofile(inputvalue);
-// }
+async function updatecompanyprofile(data){
+  var result=await axios({
+    method:"post",
+    url:"http://localhost:2002/update-company",
+    data:data,
+    headers:{
+      Authorization:token
+    }
+  })
+  console.log(result.data)
+  // getdata()
+}
+
+const updatecompany=()=>{
+  console.log(inputvalue);
+ 
+  updatecompanyprofile(inputvalue);
+}
+
 async function getdata(){
    var res=await axios({
      method:"get",
@@ -75,7 +75,7 @@ async function getdata(){
    console.log(res.data);
   //setvalue(res.data.data);
    //console.log(value);
-console.log(res.data.data);
+setvalue(res.data.data[0].admin);
 //   console.log(value);
 }
 
@@ -89,8 +89,8 @@ return (
         label="FirstName"
         variant="standard"
         name="firstname"
-         value={value.firstname}
-        // onChange={inputfieldfunction}
+         value={inputvalue.firstname}
+        onChange={inputfieldfunction}
       />
       <TextField
         style={field1}
@@ -98,8 +98,8 @@ return (
         label="LastName"
         variant="standard"
         name="lastname"
-        // value={inputvalue.lastname}
-      //  onChange={inputfieldfunction}
+         value={inputvalue.lastname}
+       onChange={inputfieldfunction}
 
       />
       <br></br>
@@ -111,8 +111,8 @@ return (
         label="CompanyName"
         variant="standard"
         name="company_name"
-        // value={inputvalue.company_name}
-        // onChange={inputfieldfunction}
+        value={inputvalue.company_name}
+        onChange={inputfieldfunction}
 
       />
       <TextField
@@ -121,30 +121,32 @@ return (
         label="Comapany EmailId"
         variant="standard"
         name="companyemail"
-        value={value.companyemail}
-        // onChange={inputfieldfunction}
+        value={inputvalue.companyemail}
+        onChange={inputfieldfunction}
  
       />
 
-      <FormControl style={field}>
+      {/* <FormControl style={field}>
         <InputLabel htmlFor="demo-customized-select-native" >Country</InputLabel>
         <NativeSelect id="demo-customized-select-native">
           <option aria-label="choose country" value=""  />
-          {/* <option value={10}>india</option> */}
-          {/* <option value={20}>uk</option> */}
-          {/* <option value={30}>pakishtan</option> */}
+          <option value={10}>india</option>
+          <option value={20}>uk</option>
+          <option value={30}>pakishtan</option>
         </NativeSelect>
-      </FormControl>
+      </FormControl> */}
 
       <FormControl style={field}>
         <InputLabel htmlFor="demo-customized-select-native" >
           --Select State--
         </InputLabel>
-        <NativeSelect id="demo-customized-select-native">
-          <option aria-label="--select state--" value="" />
-          {/* <option value={10}>gujarat</option> */}
-          {/* <option value={20}>mumbai</option> */}
-          {/* <option value={30}>rajasthan</option> */}
+        <NativeSelect id="demo-customized-select-native" name="state"
+         onChange={inputfieldfunction}
+         value={inputvalue.state}>
+          <option value="" >--select state--</option>
+          <option value="gj">gujarat</option>
+          <option value="gj">mumbai</option>
+          <option value="gj">rajasthan</option>
         </NativeSelect>
       </FormControl>
       <br></br>
@@ -156,8 +158,8 @@ return (
         label="Comapany Address"
         variant="standard"
         name="address"
-        // value={inputvalue.address}
-        // onChange={inputfieldfunction}
+        value={inputvalue.address}
+        onChange={inputfieldfunction}
 
       />
       <TextField
@@ -166,8 +168,8 @@ return (
         label="Comapany Address2"
         variant="standard"
         name="address2"
-        // value={inputvalue.address2}
-        // onChange={inputfieldfunction}
+        value={inputvalue.address2}
+        onChange={inputfieldfunction}
 
       />
       <TextField
@@ -176,8 +178,8 @@ return (
         label="Comapany City"
         variant="standard"
         name="city"
-        // value={inputvalue.city}
-      // onChange={inputfieldfunction}
+        value={inputvalue.city}
+      onChange={inputfieldfunction}
 
       />
       <TextField
@@ -186,8 +188,8 @@ return (
         label="Comapany Zip"
         variant="standard"
         name="zip"
-        // value={inputvalue.zip}
-      //  onChange={inputfieldfunction}
+        value={inputvalue.zip}
+       onChange={inputfieldfunction}
 
       />
 
@@ -195,7 +197,7 @@ return (
         style={{ marginLeft: "400px", marginTop: "30px" }}
         variant="contained"
         color="secondary"
-        // onClick={updatecompany}
+        onClick={updatecompany}
       >
         Update Company
       </Button>
