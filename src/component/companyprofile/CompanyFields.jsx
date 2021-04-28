@@ -6,13 +6,18 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
-
+import AlertBox from '../alert/AlertBox';
 const CompanyFields = (props) => {
-  
+  useEffect(()=>{
+    getdata();
+  },[])
   const user=JSON.parse(localStorage.getItem('user'));
   const token=user.token;
   const field1 = { margin: "30px", marginTop: "50px", };
   const field = { margin: "30px", marginTop: "-40px", width: 195 };
+  const [openalert, setopenalert] = useState(true);
+  const [status,setstatus]=useState(null);
+  const [message,setmessage]=useState();
   const[inputvalue,setvalue] = useState({
     email:'',
     firstname:'',
@@ -26,59 +31,63 @@ const CompanyFields = (props) => {
     address2:'', 
     zip:''
   });
-  useEffect(()=>{
-    getdata()
-  },[])
 
-
-  const inputfieldfunction=(event)=>{
-    const {name,value}=event.target;
-    console.log(name + value)
-    setvalue((preval)=>{
-      return{
-        ...preval,
-        [name]:value,
-      };
-    })
-    console.log(inputvalue)
+const inputfieldfunction=(event)=>{
+  const {name,value}=event.target;
+  console.log(value);
+  setvalue((preval)=>{
+    return{...preval,
+      [name]:value
+    }
+  })
 }
 
 async function updatecompanyprofile(data){
   var result=await axios({
-    method:"post",
+    method:'post',
     url:"http://localhost:2002/update-company",
     data:data,
     headers:{
       Authorization:token
     }
   })
-  console.log(result.data)
-  // getdata()
+  console.log(result.data);
+  setstatus(result.data.status);
+  setmessage(result.data.message);
 }
 
 const updatecompany=()=>{
   console.log(inputvalue);
- 
+  setopenalert(true);
   updatecompanyprofile(inputvalue);
 }
 
 async function getdata(){
-   var res=await axios({
-     method:"get",
-     url:"http://localhost:2002/get-company-info",
-     
-     headers:{
+  var res=await axios({
+    method:'get',
+    url:"http://localhost:2002/get-company-info",
+    headers:{
       Authorization:token
     }
-   
-   })
-   console.log(res.data);
-  //setvalue(res.data.data);
-   //console.log(value);
-setvalue(res.data.data[0].admin);
-//   console.log(value);
+  })
+  console.log(res.data);
+  console.log(res.data.data)
+  setvalue(res.data.data[0].admin);
+  console.log(inputvalue)
 }
+const closealert = () => {
+  setopenalert(false);
+};
 
+const erroralert = (error) => {
+  return (
+    <AlertBox
+      setopenalert={openalert}
+      closealert={closealert}
+      error={error}
+    />
+  );
+};
 
 
 return (
@@ -104,6 +113,7 @@ return (
       />
       <br></br>
       <br></br>
+      {status!=null?erroralert(message):null}
 
       <TextField
         style={field}
@@ -143,10 +153,9 @@ return (
         <NativeSelect id="demo-customized-select-native" name="state"
          onChange={inputfieldfunction}
          value={inputvalue.state}>
-          <option value="" >--select state--</option>
-          <option value="gj">gujarat</option>
-          <option value="gj">mumbai</option>
-          <option value="gj">rajasthan</option>
+          <option value="gujarat">gujarat</option>
+          <option value="mumbai">mumbai</option>
+          <option value="rajstthan">rajasthan</option>
         </NativeSelect>
       </FormControl>
       <br></br>
