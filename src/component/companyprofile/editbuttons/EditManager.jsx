@@ -55,11 +55,11 @@ function EditManager(props) {
         newq
       ]
     })
-    var questions={...newq}
+    
     var res = await axios({
       method: "post",
       url: `http://localhost:2002/manager/save-question/${props.editdata.manager_token}`,
-      data:{questions:{...newq}},
+      data:{...newq},
       headers: {
         Authorization: token
       }
