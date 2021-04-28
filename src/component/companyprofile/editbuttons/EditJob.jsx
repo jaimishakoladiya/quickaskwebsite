@@ -23,9 +23,8 @@ import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 
 import { connect } from "react-redux";
 import {
-  deletequestion,
-  editjobdata,
-  deletejobdata
+  
+  fetchdata
 } from "../../../redux/actions/companyprofile/companprofileAction";
 import axios from "axios";
 
@@ -40,7 +39,7 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 function EditJob(props) {
-  const [newque,setnewque]=useState(props.editdata.newque);
+  const [questions,setnewque]=useState(props.editdata.questions);
   const addquestion=(newq)=>{
       setnewque((olditem)=>{
         return[
@@ -48,7 +47,7 @@ function EditJob(props) {
           newq
         ]
       })
-      props.editjobdata({...props.editdata,...props.editdata.newque.push(newq)},props.id)
+
   }
   const deletequestion=(id)=>{
     setnewque((olditem)=>{
@@ -56,7 +55,7 @@ function EditJob(props) {
         return index !== id;
       })
     })
-    props.deletequestion("job",props.id,id)
+
   }
   const SelectItem=()=>{
     let items=[];
@@ -74,7 +73,8 @@ function EditJob(props) {
   const [open, setOpen] = useState(false);
   const [opendelete, setOpendelete] = useState(false);
   const [openalert, setopenalert] = useState(true);
-  //const[questions,setwque] = useState(props.editdata.questions)
+  const[message,setmess]=useState();
+  const[status,setstatus]=useState(null);
   const [Yesopen, SetYesopen] = useState(false);
 
   async function deletjobdata(){
@@ -86,7 +86,7 @@ function EditJob(props) {
         Authorization:token
       }
     })
-    console.log(res.data);
+  props.fetchdata()
   }
   async function updatejobdata(data){
     console.log(data);
@@ -99,7 +99,9 @@ function EditJob(props) {
         Authorization:token
       }
     })
-    console.log(res.data)
+    setmess(res.data.message);
+    setstatus(res.data.status);
+    props.fetchdata()
   }
   const initialValues = {
     title: props.editdata.title,
@@ -107,9 +109,9 @@ function EditJob(props) {
   };
 
   const onSubmit = (values) => {
-    console.log({...values,newque})
+    console.log({...values,questions})
     //props.editjobdata({...values,newque }, props.id);
-    updatejobdata({...values,newque})
+    updatejobdata({...values,questions})
     setOpen(false);
     
   };
@@ -174,7 +176,7 @@ function EditJob(props) {
         <DeleteIcon />
       </button>
       <br />
-
+      {status!=null?erroralert(message):null}
 {/* delete job */}
 <Dialog
         open={opendelete}
@@ -294,7 +296,7 @@ function EditJob(props) {
                           <h3>Time Allocated</h3>
                         </Grid>
                       </Grid>
-                      {/* <DisplayQuestions question={props.editdata.newque} deletequestion={deletequestion}/> */}
+                      <DisplayQuestions question={questions} deletequestion={deletequestion}/> 
                       <br />
                       {formik.touched.department && formik.errors.department
                         ? erroralert(formik.errors.department)
@@ -345,12 +347,7 @@ const mapStateToProps = (state, ownprops) => {
 
 const mapDispatchToProps = (disptach) => {
   return {
-    editjobdata: (data, id) => { disptach(editjobdata(data, id))},
-      deletejobdata: (id) => { disptach(deletejobdata(id))},
-      
-    
-   
-    deletequestion:(section,uid,qid)=>{disptach(deletequestion(section,uid,qid))}
+   fetchdata:()=>{disptach(fetchdata())}
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(EditJob);

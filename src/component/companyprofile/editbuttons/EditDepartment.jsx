@@ -44,6 +44,8 @@ function EditDepartment(props) {
   const [openalert, setopenalert] = useState(true);
   const [questions, setnewque] = useState(props.editdata.questions)
   const [Yesopen, SetYesopen] = useState(false);
+  const[message,setmess]=useState();
+  const[status,setstatus]=useState(null);
 
   
   async function deletedepartment(){
@@ -71,6 +73,8 @@ function EditDepartment(props) {
         Authorization:token
       }
     })
+    setmess(res.data.message);
+    setstatus(res.data.status);
     props.fetchdata()
   }
   const addquestion = (newq) => {
@@ -169,7 +173,7 @@ console.log({...values,questions})
       </button>
       <br />
 {/* delete department */}
-
+{status!=null?erroralert(message):null}
 
 <Dialog
         open={opendelete}
@@ -288,7 +292,7 @@ console.log({...values,questions})
                           <h3>Time Allocated</h3>
                         </Grid>
                       </Grid>
-                      <DisplayQuestions question={props.editdata.questions} deletequestion={deletequestion} />
+                      <DisplayQuestions  question={props.editdata.questions} deletequestion={deletequestion} />
                       <br />
                       {formik.touched.name && formik.errors.name
                         ? erroralert(formik.errors.name)

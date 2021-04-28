@@ -129,7 +129,7 @@ function AddJob({data,fetchdata}) {
       })
       
      
-   
+    
       setstatus(res.data.status);
       setmessege(res.data.message);
   }
