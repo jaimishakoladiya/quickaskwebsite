@@ -76,15 +76,6 @@ function EditJob(props) {
   }
   
   
- 
-  // const user = JSON.parse(localStorage.getItem("user"));
-  // const token = user.token;
-  // const classes = useStyle();
-  // const [open, setOpen] = useState(false);
-  // const [opendelete, setOpendelete] = useState(false);
-  // const [openalert, setopenalert] = useState(true);
-  // const [Yesopen, SetYesopen] = useState(false);
-
   
   async function deletjobdata(){
     console.log(props.editdata.job_detail_id);
