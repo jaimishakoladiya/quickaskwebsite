@@ -76,19 +76,16 @@ function EditJob(props) {
   }
   
   
-<<<<<<< HEAD
  
-  const user = JSON.parse(localStorage.getItem("user"));
-  const token = user.token;
-  const classes = useStyle();
-  const [open, setOpen] = useState(false);
-  const [opendelete, setOpendelete] = useState(false);
-  const [openalert, setopenalert] = useState(true);
-  const [Yesopen, SetYesopen] = useState(false);
+  // const user = JSON.parse(localStorage.getItem("user"));
+  // const token = user.token;
+  // const classes = useStyle();
+  // const [open, setOpen] = useState(false);
+  // const [opendelete, setOpendelete] = useState(false);
+  // const [openalert, setopenalert] = useState(true);
+  // const [Yesopen, SetYesopen] = useState(false);
 
-=======
   
->>>>>>> c1d8f8aacf897d1c2de2017b46edba4e2d95a596
   async function deletjobdata(){
     console.log(props.editdata.job_detail_id);
     var res = await axios({

@@ -137,13 +137,7 @@ export const getmanagerdata=(data)=>{
         payload:data
     }
 }
-<<<<<<< HEAD
-
-const user = JSON.parse(localStorage.getItem("user"));
-
-=======
 const user = JSON.parse(localStorage.getItem('user'));
->>>>>>> c1d8f8aacf897d1c2de2017b46edba4e2d95a596
 const token = user.token;
 export const fetchdata =  () => {
     return async dispatch => {
