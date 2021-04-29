@@ -113,19 +113,6 @@ function AddJob({data,fetchdata}) {
     })
     fetchdata()
     
-<<<<<<< HEAD
-      const result = await axios({
-        method:'get',
-        url:"http://localhost:2002/get-job-detail",
-        headers:{
-          Authorization:token
-        }
-      })
-      // props.getjobdata(result.data.result)
-     
-   
-=======
->>>>>>> c1d8f8aacf897d1c2de2017b46edba4e2d95a596
       setstatus(res.data.status);
       setmessege(res.data.message);
   }

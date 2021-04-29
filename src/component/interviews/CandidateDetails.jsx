@@ -12,6 +12,7 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import "./Interviews.css";
+import axios from 'axios';
 import InterviewDataGrid from "../interviews/InterviewDataGrid";
 
 import CreateInterview from "./CreateInterview";
@@ -19,10 +20,23 @@ import CreateInterview from "./CreateInterview";
 import CreateData from "./CreateData";
 
 const CandidateDetails = () => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  const token=user.token;
+  async function getmanager(){
+    var res=await axios({
+      method:'get',
+      url:"http://localhost:2002/getManager",
+      headers:{
+        Authorization:token
+      }
+    })
+    console.log(res.data)
+  }
   const [open, SetOpen] = useState(false);
   const OpenBox = () => {
     if (open == false) {
       SetOpen(true);
+      getmanager();
     } else {
       SetOpen(false);
     }
