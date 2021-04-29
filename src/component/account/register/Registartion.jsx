@@ -18,6 +18,8 @@ function Registration() {
     let res=await axios.post("http://localhost:2002/register",data)
     console.log(res.data)
   }
+
+ 
   const history = useHistory();
 
   const closealert = () => {

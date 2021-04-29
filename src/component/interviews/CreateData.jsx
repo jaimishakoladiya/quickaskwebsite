@@ -114,15 +114,10 @@ Row.propTypes = {
   }).isRequired,
 };
 const n=[1,2,3]
-const rows = [
-
-  createData('2021-2-3','web','android','ck',1,'3mins',<ViewDelete   />),
-  createData('2021-2-3','web','android','ck',1,'3mins',<ViewDelete/>),
-  n.map((item,index)=>{
-     createData('2021-2-3','web','android','ck',1,'3mins',<ViewDelete/>)
+const rows = [];
+   n.map((item,index)=>{
+    rows.push(createData('2021-2-3','web','android','ck',1,'3mins',<ViewDelete/>))
   })
-   ];
-
 export default function CreateData() {
   return (
     <TableContainer component={Paper}>
@@ -140,7 +135,7 @@ export default function CreateData() {
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <Row key={row.date} row={row} />
+            <Row key={row.date} row={row}/>
           ))}
         </TableBody>
       </Table>

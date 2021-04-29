@@ -137,6 +137,11 @@ export const getmanagerdata=(data)=>{
         payload:data
     }
 }
+
+const user = JSON.parse(localStorage.getItem('user'));
+
+const token = user.token;
+
 export const fetchdata =  () => {
     const user=JSON.parse(localStorage.getItem("user"));
     const token =  user.token;

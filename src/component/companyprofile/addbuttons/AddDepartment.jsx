@@ -59,11 +59,26 @@ function AddDepartment({data,fetchdata}) {
         Authorization: token
       }
     })
+<<<<<<< HEAD
+    const result = await axios({
+      method: 'get',
+      url: "http://localhost:2002/get-department",
+
+      headers: {
+        Authorization: token
+      }
+    })
+     
+    // props.getdeptdata(result.data.result)
+=======
    
+>>>>>>> c1d8f8aacf897d1c2de2017b46edba4e2d95a596
 
    
     setstatus(res.data.status);
+    
     setmessage(res.data.message)
+    console.log(message)
     fetchdata()
     
 
