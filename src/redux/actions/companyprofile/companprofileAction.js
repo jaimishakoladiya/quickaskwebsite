@@ -138,6 +138,8 @@ export const getmanagerdata=(data)=>{
     }
 }
 export const fetchdata =  () => {
+    const user=JSON.parse(localStorage.getItem("user"));
+    const token =  user.token;
     return async dispatch => {
         try {
             let dept = await axios({
@@ -161,6 +163,7 @@ export const fetchdata =  () => {
                   Authorization:token
                 }
               })
+              console.log(manager.data)
            dispatch(getdeptdata(dept.data))
            dispatch(getjobdata(job.data))
            dispatch(getmanagerdata(manager.data.data))

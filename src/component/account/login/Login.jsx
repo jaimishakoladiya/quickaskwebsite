@@ -82,22 +82,7 @@ function Login() {
     );
   };
 
-<<<<<<< HEAD
-  // const validalert = (error) => {
-   // console.log(error)
-    //return (
-      // <AlertBox
-      //   setopenalert={openalert}
-      //   closealert={closealert}
-      //   error={error}
-      // />
-      //<h1>{error}</h1>
-    //);
-  //};
-
-=======
  
->>>>>>> c8f1db2575f0dfed1bda4e245e9f24c8caa5e981
   const classes = useStyles();
 
   return (

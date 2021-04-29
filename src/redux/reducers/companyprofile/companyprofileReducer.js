@@ -172,7 +172,7 @@ const companyprofileReducer = (state = intitialstate, action) => {
                                          ...state,
                                         job:action.payload.result
                                         }}
-                                        else{
+                                else{
                                             return{
                                                 ...state,
                                                job:[]
