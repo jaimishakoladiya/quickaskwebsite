@@ -9,7 +9,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import { deletecandidatedata } from "../../../redux/actions/interview/InterviewAction";
+//import { deletecandidatedata } from "../../../redux/actions/interview/InterviewAction";
 
 const Step1AddField = (props) => {
   console.log(props.newrecords)
@@ -43,7 +43,7 @@ const Step1AddField = (props) => {
         id="Chip_box"
         icon={<PersonIcon />}
         label={`${props.newrecords.firstname}  ${props.newrecords.lastname}`}
-      deletequestion={deletecandidatedata}
+      // deletequestion={deletecandidatedata}
         onDelete={handleDelete}
         // deleteIcon={<CloseIcon />}
       ></Chip>

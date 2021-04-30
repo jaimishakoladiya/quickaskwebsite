@@ -217,7 +217,8 @@ const mapStateToProps = state =>{
 }
 const mapDispatchToProps = dispatch => {
   return{
-    addcandidatedata: (newdata) => {dispatch(addcandidatedata(newdata))}
+    addcandidatedata: (newdata) => {dispatch(addcandidatedata(newdata))},
+    // deletecandidatedata: (id) => {dispatch(deletecandidatedata(id))}
   }
 
 }

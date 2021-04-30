@@ -57,6 +57,7 @@ function EditDepartment(props) {
       }
     })
     props.fetchdata()
+    
 
   }
 
