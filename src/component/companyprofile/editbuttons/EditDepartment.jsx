@@ -85,7 +85,6 @@ function EditDepartment(props) {
  }
 
   const deletequestion = (id) => {
-    console.log(id)
     setnewque((olditem) => {
       return olditem.filter((arr, index) => {
         return index !== id;
