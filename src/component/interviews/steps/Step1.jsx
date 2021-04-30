@@ -7,7 +7,7 @@ import Step1AddField from "./Step1AddField";
 import * as yup from "yup";
 import { Form, Formik, Field } from "formik";
 import AlertBox from "../../alert/AlertBox";
-import {addcandidatedata} from "../../../redux/actions/interview/InterviewAction"; 
+import {addcandidatedata,deletecandidatedata} from "../../../redux/actions/interview/InterviewAction"; 
 import { connect } from "react-redux";
 const Step1 = (props) => {
   const [openalert, setopenalert] = useState(false);
@@ -37,11 +37,14 @@ const Step1 = (props) => {
   };
 
   const deletefunction = (id) => {
-    return SetCandidatearray((oldval) => {
-      return oldval.filter((arr, index) => {
-        return index !== id;
-      });
-    });
+    // return SetCandidatearray((oldval) => {
+    //   return oldval.filter((arr, index) => {
+    //     return index !== id;
+    //   });
+    // });
+
+    props.deletecandidatedata(id)
+
   };
   const initialValues = {
     firstname: "",
@@ -52,11 +55,11 @@ const Step1 = (props) => {
   const onSubmit = (values, onSubmitprops) => {
     console.log(values);
     props.addcandidatedata(values)
-    addcandidate(values);
-    SetCandidate({
-      firstname: "",
-      lastname: "",
-    });
+    // addcandidate(values);
+    // SetCandidate({
+    //   firstname: "",
+    //   lastname: "",
+    // });
     onSubmitprops.resetForm();
    
     console.log(props.newdata);
@@ -218,7 +221,7 @@ const mapStateToProps = state =>{
 const mapDispatchToProps = dispatch => {
   return{
     addcandidatedata: (newdata) => {dispatch(addcandidatedata(newdata))},
-    // deletecandidatedata: (id) => {dispatch(deletecandidatedata(id))}
+    deletecandidatedata: (id) => {dispatch(deletecandidatedata(id)) }
   }
 
 }
