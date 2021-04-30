@@ -12,8 +12,7 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import "./Interviews.css";
-import axios from 'axios';
-import InterviewDataGrid from "../interviews/InterviewDataGrid";
+
 
 import CreateInterview from "./CreateInterview";
 import {connect} from 'react-redux';

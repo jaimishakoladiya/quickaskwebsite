@@ -18,86 +18,92 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Step2 = (props) => {
- 
-  const [data,setdata]=useState({
-    department:'',
-    email:'',
-    job:'',
-    firstname:props.data.manager.user.data.firstname,
-    lastname:props.data.manager.user.data.lastname
+
+  const [data, setdata] = useState({
+    department: '',
+    email: '',
+    job: '',
+    firstname: props.data.manager.user.data.firstname,
+    lastname: props.data.manager.user.data.lastname
   });
   const managers = [props.data.manager.user.data, ...props.data.manager.managerdata];
-  const department=[...props.data.manager.departmentResult];
-  const job=[...props.data.manager.jobTitleResult];
+  const department = [...props.data.manager.departmentResult];
+  const job = [...props.data.manager.jobTitleResult];
   console.log(job)
-useEffect(()=>{
-  getname()
-},[data.email])
-  const getname=()=>{
-    managers.map((item)=>{
-      if(item.email===data.email){
+  useEffect(() => {
+    getname()
+  }, [data.email])
+
+  const getname = () => {
+    managers.map((item) => {
+      if (item.email === data.email) {
         console.log(item.firstname)
-        setdata((olditem)=>{
-        return { 
-          ...olditem,
-          firstname:item.firstname,
-          lastname:item.lastname
-        }
+        setdata((olditem) => {
+          return {
+            ...olditem,
+            firstname: item.firstname,
+            lastname: item.lastname
+          }
         })
       }
     })
   }
- 
-  const getemails=()=>{
-   
-    let items=[];
-    managers.map((item)=>{
-      items.push(
-      <option value={item.email}>{item.email}</option>
-      );
-      
+
+  const getemails = () => {
+    let useremail=props.data.manager.user.data.email;
+    let items = [];
+    items.push(
+      <option value={useremail}>{useremail}</option>
+    );
+    managers.map((item) => {
+      if(item.registration_status==="REGISTERED" && item.isDeleted===false)
+     { items.push(
+        <option value={item.email}>{item.email}</option>
+      );}
+
     })
-    
+
     return items;
-    
-   }
-   const getdepartment=()=>{
-     let items=[];
-    department.map((item)=>{
-      item.departments.map((val)=>{
+
+  }
+  const getdepartment = () => {
+    let items = [];
+    department.map((item) => {
+      item.departments.map((val) => {
         items.push(
           <option value={val.name}>{val.name}</option>
-          );
+        );
       })
-     
+
     })
     return items;
-   }
+  }
 
-   const getjob=()=>{
-     const items=[];
-      job.map((item)=>{
-        item['job-title'].map((val)=>{
-          if(val.department===data.department)
-         { console.log(val.title)
-        items.push(<option value={val.title}>{val.title}</option>)}
-        })
-        
+  const getjob = () => {
+    const items = [];
+    job.map((item) => {
+      item['job-title'].map((val) => {
+        if (val.department === data.department) {
+          console.log(val.title)
+          items.push(<option value={val.title}>{val.title}</option>)
+        }
       })
-      return items;
-   }
 
-   const inputchange=(event)=>{
-     const {name,value}=event.target;
-     setdata((olditem)=>{
-       return{
-         ...olditem,
-        [name]:value
-       }
-     })
-     console.log(data)
-    
-   }
+    })
+    return items;
+  }
+
+  const inputchange = (event) => {
+    const { name, value } = event.target;
+    setdata((olditem) => {
+      return {
+        ...olditem,
+        [name]: value
+      }
+    })
+    console.log(data)
+
+  }
 
   return (
     <>
@@ -126,17 +132,17 @@ useEffect(()=>{
               />
             </Grid>
             <Grid item xs={4} sm={4} xl={4} md={4} className="d-flex">
-            <FormControl style={{ width: "200px", marginTop: "5px" }}>
-             
-              <NativeSelect
-                name='email'
-                value={data.email}
-                onChange={inputchange}
-              >
-              {/* <option value="none">--select--</option> */}
-             {getemails()}
-              </NativeSelect>
-            </FormControl>
+              <FormControl style={{ width: "200px", marginTop: "5px" }}>
+
+                <NativeSelect
+                  name='email'
+                  value={data.email}
+                  onChange={inputchange}
+                >
+                  {/* <option value="none">--select--</option> */}
+                  {getemails()}
+                </NativeSelect>
+              </FormControl>
             </Grid>
           </Grid>
         </div>
@@ -144,32 +150,29 @@ useEffect(()=>{
         <h4>Department</h4>
         <Grid container spacing={2}>
           <Grid item xs={4} sm={4} xl={4} md={4} className="d-flex">
-            <FormControl style={{ width: "200px", marginTop: "5px" }}>
-              <InputLabel htmlFor="demo-customized-select-native">
-                --Select Department--
-              </InputLabel>
+            <FormControl style={{ width: "200px", marginTop: "10px" }}>
+
               <NativeSelect
                 name='department'
                 value={data.department}
                 onChange={inputchange}
+                inputProps={{ 'aria-label': 'job' }}
               >
-                <option value=""></option>
-              {getdepartment()}
+                <option value="" disabled> --Select Department--</option>
+                {getdepartment()}
               </NativeSelect>
             </FormControl>
           </Grid>
           <Grid item xs={4} sm={4} xl={4} md={4} className="d-flex">
 
-            <FormControl style={{ width: "200px", marginTop: "5px" }}>
-              <InputLabel htmlFor="demo-customized-select-native">
-                --Select Job Title--
-              </InputLabel>
+            <FormControl style={{ width: "200px", marginTop: "10px" }}>
               <NativeSelect
-                name='job'
                 value={data.job}
                 onChange={inputchange}
+                name="job"
+                inputProps={{ 'aria-label': 'job' }}
               >
-                <option value=""></option>
+                <option value="" disabled> --Select Job Title--</option>
                 {getjob()}
               </NativeSelect>
             </FormControl>
