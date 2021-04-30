@@ -9,6 +9,7 @@ import { BrowserRouter, useLocation } from "react-router-dom";
 import InnerNavbar from './../innernavbar/InnerNavbar';
 import Team from "../../team/Team";
 import ResetPassword from '../../account/register/ResetPassword'
+import Interviews from "../../interviews/Interviews";
 function HomeNavbar() {
   const location = useLocation();
   return (
@@ -29,7 +30,6 @@ function HomeNavbar() {
         {/* <Route exact path="/about" component={About} />
         <Route exact path="/contact" component={Contact} /> */}
         <Route exact path="/team" component={Team}/>
-        {/* <Route exact path="/fifthhomecomp" component={FifthHomeComp}/> */}
         <Route exact path="/forgotpassword" component={Forpass} />
         <Route   exact path="/reset-password" component={ResetPassword} />
         <Route exact path="/innernavbar" render={()=>

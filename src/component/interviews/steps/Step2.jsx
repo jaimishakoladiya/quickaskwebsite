@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TextField from "@material-ui/core/TextField";
-import MenuItem from "@material-ui/core/MenuItem";
 import PersonIcon from "@material-ui/icons/Person";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-import axios from "axios";
+import { connect } from "react-redux";
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from "@material-ui/core/FormControl";
+import NativeSelect from "@material-ui/core/NativeSelect";
 
 const useStyles = makeStyles((theme) => ({
   
@@ -16,9 +18,93 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Step2 = () => {
-    
-  const classes = useStyles();
+const Step2 = (props) => {
+
+  const [data, setdata] = useState({
+    department: '',
+    email: '',
+    job: '',
+    firstname: props.data.manager.user.data.firstname,
+    lastname: props.data.manager.user.data.lastname
+  });
+  const managers = [props.data.manager.user.data, ...props.data.manager.managerdata];
+  const department = [...props.data.manager.departmentResult];
+  const job = [...props.data.manager.jobTitleResult];
+  console.log(job)
+  useEffect(() => {
+    getname()
+  }, [data.email])
+
+  const getname = () => {
+    managers.map((item) => {
+      if (item.email === data.email) {
+        console.log(item.firstname)
+        setdata((olditem) => {
+          return {
+            ...olditem,
+            firstname: item.firstname,
+            lastname: item.lastname
+          }
+        })
+      }
+    })
+  }
+
+  const getemails = () => {
+    let useremail=props.data.manager.user.data.email;
+    let items = [];
+    items.push(
+      <option value={useremail}>{useremail}</option>
+    );
+    managers.map((item) => {
+      if(item.registration_status==="REGISTERED" && item.isDeleted===false)
+     { items.push(
+        <option value={item.email}>{item.email}</option>
+      );}
+
+    })
+
+    return items;
+
+  }
+  const getdepartment = () => {
+    let items = [];
+    department.map((item) => {
+      item.departments.map((val) => {
+        items.push(
+          <option value={val.name}>{val.name}</option>
+        );
+      })
+
+    })
+    return items;
+  }
+
+  const getjob = () => {
+    const items = [];
+    job.map((item) => {
+      item['job-title'].map((val) => {
+        if (val.department === data.department) {
+          console.log(val.title)
+          items.push(<option value={val.title}>{val.title}</option>)
+        }
+      })
+
+    })
+    return items;
+  }
+
+  const inputchange = (event) => {
+    const { name, value } = event.target;
+    setdata((olditem) => {
+      return {
+        ...olditem,
+        [name]: value
+      }
+    })
+    console.log(data)
+
+  }
 
   return (
     <>
@@ -32,6 +118,8 @@ const Step2 = () => {
                 variant="filled"
                 id="outlined-basic"
                 placeholder="FirstName"
+                name="firstname"
+                value={data.firstname}
               />
             </Grid>
             <Grid item xs={4} sm={4} xl={4} md={4} className="d-flex">
@@ -40,14 +128,22 @@ const Step2 = () => {
                 variant="filled"
                 id="outlined-basic"
                 placeholder="LastName"
+                name="lastname"
+                value={data.lastname}
               />
             </Grid>
             <Grid item xs={4} sm={4} xl={4} md={4} className="d-flex">
-              <TextField
-                id="standard-select-currency-native"
-                select
-                style={{ width: "200px", marginTop: "5px" }}
-              />
+              <FormControl style={{ width: "200px", marginTop: "5px" }}>
+
+                <NativeSelect
+                  name='email'
+                  value={data.email}
+                  onChange={inputchange}
+                >
+                  {/* <option value="none">--select--</option> */}
+                  {getemails()}
+                </NativeSelect>
+              </FormControl>
             </Grid>
           </Grid>
         </div>
@@ -55,20 +151,32 @@ const Step2 = () => {
         <h4>Department</h4>
         <Grid container spacing={2}>
           <Grid item xs={4} sm={4} xl={4} md={4} className="d-flex">
-            <TextField
-              id="standard-select-currency-native"
-              select
-              label="---Select Department---"
-              style={{ width: "200px", marginTop: "5px" }}
-            />
+            <FormControl style={{ width: "200px", marginTop: "10px" }}>
+
+              <NativeSelect
+                name='department'
+                value={data.department}
+                onChange={inputchange}
+                inputProps={{ 'aria-label': 'job' }}
+              >
+                <option value="" disabled> --Select Department--</option>
+                {getdepartment()}
+              </NativeSelect>
+            </FormControl>
           </Grid>
           <Grid item xs={4} sm={4} xl={4} md={4} className="d-flex">
-            <TextField
-              id="standard-select-currency-native"
-              select
-              label="--Select Job title--"
-              style={{ width: "200px", marginTop: "5px" }}
-            />
+
+            <FormControl style={{ width: "200px", marginTop: "10px" }}>
+              <NativeSelect
+                value={data.job}
+                onChange={inputchange}
+                name="job"
+                inputProps={{ 'aria-label': 'job' }}
+              >
+                <option value="" disabled> --Select Job Title--</option>
+                {getjob()}
+              </NativeSelect>
+            </FormControl>
           </Grid>
         </Grid>
         <div className="step2-Add">
@@ -80,4 +188,9 @@ const Step2 = () => {
     </>
   );
 };
-export default Step2;
+const mapStateToProps = state => {
+  return {
+    data: state.interview
+  }
+}
+export default connect(mapStateToProps)(Step2);

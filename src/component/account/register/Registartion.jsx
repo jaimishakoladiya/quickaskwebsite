@@ -18,6 +18,8 @@ function Registration() {
     let res=await axios.post("http://localhost:2002/register",data)
     console.log(res.data)
   }
+
+ 
   const history = useHistory();
 
   const closealert = () => {
@@ -76,11 +78,9 @@ function Registration() {
               </div>
               <div className="reg2-container">
                 <Form className="registation-form">
-                  <br />
+                  
                   <img src={image3} className="registration-face"></img>
-                  <br />
-                 
-                  <br></br>
+                  
 
                   <div className="input-group">
                   <div className="registation-div one focus">
@@ -143,6 +143,7 @@ function Registration() {
                     />
                   </div>
                   <br />
+
 
                   <input
                     type="button"

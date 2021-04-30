@@ -9,41 +9,38 @@ import TableRow from "@material-ui/core/TableRow";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import "./Interviews.css";
-import axios from "axios"
+
 import CreateInterview from "./CreateInterview";
-
+import {connect} from 'react-redux';
 import CreateData from "./CreateData";
+import axios from "axios";
+import { getmanager } from "../../redux/actions/interview/InterviewAction";
 
-const CandidateDetails = () => {
-  const user = JSON.parse(localStorage.getItem("user"));
-    const token = user.token;
-
-    async function getmanager(){
-      const res = await axios({
-      method:'get',
-      url:"http://localhost:2002/getManager",
-      headers:{
-        Authorization:token
-      }
-    })
-   
-    console.log(res.data);
-    console.log(res.data.data.user);
-    console.log(res.data.data.user.data);
-    
-    
-    }
+const CandidateDetails = (props) => {
   const [open, SetOpen] = useState(false);
-  const OpenBox = () => {
+  const user=JSON.parse(localStorage.getItem('user'));
+  const token=user.token;
+  const OpenBox = async () => {
     if (open == false) {
       SetOpen(true);
       getmanager();
     } else {
       SetOpen(false);
     }
+
+    const res =await axios({
+      method:"get",
+      url:"http://localhost:2002/getManager",
+      headers:{
+        Authorization:token
+      }
+    })
+    console.log(res.data)
+    props.getmanager(res.data.data)
+    console.log(props.data.manager)
   };
- 
-  ///////////newwwwwwwwwwwwwwwww
+
+  ///////////new
   const style = {
     fontSize: "17px",
     fontWeight: "bold",
@@ -171,4 +168,14 @@ const CandidateDetails = () => {
      </>
     );
 }
-export default CandidateDetails;
+const mapStateToProps=state=>{
+  return {
+    data:state.interview
+  }
+}
+const mapDispatchToProps=dispatch=>{
+  return{
+    getmanager:(data)=>{dispatch(getmanager(data))}
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(CandidateDetails);
