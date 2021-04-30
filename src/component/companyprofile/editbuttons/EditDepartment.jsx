@@ -44,6 +44,8 @@ function EditDepartment(props) {
   const [openalert, setopenalert] = useState(true);
   const [questions, setnewque] = useState(props.editdata.questions)
   const [Yesopen, SetYesopen] = useState(false);
+  const[message,setmess]=useState();
+  const[status,setstatus]=useState(null);
 
   
   async function deletedepartment(){
@@ -71,7 +73,8 @@ function EditDepartment(props) {
         Authorization:token
       }
     })
-    console.log(res.data)
+    setmess(res.data.message);
+    setstatus(res.data.status);
     props.fetchdata()
   }
   const addquestion = (newq) => {
@@ -170,7 +173,7 @@ function EditDepartment(props) {
       </button>
       <br />
 {/* delete department */}
-
+{status!=null?erroralert(message):null}
 
 <Dialog
         open={opendelete}

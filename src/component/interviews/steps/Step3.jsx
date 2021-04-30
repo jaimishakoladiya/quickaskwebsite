@@ -7,7 +7,7 @@ import * as yup from "yup";
 import AlertBox from "../../alert/AlertBox";
 import { Form, Formik, Field } from "formik";
 import Step1AddField from "./Step1AddField";
-import {addpaneldata} from "../../../redux/actions/interview/InterviewAction";
+import {addpaneldata,deletepaneldata} from "../../../redux/actions/interview/InterviewAction";
 import { connect } from "react-redux";
 const Step3 = (props) => {
   const [open, setopenalert] = useState(false);
@@ -31,11 +31,12 @@ const AddpanelCandidate =(values)=>{
   })
 }
 const deletefunction=(id)=>{
-    return setpanelArray((oldval)=>{
-      return oldval.filter((arr,index)=>{
-        return index !== id ;
-      })
-    })
+    // return setpanelArray((oldval)=>{
+    //   return oldval.filter((arr,index)=>{
+    //     return index !== id ;
+    //   })
+    // })
+    props.deletepaneldata(id)
 }
   const initialValues = {
     firstname: "",
@@ -171,7 +172,8 @@ const mapStateToProps = state =>{
 }
 const mapDispatchToProps = dispatch => {
   return{
-    addpaneldata: (newdata) => {dispatch(addpaneldata(newdata))}
+    addpaneldata: (newdata) => {dispatch(addpaneldata(newdata))},
+    deletepaneldata:(id) => {dispatch(deletepaneldata(id))}
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Step3);

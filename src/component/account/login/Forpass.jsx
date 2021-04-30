@@ -7,20 +7,25 @@ import * as yup from "yup";
 import image3 from '../../images/undraw_profile_pic_ic5t (2).svg';
 // import Loginpage from './Loginpage';
 import './forpass.css';
+import axios from "axios"
 import {Route,Switch,useHistory} from 'react-router-dom';
-import PersonIcon from '@material-ui/icons/Person';
-import InsertPhotoIcon from '@material-ui/icons/InsertPhoto';
-import LockIcon from '@material-ui/icons/Lock';
 import { Field, Form, Formik } from 'formik';
 import AlertBox from '../../alert/AlertBox';
 function Forpass()
  {
    const [openalert,setopenalert] = useState(false);
+   //const[message,setms]=useState();
    const initialValues = {
      email:''
    }
+   async function makePostRequest(data){
+     var res = await axios.post("http://localhost:2002/forgot",data)
+    //  setms(res.data.message);
+   console.log(res.data);
+   }
    const onSubmit = (values,onsubmitprops) =>{
     onsubmitprops.resetForm();
+    makePostRequest(values);
    }
    const validationSchema=yup.object({
      email:yup.string().email("Enter Valid Email").required("Email Is Required")
