@@ -18,28 +18,32 @@ import InterviewDataGrid from "../interviews/InterviewDataGrid";
 import CreateInterview from "./CreateInterview";
 
 import CreateData from "./CreateData";
+import { getmandata } from "../../redux/actions/interview/InterviewAction";
+import { connect } from "react-redux";
 
-const CandidateDetails = () => {
+const CandidateDetails = (props) => {
   const user = JSON.parse(localStorage.getItem('user'));
   const token=user.token;
-  async function getmanager(){
-    var res=await axios({
-      method:'get',
-      url:"http://localhost:2002/getManager",
-      headers:{
-        Authorization:token
-      }
-    })
-    console.log(res.data)
-  }
+ 
   const [open, SetOpen] = useState(false);
-  const OpenBox = () => {
+  const OpenBox = async() => {
     if (open == false) {
       SetOpen(true);
-      getmanager();
+      
     } else {
       SetOpen(false);
     }
+      var res = await axios({
+        method:'get',
+        url:"http://localhost:2002/getManager",
+        headers:{
+          Authorization:token
+        }
+      })
+       console.log(res.data)
+      props.getmandata(res.data.data);
+      console.log(props.data.manager)
+    
   };
 
   ///////////newwwwwwwwwwwwwwwww
@@ -170,4 +174,14 @@ const CandidateDetails = () => {
      </>
     );
 }
-export default CandidateDetails;
+const mapStateToProps=state=>{
+  return{
+    data:state.interview
+  }
+}
+const mapDispatchToProps = dispatch =>{
+  return{
+    getmandata:(newdata)=>{ dispatch(getmandata(newdata))}
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(CandidateDetails);

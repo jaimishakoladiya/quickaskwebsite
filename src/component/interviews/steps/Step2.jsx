@@ -1,10 +1,11 @@
-import React from "react";
+import React ,{useState}from "react";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import PersonIcon from "@material-ui/icons/Person";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
+import { connect } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -14,8 +15,28 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Step2 = () => {
+const Step2 = (props) => {
   const classes = useStyles();
+  console.log(props.data.manager.user);
+  const[data,setdata]=({
+    department:'',
+    job:'',
+    email:'',
+    firstname:props.data.manager.user.firstname,
+    lastname:props.data.manager.user.lastname
+  })
+   const managers=[props.data.manager.user.data,...props.data.manager.managerdata];
+   console.log(managers);
+  const department=[...props.data.manager.departmentResult];
+  console.log(department);
+  const job=[...props.data.manager.jobTitleResult];
+  console.log(job);
+  // console.log(props.data.manager.user.data.email);
+  // const[data,setdata]=useState(props.data);
+
+  // setdata(props.data.manager.user.data);
+  // console.log(data);
+
 
   return (
     <>
@@ -37,10 +58,14 @@ const Step2 = () => {
                 variant="filled"
                 id="outlined-basic"
                 placeholder="LastName"
+                name="lastname"
+                // value={data.lastname}
+
               />
             </Grid>
             <Grid item xs={4} sm={4} xl={4} md={4} className="d-flex">
               <TextField
+              // value={props.data.manager.user.data.email}
                 id="standard-select-currency-native"
                 select
                 style={{ width: "200px", marginTop: "5px" }}
@@ -77,4 +102,9 @@ const Step2 = () => {
     </>
   );
 };
-export default Step2;
+const mapStateToProps = state=>{
+  return{
+    data:state.interview
+  }
+}
+export default connect(mapStateToProps) (Step2);
