@@ -9,6 +9,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import { deletecandidatedata } from "../../../redux/actions/interview/InterviewAction";
 
 const Step1AddField = (props) => {
   console.log(props.newrecords)
@@ -28,7 +29,12 @@ const Step1AddField = (props) => {
     SetOpen(false);
     props.deletefunction(props.id);
   };
-  const handleDelete = () => {};
+  const handleDelete = () => {
+    console.log("delete");
+    handleClickOpen();
+  };
+
+  
 
   return (
 
@@ -37,9 +43,9 @@ const Step1AddField = (props) => {
         id="Chip_box"
         icon={<PersonIcon />}
         label={`${props.newrecords.firstname}  ${props.newrecords.lastname}`}
-         onClick={handleClickOpen}
+      deletequestion={deletecandidatedata}
         onDelete={handleDelete}
-        deleteIcon={<CloseIcon />}
+        // deleteIcon={<CloseIcon />}
       ></Chip>
       <Dialog
       //id="Delete_dailog"
