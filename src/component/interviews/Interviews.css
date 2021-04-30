@@ -372,8 +372,8 @@ width: auto;
   position: absolute;
   margin: 15px auto;
   margin-bottom: 100px;
-  margin-left: 300px;
-  margin-top: 158px;
+  margin-left: 200px;
+  margin-top: 110px;
   justify-content: center;
   padding: 15px 5px 10px 15px;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
@@ -386,7 +386,7 @@ width: auto;
 .view-header1 {
   
   height: 80px;
-  width: 1400px;
+  width: 1100px;
   margin: -17px;
   color: rgb(8, 8, 8);
   text-align: left;
@@ -407,36 +407,36 @@ width: auto;
 
 .view-header2 {
   height: 57px;
-  width: 1399px;
+  width: 1100px;
   margin: -17px;
-  margin-left: 299px;
-  margin-top: 236px;
+  margin-left: 200px;
+  margin-top: 187px;
   color: rgb(8, 8, 8);
   background-color: rgb(245, 202, 92);
 }
 .view-header3 {
   height: 230px;
-  width: 1399px;
+  width: 1100px;
  
-  margin-left: 299px;
+  margin-left: 200px;
   margin-top: 16px;
   color: rgb(102, 94, 94);
  
 }
 .view-pic {
-  height: 150px;
-  width: 1399px;
+  height: 140px;
+  width: 1100px;
  
-  margin-left: 299px;
+  margin-left: 200px;
   margin-top: 20px;
   color: rgb(102, 94, 94);
   background-color:#dee2e6;
 }
 #view-header4 {
-  height: 95px;
-  width: 1399px;
+  height: 70px;
+  width: 13px;
   margin: -17px;
-  margin-left: 0px;
+  margin-left: 200px;
   margin-top: -210px;
  
   

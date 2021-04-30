@@ -6,28 +6,43 @@ import Table from "@material-ui/core/Table";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import TableCell from "@material-ui/core/TableCell";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import "./Interviews.css";
-import InterviewDataGrid from "../interviews/InterviewDataGrid";
-
+import axios from "axios"
 import CreateInterview from "./CreateInterview";
 
 import CreateData from "./CreateData";
 
 const CandidateDetails = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+    const token = user.token;
+
+    async function getmanager(){
+      const res = await axios({
+      method:'get',
+      url:"http://localhost:2002/getManager",
+      headers:{
+        Authorization:token
+      }
+    })
+   
+    console.log(res.data);
+    console.log(res.data.data.user);
+    console.log(res.data.data.user.data);
+    
+    
+    }
   const [open, SetOpen] = useState(false);
   const OpenBox = () => {
     if (open == false) {
       SetOpen(true);
+      getmanager();
     } else {
       SetOpen(false);
     }
   };
-
+ 
   ///////////newwwwwwwwwwwwwwwww
   const style = {
     fontSize: "17px",

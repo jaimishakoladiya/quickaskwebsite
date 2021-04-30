@@ -15,7 +15,7 @@ import "../Company.css";
 import { makeStyles } from "@material-ui/core";
 import AlertBox from "../../alert/AlertBox";
 import QuestionsCard from "./QuestionsCard";
-import { adddeptdata, adddeptquestion, deletedeptquestion, fetchdata, getdeptdata } from "../../../redux/actions/companyprofile/companprofileAction";
+import {  fetchdata } from "../../../redux/actions/companyprofile/companprofileAction";
 import { connect } from "react-redux"
 import DisplayQuestions from "../DisplayQuestions";
 
@@ -34,10 +34,11 @@ function AddDepartment({data,fetchdata}) {
   const token = user.token;
   const [message,setmessage]=useState();
   const [status,setstatus]=useState(null);
+
   useEffect(() => {
-    
     fetchdata()
    },[])
+
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
@@ -50,7 +51,6 @@ function AddDepartment({data,fetchdata}) {
 
   async function savedepartment(data) {
 
-    
     var res = await axios({
       method: 'post',
       url: "http://localhost:2002/save-department",
@@ -71,24 +71,18 @@ function AddDepartment({data,fetchdata}) {
     
    
     setstatus(res.data.status);
+    
     setmessage(res.data.message)
+    console.log(message)
     fetchdata()
-    // const result = await axios({
-    //   method: 'get',
-    //   url: "http://localhost:2002/get-department",
-
-    //   headers: {
-    //     Authorization: token
-    //   }
-    // })
-     
-    // props.getdeptdata(result.data.result)
+    
 
    
   }
 
+
   const onSubmit = (values) => {
-    // props.adddeptdata({ ...values, questions })
+   
     savedepartment({ ...values, questions });
 
     
@@ -151,7 +145,7 @@ function AddDepartment({data,fetchdata}) {
         Add Department
       </Button>
       <br />
-{status!=null?erroralert(message):null}
+      {status != null ? erroralert(message) : null}
       <Dialog
         open={open}
         onClose={handleClose}
@@ -224,7 +218,7 @@ function AddDepartment({data,fetchdata}) {
                         ? erroralert(formik.errors.name)
                         : formik.touched.costCenter && formik.errors.costCenter
                           ? erroralert(formik.errors.costCenter)
-                          :null}
+                          : null}
 
                       <Button
                         id="dialog-cancel-btn"
@@ -266,10 +260,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    // adddeptquestion: (newquestion) => { dispatch(adddeptquestion(newquestion)) },
-    // deletedeptquestion: (id) => { dispatch(deletedeptquestion(id)) },
-    // adddeptdata: (data) => { dispatch(adddeptdata(data)) },
-    getdeptdata: (data) => { dispatch(getdeptdata(data)) },
+   
     fetchdata:()=>{dispatch(fetchdata())}
   }
 }

@@ -1,4 +1,4 @@
-import { ADD_INTERVIEW_QUESTION , DELETE_INTERVIEW_QUESTION , ADD_CANDIDATE_DATA,ADD_PANEL_DATA } from '../../types/interview/InterviewTypes'
+import { ADD_INTERVIEW_QUESTION , DELETE_INTERVIEW_QUESTION , ADD_CANDIDATE_DATA,ADD_PANEL_DATA ,DELETE_CADIDAE_DATA,DELETE_PANEL_DATA} from '../../types/interview/InterviewTypes'
 
 export const addinterviewque =(newquestion)=>{
     return{
@@ -24,4 +24,17 @@ export const addcandidatedata =(newdata)=>{
         type:ADD_PANEL_DATA,
         payload:newdata
         }
+}
+export const deletecandidatedata =(id)=>{
+    
+    return{
+        type:DELETE_CADIDAE_DATA,
+        payload:id
+    }
+}
+export const deletepaneldata = (id)=>{
+  return{
+      type:DELETE_PANEL_DATA,
+      payload:id
+  }
 }

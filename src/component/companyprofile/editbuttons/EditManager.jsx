@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Field, Formik, Form } from "formik";
 import * as yup from "yup";
 import Button from "@material-ui/core/Button";
@@ -19,9 +19,10 @@ import QuestionsCard from "../addbuttons/QuestionsCard";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { connect } from "react-redux";
-import { editdeptdata, editjobdata,deletemanagerdata ,editmanagerdata } from "../../../redux/actions/companyprofile/companprofileAction";
+import { editdeptdata, editjobdata, deletemanagerdata, editmanagerdata, fetchdata } from "../../../redux/actions/companyprofile/companprofileAction";
 import DisplayQuestions from "../DisplayQuestions"
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import axios from 'axios';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -33,15 +34,78 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: "#eef5f6",
   },
 }));
- function EditManager(props) {
-   
- 
+
+function EditManager(props) {
+  useEffect(() => {
+    getque();
+  }, [])
+  const user = JSON.parse(localStorage.getItem('user'));
+  const token = user.token;
 
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [opendelete, setOpendelete] = useState(false);
   const [openalert, setopenalert] = useState(true);
   const [Yesopen, SetYesopen] = useState(false);
+  const [question, setnewque] = useState([])
+  async function addquestion  (newq) {
+    setnewque((olditem) => {
+      return [
+        ...olditem,
+        newq
+      ]
+    })
+    
+    var res = await axios({
+      method: "post",
+      url: `http://localhost:2002/manager/save-question/${props.editdata.manager_token}`,
+      data:{...newq},
+      headers: {
+        Authorization: token
+      }
+    })
+    console.log(res.data)
+  }
+async function   deletequestion (id){
+    setnewque((olditem) => {
+      return olditem.filter((arr, index) => {
+        return index != id;
+      })
+    })
+    var id=question[id].id;
+    console.log(id);
+    var res = await axios({
+      
+      method: "get",
+      url: `http://localhost:2002/remove-department-question/${props.editdata.manager_token}/${id}`,
+      headers: {
+        Authorization: token
+      }
+    })
+    console.log(res.data)
+  };
+  async function deletemanager() {
+    var res = await axios({
+      method: "post",
+      url: `http://localhost:2002/delete-manager/${props.editdata.manager_token}/true`,
+      headers: {
+        Authorization: token
+      }
+    })
+    props.fetchdata();
+  }
+  async function getque() {
+    var resq = await axios({
+      method: 'get',
+      url: `http://localhost:2002/view-manager-question/${props.editdata.manager_token}`,
+      headers: {
+        Authorization: token
+      }
+    })
+    console.log(resq.data)
+    setnewque(resq.data.data)
+  }
+
 
   const initialValues = {
     firstname: props.editdata.firstname,
@@ -51,15 +115,16 @@ const useStyle = makeStyles((theme) => ({
 
   const onSubmit = (values) => {
     console.log(values);
-    console.log(props.editdata)
-    props.editjobdata(values,props.id)
+   props.editjobdata(values, props.id)
     setOpen(false);
-    console.log(props.editdata)
+   
   };
 
   const validationSchema = yup.object({
-    jobtitle: yup.string().required("All fields are required"),
-    department: yup.string().required("All fields are required"),
+    firstname: yup.string().required("All fields are required"),
+    lastname: yup.string().required("All fields are required"),
+    email: yup.string().email("email invalid ").required("All fields are required"),
+
   });
   const closealert = () => {
     setopenalert(false);
@@ -75,25 +140,26 @@ const useStyle = makeStyles((theme) => ({
   };
   const handleClickOpen = () => {
     setOpen(true);
-   
+
   };
   const handleClickOpen1 = () => {
-    
+
     setOpendelete(true);
   };
   const handleClose = () => {
     setOpen(false);
-   
+
   };
   const handleClose1 = () => {
- 
+
     setOpendelete(false);
   };
   const YesFunction = () => {
     SetYesopen(true);
   };
-  const managerdata  = () => {
-    props.deletemanagerdata(props.id);
+  const managerdata = () => {
+    // props.deletemanagerdata(props.id);
+    deletemanager();
     SetYesopen(false);
     handleClose1()
 
@@ -110,7 +176,7 @@ const useStyle = makeStyles((theme) => ({
       >
         <EditIcon />
       </button>
-      
+
       <button id="delete_btn" onClick={handleClickOpen1}>
         <DeleteIcon />
       </button>
@@ -124,53 +190,53 @@ const useStyle = makeStyles((theme) => ({
         aria-labelledby="max-width-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <div style={{borderTop:"10px solid darkcyan"}}>
-        <DialogTitle id="max-width-dialog-title"><h3>PLEASE CONFIRM</h3></DialogTitle>
-        <DialogContent style={{ width: "400px" }}>
-          <DialogContentText>
-      <h4>Are You Want To Sure Delete Data? </h4>
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
+        <div style={{ borderTop: "10px solid darkcyan" }}>
+          <DialogTitle id="max-width-dialog-title"><h3>PLEASE CONFIRM</h3></DialogTitle>
+          <DialogContent style={{ width: "400px" }}>
+            <DialogContentText>
+              <h4>Are You Want To Sure Delete Data? </h4>
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
 
-        
-          <Button onClick={handleClose1}
-         variant="contained" style={{ backgroundColor: "black",color:"white"}}  autoFocus>
-          <h3>Cancel</h3> 
-          </Button>
-          <Button
-         variant="contained"  onClick={YesFunction}  style={{ backgroundColor: "#dc3545",color:"white"}}  autoFocus>
-          <h3>Delete</h3> 
-          </Button>
-        </DialogActions>
+
+            <Button onClick={handleClose1}
+              variant="contained" style={{ backgroundColor: "black", color: "white" }} autoFocus>
+              <h3>Cancel</h3>
+            </Button>
+            <Button
+              variant="contained" onClick={YesFunction} style={{ backgroundColor: "#dc3545", color: "white" }} autoFocus>
+              <h3>Delete</h3>
+            </Button>
+          </DialogActions>
         </div>
         <Dialog
-              open={Yesopen}
-            onClose={handleClose1}
-              aria-labelledby="max-width-dialog-title"
-            >
-              <DialogTitle id="max-width-dialog-title">
-              <h3> Data Deleted Successfully</h3>
-           
-              </DialogTitle>
-              <DialogContent>
-                <DialogContentText>
-                  <CheckCircleIcon style={{ color: "green"}} />
-                </DialogContentText>
-              </DialogContent>
-              <Button
-                onClick={managerdata}
-                variant="contained"
-                style={{ backgroundColor: "darkcyan",color:"white" ,fontSize:"20px"}} >
-                OK
+          open={Yesopen}
+          onClose={handleClose1}
+          aria-labelledby="max-width-dialog-title"
+        >
+          <DialogTitle id="max-width-dialog-title">
+            <h3> Data Deleted Successfully</h3>
+
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              <CheckCircleIcon style={{ color: "green" }} />
+            </DialogContentText>
+          </DialogContent>
+          <Button
+            onClick={managerdata}
+            variant="contained"
+            style={{ backgroundColor: "darkcyan", color: "white", fontSize: "20px" }} >
+            OK
               </Button>
-            </Dialog>
+        </Dialog>
       </Dialog>
 
 
-{/* edit manager */}
-      
-<Dialog
+      {/* edit manager */}
+
+      <Dialog
         open={open}
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
@@ -226,6 +292,9 @@ const useStyle = makeStyles((theme) => ({
                               id="firstname"
                               variant="standard"
                               values={formik.values.firstname}
+                              InputProps={{
+                                readOnly: true,
+                              }}
                             />
                           </Grid>
                           <Grid item xs>
@@ -236,6 +305,9 @@ const useStyle = makeStyles((theme) => ({
                               id="lastname"
                               variant="standard"
                               values={formik.values.lastname}
+                              InputProps={{
+                                readOnly: true,
+                              }}
                             />
                           </Grid>
                           <Grid item xs>
@@ -246,6 +318,9 @@ const useStyle = makeStyles((theme) => ({
                               id="email"
                               variant="standard"
                               values={formik.values.email}
+                              InputProps={{
+                                readOnly: true,
+                              }}
                             />
                           </Grid>
                         </Grid>
@@ -259,7 +334,7 @@ const useStyle = makeStyles((theme) => ({
 
 
                       </Grid>
-                      {/* <DisplayQuestions question={props.data.managerquestion} deletequestion={props.deletemanagerquestion} /> */}
+                      <DisplayQuestions question={question} deletequestion={deletequestion} />
                       <br />
 
                       {formik.errors.firstname
@@ -292,29 +367,30 @@ const useStyle = makeStyles((theme) => ({
                 );
               }}
             </Formik>
-            <QuestionsCard question={props.data} addquestion={props.addmanagerquestion} />
+            <QuestionsCard addquestion={addquestion} />
           </DialogContentText>
         </DialogContent>
       </Dialog>
     </div>
   );
 }
-const mapStateToProps = (state,ownprops)=>{
+const mapStateToProps = (state, ownprops) => {
   // const data=state.companyprofile.deptdata.filter((item,index)=>{
   //   return index === ownprops.id
   // })
-  return{
-    
-    editdata:state.companyprofile.manager[ownprops.id]
+  return {
+
+    editdata: state.companyprofile.manager[ownprops.id]
 
   }
 }
 
-const mapDispatchToProps= dispatch =>{
-  return { 
-    editjobdata:(data,id)=>{dispatch(editjobdata(data,id))},
-   deletemanagerdata:(id)=>{dispatch(deletemanagerdata(id))},
-    editmanagerdata:(data,id)=>{dispatch(editmanagerdata(data,id))}
+const mapDispatchToProps = dispatch => {
+  return {
+    editjobdata: (data, id) => { dispatch(editjobdata(data, id)) },
+    deletemanagerdata: (id) => { dispatch(deletemanagerdata(id)) },
+    editmanagerdata: (data, id) => { dispatch(editmanagerdata(data, id)) },
+    fetchdata: () => { dispatch(fetchdata()) }
   }
 }
-export default connect (mapStateToProps,mapDispatchToProps)(EditManager)
+export default connect(mapStateToProps, mapDispatchToProps)(EditManager)
