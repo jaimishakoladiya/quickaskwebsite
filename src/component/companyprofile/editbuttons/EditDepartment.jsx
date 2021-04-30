@@ -116,7 +116,7 @@ function EditDepartment(props) {
   }
 
   const onSubmit = (values) => {
-console.log({...values,questions})
+ console.log({...values,questions})
     
      updatedepartment({...values,questions})
     setOpen(false);

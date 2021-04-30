@@ -1,9 +1,11 @@
-import { ADD_INTERVIEW_QUESTION , DELETE_INTERVIEW_QUESTION,ADD_CANDIDATE_DATA,ADD_PANEL_DATA ,DELETE_CADIDAE_DATA,DELETE_PANEL_DATA,GET_MANAGER} from "../../types/interview/InterviewTypes"
+import { ADD_INTERVIEW_QUESTION , DELETE_INTERVIEW_QUESTION,ADD_CANDIDATE_DATA,ADD_PANEL_DATA 
+    ,DELETE_CADIDAE_DATA,DELETE_PANEL_DATA,GET_MANAGER,GET_ORGANIZATION_INFO,DELETE_ORGANIZATION_INFO} from "../../types/interview/InterviewTypes"
 const initialstate = {
     interviewque:[],
     candidatedata:[],
     paneldata:[],
-    manager:[]
+    manager:[],
+    orginfo:[]
 }
 
 const InterviewReducer =(state=initialstate,action)=>{
@@ -34,6 +36,12 @@ const InterviewReducer =(state=initialstate,action)=>{
                         paneldata:[...state.paneldata,action.payload]
 
                     }
+                case GET_ORGANIZATION_INFO:
+                    console.log(action.payload)
+                    return{
+                        ...state,
+                        orginfo:[...state.orginfo,action.payload]
+                    }
                     case DELETE_CADIDAE_DATA :
                         return{
                             
@@ -51,6 +59,13 @@ const InterviewReducer =(state=initialstate,action)=>{
                         ...state,
                         manager:action.payload
                     }
+                case DELETE_ORGANIZATION_INFO:{
+                    return{
+                        ...state,
+                        orginfo:state.orginfo.filter((item,id)=>id !== action.payload)
+                    }
+                }
+
         default : 
             return{
                 ...state

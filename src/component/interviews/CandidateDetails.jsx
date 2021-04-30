@@ -23,7 +23,7 @@ const CandidateDetails = (props) => {
   const OpenBox = async () => {
     if (open == false) {
       SetOpen(true);
-      getmanager();
+      
     } else {
       SetOpen(false);
     }
