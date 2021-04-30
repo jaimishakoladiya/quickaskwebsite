@@ -1,4 +1,4 @@
-import { ADD_INTERVIEW_QUESTION , DELETE_INTERVIEW_QUESTION , ADD_CANDIDATE_DATA,ADD_PANEL_DATA ,GET_MAN_DATA} from '../../types/interview/InterviewTypes'
+import { ADD_INTERVIEW_QUESTION , DELETE_INTERVIEW_QUESTION , ADD_CANDIDATE_DATA,ADD_PANEL_DATA ,GET_MANAGER} from '../../types/interview/InterviewTypes'
 
 export const addinterviewque =(newquestion)=>{
     return{
@@ -25,9 +25,10 @@ export const addcandidatedata =(newdata)=>{
         payload:newdata
         }
 }
-export const getmandata=(newdata)=>{
+
+export const getmanager=(data)=>{
     return{
-        type:GET_MAN_DATA,
-        payload:newdata
+        type:GET_MANAGER,
+        payload:data
     }
 }

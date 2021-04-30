@@ -1,4 +1,4 @@
-import { ADD_INTERVIEW_QUESTION , DELETE_INTERVIEW_QUESTION,ADD_CANDIDATE_DATA,ADD_PANEL_DATA ,GET_MAN_DATA} from "../../types/interview/InterviewTypes"
+import { ADD_INTERVIEW_QUESTION , DELETE_INTERVIEW_QUESTION,ADD_CANDIDATE_DATA,ADD_PANEL_DATA, GET_MANAGER } from "../../types/interview/InterviewTypes"
 const initialstate = {
     interviewque:[],
     candidatedata:[],
@@ -29,11 +29,11 @@ const InterviewReducer =(state=initialstate,action)=>{
                         paneldata:[...state.paneldata,action.payload]
 
                     }
-                case GET_MAN_DATA:
-                   return{
-                       ...state,
-                       manager:action.payload
-                   }
+                case GET_MANAGER:
+                    return{
+                        ...state,
+                        manager:action.payload
+                    }
         default : 
             return{
                 ...state

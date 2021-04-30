@@ -12,41 +12,39 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import "./Interviews.css";
-import axios from 'axios';
-import InterviewDataGrid from "../interviews/InterviewDataGrid";
+
 
 import CreateInterview from "./CreateInterview";
-
+import {connect} from 'react-redux';
 import CreateData from "./CreateData";
-import { getmandata } from "../../redux/actions/interview/InterviewAction";
-import { connect } from "react-redux";
+import axios from "axios";
+import { getmanager } from "../../redux/actions/interview/InterviewAction";
 
 const CandidateDetails = (props) => {
-  const user = JSON.parse(localStorage.getItem('user'));
-  const token=user.token;
- 
   const [open, SetOpen] = useState(false);
-  const OpenBox = async() => {
+  const user=JSON.parse(localStorage.getItem('user'));
+  const token=user.token;
+  const OpenBox = async () => {
     if (open == false) {
       SetOpen(true);
       
     } else {
       SetOpen(false);
     }
-      var res = await axios({
-        method:'get',
-        url:"http://localhost:2002/getManager",
-        headers:{
-          Authorization:token
-        }
-      })
-       console.log(res.data)
-      props.getmandata(res.data.data);
-      console.log(props.data.manager)
-    
+
+    const res =await axios({
+      method:"get",
+      url:"http://localhost:2002/getManager",
+      headers:{
+        Authorization:token
+      }
+    })
+    console.log(res.data)
+    props.getmanager(res.data.data)
+    console.log(props.data.manager)
   };
 
-  ///////////newwwwwwwwwwwwwwwww
+  ///////////new
   const style = {
     fontSize: "17px",
     fontWeight: "bold",
@@ -175,13 +173,13 @@ const CandidateDetails = (props) => {
     );
 }
 const mapStateToProps=state=>{
-  return{
+  return {
     data:state.interview
   }
 }
-const mapDispatchToProps = dispatch =>{
+const mapDispatchToProps=dispatch=>{
   return{
-    getmandata:(newdata)=>{ dispatch(getmandata(newdata))}
+    getmanager:(data)=>{dispatch(getmanager(data))}
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(CandidateDetails);
