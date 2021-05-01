@@ -59,8 +59,16 @@ function AddDepartment({data,fetchdata}) {
         Authorization: token
       }
     })
-   
+    const result = await axios({
+      method: 'get',
+      url: "http://localhost:2002/get-department",
 
+      headers: {
+        Authorization: token
+      }
+    })
+     
+    
    
     setstatus(res.data.status);
     
@@ -88,6 +96,7 @@ function AddDepartment({data,fetchdata}) {
   });
 
   const addquestion = (newq) => {
+    
 
     setnewque((olditem) => {
       return [...olditem,

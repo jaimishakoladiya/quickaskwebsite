@@ -8,8 +8,13 @@ import { connect } from "react-redux";
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from "@material-ui/core/FormControl";
 import NativeSelect from "@material-ui/core/NativeSelect";
+import {deleteorginfo, getorginfo} from "../../../redux/actions/interview/InterviewAction"; 
+import Step1AddField from "./Step1AddField";
+
+
 
 const useStyles = makeStyles((theme) => ({
+  
   container: {
     display: "grid",
     gridTemplateColumns: "repeat(12, 1fr)",
@@ -18,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Step2 = (props) => {
-
+  const [isdisabled,setdisabled]=useState(false)
   const [data, setdata] = useState({
     department: '',
     email: '',
@@ -104,7 +109,15 @@ const Step2 = (props) => {
     console.log(data)
 
   }
+  const addorginfodata=()=>{
+    props.getorginfo(data);
+    setdisabled(true);
+  }
+const deletefunction=(id)=>{
+  props.deleteorginfo(id)
+  setdisabled(false);
 
+}
   return (
     <>
       <div className="step2">
@@ -119,6 +132,7 @@ const Step2 = (props) => {
                 placeholder="FirstName"
                 name="firstname"
                 value={data.firstname}
+                disabled={isdisabled}
               />
             </Grid>
             <Grid item xs={4} sm={4} xl={4} md={4} className="d-flex">
@@ -129,6 +143,8 @@ const Step2 = (props) => {
                 placeholder="LastName"
                 name="lastname"
                 value={data.lastname}
+                disabled={isdisabled}
+
               />
             </Grid>
             <Grid item xs={4} sm={4} xl={4} md={4} className="d-flex">
@@ -138,6 +154,8 @@ const Step2 = (props) => {
                   name='email'
                   value={data.email}
                   onChange={inputchange}
+                disabled={isdisabled}
+
                 >
                   {/* <option value="none">--select--</option> */}
                   {getemails()}
@@ -156,6 +174,7 @@ const Step2 = (props) => {
                 name='department'
                 value={data.department}
                 onChange={inputchange}
+                disabled={isdisabled}
                 inputProps={{ 'aria-label': 'job' }}
               >
                 <option value="" disabled> --Select Department--</option>
@@ -170,6 +189,8 @@ const Step2 = (props) => {
                 value={data.job}
                 onChange={inputchange}
                 name="job"
+                disabled={isdisabled}
+
                 inputProps={{ 'aria-label': 'job' }}
               >
                 <option value="" disabled> --Select Job Title--</option>
@@ -179,10 +200,20 @@ const Step2 = (props) => {
           </Grid>
         </Grid>
         <div className="step2-Add">
-          <Button variant="contained" color="secondary">
+          <Button onClick={addorginfodata}
+          disabled={isdisabled}
+          variant="contained" color="secondary">
             ADD
           </Button>
         </div>
+        {
+          props.data.orginfo.map((item,index)=>{
+            return <Step1AddField
+                  id={index}
+                  newrecords={item}
+                  deletefunction={deletefunction}></Step1AddField>
+          })
+        }
       </div>
     </>
   );
@@ -192,4 +223,10 @@ const mapStateToProps = state => {
     data: state.interview
   }
 }
-export default connect(mapStateToProps)(Step2);
+const mapDispatchToProps=dispatch=>{
+  return{
+    getorginfo:(newdata)=>{dispatch(getorginfo(newdata))},
+    deleteorginfo:(id)=>{dispatch(deleteorginfo(id))}
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Step2);

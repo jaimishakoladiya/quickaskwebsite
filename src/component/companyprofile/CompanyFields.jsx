@@ -3,7 +3,6 @@ import TextField from "@material-ui/core/TextField";
 import FormControl from "@material-ui/core/FormControl";
 import NativeSelect from "@material-ui/core/NativeSelect";
 import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
 import AlertBox from '../alert/AlertBox';
@@ -92,10 +91,12 @@ const erroralert = (error) => {
 
 return (
     <>
+    
       <TextField
         style={field1}
         id="standard-basic"
         label="FirstName"
+        name="firstname"
         variant="standard"
         name="firstname"
          value={inputvalue.firstname}
@@ -105,20 +106,22 @@ return (
         style={field1}
         id="standard-basic"
         label="LastName"
+        name="lastname"
         variant="standard"
         name="lastname"
          value={inputvalue.lastname}
        onChange={inputfieldfunction}
 
       />
+     
       <br></br>
       <br></br>
       {status!=null?erroralert(message):null}
-
       <TextField
         style={field}
         id="standard-basic"
         label="CompanyName"
+        name="company_name"
         variant="standard"
         name="company_name"
         value={inputvalue.company_name}
@@ -160,7 +163,7 @@ return (
       </FormControl>
       <br></br>
       <br></br>
-
+  
       <TextField
         style={field}
         id="standard-basic"
@@ -214,5 +217,4 @@ return (
     </>
   );
 };
-
 export default CompanyFields;

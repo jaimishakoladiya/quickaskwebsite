@@ -9,7 +9,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-
+import { connect } from "react-redux";
 const Step1AddField = (props) => {
   console.log(props.newrecords)
   const [open, SetOpen] = useState(false);
@@ -19,16 +19,25 @@ const Step1AddField = (props) => {
   };
   const handleClickClose = () => {
     SetOpen(false);
+    
   };
   const YesFunction = () => {
     SetYesopen(true);
   };
+ 
   const OKFunction = () => {
+    props.deletefunction(props.id)
     SetYesopen(false);
     SetOpen(false);
-    props.deletefunction(props.id);
+    
+   
   };
-  const handleDelete = () => {};
+  const handleDelete = () => {
+    console.log("delete");
+    handleClickOpen();
+  };
+
+  
 
   return (
 
@@ -37,9 +46,9 @@ const Step1AddField = (props) => {
         id="Chip_box"
         icon={<PersonIcon />}
         label={`${props.newrecords.firstname}  ${props.newrecords.lastname}`}
-         onClick={handleClickOpen}
+      // deletequestion={deletecandidatedata}
         onDelete={handleDelete}
-        deleteIcon={<CloseIcon />}
+        // deleteIcon={<CloseIcon />}
       ></Chip>
       <Dialog
       //id="Delete_dailog"
@@ -60,7 +69,7 @@ const Step1AddField = (props) => {
             >
               Cancle
             </Button>
-            <Button onClick={YesFunction} variant="contained" color="secondary">
+            <Button onClick={YesFunction} variant="contained" color="secondary" >
               Delete
             </Button>
             <Dialog
@@ -91,4 +100,15 @@ const Step1AddField = (props) => {
     </>
   );
 };
+// const mapStateToProps = () => {
+  
+// }
+// const mapDispatchToProps = dispatch => {
+//   return {
+    
+   
+   
+//   }
+// }
 export default Step1AddField;
+

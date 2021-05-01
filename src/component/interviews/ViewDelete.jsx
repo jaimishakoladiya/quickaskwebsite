@@ -1,62 +1,3 @@
-// import React from 'react'
-// import VisibilityIcon from '@material-ui/icons/Visibility';
-// import DeleteIcon from '@material-ui/icons/Delete';
-// import Button from '@material-ui/core/Button';
-// import { useHistory } from 'react-router-dom';
-// import { useState } from 'react';
-// import ButtonDelete from './steps/ButtonDelete';
-// import AlertBox from './../alert/AlertBox';
-
-// function ViewDelete() {
-// //   const history=useHistory();
-// //   const [opendelete,setopendelete] = useState(true);
-// //   const [openalert, setopenalert] = useState(true);
-  
- 
-
-// // const closedelete =()=>{
-// //   setopendelete(false);
-
-// // };
-// //   const deletealert =()=>{
-// //     console.log("fgh")
-// //     setopendelete(true);
-// //     return <ButtonDelete
-// //     opendelete={opendelete}
-// //     closedelete={closedelete}
-// //       />
-  
-// //   };
-//   // const closealert = () => {
-//   //   setopenalert(false);
-//   // };
-//   // const erroralert = () => {
-//   //   setopenalert(true);
-//   //   return (
-//   //     <AlertBox
-//   //       setopenalert={openalert}
-//   //       closealert={closealert}
-      
-//   //     />
-//   //   );
-//   // }; 
-//     return (
-//         <>
-//       <button id="edit_btn">
-//        <VisibilityIcon/>
-//          </button>
-//          {/* {deletealert}
-//        <button id="delete_btn"
-//          onClick={() => {
-//            console.log("hg");
-//            setopendelete(true);
-//              }} > <DeleteIcon/> 
-//          </button> */}
-//         </>
-//     )
-// }
-
-// export default ViewDelete
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -66,7 +7,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
  import VisibilityIcon from '@material-ui/icons/Visibility';
   import DeleteIcon from '@material-ui/icons/Delete';
- import { connect } from 'react-redux';
+  import { useHistory } from "react-router-dom";
 
 
 
@@ -76,7 +17,7 @@ function  ViewDelete(props) {
   const handleClickOpen = () => {
     setOpen(true);
   };
-
+  const history = useHistory();
   const handleClose = () => {
     setOpen(false);
   };
@@ -84,7 +25,7 @@ function  ViewDelete(props) {
   return (
     <div>
         
-        <button id="edit_btn">       <VisibilityIcon/>
+        <button id="edit_btn" onClick={() => history.push("/viewrecord")}>       <VisibilityIcon/>
          </button>
        
        <button id="delete_btn"  onClick={handleClickOpen} > <DeleteIcon/> 
