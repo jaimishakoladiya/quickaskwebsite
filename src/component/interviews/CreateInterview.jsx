@@ -13,8 +13,10 @@ import Step1 from "./steps/Step1";
 import Step2 from "./steps/Step2";
 import Step3 from "./steps/Step3";
 import Step4 from "./steps/Step4";
+import { connect } from "react-redux";
 
-const CreateInterview = () => {
+const CreateInterview = (props) => {
+  console.log(props.data)
   const useStyles = makeStyles((theme) => ({
     root: {
       width: "100%",
@@ -128,4 +130,9 @@ const CreateInterview = () => {
   
   );
 };
-export default CreateInterview;
+const mapStateToProps=state=>{
+  return {
+    data:state.interview
+  }
+}
+export default connect(mapStateToProps)(CreateInterview);
