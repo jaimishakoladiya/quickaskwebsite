@@ -46,7 +46,7 @@ const InterviewReducer =(state=initialstate,action)=>{
                         return{
                             
                             ...state,
-                            candidatedata:state.candidatedata.filter((item,id)=> id !== action.payload)
+                            candidate:state.candidate.splice(action.payload,action.payload)
                         }
                         case DELETE_PANEL_DATA : 
                         return{
@@ -62,7 +62,7 @@ const InterviewReducer =(state=initialstate,action)=>{
                 case DELETE_ORGANIZATION_INFO:{
                     return{
                         ...state,
-                        orginfo:state.orginfo.filter((item,id)=>id !== action.payload)
+                        orginfo:state.orginfo.splice(action.payload,action.payload)
                     }
                 }
 

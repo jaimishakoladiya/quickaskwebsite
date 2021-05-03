@@ -10,7 +10,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import { connect } from "react-redux";
-const Step1AddField = (props) => {
+const Step3AddPanel = (props) => {
   console.log(props.newrecords)
   const [open, SetOpen] = useState(false);
   const [Yesopen, SetYesopen] = useState(false);
@@ -45,7 +45,7 @@ const Step1AddField = (props) => {
       <Chip
         id="Chip_box"
         icon={<PersonIcon />}
-        label={`${props.newrecords.first_name}  ${props.newrecords.last_name}`}
+        label={`${props.newrecords.firstName}  ${props.newrecords.lastName}`}
       // deletequestion={deletecandidatedata}
         onDelete={handleDelete}
         // deleteIcon={<CloseIcon />}
@@ -111,5 +111,5 @@ const Step1AddField = (props) => {
    
 //   }
 // }
-export default Step1AddField;
+export default Step3AddPanel;
 

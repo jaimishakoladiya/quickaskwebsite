@@ -9,6 +9,7 @@ import { Form, Formik, Field } from "formik";
 import Step1AddField from "./Step1AddField";
 import {addpaneldata,deletepaneldata} from "../../../redux/actions/interview/InterviewAction";
 import { connect } from "react-redux";
+import Step3AddPanel from "./Step3AddPanel";
 const Step3 = (props) => {
   const [open, setopenalert] = useState(false);
   const [panelcandidate , setpanelcandidate] = useState({
@@ -149,7 +150,7 @@ const deletefunction=(id)=>{
                            {
                              props.newdata.panel.map((item,index)=>{
                                return(
-                             <Step1AddField newrecords={panelcandidate}
+                             <Step3AddPanel newrecords={panelcandidate}
                            deletefunction={deletefunction}
                            newrecords={props.newdata.panel[index]}
                            id={index}/>)

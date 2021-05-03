@@ -50,7 +50,7 @@ const Step4 = (props) => {
       managerid=item.manager_token;
     }
   })
-  console.log(managerid)
+
   
   const getdeptquestions=async ()=>{
     const res=await axios({
@@ -77,14 +77,14 @@ const Step4 = (props) => {
         Authorization:token
       }
     })
-  console.log(res.data)
-  //   setquestions((olditem)=>{
-  //     return {
-  //       ...olditem,
-  //      test:[...olditem.test,...res.data.data[0].questions]
-  //     }
-  //   })
-  //   console.log(question_bank)
+  console.log(res.data.data[0].questions)
+    setquestions((olditem)=>{
+      return {
+        ...olditem,
+       test:[...olditem.test,...res.data.data[0].questions]
+      }
+    })
+    console.log(question_bank)
    }
   const getmanagerquestions=async ()=>{
     const res=await axios({

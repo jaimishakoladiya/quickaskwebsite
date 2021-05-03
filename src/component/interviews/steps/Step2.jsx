@@ -46,8 +46,8 @@ const Step2 = (props) => {
         setdata((olditem) => {
           return {
             ...olditem,
-            first_name: item.first_name,
-            last_name: item.last_name
+            first_name: item.firstname,
+            last_name: item.lastname
           }
         })
       }
@@ -141,7 +141,7 @@ const deletefunction=(id)=>{
               <TextField
                 variant="filled"
                 id="outlined-basic"
-                placeholder="LasName"
+                placeholder="LastName"
                 name="last_name"
                 value={data.last_name}
                 disabled={isdisabled}
