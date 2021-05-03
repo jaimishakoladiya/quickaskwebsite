@@ -100,6 +100,7 @@ const Step2 = (props) => {
 
   const inputchange = (event) => {
     const { name, value } = event.target;
+    
     setdata((olditem) => {
       return {
         ...olditem,
