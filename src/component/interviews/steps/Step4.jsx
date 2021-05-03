@@ -21,13 +21,13 @@ const Step4 = (props) => {
   var departmentid;
   var  jobid;
   var managerid;
-  const department=props.data.manager.departmentResult;
-  const job=props.data.manager.jobTitleResult;
+  const department=props.data.managers.departmentResult;
+  const job=props.data.managers.jobTitleResult;
 
-  const manager=props.data.manager.managerdata;
+  const manager=props.data.managers.managerdata;
   console.log(manager)
   const [question_bank,setquestions]=useState({
-    department:'',
+    department:props.data.orginfo[0].department,
     test:[]
   })
   department.map((item,index)=>{
@@ -39,7 +39,7 @@ const Step4 = (props) => {
   })
   job.map((item,index)=>{
     item['job-title'].map((val)=>{
-      if(props.data.orginfo[0].job===val.title){
+      if(props.data.orginfo[0].jobTitle===val.title){
         jobid=val.job_detail_id
       }
     })
@@ -50,7 +50,7 @@ const Step4 = (props) => {
       managerid=item.manager_token;
     }
   })
-  console.log(managerid)
+
   
   const getdeptquestions=async ()=>{
     const res=await axios({
@@ -77,7 +77,7 @@ const Step4 = (props) => {
         Authorization:token
       }
     })
-  
+  console.log(res.data.data[0].questions)
     setquestions((olditem)=>{
       return {
         ...olditem,
@@ -85,7 +85,7 @@ const Step4 = (props) => {
       }
     })
     console.log(question_bank)
-  }
+   }
   const getmanagerquestions=async ()=>{
     const res=await axios({
       method:"get",
@@ -129,6 +129,7 @@ const Step4 = (props) => {
   }
   return (
     <>
+
       <div className="step4">
         <QuestionsCard
           addquestion={addquestion}
@@ -175,6 +176,7 @@ const mapDispatchToProps = (dispatch) => {
     deleteinterviewque: (id) => {
       dispatch(deleteinterviewque(id));
     },
+    
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Step4);
