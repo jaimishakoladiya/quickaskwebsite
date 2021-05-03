@@ -169,6 +169,7 @@ export const fetchdata =  () => {
                 }
               })
               
+              console.log(manager.data)
            dispatch(getdeptdata(dept.data))
            dispatch(getjobdata(job.data))
            dispatch(getmanagerdata(manager.data.data))

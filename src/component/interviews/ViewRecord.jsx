@@ -11,6 +11,7 @@ import StarIcon from '@material-ui/icons/Star';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import img2 from "../../component/images/undraw_profile_pic_ic5t (2).svg"
+import InterviewShareGrid from "./InterviewShareGrid"
 import './Interviews.css';
 function ViewRecord() {
  const rowcss = {
@@ -27,6 +28,7 @@ function ViewRecord() {
  
 }
 
+
     return (
         
             <>
@@ -35,8 +37,7 @@ function ViewRecord() {
           <h5>WEB</h5>
           <Button variant="contained"  onClick={printfun} color="secondary" style={{marginLeft:"700px",fontSize:"12pt",height:"50px"}}>
               Print</Button>
-              <Button variant="contained" color="secondary" style={{marginLeft:"30px",fontSize:"12pt",height:"50px"}} >
-              Share Grid</Button>
+              <InterviewShareGrid/>
           </div>
           </div>
           <div className="view-header2">

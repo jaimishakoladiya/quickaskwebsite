@@ -27,14 +27,14 @@ const Step2 = (props) => {
   const [data, setdata] = useState({
     department: '',
     email: '',
-    job: '',
-    firstname: props.data.manager.user.data.firstname,
-    lastname: props.data.manager.user.data.lastname
+    jobTitle: '',
+    first_name: props.data.managers.user.data.firstname,
+    last_name: props.data.managers.user.data.lastname
   });
-  const managers = [props.data.manager.user.data, ...props.data.manager.managerdata];
-  const department = [...props.data.manager.departmentResult];
-  const job = [...props.data.manager.jobTitleResult];
-  console.log(job)
+  const managers = [props.data.managers.user.data, ...props.data.managers.managerdata];
+  const department = [...props.data.managers.departmentResult];
+  const job = [...props.data.managers.jobTitleResult];
+  // console.log(job)
   useEffect(() => {
     getname()
   }, [data.email])
@@ -42,12 +42,12 @@ const Step2 = (props) => {
   const getname = () => {
     managers.map((item) => {
       if (item.email === data.email) {
-        console.log(item.firstname)
+        // console.log(item.firstname)
         setdata((olditem) => {
           return {
             ...olditem,
-            firstname: item.firstname,
-            lastname: item.lastname
+            first_name: item.first_name,
+            last_name: item.last_name
           }
         })
       }
@@ -55,7 +55,7 @@ const Step2 = (props) => {
   }
 
   const getemails = () => {
-    let useremail=props.data.manager.user.data.email;
+    let useremail=props.data.managers.user.data.email;
     let items = [];
     items.push(
       <option value={useremail}>{useremail}</option>
@@ -100,6 +100,7 @@ const Step2 = (props) => {
 
   const inputchange = (event) => {
     const { name, value } = event.target;
+    
     setdata((olditem) => {
       return {
         ...olditem,
@@ -130,8 +131,8 @@ const deletefunction=(id)=>{
                 variant="filled"
                 id="outlined-basic"
                 placeholder="FirstName"
-                name="firstname"
-                value={data.firstname}
+                name="first_name"
+                value={data.first_name}
                 disabled={isdisabled}
               />
             </Grid>
@@ -140,9 +141,9 @@ const deletefunction=(id)=>{
               <TextField
                 variant="filled"
                 id="outlined-basic"
-                placeholder="LastName"
-                name="lastname"
-                value={data.lastname}
+                placeholder="LasName"
+                name="last_name"
+                value={data.last_name}
                 disabled={isdisabled}
 
               />
@@ -186,9 +187,9 @@ const deletefunction=(id)=>{
 
             <FormControl style={{ width: "200px", marginTop: "10px" }}>
               <NativeSelect
-                value={data.job}
+                value={data.jobTitle}
                 onChange={inputchange}
-                name="job"
+                name="jobTitle"
                 disabled={isdisabled}
 
                 inputProps={{ 'aria-label': 'job' }}

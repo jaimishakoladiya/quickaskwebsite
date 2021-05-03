@@ -96,6 +96,7 @@ function AddDepartment({data,fetchdata}) {
   });
 
   const addquestion = (newq) => {
+    
 
     setnewque((olditem) => {
       return [...olditem,

@@ -30,9 +30,7 @@ function  ViewDelete(props) {
        
        <button id="delete_btn"  onClick={handleClickOpen} > <DeleteIcon/> 
          </button> 
-      {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Open alert dialog
-      </Button> */}
+      
       <Dialog
         open={open}
         onClose={handleClose}

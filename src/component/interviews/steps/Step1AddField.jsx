@@ -32,7 +32,12 @@ const Step1AddField = (props) => {
     
    
   };
-  const handleDelete = () => {};
+  const handleDelete = () => {
+    console.log("delete");
+    handleClickOpen();
+  };
+
+  
 
   return (
 
@@ -40,10 +45,10 @@ const Step1AddField = (props) => {
       <Chip
         id="Chip_box"
         icon={<PersonIcon />}
-        label={`${props.newrecords.firstname}  ${props.newrecords.lastname}`}
-         onClick={handleClickOpen}
+        label={`${props.newrecords.first_name}  ${props.newrecords.last_name}`}
+      // deletequestion={deletecandidatedata}
         onDelete={handleDelete}
-        deleteIcon={<CloseIcon />}
+        // deleteIcon={<CloseIcon />}
       ></Chip>
       <Dialog
       //id="Delete_dailog"

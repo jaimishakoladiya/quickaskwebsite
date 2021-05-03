@@ -194,12 +194,12 @@ const Step1 = (props) => {
                     <div>
                       
                        {
-                         props.newdata.candidatedata.map((item,index)=>{
+                         props.newdata.candidate.map((item,index)=>{
                            return(
                           <Step1AddField
                             id={index}
                             deletefunction={deletefunction}
-                            newrecords={props.newdata.candidatedata[index]}
+                            newrecords={props.newdata.candidate[index]}
                           />
                           ) })}
                     </div>
