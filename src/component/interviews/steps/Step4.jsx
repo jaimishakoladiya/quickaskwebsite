@@ -13,12 +13,14 @@ import DisplayQuestions from "../../companyprofile/DisplayQuestions";
 import { connect } from "react-redux";
 
 const Step4 = (props) => {
+  console.log(props.data.orginfo);
   return (
     <>
+
       <div className="step4">
         <QuestionsCard
           addquestion={props.addinterviewque}
-          question={props.interviewque}
+          question={props.data}
         />
         {/* <QuestionsCard/> */}
         <br></br>
@@ -41,7 +43,7 @@ const Step4 = (props) => {
         </div>
         <DisplayQuestions
           deletequestion={props.deleteinterviewque}
-          question={props.interviewque.interviewque}
+          question={props.data.interviewque}
         />
       </div>
     </>
@@ -49,7 +51,7 @@ const Step4 = (props) => {
 };
 const mapStateToProps = (state) => {
   return {
-    interviewque: state.interview,
+    data: state.interview,
   };
 };
 
@@ -61,6 +63,7 @@ const mapDispatchToProps = (dispatch) => {
     deleteinterviewque: (id) => {
       dispatch(deleteinterviewque(id));
     },
+    
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Step4);
