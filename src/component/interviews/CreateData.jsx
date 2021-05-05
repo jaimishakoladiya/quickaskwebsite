@@ -113,10 +113,16 @@ Row.propTypes = {
     protein: PropTypes.number.isRequired,
   }).isRequired,
 };
+
 const n=[1,2,3]
+// const department = [...props.data.managers.departmentResult];
+//   const job = [...props.data.managers.jobTitleResult];
+ const newdate=new Date().toLocaleDateString();
+ 
+
 const rows = [];
    n.map((item,index)=>{
-    rows.push(createData('2021-2-3','web','android','ck',1,'3mins',<ViewDelete/>))
+    rows.push(createData(newdate,'bhhjbhj','android','ck',1,'3mins',<ViewDelete/>))
   })
 export default function CreateData() {
   return (

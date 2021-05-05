@@ -15,6 +15,7 @@ import {connect} from 'react-redux';
 import CreateData from "./CreateData";
 import axios from "axios";
 import { getmanager } from "../../redux/actions/interview/InterviewAction";
+import AdminView from "./AdminView";
 
 const CandidateDetails = (props) => {
   const [open, SetOpen] = useState(false);
@@ -114,57 +115,8 @@ const CandidateDetails = (props) => {
       <br></br>
       {open == true ? <CreateInterview /> : null}
       <br></br>
-
-      <div className="detail-data">
-        <div className="detail-header1">
-          <h5>ALLCANDIDATES</h5>
-          <div className="detail-input">
-            Search
-            <TextField
-              type="date"
-              style={{ margin: "12px" }}
-              id="outlined-basic"
-              variant="outlined"
-            />
-            <TextField
-              id="outlined-basic"
-              label="By Name or ID"
-              variant="outlined"
-            />
-          </div>
-        </div>
+  
      
-       <div className="detail-header2">
-    
-       <TableContainer >
-        <Table aria-label="customized table">
-        <TableHead id="headercss" >
-            <TableRow id="headercss" >
-            
-              <TableHead id="headercss">Date</TableHead>
-             <TableHead id="headercss" >JobTitle</TableHead>
-           <TableHead id="headercss" >Department</TableHead>
-            <TableHead id="headercss" >Manager</TableHead>
-            <TableHead id="headercss" >Candidate</TableHead>
-            <TableHead id="headercss" >Duration</TableHead>
-            <TableHead id="headercss" >Action</TableHead>
-            </TableRow>
-          </TableHead>
-       
-          <TableRow>
-          <div className="interview_card1">
-         <CreateData/>    </div> </TableRow>
-          
- 
-
-        </Table>
-        
-        </TableContainer> 
-      
-    
- 
-     </div>
-     </div>
      </>
     );
 }

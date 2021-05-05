@@ -60,13 +60,11 @@ function Navbar2() {
         <nav className="second">
           <ul>
             <li>
-              <a href="#" className="a">
-                INTERVIEW DASHBOARD
-              </a>
+              <NavLink to="/adminview" className="a">
+           ADMIN VIEW
+              </NavLink>
             </li>
-            {/* <li className="sub-menu"><a href="#" className="a">COMPANY PROFILE </a>
-
-            </li> */}
+           
             <li>
               <NavLink to="/companyprofilepage" className="a">
                 COMPANY PROFILE
