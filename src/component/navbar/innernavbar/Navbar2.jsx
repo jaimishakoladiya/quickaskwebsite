@@ -8,6 +8,8 @@ function Navbar2() {
   return (
     <div>
       <header>
+
+      
         <div className="out-nav-logo">
           <img src={img} className="out-nav-logo" />
         </div>
@@ -28,7 +30,7 @@ function Navbar2() {
             </li>
             <li>
               <a href="#" className="activename">
-                NAME
+                chandani khanesha 
               </a>
             </li>
           </ul>
