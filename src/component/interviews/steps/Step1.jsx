@@ -62,10 +62,7 @@ const Step1 = (props) => {
     // });
     onSubmitprops.resetForm();
    
-    console.log(props.newdata);
-
-  
-  };
+   };
  
   const validationSchema = yup.object({
     first_name: yup.string().required("First Name Required!!"),

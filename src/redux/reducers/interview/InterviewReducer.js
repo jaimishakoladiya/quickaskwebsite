@@ -1,5 +1,5 @@
 import { ADD_INTERVIEW_QUESTION , DELETE_INTERVIEW_QUESTION,ADD_CANDIDATE_DATA,ADD_PANEL_DATA 
-    ,DELETE_CADIDAE_DATA,DELETE_PANEL_DATA,GET_MANAGER,GET_ORGANIZATION_INFO,DELETE_ORGANIZATION_INFO} from "../../types/interview/InterviewTypes"
+    ,DELETE_CADIDAE_DATA,DELETE_PANEL_DATA,GET_MANAGER,GET_ORGANIZATION_INFO,DELETE_ORGANIZATION_INFO, EMPTY_DATA} from "../../types/interview/InterviewTypes"
 const initialstate = {
     interviewque:[],
     candidate:[],
@@ -13,7 +13,7 @@ const InterviewReducer =(state=initialstate,action)=>{
         case ADD_INTERVIEW_QUESTION:
             return{
                 ...state,
-                interviewque:[...state.interviewque , action.payload]
+                interviewque:[...state.interviewque ,...action.payload]
             }
         case DELETE_INTERVIEW_QUESTION :
             return{
@@ -63,6 +63,15 @@ const InterviewReducer =(state=initialstate,action)=>{
                     return{
                         ...state,
                         orginfo:state.orginfo.splice(action.payload,action.payload)
+                    }
+                }
+                case EMPTY_DATA:{
+                    return{
+                        ...state,
+                        candidate:[],
+                        panel:[],
+                        orginfo:[],
+                        interviewque:[]
                     }
                 }
 
