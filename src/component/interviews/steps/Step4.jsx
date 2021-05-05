@@ -16,116 +16,92 @@ import axios from "axios";
 const Step4 = (props) => {
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
-  console.log(props.data.orginfo[0].department)
-  // const [departmentid,setdeptid]=useState()
   var departmentid;
-  var  jobid;
+  var jobid;
   var managerid;
-  const department=props.data.managers.departmentResult;
-  const job=props.data.managers.jobTitleResult;
-
-  const manager=props.data.managers.managerdata;
-  console.log(manager)
-  const [question_bank,setquestions]=useState({
-    department:props.data.orginfo[0].department,
-    test:[]
-  })
-  department.map((item,index)=>{
-    item.departments.map((val,index)=>{
-       if(props.data.orginfo[0].department===val.name){
-        departmentid=val.departmentId
-       }
+  const department = props.data.managers.departmentResult;
+  const job = props.data.managers.jobTitleResult;
+  const manager = props.data.managers.managerdata;
+  const [test, settest] = useState([])
+  department.map((item, index) => {
+    item.departments.map((val, index) => {
+      if (props.data.orginfo[0].department === val.name) {
+        departmentid = val.departmentId
+      }
     })
   })
-  job.map((item,index)=>{
-    item['job-title'].map((val)=>{
-      if(props.data.orginfo[0].jobTitle===val.title){
-        jobid=val.job_detail_id
+  job.map((item, index) => {
+    item['job-title'].map((val) => {
+      if (props.data.orginfo[0].jobTitle === val.title) {
+        jobid = val.job_detail_id
       }
     })
   })
 
-  manager.map((item,index)=>{
-    if(props.data.orginfo[0].email===item.email){
-      managerid=item.manager_token;
+  manager.map((item, index) => {
+    if (props.data.orginfo[0].email === item.email) {
+      managerid = item.manager_token;
     }
   })
 
-  
-  const getdeptquestions=async ()=>{
-    const res=await axios({
-      method:"get",
-      url:`http://localhost:2002/view-department-question/${departmentid}`,
-      headers:{
-        Authorization:token
+
+  const getdeptquestions = async () => {
+    const res = await axios({
+      method: "get",
+      url: `http://localhost:2002/view-department-question/${departmentid}`,
+      headers: {
+        Authorization: token
       }
     })
-    console.log(res.data.data[0].questions)
-    setquestions((olditem)=>{
-      return {
-        ...olditem,
-       test:[...olditem.test,...res.data.data[0].questions]
-      }
-    })
-    console.log(question_bank)
+    props.addinterviewque(...res.data.data[0].questions)
+    
+    settest(olditem => [...olditem, ...res.data.data[0].questions])
+
   }
-  const getjobquestions=async ()=>{
-    const res=await axios({
-      method:"get",
-      url:`http://localhost:2002/view-job-question/${jobid}`,
-      headers:{
-        Authorization:token
+  const getjobquestions = async () => {
+    const res = await axios({
+      method: "get",
+      url: `http://localhost:2002/view-job-question/${jobid}`,
+      headers: {
+        Authorization: token
       }
     })
-  console.log(res.data.data[0].questions)
-    setquestions((olditem)=>{
-      return {
-        ...olditem,
-       test:[...olditem.test,...res.data.data[0].questions]
-      }
-    })
-    console.log(question_bank)
-   }
-  const getmanagerquestions=async ()=>{
-    const res=await axios({
-      method:"get",
-      url:`http://localhost:2002/view-manager-question/${managerid}`,
-      headers:{
-        Authorization:token
-      }
-    })
-    console.log(res.data.data)
-    setquestions((olditem)=>{
-      return {
-        ...olditem,
-       test:[...olditem.test,...res.data.data]
-      }
-    })
-    console.log(question_bank)
+    props.addinterviewque(...res.data.data[0].questions)
+
+    settest(olditem => [...olditem, ...res.data.data[0].questions])
+    
   }
-  useEffect(()=>{
+  const getmanagerquestions = async () => {
+    const res = await axios({
+      method: "get",
+      url: `http://localhost:2002/view-manager-question/${managerid}`,
+      headers: {
+        Authorization: token
+      }
+    })
+    props.addinterviewque(...res.data.data)
+
+    settest(olditem => [...olditem, ...res.data.data])
+    
+  }
+  useEffect(() => {
     getdeptquestions()
     getjobquestions()
     getmanagerquestions()
-  },[])
   
-  const addquestion=(que)=>{
-    setquestions((olditem)=>{
-      return {
-        ...olditem,
-       test:[...olditem.test,que]
-      }
-    })
+  }, [])
+
+  const addquestion = (que) => {
+    settest(olditem => [...olditem, que])
   }
 
-  const deletequestion=(id)=>{
-    const newarr=question_bank.test.splice(id,id)
-    setquestions((olditem)=>{
-      return {
-        ...olditem,
-       test:newarr
-      }
+  const deletequestion = (id) => {
+
+    const newarr = test.filter((item, index) => {
+      return index !== id
     })
+    console.log(newarr)
+    settest(newarr)
   }
   return (
     <>
@@ -133,7 +109,6 @@ const Step4 = (props) => {
       <div className="step4">
         <QuestionsCard
           addquestion={addquestion}
-         
         />
         {/* <QuestionsCard/> */}
         <br></br>
@@ -154,9 +129,10 @@ const Step4 = (props) => {
             </Table>
           </TableContainer>
         </div>
+
         <DisplayQuestions
           deletequestion={deletequestion}
-          question={question_bank.test}
+          question={test}
         />
       </div>
     </>
@@ -176,7 +152,7 @@ const mapDispatchToProps = (dispatch) => {
     deleteinterviewque: (id) => {
       dispatch(deleteinterviewque(id));
     },
-    
+
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Step4);
