@@ -13,7 +13,7 @@ function AdminView() {
         <div>
              <div className="detail-data">
         <div className="detail-header1">
-          <h5>ALL CANDIDATES</h5>
+          <h5>ALLCANDIDATES</h5>
           <div className="detail-input">
            <h5>Search</h5> 
             <TextField
