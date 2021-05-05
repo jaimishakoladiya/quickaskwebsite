@@ -68,24 +68,17 @@ function AddDepartment({data,fetchdata}) {
       }
     })
      
-    
-   
-    setstatus(res.data.status);
+   setstatus(res.data.status);
     
     setmessage(res.data.message)
     console.log(message)
     fetchdata()
-    
-
-   
-  }
+ }
 
 
   const onSubmit = (values) => {
    
     savedepartment({ ...values, questions });
-
-    
     setnewque([])
     setOpen(false);
   };
