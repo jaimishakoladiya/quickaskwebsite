@@ -138,17 +138,6 @@ return (
         onChange={inputfieldfunction}
  
       />
-
-      {/* <FormControl style={field}>
-        <InputLabel htmlFor="demo-customized-select-native" >Country</InputLabel>
-        <NativeSelect id="demo-customized-select-native">
-          <option aria-label="choose country" value=""  />
-          <option value={10}>india</option>
-          <option value={20}>uk</option>
-          <option value={30}>pakishtan</option>
-        </NativeSelect>
-      </FormControl> */}
-
       <FormControl style={field}>
         <InputLabel htmlFor="demo-customized-select-native" >
           --Select State--
