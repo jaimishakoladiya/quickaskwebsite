@@ -12,8 +12,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import InterviewDataGrid from './InterviewDataGrid';
 
 import ViewDelete from './ViewDelete';
@@ -26,6 +24,43 @@ const useStyles = makeStyles({
   
   },
 });
+const data= [
+    {
+        "archive": null,
+        "token": "1rwf8ykko5o95tt",
+        "manager-token": "1rwf620ko3y2oa1",
+        "candidate-data": {
+            "first_name": "jemu",
+            "last_name": "koladiya",
+            "email": "kakadiyadhruvi1700@gmail.com",
+            "id": "1",
+            "status": "Assigned",
+            "role": "web",
+            "department": "web",
+            "completedOn": 1619869127104
+        },
+        "rating": 0
+    },
+    {
+        "archive": null,
+        "token": "1rwf6f0ko8d2w62",
+        "manager-token": "1rwf620ko3y2oa1",
+        "candidate-data": {
+            "first_name": "dhruvi",
+            "last_name": "kakadiya",
+            "email": "dhruvikakadiya144@gmail.com",
+            "id": "2",
+            "status": "Assigned",
+            "role": "web",
+            "department": "web",
+            "completedOn": 1620031757402
+        },
+        "rating": 0
+    }
+]
+console.log(data[1]['candidate-data'].first_name);
+
+var it = data[1]['candidate-data'].first_name;
 
 function createData( date, jobtitle, department,manager,candidate,duration,action) {
  
@@ -113,10 +148,26 @@ Row.propTypes = {
     protein: PropTypes.number.isRequired,
   }).isRequired,
 };
-const n=[1,2,3]
+const n=[1]
 const rows = [];
    n.map((item,index)=>{
-    rows.push(createData('2021-2-3','web','android','ck',1,'3mins',<ViewDelete/>))
+    // rows.push(createData(
+    //   item.first_name,data[1]['candidate-data'].first_name,data[1]['candidate-data'].department,'ck',data[1]['candidate-data'].id,'3mins'
+    //   ,<ViewDelete/>))
+    data.map((item,index)=>{
+     
+      return console.log(data);
+     })
+     rows.push(createData(
+       [
+        
+        item.first_name,
+        data[1]['candidate-data'].last_name,
+        data[1]['candidate-data'].id
+       ]
+     )) 
+     
+   
   })
 export default function CreateData() {
   return (

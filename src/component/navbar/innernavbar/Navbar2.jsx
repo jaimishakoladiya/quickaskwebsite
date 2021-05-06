@@ -1,7 +1,6 @@
 import React from 'react'
 import './navbar2.css'
 import DehazeIcon from '@material-ui/icons/Dehaze';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import img from '../../images/logo2.png'
 import { NavLink } from 'react-router-dom';
 function Navbar2() {

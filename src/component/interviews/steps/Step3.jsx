@@ -81,7 +81,7 @@ const deletefunction=(id)=>{
                       marginBottom: "13px",
                       marginLeft: "60px",
                       marginRight: "2px",
-                      color: "gray",
+                      color: "darkcyan",
                       fontSize: "20px",
                     }}
                   />
@@ -98,7 +98,7 @@ const deletefunction=(id)=>{
                       marginBottom: "13px",
                       marginLeft: "60px",
                       marginRight: "2px",
-                      color: "gray",
+                      color: "darkcyan",
                       fontSize: "20px",
                     }}
                   />
@@ -115,7 +115,7 @@ const deletefunction=(id)=>{
                       marginBottom: "13px",
                       marginLeft: "60px",
                       marginRight: "2px",
-                      color: "gray",
+                      color: "darkcyan",
                       fontSize: "20px",
                     }}
                   />
@@ -136,6 +136,7 @@ const deletefunction=(id)=>{
 
                   <div className="step3-Add">
                     <Button
+                     style={{marginLeft:"30px",marginTop:"20px"}}
                       type="submit"
                       onClick={() => setopenalert(true)}
                       variant="contained"

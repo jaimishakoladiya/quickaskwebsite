@@ -106,7 +106,7 @@ const Step1 = (props) => {
                       style={{
                         marginBottom: "15px",
                         marginLeft: "30px",
-                        color: "gray",
+                        color: "darkcyan",
                       }}
                     />
                     <Field
@@ -123,7 +123,7 @@ const Step1 = (props) => {
                       style={{
                         marginBottom: "15px",
                         marginLeft: "30px",
-                        color: "gray",
+                        color: "darkcyan",
                       }}
                     />
                     <Field
@@ -140,7 +140,7 @@ const Step1 = (props) => {
                       style={{
                         marginBottom: "15px",
                         marginLeft: "30px",
-                        color: "gray",
+                        color: "darkcyan",
                       }}
                     />
                     <Field
@@ -155,7 +155,7 @@ const Step1 = (props) => {
                       style={{
                         marginBottom: "15px",
                         marginLeft: "30px",
-                        color: "gray",
+                        color: "darkcyan",
                       }}
                     />
                     <Field
@@ -179,6 +179,7 @@ const Step1 = (props) => {
                       : null}
                     <div className="Add">
                       <Button
+                      style={{marginLeft:"30px",marginTop:"20px"}}
                         type="submit"
                         onClick={() => {
                           setopenalert(true);
