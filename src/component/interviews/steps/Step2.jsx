@@ -100,6 +100,7 @@ const Step2 = (props) => {
 
   const inputchange = (event) => {
     const { name, value } = event.target;
+    
     setdata((olditem) => {
       return {
         ...olditem,
@@ -130,8 +131,8 @@ const deletefunction=(id)=>{
                 variant="filled"
                 id="outlined-basic"
                 placeholder="FirstName"
-                name="firstname"
-                value={data.firstname}
+                name="first_name"
+                value={data.first_name}
                 disabled={isdisabled}
               />
             </Grid>
@@ -141,8 +142,8 @@ const deletefunction=(id)=>{
                 variant="filled"
                 id="outlined-basic"
                 placeholder="LastName"
-                name="lastname"
-                value={data.lastname}
+                name="last_name"
+                value={data.last_name}
                 disabled={isdisabled}
 
               />
@@ -186,9 +187,9 @@ const deletefunction=(id)=>{
 
             <FormControl style={{ width: "200px", marginTop: "10px" }}>
               <NativeSelect
-                value={data.job}
+                value={data.jobTitle}
                 onChange={inputchange}
-                name="job"
+                name="jobTitle"
                 disabled={isdisabled}
 
                 inputProps={{ 'aria-label': 'job' }}

@@ -173,7 +173,11 @@ function EditJob(props) {
       </button>
       <button id="delete_btn"
       onClick={handleClickOpen1}>
+<<<<<<< HEAD
      <DeleteIcon />
+=======
+    <DeleteIcon />
+>>>>>>> 921e0e2e4375820170e0c4eaac37f5a11a4f6fac
       </button>
       <br />
       {status!=null?erroralert(message):null}

@@ -12,8 +12,8 @@ import { connect } from "react-redux";
 const Step1 = (props) => {
   const [openalert, setopenalert] = useState(false);
   const [Candidate, SetCandidate] = useState({
-    firstname: "",
-    lastname: "",
+    first_name: "",
+    last_name: "",
   });
   const [CandidateArray, SetCandidatearray] = useState([]);
 
@@ -47,8 +47,8 @@ const Step1 = (props) => {
 
   };
   const initialValues = {
-    firstname: "",
-    lastname: "",
+    first_name: "",
+    last_name: "",
     email: "",
     id: "",
   };
@@ -62,14 +62,11 @@ const Step1 = (props) => {
     // });
     onSubmitprops.resetForm();
    
-    console.log(props.newdata);
-
-  
-  };
+   };
  
   const validationSchema = yup.object({
-    firstname: yup.string().required("First Name Required!!"),
-    lastname: yup.string().required("Last Name Required!!"),
+    first_name: yup.string().required("First Name Required!!"),
+    last_name: yup.string().required("Last Name Required!!"),
     email: yup
       .string()
       .email("Enter valid Email-id ")
@@ -111,7 +108,7 @@ const Step1 = (props) => {
                     />
                     <Field
                       as={TextField}
-                      name="firstname"
+                      name="first_name"
                       id="firstname"
                       style={{ width: "160px" }}
                       onInput={inputChangeFunction}
@@ -128,7 +125,7 @@ const Step1 = (props) => {
                     />
                     <Field
                       as={TextField}
-                      name="lastname"
+                      name="last_name"
                       id="lastname"
                       style={{ width: "160px" }}
                       onInput={inputChangeFunction}
@@ -195,12 +192,12 @@ const Step1 = (props) => {
                     <div>
                       
                        {
-                         props.newdata.candidatedata.map((item,index)=>{
+                         props.newdata.candidate.map((item,index)=>{
                            return(
                           <Step1AddField
                             id={index}
                             deletefunction={deletefunction}
-                            newrecords={props.newdata.candidatedata[index]}
+                            newrecords={props.newdata.candidate[index]}
                           />
                           ) })}
                     </div>
