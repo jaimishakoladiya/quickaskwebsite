@@ -1,5 +1,5 @@
 import { ADD_INTERVIEW_QUESTION , DELETE_INTERVIEW_QUESTION , ADD_CANDIDATE_DATA,GET_ORGANIZATION_INFO,
-    ADD_PANEL_DATA ,DELETE_CADIDAE_DATA,DELETE_PANEL_DATA,GET_MANAGER,DELETE_ORGANIZATION_INFO} from '../../types/interview/InterviewTypes'
+    ADD_PANEL_DATA ,DELETE_CADIDAE_DATA,DELETE_PANEL_DATA,GET_MANAGER,DELETE_ORGANIZATION_INFO,EMPTY_DATA} from '../../types/interview/InterviewTypes'
 
 export const addinterviewque =(newquestion)=>{
     console.log(newquestion)
@@ -60,4 +60,9 @@ export const deleteorginfo=(id)=>{
         payload:id
     }
 
+}
+export const emptydata=()=>{
+    return{
+        type:EMPTY_DATA,
+    }
 }

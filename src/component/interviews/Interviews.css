@@ -8,8 +8,8 @@
   position: absolute;
   margin: 15px auto;
   margin-bottom: 100px;
-  margin-left: 450px;
-  margin-top: 30px;
+  margin-left: 280px;
+  margin-top: 150px;
   justify-content: center;
   padding: 15px 5px 10px 15px;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
@@ -20,7 +20,7 @@
   box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
 }
 .detail-header1 {
-  height: 70px;
+  height: 90px;
   width: 1000px;
   margin: -17px;
   color: rgb(8, 8, 8);
@@ -32,7 +32,7 @@
   justify-content: left;
   align-items: center;
   border-radius: 3px;
-  font-size: 20px;
+  font-size: 30px;
 }
 
 .detail-header1 h5 {
@@ -47,7 +47,7 @@
 }
 
 .detail-header2 {
-  height: 57px;
+  height: 70px;
   width: 1000px;
   margin: -17px;
   margin-top: 15px;
@@ -72,21 +72,7 @@
   box-shadow: 50px 50px 20px -8px rgba(226, 216, 216, 0.1);
   transform: scale(1.05, 1.05);
 }
-.detail-data {
-  /* position: absolute; */
-  margin: 15px auto;
-  margin-bottom: 100px;
-  margin-left: 300px;
-  margin-top: 30px;
-  justify-content: center;
-  padding: 15px 5px 10px 15px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
-  background-color: whitesmoke;
-  width: 1000px;
-  height: auto;
-  border-radius: 1px;
-  box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
-}
+
 #outlined-basic {
   width: 170px;
   height: 2px;
@@ -164,7 +150,7 @@
 .step2-material-person-icon {
   font-size: 22px;
   margin-top: 12px;
-  color: gray;
+  color: darkcyan;
 }
 
 .textFieldP {
@@ -330,18 +316,20 @@
 #headercss{
   font-family: "Helvetica";
   color: #000;
+  height: 30px;
   font-size: 13pt;
- margin: 20px 0px;
+ /* margin: 20px 0px; */
    box-sizing: content-box;
    width: 200px;
    text-align: inherit;
    vertical-align: bottom;
- padding: 8px 28px;
+ padding: 8px 25px;
   background-repeat: no-repeat;
   background-position:center;
   display: table-cell; 
   font-weight: bold;
- 
+padding-left: 10px;
+text-align: justify;
   background-color: rgb(245, 202, 92);
 }
 #tablerow{
@@ -502,3 +490,59 @@ width: auto;
    margin-left: 4px;
    position: relative;
   }
+  /* new .page */
+  .main{
+    margin: 20px auto;
+    margin-bottom: 100px;
+    margin-top: 100px;
+    padding: 15px 5px 10px 15px;
+    float: center;
+    width: 1000px;
+    /* width:auto; */
+    /* height: 1050px; */
+    padding: 15px 8px;
+    background: #eef5f6;
+  position: relative;
+    height: auto;
+    border-radius: 1px;
+    box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
+  
+  }
+  #stepper{
+    
+    margin-left: 5px;
+  }
+  
+  .main_h4{
+    font-size: 40px;
+    text-align: center;
+    line-height: 50px;
+  }
+  #kj{
+    font-size: 54;
+  }
+  .Interview-info-title {
+    font-size: 37px;
+    font-family: "DIN";
+    color: white;
+    line-height: 80px;
+    margin-top: -18px;
+    height: 70px;
+    text-align: center;
+    background-color: darkcyan;
+  }
+  .Interview_formheader {
+    height: 57px;
+    width: 1000px;
+    margin-top: -14px;
+    overflow: hidden;
+    background-color: #008b8b;
+    font-family: "Dancing Script", cursive;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-bottom: 7px solid black;
+    margin-left: -8px;
+  }
+  
+  

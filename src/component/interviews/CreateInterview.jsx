@@ -16,7 +16,7 @@ import Step4 from "./steps/Step4";
 import { connect } from "react-redux";
 import AlertBox from "../alert/AlertBox";
 import axios from "axios";
-
+import {emptydata} from '../../redux/actions/interview/InterviewAction'
 const CreateInterview = (props) => {
  
   // const [data,setdata]=useState({})
@@ -109,33 +109,12 @@ const box=()=>{
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
-const senddata=async ()=>{
-  
-  data={
-    candidate:props.data.candidate,
-    managers:props.data.orginfo,
-    panel:props.data.panel,
-    question_bank:{
-      department:props.data.orginfo[0].department,
-      test:props.data.interviewque
-    }
-  }
-  console.log(data)
-  // const user = JSON.parse(localStorage.getItem("user"));
-  // const token = user.token;
-  // const res=await axios({
-  //   method: "post",
-  //     url: `http://localhost:2002/manager-added-interview`,
-  //     data:data,
-  //     headers: {
-  //       Authorization: token
-  //     }
-  // })
-  // console.log(res.data)
+const senddata=()=>{
+ props.emptydata();
 }
   const handleReset = () => {
-    setActiveStep(0);
-  };
+ props.emptydata();
+};
 
   return (
   
@@ -178,7 +157,7 @@ const senddata=async ()=>{
                     
                     >
                       Next
-                    </Button>:
+                    </Button>:<>
                     <Button
                       style={{ marginRight: "50px" }}
                       variant="contained"
@@ -189,8 +168,19 @@ const senddata=async ()=>{
                     
                     >
                      submit
-                    </Button>}
+                    </Button> <Button
+                      style={{ marginRight: "50px" }}
+                      variant="contained"
+                      // color="primary"
+                      id="btn_color"
+                      onClick={handleReset}
+                      className={classes.button}
                     
+                    >
+                     reset
+                    </Button></>}
+                   
+          
                   </div>
                 </div>
               </StepContent>
@@ -213,6 +203,12 @@ const senddata=async ()=>{
 const mapStateToProps=state=>{
   return {
     data:state.interview
+  
   }
 }
-export default connect(mapStateToProps)(CreateInterview);
+const mapDispatchToProps=dispatch=>{
+  return{
+    emptydata:()=>{dispatch(emptydata())}
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(CreateInterview);

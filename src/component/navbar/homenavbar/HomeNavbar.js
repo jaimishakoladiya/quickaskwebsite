@@ -9,7 +9,11 @@ import { BrowserRouter, useLocation } from "react-router-dom";
 import InnerNavbar from './../innernavbar/InnerNavbar';
 import Team from "../../team/Team";
 import ResetPassword from '../../account/register/ResetPassword'
-import Interviews from "../../interviews/Interviews";
+
+import AdminView from '../../interviews/AdminView';
+
+
+
 function HomeNavbar() {
   const location = useLocation();
   return (
@@ -18,23 +22,36 @@ function HomeNavbar() {
       location.pathname === "/registartion" ||
       location.pathname === "/forgotpassword" ||
       location.pathname ==="/reset-password" ||
-      location.pathname ==="/innernavbar"? null : (
+      location.pathname ==="/innernavbar"||
+      location.pathname ==="/adminview" ||
+      location.pathname === "/interview" ||
+      location.pathname === "/companyprofilepage"||
+      location.pathname === "/viewrecord"
+       ? null : (
         <Navbar />
         
       )}
+        {location.pathname === "/adminview" ||
+          location.pathname === "/interview" ||
+          location.pathname === "/companyprofilepage" ||
+          location.pathname === "/viewrecord"
+        ? <InnerNavbar/> : null}
+      
 
       <Switch>
         <Route   exact path="/" component={Home} />
         <Route exact path="/registartion" component={Registration} />
         <Route exact path="/login" component={Login} />
-        {/* <Route exact path="/about" component={About} />
-        <Route exact path="/contact" component={Contact} /> */}
+        <Route exact path="/adminview" component={AdminView} />
+      
+      
         <Route exact path="/team" component={Team}/>
         <Route exact path="/forgotpassword" component={Forpass} />
         <Route   exact path="/reset-password" component={ResetPassword} />
         <Route exact path="/innernavbar" render={()=>
           <BrowserRouter><InnerNavbar name={"innernavbar"}/></BrowserRouter>
         }/>
+        
     
       </Switch>
     </div>

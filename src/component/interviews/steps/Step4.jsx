@@ -23,6 +23,7 @@ const Step4 = (props) => {
   const job = props.data.managers.jobTitleResult;
   const manager = props.data.managers.managerdata;
   const [test, settest] = useState([])
+  if(props.data.orginfo.length!=0){
   department.map((item, index) => {
     item.departments.map((val, index) => {
       if (props.data.orginfo[0].department === val.name) {
@@ -43,6 +44,7 @@ const Step4 = (props) => {
       managerid = item.manager_token;
     }
   })
+}
 
 
   const getdeptquestions = async () => {
@@ -53,9 +55,9 @@ const Step4 = (props) => {
         Authorization: token
       }
     })
-    props.addinterviewque(res.data.data[0].questions)
+    // props.addinterviewque(res.data.data[0].questions)
     
-    settest(olditem => [...olditem, ...res.data.data[0].questions])
+    // settest(olditem => [...olditem, ...res.data.data[0].questions])
 
   }
   const getjobquestions = async () => {
@@ -66,9 +68,9 @@ const Step4 = (props) => {
         Authorization: token
       }
     })
-    props.addinterviewque(res.data.data[0].questions)
+    // props.addinterviewque(res.data.data[0].questions)
 
-    settest(olditem => [...olditem, ...res.data.data[0].questions])
+    // settest(olditem => [...olditem, ...res.data.data[0].questions])
     
   }
   const getmanagerquestions = async () => {
@@ -79,11 +81,9 @@ const Step4 = (props) => {
         Authorization: token
       }
     })
-    props.addinterviewque(res.data.data)
-
-    settest(olditem => [...olditem, ...res.data.data])
-    let newarr=test;
-    props.addinterviewque(newarr)
+    console.log(res.data.data)
+    // props.addinterviewque(res.data.data)
+    // settest(olditem => [...olditem, ...res.data.data])
     
   }
   
@@ -139,7 +139,7 @@ const Step4 = (props) => {
 
         <DisplayQuestions
           deletequestion={deletequestion}
-          question={test}
+          question={props.data.interviewque}
         />
       </div>
     </>
