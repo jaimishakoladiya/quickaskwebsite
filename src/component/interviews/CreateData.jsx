@@ -24,44 +24,6 @@ const useStyles = makeStyles({
   
   },
 });
-const data= [
-    {
-        "archive": null,
-        "token": "1rwf8ykko5o95tt",
-        "manager-token": "1rwf620ko3y2oa1",
-        "candidate-data": {
-            "first_name": "jemu",
-            "last_name": "koladiya",
-            "email": "kakadiyadhruvi1700@gmail.com",
-            "id": "1",
-            "status": "Assigned",
-            "role": "web",
-            "department": "web",
-            "completedOn": 1619869127104
-        },
-        "rating": 0
-    },
-    {
-        "archive": null,
-        "token": "1rwf6f0ko8d2w62",
-        "manager-token": "1rwf620ko3y2oa1",
-        "candidate-data": {
-            "first_name": "dhruvi",
-            "last_name": "kakadiya",
-            "email": "dhruvikakadiya144@gmail.com",
-            "id": "2",
-            "status": "Assigned",
-            "role": "web",
-            "department": "web",
-            "completedOn": 1620031757402
-        },
-        "rating": 0
-    }
-]
-console.log(data[1]['candidate-data'].first_name);
-
-var it = data[1]['candidate-data'].first_name;
-
 function createData( date, jobtitle, department,manager,candidate,duration,action) {
  
   return {
@@ -148,26 +110,16 @@ Row.propTypes = {
     protein: PropTypes.number.isRequired,
   }).isRequired,
 };
-const n=[1]
+
+const n=[1,2,3]
+// const department = [...props.data.managers.departmentResult];
+//   const job = [...props.data.managers.jobTitleResult];
+ const newdate=new Date().toLocaleDateString();
+ 
+
 const rows = [];
    n.map((item,index)=>{
-    // rows.push(createData(
-    //   item.first_name,data[1]['candidate-data'].first_name,data[1]['candidate-data'].department,'ck',data[1]['candidate-data'].id,'3mins'
-    //   ,<ViewDelete/>))
-    data.map((item,index)=>{
-     
-      return console.log(data);
-     })
-     rows.push(createData(
-       [
-        
-        item.first_name,
-        data[1]['candidate-data'].last_name,
-        data[1]['candidate-data'].id
-       ]
-     )) 
-     
-   
+    rows.push(createData(newdate,'bhhjbhj','android','ck',1,'3mins',<ViewDelete/>))
   })
 export default function CreateData() {
   return (

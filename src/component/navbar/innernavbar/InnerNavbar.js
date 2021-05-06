@@ -11,6 +11,7 @@ import Forpass from './../../account/login/Forpass';
 import ViewRecord from "../../interviews/ViewRecord";
 import InterviewShareGrid from '../../interviews/InterviewShareGrid';
 import AdminView from '../../interviews/AdminView';
+import AddInterview from '../../interviews/AddInterview';
 const InnerNavbar = () => {
   const location = useLocation();
   return (
@@ -35,7 +36,7 @@ const InnerNavbar = () => {
           path="/companyprofilepage"
           component={CompanyProfilePage}
         />
-        <Route exact path="/interview" component={Interviews} />
+        <Route exact path="/interview" component={AddInterview} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/forgotpassword" component={Forpass} />
         <Route exact path="/registartion" component={Registration} />

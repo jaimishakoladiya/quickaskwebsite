@@ -2,7 +2,7 @@
 //import Navbar from "./component/navbar/innernavbar/Navbar";
 
 //import ResetPassword from "./component/account/register/ResetPassword";
-import Intpra from "./Intpra";
+//import Intpra from "./Intpra";
 //import Login from './component/account/login/Login'
 //  import Home from "./component/home/Home";
 //import Interviews from './component/interviews/Interviews'
@@ -12,7 +12,7 @@ import Intpra from "./Intpra";
    //import CompanyProfilePage from "./component/companyprofile/CompanyProfilePage";
 // //import Navbar2 from './component/navbar/outernavbar/Navbar2'
 import { BrowserRouter } from 'react-router-dom';
-// import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
+import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
  // import { BrowserRouter } from 'react-router-dom';
  // import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 //import Login from './component/account/login/Login';
@@ -49,20 +49,20 @@ function App() {
       {/* <Navbar/> */}
 
      
-     {/* <Provider store={store}>
+     <Provider store={store}>
       <BrowserRouter>
    
       <HomeNavbar/> 
      
       </BrowserRouter>
-      </Provider> */}
-<Provider store={store}>
+      </Provider>
+{/* <Provider store={store}>
       <BrowserRouter>
    
       <Intpra/> 
      
       </BrowserRouter>
-      </Provider>
+      </Provider> */}
       
         
       {/* <Login/> */}

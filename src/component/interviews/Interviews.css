@@ -494,10 +494,10 @@ width: auto;
   .main{
     margin: 20px auto;
     margin-bottom: 100px;
-    margin-top: 50px;
+    margin-top: 100px;
     padding: 15px 5px 10px 15px;
     float: center;
-    width: 1100px;
+    width: 1000px;
     /* width:auto; */
     /* height: 1050px; */
     padding: 15px 8px;
@@ -512,13 +512,37 @@ width: auto;
     
     margin-left: 5px;
   }
-  #step{
-    margin-left: 80px;
-    
-  }
+  
   .main_h4{
     font-size: 40px;
     text-align: center;
-    line-height: 40px;
+    line-height: 50px;
   }
+  #kj{
+    font-size: 54;
+  }
+  .Interview-info-title {
+    font-size: 37px;
+    font-family: "DIN";
+    color: white;
+    line-height: 80px;
+    margin-top: -18px;
+    height: 70px;
+    text-align: center;
+    background-color: darkcyan;
+  }
+  .Interview_formheader {
+    height: 57px;
+    width: 1000px;
+    margin-top: -14px;
+    overflow: hidden;
+    background-color: #008b8b;
+    font-family: "Dancing Script", cursive;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-bottom: 7px solid black;
+    margin-left: -8px;
+  }
+  
   
