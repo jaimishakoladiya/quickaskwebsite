@@ -41,7 +41,7 @@ Customize your questions based on your Company, Department, Job, or <br />Manage
 </div>
 <div className="home-service-title"><button type="address" className="home-advantage-kite" ><b>Scheduling Done Right</b></button></div>
 <div className="home-service-desc">
-AskAway has removed the challenge of <br />scheduling yet, another meeting — view<br /> and share interviews whenever.
+QuickAsk has removed the challenge of <br />scheduling yet, another meeting — view<br /> and share interviews whenever.
 </div>
 </div>
 <div className="home-service-box"><br />
