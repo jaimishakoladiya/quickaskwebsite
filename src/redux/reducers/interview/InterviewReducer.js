@@ -13,7 +13,7 @@ const InterviewReducer =(state=initialstate,action)=>{
         case ADD_INTERVIEW_QUESTION:
             return{
                 ...state,
-                interviewque:[...state.interviewque , action.payload]
+                interviewque:[...state.interviewque , ...action.payload]
             }
         case DELETE_INTERVIEW_QUESTION :
             return{
@@ -44,7 +44,6 @@ const InterviewReducer =(state=initialstate,action)=>{
                     }
                     case DELETE_CADIDAE_DATA :
                         return{
-                            
                             ...state,
                             candidate:state.candidate.splice(action.payload,action.payload)
                         }

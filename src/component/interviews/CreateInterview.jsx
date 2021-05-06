@@ -15,19 +15,12 @@ import Step3 from "./steps/Step3";
 import Step4 from "./steps/Step4";
 import { connect } from "react-redux";
 import AlertBox from "../alert/AlertBox";
+import axios from "axios";
 
 const CreateInterview = (props) => {
-  console.log(props.data.interviewque)
-  const [data,setdata]=useState({
-    candidate:props.data.candidate,
-    managers:props.data.orginfo,
-    panel:props.data.panel,
-    question_bank:{
-      // department:props.data.orginfo[0].department,
-      test:props.data.interviewque
-    }
-  })
-  console.log(data)
+ 
+  // const [data,setdata]=useState({})
+  var data;
   const useStyles = makeStyles((theme) => ({
     root: {
       width: "100%",
@@ -116,8 +109,29 @@ const box=()=>{
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
-const senddata=()=>{
+const senddata=async ()=>{
   
+  data={
+    candidate:props.data.candidate,
+    managers:props.data.orginfo,
+    panel:props.data.panel,
+    question_bank:{
+      department:props.data.orginfo[0].department,
+      test:props.data.interviewque
+    }
+  }
+  console.log(data)
+  // const user = JSON.parse(localStorage.getItem("user"));
+  // const token = user.token;
+  // const res=await axios({
+  //   method: "post",
+  //     url: `http://localhost:2002/manager-added-interview`,
+  //     data:data,
+  //     headers: {
+  //       Authorization: token
+  //     }
+  // })
+  // console.log(res.data)
 }
   const handleReset = () => {
     setActiveStep(0);
@@ -136,7 +150,7 @@ const senddata=()=>{
         {openalert?box():null}
           {steps.map((label, index) => (
             <Step key={label}>
-              <StepLabel>{label}</StepLabel>
+              {/* <StepLabel>{label}</StepLabel> */}
               <StepContent id="stepper_font">
                 <Typography key={index}>{getStepContent(index)}</Typography>
                 <div className={classes.actionsContainer}>

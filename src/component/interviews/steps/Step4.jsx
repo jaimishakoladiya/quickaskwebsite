@@ -53,7 +53,7 @@ const Step4 = (props) => {
         Authorization: token
       }
     })
-    props.addinterviewque(...res.data.data[0].questions)
+    props.addinterviewque(res.data.data[0].questions)
     
     settest(olditem => [...olditem, ...res.data.data[0].questions])
 
@@ -66,7 +66,7 @@ const Step4 = (props) => {
         Authorization: token
       }
     })
-    props.addinterviewque(...res.data.data[0].questions)
+    props.addinterviewque(res.data.data[0].questions)
 
     settest(olditem => [...olditem, ...res.data.data[0].questions])
     
@@ -79,20 +79,25 @@ const Step4 = (props) => {
         Authorization: token
       }
     })
-    props.addinterviewque(...res.data.data)
+    props.addinterviewque(res.data.data)
 
     settest(olditem => [...olditem, ...res.data.data])
+    let newarr=test;
+    props.addinterviewque(newarr)
     
   }
+  
   useEffect(() => {
     getdeptquestions()
     getjobquestions()
     getmanagerquestions()
   
-  }, [])
+  },[])
 
   const addquestion = (que) => {
     settest(olditem => [...olditem, que])
+    props.addinterviewque(test)
+
   }
 
   const deletequestion = (id) => {
@@ -102,6 +107,8 @@ const Step4 = (props) => {
     })
     console.log(newarr)
     settest(newarr)
+    props.deleteinterviewque(id)
+
   }
   return (
     <>
