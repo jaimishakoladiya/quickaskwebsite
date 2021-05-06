@@ -15,18 +15,14 @@ function AdminView() {
         <div className="detail-header1">
           <h5>ALLCANDIDATES</h5>
           <div className="detail-input">
-           <h5>Search</h5> 
+           <h6>Search</h6> 
             <TextField
               type="date"
-              style={{ margin: "10px" }}
+              style={{ margin: "20px" }}
               id="outlined-basic"
               variant="outlined"
             />
-            <TextField
-              id="outlined-basic"
-              label="By Name or ID"
-              variant="outlined"
-            />
+           
           </div>
         </div>
      

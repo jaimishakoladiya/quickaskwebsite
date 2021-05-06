@@ -20,6 +20,7 @@ const InnerNavbar = () => {
       location.pathname === '/forgotpassword' ? null : (
         <Navbar2 />
       )}
+      
       <br></br>
       <br></br>
       <Switch>
@@ -35,11 +36,12 @@ const InnerNavbar = () => {
           path="/companyprofilepage"
           component={CompanyProfilePage}
         />
+       
         <Route exact path="/interview" component={Interviews} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/forgotpassword" component={Forpass} />
         <Route exact path="/registartion" component={Registration} />
-        <Route exact path="/adminview" component={AdminView}/>
+        <Route exact path="/adminview" component={AdminView} />
         <Route exact path="/viewrecord" component={ViewRecord} /> 
         <Route exact path="/InterviewShareGrid" componet={InterviewShareGrid}/>
       </Switch>

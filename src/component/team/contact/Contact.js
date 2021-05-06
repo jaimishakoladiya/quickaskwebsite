@@ -13,6 +13,7 @@ import {
   makeStyles,
   createMuiTheme,
 } from '@material-ui/core/styles';
+import axios from "axios";
 
 const Contact = () => {
   AOS.init({
@@ -22,6 +23,15 @@ const Contact = () => {
     
 
   });
+async function makePostRequest(data){
+  let res=await axios.post("http://localhost:2002/contact",data)
+  console.log(res.data)
+}
+const onSubmit = (values) =>{
+  makePostRequest(values);
+  console.log(values);
+}
+
   const field = {
     margin: "2px",
     marginTop: "20px",
@@ -97,7 +107,7 @@ const Contact = () => {
             <br></br>
             <br></br>
             <br></br>
-            <Button id="contact-butn" variant="contained">
+            <Button id="contact-butn" variant="contained" onClick={onsubmit}>
              submit
             </Button>
             <br />
