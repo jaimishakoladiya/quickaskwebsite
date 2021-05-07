@@ -8,13 +8,13 @@ import { connect } from "react-redux";
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from "@material-ui/core/FormControl";
 import NativeSelect from "@material-ui/core/NativeSelect";
-import {deleteorginfo, getorginfo} from "../../../redux/actions/interview/InterviewAction"; 
+import { deleteorginfo, getorginfo } from "../../../redux/actions/interview/InterviewAction";
 import Step1AddField from "./Step1AddField";
 
 
 
 const useStyles = makeStyles((theme) => ({
-  
+
   container: {
     display: "grid",
     gridTemplateColumns: "repeat(12, 1fr)",
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Step2 = (props) => {
-  const [isdisabled,setdisabled]=useState(false)
+  const [isdisabled, setdisabled] = useState(false)
   const [data, setdata] = useState({
     department: '',
     email: '',
@@ -55,16 +55,17 @@ const Step2 = (props) => {
   }
 
   const getemails = () => {
-    let useremail=props.data.managers.user.data.email;
+    let useremail = props.data.managers.user.data.email;
     let items = [];
     items.push(
       <option value={useremail}>{useremail}</option>
     );
     managers.map((item) => {
-      if(item.registration_status==="REGISTERED" && item.isDeleted===false)
-     { items.push(
-        <option value={item.email}>{item.email}</option>
-      );}
+      if (item.registration_status === "REGISTERED" && item.isDeleted === false) {
+        items.push(
+          <option value={item.email}>{item.email}</option>
+        );
+      }
 
     })
 
@@ -100,7 +101,7 @@ const Step2 = (props) => {
 
   const inputchange = (event) => {
     const { name, value } = event.target;
-    
+
     setdata((olditem) => {
       return {
         ...olditem,
@@ -110,15 +111,15 @@ const Step2 = (props) => {
     console.log(data)
 
   }
-  const addorginfodata=()=>{
+  const addorginfodata = () => {
     props.getorginfo(data);
     setdisabled(true);
   }
-const deletefunction=(id)=>{
-  props.deleteorginfo(id)
-  setdisabled(false);
+  const deletefunction = (id) => {
+    props.deleteorginfo(id)
+    setdisabled(false);
 
-}
+  }
   return (
     <>
       <div className="step2">
@@ -155,7 +156,7 @@ const deletefunction=(id)=>{
                   name='email'
                   value={data.email}
                   onChange={inputchange}
-                disabled={isdisabled}
+                  disabled={isdisabled}
 
                 >
                   {/* <option value="none">--select--</option> */}
@@ -202,17 +203,17 @@ const deletefunction=(id)=>{
         </Grid>
         <div className="step2-Add">
           <Button onClick={addorginfodata}
-          disabled={isdisabled}
-          variant="contained" color="secondary">
+            disabled={isdisabled}
+            variant="contained" color="secondary">
             ADD
           </Button>
         </div>
         {
-          props.data.orginfo.map((item,index)=>{
+          props.data.orginfo.map((item, index) => {
             return <Step1AddField
-                  id={index}
-                  newrecords={item}
-                  deletefunction={deletefunction}></Step1AddField>
+              id={index}
+              newrecords={item}
+              deletefunction={deletefunction}></Step1AddField>
           })
         }
       </div>
@@ -224,10 +225,10 @@ const mapStateToProps = state => {
     data: state.interview
   }
 }
-const mapDispatchToProps=dispatch=>{
-  return{
-    getorginfo:(newdata)=>{dispatch(getorginfo(newdata))},
-    deleteorginfo:(id)=>{dispatch(deleteorginfo(id))}
+const mapDispatchToProps = dispatch => {
+  return {
+    getorginfo: (newdata) => { dispatch(getorginfo(newdata)) },
+    deleteorginfo: (id) => { dispatch(deleteorginfo(id)) }
   }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Step2);
+export default connect(mapStateToProps, mapDispatchToProps)(Step2);

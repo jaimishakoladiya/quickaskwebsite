@@ -35,6 +35,8 @@ function createData( date, jobtitle, department,manager,candidate,duration,actio
     jobtitle,
     department,
     manager,
+
+    
     candidate,
     duration,
     action,
@@ -113,11 +115,62 @@ Row.propTypes = {
     protein: PropTypes.number.isRequired,
   }).isRequired,
 };
-const n=[1,2,3]
+const data= [
+{
+"archive": null,
+"token": "1rwf8ykko5o95tt",
+"manager-token": "1rwf620ko3y2oa1",
+"candidate-data": {
+"first_name": "jemu",
+"last_name": "koladiya",
+"email": "kakadiyadhruvi1700@gmail.com",
+"id": "1",
+"status": "Assigned",
+"role": "web",
+"department": "web",
+"completedOn": 1619869127104
+},
+"rating": 0
+},
+{
+"archive": null,
+"token": "1rwf6f0ko8d2w62",
+"manager-token": "1rwf620ko3y2oa1",
+"candidate-data": {
+"first_name": "dhruvi",
+"last_name": "kakadiya",
+"email": "dhruvikakadiya144@gmail.com",
+"id": "2",
+"status": "Assigned",
+"role": "web",
+"department": "web",
+"completedOn": 1620031757402
+},
+"rating": 0
+}
+]
+console.log(data);
 const rows = [];
-   n.map((item,index)=>{
-    rows.push(createData('2021-2-3','web','android','ck',1,'3mins',<ViewDelete/>))
-  })
+var email;
+data.map((item)=>{
+    // console.log(item)
+    console.log(item['candidate-data'].first_name);
+    email=item['candidate-data'].email
+    rows.push(createData(item['candidate-data'].first_name,
+                        item['candidate-data'].last_name,
+                      email,
+                        item['candidate-data'].department,1,'3mins',<ViewDelete/>))
+    // rows.push(createData('2021-2-3','web','android','gyg',1,'3mins',<ViewDelete/>))
+    // rows.push(createData('dsdxxd','fdsdsgdg','adsg','f',1,'3mins',<ViewDelete/>))
+
+    
+})
+// console.log(data['candidate-data'])
+
+// const n=[1,2,3]
+//    n.map((item,index)=>{
+//     rows.push(createData('2021-2-3','web','android','ck',1,'3mins',<ViewDelete/>))
+//   })
 export default function CreateData() {
   return (
     <TableContainer component={Paper}>
