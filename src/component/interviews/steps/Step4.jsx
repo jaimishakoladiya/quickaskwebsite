@@ -55,9 +55,9 @@ const Step4 = (props) => {
         Authorization: token
       }
     })
-    props.addinterviewque(res.data.data[0].questions)
+    // props.addinterviewque(res.data.data[0].questions)
     
-    settest(olditem => [...olditem, ...res.data.data[0].questions])
+    // settest(olditem => [...olditem, ...res.data.data[0].questions])
 
   }
   const getjobquestions = async () => {
@@ -68,9 +68,9 @@ const Step4 = (props) => {
         Authorization: token
       }
     })
-    props.addinterviewque(res.data.data[0].questions)
+    // props.addinterviewque(res.data.data[0].questions)
 
-    settest(olditem => [...olditem, ...res.data.data[0].questions])
+    // settest(olditem => [...olditem, ...res.data.data[0].questions])
     
   }
   const getmanagerquestions = async () => {
@@ -82,8 +82,8 @@ const Step4 = (props) => {
       }
     })
     console.log(res.data.data)
-    props.addinterviewque(res.data.data)
-    settest(olditem => [...olditem, ...res.data.data])
+    // props.addinterviewque(res.data.data)
+    // settest(olditem => [...olditem, ...res.data.data])
     
   }
   useEffect(() => {

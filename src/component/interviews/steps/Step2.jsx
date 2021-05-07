@@ -27,77 +27,76 @@ const Step2 = (props) => {
   const [data, setdata] = useState({
     department: '',
     email: '',
-    jobTitle: '',
-    first_name: props.data.managers.user.data.firstname,
-    last_name: props.data.managers.user.data.lastname
+    job: '',
+    // firstname: props.data.manager.user.data.firstname,
+    // lastname: props.data.manager.user.data.lastname
   });
-  const managers = [props.data.managers.user.data, ...props.data.managers.managerdata];
-  const department = [...props.data.managers.departmentResult];
-  const job = [...props.data.managers.jobTitleResult];
+  // const managers = [props.data.manager.user.data, ...props.data.manager.managerdata];
+  // const department = [...props.data.manager.departmentResult];
+  // const job = [...props.data.manager.jobTitleResult];
   // console.log(job)
-  useEffect(() => {
-    getname()
-  }, [data.email])
+  // useEffect(() => {
+  //   getname()
+  // }, [data.email])
 
-  const getname = () => {
-    managers.map((item) => {
-      if (item.email === data.email) {
-        // console.log(item.firstname)
-        setdata((olditem) => {
-          return {
-            ...olditem,
-            first_name: item.firstname,
-            last_name: item.lastname
-          }
-        })
-      }
-    })
-  }
+  // const getname = () => {
+  //   managers.map((item) => {
+  //     if (item.email === data.email) {
+  //       console.log(item.firstname)
+  //       setdata((olditem) => {
+  //         return {
+  //           ...olditem,
+  //           firstname: item.firstname,
+  //           lastname: item.lastname
+  //         }
+  //       })
+  //     }
+  //   })
+  // }
 
-  const getemails = () => {
-    let useremail = props.data.managers.user.data.email;
-    let items = [];
-    items.push(
-      <option value={useremail}>{useremail}</option>
-    );
-    managers.map((item) => {
-      if (item.registration_status === "REGISTERED" && item.isDeleted === false) {
-        items.push(
-          <option value={item.email}>{item.email}</option>
-        );
-      }
+  // const getemails = () => {
+  //   let useremail=props.data.manager.user.data.email;
+  //   let items = [];
+  //   items.push(
+  //     <option value={useremail}>{useremail}</option>
+  //   );
+  //   managers.map((item) => {
+  //     if(item.registration_status==="REGISTERED" && item.isDeleted===false)
+  //    { items.push(
+  //       <option value={item.email}>{item.email}</option>
+  //     );}
 
-    })
+  //   })
 
-    return items;
+  //   return items;
 
-  }
-  const getdepartment = () => {
-    let items = [];
-    department.map((item) => {
-      item.departments.map((val) => {
-        items.push(
-          <option value={val.name}>{val.name}</option>
-        );
-      })
+  // }
+  // const getdepartment = () => {
+  //   let items = [];
+  //   department.map((item) => {
+  //     item.departments.map((val) => {
+  //       items.push(
+  //         <option value={val.name}>{val.name}</option>
+  //       );
+  //     })
 
-    })
-    return items;
-  }
+  //   })
+  //   return items;
+  // }
 
-  const getjob = () => {
-    const items = [];
-    job.map((item) => {
-      item['job-title'].map((val) => {
-        if (val.department === data.department) {
-          console.log(val.title)
-          items.push(<option value={val.title}>{val.title}</option>)
-        }
-      })
+  // const getjob = () => {
+  //   const items = [];
+  //   job.map((item) => {
+  //     item['job-title'].map((val) => {
+  //       if (val.department === data.department) {
+  //         console.log(val.title)
+  //         items.push(<option value={val.title}>{val.title}</option>)
+  //       }
+  //     })
 
-    })
-    return items;
-  }
+  //   })
+  //   return items;
+  // }
 
   const inputchange = (event) => {
     const { name, value } = event.target;
@@ -160,7 +159,7 @@ const Step2 = (props) => {
 
                 >
                   {/* <option value="none">--select--</option> */}
-                  {getemails()}
+                  {/* {getemails()} */}
                 </NativeSelect>
               </FormControl>
             </Grid>
@@ -180,7 +179,7 @@ const Step2 = (props) => {
                 inputProps={{ 'aria-label': 'job' }}
               >
                 <option value="" disabled> --Select Department--</option>
-                {getdepartment()}
+                {/* {getdepartment()} */}
               </NativeSelect>
             </FormControl>
           </Grid>
@@ -196,15 +195,15 @@ const Step2 = (props) => {
                 inputProps={{ 'aria-label': 'job' }}
               >
                 <option value="" disabled> --Select Job Title--</option>
-                {getjob()}
+                {/* {getjob()} */}
               </NativeSelect>
             </FormControl>
           </Grid>
         </Grid>
         <div className="step2-Add">
-          <Button onClick={addorginfodata}
-            disabled={isdisabled}
-            variant="contained" color="secondary">
+          <Button  style={{marginLeft:"30px",marginTop:"20px"}} onClick={addorginfodata}
+          disabled={isdisabled}
+          variant="contained" color="secondary">
             ADD
           </Button>
         </div>

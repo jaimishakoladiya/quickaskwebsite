@@ -37,7 +37,7 @@ function ViewRecord() {
           <h5>WEB</h5>
           <Button variant="contained"  onClick={printfun} color="secondary" style={{marginLeft:"700px",fontSize:"12pt",height:"50px"}}>
               Print</Button>
-              {/* <InterviewShareGrid/> */}
+              <InterviewShareGrid/>
           </div>
           </div>
           <div className="view-header2">

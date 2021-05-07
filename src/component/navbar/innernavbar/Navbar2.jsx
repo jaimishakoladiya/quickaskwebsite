@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './navbar2.css'
 import DehazeIcon from '@material-ui/icons/Dehaze';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import img from '../../images/logo2.png'
 import { NavLink } from 'react-router-dom';
 import axios from "axios";
@@ -30,6 +29,8 @@ function Navbar2() {
   return (
     <div>
       <header>
+
+      
         <div className="out-nav-logo">
           <img src={img} className="out-nav-logo" />
         </div>
@@ -58,13 +59,11 @@ function Navbar2() {
         <nav className="second">
           <ul>
             <li>
-              <a href="#" className="a">
-                INTERVIEW DASHBOARD
-              </a>
+              <NavLink to="/adminview" className="a">
+           ADMIN VIEW
+              </NavLink>
             </li>
-            {/* <li className="sub-menu"><a href="#" className="a">COMPANY PROFILE </a>
-
-            </li> */}
+           
             <li>
               <NavLink to="/companyprofilepage" className="a">
                 COMPANY PROFILE

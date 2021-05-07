@@ -12,8 +12,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import InterviewDataGrid from './InterviewDataGrid';
 
 import ViewDelete from './ViewDelete';
@@ -26,7 +24,6 @@ const useStyles = makeStyles({
   
   },
 });
-
 function createData( date, jobtitle, department,manager,candidate,duration,action) {
  
   return {
