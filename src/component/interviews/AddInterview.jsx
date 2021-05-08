@@ -20,6 +20,7 @@ import "./Interviews.css"
 
 import EditIcon from '@material-ui/icons/Edit';
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
+import CompanyFooter from '../companyprofile/CompanyFooter';
 
 const useColorlibStepIconStyles = makeStyles({
   root: {
@@ -136,7 +137,10 @@ function AddInterview() {
                         width:"75px",
                         marginLeft:"20px"
                       }}>Reset</Button>
-      </div></Stepper></div>
+      </div></Stepper>
+  
+      </div>
+      
     );
   
 }

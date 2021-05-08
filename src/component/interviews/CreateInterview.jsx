@@ -16,6 +16,7 @@ import Step4 from "./steps/Step4";
 import { connect } from "react-redux";
 import AlertBox from "../alert/AlertBox";
 import { emptydata } from "../../redux/actions/interview/InterviewAction";
+import CompanyFooter from "../companyprofile/CompanyFooter";
 
 const CreateInterview = (props) => {
   console.log(props.data.interviewque)
@@ -205,7 +206,7 @@ const senddata=()=>{
       </div>
      
     </div>
-  
+
   );
 };
 const mapStateToProps=state=>{
