@@ -31,6 +31,7 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 // //import CompanyFooter from './component/companyprofile/CompanyFooter';
   import { Provider } from "react-redux";
  import store from "./redux/Store";
+import PractiseInterview from './component/team/contact/PractiseInterview';
 // import CompanyProfilePage from './component/companyprofile/CompanyProfilePage';
 
 function App() {
@@ -47,15 +48,15 @@ function App() {
       {/* <Registration/> */}
       {/* <Login/> */}
       {/* <Navbar/> */}
-
+<PractiseInterview/>
      
-     <Provider store={store}>
+     {/* <Provider store={store}>
       <BrowserRouter>
    
       <HomeNavbar/> 
      
       </BrowserRouter>
-      </Provider>
+      </Provider> */}
 {/* <Provider store={store}>
       <BrowserRouter>
    
