@@ -5,7 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import "../contact/contact.css";
 import AOS from 'aos';
 import 'aos/dist/aos.css'
-
+import axios from "axios";
 import {
   fade,
   ThemeProvider,
@@ -13,22 +13,16 @@ import {
   makeStyles,
   createMuiTheme,
 } from '@material-ui/core/styles';
-import axios from "axios";
 
 const Contact = () => {
   AOS.init({
     offset: 200,
     duration: 1000,
     once:true,
-    
-
   });
-async function makePostRequest(data){
-  let res=await axios.post("http://localhost:2002/contact",data)
-  console.log(res.data)
-}
+
 const onSubmit = (values) =>{
-  makePostRequest(values);
+  // makePostRequest(values);
   console.log(values);
 }
 
@@ -77,7 +71,7 @@ const onSubmit = (values) =>{
               variant="standard"
         
             />
-
+    
             <CssTextField
               style={field}
               id="custom-css-standard-input"

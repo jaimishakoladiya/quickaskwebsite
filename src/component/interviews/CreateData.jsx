@@ -32,8 +32,6 @@ function createData( date, jobtitle, department,manager,candidate,duration,actio
     jobtitle,
     department,
     manager,
-
-    
     candidate,
     duration,
     action,
@@ -149,14 +147,15 @@ const data= [
 console.log(data);
 const rows = [];
 var email;
+const newdate= new Date().toLocaleDateString();
 data.map((item)=>{
     // console.log(item)
     console.log(item['candidate-data'].first_name);
     email=item['candidate-data'].email
-    rows.push(createData(item['candidate-data'].first_name,
+    rows.push(createData(newdate,
                         item['candidate-data'].last_name,
-                      email,
-                        item['candidate-data'].department,1,'3mins',<ViewDelete/>))
+                        item['candidate-data'].department ,
+                        'ff',1,'3mins',<ViewDelete/>))
     // rows.push(createData('2021-2-3','web','android','gyg',1,'3mins',<ViewDelete/>))
     // rows.push(createData('dsdxxd','fdsdsgdg','adsg','f',1,'3mins',<ViewDelete/>))
 
