@@ -1,23 +1,17 @@
-import React from 'react';
-
-
-//import ButtonDelete from './steps/ButtonDelete'
-import CandidateDetails from "./CandidateDetails";
-//import CreateInterview from './CreateInterview';
+import React, { useEffect } from 'react';
 import CompanyFooter from './../companyprofile/CompanyFooter';
+import AddInterview from './AddInterview';
 
 const Interviews = ()=>{
+  
     return(<>
            
-          
-             <CandidateDetails/>
-         
-          
+             <AddInterview/>
              <CompanyFooter/>
          
-            
-        </>
+          </>
     );
 }
-
 export default Interviews;
+
+

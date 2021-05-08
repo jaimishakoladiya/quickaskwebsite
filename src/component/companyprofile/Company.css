@@ -6,29 +6,6 @@
 background-blend-mode:darken;
 
 } */
-.start-header{
-  margin-top: -8px;
-   height: 80px;
-   width: 1536px;
-    background-color: #008b8b;
-}
-.logo{
-  height: 90%;
-  box-shadow: none;
-  margin-top: 5px;
-  font-size: 24px;
-  float: left;
-  margin-left: 190px;
-}
-#start_grid{
-  margin-top: 70px;
-  margin-left: 70px;
-}
-#start1_grid{
-  margin-top: 70px;
-  margin-left: 200px;
-  margin-right: 120px;
-}
 
 .page {
   margin: 20px auto;

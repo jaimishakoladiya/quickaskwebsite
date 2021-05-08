@@ -23,7 +23,6 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 // import { BrowserRouter } from 'react-router-dom';
 //import InnerNavbar from './component/navbar/innernavbar/InnerNavbar'
 
-import Startinterview from "./component/team/Startinterview";
 // import Navbar from './component/navbar/homenavbar/Navbar'
 // import CompanyProfilePage from "./component/companyprofile/CompanyProfilePage";
 //import Navbar2 from './component/navbar/outernavbar/Navbar2'
@@ -33,6 +32,7 @@ import Startinterview from "./component/team/Startinterview";
 // //import CompanyFooter from './component/companyprofile/CompanyFooter';
   import { Provider } from "react-redux";
  import store from "./redux/Store";
+import Startinterview from './component/videoupload/Startinterview';
 // import CompanyProfilePage from './component/companyprofile/CompanyProfilePage';
 
 function App() {
@@ -76,7 +76,7 @@ function App() {
       {/* <Contact/> */}
       {/* <ViewRecord/> */}
       {/* <About/> */}
-      <Startinterview/>
+    <Startinterview/>
       {/* <QuestionsCard/> */}
       {/* <Provider store={store}> */}
       {/* <CompanyProfilePage/> */}
