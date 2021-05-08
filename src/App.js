@@ -1,8 +1,6 @@
 //import Registration from "./component/account/register/Registartion";
 //import Navbar from "./component/navbar/innernavbar/Navbar";
 
-import Startinterview from "./component/team/Startinterview";
-
 //import ResetPassword from "./component/account/register/ResetPassword";
 //import Intpra from "./Intpra";
 //import Login from './component/account/login/Login'
@@ -13,8 +11,8 @@ import Startinterview from "./component/team/Startinterview";
 //  import Registration from './component/account/register/Registartion'
    //import CompanyProfilePage from "./component/companyprofile/CompanyProfilePage";
 // //import Navbar2 from './component/navbar/outernavbar/Navbar2'
-//import { BrowserRouter } from 'react-router-dom';
-//import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
+import { BrowserRouter } from 'react-router-dom';
+import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
  // import { BrowserRouter } from 'react-router-dom';
  // import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 //import Login from './component/account/login/Login';
@@ -24,6 +22,8 @@ import Startinterview from "./component/team/Startinterview";
 
 // import { BrowserRouter } from 'react-router-dom';
 //import InnerNavbar from './component/navbar/innernavbar/InnerNavbar'
+
+import Startinterview from "./component/team/Startinterview";
 // import Navbar from './component/navbar/homenavbar/Navbar'
 // import CompanyProfilePage from "./component/companyprofile/CompanyProfilePage";
 //import Navbar2 from './component/navbar/outernavbar/Navbar2'
@@ -31,8 +31,8 @@ import Startinterview from "./component/team/Startinterview";
 //import InterviewDataGrid from './component/interviews/InterviewDataGrid';
 //import HomeNavbar from './component/navbar/homenavbar/HomeNavbar';
 // //import CompanyFooter from './component/companyprofile/CompanyFooter';
-  //import { Provider } from "react-redux";
- //import store from "./redux/Store";
+  import { Provider } from "react-redux";
+ import store from "./redux/Store";
 // import CompanyProfilePage from './component/companyprofile/CompanyProfilePage';
 
 function App() {
@@ -58,7 +58,6 @@ function App() {
      
       </BrowserRouter>
       </Provider> */}
-      <Startinterview/>
 {/* <Provider store={store}>
       <BrowserRouter>
    
@@ -77,6 +76,7 @@ function App() {
       {/* <Contact/> */}
       {/* <ViewRecord/> */}
       {/* <About/> */}
+      <Startinterview/>
       {/* <QuestionsCard/> */}
       {/* <Provider store={store}> */}
       {/* <CompanyProfilePage/> */}
