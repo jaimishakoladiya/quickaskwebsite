@@ -1,7 +1,3 @@
-// 'use strict';
-
-/* globals MediaRecorder */
-
 console.log("hello")
 let mediaRecorder;
 let recordedBlobs;
