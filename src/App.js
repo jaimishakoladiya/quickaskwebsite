@@ -1,6 +1,8 @@
 //import Registration from "./component/account/register/Registartion";
 //import Navbar from "./component/navbar/innernavbar/Navbar";
 
+import Startinterview from "./component/team/Startinterview";
+
 //import ResetPassword from "./component/account/register/ResetPassword";
 //import Intpra from "./Intpra";
 //import Login from './component/account/login/Login'
@@ -11,8 +13,8 @@
 //  import Registration from './component/account/register/Registartion'
    //import CompanyProfilePage from "./component/companyprofile/CompanyProfilePage";
 // //import Navbar2 from './component/navbar/outernavbar/Navbar2'
-import { BrowserRouter } from 'react-router-dom';
-import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
+//import { BrowserRouter } from 'react-router-dom';
+//import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
  // import { BrowserRouter } from 'react-router-dom';
  // import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 //import Login from './component/account/login/Login';
@@ -29,8 +31,8 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 //import InterviewDataGrid from './component/interviews/InterviewDataGrid';
 //import HomeNavbar from './component/navbar/homenavbar/HomeNavbar';
 // //import CompanyFooter from './component/companyprofile/CompanyFooter';
-  import { Provider } from "react-redux";
- import store from "./redux/Store";
+  //import { Provider } from "react-redux";
+ //import store from "./redux/Store";
 // import CompanyProfilePage from './component/companyprofile/CompanyProfilePage';
 
 function App() {
@@ -49,13 +51,14 @@ function App() {
       {/* <Navbar/> */}
 
      
-     <Provider store={store}>
+     {/* <Provider store={store}>
       <BrowserRouter>
    
       <HomeNavbar/> 
      
       </BrowserRouter>
-      </Provider>
+      </Provider> */}
+      <Startinterview/>
 {/* <Provider store={store}>
       <BrowserRouter>
    

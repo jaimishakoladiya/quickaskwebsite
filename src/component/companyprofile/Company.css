@@ -6,7 +6,15 @@
 background-blend-mode:darken;
 
 } */
-
+.start-header{
+  margin-top: -8px;
+   height: 80px;
+   width: 1528px;
+    background-color: #008b8b;
+   
+   
+  
+}
 
 .page {
   margin: 20px auto;
