@@ -16,6 +16,7 @@ import CreateData from "./CreateData";
 import axios from "axios";
 import { getmanager } from "../../redux/actions/interview/InterviewAction";
 import AdminView from "./AdminView";
+import CompanyFooter from "../companyprofile/CompanyFooter";
 
 const CandidateDetails = (props) => {
   const [open, SetOpen] = useState(false);
@@ -116,7 +117,7 @@ const CandidateDetails = (props) => {
       {open == true ? <CreateInterview /> : null}
       <br></br>
   
-     
+   
      </>
     );
 }

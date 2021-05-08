@@ -15,8 +15,9 @@ import Step3 from "./steps/Step3";
 import Step4 from "./steps/Step4";
 import { connect } from "react-redux";
 import AlertBox from "../alert/AlertBox";
-import axios from "axios";
-import {emptydata} from '../../redux/actions/interview/InterviewAction'
+import { emptydata } from "../../redux/actions/interview/InterviewAction";
+import CompanyFooter from "../companyprofile/CompanyFooter";
+
 const CreateInterview = (props) => {
  
   // const [data,setdata]=useState({})
@@ -197,7 +198,7 @@ const senddata=()=>{
       </div>
      
     </div>
-  
+
   );
 };
 const mapStateToProps=state=>{
