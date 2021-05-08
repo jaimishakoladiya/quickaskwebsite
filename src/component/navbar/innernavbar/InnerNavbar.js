@@ -37,7 +37,7 @@ const InnerNavbar = () => {
           path="/companyprofilepage"
           component={CompanyProfilePage}
         />
-        <Route exact path="/interview" component={AddInterview} />
+        <Route exact path="/interview" component={Interviews} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/forgotpassword" component={Forpass} />
         <Route exact path="/registartion" component={Registration} />

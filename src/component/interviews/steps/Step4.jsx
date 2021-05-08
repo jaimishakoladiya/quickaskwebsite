@@ -11,92 +11,53 @@ import {
 } from "../../../redux/actions/interview/InterviewAction";
 import DisplayQuestions from "../../companyprofile/DisplayQuestions";
 import { connect } from "react-redux";
-import axios from "axios";
 
 const Step4 = (props) => {
-  const user = JSON.parse(localStorage.getItem("user"));
-  const token = user.token;
-  var departmentid;
-  var jobid;
-  var managerid;
-  const department = props.data.managers.departmentResult;
-  const job = props.data.managers.jobTitleResult;
-  const manager = props.data.managers.managerdata;
-  const [test, settest] = useState([])
+
+  const department = props.manager.managers.departmentResult;
+  const job = props.manager.managers.jobTitleResult;
+  const manager = props.manager.managers.managerdata;
+  const [finaltest,setfinaltest]=useState([])
+const [test,settest]=useState([])
+ 
   if(props.data.orginfo.length!=0){
+console.log('call')
   department.map((item, index) => {
     item.departments.map((val, index) => {
       if (props.data.orginfo[0].department === val.name) {
-        departmentid = val.departmentId
+        test.push(...val.questions)
       }
     })
   })
   job.map((item, index) => {
     item['job-title'].map((val) => {
       if (props.data.orginfo[0].jobTitle === val.title) {
-        jobid = val.job_detail_id
+        test.push(...val.questions)
+
       }
     })
   })
 
   manager.map((item, index) => {
     if (props.data.orginfo[0].email === item.email) {
-      managerid = item.manager_token;
+      test.push(...item.questions)
+
     }
   })
+  
 }
-
-
-  const getdeptquestions = async () => {
-    const res = await axios({
-      method: "get",
-      url: `http://localhost:2002/view-department-question/${departmentid}`,
-      headers: {
-        Authorization: token
-      }
-    })
-    // props.addinterviewque(res.data.data[0].questions)
-    
-    // settest(olditem => [...olditem, ...res.data.data[0].questions])
-
-  }
-  const getjobquestions = async () => {
-    const res = await axios({
-      method: "get",
-      url: `http://localhost:2002/view-job-question/${jobid}`,
-      headers: {
-        Authorization: token
-      }
-    })
-    // props.addinterviewque(res.data.data[0].questions)
-
-    // settest(olditem => [...olditem, ...res.data.data[0].questions])
-    
-  }
-  const getmanagerquestions = async () => {
-    const res = await axios({
-      method: "get",
-      url: `http://localhost:2002/view-manager-question/${managerid}`,
-      headers: {
-        Authorization: token
-      }
-    })
-    console.log(res.data.data)
-    // props.addinterviewque(res.data.data)
-    // settest(olditem => [...olditem, ...res.data.data])
-    
-  }
   
   useEffect(() => {
-    getdeptquestions()
-    getjobquestions()
-    getmanagerquestions()
+    props.addinterviewque(test)
   
   },[])
+  
 
   const addquestion = (que) => {
-    settest(olditem => [...olditem, que])
-    props.addinterviewque(test)
+    // settest(olditem => [...olditem, que])
+    test.push(que)
+    console.log(test)
+    // props.addinterviewque(test)
 
   }
 
@@ -106,8 +67,11 @@ const Step4 = (props) => {
       return index !== id
     })
     console.log(newarr)
-    settest(newarr)
-    props.deleteinterviewque(id)
+    test=newarr
+    console.log(test)
+
+    // settest(newarr)
+    // props.deleteinterviewque(id)
 
   }
   return (
@@ -139,7 +103,7 @@ const Step4 = (props) => {
 
         <DisplayQuestions
           deletequestion={deletequestion}
-          question={props.data.interviewque}
+          question={test}
         />
       </div>
     </>
@@ -148,6 +112,7 @@ const Step4 = (props) => {
 const mapStateToProps = (state) => {
   return {
     data: state.interview,
+    manager:state.companyprofile
   };
 };
 
