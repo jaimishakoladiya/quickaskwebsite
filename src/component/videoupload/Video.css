@@ -53,4 +53,34 @@ button {
   margin-left: 200px;
   margin-right: 120px;
 }
+.practise_head{
+  height: 57px;
+  width: 1050px;
+  margin-top: 90px;
+  overflow: hidden;
+  background-color:lightgray;
+  text-align: center;
+  margin-left: 240px;
+}
+.practise_title{
+  font-size: 28px;
+  font-family: sans-serif;
+  line-height: 50px;
+ 
+
+}
+.practise_video{
+  height: 400px;
+  width: 700px;
+  position: center;
+  margin-top: 50px;
+  margin-left: 400px;
+}
+
+#practise_butn{
+  margin-left:400px ;
+  height: 50px;
+  width: 180px;
   
+
+}
