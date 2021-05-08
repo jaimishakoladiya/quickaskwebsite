@@ -1,17 +1,20 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
 import Typography from '@material-ui/core/Typography';
 import Step1 from './steps/Step1';
-
+import axios from 'axios';
+import {connect} from "react-redux";
 import Button from "@material-ui/core/Button";
 import Step2 from './steps/Step2';
 import Step3 from './steps/Step3';
 import Step4 from './steps/Step4';
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import { getmanager } from "../../redux/actions/interview/InterviewAction";
+
 // import "./index.css"
 import PeopleIcon from '@material-ui/icons/People';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
@@ -91,11 +94,9 @@ function getStepContent(step) {
       return 'Unknown step';
   }
 }
-function AddInterview() {
+function AddInterview(props) {
   const steps = getSteps();
-
-  
-    
+ 
     return (
       <div className="main">
        <div className="Interview_formheader">
@@ -137,11 +138,19 @@ function AddInterview() {
                         width:"75px",
                         marginLeft:"20px"
                       }}>Reset</Button>
-      </div></Stepper>
-  
-      </div>
+      </div></Stepper></div>
       
     );
   
 }
-export default AddInterview;
+const mapStateToProps=state=>{
+  return {
+    data:state.interview
+  }
+}
+const mapDispatchToProps=dispatch=>{
+  return{
+    getmanager:(data)=>{dispatch(getmanager(data))}
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(AddInterview);

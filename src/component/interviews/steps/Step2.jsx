@@ -5,10 +5,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import { connect } from "react-redux";
+import axios from 'axios'
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from "@material-ui/core/FormControl";
 import NativeSelect from "@material-ui/core/NativeSelect";
-import {deleteorginfo, getorginfo} from "../../../redux/actions/interview/InterviewAction"; 
+import {deleteorginfo, getorginfo,getmanager} from "../../../redux/actions/interview/InterviewAction"; 
 import Step1AddField from "./Step1AddField";
 
 
@@ -23,80 +24,82 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Step2 = (props) => {
+  console.log(props.manager.managers.user.data)
   const [isdisabled,setdisabled]=useState(false)
+
   const [data, setdata] = useState({
     department: '',
     email: '',
-    job: '',
-    // firstname: props.data.manager.user.data.firstname,
-    // lastname: props.data.manager.user.data.lastname
+    jobTitle: '',
+    first_name: props.manager.managers.user.data.firstname,
+    last_name: props.manager.managers.user.data.lastname
   });
-  // const managers = [props.data.manager.user.data, ...props.data.manager.managerdata];
-  // const department = [...props.data.manager.departmentResult];
-  // const job = [...props.data.manager.jobTitleResult];
-  // console.log(job)
-  // useEffect(() => {
-  //   getname()
-  // }, [data.email])
+  const managers = [props.manager.managers.user.data, ...props.manager.managers.managerdata];
+  const department = [...props.manager.managers.departmentResult];
+  const job = [...props.manager.managers.jobTitleResult];
+  console.log(job)
+  useEffect(() => {
+    getname()
+  }, [data.email])
 
-  // const getname = () => {
-  //   managers.map((item) => {
-  //     if (item.email === data.email) {
-  //       console.log(item.firstname)
-  //       setdata((olditem) => {
-  //         return {
-  //           ...olditem,
-  //           firstname: item.firstname,
-  //           lastname: item.lastname
-  //         }
-  //       })
-  //     }
-  //   })
-  // }
+  const getname = () => {
+    managers.map((item) => {
+      if (item.email === data.email) {
+        console.log(item.firstname)
+        setdata((olditem) => {
+          return {
+            ...olditem,
+            first_name: item.firstname,
+            last_name: item.lastname
+          }
+        })
+      }
+    })
+  }
 
-  // const getemails = () => {
-  //   let useremail=props.data.manager.user.data.email;
-  //   let items = [];
-  //   items.push(
-  //     <option value={useremail}>{useremail}</option>
-  //   );
-  //   managers.map((item) => {
-  //     if(item.registration_status==="REGISTERED" && item.isDeleted===false)
-  //    { items.push(
-  //       <option value={item.email}>{item.email}</option>
-  //     );}
+  const getemails = () => {
+    let useremail=props.manager.managers.user.data.email;
+    let items = [];
+    items.push(
+      <option value={useremail}>{useremail}</option>
+    );
+    managers.map((item) => {
+      if(item.registration_status==="REGISTERED" && item.isDeleted===false)
+     { items.push(
+        <option value={item.email}>{item.email}</option>
+      );}
 
-  //   })
+    })
 
-  //   return items;
+    return items;
 
-  // }
-  // const getdepartment = () => {
-  //   let items = [];
-  //   department.map((item) => {
-  //     item.departments.map((val) => {
-  //       items.push(
-  //         <option value={val.name}>{val.name}</option>
-  //       );
-  //     })
+  }
+  const getdepartment = () => {
+    let items = [];
+    department.map((item) => {
+      item.departments.map((val) => {
+        items.push(
+          <option value={val.name}>{val.name}</option>
+        );
+      })
 
-  //   })
-  //   return items;
-  // }
+    })
+    return items;
+  }
 
-  // const getjob = () => {
-  //   const items = [];
-  //   job.map((item) => {
-  //     item['job-title'].map((val) => {
-  //       if (val.department === data.department) {
-  //         console.log(val.title)
-  //         items.push(<option value={val.title}>{val.title}</option>)
-  //       }
-  //     })
+  const getjob = () => {
+    const items = [];
+    job.map((item) => {
+      item['job-title'].map((val) => {
+        if (val.department === data.department) {
+          console.log(val.title)
+          items.push(<option value={val.title}>{val.title}</option>)
+        }
+      })
 
-  //   })
-  //   return items;
-  // }
+    })
+    return items;
+  }
 
   const inputchange = (event) => {
     const { name, value } = event.target;
@@ -159,7 +162,7 @@ const deletefunction=(id)=>{
 
                 >
                   {/* <option value="none">--select--</option> */}
-                  {/* {getemails()} */}
+                  {getemails()}
                 </NativeSelect>
               </FormControl>
             </Grid>
@@ -179,7 +182,7 @@ const deletefunction=(id)=>{
                 inputProps={{ 'aria-label': 'job' }}
               >
                 <option value="" disabled> --Select Department--</option>
-                {/* {getdepartment()} */}
+                {getdepartment()}
               </NativeSelect>
             </FormControl>
           </Grid>
@@ -187,15 +190,14 @@ const deletefunction=(id)=>{
 
             <FormControl style={{ width: "200px", marginTop: "10px" }}>
               <NativeSelect
+                name='jobTitle'
                 value={data.jobTitle}
                 onChange={inputchange}
-                name="jobTitle"
                 disabled={isdisabled}
-
                 inputProps={{ 'aria-label': 'job' }}
               >
                 <option value="" disabled> --Select Job Title--</option>
-                {/* {getjob()} */}
+                {getjob()}
               </NativeSelect>
             </FormControl>
           </Grid>
@@ -219,15 +221,17 @@ const deletefunction=(id)=>{
     </>
   );
 };
-const mapStateToProps = state => {
+const mapStateToProps = (state ,ownprops)=> {
   return {
-    data: state.interview
+    data: state.interview,
+    manager:state.companyprofile
   }
 }
 const mapDispatchToProps=dispatch=>{
   return{
     getorginfo:(newdata)=>{dispatch(getorginfo(newdata))},
-    deleteorginfo:(id)=>{dispatch(deleteorginfo(id))}
+    deleteorginfo:(id)=>{dispatch(deleteorginfo(id))},
+    getmanager:(data)=>{dispatch(getmanager(data))}
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Step2);

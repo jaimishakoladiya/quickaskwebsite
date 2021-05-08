@@ -22,6 +22,7 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 
 // import { BrowserRouter } from 'react-router-dom';
 //import InnerNavbar from './component/navbar/innernavbar/InnerNavbar'
+
 // import Navbar from './component/navbar/homenavbar/Navbar'
 // import CompanyProfilePage from "./component/companyprofile/CompanyProfilePage";
 //import Navbar2 from './component/navbar/outernavbar/Navbar2'
@@ -31,7 +32,8 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 // //import CompanyFooter from './component/companyprofile/CompanyFooter';
   import { Provider } from "react-redux";
  import store from "./redux/Store";
-import PractiseInterview from './component/team/contact/PractiseInterview';
+// import PractiseInterview from './component/team/contact/PractiseInterview';
+import Startinterview from './component/videoupload/Startinterview';
 // import CompanyProfilePage from './component/companyprofile/CompanyProfilePage';
 
 function App() {
@@ -48,7 +50,7 @@ function App() {
       {/* <Registration/> */}
       {/* <Login/> */}
       {/* <Navbar/> */}
-<PractiseInterview/>
+{/* <PractiseInterview/> */}
      
      {/* <Provider store={store}>
       <BrowserRouter>
@@ -75,6 +77,7 @@ function App() {
       {/* <Contact/> */}
       {/* <ViewRecord/> */}
       {/* <About/> */}
+    <Startinterview/>
       {/* <QuestionsCard/> */}
       {/* <Provider store={store}> */}
       {/* <CompanyProfilePage/> */}
