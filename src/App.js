@@ -30,15 +30,16 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 //import InterviewDataGrid from './component/interviews/InterviewDataGrid';
 //import HomeNavbar from './component/navbar/homenavbar/HomeNavbar';
 // //import CompanyFooter from './component/companyprofile/CompanyFooter';
-  import { Provider } from "react-redux";
- import store from "./redux/Store";
+//   import { Provider } from "react-redux";
+//  import store from "./redux/Store";
  import PractiseInterview from './component/videoupload/PractiseInterview';
 import Startinterview from './component/videoupload/Startinterview';
 // import CompanyProfilePage from './component/companyprofile/CompanyProfilePage';
-
+import TipsInterview from './component/videoupload/TipsInterview'
 function App() {
   return (
     <>
+    <TipsInterview/>
     {/* <ResetPassword/> */}
       {/* <InterviewDataGrid/> */}
       {/* <Home/>  */}
@@ -50,7 +51,7 @@ function App() {
       {/* <Registration/> */}
       {/* <Login/> */}
       {/* <Navbar/> */}
-<PractiseInterview/>
+{/* <PractiseInterview/> */}
      
      {/* <Provider store={store}>
       <BrowserRouter>

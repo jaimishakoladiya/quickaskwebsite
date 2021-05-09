@@ -3,10 +3,10 @@ import React from 'react'
 import img1 from "../images/admin.png"
 import Grid from "@material-ui/core/Grid";
 import logo from "../images/logo2.png"
-
+import './Video.css'
 import Button from "@material-ui/core/Button";
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
-import CompanyFooter from "../companyprofile/CompanyFooter";
+import CompanyFooter from '../companyprofile/CompanyFooter'
 // import "../companyprofile/Company.css"
 function Startinterview() {
     return (
@@ -65,8 +65,8 @@ function Startinterview() {
                         marginLeft:"1050px",
                         height:"50px",
                         color:"black"
-                      }}>Start Interview</Button>
-           <CompanyFooter/>
+                      }}>Start Interview</Button><br></br><br></br><br></br>
+             <CompanyFooter/>
         </div>
         
     )

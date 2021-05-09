@@ -275,7 +275,7 @@ company-footer */
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: black;
 
-position:relative;
+position:static;
 bottom: 0;
   width: 100%;
   border-top: 7px solid black;
