@@ -32,7 +32,10 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 // //import CompanyFooter from './component/companyprofile/CompanyFooter';
   import { Provider } from "react-redux";
  import store from "./redux/Store";
-import Startinterview from './component/videoupload/Startinterview';
+import StartInterview from './component/videoupload/StartInterview';
+// import FinishInterview from './component/videoupload/FinishInterview';
+// import InterviewQuestion from './component/videoupload/InterviewQuestion';
+
 // import CompanyProfilePage from './component/companyprofile/CompanyProfilePage';
 
 function App() {
@@ -48,9 +51,10 @@ function App() {
       {/* <Forpass/> */}
       {/* <Registration/> */}
       {/* <Login/> */}
+      <StartInterview/>
       {/* <Navbar/> */}
-
-     
+   {/* <InterviewQuestion/> */}
+     {/* <FinishInterview/> */}
      {/* <Provider store={store}>
       <BrowserRouter>
    
@@ -76,7 +80,7 @@ function App() {
       {/* <Contact/> */}
       {/* <ViewRecord/> */}
       {/* <About/> */}
-    <Startinterview/>
+    
       {/* <QuestionsCard/> */}
       {/* <Provider store={store}> */}
       {/* <CompanyProfilePage/> */}
