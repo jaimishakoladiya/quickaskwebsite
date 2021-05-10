@@ -9,7 +9,7 @@ import axios from 'axios'
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from "@material-ui/core/FormControl";
 import NativeSelect from "@material-ui/core/NativeSelect";
-import {deleteorginfo, getorginfo,getmanager} from "../../../redux/actions/interview/InterviewAction"; 
+import {deleteorginfo, getorginfo,getmanager, addinterviewque} from "../../../redux/actions/interview/InterviewAction"; 
 import Step1AddField from "./Step1AddField";
 
 
@@ -113,8 +113,35 @@ const Step2 = (props) => {
     console.log(data)
 
   }
-  const addorginfodata = () => {
+  const addorginfodata=()=>{
+  var test=[];
+
     props.getorginfo(data);
+    department.map((item, index) => {
+      item.departments.map((val, index) => {
+        if (data.department === val.name) {
+          test.push(...val.questions)
+          props.addinterviewque(...val.questions)
+        }
+      })
+    })
+    job.map((item, index) => {
+      item['job-title'].map((val) => {
+        if (data.jobTitle === val.title) {
+          test.push(...val.questions)
+          props.addinterviewque(...val.questions)
+     }
+      })
+    })
+  
+    managers.map((item, index) => {
+      if (data.email === item.email) {
+        test.push(...item.questions)
+        props.addinterviewque(...item.questions)
+  
+      }
+    })
+    console.log(test)
     setdisabled(true);
   }
   const deletefunction = (id) => {
@@ -231,7 +258,8 @@ const mapDispatchToProps=dispatch=>{
   return{
     getorginfo:(newdata)=>{dispatch(getorginfo(newdata))},
     deleteorginfo:(id)=>{dispatch(deleteorginfo(id))},
-    getmanager:(data)=>{dispatch(getmanager(data))}
+    getmanager:(data)=>{dispatch(getmanager(data))},
+    addinterviewque:(data)=>{dispatch(addinterviewque(data))}
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Step2);

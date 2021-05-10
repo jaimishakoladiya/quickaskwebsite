@@ -14,64 +14,16 @@ import { connect } from "react-redux";
 
 const Step4 = (props) => {
 
-  const department = props.manager.managers.departmentResult;
-  const job = props.manager.managers.jobTitleResult;
-  const manager = props.manager.managers.managerdata;
-  const [finaltest,setfinaltest]=useState([])
-const [test,settest]=useState([])
- 
-  if(props.data.orginfo.length!=0){
-console.log('call')
-  department.map((item, index) => {
-    item.departments.map((val, index) => {
-      if (props.data.orginfo[0].department === val.name) {
-        test.push(...val.questions)
-      }
-    })
-  })
-  job.map((item, index) => {
-    item['job-title'].map((val) => {
-      if (props.data.orginfo[0].jobTitle === val.title) {
-        test.push(...val.questions)
-
-      }
-    })
-  })
-
-  manager.map((item, index) => {
-    if (props.data.orginfo[0].email === item.email) {
-      test.push(...item.questions)
-
-    }
-  })
-  
-}
-  
-  useEffect(() => {
-    props.addinterviewque(test)
-  
-  },[])
-  
 
   const addquestion = (que) => {
-    // settest(olditem => [...olditem, que])
-    test.push(que)
-    console.log(test)
-    // props.addinterviewque(test)
+  
+    props.addinterviewque(que)
 
   }
 
   const deletequestion = (id) => {
 
-    const newarr = test.filter((item, index) => {
-      return index !== id
-    })
-    console.log(newarr)
-    test=newarr
-    console.log(test)
-
-    // settest(newarr)
-    // props.deleteinterviewque(id)
+    props.deleteinterviewque(id)
 
   }
   return (
@@ -103,7 +55,7 @@ console.log('call')
 
         <DisplayQuestions
           deletequestion={deletequestion}
-          question={test}
+          question={props.data.interviewque}
         />
       </div>
     </>

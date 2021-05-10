@@ -11,10 +11,10 @@
 //  import Registration from './component/account/register/Registartion'
    //import CompanyProfilePage from "./component/companyprofile/CompanyProfilePage";
 // //import Navbar2 from './component/navbar/outernavbar/Navbar2'
-import { BrowserRouter } from 'react-router-dom';
-import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
- // import { BrowserRouter } from 'react-router-dom';
- // import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
+// import { BrowserRouter } from 'react-router-dom';
+// import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
+ import { BrowserRouter } from 'react-router-dom';
+ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 //import Login from './component/account/login/Login';
 //import Forpass from './component/account/login/Forpass';
 //import { BrowserRouter } from 'react-router-dom';
@@ -28,13 +28,8 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 //import InterviewDataGrid from './component/interviews/InterviewDataGrid';
 //import HomeNavbar from './component/navbar/homenavbar/HomeNavbar';
 // //import CompanyFooter from './component/companyprofile/CompanyFooter';
-import { Provider } from "react-redux";
-  import store from "./redux/Store";
-//  import PractiseInterview from './component/videoupload/PractiseInterview';
-// import Startinterview from './component/videoupload/Startinterview';
 // import CompanyProfilePage from './component/companyprofile/CompanyProfilePage';
 // import TipsInterview from './component/videoupload/TipsInterview'
-function App() {
   return (
     <>
     {/* <TipsInterview/> */}
