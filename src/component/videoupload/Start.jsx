@@ -6,17 +6,14 @@ import './Video.css'
 const Start = () => {
   const [disable, setdisable] = useState(false)
   const recordButton = useRef(null)
-  const playButton=useRef(null)
-  const downloadButton=useRef(null)
-  const recordedVideo=useRef(null)
+  const playButton = useRef(null)
+  const downloadButton = useRef(null)
+  const recordedVideo = useRef(null)
+  const cameraScreen = useRef(null)
+  const errorMsgElement=useRef(null)
   let mediaRecorder;
   let recordedBlobs;
 
-  const errorMsgElement = document.querySelector('span#errorMsg');
-  // const recordedVideo = document.querySelector('video#recorded');
-  // const recordButton = document.querySelector('button#record');
-  // const playButton = document.querySelector('button#play');
-  // const downloadButton = document.querySelector('button#download');
   console.log(recordButton)
   function handleSuccess(stream) {
     recordButton.current.disabled = false;
@@ -49,7 +46,7 @@ const Start = () => {
       mediaRecorder = new MediaRecorder(window.stream, options);
     } catch (e) {
       console.error('Exception while creating MediaRecorder:', e);
-      errorMsgElement.innerHTML = `Exception while creating MediaRecorder: ${JSON.stringify(e)}`;
+      errorMsgElement.current.innerHTML = `Exception while creating MediaRecorder: ${JSON.stringify(e)}`;
       return;
     }
 
@@ -71,6 +68,8 @@ const Start = () => {
   function stopRecording() {
     mediaRecorder.stop();
     playButton && playButton.current.addEventListener('click', () => {
+      recordedVideo.current.style.display = "inline";
+      cameraScreen.current.style.display = "none";
       const superBuffer = new Blob(recordedBlobs, { type: 'video/webm' });
       recordedVideo.current.src = null;
       recordedVideo.current.srcObject = null;
@@ -79,19 +78,19 @@ const Start = () => {
       recordedVideo.current.play();
     });
     downloadButton && downloadButton.current.addEventListener('click', () => {
-    const blob = new Blob(recordedBlobs, { type: 'video/mp4' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.style.display = 'none';
-    a.href = url;
-    a.download = 'test.mp4';
-    document.body.appendChild(a);
-    a.click();
-    setTimeout(() => {
-      document.body.removeChild(a);
-      window.URL.revokeObjectURL(url);
-    }, 100);
-  });
+      const blob = new Blob(recordedBlobs, { type: 'video/mp4' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = url;
+      a.download = 'test.mp4';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => {
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+      }, 100);
+    });
   }
   async function init(constraints) {
     try {
@@ -99,49 +98,14 @@ const Start = () => {
       handleSuccess(stream);
     } catch (e) {
       console.error('navigator.getUserMedia error:', e);
-      // errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
+       errorMsgElement.current.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
     }
   }
-  // const playbtn = () => {
-  //   const superBuffer = new Blob(recordedBlobs, { type: 'video/webm' });
-  //   recordedVideo.src = null;
-  //   recordedVideo.srcObject = null;
-  //   recordedVideo.src = window.URL.createObjectURL(superBuffer);
-  //   recordedVideo.controls = true;
-  //   recordedVideo.play();
-  // }
-
-  
-  // const downloadbtn = () => {
-  //   const blob = new Blob(recordedBlobs, { type: 'video/mp4' });
-  //   const url = window.URL.createObjectURL(blob);
-  //   const a = document.createElement('a');
-  //   a.style.display = 'none';
-  //   a.href = url;
-  //   a.download = 'test.mp4';
-  //   document.body.appendChild(a);
-  //   a.click();
-  //   setTimeout(() => {
-  //     document.body.removeChild(a);
-  //     window.URL.revokeObjectURL(url);
-  //   }, 100);
-  // }
-  // downloadButton && downloadButton.current.addEventListener('click', () => {
-  //   const blob = new Blob(recordedBlobs, { type: 'video/mp4' });
-  //   const url = window.URL.createObjectURL(blob);
-  //   const a = document.createElement('a');
-  //   a.style.display = 'none';
-  //   a.href = url;
-  //   a.download = 'test.mp4';
-  //   document.body.appendChild(a);
-  //   a.click();
-  //   setTimeout(() => {
-  //     document.body.removeChild(a);
-  //     window.URL.revokeObjectURL(url);
-  //   }, 100);
-  // });
+ 
   const startcamera = async () => {
-    console.log("hii")
+    cameraScreen.current.style.display = "inline";
+    recordedVideo.current.style.display = "none";
+
     const hasEchoCancellation = document.querySelector('#echoCancellation').checked;
     const constraints = {
       audio: {
@@ -154,10 +118,11 @@ const Start = () => {
     console.log('Using media constraints:', constraints);
     await init(constraints)
     // startRecording()
+
   }
 
   const recordbtn = () => {
-console.log("hhh")
+    console.log("hhh")
     if (recordButton.current.textContent === 'Record') {
       startRecording();
     } else {
@@ -173,14 +138,14 @@ console.log("hhh")
 
 
       <div id="container">
-        <video id="gum" playsInline autoPlay muted ref={recordedVideo}></video>
-        {/* <video id="recorded" playsInline loop ref={recordedVideo}></video> */}
+        <video id="gum" playsInline autoPlay muted ref={cameraScreen}></video>
+        <video id="recorded" playsInline loop ref={recordedVideo}></video>
 
         <div>
           <button id="start" onClick={startcamera}>Start camera</button>
           <button id="record" disabled onClick={recordbtn} ref={recordButton}>Record</button>
-          <button id="play" disabled  ref={playButton}>Play</button>
-          <button id="download" disabled  ref={downloadButton}>Download</button>
+          <button id="play" disabled ref={playButton}>Play</button>
+          <button id="download" disabled ref={downloadButton}>Download</button>
         </div>
 
         <div>
@@ -191,7 +156,7 @@ console.log("hhh")
         </div>
 
         <div>
-          <span id="errorMsg"></span>
+          <span id="errorMsg" ref={errorMsgElement}></span>
         </div>
       </div>
       <script>

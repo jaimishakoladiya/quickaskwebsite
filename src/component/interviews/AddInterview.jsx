@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React,{useEffect, useState} from 'react';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
@@ -13,7 +13,7 @@ import Step3 from './steps/Step3';
 import Step4 from './steps/Step4';
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
-import { getmanager } from "../../redux/actions/interview/InterviewAction";
+import { getmanager ,emptydata} from "../../redux/actions/interview/InterviewAction";
 
 // import "./index.css"
 import PeopleIcon from '@material-ui/icons/People';
@@ -95,8 +95,33 @@ function getStepContent(step) {
   }
 }
 function AddInterview(props) {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const token = user.token;
   const steps = getSteps();
- 
+ const addinterview=async ()=>{
+   var data;
+
+  data={
+    candidate:props.data.candidate,
+    managers:props.data.orginfo,
+    panel:props.data.panel,
+    question_bank:{
+      department:props.data.orginfo[0].department,
+      test:props.data.interviewque
+    }
+  }
+  console.log(data)
+  var res = await axios({
+    method: 'post',
+    url: "http://localhost:2002/manager-added-interview",
+    data: data,
+    headers: {
+      Authorization: token
+    }
+  })
+  console.log(res.data)
+  props.emptydata()
+ }
     return (
       <div className="main">
        <div className="Interview_formheader">
@@ -128,7 +153,8 @@ function AddInterview(props) {
                         marginLeft:"700px",
                         height:"40px",
                         color:"black"
-                      }}>Submit</Button>
+                      }}
+                      onClick={addinterview}>Submit</Button>
                       <Button
                       style={{
                         color: "darkcyan",
@@ -150,7 +176,8 @@ const mapStateToProps=state=>{
 }
 const mapDispatchToProps=dispatch=>{
   return{
-    getmanager:(data)=>{dispatch(getmanager(data))}
+    getmanager:(data)=>{dispatch(getmanager(data))},
+    emptydata:()=>{dispatch(emptydata())}
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(AddInterview);
