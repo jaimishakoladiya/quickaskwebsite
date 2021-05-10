@@ -1,4 +1,3 @@
-console.log("hello")
 let mediaRecorder;
 let recordedBlobs;
 
@@ -9,7 +8,7 @@ const playButton = document.querySelector('button#play');
 const downloadButton = document.querySelector('button#download');
 console.log(playButton)
 
-recordButton.addEventListener('click', () => {
+recordButton && recordButton.addEventListener('click', () => {
   if (recordButton.textContent === 'Record') {
     startRecording();
   } else {
@@ -21,8 +20,8 @@ recordButton.addEventListener('click', () => {
 });
 
 
-playButton.addEventListener('click', () => {
-  const superBuffer = new Blob(recordedBlobs, {type: 'video/webm'});
+playButton && playButton.addEventListener('click', () => {
+  const superBuffer = new Blob(recordedBlobs, { type: 'video/webm' });
   recordedVideo.src = null;
   recordedVideo.srcObject = null;
   recordedVideo.src = window.URL.createObjectURL(superBuffer);
@@ -31,8 +30,8 @@ playButton.addEventListener('click', () => {
 });
 
 
-downloadButton.addEventListener('click', () => {
-  const blob = new Blob(recordedBlobs, {type: 'video/mp4'});
+downloadButton && downloadButton.addEventListener('click', () => {
+  const blob = new Blob(recordedBlobs, { type: 'video/mp4' });
   const url = window.URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.style.display = 'none';
@@ -55,7 +54,7 @@ function handleDataAvailable(event) {
 
 function startRecording() {
   recordedBlobs = [];
-  let options = {mimeType: 'video/webm;codecs=vp9,opus'};
+  let options = { mimeType: 'video/webm;codecs=vp9,opus' };
   try {
     mediaRecorder = new MediaRecorder(window.stream, options);
   } catch (e) {
@@ -99,12 +98,14 @@ async function init(constraints) {
     errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
   }
 }
-
-document.querySelector('button#start').addEventListener('click', async () => {
+const startRecordBtn = document.querySelector('button#start')
+console.log(startRecordBtn&&startRecordBtn);
+startRecordBtn && startRecordBtn.addEventListener('click', async () => {
+  console.log("called");
   const hasEchoCancellation = document.querySelector('#echoCancellation').checked;
   const constraints = {
     audio: {
-      echoCancellation: {exact: hasEchoCancellation}
+      echoCancellation: { exact: hasEchoCancellation }
     },
     video: {
       width: 1280, height: 720
