@@ -138,9 +138,7 @@ function AddInterview(props) {
                         width:"75px",
                         marginLeft:"20px"
                       }}>Reset</Button>
-      </div></Stepper>
-  
-      </div>
+      </div></Stepper></div>
       
     );
   

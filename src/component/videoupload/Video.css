@@ -28,4 +28,78 @@ button {
   video#gumVideo {
     margin: 0 20px 20px 0;
   }
+  /* startint */
   
+.start-header{
+  margin-top: -8px;
+   height: 80px;
+   width: 1536px;
+    background-color: #008b8b;
+}
+.logo{
+  height: 90%;
+  box-shadow: none;
+  margin-top: 5px;
+  font-size: 24px;
+  float: left;
+  margin-left: 190px;
+}
+#start_grid{
+  margin-top: 70px;
+  margin-left: 70px;
+}
+#start1_grid{
+  margin-top: 70px;
+  margin-left: 200px;
+  margin-right: 120px;
+}
+.practise_head{
+  height: 57px;
+  width: 1050px;
+  margin-top: 90px;
+  overflow: hidden;
+  background-color:lightgray;
+  text-align: center;
+  margin-left: 240px;
+}
+.practise_title{
+  font-size: 28px;
+  font-family: sans-serif;
+  line-height: 50px;
+ 
+
+}
+.practise_video{
+  height: 400px;
+  width: 700px;
+  position: center;
+  margin-top: 50px;
+  margin-left: 400px;
+}
+
+#practise_butn{
+  margin-left:400px ;
+  height: 50px;
+  width: 180px;
+  
+
+}
+.tips_text{
+  margin-top: 50px;
+  text-align: center;
+  line-height: 30px;
+}
+#tips_butn1{
+margin-top: 60px;
+  margin-left: 700px;
+  height: 50px;
+  width: 180px;
+
+}
+#tips_butn2{
+  margin-top: 60px;
+    margin-left: 900px;
+    height: 50px;
+    width: 180px;
+  
+  }
