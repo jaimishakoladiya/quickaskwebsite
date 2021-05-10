@@ -13,7 +13,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import InterviewDataGrid from './InterviewDataGrid';
-
+import Button from "@material-ui/core/Button";
 import ViewDelete from './ViewDelete';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
@@ -24,17 +24,16 @@ const useStyles = makeStyles({
   
   },
 });
-function createData( date, jobtitle, department,manager,candidate,duration,action) {
+function createData(name, jobtitle, status,date,score,action) {
  
   return {
 
-    date,
+    name,
     jobtitle,
-    department,
-    manager,
-    candidate,
-    duration,
-    action,
+    status,
+    date,
+    score,
+  action,
    
   };
 }
@@ -58,14 +57,14 @@ function Row(props) {
         </TableCell>
 
         <TableCell   id="tablerow" component="th" scope="row">
-        {row.date}
+        {row.name}
         </TableCell>
        
         <TableCell id="tablerow">{row.jobtitle}</TableCell>
-        <TableCell id="tablerow">{row.department}</TableCell>
-        <TableCell id="tablerow">{row.manager}</TableCell>
-        <TableCell id="tablerow">{row.candidate}</TableCell>
-        <TableCell id="tablerow">{row.duration}</TableCell>
+        <TableCell id="tablerow">{row.status}</TableCell>
+        <TableCell id="tablerow">{row.date}</TableCell>
+        <TableCell id="tablerow">{row.score}</TableCell>
+        
         <TableCell id="tablerow">{row.action}</TableCell>
        
       </TableRow>
@@ -115,11 +114,18 @@ const n=[1,2,3]
 // const department = [...props.data.managers.departmentResult];
 //   const job = [...props.data.managers.jobTitleResult];
  const newdate=new Date().toLocaleDateString();
- 
+ const newtime=new Date().toLocaleTimeString();
+ const newdatetime =` ${newdate} ${newtime}`
 
 const rows = [];
    n.map((item,index)=>{
-    rows.push(createData(newdate,'bhhjbhj','android','ck',1,'3mins',<ViewDelete/>))
+    rows.push(createData(
+    'ck',
+    'web',
+    <Button variant="contained" color="primary" style={{backgroundColor:"darkcyan"}}> INVITED</Button>,
+     newdatetime,
+     0,
+  <ViewDelete/>))
   })
 export default function CreateData() {
   return (

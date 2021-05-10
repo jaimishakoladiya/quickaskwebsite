@@ -44,6 +44,7 @@ import InterviewQuestion from './component/videoupload/InterviewQuestion';
 function App() {
   return (
     <>
+   
     {/* <StartInterviewTips/> */}
     {/* <PractiseInterviewTips/> */}
     {/* <ResetPassword/> */}
@@ -60,15 +61,15 @@ function App() {
       {/* <Login/> */}
       {/* <StartInterview/> */}
       {/* <Navbar/> */}
-   <InterviewQuestion/>
-     {/* <FinishInterview/> */}
-     {/* <Provider store={store}>
+{/* <PractiseInterview/> */}
+     
+     <Provider store={store}>
       <BrowserRouter>
    
       <HomeNavbar/> 
      
       </BrowserRouter>
-      </Provider> */}
+      </Provider>
 {/* <Provider store={store}>
       <BrowserRouter>
    
