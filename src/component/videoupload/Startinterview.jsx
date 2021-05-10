@@ -8,7 +8,7 @@ import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
 import CameraIcon from '@material-ui/icons/Camera';
 import Button from "@material-ui/core/Button";
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
-import CompanyFooter from "../companyprofile/CompanyFooter";
+import CompanyFooter from '../companyprofile/CompanyFooter'
 // import "../companyprofile/Company.css"
 function StartInterview() {
     return (
@@ -46,7 +46,7 @@ function StartInterview() {
                <Grid id="start1_grid" item xs><br/>
                <div style={{border:"4px solid darkcyan",borderRadius:"30px",width:"500px",height:"400px"}}>
                <div className="img_h">
-               <img style={{ height: "140px", width: "215px",marginTop:"60px",marginLeft:"130px"}} src={logo}></img>
+               <img style={{ height: "140px", width: "235px",marginTop:"60px",marginLeft:"130px"}} src={logo}></img>
                </div><br/>
              
               <table>
@@ -67,8 +67,8 @@ function StartInterview() {
                         marginLeft:"1000px",
                         height:"50px",
                         color:"black"
-                      }}>Start Interview</Button>
-           <CompanyFooter/>
+                      }}>Start Interview</Button><br></br><br></br><br></br>
+             <CompanyFooter/>
         </div>
         
     )

@@ -13,6 +13,7 @@
 // //import Navbar2 from './component/navbar/outernavbar/Navbar2'
 import { BrowserRouter } from 'react-router-dom';
 import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
+
  // import { BrowserRouter } from 'react-router-dom';
  // import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 //import Login from './component/account/login/Login';
@@ -41,6 +42,8 @@ import StartInterview from './component/videoupload/StartInterview';
 function App() {
   return (
     <>
+    {/* <StartInterviewTips/> */}
+    {/* <PractiseInterviewTips/> */}
     {/* <ResetPassword/> */}
       {/* <InterviewDataGrid/> */}
       {/* <Home/>  */}
