@@ -36,7 +36,7 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
  //import StartInterviewTips from "./component/videoupload/StartInterviewTips"
 //import StartInterview from './component/videoupload/StartInterview';
 //import PractiseInterviewTips from './component/videoupload/PractiseInterviewTips';
-// import FinishInterview from './component/videoupload/FinishInterview';
+//import FinishInterview from './component/videoupload/FinishInterview';
 import InterviewQuestion from './component/videoupload/InterviewQuestion';
 
 // import CompanyProfilePage from './component/companyprofile/CompanyProfilePage';
