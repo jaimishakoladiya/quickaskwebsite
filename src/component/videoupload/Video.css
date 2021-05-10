@@ -87,19 +87,26 @@ button {
 .tips_text{
   margin-top: 50px;
   text-align: center;
-  line-height: 30px;
+  line-height: 40px;
+  font-size: 20px;
+  color:rgb(59, 57, 57);
 }
-#tips_butn1{
+/* #tips_butn1{
 margin-top: 60px;
   margin-left: 700px;
   height: 50px;
   width: 180px;
 
-}
+} */
 #tips_butn2{
   margin-top: 60px;
     margin-left: 900px;
     height: 50px;
     width: 180px;
+  background-color: darkcyan;
   
+  }
+  #tips_butn2:hover{
+    background-color:rgb(243, 46, 46);
+   
   }
