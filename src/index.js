@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import Start from "./component/videoupload/Start"
 import App from './App';
-import CompanyFooter from './component/companyprofile/CompanyFooter';
+// import './component/videoupload/VIdeoStart'
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+     <App /> 
+    {/* <Start/> */}
   </React.StrictMode>,
   // <CompanyFooter/>,
   document.getElementById('root')

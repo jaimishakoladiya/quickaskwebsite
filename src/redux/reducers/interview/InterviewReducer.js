@@ -44,7 +44,6 @@ const InterviewReducer =(state=initialstate,action)=>{
                     }
                     case DELETE_CADIDAE_DATA :
                         return{
-                            
                             ...state,
                             candidate:state.candidate.splice(action.payload,action.payload)
                         }

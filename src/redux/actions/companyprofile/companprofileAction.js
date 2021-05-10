@@ -3,7 +3,7 @@ import {
 , ADD_MANAGER_DATA   , ADD_MANAGER_QUESTIONS, DELETE_MANAGER_QUESTIONS,
  ADD_DEPT_DATA,ADD_JOB_DATA, EDIT_DEPT_DATA, EDIT_JOB_DATA,EDIT_MANAGER_DATA,DELETE_QUESTION
 ,DELETE_DEPT_DATA,DELETE_JOB_DATA,
-DELETE_MANAGER_DATA, GET_DEPT_DATA,GET_JOB_DATA,GET_MANAGER_DATA
+DELETE_MANAGER_DATA, GET_DEPT_DATA,GET_JOB_DATA,GET_MANAGER_DATA,GET_ALL_MANAGER
 } from "../../types/companyprofile/companyprofileTypes";
 import axios from "axios";
 export const adddeptquestion = (newquestion) => {
@@ -137,7 +137,12 @@ export const getmanagerdata=(data)=>{
         payload:data
     }
 }
-
+export const getmdata=(data)=>{
+    return{
+        type:GET_ALL_MANAGER,
+        payload:data
+    }
+}
 export const fetchdata =  () => {
     const user=JSON.parse(localStorage.getItem("user"));
     const token =  user.token;
@@ -164,11 +169,18 @@ export const fetchdata =  () => {
                   Authorization:token
                 }
               })
-              
+              const res =await axios({
+                method:"get",
+                url:"http://localhost:2002/getManager",
+                headers:{
+                  Authorization:token
+                }
+              })
               console.log(manager.data)
            dispatch(getdeptdata(dept.data))
            dispatch(getjobdata(job.data))
            dispatch(getmanagerdata(manager.data.data))
+           dispatch(getmdata(res.data.data))
            
         }
         catch(e){

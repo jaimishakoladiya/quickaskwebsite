@@ -19,17 +19,9 @@ import { emptydata } from "../../redux/actions/interview/InterviewAction";
 import CompanyFooter from "../companyprofile/CompanyFooter";
 
 const CreateInterview = (props) => {
-  console.log(props.data.interviewque)
-  const [data,setdata]=useState({
-    candidate:props.data.candidate,
-    managers:props.data.orginfo,
-    panel:props.data.panel,
-    question_bank:{
-      // department:props.data.orginfo[0].department,
-      test:props.data.interviewque
-    }
-  })
-  console.log(data)
+ 
+  // const [data,setdata]=useState({})
+  var data;
   const useStyles = makeStyles((theme) => ({
     root: {
       width: "100%",
@@ -138,7 +130,7 @@ const senddata=()=>{
         {openalert?box():null}
           {steps.map((label, index) => (
             <Step key={label}>
-              <StepLabel>{label}</StepLabel>
+              {/* <StepLabel>{label}</StepLabel> */}
               <StepContent id="stepper_font">
                 <Typography key={index}>{getStepContent(index)}</Typography>
                 <div className={classes.actionsContainer}>
