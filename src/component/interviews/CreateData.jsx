@@ -1,4 +1,4 @@
-import React from 'react';
+import React  ,{useEffect,useState} from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
@@ -13,10 +13,11 @@ import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import InterviewDataGrid from './InterviewDataGrid';
-
+import Button from "@material-ui/core/Button";
 import ViewDelete from './ViewDelete';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import axios from 'axios';
 
 
 const useStyles = makeStyles({
@@ -24,17 +25,16 @@ const useStyles = makeStyles({
   
   },
 });
-function createData( date, jobtitle, department,manager,candidate,duration,action) {
+function createData(name, jobtitle, status,date,score,action) {
  
   return {
 
-    date,
+    name,
     jobtitle,
-    department,
-    manager,
-    candidate,
-    duration,
-    action,
+    status,
+    date,
+    score,
+  action,
    
   };
 }
@@ -58,14 +58,14 @@ function Row(props) {
         </TableCell>
 
         <TableCell   id="tablerow" component="th" scope="row">
-        {row.date}
+        {row.name}
         </TableCell>
        
         <TableCell id="tablerow">{row.jobtitle}</TableCell>
-        <TableCell id="tablerow">{row.department}</TableCell>
-        <TableCell id="tablerow">{row.manager}</TableCell>
-        <TableCell id="tablerow">{row.candidate}</TableCell>
-        <TableCell id="tablerow">{row.duration}</TableCell>
+        <TableCell id="tablerow">{row.status}</TableCell>
+        <TableCell id="tablerow">{row.date}</TableCell>
+        <TableCell id="tablerow">{row.score}</TableCell>
+        
         <TableCell id="tablerow">{row.action}</TableCell>
        
       </TableRow>
@@ -110,64 +110,42 @@ Row.propTypes = {
     protein: PropTypes.number.isRequired,
   }).isRequired,
 };
-const data= [
-{
-"archive": null,
-"token": "1rwf8ykko5o95tt",
-"manager-token": "1rwf620ko3y2oa1",
-"candidate-data": {
-"first_name": "jemu",
-"last_name": "koladiya",
-"email": "kakadiyadhruvi1700@gmail.com",
-"id": "1",
-"status": "Assigned",
-"role": "web",
-"department": "web",
-"completedOn": 1619869127104
-},
-"rating": 0
-},
-{
-"archive": null,
-"token": "1rwf6f0ko8d2w62",
-"manager-token": "1rwf620ko3y2oa1",
-"candidate-data": {
-"first_name": "dhruvi",
-"last_name": "kakadiya",
-"email": "dhruvikakadiya144@gmail.com",
-"id": "2",
-"status": "Assigned",
-"role": "web",
-"department": "web",
-"completedOn": 1620031757402
-},
-"rating": 0
-}
-]
-console.log(data);
-const rows = [];
-var email;
-const newdate= new Date().toLocaleDateString();
-data.map((item)=>{
-    // console.log(item)
-    console.log(item['candidate-data'].first_name);
-    email=item['candidate-data'].email
-    rows.push(createData(newdate,
-                        item['candidate-data'].last_name,
-                        item['candidate-data'].department ,
-                        'ff',1,'3mins',<ViewDelete/>))
-    // rows.push(createData('2021-2-3','web','android','gyg',1,'3mins',<ViewDelete/>))
-    // rows.push(createData('dsdxxd','fdsdsgdg','adsg','f',1,'3mins',<ViewDelete/>))
 
-    
-})
-// console.log(data['candidate-data'])
 
-// const n=[1,2,3]
-//    n.map((item,index)=>{
-//     rows.push(createData('2021-2-3','web','android','ck',1,'3mins',<ViewDelete/>))
-//   })
 export default function CreateData() {
+  const [data,setdata]=useState([])
+  const user = JSON.parse(localStorage.getItem('user'));
+  const token=user.token;
+  async function getcandidate(){
+    var res = await axios({
+      method:"get",
+      url:"http://localhost:2002/manager/candidates/information/false",
+      headers:{
+        Authorization:token
+      }
+    })
+    console.log(res.data.data)
+    setdata(res.data.data);
+    console.log(data)
+  }
+  // var data;
+const rows = [];
+var name;
+const newdate=new Date().toLocaleDateString();
+ const newtime=new Date().toLocaleTimeString();
+ const newdatetime =` ${newdate} ${newtime}`
+
+data && data.map((item)=>{
+    name=`${item['candidate-data'].first_name} ${item['candidate-data'].last_name}`
+    rows.push(createData(name,
+                        item['candidate-data'].role ,
+          <Button variant="contained" color="primary" style={{backgroundColor:"darkcyan"}}>{item['candidate-data'].status}
+          </Button>,
+               newdatetime,1,<ViewDelete/>))
+})
+  useEffect(() => {
+    getcandidate()
+  }, [])
   return (
     <TableContainer component={Paper}>
       <Table aria-label="a dense table">

@@ -127,8 +127,10 @@ const Step2 = (props) => {
     job.map((item, index) => {
       item['job-title'].map((val) => {
         if (data.jobTitle === val.title) {
-          test.push(...val.questions)
-          props.addinterviewque(...val.questions)
+          if(item.questions.length!=0){
+            //   console.log(item.questions)
+            props.addinterviewque(...val.questions)
+            }
      }
       })
     })
