@@ -6,7 +6,7 @@ import logo from "../images/logo2.png"
 import "../videoupload/Video.css"
 import Button from "@material-ui/core/Button";
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
-import CompanyFooter from "../companyprofile/CompanyFooter";
+import VideoFooter from './VideoFooter';
 function FinishInterview() {
     return (
         <div>
@@ -36,12 +36,11 @@ function FinishInterview() {
                         fontWeight: "bold",
                         width:"180px",
                         marginTop:"-10px",
-                        marginLeft:"1050px",
+                        marginLeft:"990px",
                         height:"50px",
                         color:"black"
-                      }}>Go To Interview</Button>    
-                          
-                             <CompanyFooter/>
+                      }}>Go To Interview</Button>
+           <VideoFooter/>
         </div>
 
     )

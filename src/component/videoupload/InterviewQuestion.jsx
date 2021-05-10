@@ -5,7 +5,7 @@ import logo from "../images/logo2.png"
 
 import Button from "@material-ui/core/Button";
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
-import CompanyFooter from "../companyprofile/CompanyFooter";
+import VideoFooter from './VideoFooter';
 
 function InterviewQuestion() {
     return (
@@ -47,9 +47,9 @@ function InterviewQuestion() {
                       }}>Next Question</Button></div>
 </div> </div>
    
-            </div><br/><br/>
+            </div>
             
-           <CompanyFooter/>
+           <VideoFooter/>
         </div>
         
     )

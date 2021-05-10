@@ -1,9 +1,9 @@
 import React from 'react'
-import CompanyFooter from '../companyprofile/CompanyFooter'
 import './Video.css'
 import homeimg from '../images/inter.png'
 import Button from "@material-ui/core/Button";
 import logo from "../images/logo2.png"
+import VideoFooter from './VideoFooter';
 
 function StartInterviewTips() {
     return (
@@ -34,7 +34,7 @@ function StartInterviewTips() {
          
           <br></br><br></br>
 
-            <CompanyFooter/>
+            <VideoFooter/>
         </div>
     )
 }
