@@ -9,11 +9,7 @@ import axios from 'axios'
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from "@material-ui/core/FormControl";
 import NativeSelect from "@material-ui/core/NativeSelect";
-<<<<<<< HEAD
-import { deleteorginfo, getorginfo } from "../../../redux/actions/interview/InterviewAction";
-=======
 import {deleteorginfo, getorginfo,getmanager} from "../../../redux/actions/interview/InterviewAction"; 
->>>>>>> 50ab4dd55979265ec9ed51a163a532ab0d0f91c8
 import Step1AddField from "./Step1AddField";
 
 
@@ -28,13 +24,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Step2 = (props) => {
-<<<<<<< HEAD
-  const [isdisabled, setdisabled] = useState(false)
-=======
   console.log(props.manager.managers.user.data)
   const [isdisabled,setdisabled]=useState(false)
 
->>>>>>> 50ab4dd55979265ec9ed51a163a532ab0d0f91c8
   const [data, setdata] = useState({
     department: '',
     email: '',
@@ -235,18 +227,11 @@ const mapStateToProps = (state ,ownprops)=> {
     manager:state.companyprofile
   }
 }
-<<<<<<< HEAD
-const mapDispatchToProps = dispatch => {
-  return {
-    getorginfo: (newdata) => { dispatch(getorginfo(newdata)) },
-    deleteorginfo: (id) => { dispatch(deleteorginfo(id)) }
-=======
 const mapDispatchToProps=dispatch=>{
   return{
     getorginfo:(newdata)=>{dispatch(getorginfo(newdata))},
     deleteorginfo:(id)=>{dispatch(deleteorginfo(id))},
     getmanager:(data)=>{dispatch(getmanager(data))}
->>>>>>> 50ab4dd55979265ec9ed51a163a532ab0d0f91c8
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Step2);
