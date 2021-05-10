@@ -55,8 +55,8 @@ function App() {
       {/* <Login/> */}
       {/* <Navbar/> */}
 {/* <PractiseInterview/> */}
-     
-     {/* <Provider store={store}>
+{/*      
+     <Provider store={store}>
       <BrowserRouter>
    
       <HomeNavbar/> 

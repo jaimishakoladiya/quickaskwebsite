@@ -1,5 +1,5 @@
 import { ADD_INTERVIEW_QUESTION , DELETE_INTERVIEW_QUESTION,ADD_CANDIDATE_DATA,ADD_PANEL_DATA 
-    ,DELETE_CADIDAE_DATA,DELETE_PANEL_DATA,GET_MANAGER,GET_ORGANIZATION_INFO,DELETE_ORGANIZATION_INFO, EMPTY_DATA} from "../../types/interview/InterviewTypes"
+    ,DELETE_CANDIDATE_DATA,DELETE_PANEL_DATA,GET_MANAGER,GET_ORGANIZATION_INFO,DELETE_ORGANIZATION_INFO, EMPTY_DATA} from "../../types/interview/InterviewTypes"
 const initialstate = {
     interviewque:[],
     candidate:[],
@@ -13,23 +13,26 @@ const InterviewReducer =(state=initialstate,action)=>{
         case ADD_INTERVIEW_QUESTION:
             return{
                 ...state,
-                interviewque:[...state.interviewque ,...action.payload]
+                interviewque:[...state.interviewque ,action.payload]
             }
         case DELETE_INTERVIEW_QUESTION :
+            var newarr=state.interviewque.filter((item,id)=> id !== action.payload);
             return{
                 ...state,
-                    interviewque:state.interviewque.filter((item,id)=> id !== action.payload)
+                    interviewque:newarr
             }
             case ADD_CANDIDATE_DATA :
                 return{
                     ...state,
                     candidate:[...state.candidate,action.payload]
                 }
-                // case DELETE_CANDIDATE_DATA:
-                //     return{
-                //         ...state,
-                //         candidate:state.candidate.filter((item,id)=> id !==action.payload)
-                //     }
+                case DELETE_CANDIDATE_DATA:
+                    var newarr=state.candidate.filter((item,id)=> id !==action.payload);
+                    console.log(newarr)
+                    return{
+                        ...state,
+                        candidate:newarr
+                    }
                 case ADD_PANEL_DATA :
                     return{
                         ...state,
@@ -42,11 +45,7 @@ const InterviewReducer =(state=initialstate,action)=>{
                         ...state,
                         orginfo:[...state.orginfo,action.payload]
                     }
-                    case DELETE_CADIDAE_DATA :
-                        return{
-                            ...state,
-                            candidate:state.candidate.splice(action.payload,action.payload)
-                        }
+                  
                         case DELETE_PANEL_DATA : 
                         return{
                             ...state,

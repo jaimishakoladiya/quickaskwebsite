@@ -9,7 +9,7 @@ import { BrowserRouter, useLocation } from "react-router-dom";
 import InnerNavbar from './../innernavbar/InnerNavbar';
 import Team from "../../team/Team";
 import ResetPassword from '../../account/register/ResetPassword'
-
+import Start from '../../videoupload/Start'
 import AdminView from '../../interviews/AdminView';
 
 
@@ -48,6 +48,7 @@ function HomeNavbar() {
         <Route exact path="/team" component={Team}/>
         <Route exact path="/forgotpassword" component={Forpass} />
         <Route   exact path="/reset-password" component={ResetPassword} />
+        <Route   exact path="/start" component={Start} />
         <Route exact path="/innernavbar" render={()=>
           <BrowserRouter><InnerNavbar name={"innernavbar"}/></BrowserRouter>
         }/>

@@ -27,21 +27,7 @@ const Step1 = (props) => {
       };
     });
   };
-  const addcandidate = (values) => {
-    console.log(Candidate);
-    SetCandidatearray((oldval) => {
-      return [...oldval, Candidate];
-    });
-
-    console.log(CandidateArray);
-  };
-
   const deletefunction = (id) => {
-    // return SetCandidatearray((oldval) => {
-    //   return oldval.filter((arr, index) => {
-    //     return index !== id;
-    //   });
-    // });
 
     props.deletecandidatedata(id)
 
@@ -55,11 +41,6 @@ const Step1 = (props) => {
   const onSubmit = (values, onSubmitprops) => {
     console.log(values);
     props.addcandidatedata(values)
-    // addcandidate(values);
-    // SetCandidate({
-    //   firstname: "",
-    //   lastname: "",
-    // });
     onSubmitprops.resetForm();
    
    };
@@ -93,7 +74,7 @@ const Step1 = (props) => {
         validationSchema={validationSchema}
       >
         {(formik) => {
-          console.log(formik);
+          
           return (
             <>
               <div className="step1">
