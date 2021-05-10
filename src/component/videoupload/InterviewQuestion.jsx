@@ -47,7 +47,7 @@ function InterviewQuestion() {
                       }}>Next Question</Button></div>
 </div> </div>
    
-            </div>
+            </div><br/><br/>
             
            <CompanyFooter/>
         </div>
