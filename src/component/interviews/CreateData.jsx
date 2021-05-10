@@ -17,7 +17,7 @@ import Button from "@material-ui/core/Button";
 import ViewDelete from './ViewDelete';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
-
+import CompanyFooter from '../companyprofile/CompanyFooter';
 
 const useStyles = makeStyles({
  row: {
@@ -149,5 +149,7 @@ export default function CreateData() {
         </TableBody>
       </Table>
     </TableContainer>
+    
   );
+
 }
