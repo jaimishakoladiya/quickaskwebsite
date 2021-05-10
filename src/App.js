@@ -31,7 +31,11 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 // //import CompanyFooter from './component/companyprofile/CompanyFooter';
   import { Provider } from "react-redux";
  import store from "./redux/Store";
- import PractiseInterviewTips from './component/videoupload/PractiseInterviewTips';
+ //import StartInterviewTips from "./component/videoupload/StartInterviewTips"
+//import StartInterview from './component/videoupload/StartInterview';
+//import PractiseInterviewTips from './component/videoupload/PractiseInterviewTips';
+//import FinishInterview from './component/videoupload/FinishInterview';
+import InterviewQuestion from './component/videoupload/InterviewQuestion';
 
 // import CompanyProfilePage from './component/companyprofile/CompanyProfilePage';
 
