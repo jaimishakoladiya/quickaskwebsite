@@ -44,15 +44,70 @@
   float: left;
   margin-left: 190px;
 }
+.img_h{
+  background-color: lightgray;
+  width: 492px;
+  border:15px solid darkcyan;
+  border-radius: 25px 25px 0px 0px;
+  height: 300px;
+}
 #start_grid{
   margin-top: 70px;
   margin-left: 70px;
 }
 #start1_grid{
-  margin-top: 70px;
-  margin-left: 200px;
+  margin-top: 30px;
+  margin-left: 180px;
   margin-right: 120px;
 }
+  /* go page */
+  .go-header{
+    margin-top: -8px;
+   height: 80px;
+   width: 1536px;
+    background-color: #008b8b;
+  }
+  #go_grid{
+    margin-top: 90px;
+    margin-left: 200px;
+    color: black;
+  }
+  #go1_grid{
+    margin-top: 50px;
+    margin-left: 0px;
+    margin-right: 120px;
+  }
+  #go_grid h1{
+    font-size: 40px;
+    margin-left: 65px;
+  }
+  #go_grid h3{
+    font-size: 20pt;
+    color: black;
+    letter-spacing: -0.02px;
+  }
+  /* main page */
+  .main_div{
+    
+      background-color: white;
+      width: 650px;
+      height:450px;
+      border-radius: 2%;
+      border: 5px solid darkcyan;
+      margin-top: 10px;
+      margin-left: 450px;
+     position: relative;
+    }
+    .main1_div{
+      text-align: center;
+      margin-top: 10px;
+      font-size: 30px;
+
+    }
+    .main2_div{
+      /* margin-top: 210px; */
+           /* border: 2px solid black; */
+    }
 .practise_head{
   height: 57px;
   width: 1050px;

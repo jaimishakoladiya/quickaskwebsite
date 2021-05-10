@@ -35,7 +35,6 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
  import store from "./redux/Store";
  import PractiseInterviewTips from './component/videoupload/PractiseInterviewTips';
 
-import StartInterviewTips from './component/videoupload/StartInterviewTips';
 // import CompanyProfilePage from './component/companyprofile/CompanyProfilePage';
 
 function App() {
@@ -47,13 +46,16 @@ function App() {
     {/* <ResetPassword/> */}
       {/* <InterviewDataGrid/> */}
       {/* <Home/>  */}
+      
       {/* <BrowserRouter>
         <InnerNavbar/>
       </BrowserRouter>  */}
       {/* <Forpass/> */}
+      {/* <PractiseInterviewTips/> */}
       {/* <Forpass/> */}
       {/* <Registration/> */}
       {/* <Login/> */}
+      {/* <StartInterview/> */}
       {/* <Navbar/> */}
 {/* <PractiseInterview/> */}
      
@@ -82,7 +84,7 @@ function App() {
       {/* <Contact/> */}
       {/* <ViewRecord/> */}
       {/* <About/> */}
-    {/* <Startinterview/> */}
+    
       {/* <QuestionsCard/> */}
       {/* <Provider store={store}> */}
       {/* <CompanyProfilePage/> */}
