@@ -14,7 +14,6 @@ import { connect } from "react-redux";
 
 const Step4 = (props) => {
 
-
   const addquestion = (que) => {
   
     props.addinterviewque(que)

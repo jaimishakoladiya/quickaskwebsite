@@ -9,7 +9,7 @@ import axios from 'axios'
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from "@material-ui/core/FormControl";
 import NativeSelect from "@material-ui/core/NativeSelect";
-import {deleteorginfo, getorginfo,getmanager, addinterviewque} from "../../../redux/actions/interview/InterviewAction"; 
+import {deleteorginfo, getorginfo,getmanager, addinterviewque, setdisabled} from "../../../redux/actions/interview/InterviewAction"; 
 import Step1AddField from "./Step1AddField";
 
 
@@ -25,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Step2 = (props) => {
   console.log(props.manager.managers.user.data)
-  const [isdisabled,setdisabled]=useState(false)
 
   const [data, setdata] = useState({
     department: '',
@@ -34,7 +33,7 @@ const Step2 = (props) => {
     first_name: props.manager.managers.user.data.firstname,
     last_name: props.manager.managers.user.data.lastname
   });
-  const managers = [props.manager.managers.user.data, ...props.manager.managers.managerdata];
+  const managers = [ ...props.manager.managers.managerdata];
   const department = [...props.manager.managers.departmentResult];
   const job = [...props.manager.managers.jobTitleResult];
   console.log(job)
@@ -136,17 +135,27 @@ const Step2 = (props) => {
   
     managers.map((item, index) => {
       if (data.email === item.email) {
-        test.push(...item.questions)
+       if(item.questions.length!=0){
+      //   console.log(item.questions)
         props.addinterviewque(...item.questions)
+      }
   
       }
     })
-    console.log(test)
-    setdisabled(true);
+    // console.log(test)
+    console.log(props.data.interviewque)
+    setdata({
+      department: '',
+      email: '',
+      jobTitle: '',
+      first_name: props.manager.managers.user.data.firstname,
+      last_name: props.manager.managers.user.data.lastname
+    })
+    props.setdisabled(true);
   }
   const deletefunction = (id) => {
     props.deleteorginfo(id)
-    setdisabled(false);
+    props.setdisabled(false);
 
   }
   return (
@@ -163,7 +172,7 @@ const Step2 = (props) => {
                 placeholder="FirstName"
                 name="first_name"
                 value={data.first_name}
-                disabled={isdisabled}
+                disabled={props.data.disabled}
               />
             </Grid>
             <Grid item xs={4} sm={4} xl={4} md={4} className="d-flex">
@@ -174,7 +183,7 @@ const Step2 = (props) => {
                 placeholder="LastName"
                 name="last_name"
                 value={data.last_name}
-                disabled={isdisabled}
+                disabled={props.data.disabled}
 
               />
             </Grid>
@@ -185,7 +194,7 @@ const Step2 = (props) => {
                   name='email'
                   value={data.email}
                   onChange={inputchange}
-                  disabled={isdisabled}
+                  disabled={props.data.disabled}
 
                 >
                   {/* <option value="none">--select--</option> */}
@@ -205,7 +214,7 @@ const Step2 = (props) => {
                 name='department'
                 value={data.department}
                 onChange={inputchange}
-                disabled={isdisabled}
+                disabled={props.data.disabled}
                 inputProps={{ 'aria-label': 'job' }}
               >
                 <option value="" disabled> --Select Department--</option>
@@ -220,7 +229,7 @@ const Step2 = (props) => {
                 name='jobTitle'
                 value={data.jobTitle}
                 onChange={inputchange}
-                disabled={isdisabled}
+                disabled={props.data.disabled}
                 inputProps={{ 'aria-label': 'job' }}
               >
                 <option value="" disabled> --Select Job Title--</option>
@@ -231,7 +240,7 @@ const Step2 = (props) => {
         </Grid>
         <div className="step2-Add">
           <Button  style={{marginLeft:"30px",marginTop:"20px"}} onClick={addorginfodata}
-          disabled={isdisabled}
+          disabled={props.data.disabled}
           variant="contained" color="secondary">
             ADD
           </Button>
@@ -259,7 +268,9 @@ const mapDispatchToProps=dispatch=>{
     getorginfo:(newdata)=>{dispatch(getorginfo(newdata))},
     deleteorginfo:(id)=>{dispatch(deleteorginfo(id))},
     getmanager:(data)=>{dispatch(getmanager(data))},
-    addinterviewque:(data)=>{dispatch(addinterviewque(data))}
+    addinterviewque:(data)=>{dispatch(addinterviewque(data))},
+    setdisabled:(data)=>{dispatch(setdisabled(data))}
+    
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Step2);
