@@ -323,12 +323,12 @@
    width: 200px;
    text-align: inherit;
    vertical-align: bottom;
- padding: 8px 25px;
+ padding: 8px 42px;
   background-repeat: no-repeat;
   background-position:center;
   display: table-cell; 
   font-weight: bold;
-padding-left: 10px;
+/* padding-left: 10px; */
 text-align: justify;
   background-color: rgb(245, 202, 92);
 }
