@@ -39,8 +39,9 @@ function FinishInterview() {
                         marginLeft:"1050px",
                         height:"50px",
                         color:"black"
-                      }}>Go To Interview</Button>
-           <CompanyFooter/>
+                      }}>Go To Interview</Button>    
+                          
+                             <CompanyFooter/>
         </div>
 
     )
