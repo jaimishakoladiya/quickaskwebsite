@@ -19,6 +19,7 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import axios from 'axios';
 
+import CompanyFooter from '../companyprofile/CompanyFooter';
 
 const useStyles = makeStyles({
  row: {
@@ -167,5 +168,7 @@ data && data.map((item)=>{
         </TableBody>
       </Table>
     </TableContainer>
+    
   );
+
 }
