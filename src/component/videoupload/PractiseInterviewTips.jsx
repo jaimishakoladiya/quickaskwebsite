@@ -8,7 +8,7 @@ import VideoFooter from './VideoFooter';
 function PractiseInterviewTips() {
     return (
         <div>
-        <div className="start-header">
+        <div className="video-header">
            <img className="logo" src={logo}></img>
        </div>
        <div className="practise_head">

@@ -10,7 +10,7 @@ import VideoFooter from './VideoFooter';
 function InterviewQuestion() {
     return (
         <div>
-        <div className="start-header">
+        <div className="video-header">
             <img className="logo" src={logo}></img>
         </div>
         {/* <div className="main_div">

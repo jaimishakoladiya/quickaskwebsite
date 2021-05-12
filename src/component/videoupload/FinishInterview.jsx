@@ -10,7 +10,7 @@ import VideoFooter from './VideoFooter';
 function FinishInterview() {
     return (
         <div>
-        <div className="go-header">
+        <div className="video-header">
             <img className="logo" src={logo}></img>
         </div>
         <Grid container spacing={0}>

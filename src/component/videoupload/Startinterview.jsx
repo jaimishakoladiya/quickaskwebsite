@@ -14,7 +14,7 @@ import Start from './Start';
 function StartInterview() {
     return (
         <div>
-        <div className="start-header">
+        <div className="video-header">
             <img className="logo" src={logo}></img>
         </div>
         <Grid container spacing={0}>
