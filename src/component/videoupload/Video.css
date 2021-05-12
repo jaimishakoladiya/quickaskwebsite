@@ -29,6 +29,15 @@
     margin: 0 20px 20px 0;
   } */
   /* startint */
+  video {
+   
+    --width: 34vw;
+    width: var(--width);
+    height: calc(var(--width) * 0.5825);
+  border-radius: 20px 20px 0px 0px;
+   
+  }
+  
   
 .start-header{
   margin-top: -8px;
