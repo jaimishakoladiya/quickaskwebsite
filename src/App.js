@@ -20,10 +20,8 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 //import Forpass from './component/account/login/Forpass';
 //import { BrowserRouter } from 'react-router-dom';
 //import InnerNavbar from './component/navbar/innernavbar/InnerNavbar'
-
 // import { BrowserRouter } from 'react-router-dom';
 //import InnerNavbar from './component/navbar/innernavbar/InnerNavbar'
-
 // import Navbar from './component/navbar/homenavbar/Navbar'
 // import CompanyProfilePage from "./component/companyprofile/CompanyProfilePage";
 //import Navbar2 from './component/navbar/outernavbar/Navbar2'
@@ -40,7 +38,8 @@ import StartInterview from './component/videoupload/StartInterview';
 // import InterviewQuestion from './component/videoupload/InterviewQuestion';
 
 // import CompanyProfilePage from './component/companyprofile/CompanyProfilePage';
-
+import StartInterviewTips from './component/videoupload/StartInterviewTips'
+import InterviewQuestion from './component/videoupload/InterviewQuestion'
 function App() {
   return (
     <>
@@ -71,7 +70,7 @@ function App() {
       <HomeNavbar/> 
      
       </BrowserRouter>
-      </Provider> */}
+      </Provider>
 {/* <Provider store={store}>
       <BrowserRouter>
    

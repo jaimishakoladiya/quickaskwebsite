@@ -29,19 +29,14 @@ const Step1AddField = (props) => {
     props.deletefunction(props.id)
     SetYesopen(false);
     SetOpen(false);
-    
-   
   };
   const handleDelete = () => {
     console.log("delete");
     handleClickOpen();
   };
 
-  
-
-  return (
-
-    <>
+return (
+   <>
       <Chip
         id="Chip_box"
         icon={<PersonIcon />}

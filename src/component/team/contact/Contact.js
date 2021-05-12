@@ -5,7 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import "../contact/contact.css";
 import AOS from 'aos';
 import 'aos/dist/aos.css'
-
+import axios from "axios";
 import {
   fade,
   ThemeProvider,
@@ -13,15 +13,12 @@ import {
   makeStyles,
   createMuiTheme,
 } from '@material-ui/core/styles';
-import axios from "axios";
 
 const Contact = () => {
   AOS.init({
     offset: 200,
     duration: 1000,
     once:true,
-    
-
   });
   const user = JSON.parse(localStorage.getItem("user"))
   const token = user.token;

@@ -37,6 +37,8 @@ function HomeNavbar() {
           location.pathname === "/viewrecord"
         ? <InnerNavbar/> : null}
       
+       
+      
 
       <Switch>
         <Route   exact path="/" component={Home} />

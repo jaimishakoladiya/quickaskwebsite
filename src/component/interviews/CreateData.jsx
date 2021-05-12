@@ -1,4 +1,4 @@
-import React from 'react';
+import React  ,{useEffect,useState} from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
@@ -13,28 +13,29 @@ import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import InterviewDataGrid from './InterviewDataGrid';
-
+import Button from "@material-ui/core/Button";
 import ViewDelete from './ViewDelete';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import axios from 'axios';
 
+import CompanyFooter from '../companyprofile/CompanyFooter';
 
 const useStyles = makeStyles({
  row: {
   
   },
 });
-function createData( date, jobtitle, department,manager,candidate,duration,action) {
+function createData(name, jobtitle, status,date,score,action) {
  
   return {
 
-    date,
+    name,
     jobtitle,
-    department,
-    manager,
-    candidate,
-    duration,
-    action,
+    status,
+    date,
+    score,
+  action,
    
   };
 }
@@ -58,14 +59,14 @@ function Row(props) {
         </TableCell>
 
         <TableCell   id="tablerow" component="th" scope="row">
-        {row.date}
+        {row.name}
         </TableCell>
        
         <TableCell id="tablerow">{row.jobtitle}</TableCell>
-        <TableCell id="tablerow">{row.department}</TableCell>
-        <TableCell id="tablerow">{row.manager}</TableCell>
-        <TableCell id="tablerow">{row.candidate}</TableCell>
-        <TableCell id="tablerow">{row.duration}</TableCell>
+        <TableCell id="tablerow">{row.status}</TableCell>
+        <TableCell id="tablerow">{row.date}</TableCell>
+        <TableCell id="tablerow">{row.score}</TableCell>
+        
         <TableCell id="tablerow">{row.action}</TableCell>
        
       </TableRow>
@@ -111,17 +112,41 @@ Row.propTypes = {
   }).isRequired,
 };
 
-const n=[1,2,3]
-// const department = [...props.data.managers.departmentResult];
-//   const job = [...props.data.managers.jobTitleResult];
- const newdate=new Date().toLocaleDateString();
- 
 
-const rows = [];
-   n.map((item,index)=>{
-    rows.push(createData(newdate,'bhhjbhj','android','ck',1,'3mins',<ViewDelete/>))
-  })
 export default function CreateData() {
+  const [data,setdata]=useState([])
+  const user = JSON.parse(localStorage.getItem('user'));
+  const token=user.token;
+  async function getcandidate(){
+    var res = await axios({
+      method:"get",
+      url:"http://localhost:2002/manager/candidates/information/false",
+      headers:{
+        Authorization:token
+      }
+    })
+    console.log(res.data.data)
+    setdata(res.data.data);
+    console.log(data)
+  }
+  // var data;
+const rows = [];
+var name;
+const newdate=new Date().toLocaleDateString();
+ const newtime=new Date().toLocaleTimeString();
+ const newdatetime =` ${newdate} ${newtime}`
+
+data && data.map((item)=>{
+    name=`${item['candidate-data'].first_name} ${item['candidate-data'].last_name}`
+    rows.push(createData(name,
+                        item['candidate-data'].role ,
+          <Button variant="contained" color="primary" style={{backgroundColor:"darkcyan"}}>{item['candidate-data'].status}
+          </Button>,
+               newdatetime,1,<ViewDelete/>))
+})
+  useEffect(() => {
+    getcandidate()
+  }, [])
   return (
     <TableContainer component={Paper}>
       <Table aria-label="a dense table">
@@ -143,5 +168,7 @@ export default function CreateData() {
         </TableBody>
       </Table>
     </TableContainer>
+    
   );
+
 }

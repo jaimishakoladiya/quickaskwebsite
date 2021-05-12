@@ -7,6 +7,8 @@ import Table from "@material-ui/core/Table";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import CompanyFooter from '../companyprofile/CompanyFooter';
+
 
 function AdminView() {
     return (
@@ -32,22 +34,23 @@ function AdminView() {
         <Table aria-label="customized table">
         <TableHead id="headercss" >
             
-            <TableHead id="headercss"></TableHead>
-              <TableHead id="headercss">Date</TableHead>
-              <TableHead id="headercss"></TableHead>
+          
+              <TableHead id="headercss">Name</TableHead>
+        
              <TableHead id="headercss" >JobTitle</TableHead>
    
-           <TableHead id="headercss" >Department</TableHead>
-            <TableHead id="headercss" >Manager</TableHead>
-            <TableHead id="headercss" >Candidate</TableHead>
-            <TableHead id="headercss" >Duration</TableHead>
+           <TableHead id="headercss" >Status</TableHead>
+            <TableHead id="headercss" >Date</TableHead>
+           
+            <TableHead id="headercss" >score</TableHead>
             <TableHead id="headercss" >Action</TableHead>
           
           </TableHead>
        
           <TableRow>
           <div className="interview_card1">
-         <CreateData/>    </div> </TableRow>
+         <CreateData/>    </div>
+          </TableRow>   
           
  
 
@@ -55,11 +58,12 @@ function AdminView() {
         
         </TableContainer> 
       
-    
- 
+     
+       
      </div>
+  
      </div>
-
+  <CompanyFooter/>
         </div>
     )
 }

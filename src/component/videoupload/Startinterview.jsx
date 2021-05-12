@@ -8,7 +8,7 @@ import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
 import CameraIcon from '@material-ui/icons/Camera';
 import Button from "@material-ui/core/Button";
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
-import CompanyFooter from '../companyprofile/CompanyFooter'
+import VideoFooter from './VideoFooter';
 // import "../companyprofile/Company.css"
 // import "../videoupload/Video.css"
 function StartInterview() {

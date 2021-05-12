@@ -1,5 +1,5 @@
 import { ADD_INTERVIEW_QUESTION , DELETE_INTERVIEW_QUESTION , ADD_CANDIDATE_DATA,GET_ORGANIZATION_INFO,
-    ADD_PANEL_DATA ,DELETE_CANDIDATE_DATA,DELETE_PANEL_DATA,GET_MANAGER,DELETE_ORGANIZATION_INFO,EMPTY_DATA} from '../../types/interview/InterviewTypes'
+    ADD_PANEL_DATA ,DELETE_CANDIDATE_DATA,DELETE_PANEL_DATA,GET_MANAGER,DELETE_ORGANIZATION_INFO,EMPTY_DATA,SET_DISABLED} from '../../types/interview/InterviewTypes'
 
 export const addinterviewque =(newquestion)=>{
     console.log(newquestion)
@@ -64,5 +64,11 @@ export const deleteorginfo=(id)=>{
 export const emptydata=()=>{
     return{
         type:EMPTY_DATA,
+    }
+}
+export const setdisabled=(data)=>{
+    return{
+        type:SET_DISABLED,
+        payload:data
     }
 }
