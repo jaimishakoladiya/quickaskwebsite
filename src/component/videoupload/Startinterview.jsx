@@ -10,14 +10,16 @@ import Button from "@material-ui/core/Button";
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import VideoFooter from './VideoFooter';
 import Start from './Start';
+
+import IconButton from '@material-ui/core/IconButton';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import VideoHeader from './VideoHeader';
 // import "../companyprofile/Company.css"
 // import "../videoupload/Video.css"
 function StartInterview() {
     return (
         <div>
-        <div className="video-header">
-            <img className="logo" src={logo}></img>
-        </div>
+       <VideoHeader/>
         <Grid container spacing={0}>
                
                <Grid id="start_grid" item xs>
@@ -46,16 +48,22 @@ function StartInterview() {
                </Grid>
               
                <Grid id="start1_grid" item xs><br/>
-               <div style={{border:"4px solid darkcyan",borderRadius:"30px",width:"500px",height:"400px"}}>
+               <div style={{border:"4px solid darkcyan",borderRadius:"30px",width:"500px",height:"410px"}}>
                <div className="img_h">
                <img style={{ height: "140px", width: "235px",marginTop:"60px",marginLeft:"130px"}} src={logo}></img>
              
                </div><br/>
              
               <table>
-                <th ><CameraIcon style={{backgroundColor:"darkcyan",marginLeft:"150px",width:"45",height:"45",borderRadius:"50%"}}/></th>
-                <th><PauseCircleFilledIcon style={{backgroundColor:"darkcyan",width:"45",marginLeft:"30px",height:"45",borderRadius:"50%"}}/></th>
-        <th><PlayCircleFilledIcon style={{backgroundColor:"darkcyan",width:"45",marginLeft:"30px",height:"45",borderRadius:"50%"}}/></th>
+                <th > <IconButton disabled aria-label="upload picture"  >
+          <CameraIcon style={{backgroundColor:"darkcyan",marginLeft:"120px",width:"45",height:"45",borderRadius:"50%"}}/>
+        </IconButton></th>
+                <th><IconButton  aria-label="upload picture"  >
+          <PauseCircleFilledIcon style={{backgroundColor:"darkcyan",width:"45",marginLeft:"30px",height:"45",borderRadius:"50%"}}/>
+        </IconButton></th>
+        <th><IconButton  aria-label="upload picture"  >
+          <PlayCircleFilledIcon style={{backgroundColor:"darkcyan",width:"45",marginLeft:"30px",height:"45",borderRadius:"50%"}}/>
+        </IconButton></th>
      </table><br/>
              
                </div>
@@ -63,6 +71,7 @@ function StartInterview() {
                </Grid>
               
            </Grid>
+           
            <Button style={{backgroundColor: "darkcyan",
                         fontWeight: "bold",
                         width:"180px",
@@ -71,6 +80,7 @@ function StartInterview() {
                         height:"50px",
                         color:"black"
                       }}>Start Interview</Button><br></br><br></br><br></br>
+                     
              <VideoFooter/>
         </div>
         

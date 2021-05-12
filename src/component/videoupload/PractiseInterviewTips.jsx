@@ -4,13 +4,12 @@ import homeimg from '../images/inter.png'
 import Button from "@material-ui/core/Button";
 import logo from "../images/logo2.png"
 import VideoFooter from './VideoFooter';
+import VideoHeader from './VideoHeader';
 
 function PractiseInterviewTips() {
     return (
         <div>
-        <div className="video-header">
-           <img className="logo" src={logo}></img>
-       </div>
+      <VideoHeader/>
        <div className="practise_head">
        <span className="practise_title">  This is practice interview. Use it to get acquainted with the interview process.</span>
        </div>

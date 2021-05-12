@@ -1,5 +1,7 @@
 import React from 'react'
 
+import logo from '../images/logo2.png'
+
 function VideoHeader() {
     return (
         <div>

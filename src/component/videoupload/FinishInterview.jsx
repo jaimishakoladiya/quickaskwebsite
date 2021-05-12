@@ -7,12 +7,11 @@ import "../videoupload/Video.css"
 import Button from "@material-ui/core/Button";
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import VideoFooter from './VideoFooter';
+import VideoHeader from './VideoHeader';
 function FinishInterview() {
     return (
         <div>
-        <div className="video-header">
-            <img className="logo" src={logo}></img>
-        </div>
+       <VideoHeader/>
         <Grid container spacing={0}>
                
                <Grid id="go_grid" item xs>
