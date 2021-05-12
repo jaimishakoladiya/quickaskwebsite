@@ -7,10 +7,11 @@ import Table from "@material-ui/core/Table";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-
+import CompanyFooter from '../companyprofile/CompanyFooter';
 
 function AdminView() {
     return (
+     
         <div>
              <div className="detail-data">
         <div className="detail-header1">
@@ -60,7 +61,7 @@ function AdminView() {
  
      </div>
      </div>
-
+  
         </div>
     )
 }

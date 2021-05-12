@@ -9,6 +9,7 @@ import CameraIcon from '@material-ui/icons/Camera';
 import Button from "@material-ui/core/Button";
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import VideoFooter from './VideoFooter';
+import Start from './Start';
 // import "../companyprofile/Company.css"
 function StartInterview() {
     return (
@@ -47,6 +48,7 @@ function StartInterview() {
                <div style={{border:"4px solid darkcyan",borderRadius:"30px",width:"500px",height:"400px"}}>
                <div className="img_h">
                <img style={{ height: "140px", width: "235px",marginTop:"60px",marginLeft:"130px"}} src={logo}></img>
+             
                </div><br/>
              
               <table>

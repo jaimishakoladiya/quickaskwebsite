@@ -35,7 +35,7 @@ function InterviewQuestion() {
 <h3>hjhhh?</h3></div>
             <div className="main_div">
      
-<div>  <div className="main2_div">
+<div>  <img style={{ height: "350px", width: "640px" ,border:"8px solid darkcyan"}} src={img1}></img> <div className="main2_div">
 <div>
 <Button style={{backgroundColor: "darkcyan",
                         fontWeight: "bold",
