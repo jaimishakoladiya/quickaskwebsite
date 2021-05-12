@@ -10,6 +10,7 @@ ReactDOM.render(
      <App /> 
     {/* <Start/> */}
   </React.StrictMode>,
+  // <CompanyFooter/>,
   document.getElementById('root')
 );
 

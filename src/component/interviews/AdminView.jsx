@@ -8,6 +8,10 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import CompanyFooter from '../companyprofile/CompanyFooter';
+<<<<<<< HEAD
+=======
+
+>>>>>>> f4b9d3b648972a15af828b25977f5b4354d377b1
 
 function AdminView() {
     return (
@@ -49,7 +53,8 @@ function AdminView() {
        
           <TableRow>
           <div className="interview_card1">
-         <CreateData/>    </div> </TableRow>
+         <CreateData/>    </div>
+          </TableRow>   
           
  
 
@@ -57,11 +62,16 @@ function AdminView() {
         
         </TableContainer> 
       
-    
- 
-     </div>
+     
+       
      </div>
   
+     </div>
+<<<<<<< HEAD
+  
+=======
+  <CompanyFooter/>
+>>>>>>> f4b9d3b648972a15af828b25977f5b4354d377b1
         </div>
     )
 }

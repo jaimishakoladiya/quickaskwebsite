@@ -20,10 +20,8 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 //import Forpass from './component/account/login/Forpass';
 //import { BrowserRouter } from 'react-router-dom';
 //import InnerNavbar from './component/navbar/innernavbar/InnerNavbar'
-
 // import { BrowserRouter } from 'react-router-dom';
 //import InnerNavbar from './component/navbar/innernavbar/InnerNavbar'
-
 // import Navbar from './component/navbar/homenavbar/Navbar'
 // import CompanyProfilePage from "./component/companyprofile/CompanyProfilePage";
 //import Navbar2 from './component/navbar/outernavbar/Navbar2'
@@ -34,13 +32,14 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
   import { Provider } from "react-redux";
  import store from "./redux/Store";
  //import StartInterviewTips from "./component/videoupload/StartInterviewTips"
-//import StartInterview from './component/videoupload/StartInterview';
+import StartInterview from './component/videoupload/StartInterview';
 //import PractiseInterviewTips from './component/videoupload/PractiseInterviewTips';
 //import FinishInterview from './component/videoupload/FinishInterview';
 //import InterviewQuestion from './component/videoupload/InterviewQuestion';
 
 // import CompanyProfilePage from './component/companyprofile/CompanyProfilePage';
-
+import StartInterviewTips from './component/videoupload/StartInterviewTips'
+import InterviewQuestion from './component/videoupload/InterviewQuestion'
 function App() {
   return (
     <>
@@ -60,11 +59,13 @@ function App() {
       {/* <Forpass/> */}
       {/* <Registration/> */}
       {/* <Login/> */}
+      <StartInterview/>
+
       {/* <StartInterview/> */}
       {/* <Navbar/> */}
-{/* <PractiseInterview/> */}
-     
-     <Provider store={store}>
+   {/* <InterviewQuestion/> */}
+     {/* <FinishInterview/> */}
+     {/* <Provider store={store}>
       <BrowserRouter>
    
       <HomeNavbar/> 

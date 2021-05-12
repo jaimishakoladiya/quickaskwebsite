@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
-import homeimg from "../images/inter.png";
+import homeimg from "../images/inter-removebg-preview.jpg";
 
 function FirstHomeComp() {
   return (

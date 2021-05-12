@@ -13,7 +13,7 @@ import Step3 from './steps/Step3';
 import Step4 from './steps/Step4';
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
-import { getmanager ,emptydata} from "../../redux/actions/interview/InterviewAction";
+import { getmanager ,emptydata, setdisabled} from "../../redux/actions/interview/InterviewAction";
 
 // import "./index.css"
 import PeopleIcon from '@material-ui/icons/People';
@@ -79,22 +79,24 @@ function getSteps() {
   
 }
 
-function getStepContent(step) {
- 
-  switch (step) {
-    case 0:
-      return <Step1/>
-    case 1:
-      return <Step2/>
-    case 2:
-      return <Step3/>
-    case 3:
-     return <Step4/>           
-    default:
-      return 'Unknown step';
-  }
-}
+
 function AddInterview(props) {
+  // const [disabled,setdisabled]=useState(false);
+  function getStepContent(step) {
+ 
+    switch (step) {
+      case 0:
+        return <Step1/>
+      case 1:
+        return <Step2 />
+      case 2:
+        return <Step3/>
+      case 3:
+       return <Step4/>           
+      default:
+        return 'Unknown step';
+    }
+  }
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
   const steps = getSteps();
@@ -120,7 +122,13 @@ function AddInterview(props) {
     }
   })
   console.log(res.data)
+  props.setdisabled(false)
   props.emptydata()
+ }
+ const resetForm=()=>{
+  props.setdisabled(false)
+
+   props.emptydata();
  }
     return (
       <div className="main">
@@ -163,7 +171,9 @@ function AddInterview(props) {
                         height:"40px",
                         width:"75px",
                         marginLeft:"20px"
-                      }}>Reset</Button>
+                      }}
+                      onClick={resetForm}
+                      >Reset</Button>
       </div></Stepper></div>
       
     );
@@ -177,7 +187,8 @@ const mapStateToProps=state=>{
 const mapDispatchToProps=dispatch=>{
   return{
     getmanager:(data)=>{dispatch(getmanager(data))},
-    emptydata:()=>{dispatch(emptydata())}
+    emptydata:()=>{dispatch(emptydata())},
+    setdisabled:(data)=>{dispatch(setdisabled(data))}
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(AddInterview);

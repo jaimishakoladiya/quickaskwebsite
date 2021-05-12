@@ -11,6 +11,7 @@ const Start = () => {
   const recordedVideo = useRef(null)
   const cameraScreen = useRef(null)
   const errorMsgElement=useRef(null)
+  const puaseRecording=useRef(null)
   let mediaRecorder;
   let recordedBlobs;
 
@@ -55,13 +56,32 @@ const Start = () => {
     console.log(recordButton)
     playButton.current.disabled = true;
     downloadButton.current.disabled = true;
+    // puaseRecording.current.disabled=true;
     // setdisable(true)
     mediaRecorder.onstop = (event) => {
       console.log('Recorder stopped: ', event);
       console.log('Recorded Blobs: ', recordedBlobs);
     };
+
+    
     mediaRecorder.ondataavailable = handleDataAvailable;
     mediaRecorder.start();
+    puaseRecording.current.addEventListener('click',()=>{
+    console.log('MediaRecorder started', mediaRecorder.state);
+
+      if(mediaRecorder.state === "recording") {
+        mediaRecorder.pause();
+        // recording paused
+    console.log('MediaRecorder started', mediaRecorder);
+
+      } else if(mediaRecorder.state === "paused") {
+        mediaRecorder.resume();
+        // resume recording
+    console.log('MediaRecorder started', mediaRecorder);
+
+      }
+  
+    })
     console.log('MediaRecorder started', mediaRecorder);
   }
 
@@ -145,6 +165,8 @@ const Start = () => {
           <button id="start" onClick={startcamera}>Start camera</button>
           <button id="record" disabled onClick={recordbtn} ref={recordButton}>Record</button>
           <button id="play" disabled ref={playButton}>Play</button>
+          <button id="Puase"  ref={puaseRecording}>Puase</button>
+
           <button id="download" disabled ref={downloadButton}>Download</button>
         </div>
 
