@@ -20,6 +20,8 @@ import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import axios from 'axios';
 
 import CompanyFooter from '../companyprofile/CompanyFooter';
+import { connect } from 'react-redux';
+import { getadminview } from '../../redux/actions/interview/InterviewAction';
 
 const useStyles = makeStyles({
  row: {
@@ -80,10 +82,7 @@ function Row(props) {
                 <TableHead>
                   <TableRow>
                       <InterviewDataGrid/>
-                    {/* <TableCell>Date</TableCell>
-                    <TableCell>Customer</TableCell>
-                    <TableCell align="right">Amount</TableCell>
-                    <TableCell align="right">Total price ($)</TableCell> */}
+                   
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -113,54 +112,31 @@ Row.propTypes = {
 };
 
 
-export default function CreateData() {
+function CreateData(props) {
   const [data,setdata]=useState([])
   const user = JSON.parse(localStorage.getItem('user'));
   const token=user.token;
-  async function getcandidate(){
-    var res = await axios({
-      method:"get",
-      url:"http://localhost:2002/manager/candidates/information/false",
-      headers:{
-        Authorization:token
-      }
-    })
-    console.log(res.data.data)
-    setdata(res.data.data);
-    console.log(data)
-  }
-  // var data;
+  
 const rows = [];
 var name;
 const newdate=new Date().toLocaleDateString();
  const newtime=new Date().toLocaleTimeString();
  const newdatetime =` ${newdate} ${newtime}`
 
-data && data.map((item)=>{
+props.data.admindata && props.data.admindata.map((item,index)=>{
     name=`${item['candidate-data'].first_name} ${item['candidate-data'].last_name}`
     rows.push(createData(name,
                         item['candidate-data'].role ,
           <Button variant="contained" color="primary" style={{backgroundColor:"darkcyan"}}>{item['candidate-data'].status}
           </Button>,
-               newdatetime,1,<ViewDelete/>))
+               newdatetime,1,<ViewDelete id={item.token} />))
 })
   useEffect(() => {
-    getcandidate()
+    props.getadminview()
   }, [])
   return (
     <TableContainer component={Paper}>
       <Table aria-label="a dense table">
-        <TableHead>
-          <TableRow>
-            {/* <TableCell />
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell> */}
-           
-          </TableRow>
-        </TableHead>
         <TableBody>
           {rows.map((row) => (
             <Row key={row.date} row={row}/>
@@ -172,3 +148,18 @@ data && data.map((item)=>{
   );
 
 }
+
+const mapStateToProps=state=>{
+  return {
+    data:state.interview
+  }
+}
+
+const mapDispatchToProps=dispatch=>{
+  return {
+    
+    getadminview:()=>{dispatch(getadminview())}
+    
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(CreateData)

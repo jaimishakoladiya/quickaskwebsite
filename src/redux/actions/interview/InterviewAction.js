@@ -1,6 +1,7 @@
 import { ADD_INTERVIEW_QUESTION , DELETE_INTERVIEW_QUESTION , ADD_CANDIDATE_DATA,GET_ORGANIZATION_INFO,
-    ADD_PANEL_DATA ,DELETE_CANDIDATE_DATA,DELETE_PANEL_DATA,GET_MANAGER,DELETE_ORGANIZATION_INFO,EMPTY_DATA,SET_DISABLED} from '../../types/interview/InterviewTypes'
-
+    ADD_PANEL_DATA ,DELETE_CANDIDATE_DATA,DELETE_PANEL_DATA,GET_MANAGER,
+    DELETE_ORGANIZATION_INFO,EMPTY_DATA,SET_DISABLED, GET_ADMINVIEW} from '../../types/interview/InterviewTypes'
+import axios from 'axios'
 export const addinterviewque =(newquestion)=>{
     console.log(newquestion)
     return{
@@ -71,4 +72,23 @@ export const setdisabled=(data)=>{
         type:SET_DISABLED,
         payload:data
     }
+}
+export function getadminview() {
+    const user = JSON.parse(localStorage.getItem('user'));
+        const token=user.token;
+    return async function(dispatch) {
+        return await axios({
+            method:"get",
+            url:"http://localhost:2002/manager/candidates/information/false",
+            headers:{
+              Authorization:token
+            }
+          }).then(res => {
+            // dispatch
+            dispatch({
+                type: GET_ADMINVIEW,
+                payload:res.data.data
+            });
+        });
+    };
 }

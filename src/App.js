@@ -32,14 +32,14 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
   import { Provider } from "react-redux";
  import store from "./redux/Store";
  //import StartInterviewTips from "./component/videoupload/StartInterviewTips"
-import StartInterview from './component/videoupload/StartInterview';
+import StartInterview from './component/videoupload/Startinterview';
 //import PractiseInterviewTips from './component/videoupload/PractiseInterviewTips';
 // import FinishInterview from './component/videoupload/FinishInterview';
 // import InterviewQuestion from './component/videoupload/InterviewQuestion';
 
 // import CompanyProfilePage from './component/companyprofile/CompanyProfilePage';
-import StartInterviewTips from './component/videoupload/StartInterviewTips'
-import InterviewQuestion from './component/videoupload/InterviewQuestion'
+// import StartInterviewTips from './component/videoupload/StartInterviewTips'
+// import InterviewQuestion from './component/videoupload/InterviewQuestion'
 function App() {
   return (
     <>
@@ -58,7 +58,7 @@ function App() {
       {/* <Forpass/> */}
       {/* <Registration/> */}
       {/* <Login/> */}
-      <StartInterview/>
+      {/* <StartInterview/> */}
 
       {/* <StartInterview/> */}
       {/* <Navbar/> */}
@@ -91,13 +91,12 @@ function App() {
       {/* <About/> */}
     
       {/* <QuestionsCard/> */}
-      {/* <Provider store={store}> */}
-      {/* <CompanyProfilePage/> */}
-           {/* <Interviews /> */}
-           {/* <BrowserRouter>
+      <Provider store={store}> 
+     
+            <BrowserRouter>
              <HomeNavbar/> 
            </BrowserRouter> 
-          </Provider> */}
+          </Provider>
     </>
   );
 }

@@ -113,14 +113,14 @@ function AddInterview(props) {
     }
   }
   console.log(data)
-  var res = await axios({
-    method: 'post',
-    url: "http://localhost:2002/manager-added-interview",
-    data: data,
-    headers: {
-      Authorization: token
-    }
-  })
+ var res=await axios({
+   method:'post',
+   url:'http://localhost:2002/manager-added-interview',
+   data:data,
+   headers:{
+     Authorization:token
+   }
+ })
   console.log(res.data)
   props.setdisabled(false)
   props.emptydata()
