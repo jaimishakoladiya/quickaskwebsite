@@ -6,13 +6,12 @@ import logo from "../images/logo2.png"
 import Button from "@material-ui/core/Button";
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import VideoFooter from './VideoFooter';
+import VideoHeader from './VideoHeader';
 
 function InterviewQuestion() {
     return (
         <div>
-        <div className="start-header">
-            <img className="logo" src={logo}></img>
-        </div>
+         <VideoHeader/>
         {/* <div className="main_div">
           <img src={img1}/>
          <Button style={{backgroundColor: "darkcyan",

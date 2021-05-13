@@ -39,7 +39,7 @@
   }
   
   
-.start-header{
+.video-header{
   margin-top: -8px;
    height: 80px;
    width: auto;
@@ -70,12 +70,7 @@
   margin-right: 120px;
 }
   /* go page */
-  .go-header{
-    margin-top: -8px;
-   height: 80px;
-   width: 1536px;
-    background-color: #008b8b;
-  }
+  
   #go_grid{
     margin-top: 90px;
     margin-left: 200px;
@@ -145,15 +140,6 @@ bottom: 0;
 
 }
 
-.practise_head{
-  height: 57px;
-  width: 1050px;
-  margin-top: 90px;
-  overflow: hidden;
-  background-color:lightgray;
-  text-align: center;
-  margin-left: 240px;
-}
 .practise_title{
   font-size: 28px;
   font-family: sans-serif;
