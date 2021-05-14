@@ -92,12 +92,12 @@ function App() {
       {/* <About/> */}
     
       {/* <QuestionsCard/> */}
-      <Provider store={store}> 
+      {/* <Provider store={store}> 
      
             <BrowserRouter>
              <HomeNavbar/> 
            </BrowserRouter> 
-          </Provider>
+          </Provider> */}
     </>
   );
 }
