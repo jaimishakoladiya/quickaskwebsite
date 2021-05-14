@@ -114,29 +114,50 @@ Row.propTypes = {
 
 function CreateData(props) {
   const [data,setdata]=useState([])
+  const [row, setrow] = useState(false)
   const user = JSON.parse(localStorage.getItem('user'));
   const token=user.token;
-  
+  async function getcandidate(){
+    var res = await axios({
+      method:"get",
+      url:"http://localhost:2002/manager/candidates/information/false",
+      headers:{
+        Authorization:token
+      }
+    })
+    console.log(res.data.data)
+    setdata(res.data.data);
+    console.log(data)
+    if(res.data.data.length===0){
+      setrow(true)
+    }
+  }
+  // var data;
 const rows = [];
 var name;
 const newdate=new Date().toLocaleDateString();
  const newtime=new Date().toLocaleTimeString();
  const newdatetime =` ${newdate} ${newtime}`
+ 
 
 props.data.admindata && props.data.admindata.map((item,index)=>{
     name=`${item['candidate-data'].first_name} ${item['candidate-data'].last_name}`
+ 
     rows.push(createData(name,
                         item['candidate-data'].role ,
           <Button variant="contained" color="primary" style={{backgroundColor:"darkcyan"}}>{item['candidate-data'].status}
           </Button>,
                newdatetime,1,<ViewDelete id={item.token} />))
 })
+
   useEffect(() => {
     props.getadminview()
   }, [])
   return (
     <TableContainer component={Paper}>
       <Table aria-label="a dense table">
+        
+        {row?<h1 style={{textAlign:"center"}}>No Records Found</h1>:null}
         <TableBody>
           {rows.map((row) => (
             <Row key={row.date} row={row}/>
