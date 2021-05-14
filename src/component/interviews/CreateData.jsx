@@ -164,6 +164,8 @@ const newdate=new Date().toLocaleDateString();
       <Table aria-label="a dense table">
         
         {row?<h1 style={{textAlign:"center"}}>No Records Found</h1>:null}
+        {/* {row?<h1 style={{textAlign:"center"}}>{console.log("No Records Found")}</h1>:null}
+         */}
         <TableBody>
           {props.data.admindata.map((row,index) => (
             name=`${row['candidate-data'].first_name} ${row['candidate-data'].last_name}`,
@@ -196,3 +198,4 @@ const mapDispatchToProps=dispatch=>{
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(CreateData)
+

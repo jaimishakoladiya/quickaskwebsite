@@ -48,6 +48,8 @@ function EditManager(props) {
   const [openalert, setopenalert] = useState(true);
   const [Yesopen, SetYesopen] = useState(false);
   const [question, setnewque] = useState([])
+  const[message,setmess]=useState();
+  const[status,setstatus]=useState(null);
   async function addquestion  (newq) {
     setnewque((olditem) => {
       return [
@@ -65,6 +67,8 @@ function EditManager(props) {
       }
     })
     console.log(res.data)
+    setmess(res.data.message);
+    setstatus(res.data.status);
   }
 async function   deletequestion (id){
     setnewque((olditem) => {
@@ -184,6 +188,7 @@ async function   deletequestion (id){
 
       {/* delete manager */}
 
+      {status!=null?erroralert(message):null}
       <Dialog
         open={opendelete}
         onClose={handleClose1}

@@ -60,18 +60,18 @@ function App() {
       {/* <Registration/> */}
       {/* <Login/> */}
       {/* <Startinterview/> */}
-
+<Startinterview/>
       {/* <StartInterview/> */}
       {/* <Navbar/> */}
    {/* <InterviewQuestion/> */}
      {/* <FinishInterview/> */}
-      <Provider store={store}>
+      {/* <Provider store={store}>
       <BrowserRouter>
    
       <HomeNavbar/> 
      
       </BrowserRouter>
-      </Provider>
+      </Provider> */}
 {/* <Provider store={store}>
       <BrowserRouter>
    
@@ -97,7 +97,7 @@ function App() {
             <BrowserRouter>
              <HomeNavbar/> 
            </BrowserRouter> 
-          </Provider>*/}
+          </Provider> */}
     </>
   ); 
 }
