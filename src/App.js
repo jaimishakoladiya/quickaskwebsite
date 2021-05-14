@@ -92,12 +92,7 @@ function App() {
       {/* <About/> */}
     
       {/* <QuestionsCard/> */}
-      <Provider store={store}> 
      
-            <BrowserRouter>
-             <HomeNavbar/> 
-           </BrowserRouter> 
-          </Provider>
     </>
   );
 }

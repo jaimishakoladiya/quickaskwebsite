@@ -158,6 +158,8 @@ props.data.admindata && props.data.admindata.map((item,index)=>{
       <Table aria-label="a dense table">
         
         {row?<h1 style={{textAlign:"center"}}>No Records Found</h1>:null}
+        {/* {row?<h1 style={{textAlign:"center"}}>{console.log("No Records Found")}</h1>:null}
+         */}
         <TableBody>
           {rows.map((row) => (
             <Row key={row.date} row={row}/>
@@ -184,3 +186,4 @@ const mapDispatchToProps=dispatch=>{
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(CreateData)
+

@@ -9,7 +9,7 @@ import CameraIcon from '@material-ui/icons/Camera';
 import Button from "@material-ui/core/Button";
 import CompanyFooter from '../companyprofile/CompanyFooter';
 import VideoFooter from './VideoFooter';
-function StartInterview() {
+function Startinterview() {
   const recordButton = useRef(null)
   const playButton = useRef(null)
   const cameraScreen = useRef(null)
