@@ -14,7 +14,7 @@ function QuestionsCard(props) {
  
   const [openalert, setopenalert] = useState(false);
   const [newquestion, setnewquestion] = useState({
-    questions: '',
+    question: '',
     minutes: "0" + 3,
     seconds: "0" + 0
   })
@@ -51,7 +51,7 @@ function QuestionsCard(props) {
     return items;
   };
   const initialValues = {
-    questions: "",
+    question: "",
     minutes: "",
     seconds: "",
   };
@@ -61,7 +61,7 @@ function QuestionsCard(props) {
     props.addquestion(newquestion);
   
     setnewquestion({
-      questions: '',
+      question: '',
       minutes: "0" + 3,
       seconds: "0" + 0
     })
@@ -69,7 +69,7 @@ function QuestionsCard(props) {
   };
 
   const validationSchema = yup.object({
-    questions: yup.string().required("Enter Default Question"),
+    question: yup.string().required("Enter Default Question"),
  });
 
 const closealert = () => {
@@ -100,7 +100,7 @@ const erroralert = (error) => {
                   <Form>
                     <Field
                       as={TextField}
-                      name="questions"
+                      name="question"
                       style={{ marginLeft: "10px", width: "500px" }}
                       id="questions"
                       label="New Question"
@@ -136,8 +136,8 @@ const erroralert = (error) => {
                     </FormControl>
                     <br />
                     <br />
-                    {formik.touched.questions && formik.errors.questions
-                      ? erroralert(formik.errors.questions)
+                    {formik.touched.question && formik.errors.question
+                      ? erroralert(formik.errors.question)
                       : null}
                     <Button
                       onClick={() => setopenalert(true)}
