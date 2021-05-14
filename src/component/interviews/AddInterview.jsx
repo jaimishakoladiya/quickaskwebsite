@@ -24,6 +24,7 @@ import "./Interviews.css"
 import EditIcon from '@material-ui/icons/Edit';
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import CompanyFooter from '../companyprofile/CompanyFooter';
+import { fetchdata } from '../../redux/actions/companyprofile/companprofileAction';
 
 const useColorlibStepIconStyles = makeStyles({
   root: {
@@ -81,7 +82,12 @@ function getSteps() {
 
 
 function AddInterview(props) {
-  // const [disabled,setdisabled]=useState(false);
+ 
+useEffect(()=>{
+  props.fetchdata()
+  console.log("called")
+},[])
+
   function getStepContent(step) {
  
     switch (step) {
@@ -121,9 +127,9 @@ function AddInterview(props) {
      Authorization:token
    }
  })
-  console.log(res.data)
   props.setdisabled(false)
   props.emptydata()
+  console.log(res.data)
  }
  const resetForm=()=>{
   props.setdisabled(false)
@@ -188,7 +194,8 @@ const mapDispatchToProps=dispatch=>{
   return{
     getmanager:(data)=>{dispatch(getmanager(data))},
     emptydata:()=>{dispatch(emptydata())},
-    setdisabled:(data)=>{dispatch(setdisabled(data))}
+    setdisabled:(data)=>{dispatch(setdisabled(data))},
+    fetchdata:()=>{dispatch(fetchdata())}
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(AddInterview);

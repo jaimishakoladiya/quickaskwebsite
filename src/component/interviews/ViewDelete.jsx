@@ -19,19 +19,20 @@ function  ViewDelete(props) {
   const token = user.token;
   const handleClickOpen = async () => {
     setOpen(true);
+    
+  };
+  const history = useHistory();
+  const handleClose = async () => {
     const res=await axios({
       method:'post',
       url:'http://localhost:2002/deleteCandidate',
-      data:{candidates:props.id},
+      data:{candidates:props.id},              
       headers:{
         Authorization:token
       }
     })
     console.log(res.data)
   props.getadminview()
-  };
-  const history = useHistory();
-  const handleClose = () => {
     setOpen(false);
   };
 
@@ -45,7 +46,7 @@ function  ViewDelete(props) {
          </button> 
       
       <Dialog
-        open={open}
+        open={open}                                                              
         onClose={handleClose}
         aria-labelledby="max-width-dialog-title"
         aria-describedby="alert-dialog-description"

@@ -13,7 +13,7 @@ function DisplayQuestions(props) {
           <>
             <Grid container spacing={3} key={id}>
               <Grid item xs={6}>
-                <p>{arr.questions}</p>
+                <p>{arr.question}</p>
               </Grid>
               <Grid item xs={4}>
 
