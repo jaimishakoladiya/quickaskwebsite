@@ -115,6 +115,7 @@ Row.propTypes = {
 
 export default function CreateData() {
   const [data,setdata]=useState([])
+  const [row, setrow] = useState(false)
   const user = JSON.parse(localStorage.getItem('user'));
   const token=user.token;
   async function getcandidate(){
@@ -128,6 +129,9 @@ export default function CreateData() {
     console.log(res.data.data)
     setdata(res.data.data);
     console.log(data)
+    if(res.data.data.length===0){
+      setrow(true)
+    }
   }
   // var data;
 const rows = [];
@@ -135,32 +139,27 @@ var name;
 const newdate=new Date().toLocaleDateString();
  const newtime=new Date().toLocaleTimeString();
  const newdatetime =` ${newdate} ${newtime}`
+ 
 
+ 
 data && data.map((item)=>{
     name=`${item['candidate-data'].first_name} ${item['candidate-data'].last_name}`
+ 
     rows.push(createData(name,
                         item['candidate-data'].role ,
           <Button variant="contained" color="primary" style={{backgroundColor:"darkcyan"}}>{item['candidate-data'].status}
           </Button>,
                newdatetime,1,<ViewDelete/>))
 })
+
   useEffect(() => {
     getcandidate()
   }, [])
   return (
     <TableContainer component={Paper}>
       <Table aria-label="a dense table">
-        <TableHead>
-          <TableRow>
-            {/* <TableCell />
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell> */}
-           
-          </TableRow>
-        </TableHead>
+        
+        {row?<h1 style={{textAlign:"center"}}>No Records Found</h1>:null}
         <TableBody>
           {rows.map((row) => (
             <Row key={row.date} row={row}/>

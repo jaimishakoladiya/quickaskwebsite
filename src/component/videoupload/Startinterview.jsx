@@ -11,7 +11,7 @@ import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import VideoFooter from './VideoFooter';
 // import "../companyprofile/Company.css"
 // import "../videoupload/Video.css"
-function StartInterview() {
+function Startinterview() {
   const recordButton = useRef(null)
   const playButton = useRef(null)
   const recordedVideo = useRef(null)
@@ -173,10 +173,10 @@ function StartInterview() {
         height: "50px",
         color: "black"
       }} disabled>Start Interview</Button><br></br><br></br><br></br>
-      <CompanyFooter />
+      <VideoFooter/>
     </div>
 
   )
 }
 
-export default StartInterview
+export default Startinterview

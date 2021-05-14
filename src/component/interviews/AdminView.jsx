@@ -49,6 +49,7 @@ function AdminView() {
        
           <TableRow>
           <div className="interview_card1">
+      
          <CreateData/>    </div>
           </TableRow>   
           
