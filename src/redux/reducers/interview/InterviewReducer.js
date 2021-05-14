@@ -1,12 +1,13 @@
 import { ADD_INTERVIEW_QUESTION , DELETE_INTERVIEW_QUESTION,ADD_CANDIDATE_DATA,ADD_PANEL_DATA 
-    ,DELETE_CANDIDATE_DATA,DELETE_PANEL_DATA,GET_MANAGER,GET_ORGANIZATION_INFO,DELETE_ORGANIZATION_INFO, EMPTY_DATA, SET_DISABLED} from "../../types/interview/InterviewTypes"
+    ,DELETE_CANDIDATE_DATA,DELETE_PANEL_DATA,GET_MANAGER,GET_ORGANIZATION_INFO,DELETE_ORGANIZATION_INFO, EMPTY_DATA, SET_DISABLED, GET_ADMINVIEW} from "../../types/interview/InterviewTypes"
 const initialstate = {
     interviewque:[],
     candidate:[],
     panel:[],
     managers:[],
     orginfo:[],
-    disabled:false
+    disabled:false,
+    admindata:[]
 }
 
 const InterviewReducer =(state=initialstate,action)=>{
@@ -77,6 +78,12 @@ const InterviewReducer =(state=initialstate,action)=>{
                     return{
                         ...state,
                         disabled:action.payload
+                    }
+                }
+                case GET_ADMINVIEW:{
+                    return {
+                        ...state,
+                        admindata:action.payload
                     }
                 }
 

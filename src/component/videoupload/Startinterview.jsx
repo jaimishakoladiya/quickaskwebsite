@@ -7,32 +7,18 @@ import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
 import CameraIcon from '@material-ui/icons/Camera';
 import Button from "@material-ui/core/Button";
-import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import CompanyFooter from '../companyprofile/CompanyFooter';
 import VideoFooter from './VideoFooter';
-// import "../companyprofile/Company.css"
-// import "../videoupload/Video.css"
-function Startinterview() {
+function StartInterview() {
   const recordButton = useRef(null)
   const playButton = useRef(null)
-  const recordedVideo = useRef(null)
   const cameraScreen = useRef(null)
- 
+   
   let mediaRecorder;
   let recordedBlobs;
 
   function handleSuccess(stream) {
-    recordButton.current.disabled = false;
-    recordButton && recordButton.current.addEventListener('click', () => {
-      if (recordButton.current.textContent === 'Record') {
-        startRecording();
-      } else {
-        stopRecording();
-        recordButton.current.textContent = 'Record';
-        playButton.current.disabled = false;
-
-      }
-    });
-    // console.log('getUserMedia() got stream:', stream);
+    console.log('getUserMedia() got stream:', stream);
     window.stream = stream;
 
     const gumVideo = document.querySelector('video#gum');
@@ -51,12 +37,11 @@ function Startinterview() {
       mediaRecorder = new MediaRecorder(window.stream, options);
     } catch (e) {
       console.error('Exception while creating MediaRecorder:', e);
-      // errorMsgElement.current.innerHTML = `Exception while creating MediaRecorder: ${JSON.stringify(e)}`;
+      
       return;
     }
 
     console.log('Created MediaRecorder', mediaRecorder, 'with options', options);
-    console.log(recordButton)
     playButton.current.disabled = true;
 
     mediaRecorder.onstop = (event) => {
@@ -81,7 +66,9 @@ function Startinterview() {
       cameraScreen.current.muted=false;
       cameraScreen.current.play();
     });
-
+    const btn=document.getElementById("startbtn")
+    btn.removeAttribute('disabled')
+    console.log(btn.disabled)
   }
   async function init(constraints) {
     try {
@@ -89,14 +76,16 @@ function Startinterview() {
       handleSuccess(stream);
     } catch (e) {
       console.error('navigator.getUserMedia error:', e);
-      //  errorMsgElement.current.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
+      
     }
   }
   const startcamera = async () => {
+    document.getElementById("logo").style.display = "none";
+    cameraScreen.current.style.display="block"
     cameraScreen.current.muted=true;
-  
-    const constraints = {
-      audio: {
+    cameraScreen.current.controls = false;
+   const constraints = {
+   audio: {
         echoCancellation: { exact: true }
       },
       video: {
@@ -110,10 +99,12 @@ function Startinterview() {
   }
 
   return (
-    <div>
-      <div className="start-header">
+    <>
+     <div className="start-header">
         <img className="logo" src={logo}></img>
       </div>
+    <div style={{marginBottom:"50px"}}>
+     
       <Grid container spacing={0}>
 
         <Grid id="start_grid" item xs>
@@ -145,8 +136,8 @@ function Startinterview() {
         <Grid id="start1_grid" item xs><br />
           <div style={{ border: "4px solid darkcyan", borderRadius: "30px", width: "500px", height: "400px" }}>
             <div className="img_h">
-              {/* <img style={{ height: "140px", width: "235px",marginTop:"60px",marginLeft:"130px"}} src={logo}></img> */}
-              <video  id="gum" playsInline autoPlay muted ref={cameraScreen}></video>
+              <img id='logo' style={{ height: "140px", width: "235px",marginTop:"60px",marginLeft:"130px"}} src={logo}></img>
+              <video style={{display:'none'}}  id="gum" playsInline autoPlay muted ref={cameraScreen}></video>
 
             </div><br />
 
@@ -164,7 +155,7 @@ function Startinterview() {
         </Grid>
 
       </Grid>
-      <Button style={{
+      <Button id="startbtn" style={{
         backgroundColor: "darkcyan",
         fontWeight: "bold",
         width: "180px",
@@ -172,10 +163,13 @@ function Startinterview() {
         marginLeft: "1000px",
         height: "50px",
         color: "black"
-      }} disabled>Start Interview</Button><br></br><br></br><br></br>
-      <VideoFooter/>
+      }} onClick={()=>{
+        alert("oooll")
+      }}  >Start Interview</Button><br></br><br></br><br></br>
+     
     </div>
-
+    <VideoFooter />
+    </>
   )
 }
 

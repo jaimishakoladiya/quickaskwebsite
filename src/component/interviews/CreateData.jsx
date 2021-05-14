@@ -20,6 +20,8 @@ import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import axios from 'axios';
 
 import CompanyFooter from '../companyprofile/CompanyFooter';
+import { connect } from 'react-redux';
+import { getadminview } from '../../redux/actions/interview/InterviewAction';
 
 const useStyles = makeStyles({
  row: {
@@ -80,10 +82,7 @@ function Row(props) {
                 <TableHead>
                   <TableRow>
                       <InterviewDataGrid/>
-                    {/* <TableCell>Date</TableCell>
-                    <TableCell>Customer</TableCell>
-                    <TableCell align="right">Amount</TableCell>
-                    <TableCell align="right">Total price ($)</TableCell> */}
+                   
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -113,7 +112,7 @@ Row.propTypes = {
 };
 
 
-export default function CreateData() {
+function CreateData(props) {
   const [data,setdata]=useState([])
   const [row, setrow] = useState(false)
   const user = JSON.parse(localStorage.getItem('user'));
@@ -141,19 +140,18 @@ const newdate=new Date().toLocaleDateString();
  const newdatetime =` ${newdate} ${newtime}`
  
 
- 
-data && data.map((item)=>{
+props.data.admindata && props.data.admindata.map((item,index)=>{
     name=`${item['candidate-data'].first_name} ${item['candidate-data'].last_name}`
  
     rows.push(createData(name,
                         item['candidate-data'].role ,
           <Button variant="contained" color="primary" style={{backgroundColor:"darkcyan"}}>{item['candidate-data'].status}
           </Button>,
-               newdatetime,1,<ViewDelete/>))
+               newdatetime,1,<ViewDelete id={item.token} />))
 })
 
   useEffect(() => {
-    getcandidate()
+    props.getadminview()
   }, [])
   return (
     <TableContainer component={Paper}>
@@ -171,3 +169,18 @@ data && data.map((item)=>{
   );
 
 }
+
+const mapStateToProps=state=>{
+  return {
+    data:state.interview
+  }
+}
+
+const mapDispatchToProps=dispatch=>{
+  return {
+    
+    getadminview:()=>{dispatch(getadminview())}
+    
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(CreateData)

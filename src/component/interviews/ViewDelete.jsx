@@ -8,14 +8,27 @@ import DialogTitle from '@material-ui/core/DialogTitle';
  import VisibilityIcon from '@material-ui/icons/Visibility';
   import DeleteIcon from '@material-ui/icons/Delete';
   import { useHistory } from "react-router-dom";
-
+import axios from 'axios'
+import { connect } from 'react-redux';
+import { getadminview } from '../../redux/actions/interview/InterviewAction';
 
 
 function  ViewDelete(props) {
   const [open, setOpen] = React.useState(false);
-
-  const handleClickOpen = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const token = user.token;
+  const handleClickOpen = async () => {
     setOpen(true);
+    const res=await axios({
+      method:'post',
+      url:'http://localhost:2002/deleteCandidate',
+      data:{candidates:props.id},
+      headers:{
+        Authorization:token
+      }
+    })
+    console.log(res.data)
+  props.getadminview()
   };
   const history = useHistory();
   const handleClose = () => {
@@ -56,10 +69,16 @@ function  ViewDelete(props) {
     </div>
   );
 }
-
-// const mapDispatchToProps = dispatch =>{
-//   return{
-//     deletecandidate:(id)=>{dispatch(deletecandidate(id))}
-//   }
-// }
-export default ViewDelete
+const mapStateToProps=state=>{
+  return {
+    data:state.interview
+  }
+}
+const mapDispatchToProps=dispatch=>{
+  return {
+    
+    getadminview:()=>{dispatch(getadminview())}
+    
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(ViewDelete);
