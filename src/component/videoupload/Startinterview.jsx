@@ -173,4 +173,4 @@ function StartInterview() {
   )
 }
 
-export default StartInterview
+export default Startinterview
