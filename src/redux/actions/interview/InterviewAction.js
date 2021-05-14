@@ -67,28 +67,35 @@ export const emptydata=()=>{
         type:EMPTY_DATA,
     }
 }
+export const fetchdatasuccess=(data)=>{
+    return{
+        type: GET_ADMINVIEW,
+        payload:data
+    }
+}
 export const setdisabled=(data)=>{
     return{
         type:SET_DISABLED,
         payload:data
     }
 }
-export function getadminview() {
-    const user = JSON.parse(localStorage.getItem('user'));
-        const token=user.token;
-    return async function(dispatch) {
-        return await axios({
-            method:"get",
-            url:"http://localhost:2002/manager/candidates/information/false",
-            headers:{
-              Authorization:token
-            }
-          }).then(res => {
-            // dispatch
-            dispatch({
-                type: GET_ADMINVIEW,
-                payload:res.data.data
-            });
-        });
-    };
+export const getadminview = () => {
+    const user=JSON.parse(localStorage.getItem("user"));
+    const token = user.token;
+    return async dispatch => {
+        try {
+            let res = await axios({
+                method: 'get',
+                url:"http://localhost:2002/manager/candidates/information/false",
+                headers:{
+                    Authorization:token
+                }
+            })
+            console.log(res.data.data);
+            dispatch(fetchdatasuccess(res.data.data))
+        }
+        catch(e){
+            console.log(e);
+        }
+    }
 }

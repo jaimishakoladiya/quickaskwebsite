@@ -18,7 +18,7 @@ import ViewDelete from './ViewDelete';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import axios from 'axios';
-
+import { withStyles } from '@material-ui/core/styles';
 import CompanyFooter from '../companyprofile/CompanyFooter';
 import { connect } from 'react-redux';
 import { getadminview } from '../../redux/actions/interview/InterviewAction';
@@ -41,6 +41,23 @@ function createData(name, jobtitle, status,date,score,action) {
    
   };
 }
+const StyledTableCell = withStyles((theme) => ({
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell);
+
+const StyledTableRow = withStyles((theme) => ({
+  root: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.action.hover,
+    },
+  },
+}))(TableRow);
 
 function Row(props) {
   
@@ -140,16 +157,14 @@ const newdate=new Date().toLocaleDateString();
  const newdatetime =` ${newdate} ${newtime}`
  
 
-props.data.admindata && props.data.admindata.map((item,index)=>{
-    name=`${item['candidate-data'].first_name} ${item['candidate-data'].last_name}`
- 
-    rows.push(createData(name,
-                        item['candidate-data'].role ,
-          <Button variant="contained" color="primary" style={{backgroundColor:"darkcyan"}}>{item['candidate-data'].status}
-          </Button>,
-               newdatetime,1,<ViewDelete id={item.token} />))
-})
-
+// props.data.admindata && props.data.admindata.map((item,index)=>{
+//     name=`${item['candidate-data'].first_name} ${item['candidate-data'].last_name}`
+//     rows.push(createData(name,
+//                         item['candidate-data'].role ,
+//           <Button variant="contained" color="primary" style={{backgroundColor:"darkcyan"}}>{item['candidate-data'].status}
+//           </Button>,
+//                newdatetime,1,<ViewDelete id={item.token} />))
+// })
   useEffect(() => {
     props.getadminview()
   }, [])
@@ -161,9 +176,15 @@ props.data.admindata && props.data.admindata.map((item,index)=>{
         {/* {row?<h1 style={{textAlign:"center"}}>{console.log("No Records Found")}</h1>:null}
          */}
         <TableBody>
-          {rows.map((row) => (
-            <Row key={row.date} row={row}/>
+          {props.data.admindata.map((row,index) => (
+            name=`${row['candidate-data'].first_name} ${row['candidate-data'].last_name}`,
+             <Row key={index} row={createData(name,
+                        row['candidate-data'].role ,
+          <Button variant="contained" color="primary" style={{backgroundColor:"darkcyan"}}>{row['candidate-data'].status}
+          </Button>,
+               newdatetime,1,<ViewDelete id={row.token} />)}/>
           ))}
+         
         </TableBody>
       </Table>
     </TableContainer>
