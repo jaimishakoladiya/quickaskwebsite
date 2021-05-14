@@ -32,11 +32,7 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
   import { Provider } from "react-redux";
  import store from "./redux/Store";
  //import StartInterviewTips from "./component/videoupload/StartInterviewTips"
-<<<<<<< HEAD
 // import StartInterview from './component/videoupload/Startinterview';
-=======
-import Startinterview from './component/videoupload/Startinterview';
->>>>>>> 0d1d2a85bf852c7a93119cf6d2e01b5dc2152b0a
 //import PractiseInterviewTips from './component/videoupload/PractiseInterviewTips';
 //import FinishInterview from './component/videoupload/FinishInterview';
 //import InterviewQuestion from './component/videoupload/InterviewQuestion';
