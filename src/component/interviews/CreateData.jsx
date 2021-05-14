@@ -156,15 +156,6 @@ const newdate=new Date().toLocaleDateString();
  const newtime=new Date().toLocaleTimeString();
  const newdatetime =` ${newdate} ${newtime}`
  
-
-// props.data.admindata && props.data.admindata.map((item,index)=>{
-//     name=`${item['candidate-data'].first_name} ${item['candidate-data'].last_name}`
-//     rows.push(createData(name,
-//                         item['candidate-data'].role ,
-//           <Button variant="contained" color="primary" style={{backgroundColor:"darkcyan"}}>{item['candidate-data'].status}
-//           </Button>,
-//                newdatetime,1,<ViewDelete id={item.token} />))
-// })
   useEffect(() => {
     props.getadminview()
   }, [])
