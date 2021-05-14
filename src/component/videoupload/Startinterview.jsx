@@ -9,6 +9,7 @@ import CameraIcon from '@material-ui/icons/Camera';
 import Button from "@material-ui/core/Button";
 import CompanyFooter from '../companyprofile/CompanyFooter';
 import VideoFooter from './VideoFooter';
+import VideoHeader from './VideoHeader';
 function Startinterview() {
   const recordButton = useRef(null)
   const playButton = useRef(null)
@@ -100,9 +101,10 @@ function Startinterview() {
 
   return (
     <>
-     <div className="start-header">
+     {/* <div className="start-header">
         <img className="logo" src={logo}></img>
-      </div>
+      </div> */}
+      <VideoHeader/>
     <div style={{marginBottom:"50px"}}>
      
       <Grid container spacing={0}>
