@@ -32,7 +32,7 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
   import { Provider } from "react-redux";
  import store from "./redux/Store";
  //import StartInterviewTips from "./component/videoupload/StartInterviewTips"
-// import StartInterview from './component/videoupload/Startinterview';
+ import Startinterview from './component/videoupload/Startinterview';
 //import PractiseInterviewTips from './component/videoupload/PractiseInterviewTips';
 //import FinishInterview from './component/videoupload/FinishInterview';
 //import InterviewQuestion from './component/videoupload/InterviewQuestion';
@@ -60,25 +60,25 @@ function App() {
       {/* <Registration/> */}
       {/* <Login/> */}
       {/* <Startinterview/> */}
-<Startinterview/>
+{/* <Startinterview/> */}
       {/* <StartInterview/> */}
       {/* <Navbar/> */}
    {/* <InterviewQuestion/> */}
      {/* <FinishInterview/> */}
-      {/* <Provider store={store}>
+      <Provider store={store}>
       <BrowserRouter>
    
       <HomeNavbar/> 
      
       </BrowserRouter>
-      </Provider> */}
-{/* <Provider store={store}>
+      </Provider>
+{/* {/* <Provider store={store}>
       <BrowserRouter>
    
       <Intpra/> 
      
       </BrowserRouter>
-      </Provider>
+      </Provider> */}
       {/* <StartInterview/> */}
         
       {/* <Login/> */}
