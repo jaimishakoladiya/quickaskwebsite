@@ -15,10 +15,10 @@ function Startinterview() {
     background:"darkcyan",width:"60px",height:"60px",borderRadius:"10%" 
   }
   const iconcss= {
-    backgroundColor: "darkcyan", margin:"-8.5px 0px", width: "45", height: "45", borderRadius: "50%" 
+    backgroundColor: "darkcyan", margin:"-8.5px 0px", width: "45", height: "45", borderRadius: "50%"
   }
   const iconcss2 ={
-    backgroundColor: "darkcyan", marginRight: "-100px", width: "45", height: "45", borderRadius: "50%"
+    backgroundColor: "darkcyan", marginRight: "-100px", width: "45", height: "45", borderRadius: "50%" 
   }
   const iconcss3={
     fontSize: "18px", color: "gray"
@@ -63,7 +63,6 @@ function Startinterview() {
       console.log('Recorded Blobs: ', recordedBlobs);
     };
 
-    // document.getElementById("start").removeAttribute('disabled')
 
     mediaRecorder.ondataavailable = handleDataAvailable;
     mediaRecorder.start();
@@ -135,7 +134,7 @@ function Startinterview() {
               </tr><br />
               <tr>
                 <td align="left" style={iconcss3}>2. To stop recording the test video,<br /> click on the Stop button</td>
-                <td align="right"><PauseCircleFilledIcon style={iconcss2} /></td>
+                <td align="right"><PauseCircleFilledIcon style={iconcss2}/></td>
 
               </tr><br />
               <tr>
@@ -160,7 +159,7 @@ function Startinterview() {
             <table>
               <tbody>
                 <tr>
-                   <div style={{marginLeft:"150px",marginTop:"-3px"}}> <td><button onClick={startcamera}  ref={recordButton} style={icon}><CameraIcon style={iconcss} /></button></td>
+                   <div style={{marginLeft:"150px",marginTop:"-3.5px"}}> <td><button onClick={startcamera}  ref={recordButton} style={icon}><CameraIcon style={iconcss} /></button></td>
                   <td><button onClick={stopRecording} style={icon}><PauseCircleFilledIcon  style={iconcss} /></button></td>
                   <td><button ref={playButton} style={icon}><PlayCircleFilledIcon style={iconcss} /></button></td></div>
                 </tr></tbody>
@@ -171,17 +170,17 @@ function Startinterview() {
         </Grid>
 
       </Grid>
-      <button id="startbtn" style={{
+      <Button id="startbtn" style={{
         backgroundColor: "darkcyan",
         fontWeight: "bold",
         width: "180px",
-        marginBottom: "-10px",
+        marginTop: "-80px",
         marginLeft: "1000px",
         height: "50px",
         color: "black"
       }} onClick={()=>{
         alert("oooll")
-      }}  >Start Interview</button><br></br><br></br><br></br>
+      }}  >Start Interview</Button><br></br><br></br><br></br>
      
     </div>
     <VideoFooter />
