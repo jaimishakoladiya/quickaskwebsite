@@ -131,6 +131,7 @@ bottom: 0;
     background-color:darkcyan;
     text-align: center;
     height: 80px;
+    border-top: 7px solid black;
 
 }
 
