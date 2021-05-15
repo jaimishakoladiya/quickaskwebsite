@@ -130,6 +130,7 @@ bottom: 0;
     position: fixed;
     background-color:darkcyan;
     text-align: center;
+    border-top: 7px solid black;
     height: 80px;
     border-top: 7px solid black;
 

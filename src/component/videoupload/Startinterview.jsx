@@ -12,6 +12,19 @@ import VideoFooter from './VideoFooter';
 import VideoHeader from './VideoHeader';
 function Startinterview() {
   const [isdisable,setdisable]=useState(true);
+  const icon = {
+    background:"darkcyan",width:"60px",height:"60px",borderRadius:"10%" 
+  }
+  const iconcss= {
+    backgroundColor: "darkcyan", margin:"-8.5px 0px", width: "45", height: "45", borderRadius: "50%" 
+  }
+  const iconcss2 ={
+    backgroundColor: "darkcyan", marginRight: "-100px", width: "45", height: "45", borderRadius: "50%"
+  }
+  const iconcss3={
+    fontSize: "18px", color: "gray"
+
+  }
   const recordButton = useRef(null)
   const playButton = useRef(null)
   const cameraScreen = useRef(null)
@@ -137,18 +150,18 @@ function Startinterview() {
           <table >
             <tbody>
               <tr>
-                <td align="left" style={{ fontSize: "18px", color: "gray" }}>1. To begin recording a test video,<br /> click on the Record button</td>
-                <td align="right"><CameraIcon style={{ backgroundColor: "darkcyan", marginRight: "-100px", width: "45", height: "45", borderRadius: "50%" }} /></td>
+                <td align="left" style={iconcss3}>1. To begin recording a test video,<br /> click on the Record button</td>
+                <td align="right"><CameraIcon style={iconcss2} /></td>
 
               </tr><br />
               <tr>
-                <td align="left" style={{ fontSize: "18px", color: "gray" }}>2. To stop recording the test video,<br /> click on the Stop button</td>
-                <td align="right"><PauseCircleFilledIcon style={{ backgroundColor: "darkcyan", marginRight: "-100px", width: "45", height: "45", borderRadius: "50%" }} /></td>
+                <td align="left" style={iconcss3}>2. To stop recording the test video,<br /> click on the Stop button</td>
+                <td align="right"><PauseCircleFilledIcon style={iconcss2} /></td>
 
               </tr><br />
               <tr>
-                <td align="left" style={{ fontSize: "18px", color: "gray" }}>3. To ensure your video recorded <br />properly, click on the play button</td>
-                <td align="right"><PlayCircleFilledIcon style={{ backgroundColor: "darkcyan", marginRight: "-100px", width: "45", height: "45", borderRadius: "50%" }} /></td>
+                <td align="left" style={iconcss3}>3. To ensure your video recorded <br />properly, click on the play button</td>
+                <td align="right"><PlayCircleFilledIcon style={iconcss2} /></td>
 
               </tr><br />
             </tbody>
@@ -169,9 +182,9 @@ function Startinterview() {
             <table>
               <tbody>
                 <tr>
-                  <td ><CameraIcon onClick={startcamera}  ref={recordButton} style={{ backgroundColor: "darkcyan", marginLeft: "150px", width: "45", height: "45", borderRadius: "50%" }} id="cameraicon" /></td>
-                  <td><PauseCircleFilledIcon onClick={stopRecording} style={{ backgroundColor: "darkcyan", width: "45", marginLeft: "30px", height: "45", borderRadius: "50%" }} /></td>
-                  <td><PlayCircleFilledIcon ref={playButton} style={{ backgroundColor: "darkcyan", width: "45", marginLeft: "30px", height: "45", borderRadius: "50%" }} /></td>
+                   <div style={{marginLeft:"150px",marginTop:"-3px"}}> <td><button onClick={startcamera}  ref={recordButton} style={icon}><CameraIcon style={iconcss} /></button></td>
+                  <td><button onClick={stopRecording} style={icon}><PauseCircleFilledIcon  style={iconcss} /></button></td>
+                  <td><button ref={playButton} style={icon}><PlayCircleFilledIcon style={iconcss} /></button></td></div>
                 </tr></tbody>
             </table><br />
 
@@ -184,7 +197,7 @@ function Startinterview() {
         backgroundColor: "darkcyan",
         fontWeight: "bold",
         width: "180px",
-        marginTop: "-80px",
+        marginBottom: "-10px",
         marginLeft: "1000px",
         height: "50px",
         color: "black"
