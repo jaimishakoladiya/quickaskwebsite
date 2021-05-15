@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef ,useState} from 'react'
 
 import img1 from "../images/admin.png"
 import Grid from "@material-ui/core/Grid";
@@ -11,6 +11,7 @@ import CompanyFooter from '../companyprofile/CompanyFooter';
 import VideoFooter from './VideoFooter';
 import VideoHeader from './VideoHeader';
 function Startinterview() {
+  const [isdisable,setdisable]=useState(true);
   const icon = {
     background:"darkcyan",width:"60px",height:"60px",borderRadius:"10%" 
   }
@@ -27,6 +28,7 @@ function Startinterview() {
   const recordButton = useRef(null)
   const playButton = useRef(null)
   const cameraScreen = useRef(null)
+  const videoScreen = useRef(null)
    
   let mediaRecorder;
   let recordedBlobs;
@@ -68,17 +70,34 @@ function Startinterview() {
     mediaRecorder.start();
     console.log('MediaRecorder started', mediaRecorder);
   }
+  function generateRandomString() {
+		if (window.crypto) {
+			var a = window.crypto.getRandomValues(new Uint32Array(3));
+			var token = '';
+			for (var i = 0, l = a.length; i < l; i++) token += a[i].toString(36);
+			return token;
+		} else {
+			return (Math.random() * new Date().getTime()).toString(36).replace(/\./g, '');
+		}
+	}
 
   function stopRecording() {
+    setdisable(false)
     mediaRecorder.stop();
     playButton && playButton.current.addEventListener('click', () => {
+      // var blob = mediaRecorder.getBlob();
+		var fileName = generateRandomString() + '.webm';
+		var file = new File(recordedBlobs, fileName, { type: 'video/webm' });
       const superBuffer = new Blob(recordedBlobs, { type: 'video/webm' });
-      cameraScreen.current.src = null;
-      cameraScreen.current.srcObject = null;
-      cameraScreen.current.src = window.URL.createObjectURL(superBuffer);
-      cameraScreen.current.controls = true;
-      cameraScreen.current.muted=false;
-      cameraScreen.current.play();
+      console.log(file)
+      cameraScreen.current.style.display='none'
+      videoScreen.current.removeAttribute('style')
+      videoScreen.current.src = null;
+      videoScreen.current.srcObject = null;
+      videoScreen.current.src = window.URL.createObjectURL(superBuffer);
+      videoScreen.current.controls = true;
+      videoScreen.current.muted=false;
+      videoScreen.current.play();
     });
     const btn=document.getElementById("startbtn")
     btn.removeAttribute('disabled')
@@ -96,6 +115,8 @@ function Startinterview() {
   const startcamera = async () => {
     document.getElementById("logo").style.display = "none";
     cameraScreen.current.style.display="block"
+    videoScreen.current.style.display='none'
+
     cameraScreen.current.muted=true;
     cameraScreen.current.controls = false;
    const constraints = {
@@ -153,6 +174,7 @@ function Startinterview() {
             <div className="img_h">
               <img id='logo' style={{ height: "140px", width: "235px",marginTop:"60px",marginLeft:"130px"}} src={logo}></img>
               <video style={{display:'none'}}  id="gum" playsInline autoPlay muted ref={cameraScreen}></video>
+              <video style={{display:'none'}}  id="screen" playsInline autoPlay muted ref={videoScreen}></video>
 
             </div><br />
 
@@ -170,7 +192,7 @@ function Startinterview() {
         </Grid>
 
       </Grid>
-      <Button id="startbtn" style={{
+      <Button disabled={isdisable} id="startbtn" style={{
         backgroundColor: "darkcyan",
         fontWeight: "bold",
         width: "180px",
