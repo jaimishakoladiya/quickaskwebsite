@@ -63,6 +63,7 @@ function Startinterview() {
       console.log('Recorded Blobs: ', recordedBlobs);
     };
 
+    // document.getElementById("start").removeAttribute('disabled')
 
     mediaRecorder.ondataavailable = handleDataAvailable;
     mediaRecorder.start();

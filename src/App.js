@@ -60,7 +60,7 @@ function App() {
       {/* <Registration/> */}
       {/* <Login/> */}
       {/* <Startinterview/> */}
-<Startinterview/>
+<StartInterview/>
       {/* <StartInterview/> */}
       {/* <Navbar/> */}
    {/* <InterviewQuestion/> */}
@@ -72,13 +72,13 @@ function App() {
      
       </BrowserRouter>
       </Provider> */}
-{/* <Provider store={store}>
+{/* {/* <Provider store={store}>
       <BrowserRouter>
    
       <Intpra/> 
      
       </BrowserRouter>
-      </Provider>
+      </Provider> */}
       {/* <StartInterview/> */}
         
       {/* <Login/> */}
