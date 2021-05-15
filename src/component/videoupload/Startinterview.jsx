@@ -50,6 +50,7 @@ function Startinterview() {
       console.log('Recorded Blobs: ', recordedBlobs);
     };
 
+    // document.getElementById("start").removeAttribute('disabled')
 
     mediaRecorder.ondataavailable = handleDataAvailable;
     mediaRecorder.start();
@@ -157,7 +158,7 @@ function Startinterview() {
         </Grid>
 
       </Grid>
-      <Button id="startbtn" style={{
+      <Button disabled id="startbtn" style={{
         backgroundColor: "darkcyan",
         fontWeight: "bold",
         width: "180px",
