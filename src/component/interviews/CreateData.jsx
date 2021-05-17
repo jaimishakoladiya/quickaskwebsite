@@ -131,24 +131,11 @@ Row.propTypes = {
 
 function CreateData(props) {
   const [data,setdata]=useState([])
-
+ 
   const user = JSON.parse(localStorage.getItem('user'));
   const token=user.token;
-  async function getcandidate(){
-    var res = await axios({
-      method:"get",
-      url:"http://localhost:2002/manager/candidates/information/false",
-      headers:{
-        Authorization:token
-      }
-    })
-    console.log(res.data.data)
-    setdata(res.data.data);
-    console.log(data)
-   
-    }
-  }
-  // var data;
+ 
+
 const rows = [];
 var name;
 const newdate=new Date().toLocaleDateString();
