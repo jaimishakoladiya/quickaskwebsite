@@ -32,10 +32,10 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
   import { Provider } from "react-redux";
  import store from "./redux/Store";
  //import StartInterviewTips from "./component/videoupload/StartInterviewTips"
-// import StartInterview from './component/videoupload/StartInterview';
-//import PractiseInterviewTips from './component/videoupload/PractiseInterviewTips';
+ import Startinterview from './component/videoupload/Startinterview';
+import PractiseInterviewTips from './component/videoupload/PractiseInterviewTips';
 //import FinishInterview from './component/videoupload/FinishInterview';
-//import InterviewQuestion from './component/videoupload/InterviewQuestion';
+import InterviewQuestion from './component/videoupload/InterviewQuestion';
 
 // import CompanyProfilePage from './component/companyprofile/CompanyProfilePage';
 // import StartInterviewTips from './component/videoupload/StartInterviewTips'
@@ -43,16 +43,14 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 function App() {
   return (
     <>
-   {/* <InterviewQuestion/> */}
-
-   {/* <StartInterview/> */}
+    {/* <InterviewQuestion/> */}
    {/* <FinishInterview/> */}
     {/* <StartInterviewTips/> */}
     {/* <PractiseInterviewTips/> */}
     {/* <ResetPassword/> */}
       {/* <InterviewDataGrid/> */}
       {/* <Home/>  */}
-      
+      {/* <StartInterview/> */}
       {/* <BrowserRouter>
         <InnerNavbar/>
       </BrowserRouter>  */}
@@ -61,25 +59,27 @@ function App() {
       {/* <Forpass/> */}
       {/* <Registration/> */}
       {/* <Login/> */}
+      {/* <Startinterview/> */}
+{/* <Startinterview/> */}
       {/* <StartInterview/> */}
       {/* <Navbar/> */}
-{/* <PractiseInterview/> */}
-     
-     <Provider store={store}>
+   {/* <InterviewQuestion/> */}
+     {/* <FinishInterview/> */}
+      <Provider store={store}>
       <BrowserRouter>
    
       <HomeNavbar/> 
      
       </BrowserRouter>
       </Provider>
-{/* <Provider store={store}>
+{/* {/* <Provider store={store}>
       <BrowserRouter>
    
       <Intpra/> 
      
       </BrowserRouter>
       </Provider> */}
-      
+      {/* <StartInterview/> */}
         
       {/* <Login/> */}
       {/* <Navbar2/> */}
@@ -92,15 +92,14 @@ function App() {
       {/* <About/> */}
     
       {/* <QuestionsCard/> */}
-      {/* <Provider store={store}> */}
-      {/* <CompanyProfilePage/> */}
-           {/* <Interviews /> */}
-           {/* <BrowserRouter>
+      {/* <Provider store={store}> 
+     
+            <BrowserRouter>
              <HomeNavbar/> 
            </BrowserRouter> 
           </Provider> */}
     </>
-  );
+  ); 
 }
 
 export default App;

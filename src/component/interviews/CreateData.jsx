@@ -18,8 +18,10 @@ import ViewDelete from './ViewDelete';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import axios from 'axios';
-
+import { withStyles } from '@material-ui/core/styles';
 import CompanyFooter from '../companyprofile/CompanyFooter';
+import { connect } from 'react-redux';
+import { getadminview } from '../../redux/actions/interview/InterviewAction';
 
 const useStyles = makeStyles({
  row: {
@@ -39,6 +41,23 @@ function createData(name, jobtitle, status,date,score,action) {
    
   };
 }
+const StyledTableCell = withStyles((theme) => ({
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell);
+
+const StyledTableRow = withStyles((theme) => ({
+  root: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.action.hover,
+    },
+  },
+}))(TableRow);
 
 function Row(props) {
   
@@ -80,10 +99,7 @@ function Row(props) {
                 <TableHead>
                   <TableRow>
                       <InterviewDataGrid/>
-                    {/* <TableCell>Date</TableCell>
-                    <TableCell>Customer</TableCell>
-                    <TableCell align="right">Amount</TableCell>
-                    <TableCell align="right">Total price ($)</TableCell> */}
+                   
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -113,8 +129,9 @@ Row.propTypes = {
 };
 
 
-export default function CreateData() {
+function CreateData(props) {
   const [data,setdata]=useState([])
+  const [row, setrow] = useState(false)
   const user = JSON.parse(localStorage.getItem('user'));
   const token=user.token;
   async function getcandidate(){
@@ -128,6 +145,9 @@ export default function CreateData() {
     console.log(res.data.data)
     setdata(res.data.data);
     console.log(data)
+    if(res.data.data.length===0){
+      setrow(true)
+    }
   }
   // var data;
 const rows = [];
@@ -135,36 +155,27 @@ var name;
 const newdate=new Date().toLocaleDateString();
  const newtime=new Date().toLocaleTimeString();
  const newdatetime =` ${newdate} ${newtime}`
-
-data && data.map((item)=>{
-    name=`${item['candidate-data'].first_name} ${item['candidate-data'].last_name}`
-    rows.push(createData(name,
-                        item['candidate-data'].role ,
-          <Button variant="contained" color="primary" style={{backgroundColor:"darkcyan"}}>{item['candidate-data'].status}
-          </Button>,
-               newdatetime,1,<ViewDelete/>))
-})
+ 
   useEffect(() => {
-    getcandidate()
+    props.getadminview()
   }, [])
   return (
     <TableContainer component={Paper}>
       <Table aria-label="a dense table">
-        <TableHead>
-          <TableRow>
-            {/* <TableCell />
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell> */}
-           
-          </TableRow>
-        </TableHead>
+        
+        {row?<h1 style={{textAlign:"center"}}>No Records Found</h1>:null}
+      
+        
         <TableBody>
-          {rows.map((row) => (
-            <Row key={row.date} row={row}/>
+          {props.data.admindata.map((row,index) => (
+            name=`${row['candidate-data'].first_name} ${row['candidate-data'].last_name}`,
+             <Row key={index} row={createData(name,
+                        row['candidate-data'].role ,
+          <Button variant="contained" color="primary" style={{backgroundColor:"darkcyan"}}>{row['candidate-data'].status}
+          </Button>,
+               newdatetime,1,<ViewDelete id={row.token} />)}/>
           ))}
+         
         </TableBody>
       </Table>
     </TableContainer>
@@ -172,3 +183,19 @@ data && data.map((item)=>{
   );
 
 }
+
+const mapStateToProps=state=>{
+  return {
+    data:state.interview
+  }
+}
+
+const mapDispatchToProps=dispatch=>{
+  return {
+    
+    getadminview:()=>{dispatch(getadminview())}
+    
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(CreateData)
+

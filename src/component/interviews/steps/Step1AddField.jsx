@@ -51,10 +51,10 @@ return (
         onClose={handleClickClose}
         aria-labelledby="max-width-dialog-title"
       >
-        <DialogTitle id="max-width-dialog-title">PLEASE CONFIRM</DialogTitle>
+        <DialogTitle id="max-width-dialog-title"><h4>PLEASE CONFIRM</h4></DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Are You Sure ! You Want To Remove Candidate ..?
+            Are You Sure ! You Want To Remove..?
           </DialogContentText>
           <DialogActions>
             <Button
