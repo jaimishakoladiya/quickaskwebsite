@@ -19,7 +19,7 @@ function HomeNavbar() {
   const location = useLocation();
   return (
     <div>
-      {location.pathname === "/login" ||
+      {/* {location.pathname === "/login" ||
       location.pathname === "/registartion" ||
       location.pathname === "/forgotpassword" ||
       location.pathname ==="/reset-password" ||
@@ -32,7 +32,7 @@ function HomeNavbar() {
        ? null : (
         <Navbar />
         
-      )}
+      )} */}
         {location.pathname === "/adminview" ||
           location.pathname === "/interview" ||
           location.pathname === "/companyprofilepage" ||
@@ -50,8 +50,8 @@ function HomeNavbar() {
          <Route exact path="/team" component={Team}/>
         <Route exact path="/forgotpassword" component={Forpass} />
         <Route   exact path="/reset-password" component={ResetPassword} />
-        <Route exact path="/innernavbar" render={()=>
-          <BrowserRouter><InnerNavbar name={"innernavbar"}/></BrowserRouter>
+        <Route exact path="/companyprofile" render={()=>
+          <BrowserRouter><InnerNavbar name={"companyprofile"}/></BrowserRouter>
         }/>
         <Route  path="/start/:token" component={StartTest}/>
         {/* <Route exact path="/start/:token/:token1" component={StartTest}/> */}

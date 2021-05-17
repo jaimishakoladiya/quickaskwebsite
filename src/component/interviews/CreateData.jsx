@@ -71,10 +71,9 @@ function Row(props) {
       
       <TableRow className={classes.row}  >
         <TableCell>
-          <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
-            {open ? <ArrowDropDownIcon style={{ fontSize: "35px", color: "darkcyan" }} />:
-             <ArrowRightIcon style={{ fontSize: "35px", color: "darkcyan",fontWeight: "900"}} />}
-          </IconButton>
+      
+             <ArrowRightIcon style={{ fontSize: "35px", color: "darkcyan",fontWeight: "900"}} />
+         
         </TableCell>
 
         <TableCell   id="tablerow" component="th" scope="row">
@@ -89,7 +88,7 @@ function Row(props) {
         <TableCell id="tablerow">{row.action}</TableCell>
        
       </TableRow>
-      <TableRow>
+      {/* <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box margin={1}>
@@ -109,7 +108,7 @@ function Row(props) {
             </Box>
           </Collapse>
         </TableCell>
-      </TableRow>
+      </TableRow> */}
       
     </React.Fragment>
     </div>

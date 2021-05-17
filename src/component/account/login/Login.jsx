@@ -49,7 +49,7 @@ function Login() {
       setopenalert(false)
       
       localStorage.setItem("user",JSON.stringify(res.data))
-      history.push('/innernavbar')
+      history.push('/companyprofile')
     }
 
   }
