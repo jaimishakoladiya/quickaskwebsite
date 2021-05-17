@@ -33,7 +33,7 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
  import store from "./redux/Store";
  //import StartInterviewTips from "./component/videoupload/StartInterviewTips"
  import Startinterview from './component/videoupload/Startinterview';
-//import PractiseInterviewTips from './component/videoupload/PractiseInterviewTips';
+import PractiseInterviewTips from './component/videoupload/PractiseInterviewTips';
 //import FinishInterview from './component/videoupload/FinishInterview';
 import InterviewQuestion from './component/videoupload/InterviewQuestion';
 
@@ -60,7 +60,7 @@ function App() {
       {/* <Registration/> */}
       {/* <Login/> */}
       {/* <Startinterview/> */}
-{/* <StartInterview/> */}
+{/* <Startinterview/> */}
       {/* <StartInterview/> */}
       {/* <Navbar/> */}
    {/* <InterviewQuestion/> */}

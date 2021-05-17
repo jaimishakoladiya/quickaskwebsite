@@ -164,8 +164,9 @@ const newdate=new Date().toLocaleDateString();
       <Table aria-label="a dense table">
         
         {row?<h1 style={{textAlign:"center"}}>No Records Found</h1>:null}
-        {/* {row?<h1 style={{textAlign:"center"}}>{console.log("No Records Found")}</h1>:null}
-         */}
+        {console.log("hy")}
+        {<h1 style={{textAlign:"center"}}>No Records Found</h1>}
+        
         <TableBody>
           {props.data.admindata.map((row,index) => (
             name=`${row['candidate-data'].first_name} ${row['candidate-data'].last_name}`,
