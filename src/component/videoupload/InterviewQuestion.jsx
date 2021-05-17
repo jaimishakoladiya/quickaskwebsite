@@ -1,16 +1,28 @@
-import React ,{useRef} from 'react'
-import img1 from "../images/admin.png"
-import Grid from "@material-ui/core/Grid";
-import logo from "../images/logo2.png"
-
+import React ,{useEffect, useRef, useState} from 'react'
+import axios from 'axios';
 import Button from "@material-ui/core/Button";
-import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import VideoFooter from './VideoFooter';
 import VideoHeader from './VideoHeader';
 
 function InterviewQuestion() {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const token = user.token;
+  const [praciteque,setpractice]=useState()
   const cameraScreen = useRef(null)
   const recordButton=useRef(null)
+  const getquestion=async ()=>{
+    const res=await axios({
+      method:'get',
+      url:'http://localhost:2002/getquestion/1rwf1l4kopg8n2c/0000000000/false',
+      headers:{
+        Authorization:token
+      }
+    })
+    console.log(res.data);
+  }
+  useEffect(()=>{
+    getquestion()
+  },[])
   function handleSuccess(stream) {
     console.log('getUserMedia() got stream:', stream);
     window.stream = stream;

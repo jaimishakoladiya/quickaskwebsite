@@ -29,7 +29,7 @@ function Startinterview() {
   const playButton = useRef(null)
   const cameraScreen = useRef(null)
   const videoScreen = useRef(null)
-   
+   const stopButton=useRef(null)
   let mediaRecorder;
   let recordedBlobs;
 
@@ -58,8 +58,8 @@ function Startinterview() {
     }
 
     console.log('Created MediaRecorder', mediaRecorder, 'with options', options);
-    playButton.current.disabled = true;
-
+    // playButton.current.disabled = true;
+    // stopButton.current.addEventListener('click',stopRecording)
     mediaRecorder.onstop = (event) => {
       console.log('Recorder stopped: ', event);
       console.log('Recorded Blobs: ', recordedBlobs);
@@ -117,7 +117,7 @@ function Startinterview() {
     document.getElementById("logo").style.display = "none";
     cameraScreen.current.style.display="block"
     videoScreen.current.style.display='none'
-
+    stopButton.current.disabled=false;
     cameraScreen.current.muted=true;
     cameraScreen.current.controls = false;
    const constraints = {
@@ -140,7 +140,7 @@ function Startinterview() {
         <img className="logo" src={logo}></img>
       </div> */}
       <VideoHeader/>
-    <div style={{marginBottom:"50px"}}>
+    <div style={{marginBottom:"100px"}}>
      
       <Grid container spacing={0}>
 
@@ -182,8 +182,9 @@ function Startinterview() {
             <table>
               <tbody>
                 <tr>
-                   <div style={{marginLeft:"150px",marginTop:"-3px"}}> <td><button onClick={startcamera}  ref={recordButton} style={icon}><CameraIcon style={iconcss} /></button></td>
-                  <td><button onClick={stopRecording} style={icon}><PauseCircleFilledIcon  style={iconcss} /></button></td>
+                   <div style={{marginLeft:"150px",marginTop:"-3px"}}> 
+                   <td><button onClick={startcamera}  ref={recordButton} style={icon}><CameraIcon style={iconcss} /></button></td>
+                  <td><button  onClick={stopRecording} ref={stopButton} style={icon}><PauseCircleFilledIcon  style={iconcss} /></button></td>
                   <td><button ref={playButton} style={icon}><PlayCircleFilledIcon style={iconcss} /></button></td></div>
                 </tr></tbody>
             </table><br />

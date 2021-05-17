@@ -63,15 +63,15 @@ function App() {
 {/* <StartInterview/> */}
       {/* <StartInterview/> */}
       {/* <Navbar/> */}
-   <InterviewQuestion/>
+   {/* <InterviewQuestion/> */}
      {/* <FinishInterview/> */}
-      {/* <Provider store={store}>
+      <Provider store={store}>
       <BrowserRouter>
    
       <HomeNavbar/> 
      
       </BrowserRouter>
-      </Provider> */}
+      </Provider>
 {/* {/* <Provider store={store}>
       <BrowserRouter>
    
