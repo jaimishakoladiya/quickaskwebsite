@@ -131,25 +131,11 @@ Row.propTypes = {
 
 function CreateData(props) {
   const [data,setdata]=useState([])
-  const [row, setrow] = useState(false)
+ 
   const user = JSON.parse(localStorage.getItem('user'));
   const token=user.token;
-  async function getcandidate(){
-    var res = await axios({
-      method:"get",
-      url:"http://localhost:2002/manager/candidates/information/false",
-      headers:{
-        Authorization:token
-      }
-    })
-    console.log(res.data.data)
-    setdata(res.data.data);
-    console.log(data)
-    if(res.data.data.length===0){
-      setrow(true)
-    }
-  }
-  // var data;
+ 
+
 const rows = [];
 var name;
 const newdate=new Date().toLocaleDateString();
@@ -163,10 +149,7 @@ const newdate=new Date().toLocaleDateString();
     <TableContainer component={Paper}>
       <Table aria-label="a dense table">
         
-        {row?<h1 style={{textAlign:"center"}}>No Records Found</h1>:null}
-      
-        
-        <TableBody>
+        {props.data.admindata.length===0?<h1 style={{textAlign:"center"}}>No Records Found</h1>: <TableBody>
           {props.data.admindata.map((row,index) => (
             name=`${row['candidate-data'].first_name} ${row['candidate-data'].last_name}`,
              <Row key={index} row={createData(name,
@@ -176,7 +159,10 @@ const newdate=new Date().toLocaleDateString();
                newdatetime,1,<ViewDelete id={row.token} />)}/>
           ))}
          
-        </TableBody>
+        </TableBody>}
+      
+        
+       
       </Table>
     </TableContainer>
     
