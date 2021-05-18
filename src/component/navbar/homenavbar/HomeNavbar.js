@@ -53,7 +53,7 @@ function HomeNavbar() {
         <Route exact path="/innernavbar" render={()=>
           <BrowserRouter><InnerNavbar name={"innernavbar"}/></BrowserRouter>
         }/>
-        <Route  path="/start/:token" component={StartTest}/>
+        <Route  path="/start/:token/:id" component={StartTest}/>
         {/* <Route exact path="/start/:token/:token1" component={StartTest}/> */}
       </Switch>
     </div>
