@@ -35,7 +35,7 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
  //import Startinterview from './component/videoupload/Startinterview';
 //import PractiseInterviewTips from './component/videoupload/PractiseInterviewTips';
 //import FinishInterview from './component/videoupload/FinishInterview';
-import InterviewQuestion from './component/videoupload/InterviewQuestion';
+//import InterviewQuestion from './component/videoupload/InterviewQuestion';
 
 // import CompanyProfilePage from './component/companyprofile/CompanyProfilePage';
 // import StartInterviewTips from './component/videoupload/StartInterviewTips'
@@ -63,7 +63,7 @@ function App() {
 {/* <Startinterview/> */}
       {/* <StartInterview/> */}
       {/* <Navbar/> */}
-   <InterviewQuestion/>
+   {/* <InterviewQuestion/> */}
      {/* <FinishInterview/> */}
       <Provider store={store}>
       <BrowserRouter>
