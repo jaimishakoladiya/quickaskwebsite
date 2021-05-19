@@ -1,8 +1,10 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import homeimg from "../images/inter-removebg-preview.jpg";
+import { useHistory } from "react-router-dom";
 
 function FirstHomeComp() {
+  const history = useHistory()
   return (
     <>
       <div className="home-start">
@@ -25,7 +27,7 @@ function FirstHomeComp() {
           <div className="home-border"></div>
           <br></br>
 
-     <Button id="home-free-button" variant="contained" color="secondary">try it free</Button><br></br><br></br><br></br><br></br><br></br>
+     <Button id="home-free-button" variant="contained" color="secondary" onClick={()=> history.push("/registartion")}>try it free</Button><br></br><br></br><br></br><br></br><br></br>
     </div>
     </div>
         </>

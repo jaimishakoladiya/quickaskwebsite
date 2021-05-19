@@ -334,9 +334,9 @@ async function   deletequestion (id){
                         <Grid item xs={6}>
                           <h3>Default Question For Department</h3>
                         </Grid>
-                        <Grid item xs={4}>
+                        {/* <Grid item xs={4}>
                           <h3>Time Allocated</h3>
-                        </Grid>
+                        </Grid> */}
 
 
                       </Grid>
