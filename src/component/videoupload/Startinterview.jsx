@@ -10,7 +10,7 @@ import Button from "@material-ui/core/Button";
 import CompanyFooter from '../companyprofile/CompanyFooter';
 import VideoFooter from './VideoFooter';
 import VideoHeader from './VideoHeader';
-function Startinterview() {
+function Startinterview(props) {
   const [isdisable,setdisable]=useState(true);
   const icon = {
     background:"darkcyan",width:"60px",height:"60px",borderRadius:"10%" 
@@ -202,7 +202,7 @@ function Startinterview() {
         height: "50px",
         color: "black"
       }} onClick={()=>{
-        alert("oooll")
+        props.open()
       }}  >Start Interview</Button><br></br><br></br><br></br>
      
     </div>
