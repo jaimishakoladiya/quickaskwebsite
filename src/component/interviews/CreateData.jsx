@@ -71,10 +71,9 @@ function Row(props) {
       
       <TableRow className={classes.row}  >
         <TableCell>
-          <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
-            {open ? <ArrowDropDownIcon style={{ fontSize: "35px", color: "darkcyan" }} />:
-             <ArrowRightIcon style={{ fontSize: "35px", color: "darkcyan",fontWeight: "900"}} />}
-          </IconButton>
+      
+             <ArrowRightIcon style={{ fontSize: "35px", color: "darkcyan",fontWeight: "900"}} />
+         
         </TableCell>
 
         <TableCell   id="tablerow" component="th" scope="row">
@@ -89,7 +88,7 @@ function Row(props) {
         <TableCell id="tablerow">{row.action}</TableCell>
        
       </TableRow>
-      <TableRow>
+      {/* <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box margin={1}>
@@ -109,7 +108,7 @@ function Row(props) {
             </Box>
           </Collapse>
         </TableCell>
-      </TableRow>
+      </TableRow> */}
       
     </React.Fragment>
     </div>
@@ -131,25 +130,11 @@ Row.propTypes = {
 
 function CreateData(props) {
   const [data,setdata]=useState([])
-  const [row, setrow] = useState(false)
+ 
   const user = JSON.parse(localStorage.getItem('user'));
   const token=user.token;
-  async function getcandidate(){
-    var res = await axios({
-      method:"get",
-      url:"http://localhost:2002/manager/candidates/information/false",
-      headers:{
-        Authorization:token
-      }
-    })
-    console.log(res.data.data)
-    setdata(res.data.data);
-    console.log(data)
-    if(res.data.data.length===0){
-      setrow(true)
-    }
-  }
-  // var data;
+ 
+
 const rows = [];
 var name;
 const newdate=new Date().toLocaleDateString();
@@ -163,10 +148,7 @@ const newdate=new Date().toLocaleDateString();
     <TableContainer component={Paper}>
       <Table aria-label="a dense table">
         
-        {row?<h1 style={{textAlign:"center"}}>No Records Found</h1>:null}
-        {/* {row?<h1 style={{textAlign:"center"}}>{console.log("No Records Found")}</h1>:null}
-         */}
-        <TableBody>
+        {props.data.admindata.length===0?<h1 style={{textAlign:"center"}}>No Records Found</h1>: <TableBody>
           {props.data.admindata.map((row,index) => (
             name=`${row['candidate-data'].first_name} ${row['candidate-data'].last_name}`,
              <Row key={index} row={createData(name,
@@ -176,7 +158,10 @@ const newdate=new Date().toLocaleDateString();
                newdatetime,1,<ViewDelete id={row.token} />)}/>
           ))}
          
-        </TableBody>
+        </TableBody>}
+      
+        
+       
       </Table>
     </TableContainer>
     

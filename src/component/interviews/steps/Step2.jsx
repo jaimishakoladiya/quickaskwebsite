@@ -28,7 +28,7 @@ const Step2 = (props) => {
 
   const [data, setdata] = useState({
     department: '',
-    email: '',
+    email: props.manager.managers.user.data.email,
     jobTitle: '',
     first_name: props.manager.managers.user.data.firstname,
     last_name: props.manager.managers.user.data.lastname

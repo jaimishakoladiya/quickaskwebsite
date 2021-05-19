@@ -11,6 +11,7 @@ import Team from "../../team/Team";
 import ResetPassword from '../../account/register/ResetPassword'
 import Start from '../../videoupload/Start'
 import AdminView from '../../interviews/AdminView';
+import StartTest from "../../videoupload/StartTest";
 
 
 
@@ -18,7 +19,7 @@ function HomeNavbar() {
   const location = useLocation();
   return (
     <div>
-      {location.pathname === "/login" ||
+      {/* {location.pathname === "/login" ||
       location.pathname === "/registartion" ||
       location.pathname === "/forgotpassword" ||
       location.pathname ==="/reset-password" ||
@@ -26,11 +27,12 @@ function HomeNavbar() {
       location.pathname ==="/adminview" ||
       location.pathname === "/interview" ||
       location.pathname === "/companyprofilepage"||
-      location.pathname === "/viewrecord"
+      location.pathname === "/viewrecord" ||
+      location.pathname === "/start/:token"
        ? null : (
         <Navbar />
         
-      )}
+      )} */}
         {location.pathname === "/adminview" ||
           location.pathname === "/interview" ||
           location.pathname === "/companyprofilepage" ||
@@ -45,17 +47,14 @@ function HomeNavbar() {
         <Route exact path="/registartion" component={Registration} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/adminview" component={AdminView} />
-      
-      
-        <Route exact path="/team" component={Team}/>
+         <Route exact path="/team" component={Team}/>
         <Route exact path="/forgotpassword" component={Forpass} />
         <Route   exact path="/reset-password" component={ResetPassword} />
-        <Route   exact path="/start" component={Start} />
-        <Route exact path="/innernavbar" render={()=>
-          <BrowserRouter><InnerNavbar name={"innernavbar"}/></BrowserRouter>
+        <Route exact path="/companyprofile" render={()=>
+          <BrowserRouter><InnerNavbar name={"companyprofile"}/></BrowserRouter>
         }/>
-        
-    
+        <Route  path="/start/:token/:id" component={StartTest}/>
+        {/* <Route exact path="/start/:token/:token1" component={StartTest}/> */}
       </Switch>
     </div>
   );

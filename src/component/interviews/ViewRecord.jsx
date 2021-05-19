@@ -13,6 +13,7 @@ import Button from '@material-ui/core/Button';
 import img2 from "../../component/images/undraw_profile_pic_ic5t (2).svg"
 import InterviewShareGrid from "./InterviewShareGrid"
 import './Interviews.css';
+import CompanyFooter from '../companyprofile/CompanyFooter';
 function ViewRecord() {
  const rowcss = {
     fontSize : "19px",
@@ -99,7 +100,7 @@ function ViewRecord() {
           </div>
           
           </div>
-          
+          <CompanyFooter/>
    </>
     )
 }
