@@ -101,7 +101,7 @@ const erroralert = (error) => {
                     <Field
                       as={TextField}
                       name="question"
-                      style={{ marginLeft: "10px", width: "500px" }}
+                      style={{ marginLeft: "10px", width: "600px" }}
                       id="questions"
                       label="New Question"
                       variant="standard"
