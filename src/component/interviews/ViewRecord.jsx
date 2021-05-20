@@ -125,12 +125,12 @@ function ViewRecord(props) {
               </TableHead>
             </Table>
           </TableContainer>
-        </div>
-
-      </div>
-
-    </>
-  )
+          </div>
+          
+          </div>
+          <CompanyFooter/>
+   </>
+    )
 }
 
 export default ViewRecord;

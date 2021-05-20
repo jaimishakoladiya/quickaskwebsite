@@ -28,7 +28,6 @@ import CompanyFooter from '../companyprofile/CompanyFooter';
 const useColorlibStepIconStyles = makeStyles({
   root: {
     backgroundColor: '#ccc',
-   
     color: '#fff',
     width: 50,
     height: 50,

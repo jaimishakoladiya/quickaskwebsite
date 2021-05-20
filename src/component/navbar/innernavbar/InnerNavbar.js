@@ -28,7 +28,7 @@ const InnerNavbar = () => {
         <Route
           className="activename"
           exact
-          path="/innernavbar"
+          path="/companyprofile"
           component={CompanyProfilePage}
         />
 

@@ -3,9 +3,11 @@ import React from 'react'
  import CompanyFooter from './CompanyFooter'
 import CompanyProfileForm from './CompanyProfileForm'
 
+
 function CompanyProfilePage() {
   return (
     <div>
+    
       <CompanyProfileForm />
       <CompanyFooter/>
       
