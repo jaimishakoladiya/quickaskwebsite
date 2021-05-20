@@ -16,6 +16,7 @@ import './Interviews.css';
 import CompanyFooter from '../companyprofile/CompanyFooter';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import InnerNavbar from '../navbar/innernavbar/InnerNavbar';
+import RatingBox from '../videoupload/RatingBox';
 function SingleShareGrid() {
     const rowcss = {
         fontSize: "19px",
@@ -78,8 +79,8 @@ function SingleShareGrid() {
                                     <TableCell></TableCell>
                                     <TableCell style={rowcss}>Questions</TableCell>
                                     <TableCell style={rowcss} align="center">
-                                        <PlayCircleOutlineIcon style={{ width: "43px", height: "43px", margin: "-14px 10px", color: "darkcyan" }} />
-                                        <StarIcon style={{ color: "black", margin: "-5px 5px" }} />Name</TableCell>
+                               <RatingBox/>
+                                      </TableCell>
                                 </TableRow>
 
 
