@@ -36,7 +36,8 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 import PractiseInterviewTips from './component/videoupload/PractiseInterviewTips';
 //import FinishInterview from './component/videoupload/FinishInterview';
 import InterviewQuestion from './component/videoupload/InterviewQuestion';
-
+import SingleShareGrid from './component/interviews/SingleShareGrid'
+import ViewRecord from './component/interviews/ViewRecord';
 // import CompanyProfilePage from './component/companyprofile/CompanyProfilePage';
 // import StartInterviewTips from './component/videoupload/StartInterviewTips'
 // import InterviewQuestion from './component/videoupload/InterviewQuestion'
@@ -72,10 +73,12 @@ function App() {
      
       </BrowserRouter>
       </Provider>
-{/* {/* <Provider store={store}>
+     
+ {/* <Provider store={store}>
       <BrowserRouter>
    
-      <Intpra/> 
+  
+   
      
       </BrowserRouter>
       </Provider> */}

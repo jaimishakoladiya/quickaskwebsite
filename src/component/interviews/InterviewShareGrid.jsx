@@ -89,7 +89,7 @@ function InterviewShareGrid({data,}) {
   
           
      
-        <Button variant="contained" color="secondary" style={{marginLeft:"30px",fontSize:"12pt",height:"50px"}}  onClick={handleClickOpen}  >
+        <Button variant="contained" color="secondary" style={{marginLeft:"720px",fontSize:"12pt",height:"50px"}}  onClick={handleClickOpen}  >
               Share Grid</Button>
         <br />
         {/* {status != null ? erroralert(message) : null} */}
