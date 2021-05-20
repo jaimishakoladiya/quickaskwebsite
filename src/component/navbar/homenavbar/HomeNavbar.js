@@ -12,6 +12,8 @@ import ResetPassword from '../../account/register/ResetPassword'
 import Start from '../../videoupload/Start'
 import AdminView from '../../interviews/AdminView';
 import StartTest from "../../videoupload/StartTest";
+import InterviewQuestion from "../../videoupload/InterviewQuestion";
+import RealInterview from "../../videoupload/RealInterview";
 
 
 
@@ -53,7 +55,9 @@ function HomeNavbar() {
         <Route exact path="/companyprofile" render={()=>
           <BrowserRouter><InnerNavbar name={"companyprofile"}/></BrowserRouter>
         }/>
-        <Route  path="/start/:token/:id" component={StartTest}/>
+        <Route exact path="/start/:tokenid/:id" component={StartTest}/>
+        <Route exact path="/starttest/:tokenid" component={RealInterview}/>
+
         {/* <Route exact path="/start/:token/:token1" component={StartTest}/> */}
       </Switch>
     </div>
