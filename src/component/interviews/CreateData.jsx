@@ -156,7 +156,7 @@ const newdate=new Date().toLocaleDateString();
                         row['candidate-data'].role ,
           <Button variant="contained" color="primary" style={{backgroundColor:"darkcyan"}}>{row['candidate-data'].status}
           </Button>,
-               newdatetime,1,<ViewDelete id={row.token} />)}/>
+               newdatetime,1,<ViewDelete id={row.token} manager={row['manager-token']} role={row['candidate-data'].role} />)}/>
           ))}
          
         </TableBody>}

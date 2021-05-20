@@ -1,107 +1,136 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import TextField from '@material-ui/core/TextField';
 import StarIcon from '@material-ui/icons/Star';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import img2 from "../../component/images/undraw_profile_pic_ic5t (2).svg"
-import InterviewShareGrid from "./InterviewShareGrid"
+import img2 from "../../component/images/undraw_profile_pic_ic5t (2).svg";
+import InterviewShareGrid from "./InterviewShareGrid";
 import './Interviews.css';
-function ViewRecord() {
- const rowcss = {
-    fontSize : "19px",
-    fontWeight:"bold",
- 
- }
- const printfun = () =>{
-   window.print();
- }
- const rowcss2 = {
-    fontSize : "19px",
-    fontWeight:"bold",
- 
-}
+import { useParams } from 'react-router';
+import axios from 'axios';
+function ViewRecord(props) {
+  useEffect(() => {
+    sharegrid();
+  }, [])
+  const rowcss = {
+    fontSize: "19px",
+    fontWeight: "bold",
 
+  }
+  const printfun = () => {
+    window.print();
+  }
+  const rowcss2 = {
+    fontSize: "19px",
+    fontWeight: "bold",
 
-    return (
-        
-            <>
-        <div className="view-data">
+  }
+  const user = JSON.parse(localStorage.getItem('user'));
+  const token = user.token;
+  const { managerid, role, id } = useParams()
+  console.log(id)
+  const [question, setquestion] = useState([]);
+  const [job, setjob] = useState();
+  // console.log(managerid);
+  // console.log(role);
+  async function sharegrid() {
+    var res = await axios({
+      method: 'get',
+      url: `http://localhost:2002/multiple-candidate/${managerid}/${role}/false/multiple`,
+      headers: {
+        Authorization: token
+      }
+    })
+    console.log(res.data)
+    console.log(res.data.data.questionGrid)
+    res.data.data.questionGrid.map((arr, index) => {
+      console.log(arr.question)
+    })
+    setquestion(res.data.data.questionGrid);
+    // setquestion((olditem)=>{
+    //   return[
+    //     ...olditem,
+    //     {question:res.data.data.questionGrid},
+
+    //   ]
+    // })
+    console.log(question)
+
+  }
+
+  return (
+    <>
+      <div className="view-data">
         <div className="view-header1">
-          <h5>WEB</h5>
-          <Button variant="contained"  onClick={printfun} color="secondary" style={{marginLeft:"700px",fontSize:"12pt",height:"50px"}}>
-              Print</Button>
-              <InterviewShareGrid/>
-          </div>
-          </div>
-          <div className="view-header2">
-          <TableContainer >
-        <Table aria-label="customized table">
-        <TableHead style={rowcss} >
-        
-            <TableCell></TableCell>
+          <h5>{role}</h5>
+          <Button variant="contained" onClick={printfun} color="secondary" style={{ marginLeft: "700px", fontSize: "12pt", height: "50px" }}>
+            Print</Button>
+          <InterviewShareGrid managerid={managerid} candidateid={id}/>
+        </div>
+      </div>
+      <div className="view-header2">
+        <TableContainer >
+          <Table aria-label="customized table">
+            <TableHead style={rowcss} >
+
+              <TableCell></TableCell>
               <TableCell style={rowcss} id="view_css">Questions</TableCell>
 
-          <TableCell style={rowcss} >Name</TableCell>
-     
-          </TableHead>
-          </Table>
-          </TableContainer>
-          </div>
-          
-          <div className="view-header3">
-          <TableContainer >
-        <Table aria-label="customized table">
-        <TableHead style={rowcss2} >
-        <TableRow className="view-pic">
-            {/* <TableCell></TableCell>
-            <TableCell></TableCell><TableCell></TableCell><TableCell></TableCell><TableCell></TableCell> */}
+              <TableCell style={rowcss} >Name</TableCell>
 
-          <TableCell style={rowcss}><img style={{height:"90px", width:"90px",marginLeft:"800px",marginTop:"-30px"}} src={img2}/></TableCell>
-          
-          </TableRow>
-          </TableHead>
+            </TableHead>
           </Table>
-          </TableContainer>
-          {/* ///////////// */}
-          <div className="main_view">
-          <TableContainer >
-        <Table aria-label="customized table">
-        <TableHead style={rowcss} >
-        <TableRow id="view-header4">
-            <TableCell></TableCell>
-              <TableCell style={rowcss}>Questions</TableCell>
-            
-          <TableCell style={rowcss} align="center"><StarIcon style={{color:"black",margin: "-5px 5px"}}/>Name</TableCell>
-          </TableRow>
+        </TableContainer>
+      </div>
 
-          <TableRow id="view-header4">
-            <TableCell></TableCell>
-              <TableCell style={rowcss}>Questions</TableCell>
-            
-          <TableCell style={rowcss} align="center"><StarIcon style={{color:"black",margin: "-5px 5px"}}/>Name</TableCell>
-          </TableRow>
-          <TableRow id="view-header4">
-            <TableCell></TableCell>
-              <TableCell style={rowcss}>Questions</TableCell>
-             
-          <TableCell style={rowcss} align="center"><StarIcon style={{color:"black",margin: "-5px 5px"}}/>Name</TableCell>
-          </TableRow>
-          </TableHead>
+      <div className="view-header3">
+        <TableContainer >
+          <Table aria-label="customized table">
+            <TableHead style={rowcss2} >
+              <TableRow className="view-pic">
+
+                <TableCell style={rowcss}><img style={{ height: "90px", width: "90px", marginLeft: "800px", marginTop: "-30px" }} src={img2} /></TableCell>
+
+              </TableRow>
+            </TableHead>
           </Table>
+        </TableContainer>
+        {/* ///////////// */}
+        <div className="main_view">
+          <TableContainer >
+            <Table aria-label="customized table">
+              <TableHead style={rowcss} >
+
+                {question && question.map((arr, index) => {
+                  let rate;
+                  return (
+                    <TableRow id="view-header4">
+                      <TableCell style={rowcss}>{arr.question}</TableCell>
+                      {console.log(arr.candidate)}
+
+
+                      {arr.candidate.map((item) => {
+                        if (id === item.id) {
+                          rate = item.rating;
+                        }
+                      })}
+                      <TableCell style={rowcss} align="center"><StarIcon style={{ color: "black", margin: "-5px 5px" }} />{rate}</TableCell>
+
+                    </TableRow>)
+                })
+                }
+              </TableHead>
+            </Table>
           </TableContainer>
-          </div>
-          
-          </div>
-          
-   </>
-    )
+        </div>
+
+      </div>
+
+    </>
+  )
 }
 
-export default ViewRecord
+export default ViewRecord;
