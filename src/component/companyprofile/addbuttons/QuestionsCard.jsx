@@ -101,14 +101,14 @@ const erroralert = (error) => {
                     <Field
                       as={TextField}
                       name="question"
-                      style={{ marginLeft: "10px", width: "500px" }}
+                      style={{ marginLeft: "10px", width: "600px" }}
                       id="questions"
                       label="New Question"
                       variant="standard"
                       onInput={inputchange}
                     />
 
-                    <FormControl style={{ marginLeft: "30px" }}>
+                    {/* <FormControl style={{ marginLeft: "30px" }}>
                       <InputLabel htmlFor="demo-customized-select-native">
                         min
                       </InputLabel>
@@ -133,7 +133,7 @@ const erroralert = (error) => {
                         <option value=""></option>
                         {SelectItem()}
                       </Field>
-                    </FormControl>
+                    </FormControl> */}
                     <br />
                     <br />
                     {formik.touched.question && formik.errors.question

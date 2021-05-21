@@ -31,8 +31,11 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-function InterviewShareGrid({data,}) {
-  
+const  InterviewShareGrid=(props)=>{
+  console.log(props.managerid);
+  console.log(props.candidateid);
+  const user=JSON.parse(localStorage.getItem('user'));
+  const token=user.token;
     const [message,setmessage]=useState();
     const [status,setstatus]=useState(null);
     const [open, setOpen] = useState(false);
@@ -41,17 +44,33 @@ function InterviewShareGrid({data,}) {
     // useEffect(() => {
     //   fetchdata()
     //  },[])
-
+async function managershare(data){
+  var res=await axios({
+    method:'post',
+    url:'http://localhost:2002/manager/share',
+    data:data,
+    headers:{
+      Authorization:token
+    }
+  })
+  console.log(res.data);
+}
     const classes = useStyle();
     const initialValues = {
       firstname: '',
       lastname:'',
       companyemail: '',
-  
+      
     };
     const onSubmit = (values) => {
-   
-    
+      
+      managershare({"firstname":values.firstname,
+                   "lastname":values.lastname,
+                   "email":values.companyemail,
+                   "candidateToken":props.candidateid,
+                   "fromManagerToken":props.managerid,
+                   "type":"single"  
+                  })
       setOpen(false);
     };
     const validationSchema = yup.object({
@@ -89,7 +108,7 @@ function InterviewShareGrid({data,}) {
   
           
      
-        <Button variant="contained" color="secondary" style={{marginLeft:"30px",fontSize:"12pt",height:"50px"}}  onClick={handleClickOpen}  >
+        <Button variant="contained" color="secondary" style={{marginLeft:"720px",fontSize:"12pt",height:"50px"}}  onClick={handleClickOpen}  >
               Share Grid</Button>
         <br />
         {/* {status != null ? erroralert(message) : null} */}
@@ -198,19 +217,6 @@ function InterviewShareGrid({data,}) {
       </div>
     );
   }
-  // const mapStateToProps = state => {
-  //   return {
-  //     data: state.companyprofile
-  
-  //   }
-  // }
-  
-  const mapDispatchToProps = dispatch => {
-    return {
-     
-      // fetchdata:()=>{dispatch(fetchdata())}
-    }
-  }
-  
-  export default connect( mapDispatchToProps)(InterviewShareGrid)
+ 
+  export default InterviewShareGrid;
   

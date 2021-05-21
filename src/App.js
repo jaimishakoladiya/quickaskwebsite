@@ -27,22 +27,26 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 //import Navbar2 from './component/navbar/outernavbar/Navbar2'
 //import Contact from './component/team/contact/Contact';
 //import InterviewDataGrid from './component/interviews/InterviewDataGrid';
-//import HomeNavbar from './component/navbar/homenavbar/HomeNavbar';
+// import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'; 
 // //import CompanyFooter from './component/companyprofile/CompanyFooter';
   import { Provider } from "react-redux";
  import store from "./redux/Store";
  //import StartInterviewTips from "./component/videoupload/StartInterviewTips"
- import Startinterview from './component/videoupload/Startinterview';
-import PractiseInterviewTips from './component/videoupload/PractiseInterviewTips';
+ //import Startinterview from './component/videoupload/Startinterview';
+//import PractiseInterviewTips from './component/videoupload/PractiseInterviewTips';
 //import FinishInterview from './component/videoupload/FinishInterview';
-import InterviewQuestion from './component/videoupload/InterviewQuestion';
+//import InterviewQuestion from './component/videoupload/InterviewQuestion';
 
+//import InterviewQuestion from './component/videoupload/InterviewQuestion';
+import SingleShareGrid from './component/interviews/SingleShareGrid'
+//import ViewRecord from './component/interviews/ViewRecord';
 // import CompanyProfilePage from './component/companyprofile/CompanyProfilePage';
 // import StartInterviewTips from './component/videoupload/StartInterviewTips'
 // import InterviewQuestion from './component/videoupload/InterviewQuestion'
 function App() {
   return (
     <>
+    {/* <SingleShareGrid/> */}
     {/* <InterviewQuestion/> */}
    {/* <FinishInterview/> */}
     {/* <StartInterviewTips/> */}
@@ -65,20 +69,22 @@ function App() {
       {/* <Navbar/> */}
    {/* <InterviewQuestion/> */}
      {/* <FinishInterview/> */}
-      <Provider store={store}>
+      {/* <Provider store={store}>
       <BrowserRouter>
    
       <HomeNavbar/> 
      
       </BrowserRouter>
       </Provider>
-{/* {/* <Provider store={store}>
+      */}
+  <Provider store={store}>
       <BrowserRouter>
    
-      <Intpra/> 
+  
+    <SingleShareGrid/>
      
       </BrowserRouter>
-      </Provider> */}
+      </Provider> 
       {/* <StartInterview/> */}
         
       {/* <Login/> */}
