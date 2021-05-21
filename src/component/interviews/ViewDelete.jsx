@@ -14,6 +14,12 @@ import { getadminview } from '../../redux/actions/interview/InterviewAction';
 
 
 function  ViewDelete(props) {
+  // console.log(props.manager);
+  // console.log(props.role);
+  var manager=props.manager;
+  var role=props.role;
+ var id=props.id;
+
   const [open, setOpen] = React.useState(false);
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
@@ -35,11 +41,12 @@ function  ViewDelete(props) {
   props.getadminview()
     setOpen(false);
   };
+  
 
   return (
     <div>
         
-        <button id="edit_btn" onClick={() => history.push("/viewrecord")}>       <VisibilityIcon/>
+        <button id="edit_btn" onClick={() => history.push(`/viewrecord/${manager}/${role}/${id}`)}>       <VisibilityIcon/>
          </button>
        
        <button id="delete_btn"  onClick={handleClickOpen} > <DeleteIcon/> 

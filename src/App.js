@@ -27,7 +27,7 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 //import Navbar2 from './component/navbar/outernavbar/Navbar2'
 //import Contact from './component/team/contact/Contact';
 //import InterviewDataGrid from './component/interviews/InterviewDataGrid';
-//import HomeNavbar from './component/navbar/homenavbar/HomeNavbar';
+// import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'; 
 // //import CompanyFooter from './component/companyprofile/CompanyFooter';
   import { Provider } from "react-redux";
  import store from "./redux/Store";
