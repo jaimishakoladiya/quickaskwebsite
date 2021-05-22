@@ -178,6 +178,8 @@
   font-size: 17px;
   font-weight: bold;
   color:darkcyan;
+
+
 }
 #Step4_heading {
   border: 1px solid black;
@@ -470,6 +472,10 @@ width: auto;
   #view_css{
     padding: 2px 69px;
   }
+
+  /* #share{
+    position:relative;
+  } */
 
   #edit_btn{
     background-color:darkcyan;

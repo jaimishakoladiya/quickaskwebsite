@@ -119,7 +119,7 @@ function ViewRecord(props) {
                           rate = item.rating;
                         }
                       })}
-                      <TableCell style={rowcss} align="center"><StarIcon style={{ color: "black", margin: "-5px 5px" }} />{rate}</TableCell>
+                      <TableCell style={rowcss} align="center"><StarIcon style={{ color: "black", margin: "-5px 5px"}} />{rate}</TableCell>
 
                     </TableRow>)
                 })
@@ -127,9 +127,12 @@ function ViewRecord(props) {
               </TableHead>
             </Table>
           </TableContainer>
+          <div style={{borderBottom:"110px solid white"}}></div>
+
           </div>
-          
+   
           </div>
+      
           <CompanyFooter/>
    </>
     )
