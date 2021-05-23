@@ -56,7 +56,7 @@ function HomeNavbar() {
           <BrowserRouter><InnerNavbar name={"companyprofile"}/></BrowserRouter>
         }/>
         <Route exact path="/start/:tokenid/:id" component={StartTest}/>
-        <Route exact path="/starttest/:tokenid" component={RealInterview}/>
+        <Route exact path="/start/:tokenid" component={RealInterview}/>
 
         {/* <Route exact path="/start/:token/:token1" component={StartTest}/> */}
       </Switch>

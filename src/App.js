@@ -69,22 +69,22 @@ function App() {
       {/* <Navbar/> */}
    {/* <InterviewQuestion/> */}
      {/* <FinishInterview/> */}
-      {/* <Provider store={store}>
+      <Provider store={store}>
       <BrowserRouter>
    
       <HomeNavbar/> 
      
       </BrowserRouter>
       </Provider>
-      */}
-  <Provider store={store}>
+     
+  {/* <Provider store={store}>
       <BrowserRouter>
    
   
     <SingleShareGrid/>
      
       </BrowserRouter>
-      </Provider> 
+      </Provider>  */}
       {/* <StartInterview/> */}
         
       {/* <Login/> */}

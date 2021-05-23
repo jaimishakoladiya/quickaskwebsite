@@ -3,253 +3,163 @@ import axios from 'axios';
 import Button from "@material-ui/core/Button";
 import VideoFooter from './VideoFooter';
 import VideoHeader from './VideoHeader';
-import {useLocation} from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import RecordRTC from 'recordrtc';
 import FinishInterview from './FinishInterview';
 
 function RealInterview() {
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
-  const [open,setopen]=useState(false)
-//   const location=useLocation()
-//   const tokenval=location.pathname.split('/')[3]
-// //  const [practiceData,setpracticeData]=useState([])
-// let practiceData;
-//    const [praciteque, setpracticeque] = useState()
-//    const [qno,setqno]=useState()
-//    let indexQuestionLoad=0
-//   const cameraScreen = useRef(null)
-//   const startButton = useRef(null)
-//   const stopButton = useRef(null)
-//   useEffect(() => {
-//     startVideo()
-//     getquestion(true)
-//   }, [])
-//   var mediaRecorder;
-//   var recordedBlobs;
-// 	var mediaStream = null;
-//   let recorder;
-//  const startVideo=()=>{
-//   navigator.mediaDevices.getUserMedia({
-//     video: true,
-//     audio: true
-// }).then(async function(stream) {
-//   cameraScreen.current.srcObject = stream;
-//   recorder = RecordRTC(stream, {
-//         type: 'video'
-//     });
-//     recorder.startRecording();
+  const {tokenid}=useParams()
+  const [open, setopen] = useState(false)
+  const cameraScreen = useRef(null)
+  const stopButton = useRef(null)
+  const questionno = useRef(null)
+  const question = useRef(null)
+  const [praciteque, setpracticeque] = useState()
+  const [qno, setqno] = useState()
 
-//     // const sleep = m => new Promise(r => setTimeout(r, m));
-//     // await sleep(3000);
-//      stopButton && stopButton.current.addEventListener('click', () => {
-//     //   recorder.stopRecording(function() {
-//     //     let blob = recorder.getBlob();
-//     //     alert(blob);
-//     //     console.log(blob)
-//     //     UpdateQuestion()
-//     // });
-//     recorder.stopRecording(postFiles)
-//     UpdateQuestion()
-//      })
-   
-// });
-//  }
-//   const getquestion = async (iscount=false) => {
-//     const res = await axios({
-//       method: 'get',
-//       url: `http://localhost:2002/getquestion/1rwf1l4kopg8n2c/0000000000/${iscount}`,
-//       headers: {
-//         Authorization: token
-//       }
-//     })
-//     console.log(res.data);
+  useEffect(async () => {
+    if (open) {
+      const res=await axios({
+        method:'get',
+        url:`http://localhost:2002/addattempt/${tokenid}`
+      })
+      console.log(res.data)
+      getquestion()
+    }
+  }, [open])
+
+  var mediaStream = null;
+  let recorder;
+  const startVideo = () => {
+    navigator.mediaDevices.getUserMedia({
+      video: true,
+      audio: true
+    }).then(async function (stream) {
+      cameraScreen.current.srcObject = stream;
+      recorder = RecordRTC(stream, {
+        type: 'video'
+      });
+      recorder.startRecording();
+
+      stopButton && stopButton.current.addEventListener('click', () => {
+          startNextQuestion()
+        getquestion()
+      })
+
+    });
+  }
+  const getquestion=async (iscount=false)=>{
+
+    const res=await axios({
+      method:'get',
+      url:`http://localhost:2002/getquestion/${tokenid}/${iscount}`,
+      headers:{
+        Authorization:token
+      }
+    })
+
+    console.log(res.data)
     
- 
-//     // startcamera()
-//     practiceData=res.data.questions
-//     UpdateQuestion()
-// 				// if (practiceData.length > indexQuestionLoad) {
-//         //   setpracticeque(practiceData[indexQuestionLoad].question);
-// 				// 	setqno('Q:' + (+practiceData[indexQuestionLoad].order + 1));
-//         //   // startVideo()
-				  
-// 				// 	setindex(indexQuestionLoad+1)
-//         //   console.log(indexQuestionLoad)
+   
+      if (res.data) {
+      let  questionData = res.data;
 
-//         // }
-//         // else{
-//         //   console.log("nooo")
-        
-//         //   // stopVideoRecording()
-// 				// 	// if (mediaRecorder) { mediaRecorder.stop(postFiles); }
-//         // }
-//   }
-//   const UpdateQuestion=()=>{
-//     if (practiceData.length > indexQuestionLoad) {
-//             setpracticeque(practiceData[indexQuestionLoad].question);
-//       			setqno('Q:' + (+practiceData[indexQuestionLoad].order + 1));
-            
-//             startVideo()
-//       			indexQuestionLoad++;
-//             console.log(indexQuestionLoad)
-  
-//           }
-//           else{
-//             console.log('nooo')
-//           }
-//   }
-//   function postFiles() {
-//     var blob = recorder.getBlob();
-// 		var fileName = generateRandomString() + '.webm';
-// 		var file = new File([blob], fileName, { type: 'video/webm' });
-// 		// xhr('/start/videoUpload/uploadFile', file, function (responseText) { });
-// console.log(file)
-// 		if (mediaStream) mediaStream.stop();
+        setpracticeque(questionData.question);
+       setqno('Q:' + (+questionData.order + 1));
+       startVideo();
+      } else {
+        console.log('hhhh')
+        stopVideoRecording();
+					if (recorder) { recorder.stopRecording(postFiles); }
+
+        // $('#interview-first').load('/public/views/Atttempt.html');
+        return;
+      }
+
+  }
+  function generateRandomString() {
+		if (window.crypto) {
+			var a = window.crypto.getRandomValues(new Uint32Array(3));
+			var token = '';
+			for (var i = 0, l = a.length; i < l; i++) token += a[i].toString(36);
+			return token;
+		} else {
+			return (Math.random() * new Date().getTime()).toString(36).replace(/\./g, '');
+		}
+	}
+  function postFiles() {
+    var blob = recorder.getBlob();
+    var fileName = generateRandomString() + `.webm`
+     var file = new File([blob], fileName, { type: 'video/webm' });
+    console.log(file)
+		upload(file);
+      // console.log(file)
+		if (mediaStream) mediaStream.stop();
 	
-// 	}
-//   function handleDataAvailable(event) {
-//     console.log('handleDataAvailable', event);
-//     if (event.data && event.data.size > 0) {
-//       recordedBlobs.push(event.data);
-//     }
-//   }
-//   function handleSuccess(stream) {
-//     console.log('getUserMedia() got stream:', stream);
-//     window.stream = stream;
-
-//     // const gumVideo = document.querySelector('video#gum');
-//     cameraScreen.current.srcObject = stream;
-//   }
-//   async function init(constraints) {
-//     try {
-//       const stream = await navigator.mediaDevices.getUserMedia(constraints);
-//       handleSuccess(stream);
-//     } catch (e) {
-//       console.error('navigator.getUserMedia error:', e);
-
-//     }
-//   }
-//   function startRecording() {
-//     recordedBlobs = [];
-//     let options = { mimeType: 'video/webm;codecs=vp9,opus' };
-//     console.log('getUserMedia() got stream:', window.stream);
-
-//     try {
-//       mediaRecorder = new MediaRecorder(window.stream, options);
-//     } catch (e) {
-//       console.error('Exception while creating MediaRecorder:', e);
-      
-//       return;
-//     }
-
-//     console.log('Created MediaRecorder', mediaRecorder, 'with options', options);
-//     mediaRecorder.onstop = (event) => {
-//       console.log('Recorder stopped: ', event);
-//       console.log('Recorded Blobs: ', recordedBlobs);
-//     };
-
-
-//     mediaRecorder.ondataavailable = handleDataAvailable;
-//     mediaRecorder.start();
-//     console.log('MediaRecorder started', mediaRecorder);
-//     setTimeout(function () {
-//       stopButton.current.style.display="block";
-//     stopButton.current.disabled = false;
-
-//     }, 1000)
-//   }
-//   function generateRandomString() {
-// 		if (window.crypto) {
-// 			var a = window.crypto.getRandomValues(new Uint32Array(3));
-// 			var token = '';
-// 			for (var i = 0, l = a.length; i < l; i++) token += a[i].toString(36);
-// 			return token;
-// 		} else {
-// 			return (Math.random() * new Date().getTime()).toString(36).replace(/\./g, '');
-// 		}
-// 	}
-//   function stopRecording() {
-//     console.log(mediaRecorder);
+	}
+  async function upload(data){
+    var formData = new FormData();
+    formData.append('file', data);
+		formData.append('key', tokenid);
+		formData.append('question', question.current.textContent);
+		formData.append('qno', parseInt(questionno.current.textContent.split("Q:")[1]) - 1);
+    console.log(formData)
+    const res=await axios({
+      method:'post',
+      url:`http://localhost:2002/start/videoUpload/uploadFile`,
+      data:formData,
+      headers:{
+        Authorization:token,
+        
+      }
+    })
    
-//     mediaRecorder.stop();
-//     // UpdateQuestion()
-//     var fileName = generateRandomString() + '.webm';
-// 		var file = new File(recordedBlobs, fileName, { type: 'video/webm' });
-//       const superBuffer = new Blob(recordedBlobs, { type: 'video/webm' });
-//       console.log(file)
-//   }
-//   const startcamera = async () => {
-
-//     const constraints = {
-//       audio: {
-//         echoCancellation: { exact: true }
-//       },
-//       video: {
-//         width: 1280, height: 720
-//       }
-//     };
-//     console.log('Using media constraints:', constraints);
-//     await init(constraints)
-   
-//      startRecording()
-//   }
-//   function startNextQuestion() {
-// 		stopVideoRecording();
-// 	}
-// 	function stopVideoRecording() {
-//     // if (mediaRecorder) { mediaRecorder.stop(postFiles); }
-// 		stopRecording()
-// 	}
-
-//   const startbtn=()=>{
-//     stopButton.current.disabled = true;
-// 		stopVideoRecording();
-//   }
-
-//   const stopbtn=()=>{
-//     // startButton.current.disabled = false;
-//     // stopButton.current.style.display="none"
-//     // stopButton.current.disabled = true;
-// 		//  startNextQuestion();
-// 		// // getquestion();
+      }
     
-//   }
-
-const startinterview=()=>{
+  function startNextQuestion() {
+		stopVideoRecording();
+	}
+	function stopVideoRecording() {
+    if (recorder) { recorder.stopRecording(postFiles); }
+	}
+  const startinterview = () => {
     setopen(true)
-}
+  }
+
   return (
     <div>
       <VideoHeader />
-      {open?<><div className="main1_div">
-        <h2>1</h2>
-        <h3>kkkk</h3></div>
-      <div className="main_div">
+      {open ? <><div className="main1_div">
+      <h3 ref={questionno}>{qno}</h3>
+        <h2 ref={question}>{praciteque}</h2>
+        </div>
+        <div className="main_div">
 
-        <div>
-          <video style={{ height: "350px", width: "640px", border: "8px solid darkcyan" }} id="gum" playsInline autoPlay muted ></video>
+          <div>
+            <video style={{ height: "350px", width: "640px", border: "8px solid darkcyan" }} ref={cameraScreen} id="gum" playsInline autoPlay muted ></video>
 
-          <div className="main2_div">
-            <div>
-              <Button  style={{
-                backgroundColor: "darkcyan",
-                fontWeight: "bold",
-                width: "180px",
-                marginLeft: "25px",
-                marginTop: "11px",
-                height: "50px",
-                color: "black"
-              }}>Next Question</Button>
+            <div className="main2_div">
+              <div>
+                <Button ref={stopButton} style={{
+                  backgroundColor: "darkcyan",
+                  fontWeight: "bold",
+                  width: "180px",
+                  marginLeft: "25px",
+                  marginTop: "11px",
+                  height: "50px",
+                  color: "black"
+                }}>Next Question</Button>
               </div>
+            </div>
           </div>
-           </div>
 
-      </div></>:
-      <FinishInterview start={startinterview}/>
-}
-    
-      
+        </div></> :
+        <FinishInterview start={startinterview}/>
+      }
+
+
       <VideoFooter />
     </div>
 

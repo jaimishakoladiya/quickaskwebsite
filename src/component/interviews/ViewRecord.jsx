@@ -11,6 +11,7 @@ import InterviewShareGrid from "./InterviewShareGrid";
 import './Interviews.css';
 import { useParams } from 'react-router';
 import axios from 'axios';
+import CompanyFooter from '../companyprofile/CompanyFooter'
 function ViewRecord(props) {
   useEffect(() => {
     sharegrid();
@@ -39,7 +40,7 @@ function ViewRecord(props) {
   async function sharegrid() {
     var res = await axios({
       method: 'get',
-      url: `http://localhost:2002/multiple-candidate/${managerid}/${role}/false/multiple`,
+      url: `http://localhost:2002/multiple-candidate/${managerid}/${role}/false/admin`,
       headers: {
         Authorization: token
       }
@@ -50,25 +51,21 @@ function ViewRecord(props) {
       console.log(arr.question)
     })
     setquestion(res.data.data.questionGrid);
-    // setquestion((olditem)=>{
-    //   return[
-    //     ...olditem,
-    //     {question:res.data.data.questionGrid},
 
-    //   ]
-    // })
     console.log(question)
 
   }
 
   return (
     <>
-      <div className="view-data">
+  
+      <div className="view-data" >
         <div className="view-header1">
           <h5>{role}</h5>
-          <Button variant="contained" onClick={printfun} color="secondary" style={{ marginLeft: "700px", fontSize: "12pt", height: "50px" }}>
-            Print</Button>
           <InterviewShareGrid managerid={managerid} candidateid={id}/>
+          <Button variant="contained" onClick={printfun} color="secondary" style={{ marginLeft: "30px", fontSize: "12pt", height: "50px" }}>
+            Print</Button>
+          
         </div>
       </div>
       <div className="view-header2">
@@ -86,7 +83,7 @@ function ViewRecord(props) {
         </TableContainer>
       </div>
 
-      <div className="view-header3">
+      <div className="view-header3" >
         <TableContainer >
           <Table aria-label="customized table">
             <TableHead style={rowcss2} >
@@ -128,7 +125,8 @@ function ViewRecord(props) {
           </div>
           
           </div>
-          <CompanyFooter/>
+      
+          {/* <CompanyFooter/> */}
    </>
     )
 }
