@@ -551,4 +551,49 @@ width: auto;
     margin-left: -8px;
   }
   
+  .interview-title{
+    font-size: 50px;
+    color:darkcyan;
+    margin-top: 150px;
+    margin-left: 100px;
+    font-family: "DIN";
+ 
+
+  }
+  .interview-title2{
+    font-size: 58px;
+    color:black;
+   margin-left: 100px;
+   font-family: "DIN";
   
+  }
+
+  .interview-text{
+    font-size: 20px;
+    color :darkcyan;
+    margin-top: 50px;
+    margin-left: 100px;
+    line-height: 30px;
+   
+  }
+  #interview-btn{
+    margin-top: 50px;
+    margin-left: 100px;
+    background-color: darkcyan;
+    color: white;
+    font-size: 17px; 
+  
+
+  }
+  #interview-btn:hover{
+    background-color: red;
+  }
+
+  .interview-img{
+    height: 420px;
+  float:right;
+margin-right: 100px;
+  width:700px;
+border-radius: 13pt;
+
+  }

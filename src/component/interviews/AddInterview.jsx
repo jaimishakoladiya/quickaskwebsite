@@ -130,6 +130,7 @@ function AddInterview(props) {
    props.emptydata();
  }
     return (
+      <>
       <div className="main">
        <div className="Interview_formheader">
      <h4 className="Interview-info-title">
@@ -174,7 +175,8 @@ function AddInterview(props) {
                       onClick={resetForm}
                       >Reset</Button>
       </div></Stepper></div>
-      
+      <CompanyFooter/>
+      </>
     );
   
 }
