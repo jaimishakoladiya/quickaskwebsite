@@ -74,7 +74,7 @@ function RealInterview() {
         console.log('hhhh')
         stopVideoRecording();
 					if (recorder) { recorder.stopRecording(postFiles); }
-          history.push('')
+          history.push('/GoodBye')
         return;
       }
 

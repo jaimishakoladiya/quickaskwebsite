@@ -58,14 +58,9 @@ function ViewRecord(props) {
 
   return (
     <>
-<<<<<<< HEAD
     
       <div className="view-data">
      
-=======
-  
-      <div className="view-data" >
->>>>>>> 56320f0c026c729d502f76896521927bd6c5b524
         <div className="view-header1">
           <h5>{role}</h5>
           <InterviewShareGrid managerid={managerid} candidateid={id}/>
@@ -88,13 +83,8 @@ function ViewRecord(props) {
           </Table>
         </TableContainer>
       </div>
-<<<<<<< HEAD
       {/* <div className="view-main"> */}
       <div className="view-header3">
-=======
-
-      <div className="view-header3" >
->>>>>>> 56320f0c026c729d502f76896521927bd6c5b524
         <TableContainer >
           <Table aria-label="customized table">
             <TableHead style={rowcss2} >
@@ -128,7 +118,7 @@ function ViewRecord(props) {
                         }
                       })}
                       <TableCell style={rowcss} align="center">
-                       {path? <RatingBox path={path}/>:null}
+                       {path? <RatingBox key={index} path={path} question={arr.question}/>:null}
                      <StarIcon style={{ color: "black", margin: "-5px 5px"}} />{rate}</TableCell>
 
                     </TableRow>)
@@ -142,12 +132,8 @@ function ViewRecord(props) {
           </div>
    
           </div>
-<<<<<<< HEAD
           {/* </div> */}
           <div style={{marginBottom:"600px"}}></div>
-=======
-      
->>>>>>> 56320f0c026c729d502f76896521927bd6c5b524
           <CompanyFooter/>
    </>
     )

@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
 // }));
 
 function RatingBox(props) {
-console.log(props.path)
+console.log(props.key)
 var newpath=`E:/askaway${props.path}`
 
 useEffect(()=>{
@@ -87,8 +87,6 @@ const classes = useStyles();
   
     };
     const onSubmit = (values) => {
-   
-    
       setOpen(false);
     };
     const validationSchema = yup.object({
@@ -140,7 +138,7 @@ const classes = useStyles();
         
         >
           <div className="AddDepartment_primaryHeader">
-            <h3>Question </h3>
+            <h3>{props.question} </h3>
             <div className="AddDepartment_closeicon">
               <CloseIcon style={{ color: "black" }} onClick={handleClose} />
             </div>

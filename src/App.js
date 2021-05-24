@@ -39,11 +39,7 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 //import InterviewQuestion from './component/videoupload/InterviewQuestion';
 
 //import InterviewQuestion from './component/videoupload/InterviewQuestion';
-<<<<<<< HEAD
 //import SingleShareGrid from './component/interviews/SingleShareGrid'
-=======
-// import SingleShareGrid from './component/interviews/SingleShareGrid'
->>>>>>> 56320f0c026c729d502f76896521927bd6c5b524
 //import ViewRecord from './component/interviews/ViewRecord';
 // import CompanyProfilePage from './component/companyprofile/CompanyProfilePage';
 // import StartInterviewTips from './component/videoupload/StartInterviewTips'
