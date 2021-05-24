@@ -12,6 +12,7 @@ import ViewRecord from "../../interviews/ViewRecord";
 import InterviewShareGrid from '../../interviews/InterviewShareGrid';
 import AdminView from '../../interviews/AdminView';
 import AddInterview from '../../interviews/AddInterview';
+import GoodBye from '../../videoupload/GoodBye';
 const InnerNavbar = () => {
   const location = useLocation();
   return (
@@ -45,6 +46,7 @@ const InnerNavbar = () => {
         <Route exact path="/adminview" component={AdminView} />
         <Route exact path="/viewrecord/:managerid/:role/:id" component={ViewRecord} /> 
         <Route exact path="/InterviewShareGrid" componet={InterviewShareGrid}/>
+        <Route exact path="/GoodBye" component={GoodBye}/>
       </Switch>
     </>
   );

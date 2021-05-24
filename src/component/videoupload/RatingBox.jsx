@@ -47,8 +47,11 @@ const useStyles = makeStyles((theme) => ({
 
 // }));
 
-function RatingBox() {
-
+function RatingBox(props) {
+  console.log(props.key);
+  console.log(props.question);
+  console.log(props.path)
+  var newpath=`F:/askaway${props.path}`
   const classes = useStyles();
   const [data, setvalue] = useState({
     rating: '',
@@ -117,7 +120,7 @@ function RatingBox() {
 
       >
         <div className="AddDepartment_primaryHeader">
-          <h3>Question </h3>
+          <h3>{props.question} </h3>
           <div className="AddDepartment_closeicon">
             <CloseIcon style={{ color: "black" }} onClick={handleClose} />
           </div>
@@ -125,7 +128,7 @@ function RatingBox() {
         <DialogTitle id="form-dialog-title"></DialogTitle>
         <DialogContent>
           <DialogContentText>
-            <video style={{ height: "350px", width: "640px", border: "8px solid darkcyan" }} ref={cameraScreen} id="gum" playsInline autoPlay muted ></video>
+            <video style={{ height: "350px", width: "640px", border: "8px solid darkcyan" }} src={newpath} ref={cameraScreen} id="gum" playsInline autoPlay muted ></video>
 
             <br />
 

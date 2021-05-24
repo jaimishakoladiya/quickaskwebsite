@@ -33,7 +33,7 @@ function ViewRecord(props) {
   const user = JSON.parse(localStorage.getItem('user'));
   const token = user.token;
   const { managerid, role, id } = useParams()
-  console.log(id)
+  console.log(managerid)
   const [question, setquestion] = useState([]);
   const [job, setjob] = useState();
   console.log(managerid);
@@ -47,8 +47,8 @@ function ViewRecord(props) {
       }
     })
     console.log(res.data)
-    console.log(res.data.data.questionGrid)
-    res.data.data.questionGrid.map((arr, index) => {
+    // console.log(res.data.data.questionGrid)
+    res.data.data.questionGrid && res.data.data.questionGrid.map((arr, index) => {
       console.log(arr.question)
     })
     setquestion(res.data.data.questionGrid);
@@ -58,8 +58,9 @@ function ViewRecord(props) {
 
   return (
     <>
-  
-      <div className="view-data" >
+    
+      <div className="view-data">
+     
         <div className="view-header1">
           <h5>{role}</h5>
           <InterviewShareGrid managerid={managerid} candidateid={id}/>
@@ -82,8 +83,8 @@ function ViewRecord(props) {
           </Table>
         </TableContainer>
       </div>
-
-      <div className="view-header3" >
+      {/* <div className="view-main"> */}
+      <div className="view-header3">
         <TableContainer >
           <Table aria-label="customized table">
             <TableHead style={rowcss2} >
@@ -117,7 +118,7 @@ function ViewRecord(props) {
                         }
                       })}
                       <TableCell style={rowcss} align="center">
-                       {path? <RatingBox/>:null}
+                       {path? <RatingBox key={index} path={path} question={arr.question}/>:null}
                      <StarIcon style={{ color: "black", margin: "-5px 5px"}} />{rate}</TableCell>
 
                     </TableRow>)
@@ -131,7 +132,8 @@ function ViewRecord(props) {
           </div>
    
           </div>
-      
+          {/* </div> */}
+          <div style={{marginBottom:"600px"}}></div>
           <CompanyFooter/>
    </>
     )
