@@ -169,18 +169,18 @@ export const fetchdata =  () => {
                   Authorization:token
                 }
               })
-              const res =await axios({
-                method:"get",
-                url:"http://localhost:2002/getManager",
-                headers:{
-                  Authorization:token
-                }
-              })
+            //   const res =await axios({
+            //     method:"get",
+            //     url:"http://localhost:2002/getManager",
+            //     headers:{
+            //       Authorization:token
+            //     }
+            //   })
               console.log(manager.data)
            dispatch(getdeptdata(dept.data))
            dispatch(getjobdata(job.data))
            dispatch(getmanagerdata(manager.data.data))
-           dispatch(getmdata(res.data.data))
+        //    dispatch(getmdata(res.data.data))
            
         }
         catch(e){

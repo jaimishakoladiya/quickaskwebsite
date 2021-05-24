@@ -8,10 +8,12 @@ import StarIcon from '@material-ui/icons/Star';
 import Button from '@material-ui/core/Button';
 import img2 from "../../component/images/undraw_profile_pic_ic5t (2).svg";
 import InterviewShareGrid from "./InterviewShareGrid";
+import CompanyFooter from '../companyprofile/CompanyFooter';
 import './Interviews.css';
 import { useParams } from 'react-router';
 import axios from 'axios';
 import CompanyFooter from '../companyprofile/CompanyFooter'
+import RatingBox from '../videoupload/RatingBox';
 function ViewRecord(props) {
   useEffect(() => {
     sharegrid();
@@ -40,7 +42,7 @@ function ViewRecord(props) {
   async function sharegrid() {
     var res = await axios({
       method: 'get',
-      url: `http://localhost:2002/multiple-candidate/${managerid}/${role}/false/multiple`,
+      url: `http://localhost:2002/multiple-candidate/${managerid}/${role}/false/admin`,
       headers: {
         Authorization: token
       }
@@ -51,26 +53,24 @@ function ViewRecord(props) {
       console.log(arr.question)
     })
     setquestion(res.data.data.questionGrid);
-    // setquestion((olditem)=>{
-    //   return[
-    //     ...olditem,
-    //     {question:res.data.data.questionGrid},
-
-    //   ]
-    // })
     console.log(question)
 
   }
 
   return (
     <>
+<<<<<<< HEAD
     
       <div className="view-data">
      
+=======
+  
+      <div className="view-data" >
+>>>>>>> 56320f0c026c729d502f76896521927bd6c5b524
         <div className="view-header1">
           <h5>{role}</h5>
           <InterviewShareGrid managerid={managerid} candidateid={id}/>
-          <Button variant="contained" onClick={printfun} color="secondary" style={{ marginLeft: "30px", fontSize: "12pt", height: "50px" }}>
+          <Button variant="contained" onClick={printfun} color="secondary" style={{ marginLeft:"20px", fontSize: "12pt", height: "50px" }}>
             Print</Button>
         
         </div>
@@ -89,8 +89,13 @@ function ViewRecord(props) {
           </Table>
         </TableContainer>
       </div>
+<<<<<<< HEAD
       {/* <div className="view-main"> */}
       <div className="view-header3">
+=======
+
+      <div className="view-header3" >
+>>>>>>> 56320f0c026c729d502f76896521927bd6c5b524
         <TableContainer >
           <Table aria-label="customized table">
             <TableHead style={rowcss2} >
@@ -110,18 +115,22 @@ function ViewRecord(props) {
 
                 {question && question.map((arr, index) => {
                   let rate;
+                  let path;
                   return (
                     <TableRow id="view-header4">
                       <TableCell style={rowcss}>{arr.question}</TableCell>
                       {console.log(arr.candidate)}
 
-
+                  
                       {arr.candidate.map((item) => {
                         if (id === item.id) {
                           rate = item.rating;
+                         path= item.path?item.path:undefined;
                         }
                       })}
-                      <TableCell style={rowcss} align="center"><StarIcon style={{ color: "black", margin: "-5px 5px" }} />{rate}</TableCell>
+                      <TableCell style={rowcss} align="center">
+                       {path? <RatingBox/>:null}
+                     <StarIcon style={{ color: "black", margin: "-5px 5px"}} />{rate}</TableCell>
 
                     </TableRow>)
                 })
@@ -129,11 +138,17 @@ function ViewRecord(props) {
               </TableHead>
             </Table>
           </TableContainer>
+          <div style={{borderBottom:"110px solid white"}}></div>
+
           </div>
-          
+   
           </div>
+<<<<<<< HEAD
           {/* </div> */}
           <div style={{marginBottom:"600px"}}></div>
+=======
+      
+>>>>>>> 56320f0c026c729d502f76896521927bd6c5b524
           <CompanyFooter/>
    </>
     )

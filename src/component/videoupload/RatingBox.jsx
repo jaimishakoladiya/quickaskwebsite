@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import { Field, Formik, Form } from "formik";
 import * as yup from "yup";
 import axios from "axios";
@@ -55,11 +55,8 @@ const classes = useStyles();
     const [open, setOpen] = useState(false);
     const [openalert, setopenalert] = useState(true);
   
-    // useEffect(() => {
-    //   fetchdata()
-    //  },[])
-
-    // const classes = useStyle();
+  const cameraScreen = useRef(null)
+   
     const initialValues = {
       firstname: '',
       lastname:'',
@@ -105,7 +102,7 @@ const classes = useStyles();
       <div>
   
   <PlayCircleOutlineIcon onClick={handleClickOpen}  style={{ width: "43px", height: "43px",margin:"-14px 0px", color: "darkcyan" }} />
-  <StarIcon style={{ color: "black", margin: "-5px 5px" }} />Name
+  {/* <StarIcon style={{ color: "black", margin: "-5px 5px" }} />Name */}
         
         <Dialog
           open={open}
@@ -138,10 +135,16 @@ const classes = useStyles();
                     <>
                       <Form> 
                     
-                         <img style={{ height: "350px", width: "640px" }} src={img1}></img><br/>
+                         {/* <img style={{ height: "350px", width: "640px" }} src={img1}></img> */}
+            <video style={{ height: "350px", width: "640px", border: "8px solid darkcyan" }} ref={cameraScreen} id="gum" playsInline autoPlay muted ></video>
+
+                         <br/>
+
                          <h2>Please Rate This Interview</h2>
                         <div className={classes.root}>
-                              <Rating name="half-rating"  precision={0.5} /><br/>
+                              <Rating name="half-rating"  precision={0.5} onChange={(event)=>{
+                                console.log(event.target.value)
+                              }} /><br/>
                       </div>
                       <TextareaAutosize aria-label="minimum height" style={{width:"650px"}} rowsMin={4} placeholder="Please Add a Review" />
 

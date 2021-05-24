@@ -40,12 +40,10 @@ const Step4 = (props) => {
               <TableHead id="">
                 <TableRow>
                   <TableCell id="Step4_table">Quetions</TableCell>
-                  <TableCell id="Step4_table" align="center">
-                    Time
+                  <TableCell id="Step4_table">
+                    Delete
                   </TableCell>
-                  <TableCell id="Step4_table" align="center">
-                    Action
-                  </TableCell>
+                
                 </TableRow>
               </TableHead>
             </Table>

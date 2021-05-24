@@ -33,7 +33,7 @@ const Step2 = (props) => {
     first_name: props.manager.managers.user.data.firstname,
     last_name: props.manager.managers.user.data.lastname
   });
-  const managers = [ ...props.manager.managers.managerdata];
+  const managers = [ props.manager.managers.user.data,...props.manager.managers.managerdata];
   const department = [...props.manager.managers.departmentResult];
   const job = [...props.manager.managers.jobTitleResult];
   console.log(job)
@@ -137,7 +137,7 @@ const Step2 = (props) => {
   
     managers.map((item, index) => {
       if (data.email === item.email) {
-       if(item.questions.length!=0){
+       if(item.questions && item.questions.length!=0){
       //   console.log(item.questions)
         props.addinterviewque(...item.questions)
       }

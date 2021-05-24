@@ -8,10 +8,10 @@ import Button from "@material-ui/core/Button";
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import VideoFooter from './VideoFooter';
 import VideoHeader from './VideoHeader';
-function FinishInterview() {
+function FinishInterview(props) {
     return (
         <div>
-       <VideoHeader/>
+       {/* <VideoHeader/> */}
         <Grid container spacing={0}>
                
                <Grid id="go_grid" item xs>
@@ -31,7 +31,7 @@ function FinishInterview() {
                </Grid>
               
            </Grid>
-           <Button style={{backgroundColor: "darkcyan",
+           <Button onClick={props.start} style={{backgroundColor: "darkcyan",
                         fontWeight: "bold",
                         width:"180px",
                         marginTop:"-10px",

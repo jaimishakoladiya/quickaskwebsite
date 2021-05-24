@@ -13,6 +13,7 @@ import Step3 from './steps/Step3';
 import Step4 from './steps/Step4';
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import AlertBox from '../alert/AlertBox'
 import { getmanager ,emptydata, setdisabled} from "../../redux/actions/interview/InterviewAction";
 
 // import "./index.css"
@@ -80,7 +81,10 @@ function getSteps() {
 
 
 function AddInterview(props) {
-  // const [disabled,setdisabled]=useState(false);
+  const [openalert, setopenalert] = useState(true);
+  const [status,setstatus]=useState(false);
+  const [message,setmessage]=useState();
+
   function getStepContent(step) {
  
     switch (step) {
@@ -96,40 +100,72 @@ function AddInterview(props) {
         return 'Unknown step';
     }
   }
+
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
   const steps = getSteps();
+  
  const addinterview=async ()=>{
    var data;
 
-  data={
-    candidate:props.data.candidate,
-    managers:props.data.orginfo,
-    panel:props.data.panel,
-    question_bank:{
-      department:props.data.orginfo[0].department,
-      test:props.data.interviewque
+ 
+  if((props.data.candidate.length !== 0) || (props.data.managers.length !== 0) || (props.data.interviewque.length!== 0)){
+    data={
+      candidate:props.data.candidate,
+      managers:props.data.orginfo,
+      panel:props.data.panel,
+      question_bank:{
+        department:props.data.orginfo[0].department,
+        test:props.data.interviewque
+      }
     }
+    console.log(data);
+    var res = await axios({
+      method: 'post',
+      url: "http://localhost:2002/manager-added-interview",
+      data: data,
+      headers: {
+        Authorization: token
+      }
+    })
+    console.log(res.data)
+    props.setdisabled(false)
+    props.emptydata();
+    setopenalert(true)
+    setstatus(true);
+    setmessage("Interview Create Successfully")
+    
+   
   }
-  console.log(data)
-  var res = await axios({
-    method: 'post',
-    url: "http://localhost:2002/manager-added-interview",
-    data: data,
-    headers: {
-      Authorization: token
-    }
-  })
-  console.log(res.data)
-  props.setdisabled(false)
-  props.emptydata()
+  else{
+    console.log("blank")
+    setopenalert(true)
+   setstatus(true);
+   setmessage("All Fields Required!!");
+   
+    
+  }
+  
  }
+ const closealert = () => {
+  setopenalert(false);
+};
+const erroralert = (error) => {
+  return (
+    <AlertBox
+      setopenalert={openalert}
+      closealert={closealert}
+      error={error}
+    />
+  );
+};
  const resetForm=()=>{
   props.setdisabled(false)
 
    props.emptydata();
  }
     return (
+      <>
       <div className="main">
        <div className="Interview_formheader">
      <h4 className="Interview-info-title">
@@ -154,6 +190,7 @@ function AddInterview(props) {
             );
           })}
           <div>
+          {status !== false ? erroralert(message) : null}
           <Button style={{backgroundColor: "darkcyan",
                         fontWeight: "bold",
                         width:"75px",
@@ -161,7 +198,8 @@ function AddInterview(props) {
                         height:"40px",
                         color:"black"
                       }}
-                      onClick={addinterview}>Submit</Button>
+                      onClick={()=>{
+                                    addinterview()}}>Submit</Button>
                       <Button
                       style={{
                         color: "darkcyan",
@@ -174,7 +212,8 @@ function AddInterview(props) {
                       onClick={resetForm}
                       >Reset</Button>
       </div></Stepper></div>
-      
+      <CompanyFooter/>
+      </>
     );
   
 }
