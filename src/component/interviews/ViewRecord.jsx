@@ -64,7 +64,9 @@ function ViewRecord(props) {
 
   return (
     <>
+    
       <div className="view-data">
+     
         <div className="view-header1">
           <h5>{role}</h5>
           <InterviewShareGrid managerid={managerid} candidateid={id}/>
@@ -87,7 +89,7 @@ function ViewRecord(props) {
           </Table>
         </TableContainer>
       </div>
-
+      {/* <div className="view-main"> */}
       <div className="view-header3">
         <TableContainer >
           <Table aria-label="customized table">
@@ -130,6 +132,8 @@ function ViewRecord(props) {
           </div>
           
           </div>
+          {/* </div> */}
+          <div style={{marginBottom:"600px"}}></div>
           <CompanyFooter/>
    </>
     )
