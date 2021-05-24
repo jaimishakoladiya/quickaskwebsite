@@ -12,6 +12,7 @@ import ResetPassword from '../../account/register/ResetPassword'
 import Start from '../../videoupload/Start'
 import AdminView from '../../interviews/AdminView';
 import StartTest from "../../videoupload/StartTest";
+import AddInterview from '../../interviews/AddInterview';
 
 
 
@@ -36,7 +37,8 @@ function HomeNavbar() {
         {location.pathname === "/adminview" ||
           location.pathname === "/interview" ||
           location.pathname === "/companyprofilepage" ||
-          location.pathname === "/viewrecord"
+          location.pathname === "/viewrecord"||
+          location.pathname ==="/addinterview"
         ? <InnerNavbar/> : null}
       
        
@@ -44,6 +46,7 @@ function HomeNavbar() {
 
       <Switch>
         <Route   exact path="/" component={Home} />
+        <Route exact path="/addinterview" component={AddInterview}/>
         <Route exact path="/registartion" component={Registration} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/adminview" component={AdminView} />

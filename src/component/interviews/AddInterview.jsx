@@ -165,6 +165,7 @@ const erroralert = (error) => {
    props.emptydata();
  }
     return (
+      <>
       <div className="main">
        <div className="Interview_formheader">
      <h4 className="Interview-info-title">
@@ -211,7 +212,8 @@ const erroralert = (error) => {
                       onClick={resetForm}
                       >Reset</Button>
       </div></Stepper></div>
-      
+      <CompanyFooter/>
+      </>
     );
   
 }

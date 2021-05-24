@@ -110,7 +110,7 @@ async function managershare(data){
   
           
      
-        <Button variant="contained" color="secondary" style={{marginLeft:"720px",fontSize:"12pt",height:"50px"}}  onClick={handleClickOpen}  >
+        <Button variant="contained"  color="secondary" style={{marginLeft:"600px",fontSize:"12pt",height:"50px"}}  onClick={handleClickOpen}  >
               Share Grid</Button>
         <br />
         {status != null ? erroralert(message) : null}
