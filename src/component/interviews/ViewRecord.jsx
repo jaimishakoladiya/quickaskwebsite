@@ -12,7 +12,6 @@ import CompanyFooter from '../companyprofile/CompanyFooter';
 import './Interviews.css';
 import { useParams } from 'react-router';
 import axios from 'axios';
-import CompanyFooter from '../companyprofile/CompanyFooter'
 import RatingBox from '../videoupload/RatingBox';
 function ViewRecord(props) {
   useEffect(() => {
@@ -37,12 +36,12 @@ function ViewRecord(props) {
   console.log(id)
   const [question, setquestion] = useState([]);
   const [job, setjob] = useState();
-  // console.log(managerid);
-  // console.log(role);
+  console.log(managerid);
+  console.log(role);
   async function sharegrid() {
     var res = await axios({
       method: 'get',
-      url: `http://localhost:2002/multiple-candidate/${managerid}/${role}/false/admin`,
+      url: `http://localhost:2002/multiple-candidate/${managerid}/${role}/false/multiple`,
       headers: {
         Authorization: token
       }
