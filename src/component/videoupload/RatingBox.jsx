@@ -23,7 +23,7 @@ import "../companyprofile/Company.css";
 import { makeStyles } from "@material-ui/core";
 import AlertBox from "../alert/AlertBox"
 import { connect } from "react-redux"
-
+import video from '../../video/test.mp4'
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
@@ -48,9 +48,10 @@ const useStyles = makeStyles((theme) => ({
 // }));
 
 function RatingBox(props) {
-  console.log(props.key);
+  console.log(props.index);
   console.log(props.question);
-  console.log(props.path)
+  console.log(props.path);
+  var newpath=`E:/askaway${props.path}`
   var newpath=`F:/askaway${props.path}`
   const classes = useStyles();
   const [data, setvalue] = useState({
