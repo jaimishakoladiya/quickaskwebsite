@@ -12,7 +12,6 @@ import CompanyFooter from '../companyprofile/CompanyFooter';
 import './Interviews.css';
 import { useParams } from 'react-router';
 import axios from 'axios';
-import CompanyFooter from '../companyprofile/CompanyFooter'
 import RatingBox from '../videoupload/RatingBox';
 function ViewRecord(props) {
   useEffect(() => {
@@ -34,7 +33,7 @@ function ViewRecord(props) {
   const user = JSON.parse(localStorage.getItem('user'));
   const token = user.token;
   const { managerid, role, id } = useParams()
-  console.log(id)
+  console.log(managerid)
   const [question, setquestion] = useState([]);
   const [job, setjob] = useState();
   // console.log(managerid);
@@ -42,14 +41,14 @@ function ViewRecord(props) {
   async function sharegrid() {
     var res = await axios({
       method: 'get',
-      url: `http://localhost:2002/multiple-candidate/${managerid}/${role}/false/admin`,
+      url: `http://localhost:2002/multiple-candidate/${managerid}/${role}/false/multiple`,
       headers: {
         Authorization: token
       }
     })
     console.log(res.data)
-    console.log(res.data.data.questionGrid)
-    res.data.data.questionGrid.map((arr, index) => {
+    // console.log(res.data.data.questionGrid)
+    res.data.data.questionGrid && res.data.data.questionGrid.map((arr, index) => {
       console.log(arr.question)
     })
     setquestion(res.data.data.questionGrid);
@@ -118,7 +117,7 @@ function ViewRecord(props) {
                         }
                       })}
                       <TableCell style={rowcss} align="center">
-                       {path? <RatingBox/>:null}
+                       {path? <RatingBox path={path}/>:null}
                      <StarIcon style={{ color: "black", margin: "-5px 5px"}} />{rate}</TableCell>
 
                     </TableRow>)

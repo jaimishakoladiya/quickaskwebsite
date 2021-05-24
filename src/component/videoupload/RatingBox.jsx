@@ -47,7 +47,30 @@ const useStyles = makeStyles((theme) => ({
  
 // }));
 
-function RatingBox({data,}) {
+function RatingBox(props) {
+console.log(props.path)
+var newpath=`E:/askaway${props.path}`
+
+useEffect(()=>{
+  // playSelectedFile()
+},[])
+  var playSelectedFile = function (event) {
+    // var file = this.files[0]
+    // var type = file.type
+    // var videoNode = document.querySelector('video')
+    // var canPlay = videoNode.canPlayType(type)
+    // if (canPlay === '') canPlay = 'no'
+    // var message = 'Can play type "' + type + '": ' + canPlay
+    // var isError = canPlay === 'no'
+    // displayMessage(message, isError)
+
+    // if (isError) {
+    //   return
+    // }
+
+    // var fileURL = URL.createObjectURL(newpath)
+    cameraScreen.current.src = newpath
+  }
 
 const classes = useStyles();
     const [message,setmessage]=useState();
@@ -91,12 +114,14 @@ const classes = useStyles();
   
     const handleClickOpen = () => {
       setOpen(true);
-    };
-    ;
+      // cameraScreen.current.src = newpath;
+		
+    }
+    
     const handleClose = () => {
       setOpen(false);
      
-    };
+    }
   
     return (
       <div>
@@ -134,9 +159,12 @@ const classes = useStyles();
                   return (
                     <>
                       <Form> 
-                    
                          {/* <img style={{ height: "350px", width: "640px" }} src={img1}></img> */}
-            <video style={{ height: "350px", width: "640px", border: "8px solid darkcyan" }} ref={cameraScreen} id="gum" playsInline autoPlay muted ></video>
+                      {/* <video  style={{ height: "350px", width: "640px", border: "8px solid darkcyan" }}  src={newpath} ref={cameraScreen} id="gum"  autoPlay controls ></video> */}
+                      <video  width="640" height="264" autoPlay controls>
+        <source src={newpath} type='video/mp4' />
+    </video>
+                       {console.log(newpath)}
 
                          <br/>
 
