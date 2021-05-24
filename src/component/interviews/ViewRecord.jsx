@@ -8,6 +8,7 @@ import StarIcon from '@material-ui/icons/Star';
 import Button from '@material-ui/core/Button';
 import img2 from "../../component/images/undraw_profile_pic_ic5t (2).svg";
 import InterviewShareGrid from "./InterviewShareGrid";
+import CompanyFooter from '../companyprofile/CompanyFooter';
 import './Interviews.css';
 import { useParams } from 'react-router';
 import axios from 'axios';
@@ -52,7 +53,6 @@ function ViewRecord(props) {
       console.log(arr.question)
     })
     setquestion(res.data.data.questionGrid);
-
     console.log(question)
 
   }
