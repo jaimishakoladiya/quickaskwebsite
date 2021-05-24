@@ -23,7 +23,7 @@ import "../companyprofile/Company.css";
 import { makeStyles } from "@material-ui/core";
 import AlertBox from "../alert/AlertBox"
 import { connect } from "react-redux"
-
+import video from '../../video/test.mp4'
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
 // }));
 
 function RatingBox(props) {
-console.log(props.key)
+console.log(props.index)
 var newpath=`E:/askaway${props.path}`
 
 useEffect(()=>{
@@ -160,7 +160,7 @@ const classes = useStyles();
                          {/* <img style={{ height: "350px", width: "640px" }} src={img1}></img> */}
                       {/* <video  style={{ height: "350px", width: "640px", border: "8px solid darkcyan" }}  src={newpath} ref={cameraScreen} id="gum"  autoPlay controls ></video> */}
                       <video  width="640" height="264" autoPlay controls>
-        <source src={newpath} type='video/mp4' />
+        <source src={video} type='video/mp4' />
     </video>
                        {console.log(newpath)}
 

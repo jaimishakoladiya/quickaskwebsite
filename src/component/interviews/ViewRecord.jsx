@@ -118,7 +118,7 @@ function ViewRecord(props) {
                         }
                       })}
                       <TableCell style={rowcss} align="center">
-                       {path? <RatingBox key={index} path={path} question={arr.question}/>:null}
+                       {path? <RatingBox index={index} path={path} question={arr.question}/>:null}
                      <StarIcon style={{ color: "black", margin: "-5px 5px"}} />{rate}</TableCell>
 
                     </TableRow>)
