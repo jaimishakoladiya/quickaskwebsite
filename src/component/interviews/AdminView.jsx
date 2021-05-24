@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./Interviews.css";
 import CreateData from "./CreateData";
 import TextField from "@material-ui/core/TextField";
@@ -10,6 +10,11 @@ import TableRow from "@material-ui/core/TableRow";
 import CompanyFooter from '../companyprofile/CompanyFooter';
 
 function AdminView() {
+  const [name,setname]=useState();
+  const inputchangefunction=(event)=>{
+    setname(event.target.value);
+    console.log(name);
+  }
     return (
      
         <div>
@@ -19,10 +24,13 @@ function AdminView() {
           <div className="detail-input">
            <h6>Search</h6> 
             <TextField
-              type="date"
+              type="text"
               style={{ margin: "20px" }}
               id="outlined-basic"
               variant="outlined"
+              placeholder="Search By Name"
+              name="name"
+              onChange={inputchangefunction}
             />
            
           </div>
@@ -50,7 +58,7 @@ function AdminView() {
           <TableRow>
           <div className="interview_card1">
       
-         <CreateData/>    </div>
+         <CreateData name={name}/>    </div>
           </TableRow>   
           
  

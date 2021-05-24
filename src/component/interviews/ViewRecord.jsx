@@ -8,6 +8,7 @@ import StarIcon from '@material-ui/icons/Star';
 import Button from '@material-ui/core/Button';
 import img2 from "../../component/images/undraw_profile_pic_ic5t (2).svg";
 import InterviewShareGrid from "./InterviewShareGrid";
+import CompanyFooter from '../companyprofile/CompanyFooter';
 import './Interviews.css';
 import { useParams } from 'react-router';
 import axios from 'axios';
@@ -50,13 +51,7 @@ function ViewRecord(props) {
       console.log(arr.question)
     })
     setquestion(res.data.data.questionGrid);
-    // setquestion((olditem)=>{
-    //   return[
-    //     ...olditem,
-    //     {question:res.data.data.questionGrid},
-
-    //   ]
-    // })
+  
     console.log(question)
 
   }
@@ -66,9 +61,10 @@ function ViewRecord(props) {
       <div className="view-data">
         <div className="view-header1">
           <h5>{role}</h5>
-          <Button variant="contained" onClick={printfun} color="secondary" style={{ marginLeft: "700px", fontSize: "12pt", height: "50px" }}>
-            Print</Button>
           <InterviewShareGrid managerid={managerid} candidateid={id}/>
+          <Button variant="contained" onClick={printfun} color="secondary" style={{ marginLeft: "30px", fontSize: "12pt", height: "50px" }}>
+            Print</Button>
+          
         </div>
       </div>
       <div className="view-header2">
@@ -117,7 +113,7 @@ function ViewRecord(props) {
                           rate = item.rating;
                         }
                       })}
-                      <TableCell style={rowcss} align="center"><StarIcon style={{ color: "black", margin: "-5px 5px" }} />{rate}</TableCell>
+                      <TableCell style={rowcss} align="center"><StarIcon style={{ color: "yellow", margin: "-5px 5px" }} />{rate}</TableCell>
 
                     </TableRow>)
                 })

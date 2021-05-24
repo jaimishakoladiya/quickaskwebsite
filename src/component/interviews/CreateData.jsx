@@ -129,13 +129,50 @@ Row.propTypes = {
 
 
 function CreateData(props) {
+  console.log(props.name);
   const [data,setdata]=useState([])
  
   const user = JSON.parse(localStorage.getItem('user'));
   const token=user.token;
+ var rows;
+const rowdata=()=>{
+  rows=[];
+  if (props.name===undefined||props.name===""){
+  props.data.admindata.length===0?<h1 style={{textAlign:"center"}}>No Records Found</h1>: 
+  props.data.admindata.map((row,index) => (
+    name=`${row['candidate-data'].first_name} ${row['candidate-data'].last_name}`,
+   rows.push( <Row key={index} row={createData(name,
+                row['candidate-data'].role ,
+  <Button variant="contained" color="primary" style={{backgroundColor:"darkcyan"}}>{row['candidate-data'].status}
+  </Button>,
+       newdatetime,1,<ViewDelete id={row.token} manager={row['manager-token']} role={row['candidate-data'].role} />)}/>)
+  ))
  
 
-const rows = [];
+return rows;
+}
+else{
+  // console.log("nhiii kuch nhi hai")
+rows=[];
+  props.data.admindata.length===0?<h1 style={{textAlign:"center"}}>No Records Found</h1>: 
+  props.data.admindata.map((row,index) => {
+    name=`${row['candidate-data'].first_name} ${row['candidate-data'].last_name}`;
+    if(props.name===row['candidate-data'].first_name)
+    {
+      console.log(row['candidate-data'].first_name)
+      rows.push( <Row key={index} row={createData(name,
+        row['candidate-data'].role ,
+<Button variant="contained" color="primary" style={{backgroundColor:"darkcyan"}}>{row['candidate-data'].status}
+</Button>,
+newdatetime,1,<ViewDelete id={row.token} manager={row['manager-token']} role={row['candidate-data'].role} />)}/>)
+  }
+   
+})
+ 
+
+return rows;
+}
+}
 var name;
 const newdate=new Date().toLocaleDateString();
  const newtime=new Date().toLocaleTimeString();
@@ -147,8 +184,10 @@ const newdate=new Date().toLocaleDateString();
   return (
     <TableContainer component={Paper}>
       <Table aria-label="a dense table">
-        
-        {props.data.admindata.length===0?<h1 style={{textAlign:"center"}}>No Records Found</h1>: <TableBody>
+      {/* <TableBody>  {rowdata()}</TableBody> */}
+      {rowdata()}
+      {console.log(rows)}
+        {/* {props.data.admindata.length===0?<h1 style={{textAlign:"center"}}>No Records Found</h1>: <TableBody>
           {props.data.admindata.map((row,index) => (
             name=`${row['candidate-data'].first_name} ${row['candidate-data'].last_name}`,
              <Row key={index} row={createData(name,
@@ -158,7 +197,7 @@ const newdate=new Date().toLocaleDateString();
                newdatetime,1,<ViewDelete id={row.token} manager={row['manager-token']} role={row['candidate-data'].role} />)}/>
           ))}
          
-        </TableBody>}
+        </TableBody>} */}
       
         
        

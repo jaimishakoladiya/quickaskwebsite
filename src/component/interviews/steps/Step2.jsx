@@ -33,6 +33,7 @@ const Step2 = (props) => {
     first_name: props.manager.managers.user.data.firstname,
     last_name: props.manager.managers.user.data.lastname
   });
+  console.log(data.email);
   const managers = [ ...props.manager.managers.managerdata];
   const department = [...props.manager.managers.departmentResult];
   const job = [...props.manager.managers.jobTitleResult];
