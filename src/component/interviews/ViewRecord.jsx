@@ -12,6 +12,7 @@ import './Interviews.css';
 import { useParams } from 'react-router';
 import axios from 'axios';
 import CompanyFooter from '../companyprofile/CompanyFooter'
+import RatingBox from '../videoupload/RatingBox';
 function ViewRecord(props) {
   useEffect(() => {
     sharegrid();
@@ -63,15 +64,9 @@ function ViewRecord(props) {
         <div className="view-header1">
           <h5>{role}</h5>
           <InterviewShareGrid managerid={managerid} candidateid={id}/>
-<<<<<<< HEAD
-          <Button variant="contained" onClick={printfun} color="secondary" style={{ marginLeft: "30px", fontSize: "12pt", height: "50px" }}>
-            Print</Button>
-          
-=======
           <Button variant="contained" onClick={printfun} color="secondary" style={{ marginLeft:"20px", fontSize: "12pt", height: "50px" }}>
             Print</Button>
         
->>>>>>> 7b43bd3bca265ed319f970bedba2d1a5b88b2d80
         </div>
       </div>
       <div className="view-header2">
@@ -109,18 +104,22 @@ function ViewRecord(props) {
 
                 {question && question.map((arr, index) => {
                   let rate;
+                  let path;
                   return (
                     <TableRow id="view-header4">
                       <TableCell style={rowcss}>{arr.question}</TableCell>
                       {console.log(arr.candidate)}
 
-
+                  
                       {arr.candidate.map((item) => {
                         if (id === item.id) {
                           rate = item.rating;
+                         path= item.path?item.path:undefined;
                         }
                       })}
-                      <TableCell style={rowcss} align="center"><StarIcon style={{ color: "black", margin: "-5px 5px"}} />{rate}</TableCell>
+                      <TableCell style={rowcss} align="center">
+                       {path? <RatingBox/>:null}
+                     <StarIcon style={{ color: "black", margin: "-5px 5px"}} />{rate}</TableCell>
 
                     </TableRow>)
                 })
@@ -134,11 +133,7 @@ function ViewRecord(props) {
    
           </div>
       
-<<<<<<< HEAD
-          {/* <CompanyFooter/> */}
-=======
           <CompanyFooter/>
->>>>>>> 7b43bd3bca265ed319f970bedba2d1a5b88b2d80
    </>
     )
 }

@@ -12,12 +12,9 @@ import ResetPassword from '../../account/register/ResetPassword'
 import Start from '../../videoupload/Start'
 import AdminView from '../../interviews/AdminView';
 import StartTest from "../../videoupload/StartTest";
-<<<<<<< HEAD
 import InterviewQuestion from "../../videoupload/InterviewQuestion";
 import RealInterview from "../../videoupload/RealInterview";
-=======
 import AddInterview from '../../interviews/AddInterview';
->>>>>>> 7b43bd3bca265ed319f970bedba2d1a5b88b2d80
 
 
 
