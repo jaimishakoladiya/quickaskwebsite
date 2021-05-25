@@ -23,7 +23,7 @@ import "../companyprofile/Company.css";
 import { makeStyles } from "@material-ui/core";
 import AlertBox from "../alert/AlertBox"
 import { connect } from "react-redux"
-import video from '../../video/test.mp4'
+
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
@@ -43,34 +43,12 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   }));
-// const useStyle = makeStyles((theme) => ({
- 
-// }));
 
 function RatingBox(props) {
 console.log(props.index)
-var newpath=`E:/askaway${props.path}`
+var newpath=`/video/test.mp4`
 
-useEffect(()=>{
-  // playSelectedFile()
-},[])
-  var playSelectedFile = function (event) {
-    // var file = this.files[0]
-    // var type = file.type
-    // var videoNode = document.querySelector('video')
-    // var canPlay = videoNode.canPlayType(type)
-    // if (canPlay === '') canPlay = 'no'
-    // var message = 'Can play type "' + type + '": ' + canPlay
-    // var isError = canPlay === 'no'
-    // displayMessage(message, isError)
 
-    // if (isError) {
-    //   return
-    // }
-
-    // var fileURL = URL.createObjectURL(newpath)
-    cameraScreen.current.src = newpath
-  }
 
 const classes = useStyles();
     const [message,setmessage]=useState();
@@ -160,7 +138,7 @@ const classes = useStyles();
                          {/* <img style={{ height: "350px", width: "640px" }} src={img1}></img> */}
                       {/* <video  style={{ height: "350px", width: "640px", border: "8px solid darkcyan" }}  src={newpath} ref={cameraScreen} id="gum"  autoPlay controls ></video> */}
                       <video  width="640" height="264" autoPlay controls>
-        <source src={video} type='video/mp4' />
+        <source src={newpath} type='video/mp4' />
     </video>
                        {console.log(newpath)}
 
