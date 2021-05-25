@@ -65,6 +65,7 @@ function Row(props) {
   const [open, setOpen] = React.useState(false);
  
   const classes = useStyles();
+
   return (
     <div >
     <React.Fragment>
@@ -88,7 +89,7 @@ function Row(props) {
         <TableCell id="tablerow">{row.action}</TableCell>
        
       </TableRow>
-    
+      
     </React.Fragment>
     </div>
   );
@@ -164,23 +165,10 @@ const newdate=new Date().toLocaleDateString();
   return (
     <TableContainer component={Paper}>
       <Table aria-label="a dense table">
-      {/* <TableBody>  {rowdata()}</TableBody> */}
+  
       {rowdata()}
       {console.log(rows)}
-      
-        {/* {props.data.admindata.length===0?<h1 style={{textAlign:"center"}}>No Records Found</h1>: <TableBody>
-          {props.data.admindata.map((row,index) => (
-            name=`${row['candidate-data'].first_name} ${row['candidate-data'].last_name}`,
-             <Row key={index} row={createData(name,
-                        row['candidate-data'].role ,
-          <Button variant="contained" color="primary" style={{backgroundColor:"darkcyan"}}>{row['candidate-data'].status}
-          </Button>,
-               newdatetime,1,<ViewDelete id={row.token} manager={row['manager-token']} role={row['candidate-data'].role} />)}/>
-          ))}
-         
-        </TableBody>} */}
-      
-        
+       
        
       </Table>
     </TableContainer>

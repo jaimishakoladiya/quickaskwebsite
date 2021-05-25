@@ -22,7 +22,7 @@ function Startinterview(props) {
     backgroundColor: "darkcyan", marginRight: "-100px", width: "45", height: "45", borderRadius: "50%" 
   }
   const iconcss3={
-    fontSize: "18px", color: "gray"
+    fontSize: "18px", color:"rgb(59, 57, 57)"
 
   }
   const recordButton = useRef(null)
