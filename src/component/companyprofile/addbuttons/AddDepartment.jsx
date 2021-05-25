@@ -15,10 +15,9 @@ import "../Company.css";
 import { makeStyles } from "@material-ui/core";
 import AlertBox from "../../alert/AlertBox";
 import QuestionsCard from "./QuestionsCard";
-import {  fetchdata } from "../../../redux/actions/companyprofile/companprofileAction";
+import { fetchdata } from "../../../redux/actions/companyprofile/companprofileAction";
 import { connect } from "react-redux"
 import DisplayQuestions from "../DisplayQuestions";
-
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
@@ -29,16 +28,14 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: "#eef5f6",
   },
 }));
-function AddDepartment({data,fetchdata}) {
+function AddDepartment({ data, fetchdata }) {
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
-  const [message,setmessage]=useState();
-  const [status,setstatus]=useState(null);
-
+  const [message, setmessage] = useState();
+  const [status, setstatus] = useState(null);
   useEffect(() => {
     fetchdata()
-   },[])
-
+  }, [])
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
@@ -46,11 +43,8 @@ function AddDepartment({data,fetchdata}) {
   const initialValues = {
     name: "",
     costCenter: "",
-
   };
-
   async function savedepartment(data) {
-
     var res = await axios({
       method: 'post',
       url: "http://localhost:2002/save-department",
@@ -67,35 +61,25 @@ function AddDepartment({data,fetchdata}) {
         Authorization: token
       }
     })
-     
-   setstatus(res.data.status);
-    
+    setstatus(res.data.status);
     setmessage(res.data.message)
     console.log(message)
     fetchdata()
- }
-
-
+  }
   const onSubmit = (values) => {
-   
     savedepartment({ ...values, questions });
     setnewque([])
     setOpen(false);
   };
-
   const validationSchema = yup.object({
     name: yup.string().required("All fields are required"),
     costCenter: yup.string().required("All fields are required"),
   });
-
   const addquestion = (newq) => {
-    
-
     setnewque((olditem) => {
       return [...olditem,
         newq]
     })
-    // props.adddeptquestion(newq)
   }
   const deletedeptquestion = (id) => {
     setnewque((olditem) => {
@@ -116,17 +100,13 @@ function AddDepartment({data,fetchdata}) {
       />
     );
   };
-
-
   const handleClickOpen = () => {
     setOpen(true);
   };
-  ;
   const handleClose = () => {
     setOpen(false);
     setnewque([])
   };
-
   return (
     <div>
       <Button
@@ -164,8 +144,6 @@ function AddDepartment({data,fetchdata}) {
               validationSchema={validationSchema}
             >
               {(formik) => {
-
-
                 return (
                   <>
                     <Form>
@@ -199,21 +177,14 @@ function AddDepartment({data,fetchdata}) {
                         <Grid item xs={6}>
                           <h3>Default Question For Department</h3>
                         </Grid>
-                        {/* <Grid item xs={4}>
-                          <h3>Time Allocated</h3>
-                        </Grid> */}
-
                       </Grid>
-
                       <DisplayQuestions question={questions} deletequestion={deletedeptquestion} />
-
                       <br />
                       {formik.touched.name && formik.errors.name
                         ? erroralert(formik.errors.name)
                         : formik.touched.costCenter && formik.errors.costCenter
                           ? erroralert(formik.errors.costCenter)
                           : null}
-
                       <Button
                         id="dialog-cancel-btn"
                         onClick={handleClose}
@@ -251,12 +222,10 @@ const mapStateToProps = state => {
 
   }
 }
-
 const mapDispatchToProps = dispatch => {
   return {
-   
-    fetchdata:()=>{dispatch(fetchdata())}
+
+    fetchdata: () => { dispatch(fetchdata()) }
   }
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(AddDepartment)

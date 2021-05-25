@@ -130,10 +130,7 @@ const history=useHistory();
     console.log(res.data)
     props.setdisabled(false)
     props.emptydata();
-    // setopenalert(true)
-    // setstatus(true);
-    // setmessage("Interview Create Successfully")
-    history.push('/adminview')
+   history.push('/adminview')
    
   }
   else{

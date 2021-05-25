@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Field, Formik, Form } from "formik";
 import * as yup from "yup";
 import Button from "@material-ui/core/Button";
@@ -18,12 +18,10 @@ import QuestionsCard from "../addbuttons/QuestionsCard";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { connect } from "react-redux";
-import { editdeptdata, deletequestion ,deletedeptdata, fetchdata } from "../../../redux/actions/companyprofile/companprofileAction";
+import { editdeptdata, deletequestion, deletedeptdata, fetchdata } from "../../../redux/actions/companyprofile/companprofileAction";
 import DisplayQuestions from "../DisplayQuestions";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import axios from "axios";
-
-
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
@@ -35,43 +33,35 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 function EditDepartment(props) {
-  
-  const user=JSON.parse(localStorage.getItem("user"));
-  const token=user.token;
+  const user = JSON.parse(localStorage.getItem("user"));
+  const token = user.token;
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [opendelete, setOpendelete] = useState(false);
   const [openalert, setopenalert] = useState(true);
   const [questions, setnewque] = useState(props.editdata.questions)
   const [Yesopen, SetYesopen] = useState(false);
-  const[message,setmess]=useState();
-  const[status,setstatus]=useState(null);
-
-  
-  async function deletedepartment(){
-       
-      var res=await axios({
+  const [message, setmess] = useState();
+  const [status, setstatus] = useState(null);
+  async function deletedepartment() {
+    var res = await axios({
       method: 'post',
       url: `http://localhost:2002/delete-department/${props.editdata.departmentId}`,
-
       headers: {
         Authorization: token
       }
     })
     props.fetchdata()
-    
-
   }
-
-  async function updatedepartment(data){
+  async function updatedepartment(data) {
     console.log(data)
     console.log(props.editdata.departmentId)
-    var res=await axios({
-      method:'post',
-      url:`http://localhost:2002/update-department/${props.editdata.departmentId}`,
-      data:data,
-      headers:{
-        Authorization:token
+    var res = await axios({
+      method: 'post',
+      url: `http://localhost:2002/update-department/${props.editdata.departmentId}`,
+      data: data,
+      headers: {
+        Authorization: token
       }
     })
     setmess(res.data.message);
@@ -85,42 +75,34 @@ function EditDepartment(props) {
         newq
       ]
     })
-   
- }
 
+  }
   const deletequestion = (id) => {
     setnewque((olditem) => {
       return olditem.filter((arr, index) => {
         return index !== id;
       })
     })
-
-   
-
   }
-
-  const deletedata=()=>{
+  const deletedata = () => {
     handleClose1();
     SetYesopen(false);
     deletedepartment(props.id)
-
-    
   }
   const YesFunction = () => {
     SetYesopen(true);
   };
-
   const initialValues = {
     name: props.editdata.name,
     costCenter: props.editdata.cost_center,
   }
 
   const onSubmit = (values) => {
- console.log({...values,questions})
-    
-     updatedepartment({...values,questions})
+    console.log({ ...values, questions })
+
+    updatedepartment({ ...values, questions })
     setOpen(false);
-  
+
 
   };
 
@@ -149,13 +131,13 @@ function EditDepartment(props) {
     setOpen(false);
   };
 
-  
+
   const handleClickOpen1 = () => {
     setOpendelete(true);
   };
 
   const handleClose1 = () => {
-  
+
     setOpendelete(false);
   };
   return (
@@ -169,65 +151,65 @@ function EditDepartment(props) {
       >
         <EditIcon />
       </button>
-      <button id="delete_btn"  onClick={handleClickOpen1}>
+      <button id="delete_btn" onClick={handleClickOpen1}>
         <DeleteIcon />
       </button>
       <br />
-{/* delete department */}
-{status!=null?erroralert(message):null}
+      {/* delete department */}
+      {status != null ? erroralert(message) : null}
 
-<Dialog
+      <Dialog
         open={opendelete}
         onClose={handleClose1}
         aria-labelledby="max-width-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <div style={{borderTop:"10px solid darkcyan"}}>
-        <DialogTitle id="max-width-dialog-title"><h3>PLEASE CONFIRM</h3></DialogTitle>
-        <DialogContent style={{ width: "400px" }}>
-          <DialogContentText>
-      <h4>Are you sure you want to delete the department record? </h4>
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
+        <div style={{ borderTop: "10px solid darkcyan" }}>
+          <DialogTitle id="max-width-dialog-title"><h3>PLEASE CONFIRM</h3></DialogTitle>
+          <DialogContent style={{ width: "400px" }}>
+            <DialogContentText>
+              <h4>Are you sure you want to delete the department record? </h4>
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
 
-        
-          <Button  onClick={handleClose1}
-         variant="contained" style={{ backgroundColor: "black",color:"white"}}  autoFocus>
-          <h3>Cancel</h3> 
-          </Button>
-          <Button onClick={YesFunction}
-         variant="contained" style={{ backgroundColor: "#dc3545",color:"white"}}  >
-          <h3>Delete</h3> 
-          </Button>
-        </DialogActions>
+
+            <Button onClick={handleClose1}
+              variant="contained" style={{ backgroundColor: "black", color: "white" }} autoFocus>
+              <h3>Cancel</h3>
+            </Button>
+            <Button onClick={YesFunction}
+              variant="contained" style={{ backgroundColor: "#dc3545", color: "white" }}  >
+              <h3>Delete</h3>
+            </Button>
+          </DialogActions>
         </div>
         <Dialog
-              open={Yesopen}
-            onClose={handleClose1}
-              aria-labelledby="max-width-dialog-title"
-            >
-              <DialogTitle id="max-width-dialog-title">
-              <h3> Data Deleted Successfully</h3>
-           
-              </DialogTitle>
-              <DialogContent>
-                <DialogContentText>
-                  <CheckCircleIcon style={{ color: "green"}} />
-                </DialogContentText>
-              </DialogContent>
-              <Button
-                onClick={deletedata}
-                variant="contained"
-                style={{ backgroundColor: "darkcyan",color:"white" ,fontSize:"20px"}} >
-                OK
+          open={Yesopen}
+          onClose={handleClose1}
+          aria-labelledby="max-width-dialog-title"
+        >
+          <DialogTitle id="max-width-dialog-title">
+            <h3> Data Deleted Successfully</h3>
+
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              <CheckCircleIcon style={{ color: "green" }} />
+            </DialogContentText>
+          </DialogContent>
+          <Button
+            onClick={deletedata}
+            variant="contained"
+            style={{ backgroundColor: "darkcyan", color: "white", fontSize: "20px" }} >
+            OK
               </Button>
-            </Dialog>
+        </Dialog>
       </Dialog>
 
 
 
- {/* edit department */}
+      {/* edit department */}
       <Dialog
         open={open}
         onClose={handleClose}
@@ -252,7 +234,7 @@ function EditDepartment(props) {
               validationSchema={validationSchema}
             >
               {(formik) => {
-                 
+
 
                 return (
                   <>
@@ -344,7 +326,7 @@ const mapStateToProps = (state, ownprops) => {
 
 const mapDispatchToProps = disptach => {
   return {
-   fetchdata:()=>{disptach(fetchdata())}
+    fetchdata: () => { disptach(fetchdata()) }
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(EditDepartment)
