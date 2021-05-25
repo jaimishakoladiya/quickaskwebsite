@@ -22,46 +22,32 @@ function HomeNavbar() {
   const location = useLocation();
   return (
     <div>
-      {/* {location.pathname === "/login" ||
-      location.pathname === "/registartion" ||
-      location.pathname === "/forgotpassword" ||
-      location.pathname ==="/reset-password" ||
-      location.pathname ==="/innernavbar"||
-      location.pathname ==="/adminview" ||
-      location.pathname === "/interview" ||
-      location.pathname === "/companyprofilepage"||
-      location.pathname === "/viewrecord" ||
-      location.pathname === "/start/:token"
-       ? null : (
-        <Navbar />
-        
-      )} */}
-        {location.pathname === "/adminview" ||
-          location.pathname === "/interview" ||
-          location.pathname === "/companyprofilepage" ||
-          location.pathname === "/viewrecord"||
-          location.pathname ==="/addinterview"
-        ? <InnerNavbar/> : null}
-      
-       
-      
+
+      {location.pathname === "/adminview" ||
+        location.pathname === "/interview" ||
+        location.pathname === "/companyprofilepage" ||
+        location.pathname === "/viewrecord" ||
+        location.pathname === "/addinterview"
+        ? <InnerNavbar /> : null}
+
+
+
 
       <Switch>
-        <Route   exact path="/" component={Home} />
-        <Route exact path="/addinterview" component={AddInterview}/>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/addinterview" component={AddInterview} />
         <Route exact path="/registartion" component={Registration} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/adminview" component={AdminView} />
-         <Route exact path="/team" component={Team}/>
+        <Route exact path="/team" component={Team} />
         <Route exact path="/forgotpassword" component={Forpass} />
-        <Route   exact path="/reset-password" component={ResetPassword} />
-        <Route exact path="/companyprofile" render={()=>
-          <BrowserRouter><InnerNavbar name={"companyprofile"}/></BrowserRouter>
-        }/>
-        <Route exact path="/start/:tokenid/:id" component={StartTest}/>
-        <Route exact path="/start/:tokenid" component={RealInterview}/>
+        <Route exact path="/reset-password" component={ResetPassword} />
+        <Route exact path="/companyprofile" render={() =>
+          <BrowserRouter><InnerNavbar name={"companyprofile"} /></BrowserRouter>
+        } />
+        <Route exact path="/start/:tokenid/:id" component={StartTest} />
+        <Route exact path="/start/:tokenid" component={RealInterview} />
 
-        {/* <Route exact path="/start/:token/:token1" component={StartTest}/> */}
       </Switch>
     </div>
   );
