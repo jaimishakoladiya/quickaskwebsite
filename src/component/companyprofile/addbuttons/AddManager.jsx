@@ -17,8 +17,6 @@ import DisplayQuestions from "../DisplayQuestions";
 import { addmanagerquestion, getmanagerdata, deletemanagerquestion, fetchdata } from "../../../redux/actions/companyprofile/companprofileAction";
 import { connect } from "react-redux";
 import axios from 'axios'
-
-
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
@@ -35,11 +33,10 @@ function AddManager({ data, fetchdata }) {
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(false);
-  const[status,setstatus]=useState(null);
-  const [message,setmessage]=useState();
-  const [question,setnewque] = useState([]);
-  useEffect(()=>{
-    
+  const [status, setstatus] = useState(null);
+  const [message, setmessage] = useState();
+  const [question, setnewque] = useState([]);
+  useEffect(() => {
     fetchdata()
   }, [])
   const initialValues = {
@@ -47,7 +44,6 @@ function AddManager({ data, fetchdata }) {
     lastname: '',
     email: ''
   }
-
   async function savemanager(data) {
     var res = await axios({
       method: 'post',
@@ -62,11 +58,6 @@ function AddManager({ data, fetchdata }) {
     setstatus(res.data.status);
     setmessage(res.data.message);
   }
-
-
-
-
-
   const addquestion = (newq) => {
     setnewque((oldval) => {
       return [
@@ -76,16 +67,12 @@ function AddManager({ data, fetchdata }) {
     })
   }
   const deletequestion = () => {
-
   }
   const onSubmit = (values) => {
-    // console.log(values);
-    //props.addmanagerdata(values)
-    savemanager({...values,question})
+    savemanager({ ...values, question })
     setnewque([]);
     setOpen(false);
   };
-
   const validationSchema = yup.object({
     firstname: yup.string().required("All Fields Are Required"),
     lastname: yup.string().required("All Fields Are Required"),
@@ -94,7 +81,6 @@ function AddManager({ data, fetchdata }) {
       .email("Enter Valid Email")
       .required("All Fields Are Required"),
   });
-
   const closealert = () => {
     setopenalert(false);
   };
@@ -110,12 +96,9 @@ function AddManager({ data, fetchdata }) {
   const handleClickOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
   };
-
-
   return (
     <div>
       <Button
@@ -127,8 +110,7 @@ function AddManager({ data, fetchdata }) {
         Add Manager
       </Button>
       <br />
-      {status != null?erroralert(message):null}
-
+      {status != null ? erroralert(message) : null}
       <Dialog
         open={open}
         onClose={handleClose}
@@ -209,14 +191,9 @@ function AddManager({ data, fetchdata }) {
                         <Grid item xs={6}>
                           <h3>Default Question For Department</h3>
                         </Grid>
-                        {/* <Grid item xs={4}>
-                          <h3>Time Allocated</h3>
-                        </Grid> */}
-
                       </Grid>
                       <DisplayQuestions question={question} deletequestion={deletequestion} />
                       <br />
-
                       {formik.errors.firstname
                         ? erroralert(formik.errors.firstname)
                         : formik.errors.lastname
@@ -224,7 +201,6 @@ function AddManager({ data, fetchdata }) {
                           : formik.errors.email
                             ? erroralert(formik.errors.email)
                             : null}
-
                       <Button
                         onClick={handleClose}
                         id="dialog-cancel-btn"
@@ -254,7 +230,6 @@ function AddManager({ data, fetchdata }) {
     </div>
   );
 }
-
 const mapStateToProps = state => {
   return {
     data: state.companyprofile
@@ -264,10 +239,8 @@ const mapDispatchToProps = dispatch => {
   return {
     addmanagerquestion: (newquestion) => { dispatch(addmanagerquestion(newquestion)) },
     deletemanagerquestion: (id) => { dispatch(deletemanagerquestion(id)) },
-    //addmanagerdata:(data)=>{dispatch(addmanagerdata(data))},
     getmanagerdata: (data) => { dispatch(getmanagerdata(data)) },
     fetchdata: () => { dispatch(fetchdata()) }
   }
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(AddManager)

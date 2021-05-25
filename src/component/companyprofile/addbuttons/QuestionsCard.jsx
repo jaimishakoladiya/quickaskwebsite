@@ -9,17 +9,11 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import "../Company.css";
 import AlertBox from "../../alert/AlertBox";
-
 function QuestionsCard(props) {
- 
   const [openalert, setopenalert] = useState(false);
   const [newquestion, setnewquestion] = useState({
     question: ''
-    // minutes: "0" + 3,
-    // seconds: "0" + 0
   })
-
-
   const inputchange = (event) => {
     const { name, value } = event.target;
     setnewquestion((oldval) => {
@@ -30,48 +24,19 @@ function QuestionsCard(props) {
     });
     console.log(newquestion);
   };
-
-  // const SelectItem = () => {
-  //   let items = [];
-  //   for (let i = 0; i <= 60; i++) {
-  //     if (i <= 9) {
-  //       items.push(
-  //         <option key={i} value={"0" + i}>
-  //           {"0" + i}
-  //         </option>
-  //       );
-  //     } else {
-  //       items.push(
-  //         <option key={i} value={i}>
-  //           {i}
-  //         </option>
-  //       );
-  //     }
-  //   }
-  //   return items;
-  // };
   const initialValues = {
     question: ""
-    // minutes: "",
-    // seconds: "",
   };
-
   const onSubmit = (values, onSubmitProps) => {
-    
     props.addquestion(newquestion);
-  
     setnewquestion({
       question: ''
-      // minutes: "0" + 3,
-      // seconds: "0" + 0
     })
     onSubmitProps.resetForm();
   };
-
   const validationSchema = yup.object({
     question: yup.string().required("Enter Default Question"),
  });
-
 const closealert = () => {
     setopenalert(false);
 };
@@ -107,33 +72,6 @@ const erroralert = (error) => {
                       variant="standard"
                       onInput={inputchange}
                     />
-
-                    {/* <FormControl style={{ marginLeft: "30px" }}>
-                      <InputLabel htmlFor="demo-customized-select-native">
-                        min
-                      </InputLabel>
-                      <Field as={NativeSelect}
-                        value={newquestion.minutes}
-                        name='minutes'
-                        onChange={inputchange}
-                      >
-                        <option value=""></option>
-                        {SelectItem()}
-                      </Field>
-                    </FormControl>
-                    <FormControl style={{ marginLeft: "30px" }}>
-                      <InputLabel htmlFor="demo-customized-select-native">
-                        sec
-                      </InputLabel>
-                      <Field as={NativeSelect}
-                        value={newquestion.seconds}
-                        name='seconds'
-                        onChange={inputchange}
-                      >
-                        <option value=""></option>
-                        {SelectItem()}
-                      </Field>
-                    </FormControl> */}
                     <br />
                     <br />
                     {formik.touched.question && formik.errors.question
@@ -157,5 +95,4 @@ const erroralert = (error) => {
     </div>
   );
 }
-
 export default QuestionsCard;

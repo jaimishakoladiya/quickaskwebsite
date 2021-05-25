@@ -15,8 +15,7 @@ import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import AlertBox from '../alert/AlertBox'
 import { getmanager ,emptydata, setdisabled} from "../../redux/actions/interview/InterviewAction";
-import { useHistory } from 'react-router-dom';
-// import "./index.css"
+import { useHistory} from 'react-router-dom'
 import PeopleIcon from '@material-ui/icons/People';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -131,10 +130,7 @@ const history=useHistory();
     console.log(res.data)
     props.setdisabled(false)
     props.emptydata();
-    // setopenalert(true)
-    // setstatus(true);
-    // setmessage("Interview Create Successfully")
-    history.push('/adminview')
+   history.push('/adminview')
    
   }
   else{

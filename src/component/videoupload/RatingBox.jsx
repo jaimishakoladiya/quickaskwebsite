@@ -48,23 +48,19 @@ const useStyles = makeStyles((theme) => ({
 // }));
 
 function RatingBox(props) {
-  console.log(props.name);
-  console.log(props.candidateid)
-  console.log(props.index);
-  console.log(props.question);
-  console.log(props.path);
+ 
   const user=JSON.parse(localStorage.getItem('user'));
   const token=user.token;
   var newpath=`/video/test.mp4`
   const classes = useStyles();
   const [data, setvalue] = useState({
-    rating: '',
+    rating: props.rate,
     review: ''
   });
   const [status,setstatus]=useState(false)
   const [message,setmessage]=useState();
   const [open, setOpen] = useState(false);
-  const [openalert, setopenalert] = useState();
+  const [openalert, setopenalert] = useState(false);
   const inputchangefunction = (event) => {
     const { name, value } = event.target;
 
@@ -77,21 +73,22 @@ function RatingBox(props) {
     console.log(data);
   }
   const cameraScreen = useRef(null)
-const reviewdata={
-      candidateToken:props.candidateid,
-      managerToken:null,
-      name:props.name,
-      questionNumber:props.index+1,
-      rating:data.rating,
-      review:data.review,
-      videoPath:props.path
+
+async function postreview(){
+  const reviewdata={
+    candidateToken:props.candidateid,
+    managerToken:null,
+    name:props.name,
+    questionNumber:props.index+1,
+    rating:data.rating,
+    review:data.review,
+    videoPath:props.path
 }
 console.log(reviewdata);
-async function postreview(data){
   var res=await axios({
     method:'post',
     url:'http://localhost:2002/post-video-review',
-    data:data,
+    data:reviewdata,
     headers:{
       Authorization:token
     }
@@ -101,10 +98,10 @@ async function postreview(data){
   setmessage(res.data.message);
 }
   const onSubmit = (values) => {
-    setopenalert(true);
-    postreview(reviewdata);
-    console.log(data)
     
+    postreview();
+    console.log(data)
+    setopenalert(true)
 
   };
  
@@ -113,7 +110,6 @@ async function postreview(data){
   const closealert = () => {
     setopenalert(false);
     setOpen(false);
-
   };
   const erroralert = (error) => {
     return (
@@ -139,7 +135,7 @@ async function postreview(data){
     <div>
 
       <PlayCircleOutlineIcon onClick={handleClickOpen} style={{ width: "43px", height: "43px", margin: "-14px 0px", color: "darkcyan" }} />
-      {/* <StarIcon style={{ color: "black", margin: "-5px 5px" }} />Name */}
+     
 
       <Dialog
         open={open}
