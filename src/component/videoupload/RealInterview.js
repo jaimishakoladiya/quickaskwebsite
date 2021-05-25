@@ -5,7 +5,7 @@ import VideoFooter from './VideoFooter';
 import VideoHeader from './VideoHeader';
 import { useParams ,useHistory} from 'react-router-dom'
 import RecordRTC from 'recordrtc';
-import FinishInterview from './FinishInterview';
+import StartInterviewTips from './StartInterviewTips';
 
 function RealInterview() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -156,7 +156,7 @@ function RealInterview() {
           </div>
 
         </div></> :
-        <FinishInterview start={startinterview}/>
+        <StartInterviewTips start={startinterview}/>
       }
 
 
