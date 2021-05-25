@@ -13,7 +13,7 @@ function PractiseInterviewTips(props) {
        </div>
        <div>
        <div className="tips_text">
-           <h2>*TIPS*</h2>
+           <h2 style={{color:"black"}}>*TIPS*</h2>
            <h4>• Test your internet connection, camera, sound, video program, and test it all again right before the interview process.
 </h4>
            <h4>• Select the proper location for the interview, control the lighting, and display a generic background.
