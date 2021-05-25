@@ -17,12 +17,34 @@ import InterviewDataGrid from "../interviews/InterviewDataGrid";
 import CreateInterview from "./CreateInterview";
 
 import CreateData from "./CreateData";
+import axios from "axios";
 
 const CandidateDetails = () => {
+const user=JSON.parse(localStorage.getItem('user'));
+const token=user.token;
+const [value,setvalue]=useState({
+  firstname:'',
+  lastname:'',
+  email:''
+})
+async function getmanager(){
+  var res=await axios({
+    method:'get',
+    url:"http://localhost:2002/getManager",
+    headers:{
+      Authorization:token
+    }
+  })
+  console.log(res.data)
+  console.log(res.data.data.user.data )
+  setvalue(res.data.data.user.data)
+  console.log(value)
+}
   const [open, SetOpen] = useState(false);
   const OpenBox = () => {
     if (open == false) {
       SetOpen(true);
+      getmanager();
     } else {
       SetOpen(false);
     }
