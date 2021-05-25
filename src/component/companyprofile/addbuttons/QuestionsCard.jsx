@@ -14,9 +14,9 @@ function QuestionsCard(props) {
  
   const [openalert, setopenalert] = useState(false);
   const [newquestion, setnewquestion] = useState({
-    question: '',
-    minutes: "0" + 3,
-    seconds: "0" + 0
+    question: ''
+    // minutes: "0" + 3,
+    // seconds: "0" + 0
   })
 
 
@@ -31,29 +31,29 @@ function QuestionsCard(props) {
     console.log(newquestion);
   };
 
-  const SelectItem = () => {
-    let items = [];
-    for (let i = 0; i <= 60; i++) {
-      if (i <= 9) {
-        items.push(
-          <option key={i} value={"0" + i}>
-            {"0" + i}
-          </option>
-        );
-      } else {
-        items.push(
-          <option key={i} value={i}>
-            {i}
-          </option>
-        );
-      }
-    }
-    return items;
-  };
+  // const SelectItem = () => {
+  //   let items = [];
+  //   for (let i = 0; i <= 60; i++) {
+  //     if (i <= 9) {
+  //       items.push(
+  //         <option key={i} value={"0" + i}>
+  //           {"0" + i}
+  //         </option>
+  //       );
+  //     } else {
+  //       items.push(
+  //         <option key={i} value={i}>
+  //           {i}
+  //         </option>
+  //       );
+  //     }
+  //   }
+  //   return items;
+  // };
   const initialValues = {
-    question: "",
-    minutes: "",
-    seconds: "",
+    question: ""
+    // minutes: "",
+    // seconds: "",
   };
 
   const onSubmit = (values, onSubmitProps) => {
@@ -61,9 +61,9 @@ function QuestionsCard(props) {
     props.addquestion(newquestion);
   
     setnewquestion({
-      question: '',
-      minutes: "0" + 3,
-      seconds: "0" + 0
+      question: ''
+      // minutes: "0" + 3,
+      // seconds: "0" + 0
     })
     onSubmitProps.resetForm();
   };

@@ -17,8 +17,7 @@ function DisplayQuestions(props) {
               </Grid>
               {/* <Grid item xs={4}>
 
-
-                <h3>
+                 <h3>
                   {arr.minutes}:{arr.seconds}
                 </h3>
               </Grid> */}

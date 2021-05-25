@@ -15,7 +15,7 @@ import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import AlertBox from '../alert/AlertBox'
 import { getmanager ,emptydata, setdisabled} from "../../redux/actions/interview/InterviewAction";
-
+import { useHistroy } from 'react-router-dom';
 // import "./index.css"
 import PeopleIcon from '@material-ui/icons/People';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
@@ -84,7 +84,7 @@ function AddInterview(props) {
   const [openalert, setopenalert] = useState(true);
   const [status,setstatus]=useState(false);
   const [message,setmessage]=useState();
-
+const history=useHistroy();
   function getStepContent(step) {
  
     switch (step) {
@@ -131,10 +131,10 @@ function AddInterview(props) {
     console.log(res.data)
     props.setdisabled(false)
     props.emptydata();
-    setopenalert(true)
-    setstatus(true);
-    setmessage("Interview Create Successfully")
-    
+    // setopenalert(true)
+    // setstatus(true);
+    // setmessage("Interview Create Successfully")
+    history.push('/adminview')
    
   }
   else{

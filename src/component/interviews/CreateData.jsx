@@ -88,44 +88,23 @@ function Row(props) {
         <TableCell id="tablerow">{row.action}</TableCell>
        
       </TableRow>
-      {/* <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-          <Collapse in={open} timeout="auto" unmountOnExit>
-            <Box margin={1}>
-              <Typography variant="h6" gutterBottom component="div">
-              </Typography>
-              <Table size="small" aria-label="purchases">
-                <TableHead>
-                  <TableRow>
-                      <InterviewDataGrid/>
-                   
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                
-                </TableBody>
-              </Table>
-            </Box>
-          </Collapse>
-        </TableCell>
-      </TableRow> */}
-      
+    
     </React.Fragment>
     </div>
   );
 }
 
-Row.propTypes = {
-  row: PropTypes.shape({
-    calories: PropTypes.number.isRequired,
-    carbs: PropTypes.number.isRequired,
-    fat: PropTypes.number.isRequired,
+// Row.propTypes = {
+//   row: PropTypes.shape({
+//     calories: PropTypes.number.isRequired,
+//     carbs: PropTypes.number.isRequired,
+//     fat: PropTypes.number.isRequired,
    
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    protein: PropTypes.number.isRequired,
-  }).isRequired,
-};
+//     name: PropTypes.string.isRequired,
+//     price: PropTypes.number.isRequired,
+//     protein: PropTypes.number.isRequired,
+//   }).isRequired,
+// };
 
 
 function CreateData(props) {
@@ -136,8 +115,9 @@ function CreateData(props) {
   const token=user.token;
  var rows;
 const rowdata=()=>{
-  rows=[];
+ 
   if (props.name===undefined||props.name===""){
+    rows=[];
   props.data.admindata.length===0?<h1 style={{textAlign:"center"}}>No Records Found</h1>: 
   props.data.admindata.map((row,index) => (
     name=`${row['candidate-data'].first_name} ${row['candidate-data'].last_name}`,
@@ -187,6 +167,7 @@ const newdate=new Date().toLocaleDateString();
       {/* <TableBody>  {rowdata()}</TableBody> */}
       {rowdata()}
       {console.log(rows)}
+      
         {/* {props.data.admindata.length===0?<h1 style={{textAlign:"center"}}>No Records Found</h1>: <TableBody>
           {props.data.admindata.map((row,index) => (
             name=`${row['candidate-data'].first_name} ${row['candidate-data'].last_name}`,
