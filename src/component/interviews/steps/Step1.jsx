@@ -7,13 +7,13 @@ import Step1AddField from "./Step1AddField";
 import * as yup from "yup";
 import { Form, Formik, Field } from "formik";
 import AlertBox from "../../alert/AlertBox";
-import {addcandidatedata} from "../../../redux/actions/interview/InterviewAction"; 
+import {addcandidatedata,deletecandidatedata} from "../../../redux/actions/interview/InterviewAction"; 
 import { connect } from "react-redux";
 const Step1 = (props) => {
   const [openalert, setopenalert] = useState(false);
   const [Candidate, SetCandidate] = useState({
-    firstname: "",
-    lastname: "",
+    first_name: "",
+    last_name: "",
   });
   const [CandidateArray, SetCandidatearray] = useState([]);
 
@@ -27,46 +27,27 @@ const Step1 = (props) => {
       };
     });
   };
-  const addcandidate = (values) => {
-    console.log(Candidate);
-    SetCandidatearray((oldval) => {
-      return [...oldval, Candidate];
-    });
-
-    console.log(CandidateArray);
-  };
-
   const deletefunction = (id) => {
-    return SetCandidatearray((oldval) => {
-      return oldval.filter((arr, index) => {
-        return index !== id;
-      });
-    });
+
+    props.deletecandidatedata(id)
+
   };
   const initialValues = {
-    firstname: "",
-    lastname: "",
+    first_name: "",
+    last_name: "",
     email: "",
     id: "",
   };
   const onSubmit = (values, onSubmitprops) => {
     console.log(values);
     props.addcandidatedata(values)
-    addcandidate(values);
-    SetCandidate({
-      firstname: "",
-      lastname: "",
-    });
     onSubmitprops.resetForm();
    
-    console.log(props.newdata);
-
-  
-  };
+   };
  
   const validationSchema = yup.object({
-    firstname: yup.string().required("First Name Required!!"),
-    lastname: yup.string().required("Last Name Required!!"),
+    first_name: yup.string().required("First Name Required!!"),
+    last_name: yup.string().required("Last Name Required!!"),
     email: yup
       .string()
       .email("Enter valid Email-id ")
@@ -93,7 +74,7 @@ const Step1 = (props) => {
         validationSchema={validationSchema}
       >
         {(formik) => {
-          console.log(formik);
+          
           return (
             <>
               <div className="step1">
@@ -103,12 +84,12 @@ const Step1 = (props) => {
                       style={{
                         marginBottom: "15px",
                         marginLeft: "30px",
-                        color: "gray",
+                        color: "darkcyan",
                       }}
                     />
                     <Field
                       as={TextField}
-                      name="firstname"
+                      name="first_name"
                       id="firstname"
                       style={{ width: "160px" }}
                       onInput={inputChangeFunction}
@@ -120,12 +101,12 @@ const Step1 = (props) => {
                       style={{
                         marginBottom: "15px",
                         marginLeft: "30px",
-                        color: "gray",
+                        color: "darkcyan",
                       }}
                     />
                     <Field
                       as={TextField}
-                      name="lastname"
+                      name="last_name"
                       id="lastname"
                       style={{ width: "160px" }}
                       onInput={inputChangeFunction}
@@ -137,7 +118,7 @@ const Step1 = (props) => {
                       style={{
                         marginBottom: "15px",
                         marginLeft: "30px",
-                        color: "gray",
+                        color: "darkcyan",
                       }}
                     />
                     <Field
@@ -152,7 +133,7 @@ const Step1 = (props) => {
                       style={{
                         marginBottom: "15px",
                         marginLeft: "30px",
-                        color: "gray",
+                        color: "darkcyan",
                       }}
                     />
                     <Field
@@ -176,6 +157,7 @@ const Step1 = (props) => {
                       : null}
                     <div className="Add">
                       <Button
+                      style={{marginLeft:"30px",marginTop:"20px"}}
                         type="submit"
                         onClick={() => {
                           setopenalert(true);
@@ -191,12 +173,12 @@ const Step1 = (props) => {
                     <div>
                       
                        {
-                         props.newdata.candidatedata.map((item,index)=>{
+                         props.newdata.candidate.map((item,index)=>{
                            return(
                           <Step1AddField
                             id={index}
                             deletefunction={deletefunction}
-                            newrecords={props.newdata.candidatedata[index]}
+                            newrecords={props.newdata.candidate[index]}
                           />
                           ) })}
                     </div>
@@ -217,7 +199,8 @@ const mapStateToProps = state =>{
 }
 const mapDispatchToProps = dispatch => {
   return{
-    addcandidatedata: (newdata) => {dispatch(addcandidatedata(newdata))}
+    addcandidatedata: (newdata) => {dispatch(addcandidatedata(newdata))},
+    deletecandidatedata: (id) => {dispatch(deletecandidatedata(id)) }
   }
 
 }

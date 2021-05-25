@@ -20,7 +20,7 @@
 .navbar .a {
   float: right;
  
-  margin-right: 20px;
+  margin-right: 40px;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -36,6 +36,7 @@
 }
 
 .dropdown {
+  margin-right: 30px;
   float: right;
   overflow: hidden;
   margin-top:20px;

@@ -1,62 +1,3 @@
-// import React from 'react'
-// import VisibilityIcon from '@material-ui/icons/Visibility';
-// import DeleteIcon from '@material-ui/icons/Delete';
-// import Button from '@material-ui/core/Button';
-// import { useHistory } from 'react-router-dom';
-// import { useState } from 'react';
-// import ButtonDelete from './steps/ButtonDelete';
-// import AlertBox from './../alert/AlertBox';
-
-// function ViewDelete() {
-// //   const history=useHistory();
-// //   const [opendelete,setopendelete] = useState(true);
-// //   const [openalert, setopenalert] = useState(true);
-  
- 
-
-// // const closedelete =()=>{
-// //   setopendelete(false);
-
-// // };
-// //   const deletealert =()=>{
-// //     console.log("fgh")
-// //     setopendelete(true);
-// //     return <ButtonDelete
-// //     opendelete={opendelete}
-// //     closedelete={closedelete}
-// //       />
-  
-// //   };
-//   // const closealert = () => {
-//   //   setopenalert(false);
-//   // };
-//   // const erroralert = () => {
-//   //   setopenalert(true);
-//   //   return (
-//   //     <AlertBox
-//   //       setopenalert={openalert}
-//   //       closealert={closealert}
-      
-//   //     />
-//   //   );
-//   // }; 
-//     return (
-//         <>
-//       <button id="edit_btn">
-//        <VisibilityIcon/>
-//          </button>
-//          {/* {deletealert}
-//        <button id="delete_btn"
-//          onClick={() => {
-//            console.log("hg");
-//            setopendelete(true);
-//              }} > <DeleteIcon/> 
-//          </button> */}
-//         </>
-//     )
-// }
-
-// export default ViewDelete
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -66,34 +7,53 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
  import VisibilityIcon from '@material-ui/icons/Visibility';
   import DeleteIcon from '@material-ui/icons/Delete';
- import { connect } from 'react-redux';
-
+  import { useHistory } from "react-router-dom";
+import axios from 'axios'
+import { connect } from 'react-redux';
+import { getadminview } from '../../redux/actions/interview/InterviewAction';
 
 
 function  ViewDelete(props) {
+  // console.log(props.manager);
+  // console.log(props.role);
+  var manager=props.manager;
+  var role=props.role;
+ var id=props.id;
+
   const [open, setOpen] = React.useState(false);
-
-  const handleClickOpen = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const token = user.token;
+  const handleClickOpen = async () => {
     setOpen(true);
+    
   };
-
-  const handleClose = () => {
+  const history = useHistory();
+  const handleClose = async () => {
+    const res=await axios({
+      method:'post',
+      url:'http://localhost:2002/deleteCandidate',
+      data:{candidates:props.id},              
+      headers:{
+        Authorization:token
+      }
+    })
+    console.log(res.data)
+  props.getadminview()
     setOpen(false);
   };
+  
 
   return (
     <div>
         
-        <button id="edit_btn">       <VisibilityIcon/>
+        <button id="edit_btn" onClick={() => history.push(`/viewrecord/${manager}/${role}/${id}`)}>       <VisibilityIcon/>
          </button>
        
        <button id="delete_btn"  onClick={handleClickOpen} > <DeleteIcon/> 
          </button> 
-      {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Open alert dialog
-      </Button> */}
+      
       <Dialog
-        open={open}
+        open={open}                                                              
         onClose={handleClose}
         aria-labelledby="max-width-dialog-title"
         aria-describedby="alert-dialog-description"
@@ -117,10 +77,16 @@ function  ViewDelete(props) {
     </div>
   );
 }
-
-// const mapDispatchToProps = dispatch =>{
-//   return{
-//     deletecandidate:(id)=>{dispatch(deletecandidate(id))}
-//   }
-// }
-export default ViewDelete
+const mapStateToProps=state=>{
+  return {
+    data:state.interview
+  }
+}
+const mapDispatchToProps=dispatch=>{
+  return {
+    
+    getadminview:()=>{dispatch(getadminview())}
+    
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(ViewDelete);

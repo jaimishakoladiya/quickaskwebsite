@@ -14,9 +14,9 @@ function QuestionsCard(props) {
  
   const [openalert, setopenalert] = useState(false);
   const [newquestion, setnewquestion] = useState({
-    questions: '',
-    minutes: "0" + 3,
-    seconds: "0" + 0
+    question: ''
+    // minutes: "0" + 3,
+    // seconds: "0" + 0
   })
 
 
@@ -31,29 +31,29 @@ function QuestionsCard(props) {
     console.log(newquestion);
   };
 
-  const SelectItem = () => {
-    let items = [];
-    for (let i = 0; i <= 60; i++) {
-      if (i <= 9) {
-        items.push(
-          <option key={i} value={"0" + i}>
-            {"0" + i}
-          </option>
-        );
-      } else {
-        items.push(
-          <option key={i} value={i}>
-            {i}
-          </option>
-        );
-      }
-    }
-    return items;
-  };
+  // const SelectItem = () => {
+  //   let items = [];
+  //   for (let i = 0; i <= 60; i++) {
+  //     if (i <= 9) {
+  //       items.push(
+  //         <option key={i} value={"0" + i}>
+  //           {"0" + i}
+  //         </option>
+  //       );
+  //     } else {
+  //       items.push(
+  //         <option key={i} value={i}>
+  //           {i}
+  //         </option>
+  //       );
+  //     }
+  //   }
+  //   return items;
+  // };
   const initialValues = {
-    questions: "",
-    minutes: "",
-    seconds: "",
+    question: ""
+    // minutes: "",
+    // seconds: "",
   };
 
   const onSubmit = (values, onSubmitProps) => {
@@ -61,15 +61,15 @@ function QuestionsCard(props) {
     props.addquestion(newquestion);
   
     setnewquestion({
-      questions: '',
-      minutes: "0" + 3,
-      seconds: "0" + 0
+      question: ''
+      // minutes: "0" + 3,
+      // seconds: "0" + 0
     })
     onSubmitProps.resetForm();
   };
 
   const validationSchema = yup.object({
-    questions: yup.string().required("Enter Default Question"),
+    question: yup.string().required("Enter Default Question"),
  });
 
 const closealert = () => {
@@ -100,15 +100,15 @@ const erroralert = (error) => {
                   <Form>
                     <Field
                       as={TextField}
-                      name="questions"
-                      style={{ marginLeft: "10px", width: "500px" }}
+                      name="question"
+                      style={{ marginLeft: "10px", width: "600px" }}
                       id="questions"
                       label="New Question"
                       variant="standard"
                       onInput={inputchange}
                     />
 
-                    <FormControl style={{ marginLeft: "30px" }}>
+                    {/* <FormControl style={{ marginLeft: "30px" }}>
                       <InputLabel htmlFor="demo-customized-select-native">
                         min
                       </InputLabel>
@@ -133,11 +133,11 @@ const erroralert = (error) => {
                         <option value=""></option>
                         {SelectItem()}
                       </Field>
-                    </FormControl>
+                    </FormControl> */}
                     <br />
                     <br />
-                    {formik.touched.questions && formik.errors.questions
-                      ? erroralert(formik.errors.questions)
+                    {formik.touched.question && formik.errors.question
+                      ? erroralert(formik.errors.question)
                       : null}
                     <Button
                       onClick={() => setopenalert(true)}

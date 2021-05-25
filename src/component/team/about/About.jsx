@@ -1,5 +1,5 @@
 import React from "react";
-import img1 from "../../images/girlgirls.jpg";
+import img1 from "../../images/girlgirls-removebg-preview.jpg";
 import img2 from "../../images/About/companyProfile.png";
 import "./about.css";
 import AOS from 'aos';

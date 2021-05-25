@@ -8,8 +8,8 @@
   position: absolute;
   margin: 15px auto;
   margin-bottom: 100px;
-  margin-left: 450px;
-  margin-top: 30px;
+  margin-left: 180px;
+  margin-top: 150px;
   justify-content: center;
   padding: 15px 5px 10px 15px;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
@@ -20,7 +20,7 @@
   box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
 }
 .detail-header1 {
-  height: 70px;
+  height: 90px;
   width: 1000px;
   margin: -17px;
   color: rgb(8, 8, 8);
@@ -32,7 +32,7 @@
   justify-content: left;
   align-items: center;
   border-radius: 3px;
-  font-size: 20px;
+  font-size: 30px;
 }
 
 .detail-header1 h5 {
@@ -47,7 +47,7 @@
 }
 
 .detail-header2 {
-  height: 57px;
+  height: 70px;
   width: 1000px;
   margin: -17px;
   margin-top: 15px;
@@ -72,21 +72,7 @@
   box-shadow: 50px 50px 20px -8px rgba(226, 216, 216, 0.1);
   transform: scale(1.05, 1.05);
 }
-.detail-data {
-  /* position: absolute; */
-  margin: 15px auto;
-  margin-bottom: 100px;
-  margin-left: 300px;
-  margin-top: 30px;
-  justify-content: center;
-  padding: 15px 5px 10px 15px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
-  background-color: whitesmoke;
-  width: 1000px;
-  height: auto;
-  border-radius: 1px;
-  box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
-}
+
 #outlined-basic {
   width: 170px;
   height: 2px;
@@ -164,7 +150,7 @@
 .step2-material-person-icon {
   font-size: 22px;
   margin-top: 12px;
-  color: gray;
+  color: darkcyan;
 }
 
 .textFieldP {
@@ -192,6 +178,8 @@
   font-size: 17px;
   font-weight: bold;
   color:darkcyan;
+
+
 }
 #Step4_heading {
   border: 1px solid black;
@@ -330,18 +318,20 @@
 #headercss{
   font-family: "Helvetica";
   color: #000;
+  height: 30px;
   font-size: 13pt;
- margin: 20px 0px;
+ /* margin: 20px 0px; */
    box-sizing: content-box;
    width: 200px;
    text-align: inherit;
    vertical-align: bottom;
- padding: 8px 28px;
+ padding: 8px 42px;
   background-repeat: no-repeat;
   background-position:center;
   display: table-cell; 
   font-weight: bold;
- 
+/* padding-left: 10px; */
+text-align: justify;
   background-color: rgb(245, 202, 92);
 }
 #tablerow{
@@ -371,9 +361,9 @@ width: auto;
 .view-data {
   position: absolute;
   margin: 15px auto;
-  margin-bottom: 100px;
-  margin-left: 300px;
-  margin-top: 158px;
+  margin-bottom: 150px;
+  margin-left: 200px;
+  margin-top: 110px;
   justify-content: center;
   padding: 15px 5px 10px 15px;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
@@ -386,7 +376,7 @@ width: auto;
 .view-header1 {
   
   height: 80px;
-  width: 1400px;
+  width: 1100px;
   margin: -17px;
   color: rgb(8, 8, 8);
   text-align: left;
@@ -407,36 +397,36 @@ width: auto;
 
 .view-header2 {
   height: 57px;
-  width: 1399px;
+  width: 1100px;
   margin: -17px;
-  margin-left: 299px;
-  margin-top: 236px;
+  margin-left: 200px;
+  margin-top: 187px;
   color: rgb(8, 8, 8);
   background-color: rgb(245, 202, 92);
 }
 .view-header3 {
   height: 230px;
-  width: 1399px;
+  width: 1100px;
  
-  margin-left: 299px;
+  margin-left: 200px;
   margin-top: 16px;
   color: rgb(102, 94, 94);
  
 }
 .view-pic {
-  height: 150px;
-  width: 1399px;
+  height: 140px;
+  width: 1100px;
  
-  margin-left: 299px;
+  margin-left: 200px;
   margin-top: 20px;
   color: rgb(102, 94, 94);
   background-color:#dee2e6;
 }
 #view-header4 {
-  height: 95px;
-  width: 1399px;
+  height: 70px;
+  width: 13px;
   margin: -17px;
-  margin-left: 0px;
+  margin-left: 200px;
   margin-top: -210px;
  
   
@@ -483,6 +473,10 @@ width: auto;
     padding: 2px 69px;
   }
 
+  /* #share{
+    position:relative;
+  } */
+
   #edit_btn{
     background-color:darkcyan;
     color:white;
@@ -501,4 +495,105 @@ width: auto;
    border-color: #dc3545;
    margin-left: 4px;
    position: relative;
+  }
+  /* new .page */
+  .main{
+    margin: 20px auto;
+    margin-bottom: 100px;
+    margin-top: 100px;
+    padding: 15px 5px 10px 15px;
+    float: center;
+    width: 1000px;
+    /* width:auto; */
+    /* height: 1050px; */
+    padding: 15px 8px;
+    background: #eef5f6;
+  position: relative;
+    height: auto;
+    border-radius: 1px;
+    box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
+  
+  }
+  #stepper{
+    
+    margin-left: 5px;
+  }
+  
+  .main_h4{
+    font-size: 40px;
+    text-align: center;
+    line-height: 50px;
+  }
+  #kj{
+    font-size: 54;
+  }
+  .Interview-info-title {
+    font-size: 37px;
+    font-family: "DIN";
+    color: white;
+    line-height: 80px;
+    margin-top: -18px;
+    height: 70px;
+    text-align: center;
+    background-color: darkcyan;
+  }
+  .Interview_formheader {
+    height: 57px;
+    width: 1000px;
+    margin-top: -14px;
+    overflow: hidden;
+    background-color: #008b8b;
+    font-family: "Dancing Script", cursive;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-bottom: 7px solid black;
+    margin-left: -8px;
+  }
+  
+  .interview-title{
+    font-size: 50px;
+    color:darkcyan;
+    margin-top: 150px;
+    margin-left: 100px;
+    font-family: "DIN";
+ 
+
+  }
+  .interview-title2{
+    font-size: 58px;
+    color:black;
+   margin-left: 100px;
+   font-family: "DIN";
+  
+  }
+
+  .interview-text{
+    font-size: 20px;
+    color :darkcyan;
+    margin-top: 50px;
+    margin-left: 100px;
+    line-height: 30px;
+   
+  }
+  #interview-btn{
+    margin-top: 50px;
+    margin-left: 100px;
+    background-color: darkcyan;
+    color: white;
+    font-size: 17px; 
+  
+
+  }
+  #interview-btn:hover{
+    background-color: red;
+  }
+
+  .interview-img{
+    height: 420px;
+  float:right;
+margin-right: 100px;
+  width:700px;
+border-radius: 13pt;
+
   }

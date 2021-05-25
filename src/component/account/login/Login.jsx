@@ -41,13 +41,15 @@ function Login() {
 
     if (res.data.success == false) {
       setsuccess(res.data.success)
+      
       seterror(res.data.message)
+    
     }
     else {
       setopenalert(false)
       
       localStorage.setItem("user",JSON.stringify(res.data))
-      history.push('/innernavbar')
+      history.push('/companyprofile')
     }
 
   }

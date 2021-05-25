@@ -1,11 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import img1 from "../contact/admin.png";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import "../contact/contact.css";
 import AOS from 'aos';
 import 'aos/dist/aos.css'
-
+import axios from "axios";
 import {
   fade,
   ThemeProvider,
@@ -19,34 +19,81 @@ const Contact = () => {
     offset: 200,
     duration: 1000,
     once:true,
-    
+  });
+  const user = JSON.parse(localStorage.getItem("user"))
+  const token = user.token;
+  const [inputvalue, setvalue] = useState({
+    firstname:'',
+    lastname:'',
+    subject:'',
+    email:'',
+    comment:''
 
   });
-  const field = {
-    margin: "2px",
+async function makePostRequest(data){
+  var res = await axios({
+    method:"post",
+    url:"http://localhost:2002/contact",
+    data:data,
+    headers:{
+      Authorization:token
+    }
+
+  });
+  console.log(res.data)
+  
+}
+const onSubmit = (values) =>{
+  makePostRequest(inputvalue);
+  console.log(values);
+  setvalue({
+    firstname:'',
+    lastname:'',
+    subject:'',
+    email:'',
+    comment:''
+
+  });
+}
+
+
+const inputfieldfunction=(event)=>{
+  const {name,value}=event.target;
+  setvalue((preval)=>{
+    return{...preval,
+    [name]:value}
+  })
+  console.log(inputvalue)
+}
+
+ 
+  const field={
+margin: "2px",
+
     marginTop: "20px",
     width: 600,
- 
-  };
-  const CssTextField = withStyles({
-    root: {
-      '& label.Mui-focused': {
-        color: 'black',
+    color:'black',
+  }
+  
+  // const CssTextField = withStyles({
+  //   root: {
+  //     '& label.Mui-focused': {
+  //       color: 'black',
         
-      },
-      '& label': {
-        color: 'black',
-        fontSize:20,
-        fontFamily:'DIN',
-       fontWeight:'600'
+  //     },
+  //     '& label': {
+  //       color: 'black',
+  //       fontSize:20,
+  //       fontFamily:'DIN',
+  //      fontWeight:'600'
       
-      },
-      '& .MuiInput-underline:after': {
-        borderBottomColor: 'black',
-      },   
-      },
-    },
-  )(TextField);
+  //     },
+  //     '& .MuiInput-underline:after': {
+  //       borderBottomColor: 'black',
+  //     },   
+  //     },
+  //   },
+  // )(TextField);
 
   return (
     <body className="contact-main" id="contact">
@@ -58,46 +105,63 @@ const Contact = () => {
               As A New StartUp , We Want To know Your Comments..
             </h3>
            
-            <CssTextField
-          
-              id="field2"
-              style={field}
-              id="custom-css-standard-input"
-              label="FirstName"
-              variant="standard"
-        
+            <TextField
+        style={field}
+        id="standard-basic"
+        label="FirstName"
+        name="firstname"
+        variant="standard"
+        name="firstname"
+         value={inputvalue.firstname}
+        onChange={inputfieldfunction}
+      />
+      <TextField
+        style={field}
+        id="standard-basic"
+        label="LastName"
+        name="lastname"
+        variant="standard"
+        name="lastname"
+         value={inputvalue.lastname}
+       onChange={inputfieldfunction}
+
             />
 
-            <CssTextField
+           
+            <TextField
               style={field}
-              id="custom-css-standard-input"
-              label="LastName"
-              variant="standard"
-            />
-            <CssTextField
-              style={field}
-              id="custom-css-standard-inputc"
+              id="standard-basic"
               label="Subject"
               variant="standard"
+              name="subject"
+              value={inputvalue.subject}
+              onChange={inputfieldfunction}
             />
-            <CssTextField
+            <TextField
               style={field}
-              id="custom-css-standard-input"
+              id="standard-basic"
               label="Email"
               variant="standard"
+              name="email"
+              value={inputvalue.email}
+              onChange={inputfieldfunction}
+             
             />
-            <CssTextField
+            <TextField
               style={field}
-              id="custom-css-standard-textarea"
+              id="standard-basic"
               label="Comment.. "
               multiline
               rowsMax={5}
+              name="comment"
+              value={inputvalue.comment}
+              onChange={inputfieldfunction}
             />
             <br></br>
             <br></br>
             <br></br>
             <br></br>
-            <Button id="contact-butn" variant="contained">
+            <Button id="contact-butn" variant="contained" onClick={onSubmit}>
              submit
             </Button>
             <br />

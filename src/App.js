@@ -2,7 +2,7 @@
 //import Navbar from "./component/navbar/innernavbar/Navbar";
 
 //import ResetPassword from "./component/account/register/ResetPassword";
-
+//import Intpra from "./Intpra";
 //import Login from './component/account/login/Login'
 //  import Home from "./component/home/Home";
 //import Interviews from './component/interviews/Interviews'
@@ -10,16 +10,16 @@
 // import Login from './component/account/login/Login'
 //  import Registration from './component/account/register/Registartion'
    //import CompanyProfilePage from "./component/companyprofile/CompanyProfilePage";
-//import Navbar2 from './component/navbar/outernavbar/Navbar2'
+// //import Navbar2 from './component/navbar/outernavbar/Navbar2'
 import { BrowserRouter } from 'react-router-dom';
 import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
+
  // import { BrowserRouter } from 'react-router-dom';
  // import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 //import Login from './component/account/login/Login';
 //import Forpass from './component/account/login/Forpass';
 //import { BrowserRouter } from 'react-router-dom';
 //import InnerNavbar from './component/navbar/innernavbar/InnerNavbar'
-
 // import { BrowserRouter } from 'react-router-dom';
 //import InnerNavbar from './component/navbar/innernavbar/InnerNavbar'
 // import Navbar from './component/navbar/homenavbar/Navbar'
@@ -27,36 +27,68 @@ import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'
 //import Navbar2 from './component/navbar/outernavbar/Navbar2'
 //import Contact from './component/team/contact/Contact';
 //import InterviewDataGrid from './component/interviews/InterviewDataGrid';
-//import HomeNavbar from './component/navbar/homenavbar/HomeNavbar';
-//import CompanyFooter from './component/companyprofile/CompanyFooter';
- import { Provider } from "react-redux";
+// import HomeNavbar from './component/navbar/homenavbar/HomeNavbar'; 
+// //import CompanyFooter from './component/companyprofile/CompanyFooter';
+  import { Provider } from "react-redux";
  import store from "./redux/Store";
-// import CompanyProfilePage from './component/companyprofile/CompanyProfilePage';
+//import GoodBye from './component/videoupload/GoodBye';
+ //import StartInterviewTips from "./component/videoupload/StartInterviewTips"
+ //import Startinterview from './component/videoupload/Startinterview';
+//import PractiseInterviewTips from './component/videoupload/PractiseInterviewTips';
+//import FinishInterview from './component/videoupload/FinishInterview';
+//import InterviewQuestion from './component/videoupload/InterviewQuestion';
 
+//import InterviewQuestion from './component/videoupload/InterviewQuestion';
+//import SingleShareGrid from './component/interviews/SingleShareGrid'
+//import ViewRecord from './component/interviews/ViewRecord';
+// import CompanyProfilePage from './component/companyprofile/CompanyProfilePage';
+// import StartInterviewTips from './component/videoupload/StartInterviewTips'
+// import InterviewQuestion from './component/videoupload/InterviewQuestion'
 function App() {
   return (
     <>
+    {/* <SingleShareGrid/> */}
+    {/* <InterviewQuestion/> */}
+   {/* <FinishInterview/> */}
+    {/* <StartInterviewTips/> */}
+    {/* <PractiseInterviewTips/> */}
     {/* <ResetPassword/> */}
       {/* <InterviewDataGrid/> */}
       {/* <Home/>  */}
+      {/* <StartInterview/> */}
       {/* <BrowserRouter>
         <InnerNavbar/>
       </BrowserRouter>  */}
       {/* <Forpass/> */}
+      {/* <PractiseInterviewTips/> */}
       {/* <Forpass/> */}
       {/* <Registration/> */}
       {/* <Login/> */}
+      {/* <Startinterview/> */}
+{/* <Startinterview/> */}
+      {/* <StartInterview/> */}
       {/* <Navbar/> */}
-
-     
-     <Provider store={store}>
+   {/* <InterviewQuestion/> */}
+     {/* <FinishInterview/> */}
+     {/* <GoodBye/> */}
+      <Provider store={store}>
       <BrowserRouter>
    
       <HomeNavbar/> 
      
       </BrowserRouter>
       </Provider>
-
+     
+  {/* <Provider store={store}>
+      <BrowserRouter>
+   
+  
+    <SingleShareGrid/>
+     
+      </BrowserRouter>
+      </Provider>  */}
+      {/* <StartInterview/> */}
+        
       {/* <Login/> */}
       {/* <Navbar2/> */}
       {/* <Interviews /> */}
@@ -66,16 +98,16 @@ function App() {
       {/* <Contact/> */}
       {/* <ViewRecord/> */}
       {/* <About/> */}
+    
       {/* <QuestionsCard/> */}
-      {/* <Provider store={store}> */}
-      {/* <CompanyProfilePage/> */}
-           {/* <Interviews /> */}
-           {/* <BrowserRouter>
+      {/* <Provider store={store}> 
+     
+            <BrowserRouter>
              <HomeNavbar/> 
            </BrowserRouter> 
           </Provider> */}
     </>
-  );
+  ); 
 }
 
 export default App;

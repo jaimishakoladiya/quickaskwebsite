@@ -35,6 +35,8 @@ function AddManager({ data, fetchdata }) {
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(false);
+  const[status,setstatus]=useState(null);
+  const [message,setmessage]=useState();
   const [question,setnewque] = useState([]);
   useEffect(()=>{
     
@@ -57,6 +59,8 @@ function AddManager({ data, fetchdata }) {
     })
     console.log(res.data)
     fetchdata()
+    setstatus(res.data.status);
+    setmessage(res.data.message);
   }
 
 
@@ -123,6 +127,7 @@ function AddManager({ data, fetchdata }) {
         Add Manager
       </Button>
       <br />
+      {status != null?erroralert(message):null}
 
       <Dialog
         open={open}
@@ -204,10 +209,9 @@ function AddManager({ data, fetchdata }) {
                         <Grid item xs={6}>
                           <h3>Default Question For Department</h3>
                         </Grid>
-                        <Grid item xs={4}>
+                        {/* <Grid item xs={4}>
                           <h3>Time Allocated</h3>
-                        </Grid>
-
+                        </Grid> */}
 
                       </Grid>
                       <DisplayQuestions question={question} deletequestion={deletequestion} />

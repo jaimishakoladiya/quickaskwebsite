@@ -7,13 +7,14 @@ import * as yup from "yup";
 import AlertBox from "../../alert/AlertBox";
 import { Form, Formik, Field } from "formik";
 import Step1AddField from "./Step1AddField";
-import {addpaneldata} from "../../../redux/actions/interview/InterviewAction";
+import {addpaneldata,deletepaneldata} from "../../../redux/actions/interview/InterviewAction";
 import { connect } from "react-redux";
+import Step3AddPanel from "./Step3AddPanel";
 const Step3 = (props) => {
   const [open, setopenalert] = useState(false);
   const [panelcandidate , setpanelcandidate] = useState({
-  firstname:"",
-  lastname:""
+  firstName:"",
+  lastName:""
 })
 const [panelArray,setpanelArray] = useState([]);
   const inputChangeFunction =(event)=>{
@@ -31,15 +32,16 @@ const AddpanelCandidate =(values)=>{
   })
 }
 const deletefunction=(id)=>{
-    return setpanelArray((oldval)=>{
-      return oldval.filter((arr,index)=>{
-        return index !== id ;
-      })
-    })
+    // return setpanelArray((oldval)=>{
+    //   return oldval.filter((arr,index)=>{
+    //     return index !== id ;
+    //   })
+    // })
+    props.deletepaneldata(id)
 }
   const initialValues = {
-    firstname: "",
-    lastname: "",
+    firstName: "",
+    lastName: "",
     email: "",
   };
   const onSubmit = (values, onSubmitprops) => {
@@ -49,8 +51,8 @@ const deletefunction=(id)=>{
     onSubmitprops.resetForm();
   };
   const validationSchema = yup.object({
-    firstname: yup.string().required("firstname Requierd!!"),
-    lastname: yup.string().required("lastname Requierd!!"),
+    firstName: yup.string().required("firstName Requierd!!"),
+    lastName: yup.string().required("lastName Requierd!!"),
     email: yup.string().email("enter valid email").required("email Requierd!!"),
   });
   const closealert = () => {
@@ -80,15 +82,15 @@ const deletefunction=(id)=>{
                       marginBottom: "13px",
                       marginLeft: "60px",
                       marginRight: "2px",
-                      color: "gray",
+                      color: "darkcyan",
                       fontSize: "20px",
                     }}
                   />
                   <Field
                     as={TextField}
-                    name="firstname"
+                    name="firstName"
                     style={{ width: "160px" }}
-                    id="firstname"
+                    id="firstName"
                     onInput={inputChangeFunction}
                     placeholder="First Name"
                   />
@@ -97,15 +99,15 @@ const deletefunction=(id)=>{
                       marginBottom: "13px",
                       marginLeft: "60px",
                       marginRight: "2px",
-                      color: "gray",
+                      color: "darkcyan",
                       fontSize: "20px",
                     }}
                   />
                   <Field
                     as={TextField}
-                    name="lastname"
+                    name="lastName"
                     style={{ width: "160px" }}
-                    id="lastname"
+                    id="lastName"
                     onInput={inputChangeFunction}
                     placeholder="Last Name"
                   />
@@ -114,7 +116,7 @@ const deletefunction=(id)=>{
                       marginBottom: "13px",
                       marginLeft: "60px",
                       marginRight: "2px",
-                      color: "gray",
+                      color: "darkcyan",
                       fontSize: "20px",
                     }}
                   />
@@ -125,16 +127,17 @@ const deletefunction=(id)=>{
                     id="email"
                     placeholder="Email-Id"
                   />
-                  {formik.touched.firstname && formik.errors.firstname
-                    ? erroralert(formik.errors.firstname)
-                    : formik.touched.firstname && formik.errors.lastname
-                    ? erroralert(formik.errors.lastname)
-                    : formik.touched.firstname && formik.errors.email
+                  {formik.touched.firstName && formik.errors.firstName
+                    ? erroralert(formik.errors.firstName)
+                    : formik.touched.firstName && formik.errors.lastName
+                    ? erroralert(formik.errors.lastName)
+                    : formik.touched.firstName && formik.errors.email
                     ? erroralert(formik.errors.email)
                     : null}
 
                   <div className="step3-Add">
                     <Button
+                     style={{marginLeft:"30px",marginTop:"20px"}}
                       type="submit"
                       onClick={() => setopenalert(true)}
                       variant="contained"
@@ -146,11 +149,11 @@ const deletefunction=(id)=>{
                   <div>
                    
                            {
-                             props.newdata.paneldata.map((item,index)=>{
+                             props.newdata.panel.map((item,index)=>{
                                return(
-                             <Step1AddField newrecords={panelcandidate}
+                             <Step3AddPanel newrecords={panelcandidate}
                            deletefunction={deletefunction}
-                           newrecords={props.newdata.paneldata[index]}
+                           newrecords={props.newdata.panel[index]}
                            id={index}/>)
                          })}
                     
@@ -171,7 +174,8 @@ const mapStateToProps = state =>{
 }
 const mapDispatchToProps = dispatch => {
   return{
-    addpaneldata: (newdata) => {dispatch(addpaneldata(newdata))}
+    addpaneldata: (newdata) => {dispatch(addpaneldata(newdata))},
+    deletepaneldata:(id) => {dispatch(deletepaneldata(id))}
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Step3);

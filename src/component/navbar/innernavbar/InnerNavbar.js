@@ -9,6 +9,10 @@ import { useLocation } from 'react-router-dom';
 import Registration from './../../account/register/Registartion';
 import Forpass from './../../account/login/Forpass';
 import ViewRecord from "../../interviews/ViewRecord";
+import InterviewShareGrid from '../../interviews/InterviewShareGrid';
+import AdminView from '../../interviews/AdminView';
+import AddInterview from '../../interviews/AddInterview';
+import GoodBye from '../../videoupload/GoodBye';
 const InnerNavbar = () => {
   const location = useLocation();
   return (
@@ -18,13 +22,14 @@ const InnerNavbar = () => {
       location.pathname === '/forgotpassword' ? null : (
         <Navbar2 />
       )}
+      
       <br></br>
       <br></br>
       <Switch>
         <Route
           className="activename"
           exact
-          path="/innernavbar"
+          path="/companyprofile"
           component={CompanyProfilePage}
         />
 
@@ -34,10 +39,14 @@ const InnerNavbar = () => {
           component={CompanyProfilePage}
         />
         <Route exact path="/interview" component={Interviews} />
+        <Route exact path="/addinterview" component={AddInterview}/>
         <Route exact path="/login" component={Login} />
         <Route exact path="/forgotpassword" component={Forpass} />
         <Route exact path="/registartion" component={Registration} />
-        <Route exact path="/viewrecord" component={ViewRecord} /> 
+        <Route exact path="/adminview" component={AdminView} />
+        <Route exact path="/viewrecord/:managerid/:role/:id" component={ViewRecord} /> 
+        <Route exact path="/InterviewShareGrid" componet={InterviewShareGrid}/>
+        <Route exact path="/GoodBye" component={GoodBye}/>
       </Switch>
     </>
   );

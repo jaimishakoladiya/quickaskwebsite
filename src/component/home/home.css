@@ -1,4 +1,10 @@
 /* home page csss */
+*{
+
+  margin: 0;
+  padding: 0;
+ box-sizing: border-box;
+  }
 .home-all-start {
   margin-top: 80px;
 }
@@ -43,7 +49,7 @@
   height: 340px;
   float:right;
 margin-right: 100px;
-  width:700px;
+  width:550px;
 border-radius: 10pt;
 }
 /* 
@@ -60,7 +66,7 @@ second componet */
   line-height: 29px;
 
   text-size-adjust: 100%;
-  width: 350px;
+  width: 250px;
 }
 .home-pragraph {
   columns: 2;

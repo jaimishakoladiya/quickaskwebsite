@@ -113,6 +113,16 @@ function AddJob({data,fetchdata}) {
     })
     fetchdata()
     
+      const result = await axios({
+        method:'get',
+        url:"http://localhost:2002/get-job-detail",
+        headers:{
+          Authorization:token
+        }
+      })
+      
+     
+    
       setstatus(res.data.status);
       setmessege(res.data.message);
   }
@@ -222,9 +232,9 @@ function AddJob({data,fetchdata}) {
                         <Grid item xs={6}>
                           <h3>Default Question For Department</h3>
                         </Grid>
-                        <Grid item xs={4}>
+                        {/* <Grid item xs={4}>
                           <h3>Time Allocated</h3>
-                        </Grid>
+                        </Grid> */}
                       </Grid>
                       <DisplayQuestions question={questions} deletequestion={deletequestions} />
                       <br />

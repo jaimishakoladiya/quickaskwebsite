@@ -7,7 +7,6 @@ import EditDepartment from "./editbuttons/EditDepartment";
 
 
 const Department = (props) => {
-
   // console.log("dept" + props.data.deptdata.department)
   const [openedit, setopenedit] = useState(true);
   const closeedit = () => {

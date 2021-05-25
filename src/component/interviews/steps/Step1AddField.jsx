@@ -9,7 +9,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-
+import { connect } from "react-redux";
 const Step1AddField = (props) => {
   console.log(props.newrecords)
   const [open, SetOpen] = useState(false);
@@ -19,27 +19,31 @@ const Step1AddField = (props) => {
   };
   const handleClickClose = () => {
     SetOpen(false);
+    
   };
   const YesFunction = () => {
     SetYesopen(true);
   };
+ 
   const OKFunction = () => {
+    props.deletefunction(props.id)
     SetYesopen(false);
     SetOpen(false);
-    props.deletefunction(props.id);
   };
-  const handleDelete = () => {};
+  const handleDelete = () => {
+    console.log("delete");
+    handleClickOpen();
+  };
 
-  return (
-
-    <>
+return (
+   <>
       <Chip
         id="Chip_box"
         icon={<PersonIcon />}
-        label={`${props.newrecords.firstname}  ${props.newrecords.lastname}`}
-         onClick={handleClickOpen}
+        label={`${props.newrecords.first_name}  ${props.newrecords.last_name}`}
+      // deletequestion={deletecandidatedata}
         onDelete={handleDelete}
-        deleteIcon={<CloseIcon />}
+        // deleteIcon={<CloseIcon />}
       ></Chip>
       <Dialog
       //id="Delete_dailog"
@@ -47,10 +51,10 @@ const Step1AddField = (props) => {
         onClose={handleClickClose}
         aria-labelledby="max-width-dialog-title"
       >
-        <DialogTitle id="max-width-dialog-title">PLEASE CONFIRM</DialogTitle>
+        <DialogTitle id="max-width-dialog-title"><h4>PLEASE CONFIRM</h4></DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Are You Sure ! You Want To Remove Candidate ..?
+            Are You Sure ! You Want To Remove..?
           </DialogContentText>
           <DialogActions>
             <Button
@@ -60,7 +64,7 @@ const Step1AddField = (props) => {
             >
               Cancle
             </Button>
-            <Button onClick={YesFunction} variant="contained" color="secondary">
+            <Button onClick={YesFunction} variant="contained" color="secondary" >
               Delete
             </Button>
             <Dialog
@@ -84,6 +88,7 @@ const Step1AddField = (props) => {
                 OK
               </Button>
             </Dialog>
+
           </DialogActions>
           <DialogContent />
         </DialogContent>
@@ -91,4 +96,15 @@ const Step1AddField = (props) => {
     </>
   );
 };
+// const mapStateToProps = () => {
+  
+// }
+// const mapDispatchToProps = dispatch => {
+//   return {
+    
+   
+   
+//   }
+// }
 export default Step1AddField;
+

@@ -9,33 +9,61 @@ import { BrowserRouter, useLocation } from "react-router-dom";
 import InnerNavbar from './../innernavbar/InnerNavbar';
 import Team from "../../team/Team";
 import ResetPassword from '../../account/register/ResetPassword'
+import Start from '../../videoupload/Start'
+import AdminView from '../../interviews/AdminView';
+import StartTest from "../../videoupload/StartTest";
+import InterviewQuestion from "../../videoupload/InterviewQuestion";
+import RealInterview from "../../videoupload/RealInterview";
+import AddInterview from '../../interviews/AddInterview';
+import ViewRecord from "../../interviews/ViewRecord";
+
+
+
 function HomeNavbar() {
   const location = useLocation();
   return (
     <div>
-      {location.pathname === "/login" ||
+      {/* {location.pathname === "/login" ||
       location.pathname === "/registartion" ||
       location.pathname === "/forgotpassword" ||
       location.pathname ==="/reset-password" ||
-      location.pathname ==="/innernavbar"? null : (
+      location.pathname ==="/innernavbar"||
+      location.pathname ==="/adminview" ||
+      location.pathname === "/interview" ||
+      location.pathname === "/companyprofilepage"||
+      location.pathname === "/viewrecord" ||
+      location.pathname === "/start/:token"
+       ? null : (
         <Navbar />
         
-      )}
+      )} */}
+        {location.pathname === "/adminview" ||
+          location.pathname === "/interview" ||
+          location.pathname === "/companyprofilepage" ||
+          location.pathname === "/viewrecord"||
+          location.pathname ==="/addinterview"
+        ? <InnerNavbar/> : null}
+      
+       
+      
 
       <Switch>
         <Route   exact path="/" component={Home} />
+        <Route exact path="/addinterview" component={AddInterview}/>
         <Route exact path="/registartion" component={Registration} />
         <Route exact path="/login" component={Login} />
-        {/* <Route exact path="/about" component={About} />
-        <Route exact path="/contact" component={Contact} /> */}
-        <Route exact path="/team" component={Team}/>
-        {/* <Route exact path="/fifthhomecomp" component={FifthHomeComp}/> */}
+        <Route exact path="/adminview" component={AdminView} />
+         <Route exact path="/team" component={Team}/>
         <Route exact path="/forgotpassword" component={Forpass} />
         <Route   exact path="/reset-password" component={ResetPassword} />
-        <Route exact path="/innernavbar" render={()=>
-          <BrowserRouter><InnerNavbar name={"innernavbar"}/></BrowserRouter>
+        <Route exact path="/companyprofile" render={()=>
+          <BrowserRouter><InnerNavbar name={"companyprofile"}/></BrowserRouter>
         }/>
-    
+        <Route exact path="/start/:tokenid/:id" component={StartTest}/>
+        <Route exact path="/start/:tokenid" component={RealInterview}/>
+        <Route exact path="/viewrecord/:managerid/:role/:id" component={ViewRecord} /> 
+
+        {/* <Route exact path="/start/:token/:token1" component={StartTest}/> */}
       </Switch>
     </div>
   );

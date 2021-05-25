@@ -48,6 +48,8 @@ function EditManager(props) {
   const [openalert, setopenalert] = useState(true);
   const [Yesopen, SetYesopen] = useState(false);
   const [question, setnewque] = useState([])
+  const[message,setmess]=useState();
+  const[status,setstatus]=useState(null);
   async function addquestion  (newq) {
     setnewque((olditem) => {
       return [
@@ -65,6 +67,8 @@ function EditManager(props) {
       }
     })
     console.log(res.data)
+    setmess(res.data.message);
+    setstatus(res.data.status);
   }
 async function   deletequestion (id){
     setnewque((olditem) => {
@@ -105,8 +109,7 @@ async function   deletequestion (id){
     console.log(resq.data)
     setnewque(resq.data.data)
   }
-
-
+ 
   const initialValues = {
     firstname: props.editdata.firstname,
     lastname: props.editdata.lastname,
@@ -117,6 +120,7 @@ async function   deletequestion (id){
     console.log(values);
    props.editjobdata(values, props.id)
     setOpen(false);
+  
    
   };
 
@@ -126,9 +130,7 @@ async function   deletequestion (id){
     email: yup.string().email("email invalid ").required("All fields are required"),
 
   });
-  const closealert = () => {
-    setopenalert(false);
-  };
+ 
   const erroralert = (error) => {
     return (
       <AlertBox
@@ -137,6 +139,9 @@ async function   deletequestion (id){
         error={error}
       />
     );
+  };
+  const closealert = () => {
+    setopenalert(false);
   };
   const handleClickOpen = () => {
     setOpen(true);
@@ -184,6 +189,7 @@ async function   deletequestion (id){
 
       {/* delete manager */}
 
+      {status!=null?erroralert(message):null}
       <Dialog
         open={opendelete}
         onClose={handleClose1}
@@ -328,9 +334,9 @@ async function   deletequestion (id){
                         <Grid item xs={6}>
                           <h3>Default Question For Department</h3>
                         </Grid>
-                        <Grid item xs={4}>
+                        {/* <Grid item xs={4}>
                           <h3>Time Allocated</h3>
-                        </Grid>
+                        </Grid> */}
 
 
                       </Grid>
@@ -355,7 +361,7 @@ async function   deletequestion (id){
                       </Button>
                       <Button
                         type="submit"
-                        onClick={() => setopenalert(true)}
+                        // onClick={() => setopenalert(true)}
                         id="dialog-save-btn"
                         variant="contained"
                         color="secondary"

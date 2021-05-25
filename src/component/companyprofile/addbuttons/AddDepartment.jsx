@@ -59,25 +59,26 @@ function AddDepartment({data,fetchdata}) {
         Authorization: token
       }
     })
-   
+    const result = await axios({
+      method: 'get',
+      url: "http://localhost:2002/get-department",
 
-   
-    setstatus(res.data.status);
+      headers: {
+        Authorization: token
+      }
+    })
+     
+   setstatus(res.data.status);
     
     setmessage(res.data.message)
     console.log(message)
     fetchdata()
-    
-
-   
-  }
+ }
 
 
   const onSubmit = (values) => {
    
     savedepartment({ ...values, questions });
-
-    
     setnewque([])
     setOpen(false);
   };
@@ -88,6 +89,7 @@ function AddDepartment({data,fetchdata}) {
   });
 
   const addquestion = (newq) => {
+    
 
     setnewque((olditem) => {
       return [...olditem,
@@ -197,9 +199,9 @@ function AddDepartment({data,fetchdata}) {
                         <Grid item xs={6}>
                           <h3>Default Question For Department</h3>
                         </Grid>
-                        <Grid item xs={4}>
+                        {/* <Grid item xs={4}>
                           <h3>Time Allocated</h3>
-                        </Grid>
+                        </Grid> */}
 
                       </Grid>
 

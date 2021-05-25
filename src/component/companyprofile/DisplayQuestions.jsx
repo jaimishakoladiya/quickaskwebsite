@@ -11,17 +11,16 @@ function DisplayQuestions(props) {
 
         return (
           <>
-            <Grid container spacing={3}>
+            <Grid container spacing={3} key={id}>
               <Grid item xs={6}>
-                <p>{arr.questions}</p>
+                <p>{arr.question}</p>
               </Grid>
-              <Grid item xs={4}>
+              {/* <Grid item xs={4}>
 
-
-                <h3>
+                 <h3>
                   {arr.minutes}:{arr.seconds}
                 </h3>
-              </Grid>
+              </Grid> */}
               <Grid item xs={2}>
                 <h3>
                   <IconButton

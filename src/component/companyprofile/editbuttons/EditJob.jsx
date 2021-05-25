@@ -23,9 +23,8 @@ import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 
 import { connect } from "react-redux";
 import {
-  deletequestion,
-  editjobdata,
-  deletejobdata
+  
+  fetchdata
 } from "../../../redux/actions/companyprofile/companprofileAction";
 import axios from "axios";
 
@@ -40,15 +39,7 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 function EditJob(props) {
-  const user = JSON.parse(localStorage.getItem('user'));
-  const token=user.token;
-  const classes = useStyle();
-  const [open, setOpen] = useState(false);
-  const [opendelete, setOpendelete] = useState(false);
-  const [openalert, setopenalert] = useState(true);
-  const [Yesopen, SetYesopen] = useState(false);
-
-  const [newque,setnewque]=useState(props.editdata.newque);
+  const [questions,setnewque]=useState(props.editdata.questions);
   const addquestion=(newq)=>{
       setnewque((olditem)=>{
         return[
@@ -56,7 +47,7 @@ function EditJob(props) {
           newq
         ]
       })
-      props.editjobdata({...props.editdata,...props.editdata.newque.push(newq)},props.id)
+
   }
   const deletequestion=(id)=>{
     setnewque((olditem)=>{
@@ -64,7 +55,7 @@ function EditJob(props) {
         return index !== id;
       })
     })
-    props.deletequestion("job",props.id,id)
+
   }
   const SelectItem=()=>{
     let items=[];
@@ -76,7 +67,16 @@ function EditJob(props) {
   }
   
   
-  
+  const user=JSON.parse(localStorage.getItem("user"));
+  const token=user.token;
+  const classes = useStyle();
+  const [open, setOpen] = useState(false);
+  const [opendelete, setOpendelete] = useState(false);
+  const [openalert, setopenalert] = useState(true);
+  const[message,setmess]=useState();
+  const[status,setstatus]=useState(null);
+  const [Yesopen, SetYesopen] = useState(false);
+
   async function deletjobdata(){
     console.log(props.editdata.job_detail_id);
     var res = await axios({
@@ -86,7 +86,22 @@ function EditJob(props) {
         Authorization:token
       }
     })
-    console.log(res.data);
+  props.fetchdata()
+  }
+  async function updatejobdata(data){
+    console.log(data);
+    console.log(props.editdata.job_detail_id)
+    var res=await axios({
+      method:'post',
+      url:`http://localhost:2002/update-job-detail/${props.editdata.job_detail_id}`,
+      data:data,
+      headers:{
+        Authorization:token
+      }
+    })
+    setmess(res.data.message);
+    setstatus(res.data.status);
+    props.fetchdata()
   }
   const initialValues = {
     title: props.editdata.title,
@@ -94,11 +109,11 @@ function EditJob(props) {
   };
 
   const onSubmit = (values) => {
-    console.log(values);
-    console.log(props.editdata);
-    props.editjobdata({...values,newque }, props.id);
+    console.log({...values,questions})
+    //props.editjobdata({...values,newque }, props.id);
+    updatejobdata({...values,questions})
     setOpen(false);
-    console.log(props.editdata);
+    
   };
 
   const validationSchema = yup.object({
@@ -158,10 +173,10 @@ function EditJob(props) {
       </button>
       <button id="delete_btn"
       onClick={handleClickOpen1}>
-        <DeleteIcon />
+     <DeleteIcon />
       </button>
       <br />
-
+      {status!=null?erroralert(message):null}
 {/* delete job */}
 <Dialog
         open={opendelete}
@@ -277,11 +292,11 @@ function EditJob(props) {
                         <Grid item xs={7}>
                           <h3>Default Question For Department</h3>
                         </Grid>
-                        <Grid item xs={4}>
+                        {/* <Grid item xs={4}>
                           <h3>Time Allocated</h3>
-                        </Grid>
+                        </Grid> */}
                       </Grid>
-                      {/* <DisplayQuestions question={props.editdata.newque} deletequestion={deletequestion}/> */}
+                      <DisplayQuestions question={questions} deletequestion={deletequestion}/> 
                       <br />
                       {formik.touched.department && formik.errors.department
                         ? erroralert(formik.errors.department)
@@ -332,12 +347,7 @@ const mapStateToProps = (state, ownprops) => {
 
 const mapDispatchToProps = (disptach) => {
   return {
-    editjobdata: (data, id) => { disptach(editjobdata(data, id))},
-      deletejobdata: (id) => { disptach(deletejobdata(id))},
-      
-    
-   
-    deletequestion:(section,uid,qid)=>{disptach(deletequestion(section,uid,qid))}
+   fetchdata:()=>{disptach(fetchdata())}
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(EditJob);
