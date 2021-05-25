@@ -144,7 +144,8 @@ async function getreviews(){
   return (
     <div>
 
-      <PlayCircleOutlineIcon onClick={handleClickOpen} style={{ width: "43px", height: "43px", margin: "-14px 0px", color: "darkcyan" }} />
+      <PlayCircleOutlineIcon onClick={handleClickOpen}
+       style={{ width: "43px", height: "43px",margin:"-35px", color: "darkcyan" }} />
      
 
       <Dialog
