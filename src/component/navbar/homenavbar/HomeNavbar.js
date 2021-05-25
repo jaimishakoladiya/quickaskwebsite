@@ -17,6 +17,7 @@ import RealInterview from "../../videoupload/RealInterview";
 import AddInterview from '../../interviews/AddInterview';
 import ViewRecord from "../../interviews/ViewRecord";
 import Contact from "../../team/contact/Contact";
+import GoodBye from "../../videoupload/GoodBye";
 
 
 
@@ -51,6 +52,7 @@ function HomeNavbar() {
         <Route exact path="/start/:tokenid/:id" component={StartTest}/>
         <Route exact path="/start/:tokenid" component={RealInterview}/>
         <Route exact path="/viewrecord/:managerid/:role/:id" component={ViewRecord} /> 
+        <Route exact path="/goodBye" component={GoodBye}/>
 
       </Switch>
     </div>

@@ -8,7 +8,7 @@ import StarIcon from '@material-ui/icons/Star';
 import Button from '@material-ui/core/Button';
 import img2 from "../../component/images/undraw_profile_pic_ic5t (2).svg";
 import InterviewShareGrid from "./InterviewShareGrid";
-
+import CompanyFooter from '../companyprofile/CompanyFooter'
 import './Interviews.css';
 import { useParams } from 'react-router';
 import axios from 'axios';
@@ -126,7 +126,7 @@ function ViewRecord(props) {
                       })}
                       <TableCell style={rowcss} align="center">
                        {path? <RatingBox name={name} rate={rate} candidateid={candidateid} index={index} path={path} question={arr.question}/>:null}
-                     <StarIcon style={{ color: "black", margin: "-5px 5px"}} />{rate}</TableCell>
+                     <StarIcon style={{ color: "rgb(245,202,92)", margin: "-5px 5px"}} />{rate}</TableCell>
                         
                     </TableRow>)
                 })

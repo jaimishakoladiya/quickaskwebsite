@@ -12,9 +12,10 @@ import VideoHeader from './VideoHeader';
 function GoodBye() {
     
   const history = useHistory();
-//   const pushfunction = () =>{
-//     history.push("/registartion") onClick={pushfunction}
-//   }
+  const pushfunction = () =>{
+    history.push("/") 
+    
+  }
 console.log(history);
     return (
         <div>
@@ -36,7 +37,7 @@ console.log(history);
                </Grid>
               
            </Grid>
-           <Button style={{backgroundColor: "darkcyan",
+           <Button onClick={pushfunction} style={{backgroundColor: "darkcyan",
                         fontWeight: "bold",
                         width:"180px",
                         marginTop:"50px",

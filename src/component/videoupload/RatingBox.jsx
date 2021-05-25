@@ -48,7 +48,9 @@ const useStyles = makeStyles((theme) => ({
 // }));
 
 function RatingBox(props) {
- 
+ useEffect(()=>{
+  getreviews()
+ },[])
   const user=JSON.parse(localStorage.getItem('user'));
   const token=user.token;
   var newpath=`/video/test.mp4`
@@ -75,6 +77,7 @@ function RatingBox(props) {
   const cameraScreen = useRef(null)
 
 async function postreview(){
+  
   const reviewdata={
     candidateToken:props.candidateid,
     managerToken:null,
@@ -104,9 +107,16 @@ console.log(reviewdata);
     setopenalert(true)
 
   };
- 
-
-
+async function getreviews(){
+  var res=await axios({
+    method:'get',
+    url:`http://localhost:2002/interview/${props.candidateid}/reviews/${props.path}`,
+    headers:{
+      Authorization:token
+    }
+  })
+  console.log(res.data)
+}
   const closealert = () => {
     setopenalert(false);
     setOpen(false);

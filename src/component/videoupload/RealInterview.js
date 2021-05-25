@@ -38,7 +38,10 @@ function RealInterview() {
       video: true,
       audio: true
     }).then(async function (stream) {
-      cameraScreen.current.srcObject = stream;
+      // cameraScreen ? cameraScreen.current.srcObject = stream:null;
+      if(cameraScreen){
+        cameraScreen.current.srcObject = stream
+      }
       recorder = RecordRTC(stream, {
         type: 'video'
       });

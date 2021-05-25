@@ -14,7 +14,7 @@ function Navbar() {
       <div className="navbar-logo">
 <img src={img} className="navbar-logo" />
 </div>
-        {/* <a href="#home" className="a">Blog</a> */}
+     
 
         <div class="dropdown">
           <button class="dropbtn">

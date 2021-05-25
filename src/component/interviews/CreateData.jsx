@@ -58,34 +58,25 @@ const StyledTableRow = withStyles((theme) => ({
     },
   },
 }))(TableRow);
-
 function Row(props) {
-  
   const { row } = props;
   const [open, setOpen] = React.useState(false);
- 
   const classes = useStyles();
 
   return (
     <div >
     <React.Fragment>
-      
       <TableRow className={classes.row}  >
         <TableCell>
-      
              <ArrowRightIcon style={{ fontSize: "35px", color: "darkcyan",fontWeight: "900"}} />
-         
         </TableCell>
-
         <TableCell   id="tablerow" component="th" scope="row">
         {row.name}
         </TableCell>
-       
         <TableCell id="tablerow">{row.jobtitle}</TableCell>
         <TableCell id="tablerow">{row.status}</TableCell>
         <TableCell id="tablerow">{row.date}</TableCell>
         <TableCell id="tablerow">{row.score}</TableCell>
-        
         <TableCell id="tablerow">{row.action}</TableCell>
        
       </TableRow>
@@ -94,22 +85,9 @@ function Row(props) {
     </div>
   );
 }
-
-// Row.propTypes = {
-//   row: PropTypes.shape({
-//     calories: PropTypes.number.isRequired,
-//     carbs: PropTypes.number.isRequired,
-//     fat: PropTypes.number.isRequired,
-   
-//     name: PropTypes.string.isRequired,
-//     price: PropTypes.number.isRequired,
-//     protein: PropTypes.number.isRequired,
-//   }).isRequired,
-// };
-
-
 function CreateData(props) {
-  console.log(props.name);
+  console.log(props.data.admindata);
+  
   const [data,setdata]=useState([])
  
   const user = JSON.parse(localStorage.getItem('user'));
@@ -126,14 +104,11 @@ const rowdata=()=>{
                 row['candidate-data'].role ,
   <Button variant="contained" color="primary" style={{backgroundColor:"darkcyan"}}>{row['candidate-data'].status}
   </Button>,
-       newdatetime,1,<ViewDelete id={row.token} manager={row['manager-token']} role={row['candidate-data'].role} />)}/>)
+       newdatetime,row.rating ,<ViewDelete id={row.token} manager={row['manager-token']} role={row['candidate-data'].role} />)}/>)
   ))
- 
-
 return rows;
 }
 else{
-  // console.log("nhiii kuch nhi hai")
 rows=[];
   props.data.admindata.length===0?<h1 style={{textAlign:"center"}}>No Records Found</h1>: 
   props.data.admindata.map((row,index) => {
@@ -147,10 +122,7 @@ rows=[];
 </Button>,
 newdatetime,1,<ViewDelete id={row.token} manager={row['manager-token']} role={row['candidate-data'].role} />)}/>)
   }
-   
 })
- 
-
 return rows;
 }
 }
@@ -158,7 +130,6 @@ var name;
 const newdate=new Date().toLocaleDateString();
  const newtime=new Date().toLocaleTimeString();
  const newdatetime =` ${newdate} ${newtime}`
- 
   useEffect(() => {
     props.getadminview()
   }, [])
@@ -167,27 +138,31 @@ const newdate=new Date().toLocaleDateString();
       <Table aria-label="a dense table">
   
       {rowdata()}
+     {rows.length==0?<h1 style={{textAlign:"center"}}>No Records Found</h1>:null} 
       {console.log(rows)}
-       
-       
+        {/* {props.data.admindata.length===0?<h1 style={{textAlign:"center"}}>No Records Found</h1>: <TableBody>
+          {props.data.admindata.map((row,index) => (
+            name=`${row['candidate-data'].first_name} ${row['candidate-data'].last_name}`,
+            props.name===row['candidate-data'].name?
+             <Row key={index} row={createData(name,
+                        row['candidate-data'].role ,
+          <Button variant="contained" color="primary" style={{backgroundColor:"darkcyan"}}>{row['candidate-data'].status}
+          </Button>,
+               newdatetime,row.rating,<ViewDelete id={row.token} manager={row['manager-token']} role={row['candidate-data'].role} />)}/>:null
+          ))}
+        </TableBody>} */}
       </Table>
     </TableContainer>
-    
   );
-
 }
-
 const mapStateToProps=state=>{
   return {
     data:state.interview
   }
 }
-
 const mapDispatchToProps=dispatch=>{
   return {
-    
     getadminview:()=>{dispatch(getadminview())}
-    
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(CreateData)

@@ -8,7 +8,6 @@ import {
 } from "@material-ui/core";
 import Slide from "@material-ui/core/Slide";
 import "./alert.css";
-
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
@@ -16,7 +15,6 @@ function AlertBox(props) {
   const closebox = () => {
     props.closealert();
   };
-
   return (
     <div>
       <Dialog open={props.setopenalert} TransitionComponent={Transition}>
@@ -29,8 +27,7 @@ function AlertBox(props) {
           </DialogContent>
           <DialogActions>
             <Button style={{ backgroundColor: "#008b8b" }} onClick={closebox}>
-          
-             <h3>Ok</h3> 
+              <h3>Ok</h3>
             </Button>
           </DialogActions>
         </div>
@@ -38,5 +35,4 @@ function AlertBox(props) {
     </div>
   );
 }
-
 export default AlertBox;
