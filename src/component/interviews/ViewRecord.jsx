@@ -105,6 +105,8 @@ function ViewRecord(props) {
                 {question && question.map((arr, index) => {
                   let rate;
                   let path;
+                  let name;
+                  let candidateid;
                   return (
                     <TableRow id="view-header4">
                       <TableCell style={rowcss}>{arr.question}</TableCell>
@@ -112,17 +114,21 @@ function ViewRecord(props) {
 
                   
                       {arr.candidate.map((item) => {
+                        console.log(item.name);
+                         console.log(item.id)
+                          name=item.name;
+                          candidateid=item.id;
                         if (id === item.id) {
                           rate = item.rating;
                          path= item.path?item.path:undefined;
+                        
                         }
                       })}
                       <TableCell style={rowcss} align="center">
-                       {path? <RatingBox index={index} path={path} question={arr.question}/>:null}
+                       {path? <RatingBox name={name} candidateid={candidateid} index={index} path={path} question={arr.question}/>:null}
                      <StarIcon style={{ color: "black", margin: "-5px 5px"}} />{rate}</TableCell>
                         
                     </TableRow>)
-                    {console.log(index)}
                 })
                 }
               </TableHead>

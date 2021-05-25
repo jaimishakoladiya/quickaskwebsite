@@ -48,18 +48,23 @@ const useStyles = makeStyles((theme) => ({
 // }));
 
 function RatingBox(props) {
+  console.log(props.name);
+  console.log(props.candidateid)
   console.log(props.index);
   console.log(props.question);
   console.log(props.path);
-  var newpath=`E:/askaway${props.path}`
+  const user=JSON.parse(localStorage.getItem('user'));
+  const token=user.token;
   var newpath=`F:/askaway${props.path}`
   const classes = useStyles();
   const [data, setvalue] = useState({
     rating: '',
     review: ''
   });
+  const [status,setstatus]=useState(false)
+  const [message,setmessage]=useState();
   const [open, setOpen] = useState(false);
-  const [openalert, setopenalert] = useState(true);
+  const [openalert, setopenalert] = useState();
   const inputchangefunction = (event) => {
     const { name, value } = event.target;
 
@@ -72,11 +77,36 @@ function RatingBox(props) {
     console.log(data);
   }
   const cameraScreen = useRef(null)
-
+const reviewdata={
+      candidateToken:props.candidateid,
+      managerToken:null,
+      name:props.name,
+      questionNumber:props.index+1,
+      rating:data.rating,
+      review:data.review,
+      videoPath:props.path
+}
+console.log(reviewdata);
+async function postreview(data){
+  var res=await axios({
+    method:'post',
+    url:'http://localhost:2002/post-video-review',
+    data:data,
+    headers:{
+      Authorization:token
+    }
+  })
+  console.log(res.data);
+  setstatus(res.data.status);
+  setmessage(res.data.message);
+}
   const onSubmit = (values) => {
-
+    // setopenalert(true);
+    postreview(reviewdata);
     console.log(data)
     setOpen(false);
+    setopenalert(true)
+
   };
  
 
@@ -132,7 +162,7 @@ function RatingBox(props) {
             <video style={{ height: "350px", width: "640px", border: "8px solid darkcyan" }} src={newpath} ref={cameraScreen} id="gum" playsInline autoPlay muted ></video>
 
             <br />
-
+      {status!=null?erroralert(message):null}
             <h2>Please Rate This Interview</h2>
             <div className={classes.root}>
               <Rating name="rating" precision={0.5} value={data.rating} onChange={inputchangefunction} /><br />
@@ -142,7 +172,10 @@ function RatingBox(props) {
             <Button
               type="submit"
 
-              onClick={onSubmit}
+              onClick={()=>{
+                // setopenalert(true)
+                onSubmit()
+              }}
               variant="contained"
               color="secondary"
             >
