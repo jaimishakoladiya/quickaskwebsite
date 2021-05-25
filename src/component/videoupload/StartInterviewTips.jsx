@@ -1,15 +1,12 @@
 import React from 'react'
 import './Video.css'
-import homeimg from '../images/inter.png'
 import Button from "@material-ui/core/Button";
-import logo from "../images/logo2.png"
 import VideoFooter from './VideoFooter';
-import VideoHeader from './VideoHeader';
 
-function StartInterviewTips() {
+function StartInterviewTips(props) {
     return (
         <div>
-        <VideoHeader/>
+        
         <div className="practise_head">
         <span className="practise_title"> please follow below tips before your start the interview process.</span>
         </div>
@@ -26,7 +23,7 @@ function StartInterviewTips() {
            
             </div>
             {/* <Button id="tips_butn1" variant="contained" color="secondary"><h3>I Agree</h3></Button> */}
-             <Button id="tips_butn2" variant="contained" color="secondary"><h3>Continue</h3></Button>
+             <Button id="tips_butn2" onClick={props.start} variant="contained" color="secondary"><h3>Continue</h3></Button>
 <br></br>
           </div>
 

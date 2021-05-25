@@ -12,7 +12,6 @@ import InterviewShareGrid from "./InterviewShareGrid";
 import './Interviews.css';
 import { useParams } from 'react-router';
 import axios from 'axios';
-import CompanyFooter from '../companyprofile/CompanyFooter'
 import RatingBox from '../videoupload/RatingBox';
 function ViewRecord(props) {
   useEffect(() => {
@@ -34,22 +33,22 @@ function ViewRecord(props) {
   const user = JSON.parse(localStorage.getItem('user'));
   const token = user.token;
   const { managerid, role, id } = useParams()
-  console.log(id)
+  console.log(managerid)
   const [question, setquestion] = useState([]);
   const [job, setjob] = useState();
-  // console.log(managerid);
-  // console.log(role);
+  console.log(managerid);
+  console.log(role);
   async function sharegrid() {
     var res = await axios({
       method: 'get',
-      url: `http://localhost:2002/multiple-candidate/${managerid}/${role}/false/admin`,
+      url: `http://localhost:2002/multiple-candidate/${managerid}/${role}/false/multiple`,
       headers: {
         Authorization: token
       }
     })
     console.log(res.data)
-    console.log(res.data.data.questionGrid)
-    res.data.data.questionGrid.map((arr, index) => {
+    // console.log(res.data.data.questionGrid)
+    res.data.data.questionGrid && res.data.data.questionGrid.map((arr, index) => {
       console.log(arr.question)
     })
     setquestion(res.data.data.questionGrid);
@@ -59,8 +58,9 @@ function ViewRecord(props) {
 
   return (
     <>
-  
-      <div className="view-data" >
+    
+      <div className="view-data">
+     
         <div className="view-header1">
           <h5>{role}</h5>
           <InterviewShareGrid managerid={managerid} candidateid={id}/>
@@ -83,8 +83,8 @@ function ViewRecord(props) {
           </Table>
         </TableContainer>
       </div>
-
-      <div className="view-header3" >
+      {/* <div className="view-main"> */}
+      <div className="view-header3">
         <TableContainer >
           <Table aria-label="customized table">
             <TableHead style={rowcss2} >
@@ -105,6 +105,8 @@ function ViewRecord(props) {
                 {question && question.map((arr, index) => {
                   let rate;
                   let path;
+                  let name;
+                  let candidateid;
                   return (
                     <TableRow id="view-header4">
                       <TableCell style={rowcss}>{arr.question}</TableCell>
@@ -112,15 +114,20 @@ function ViewRecord(props) {
 
                   
                       {arr.candidate.map((item) => {
+                        console.log(item.name);
+                         console.log(item.id)
+                          name=item.name;
+                          candidateid=item.id;
                         if (id === item.id) {
                           rate = item.rating;
                          path= item.path?item.path:undefined;
+                        
                         }
                       })}
                       <TableCell style={rowcss} align="center">
-                       {path? <RatingBox/>:null}
+                       {path? <RatingBox name={name} rate={rate} candidateid={candidateid} index={index} path={path} question={arr.question}/>:null}
                      <StarIcon style={{ color: "black", margin: "-5px 5px"}} />{rate}</TableCell>
-
+                        
                     </TableRow>)
                 })
                 }
@@ -132,7 +139,8 @@ function ViewRecord(props) {
           </div>
    
           </div>
-      
+          {/* </div> */}
+          <div style={{marginBottom:"600px"}}></div>
           <CompanyFooter/>
    </>
     )

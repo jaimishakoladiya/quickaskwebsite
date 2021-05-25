@@ -95,17 +95,17 @@ function Row(props) {
   );
 }
 
-Row.propTypes = {
-  row: PropTypes.shape({
-    calories: PropTypes.number.isRequired,
-    carbs: PropTypes.number.isRequired,
-    fat: PropTypes.number.isRequired,
+// Row.propTypes = {
+//   row: PropTypes.shape({
+//     calories: PropTypes.number.isRequired,
+//     carbs: PropTypes.number.isRequired,
+//     fat: PropTypes.number.isRequired,
    
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    protein: PropTypes.number.isRequired,
-  }).isRequired,
-};
+//     name: PropTypes.string.isRequired,
+//     price: PropTypes.number.isRequired,
+//     protein: PropTypes.number.isRequired,
+//   }).isRequired,
+// };
 
 
 function CreateData(props) {
@@ -116,8 +116,9 @@ function CreateData(props) {
   const token=user.token;
  var rows;
 const rowdata=()=>{
-  rows=[];
+ 
   if (props.name===undefined||props.name===""){
+    rows=[];
   props.data.admindata.length===0?<h1 style={{textAlign:"center"}}>No Records Found</h1>: 
   props.data.admindata.map((row,index) => (
     name=`${row['candidate-data'].first_name} ${row['candidate-data'].last_name}`,

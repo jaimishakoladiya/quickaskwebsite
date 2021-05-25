@@ -3,14 +3,15 @@ import axios from 'axios';
 import Button from "@material-ui/core/Button";
 import VideoFooter from './VideoFooter';
 import VideoHeader from './VideoHeader';
-import { useParams } from 'react-router-dom'
+import { useParams ,useHistory} from 'react-router-dom'
 import RecordRTC from 'recordrtc';
-import FinishInterview from './FinishInterview';
+import StartInterviewTips from './StartInterviewTips';
 
 function RealInterview() {
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
   const {tokenid}=useParams()
+  const history=useHistory()
   const [open, setopen] = useState(false)
   const cameraScreen = useRef(null)
   const stopButton = useRef(null)
@@ -73,8 +74,7 @@ function RealInterview() {
         console.log('hhhh')
         stopVideoRecording();
 					if (recorder) { recorder.stopRecording(postFiles); }
-
-        // $('#interview-first').load('/public/views/Atttempt.html');
+          history.push('/GoodBye')
         return;
       }
 
@@ -156,7 +156,7 @@ function RealInterview() {
           </div>
 
         </div></> :
-        <FinishInterview start={startinterview}/>
+        <StartInterviewTips start={startinterview}/>
       }
 
 

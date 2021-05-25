@@ -15,6 +15,7 @@ import StartTest from "../../videoupload/StartTest";
 import InterviewQuestion from "../../videoupload/InterviewQuestion";
 import RealInterview from "../../videoupload/RealInterview";
 import AddInterview from '../../interviews/AddInterview';
+import ViewRecord from "../../interviews/ViewRecord";
 
 
 
@@ -41,12 +42,13 @@ function HomeNavbar() {
         <Route exact path="/adminview" component={AdminView} />
         <Route exact path="/team" component={Team} />
         <Route exact path="/forgotpassword" component={Forpass} />
-        <Route exact path="/reset-password" component={ResetPassword} />
-        <Route exact path="/companyprofile" render={() =>
-          <BrowserRouter><InnerNavbar name={"companyprofile"} /></BrowserRouter>
-        } />
-        <Route exact path="/start/:tokenid/:id" component={StartTest} />
-        <Route exact path="/start/:tokenid" component={RealInterview} />
+        <Route   exact path="/reset-password" component={ResetPassword} />
+        <Route exact path="/companyprofile" render={()=>
+          <BrowserRouter><InnerNavbar name={"companyprofile"}/></BrowserRouter>
+        }/>
+        <Route exact path="/start/:tokenid/:id" component={StartTest}/>
+        <Route exact path="/start/:tokenid" component={RealInterview}/>
+        <Route exact path="/viewrecord/:managerid/:role/:id" component={ViewRecord} /> 
 
       </Switch>
     </div>
