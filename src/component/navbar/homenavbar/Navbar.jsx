@@ -26,9 +26,9 @@ function Navbar() {
             <NavLink to="/team" className="a">
               About Us
             </NavLink>
-            <Link smooth={true} to="#contact" className="a">
+            <NavLink smooth={true} to="/contact" className="a">
               Contact Us
-            </Link>
+            </NavLink>
           </div>
         </div>
         <div class="dropdown">
