@@ -101,11 +101,10 @@ async function postreview(data){
   setmessage(res.data.message);
 }
   const onSubmit = (values) => {
-    // setopenalert(true);
+    setopenalert(true);
     postreview(reviewdata);
     console.log(data)
-    setOpen(false);
-    setopenalert(true)
+    
 
   };
  
@@ -113,6 +112,8 @@ async function postreview(data){
 
   const closealert = () => {
     setopenalert(false);
+    setOpen(false);
+
   };
   const erroralert = (error) => {
     return (
