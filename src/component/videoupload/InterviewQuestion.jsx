@@ -6,7 +6,7 @@ import VideoHeader from './VideoHeader';
 import { useHistory, useParams} from 'react-router-dom'
 import RecordRTC from 'recordrtc';
 
-function InterviewQuestion() {
+function InterviewQuestion(props) {
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
   const history=useHistory()
@@ -65,7 +65,7 @@ function InterviewQuestion() {
           console.log("nooo")
          stopVideoRecording()
 					if (recorder) { recorder.stopRecording(postFiles); }
-          history.push(`/start/${tokenid}`)
+          props.start(tokenid)
         }
   }
   function postFiles() {

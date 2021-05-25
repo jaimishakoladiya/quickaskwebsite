@@ -47,6 +47,7 @@ function Login() {
     }
     else {
       setopenalert(false)
+      setsuccess(true)
       
       localStorage.setItem("user",JSON.stringify(res.data))
       history.push('/companyprofile')
