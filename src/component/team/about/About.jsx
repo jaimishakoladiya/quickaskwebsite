@@ -9,7 +9,7 @@ function About() {
   AOS.init({
     offset: 100,
     duration: 1000,
-    once:true,
+    once: true,
   });
   return (
     <>

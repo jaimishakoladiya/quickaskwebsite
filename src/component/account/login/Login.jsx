@@ -39,7 +39,9 @@ function Login() {
     }
     else {
       setopenalert(false)
-      localStorage.setItem("user", JSON.stringify(res.data))
+      setsuccess(true)
+      
+      localStorage.setItem("user",JSON.stringify(res.data))
       history.push('/companyprofile')
     }
   }

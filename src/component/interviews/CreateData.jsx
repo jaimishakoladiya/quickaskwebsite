@@ -62,6 +62,7 @@ function Row(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
   const classes = useStyles();
+
   return (
     <div >
     <React.Fragment>
@@ -79,7 +80,7 @@ function Row(props) {
         <TableCell id="tablerow">{row.action}</TableCell>
        
       </TableRow>
-    
+      
     </React.Fragment>
     </div>
   );
@@ -135,7 +136,7 @@ const newdate=new Date().toLocaleDateString();
   return (
     <TableContainer component={Paper}>
       <Table aria-label="a dense table">
-      {/* <TableBody>  {rowdata()}</TableBody> */}
+  
       {rowdata()}
      {rows.length==0?<h1 style={{textAlign:"center"}}>No Records Found</h1>:null} 
       {console.log(rows)}

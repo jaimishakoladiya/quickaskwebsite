@@ -1,5 +1,4 @@
 import React from 'react'
-
 import img1 from "../images/start.png"
 import Grid from "@material-ui/core/Grid";
 import logo from "../images/logo2.png"
@@ -8,7 +7,13 @@ import Button from "@material-ui/core/Button";
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import VideoFooter from './VideoFooter';
 import VideoHeader from './VideoHeader';
+import { useHistory} from 'react-router-dom';
+
 function FinishInterview(props) {
+  const history=useHistory()
+const gotostart=(tokenid)=>{
+    history.push(`/start/${props.tokenid}`)
+}
     return (
         <div>
        {/* <VideoHeader/> */}
@@ -31,7 +36,7 @@ function FinishInterview(props) {
                </Grid>
               
            </Grid>
-           <Button onClick={props.start} style={{backgroundColor: "darkcyan",
+           <Button onClick={props.gotostart} style={{backgroundColor: "darkcyan",
                         fontWeight: "bold",
                         width:"180px",
                         marginTop:"-10px",
