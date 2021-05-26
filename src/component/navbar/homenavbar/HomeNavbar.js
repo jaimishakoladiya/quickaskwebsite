@@ -31,6 +31,7 @@ function HomeNavbar() {
         location.pathname === "/companyprofilepage" ||
         location.pathname === "/viewrecord" ||
         location.pathname === "/addinterview"
+    
         ? <InnerNavbar /> : null}
 
 

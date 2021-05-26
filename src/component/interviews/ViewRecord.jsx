@@ -13,6 +13,7 @@ import './Interviews.css';
 import { useParams } from 'react-router';
 import axios from 'axios';
 import RatingBox from '../videoupload/RatingBox';
+
 function ViewRecord(props) {
   useEffect(() => {
     sharegrid();
@@ -58,7 +59,7 @@ function ViewRecord(props) {
 
   return (
     <>
-    
+  
       <div className="view-data">
      
         <div className="view-header1">
