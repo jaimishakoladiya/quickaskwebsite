@@ -43,18 +43,17 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-// const useStyle = makeStyles((theme) => ({
 
-// }));
 
 function RatingBox(props) {
- useEffect(()=>{
-  getreviews()
- },[])
+
   const user=JSON.parse(localStorage.getItem('user'));
   const token=user.token;
+  const type=user.data.type;
+  console.log(type)
   var newpath=`/video/test.mp4`
   const classes = useStyles();
+  const [reviewdata,setreviewdata]=useState()
   const [data, setvalue] = useState({
     rating: props.rate,
     review: ''
@@ -77,11 +76,13 @@ function RatingBox(props) {
   const cameraScreen = useRef(null)
 
 async function postreview(){
-  
+  const name=type==="admin"?`${user.data.admin.firstname} ${user.data.admin.lastname}`:
+  `${user.data.manager.firstname} ${user.data.manager.lastname}`
+  console.log(name)
   const reviewdata={
     candidateToken:props.candidateid,
     managerToken:null,
-    name:props.name,
+    name:name,
     questionNumber:props.index+1,
     rating:data.rating,
     review:data.review,
@@ -100,8 +101,8 @@ console.log(reviewdata);
   setstatus(res.data.status);
   setmessage(res.data.message);
 }
-  const onSubmit = (values) => {
-    
+  const onSubmit = (event) => {
+    console.log(event)
     postreview();
     console.log(data)
     setopenalert(true)
@@ -116,6 +117,9 @@ async function getreviews(){
     }
   })
   console.log(res.data)
+ setreviewdata(res.data.data)
+ console.log(reviewdata)
+ 
 }
   const closealert = () => {
     setopenalert(false);
@@ -134,6 +138,7 @@ async function getreviews(){
 
   const handleClickOpen = () => {
     setOpen(true);
+    getreviews()
   };
   ;
   const handleClose = () => {
@@ -143,11 +148,11 @@ async function getreviews(){
 
   return (
     <div>
-
-      <PlayCircleOutlineIcon onClick={handleClickOpen}
-       style={{ width: "43px", height: "43px",margin:"-35px", color: "darkcyan" }} />
-     
-
+<div style={{display:"flex",justifyContent:"center",marginLeft:"400px"}}>
+     {props.data? <PlayCircleOutlineIcon onClick={handleClickOpen}
+       style={{ width: "43px", height: "43px",marginRight:"8px", color: "darkcyan" }} />:null}
+   <StarIcon style={{marginTop:"6px"}}/><h3 style={{marginTop:"6px",marginRight:"25px"}}>{props.rate}</h3>
+</div>
       <Dialog
         open={open}
         onClose={handleClose}
@@ -180,26 +185,28 @@ async function getreviews(){
             <Button
               type="submit"
 
-              onClick={()=>{
-                // setopenalert(true)
-                onSubmit()
-              }}
+              onClick={onSubmit}
               variant="contained"
               color="secondary"
             >
               Submit
 </Button>
+<hr style={{marginTop:"10px"}}/>
+
+{reviewdata && reviewdata.map((item,index)=>{
+  return <div key={index} style={{border:"1px solid #f6c34c",width:"100%",borderRadius:"10px",height:"auto",color:"black",marginTop:'7px'}}>
+  <div style={{display:"flex"}}><h3 style={{marginLeft:"20px"}}>{item.name}</h3>
+<h2 style={{marginTop:"0px",marginLeft:"10px"}}><Rating precision={0.5} value={item.rating}/></h2></div>
+<h4 style={{marginLeft:"50px"}}>{item.review?item.review:"-"}</h4>
+</div>
+})}
+
           </DialogContentText>
         </DialogContent>
       </Dialog>
     </div>
   );
 }
-const mapDispatchToProps = dispatch => {
-  return {
 
-    // fetchdata:()=>{dispatch(fetchdata())}
-  }
-}
 
-export default connect(mapDispatchToProps)(RatingBox)
+export default RatingBox

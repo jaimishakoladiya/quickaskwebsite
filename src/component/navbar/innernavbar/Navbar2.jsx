@@ -7,6 +7,7 @@ import axios from "axios";
 function Navbar2() {
   const user = JSON.parse(localStorage.getItem('user'));
   const token = user.token;
+  const type=user.data.type;
   const [name, setname] = useState()
 
   useEffect(() => {
@@ -21,9 +22,15 @@ function Navbar2() {
         Authorization: token
       }
     })
-    console.log(res.data);
-    console.log(res.data.data[0].admin.lastname)
-    setname(res.data.data[0].admin.firstname + " " + res.data.data[0].admin.lastname);
+  
+    if(type==="admin"){
+      setname(user.data.admin.firstname + ' ' + user.data.admin.lastname);
+    }
+    else{
+      setname(user.data.manager.firstname + ' ' + user.data.manager.lastname)
+      
+    }
+   
 
   }
   return (
