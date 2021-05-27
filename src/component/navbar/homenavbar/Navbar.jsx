@@ -14,7 +14,7 @@ function Navbar() {
       <div className="navbar-logo">
 <img src={img} className="navbar-logo" />
 </div>
-        {/* <a href="#home" className="a">Blog</a> */}
+     
 
         <div class="dropdown">
           <button class="dropbtn">
@@ -26,9 +26,9 @@ function Navbar() {
             <NavLink to="/team" className="a">
               About Us
             </NavLink>
-            <Link smooth={true} to="#contact" className="a">
+            <NavLink smooth={true} to="/contact" className="a">
               Contact Us
-            </Link>
+            </NavLink>
           </div>
         </div>
         <div class="dropdown">

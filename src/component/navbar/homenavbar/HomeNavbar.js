@@ -16,6 +16,7 @@ import InterviewQuestion from "../../videoupload/InterviewQuestion";
 import RealInterview from "../../videoupload/RealInterview";
 import AddInterview from '../../interviews/AddInterview';
 import ViewRecord from "../../interviews/ViewRecord";
+import Contact from "../../team/contact/Contact";
 import GoodBye from "../../videoupload/GoodBye";
 
 
@@ -30,6 +31,7 @@ function HomeNavbar() {
         location.pathname === "/companyprofilepage" ||
         location.pathname === "/viewrecord" ||
         location.pathname === "/addinterview"
+    
         ? <InnerNavbar /> : null}
 
 
@@ -42,6 +44,7 @@ function HomeNavbar() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/adminview" component={AdminView} />
         <Route exact path="/team" component={Team} />
+        <Route exact path="/contact" component={Contact}/>
         <Route exact path="/forgotpassword" component={Forpass} />
         <Route   exact path="/reset-password" component={ResetPassword} />
         <Route exact path="/companyprofile" render={()=>
