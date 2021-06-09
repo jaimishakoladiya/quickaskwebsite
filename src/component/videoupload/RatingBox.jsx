@@ -109,6 +109,7 @@ console.log(reviewdata);
 
   };
 async function getreviews(){
+  console.log('props', props)
   var res=await axios({
     method:'get',
     url:`http://localhost:2002/interview/${props.candidateid}/reviews/${props.path}`,
@@ -172,7 +173,7 @@ async function getreviews(){
         <DialogTitle id="form-dialog-title"></DialogTitle>
         <DialogContent>
           <DialogContentText>
-            <video style={{ height: "350px", width: "640px", border: "8px solid darkcyan" }} src={newpath} ref={cameraScreen} id="gum" playsInline autoPlay muted ></video>
+            <video style={{ height: "350px", width: "640px", border: "8px solid darkcyan" }} src={`http://localhost:2002${props.path}`} ref={cameraScreen} id="gum" playsInline autoPlay muted ></video>  
 
             <br />
       {status!=null?erroralert(message):null}

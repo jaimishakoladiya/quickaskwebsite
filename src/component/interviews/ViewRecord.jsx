@@ -33,27 +33,24 @@ function ViewRecord(props) {
   }
   const user = JSON.parse(localStorage.getItem('user'));
   const token = user.token;
-  const { managerid, role, id } = useParams()
-  console.log(managerid)
+  const { managerid, id } = useParams()
   const [question, setquestion] = useState([]);
   const [job, setjob] = useState();
-  console.log(managerid);
-  console.log(role);
+  const [candidateName, setCandidateName] = useState();
+
   async function sharegrid() {
     var res = await axios({
       method: 'get',
-      url: `http://localhost:2002/multiple-candidate/${managerid}/${role}/false/multiple`,
+      url: `http://localhost:2002/single-candidate-data/${id}/manager`,
       headers: {
         Authorization: token
       }
     })
-    console.log(res.data)
-    // console.log(res.data.data.questionGrid)
-    res.data.data.questionGrid && res.data.data.questionGrid.map((arr, index) => {
-      console.log(arr.question)
-    })
-    setquestion(res.data.data.questionGrid);
-    console.log(question)
+    setCandidateName(`${res&&res.data&&res.data.data&&res.data.data.candidate&&res.data.data.candidate.first_name} ${res&&res.data&&res.data.data&&res.data.data.candidate&&res.data.data.candidate.last_name}`)
+
+    const questionData=JSON.parse(res&&res.data&&res.data.data&&res.data.data&&res.data.data.data);
+    setquestion(questionData.video)
+    console.log("question  question  question",questionData)
 
   }
 
@@ -63,7 +60,7 @@ function ViewRecord(props) {
       <div className="view-data">
      
         <div className="view-header1">
-          <h5>{role}</h5>
+          <h5>{candidateName}</h5>
           <InterviewShareGrid managerid={managerid} candidateid={id}/>
           <Button variant="contained" onClick={printfun} color="secondary" style={{ marginLeft:"20px", fontSize: "12pt", height: "50px" }}>
             Print</Button>
@@ -103,7 +100,8 @@ function ViewRecord(props) {
             <Table aria-label="customized table">
               <TableHead style={rowcss} >
 
-                {question && question.map((arr, index) => {
+                {question&&question.length>0 && question.map((arr, index) => {
+                  console.log('arr',arr);
                   let rate;
                   let path;
                   let name;
@@ -111,23 +109,12 @@ function ViewRecord(props) {
                   return (
                     <TableRow id="view-header4">
                       <TableCell style={rowcss}>{arr.question}</TableCell>
-                      {console.log(arr.candidate)}
 
                   
-                      {arr.candidate.map((item) => {
-                        console.log(item.name);
-                         console.log(item.id)
-                          name=item.name;
-                          candidateid=item.id;
-                        if (id === item.id) {
-                          rate = item.rating;
-                         path= item.path?item.path:undefined;
-                        
-                        }
-                      })}
+                     
                       <TableCell style={rowcss} align="center" >
-                       <RatingBox name={name}  rate={rate} candidateid={candidateid} index={index} path={path} question={arr.question} 
-                     data={path?true:false} />
+                       <RatingBox name={candidateName}  rate={rate} candidateid={id} index={index} path={arr.path} question={arr.question} 
+                     data={arr.path?true:false} />
                     
                      </TableCell>
                         

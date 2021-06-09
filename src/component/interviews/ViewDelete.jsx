@@ -46,7 +46,7 @@ function  ViewDelete(props) {
   return (
     <div>
         
-        <button id="edit_btn" onClick={() => history.push(`/viewrecord/${manager}/${role}/${id}`)}>       <VisibilityIcon/>
+        <button id="edit_btn" onClick={() => history.push(`/viewrecord/${manager}/${id}`)}>       <VisibilityIcon/>
          </button>
        
        <button id="delete_btn"  onClick={handleClickOpen} > <DeleteIcon/> 
