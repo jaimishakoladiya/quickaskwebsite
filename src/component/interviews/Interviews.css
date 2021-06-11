@@ -362,8 +362,8 @@ width: auto;
   position: absolute;
   margin: 15px auto;
   margin-bottom: 150px;
-  margin-left: 200px;
-  margin-top: 110px;
+  margin-left: 150px;
+  margin-top: -78px;
   justify-content: center;
   padding: 15px 5px 10px 15px;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
@@ -399,7 +399,7 @@ width: auto;
   height: 57px;
   width: 1100px;
   margin: -17px;
-  margin-left: 200px;
+  margin-left: 150px;
   margin-top: 187px;
   color: rgb(8, 8, 8);
   background-color: rgb(245, 202, 92);
@@ -408,7 +408,7 @@ width: auto;
   height: 230px;
   width: 1100px;
  
-  margin-left: 200px;
+  margin-left: 150px;
   margin-top: 16px;
   color: rgb(102, 94, 94);
  
@@ -426,7 +426,7 @@ width: auto;
   height: 70px;
   width: 13px;
   margin: -17px;
-  margin-left: 200px;
+  margin-left: 150px;
   margin-top: -210px;
  
   
