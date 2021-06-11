@@ -1,16 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Field, Formik, Form } from "formik";
-import * as yup from "yup";
+import React, { useState, useRef } from "react";
 import axios from "axios";
-import { withStyles } from '@material-ui/core/styles';
-import img1 from "../images/start.png"
 import StarIcon from '@material-ui/icons/Star';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Rating from '@material-ui/lab/Rating';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
 import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import DialogContent from "@material-ui/core/DialogContent";
@@ -21,7 +14,6 @@ import CloseIcon from "@material-ui/icons/Close";
 import "../companyprofile/Company.css";
 import { makeStyles } from "@material-ui/core";
 import AlertBox from "../alert/AlertBox"
-import { connect } from "react-redux"
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -152,7 +144,7 @@ async function getreviews(){
 <div style={{display:"flex",justifyContent:"center",marginLeft:"400px"}}>
      {props.data? <PlayCircleOutlineIcon onClick={handleClickOpen}
        style={{ width: "43px", height: "43px",marginRight:"8px", color: "darkcyan" }} />:null}
-   <StarIcon style={{marginTop:"6px"}}/><h3 style={{marginTop:"6px",marginRight:"25px"}}>4.0</h3>
+   <StarIcon style={{marginTop:"6px" , color:"#CCCC00"}}/><h3 style={{marginTop:"6px",marginRight:"25px"}}>4.0</h3>
 </div>
       <Dialog
         open={open}

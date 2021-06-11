@@ -4,7 +4,6 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import StarIcon from "@material-ui/icons/Star";
 import Button from "@material-ui/core/Button";
 import img2 from "../../component/images/undraw_profile_pic_ic5t (2).svg";
 import InterviewShareGrid from "./InterviewShareGrid";
@@ -13,7 +12,6 @@ import "./Interviews.css";
 import { useParams } from "react-router";
 import axios from "axios";
 import RatingBox from "../videoupload/RatingBox";
-import Navbar2 from "../navbar/innernavbar/Navbar2";
 
 function ViewRecord(props) {
   useEffect(() => {
@@ -70,8 +68,6 @@ function ViewRecord(props) {
 
   return (
     <>
-      <Navbar2/>
-      <div style={{marginTop:"250px"}}>
       <div className="view-data">
         <div className="view-header1">
           <h5>{candidateName}</h5>
@@ -108,7 +104,7 @@ function ViewRecord(props) {
               <TableRow className="view-pic">
                 <TableCell style={rowcss}>
                   <img
-                  alt="quickAsk"
+                    alt="quickAsk"
                     style={{
                       height: "90px",
                       width: "90px",
@@ -122,7 +118,6 @@ function ViewRecord(props) {
             </TableHead>
           </Table>
         </TableContainer>
-        {/* ///////////// */}
         <div className="main_view">
           <TableContainer>
             <Table aria-label="customized table">
@@ -153,9 +148,7 @@ function ViewRecord(props) {
               </TableHead>
             </Table>
           </TableContainer>
-          <div style={{ borderBottom: "110px solid white" }}></div>
         </div>
-      </div>
       </div>
       {/* </div> */}
       <div style={{ marginBottom: "600px" }}></div>
