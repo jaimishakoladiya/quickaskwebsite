@@ -44,7 +44,7 @@ const InnerNavbar = () => {
         <Route exact path="/forgotpassword" component={Forpass} />
         <Route exact path="/registartion" component={Registration} />
         <Route exact path="/adminview" component={AdminView} />
-        <Route exact path="/viewrecord/:managerid/:role/:id" component={ViewRecord} /> 
+        <Route exact path="/viewrecord/:managerid/:id" component={ViewRecord} /> 
         <Route exact path="/InterviewShareGrid" componet={InterviewShareGrid}/>
         <Route exact path="/GoodBye" component={GoodBye}/>
       </Switch>

@@ -52,7 +52,7 @@ function HomeNavbar() {
         }/>
         <Route exact path="/start/:tokenid/:id" component={StartTest}/>
         <Route exact path="/start/:tokenid" component={RealInterview}/>
-        <Route exact path="/viewrecord/:managerid/:role/:id" component={ViewRecord} /> 
+        <Route exact path="/viewrecord/:managerid/:id" component={ViewRecord} /> 
         <Route exact path="/goodBye" component={GoodBye}/>
 
       </Switch>
