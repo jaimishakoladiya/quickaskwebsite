@@ -12,6 +12,7 @@ import "./Interviews.css";
 import { useParams } from "react-router";
 import axios from "axios";
 import RatingBox from "../videoupload/RatingBox";
+import Navbar2 from '../navbar/innernavbar/Navbar2';
 
 function ViewRecord(props) {
   useEffect(() => {
@@ -30,10 +31,9 @@ function ViewRecord(props) {
   };
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
-  const { managerid, id } = useParams()
+  const { managerid, id,role } = useParams()
   const [question, setquestion] = useState([]);
-  const [job, setjob] = useState();
-  const [candidateName, setCandidateName] = useState();
+  const [candidateName, setCandidateName] = useState('');
 
   async function sharegrid() {
     var res = await axios({
@@ -43,16 +43,44 @@ function ViewRecord(props) {
         Authorization: token
       }
     })
-    setCandidateName(`${res&&res.data&&res.data.data&&res.data.data.candidate&&res.data.data.candidate.first_name} ${res&&res.data&&res.data.data&&res.data.data.candidate&&res.data.data.candidate.last_name}`)
 
-    const questionData=JSON.parse(res&&res.data&&res.data.data&&res.data.data&&res.data.data.data);
-    setquestion(questionData.video)
-    console.log("question  question  question",questionData)
+    if(res.data.status===false){
+      var res1 = await axios({
+        method: 'get',
+        url: `http://localhost:2002/multiple-candidate/${managerid}/${role}/true/manager`,
+        headers: {
+          Authorization: token
+        }
+      })
+    console.log(res1.data.data.questionGrid)
+    var name;
+    var questions=[];
+    res1.data.data.candidate && res1.data.data.candidate.map((item)=>{
+            if(id===item.token){
+              name= item.first_name + ' ' + item.last_name
+            }
+    })
+     setCandidateName(name)
+     res1.data.data.questionGrid && res1.data.data.questionGrid.map((item,value)=>{
+      questions.push({question:item.question})
+     })
+     setquestion(questions)
+
+    }
+    else{
+      setCandidateName(`${res&&res.data&&res.data.data&&res.data.data.candidate&&res.data.data.candidate.first_name} ${res&&res.data&&res.data.data&&res.data.data.candidate&&res.data.data.candidate.last_name}`)
+      const questionData=JSON.parse(res&&res.data&&res.data.data&&res.data.data&&res.data.data.data);
+      setquestion(questionData.video)
+      console.log("question  question  question",questionData)
+    }
+    
+   
 
   }
 
   return (
     <>
+    <Navbar2/>
       <div className="view-data">
         <div className="view-header1">
           <h5>{candidateName}</h5>
@@ -106,16 +134,10 @@ function ViewRecord(props) {
 
                 {question&&question.length>0 && question.map((arr, index) => {
                   console.log('arr',arr);
-                  let rate;
-                  let path;
-                  let name;
-                  let candidateid;
+                 let rate;
                   return (
                     <TableRow id="view-header4">
                       <TableCell style={rowcss}>{arr.question}</TableCell>
-
-                  
-                     
                       <TableCell style={rowcss} align="center" >
                        <RatingBox name={candidateName}  rate={rate} candidateid={id} index={index} path={arr.path} question={arr.question} 
                      data={arr.path?true:false} />
