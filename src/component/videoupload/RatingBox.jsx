@@ -1,16 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Field, Formik, Form } from "formik";
-import * as yup from "yup";
+import React, { useState, useRef } from "react";
 import axios from "axios";
-import { withStyles } from '@material-ui/core/styles';
-import img1 from "../images/start.png"
 import StarIcon from '@material-ui/icons/Star';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Rating from '@material-ui/lab/Rating';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
 import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import DialogContent from "@material-ui/core/DialogContent";
@@ -18,11 +11,9 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
 import CloseIcon from "@material-ui/icons/Close";
-import Grid from "@material-ui/core/Grid";
 import "../companyprofile/Company.css";
 import { makeStyles } from "@material-ui/core";
 import AlertBox from "../alert/AlertBox"
-import { connect } from "react-redux"
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
