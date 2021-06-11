@@ -120,7 +120,6 @@ async function managershare(data){
           aria-labelledby="form-dialog-title"
           TransitionComponent={Transition}
           fullWidth={true}
-          // maxWidth="md"
           classes={{ paper: classes.dialogWrapper }}
         
         >
@@ -187,15 +186,7 @@ async function managershare(data){
                             : formik.errors.companyemail
                             ? erroralert(formik.errors.companyemail)
                             : null}
-{/*   
-                        <Button
-                          // id="dialog-cancel-btn"
-                          onClick={handleClose}
-                          variant="contained"
-                          color="secondary"
-                        >
-                          Cancel
-                        </Button> */}
+
                         <Button 
                           type="submit"
                        

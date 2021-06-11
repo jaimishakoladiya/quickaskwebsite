@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 function RatingBox(props) {
-
+console.log(props.rate)
   const user=JSON.parse(localStorage.getItem('user'));
   const token=user.token;
   const type=user.data.type;
@@ -100,6 +100,7 @@ console.log(reviewdata);
 
   };
 async function getreviews(){
+  
   console.log('props', props)
   var res=await axios({
     method:'get',
@@ -143,7 +144,7 @@ async function getreviews(){
 <div style={{display:"flex",justifyContent:"center",marginLeft:"400px"}}>
      {props.data? <PlayCircleOutlineIcon onClick={handleClickOpen}
        style={{ width: "43px", height: "43px",marginRight:"8px", color: "darkcyan" }} />:null}
-   <StarIcon style={{marginTop:"6px"}}/><h3 style={{marginTop:"6px",marginRight:"25px"}}>{props.rate}</h3>
+   <StarIcon style={{marginTop:"6px" , color:"#CCCC00"}}/><h3 style={{marginTop:"6px",marginRight:"25px"}}>4.0</h3>
 </div>
       <Dialog
         open={open}

@@ -37,7 +37,7 @@ function ViewRecord(props) {
 
   async function sharegrid() {
     var res = await axios({
-      method: 'get',
+      method: "get",
       url: `http://localhost:2002/single-candidate-data/${id}/manager`,
       headers: {
         Authorization: token
@@ -76,6 +76,11 @@ function ViewRecord(props) {
     
    
 
+    const questionData = JSON.parse(
+      res && res.data && res.data.data && res.data.data && res.data.data.data
+    );
+    setquestion(questionData.video);
+    console.log("question  question  question", questionData);
   }
 
   return (
@@ -84,10 +89,15 @@ function ViewRecord(props) {
       <div className="view-data">
         <div className="view-header1">
           <h5>{candidateName}</h5>
-          <InterviewShareGrid managerid={managerid} candidateid={id}/>
-          <Button variant="contained" onClick={printfun} color="secondary" style={{ marginLeft:"20px", fontSize: "12pt", height: "50px" }}>
-            Print</Button>
-        
+          <InterviewShareGrid managerid={managerid} candidateid={id} />
+          <Button
+            variant="contained"
+            onClick={printfun}
+            color="secondary"
+            style={{ marginLeft: "20px", fontSize: "12pt", height: "50px" }}
+          >
+            Print
+          </Button>
         </div>
       </div>
       <div className="view-header2">
@@ -126,27 +136,33 @@ function ViewRecord(props) {
             </TableHead>
           </Table>
         </TableContainer>
-        {/* ///////////// */}
         <div className="main_view">
           <TableContainer>
             <Table aria-label="customized table">
-              <TableHead style={rowcss} >
+              <TableHead style={rowcss}>
+                {question &&
+                  question.length > 0 &&
+                  question.map((arr, index) => {
+                    console.log("arr", arr);
 
-                {question&&question.length>0 && question.map((arr, index) => {
-                  console.log('arr',arr);
-                 let rate;
-                  return (
-                    <TableRow id="view-header4">
-                      <TableCell style={rowcss}>{arr.question}</TableCell>
-                      <TableCell style={rowcss} align="center" >
-                       <RatingBox name={candidateName}  rate={rate} candidateid={id} index={index} path={arr.path} question={arr.question} 
-                     data={arr.path?true:false} />
-                    
-                     </TableCell>
-                        
-                    </TableRow>)
-                })
-                }
+                    return (
+                      <TableRow id="view-header4">
+                        <TableCell style={rowcss}>{arr.question}</TableCell>
+
+                        <TableCell style={rowcss} align="center">
+                          <RatingBox
+                            name={candidateName}
+                            rate={arr.rating}
+                            candidateid={id}
+                            index={index}
+                            path={arr.path}
+                            question={arr.question}
+                            data={arr.path ? true : false}
+                          />
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
               </TableHead>
             </Table>
           </TableContainer>
