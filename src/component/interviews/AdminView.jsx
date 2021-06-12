@@ -8,7 +8,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import CompanyFooter from '../companyprofile/CompanyFooter';
-
+import logo2 from '../images/logo2.png'
 function AdminView() {
   const [name,setname]=useState();
   const inputchangefunction=(event)=>{
@@ -17,7 +17,7 @@ function AdminView() {
   }
     return (
      
-        <div>
+        <div style={{marginLeft:"-5%"}}>
              <div className="detail-data">
         <div className="detail-header1">
           <h5>ALLCANDIDATES</h5>
@@ -72,7 +72,14 @@ function AdminView() {
      </div>
   
      </div>
-  <CompanyFooter/>
+     <div>
+        
+        <div className="interview-footer">
+             <img className="interview-footer-logo"  src={logo2}></img>
+            <h4 style={{lineHeight:"5px"}}>QuickAsk © 2020.All Rights Reserved</h4>
+         
+        </div>
+    </div>
         </div>
     )
 }
