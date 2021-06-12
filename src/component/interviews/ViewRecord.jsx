@@ -34,8 +34,12 @@ function ViewRecord(props) {
   const { managerid, id,role } = useParams()
   const [question, setquestion] = useState([]);
   const [candidateName, setCandidateName] = useState('');
+  const [rate,setRate]=useState([]);
+  const [candidate,setCandidate]=useState([])
 
   async function sharegrid() {
+    var candidatedata=[];
+    var rating=[];
     var res = await axios({
       method: "get",
       url: `http://localhost:2002/single-candidate-data/${id}/manager`,
@@ -43,16 +47,16 @@ function ViewRecord(props) {
         Authorization: token
       }
     })
-
+   
     if(res.data.status===false){
       var res1 = await axios({
-        method: 'get',
-        url: `http://localhost:2002/multiple-candidate/${managerid}/${role}/true/manager`,
-        headers: {
-          Authorization: token
-        }
-      })
-    console.log(res1.data.data.questionGrid)
+      method: 'get',
+      url: `http://localhost:2002/multiple-candidate/${managerid}/${role}/true/manager`,
+      headers: {
+        Authorization: token
+      }
+    })
+  console.log(res1.data)
     var name;
     var questions=[];
     res1.data.data.candidate && res1.data.data.candidate.map((item)=>{
@@ -63,19 +67,42 @@ function ViewRecord(props) {
      setCandidateName(name)
      res1.data.data.questionGrid && res1.data.data.questionGrid.map((item,value)=>{
       questions.push({question:item.question})
+      candidatedata.push({candidate:item.candidate})
      })
+    
      setquestion(questions)
 
     }
     else{
+      var res1 = await axios({
+        method: 'get',
+        url: `http://localhost:2002/multiple-candidate/${managerid}/${role}/true/admin`,
+        headers: {
+          Authorization: token
+        }
+      })
+    console.log(res1.data)
+    res1.data.data.questionGrid && res1.data.data.questionGrid.map((item,value)=>{
+      candidatedata.push({candidate:item.candidate})
+     })
+    
       setCandidateName(`${res&&res.data&&res.data.data&&res.data.data.candidate&&res.data.data.candidate.first_name} ${res&&res.data&&res.data.data&&res.data.data.candidate&&res.data.data.candidate.last_name}`)
       const questionData=JSON.parse(res&&res.data&&res.data.data&&res.data.data&&res.data.data.data);
       setquestion(questionData.video)
       console.log("question  question  question",questionData)
     }
-    
+    candidatedata.map((val)=>{
+      val.candidate.map((item)=>{
+        if(id===item.id)
+        {  console.log(item.rating)
+          rating.push(item.rating) 
+  
+        }
+      })
    
-
+  })
+   setRate(rating)
+   
     const questionData = JSON.parse(
       res && res.data && res.data.data && res.data.data && res.data.data.data
     );
@@ -109,7 +136,7 @@ function ViewRecord(props) {
                 Questions
               </TableCell>
 
-              <TableCell style={rowcss}>Name</TableCell>
+              <TableCell style={rowcss}>Rating</TableCell>
             </TableHead>
           </Table>
         </TableContainer>
@@ -120,14 +147,18 @@ function ViewRecord(props) {
           <Table aria-label="customized table">
             <TableHead style={rowcss2}>
               <TableRow className="view-pic">
+              <TableCell style={rowcss}></TableCell>
+
                 <TableCell style={rowcss}>
                   <img
                     alt="quickAsk"
                     style={{
                       height: "90px",
                       width: "90px",
-                      marginLeft: "800px",
+                      marginLeft: "750px",
                       marginTop: "-30px",
+                      display:"flex",
+                      justifyContent:"center"
                     }}
                     src={img2}
                   />
@@ -143,16 +174,15 @@ function ViewRecord(props) {
                 {question &&
                   question.length > 0 &&
                   question.map((arr, index) => {
-                    console.log("arr", arr);
 
                     return (
-                      <TableRow id="view-header4">
+                      <TableRow id="view-header4" key={index}>
                         <TableCell style={rowcss}>{arr.question}</TableCell>
 
                         <TableCell style={rowcss} align="center">
                           <RatingBox
                             name={candidateName}
-                            rate={arr.rating}
+                            rate={rate[index]}
                             candidateid={id}
                             index={index}
                             path={arr.path}

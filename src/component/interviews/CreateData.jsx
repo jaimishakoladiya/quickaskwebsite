@@ -127,7 +127,7 @@ const newdate=new Date().toLocaleDateString();
       <Table aria-label="a dense table">
   
       {rowdata()}
-     {rows.length==0?<h1 style={{textAlign:"center"}}>No Records Found</h1>:null} 
+     {rows.length===0?<h1 style={{textAlign:"center"}}>No Records Found</h1>:null} 
       {console.log(rows)}
         {/* {props.data.admindata.length===0?<h1 style={{textAlign:"center"}}>No Records Found</h1>: <TableBody>
           {props.data.admindata.map((row,index) => (
