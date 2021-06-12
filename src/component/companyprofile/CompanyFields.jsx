@@ -145,9 +145,37 @@ return (
         <NativeSelect id="demo-customized-select-native" name="state"
          onChange={inputfieldfunction}
          value={inputvalue.state}>
-          <option value="gujarat">gujarat</option>
-          <option value="mumbai">mumbai</option>
-          <option value="rajstthan">rajasthan</option>
+                                                        <option selected> -- Select State -- </option>
+                                                        <option value="AP">Andhra Pradesh</option>
+                                                        <option value="AP">Arunachal Pradesh</option>
+                                                        <option value="AS">Assam</option>
+                                                        <option value="BH">Bihar</option>
+                                                        <option value="CG">Chhattisgarh</option>
+                                                        <option value="GO">Goa</option>
+                                                        <option value="GJ">Gujarat</option>
+                                                        <option value="HR">Haryana</option>
+                                                        <option value="HP">Himachal Pradesh </option>
+                                                        <option value="JK">Jammu and Kashmir</option>
+                                                        <option value="JH">Jharkhand</option>
+                                                        <option value="KT">Karnataka</option>
+                                                        <option value="KR">Kerala</option>
+                                                        <option value="MP">Madya Pradesh</option>
+                                                        <option value="MH">Maharashtra</option>
+                                                        <option value="MN">Manipur</option>
+                                                        <option value="MG">Meghalaya</option>
+                                                        <option value="MZ">Mizoram</option>
+                                                        <option value="NL">Nagaland</option>
+                                                        <option value="OR">Orissa</option>
+                                                        <option value="PJ">Punjab</option>
+                                                        <option value="RJ">Rajasthan</option>
+                                                        <option value="SI">Sikkim</option>
+                                                        <option value="TN">Tamil Nadu</option>
+                                                        <option value="TG">Telagana</option>
+                                                        <option value="MO">Missouri</option>
+                                                        <option value="TP">Tripura</option>
+                                                        <option value="UT">Uttaranchal</option>
+                                                        <option value="UP">Uttar Pradesh</option>
+                                                        <option value="WB">West Bengal</option>
         </NativeSelect>
       </FormControl>
       <br></br>
