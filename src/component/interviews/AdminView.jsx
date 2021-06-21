@@ -16,10 +16,10 @@ function AdminView() {
     console.log(name);
   }
     return (
-     
-        <div style={{marginLeft:"-5%"}}>
-             <div className="detail-data">
-        <div className="detail-header1">
+     <div>
+         {/* <div style={{marginLeft:"-5%"}}>
+             <div className="detail-data"> */}
+        {/* <div className="detail-header1">
           <h5>ALLCANDIDATES</h5>
           <div className="detail-input">
            <h6>Search</h6> 
@@ -34,44 +34,18 @@ function AdminView() {
             />
            
           </div>
-        </div>
+        </div> */}
      
-       <div className="detail-header2">
+       {/* <div className="detail-header2">
     
-       <TableContainer >
-        <Table aria-label="customized table">
-        <TableHead id="headercss" >
-            
-          
-              <TableHead id="headercss">Name</TableHead>
-        
-             <TableHead id="headercss" >JobTitle</TableHead>
-   
-           <TableHead id="headercss" >Status</TableHead>
-            <TableHead id="headercss" >Date</TableHead>
-           
-            <TableHead id="headercss" >score</TableHead>
-            <TableHead id="headercss" >Action</TableHead>
-          
-          </TableHead>
        
-          <TableRow>
-          <div className="interview_card1">
+         <div className="interview_card1"> */}
       
-         <CreateData name={name}/>    </div>
-          </TableRow>   
-          
- 
-
-        </Table>
-        
-        </TableContainer> 
-      
-     
-       
-     </div>
+      <CreateData name={name}/>  
+         {/* </div> */}
+     {/* </div>
   
-     </div>
+     </div> */}
      <div>
         
         <div className="interview-footer">
@@ -80,6 +54,7 @@ function AdminView() {
          
         </div>
     </div>
+         {/* </div> */}
         </div>
     )
 }

@@ -7,7 +7,7 @@ import axios from "axios";
 function Navbar2() {
   const user = JSON.parse(localStorage.getItem('user'));
   const token = user.token;
-  const type=user.data.type;
+  const type = user.data.type;
   const [name, setname] = useState()
 
   useEffect(() => {
@@ -22,16 +22,12 @@ function Navbar2() {
         Authorization: token
       }
     })
-  
-    if(type==="admin"){
+    if (type === "admin") {
       setname(user.data.admin.firstname + ' ' + user.data.admin.lastname);
     }
-    else{
+    else {
       setname(user.data.manager.firstname + ' ' + user.data.manager.lastname)
-      
     }
-   
-
   }
   return (
     <div>
@@ -39,7 +35,7 @@ function Navbar2() {
 
 
         <div className="out-nav-logo">
-          <img src={img} className="out-nav-logo" />
+          <img src={img} className="out-nav-logo" alt="img"/>
         </div>
         <nav className="first">
           <ul>
@@ -57,7 +53,7 @@ function Navbar2() {
               </NavLink>
             </li>
             <li>
-              <a href="#" className="activename">
+              <a href="#" className="activename" >
                 {name}
               </a>
             </li>

@@ -5,7 +5,7 @@
 
 }
 .detail-data {
-  position: absolute;
+  position: relative;
   margin: 15px auto;
   margin-bottom: 100px;
   margin-left: 270px;

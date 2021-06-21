@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color:white;
+  background-color: white;
   margin-top: 30px;
 }
 .contact-container {
@@ -12,12 +12,11 @@
   max-width: 2000px;
   margin: 20px;
   height: 800px;
-  background:white;
+  background: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 3px 9px 15px 4px gray ;
-  
+  box-shadow: 3px 9px 15px 4px gray;
 }
 .contact-container .contact-formbox {
   width: 65%;
@@ -27,7 +26,6 @@
 }
 
 .contact-container .contact-formbox form {
-  /* position: relative; */
   width: 100%;
   padding: 0 0 0 75px;
   margin-top: -100px;
@@ -47,8 +45,7 @@
   font-size: 1.3rem;
   letter-spacing: 1px;
   margin-bottom: 60px;
-  font-family:'Times New Roman', Times, serif
-  
+  font-family: "Times New Roman", Times, serif;
 }
 
 #contact-butn {
@@ -58,14 +55,13 @@
   font-size: 20px;
   font-weight: bold;
   color: white;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
-  
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-#contact-butn:hover{
-  width:170px;
-  height:45px;
+#contact-butn:hover {
+  width: 170px;
+  height: 45px;
   font-size: 18px;
-  color:black
+  color: black;
 }
 .contact-container
   .contact-formbox

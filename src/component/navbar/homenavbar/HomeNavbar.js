@@ -1,6 +1,5 @@
 import React from "react";
-import { Route, Switch, Redirect } from "react-router";
-import Navbar from "./Navbar";
+import { Route, Switch } from "react-router";
 import Registration from "../../account/register/Registartion";
 import Login from "../../account/login/Login";
 import Forpass from "../../account/login/Forpass";
@@ -9,7 +8,6 @@ import { BrowserRouter, useLocation } from "react-router-dom";
 import InnerNavbar from "./../innernavbar/InnerNavbar";
 import Team from "../../team/Team";
 import ResetPassword from "../../account/register/ResetPassword";
-import Start from "../../videoupload/Start";
 import AdminView from "../../interviews/AdminView";
 import StartTest from "../../videoupload/StartTest";
 import RealInterview from "../../videoupload/RealInterview";
@@ -49,25 +47,13 @@ function HomeNavbar() {
             </BrowserRouter>
           )}
         />
-        {/* <Redirect
-          to={{
-            pathname: "/start/:tokenid/:id",
-            // state: { referrer: currentLocation },
-          }}
-        />
-        <Redirect
-          to={{
-            pathname: "/start/:tokenid",
-            // state: { referrer: currentLocation },
-          }}
-        /> */}
         <Route exact path="/start/:tokenid/:id" component={StartTest} />
         <Route exact path="/start/:tokenid" component={RealInterview} />
         <Route
           exact
           path="/viewrecord/:managerid/:id/:role"
           component={ViewRecord}
-        />
+        />   
         <Route exact path="/goodBye" component={GoodBye} />
       </Switch>
     </div>

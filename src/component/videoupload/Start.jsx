@@ -1,17 +1,14 @@
+import React, { useRef } from 'react';
 
-import React, { useState, useRef } from 'react';
-
-//  import './VIdeoStart'
 import './Video.css'
 const Start = () => {
-  const [disable, setdisable] = useState(false)
   const recordButton = useRef(null)
   const playButton = useRef(null)
   const downloadButton = useRef(null)
   const recordedVideo = useRef(null)
   const cameraScreen = useRef(null)
-  const errorMsgElement=useRef(null)
-  const puaseRecording=useRef(null)
+  const errorMsgElement = useRef(null)
+  const puaseRecording = useRef(null)
   let mediaRecorder;
   let recordedBlobs;
 
@@ -28,7 +25,6 @@ const Start = () => {
         downloadButton.current.disabled = false;
       }
     });
-    // console.log('getUserMedia() got stream:', stream);
     window.stream = stream;
 
     const gumVideo = document.querySelector('video#gum');
@@ -56,31 +52,24 @@ const Start = () => {
     console.log(recordButton)
     playButton.current.disabled = true;
     downloadButton.current.disabled = true;
-    // puaseRecording.current.disabled=true;
-    // setdisable(true)
     mediaRecorder.onstop = (event) => {
       console.log('Recorder stopped: ', event);
       console.log('Recorded Blobs: ', recordedBlobs);
     };
 
-    
+
     mediaRecorder.ondataavailable = handleDataAvailable;
     mediaRecorder.start();
-    puaseRecording.current.addEventListener('click',()=>{
-    console.log('MediaRecorder started', mediaRecorder.state);
-
-      if(mediaRecorder.state === "recording") {
+    puaseRecording.current.addEventListener('click', () => {
+      console.log('MediaRecorder started', mediaRecorder.state);
+      if (mediaRecorder.state === "recording") {
         mediaRecorder.pause();
-        // recording paused
-    console.log('MediaRecorder started', mediaRecorder);
+        console.log('MediaRecorder started', mediaRecorder);
 
-      } else if(mediaRecorder.state === "paused") {
+      } else if (mediaRecorder.state === "paused") {
         mediaRecorder.resume();
-        // resume recording
-    console.log('MediaRecorder started', mediaRecorder);
-
+        console.log('MediaRecorder started', mediaRecorder);
       }
-  
     })
     console.log('MediaRecorder started', mediaRecorder);
   }
@@ -118,10 +107,10 @@ const Start = () => {
       handleSuccess(stream);
     } catch (e) {
       console.error('navigator.getUserMedia error:', e);
-       errorMsgElement.current.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
+      errorMsgElement.current.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
     }
   }
- 
+
   const startcamera = async () => {
     cameraScreen.current.style.display = "inline";
     recordedVideo.current.style.display = "none";
@@ -137,8 +126,6 @@ const Start = () => {
     };
     console.log('Using media constraints:', constraints);
     await init(constraints)
-    // startRecording()
-
   }
 
   const recordbtn = () => {
@@ -154,9 +141,6 @@ const Start = () => {
   }
   return (
     <>
-      {/* <ScriptTag type="text/javascript" src="./VIdeoStart.js" /> */}
-
-
       <div id="container">
         <video id="gum" playsInline autoPlay muted ref={cameraScreen}></video>
         <video id="recorded" playsInline loop ref={recordedVideo}></video>
@@ -165,7 +149,7 @@ const Start = () => {
           <button id="start" onClick={startcamera}>Start camera</button>
           <button id="record" disabled onClick={recordbtn} ref={recordButton}>Record</button>
           <button id="play" disabled ref={playButton}>Play</button>
-          <button id="Puase"  ref={puaseRecording}>Puase</button>
+          <button id="Puase" ref={puaseRecording}>Puase</button>
 
           <button id="download" disabled ref={downloadButton}>Download</button>
         </div>
@@ -181,15 +165,10 @@ const Start = () => {
           <span id="errorMsg" ref={errorMsgElement}></span>
         </div>
       </div>
-      <script>
-        {
-
-        }
-      </script>
-
     </>
   )
 }
+
 export default Start
 
 

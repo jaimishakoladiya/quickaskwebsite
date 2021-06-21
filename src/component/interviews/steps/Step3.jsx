@@ -7,38 +7,38 @@ import * as yup from "yup";
 import AlertBox from "../../alert/AlertBox";
 import { Form, Formik, Field } from "formik";
 import Step1AddField from "./Step1AddField";
-import {addpaneldata,deletepaneldata} from "../../../redux/actions/interview/InterviewAction";
+import { addpaneldata, deletepaneldata } from "../../../redux/actions/interview/InterviewAction";
 import { connect } from "react-redux";
 import Step3AddPanel from "./Step3AddPanel";
 const Step3 = (props) => {
   const [open, setopenalert] = useState(false);
-  const [panelcandidate , setpanelcandidate] = useState({
-  firstName:"",
-  lastName:""
-})
-const [panelArray,setpanelArray] = useState([]);
-  const inputChangeFunction =(event)=>{
-    const { name , value} = event.target;
-    setpanelcandidate ((oldvalue)=>{
+  const [panelcandidate, setpanelcandidate] = useState({
+    firstName: "",
+    lastName: ""
+  })
+  const [panelArray, setpanelArray] = useState([]);
+  const inputChangeFunction = (event) => {
+    const { name, value } = event.target;
+    setpanelcandidate((oldvalue) => {
       return {
         ...oldvalue,
-        [name] : value
+        [name]: value
       }
     })
-}
-const AddpanelCandidate =(values)=>{
-  setpanelArray((oldvalue)=>{
-    return [ ...oldvalue , panelcandidate]
-  })
-}
-const deletefunction=(id)=>{
+  }
+  const AddpanelCandidate = (values) => {
+    setpanelArray((oldvalue) => {
+      return [...oldvalue, panelcandidate]
+    })
+  }
+  const deletefunction = (id) => {
     // return setpanelArray((oldval)=>{
     //   return oldval.filter((arr,index)=>{
     //     return index !== id ;
     //   })
     // })
     props.deletepaneldata(id)
-}
+  }
   const initialValues = {
     firstName: "",
     lastName: "",
@@ -130,14 +130,14 @@ const deletefunction=(id)=>{
                   {formik.touched.firstName && formik.errors.firstName
                     ? erroralert(formik.errors.firstName)
                     : formik.touched.firstName && formik.errors.lastName
-                    ? erroralert(formik.errors.lastName)
-                    : formik.touched.firstName && formik.errors.email
-                    ? erroralert(formik.errors.email)
-                    : null}
+                      ? erroralert(formik.errors.lastName)
+                      : formik.touched.firstName && formik.errors.email
+                        ? erroralert(formik.errors.email)
+                        : null}
 
                   <div className="step3-Add">
                     <Button
-                     style={{marginLeft:"30px",marginTop:"20px"}}
+                      style={{ marginLeft: "30px", marginTop: "20px" }}
                       type="submit"
                       onClick={() => setopenalert(true)}
                       variant="contained"
@@ -147,16 +147,16 @@ const deletefunction=(id)=>{
                     </Button>
                   </div>
                   <div>
-                   
-                           {
-                             props.newdata.panel.map((item,index)=>{
-                               return(
-                             <Step3AddPanel newrecords={panelcandidate}
-                           deletefunction={deletefunction}
-                           newrecords={props.newdata.panel[index]}
-                           id={index}/>)
-                         })}
-                    
+
+                    {
+                      props.newdata.panel.map((item, index) => {
+                        return (
+                          <Step3AddPanel newrecords={panelcandidate}
+                            deletefunction={deletefunction}
+                            newrecords={props.newdata.panel[index]}
+                            id={index} />)
+                      })}
+
                   </div>
                 </div>
               </Form>
@@ -167,15 +167,15 @@ const deletefunction=(id)=>{
     </Formik>
   );
 };
-const mapStateToProps = state =>{
-  return{
-    newdata:state.interview
+const mapStateToProps = state => {
+  return {
+    newdata: state.interview
   }
 }
 const mapDispatchToProps = dispatch => {
-  return{
-    addpaneldata: (newdata) => {dispatch(addpaneldata(newdata))},
-    deletepaneldata:(id) => {dispatch(deletepaneldata(id))}
+  return {
+    addpaneldata: (newdata) => { dispatch(addpaneldata(newdata)) },
+    deletepaneldata: (id) => { dispatch(deletepaneldata(id)) }
   }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Step3);
+export default connect(mapStateToProps, mapDispatchToProps)(Step3);

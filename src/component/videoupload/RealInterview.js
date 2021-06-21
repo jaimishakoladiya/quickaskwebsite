@@ -41,7 +41,7 @@ function RealInterview() {
       })
       .then(async function (stream) {
         if (cameraScreen) {
-            cameraScreen.current.srcObject=stream;
+          cameraScreen.current.srcObject = stream;
         }
         recorder = RecordRTC(stream, {
           type: "video",
@@ -118,7 +118,8 @@ function RealInterview() {
       url: `http://localhost:2002/start/videoUpload/uploadFile`,
       data: formData,
       headers: {
-        Authorization: token
+        Authorization: token,
+        token:tokenid
       },
     });
   }
