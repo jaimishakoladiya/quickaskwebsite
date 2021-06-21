@@ -16,9 +16,12 @@ import axios from "axios";
 import { makeStyles } from "@material-ui/core";
 import AlertBox from "../../alert/AlertBox";
 import QuestionsCard from "./QuestionsCard";
-import { connect } from "react-redux"
+import { connect } from "react-redux";
 import DisplayQuestions from "../DisplayQuestions";
-import { addjobdata, addjobquestion, deletejobquestion, getjobdata, fetchdata } from "../../../redux/actions/companyprofile/companprofileAction"
+import {
+  getjobdata,
+  fetchdata,
+} from "../../../redux/actions/companyprofile/companprofileAction";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -38,60 +41,57 @@ function AddJob({ data, fetchdata }) {
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
-  const [questions, setnewque] = useState([])
+  const [questions, setnewque] = useState([]);
   useEffect(() => {
-    fetchdata()
+    fetchdata();
     console.log("called add job useEffect");
-  }, [])
+  }, []);
 
   const SelectItem = () => {
     let items = [];
     data.dept.map((item, index) => {
-      items.push(<option value={item.name}>{item.name}</option>)
-    })
+      items.push(<option value={item.name}>{item.name}</option>);
+    });
     return items;
   };
   const addquestion = (newq) => {
     setnewque((olditem) => {
-      return [
-        ...olditem,
-        newq
-      ]
-    })
-  }
+      return [...olditem, newq];
+    });
+  };
   const deletequestions = (id) => {
     setnewque((olditem) => {
       return olditem.filter((arr, index) => {
         return index !== id;
-      })
-    })
-  }
+      });
+    });
+  };
   const initialValues = {
     title: "",
     department: "",
   };
   async function savejobdata(data) {
     var res = await axios({
-      method: 'post',
+      method: "post",
       url: "http://localhost:2002/save-job-detail",
       data: data,
       headers: {
         Authorization: token,
-      }
-    })
-    fetchdata()
+      },
+    });
+    fetchdata();
     const result = await axios({
-      method: 'get',
+      method: "get",
       url: "http://localhost:2002/get-job-detail",
       headers: {
-        Authorization: token
-      }
-    })
+        Authorization: token,
+      },
+    });
     setstatus(res.data.status);
     setmessege(res.data.message);
   }
   const onSubmit = (values) => {
-    console.log({ ...values, questions })
+    console.log({ ...values, questions });
     savejobdata({ ...values, questions });
     setOpen(false);
     setnewque([]);
@@ -175,9 +175,10 @@ function AddJob({ data, fetchdata }) {
                           />
                         </Grid>
                         <Grid item xs={6}>
-                          <Field as={NativeSelect}
+                          <Field
+                            as={NativeSelect}
                             style={{ marginLeft: "10px", width: "350px" }}
-                            name='department'
+                            name="department"
                           >
                             <option value="null">--Select Department--</option>
                             {SelectItem()}
@@ -190,13 +191,16 @@ function AddJob({ data, fetchdata }) {
                           <h3>Time Allocated</h3>
                         </Grid> */}
                       </Grid>
-                      <DisplayQuestions question={questions} deletequestion={deletequestions} />
+                      <DisplayQuestions
+                        question={questions}
+                        deletequestion={deletequestions}
+                      />
                       <br />
                       {formik.touched.title && formik.errors.title
                         ? erroralert(formik.errors.title)
                         : formik.touched.department && formik.errors.department
-                          ? erroralert(formik.errors.department)
-                          : null}
+                        ? erroralert(formik.errors.department)
+                        : null}
                       <Button
                         id="dialog-cancel-btn"
                         onClick={handleClose}
@@ -228,16 +232,20 @@ function AddJob({ data, fetchdata }) {
     </div>
   );
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    data: state.companyprofile
-  }
-}
-const mapDispatchToProps = dispatch => {
+    data: state.companyprofile,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
   return {
-    getjobdata: (data) => { dispatch(getjobdata(data)) },
-    fetchdata: () => { dispatch(fetchdata()) }
-  }
-}
+    getjobdata: (data) => {
+      dispatch(getjobdata(data));
+    },
+    fetchdata: () => {
+      dispatch(fetchdata());
+    },
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddJob)
+export default connect(mapStateToProps, mapDispatchToProps)(AddJob);

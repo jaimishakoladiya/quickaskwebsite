@@ -5,22 +5,22 @@ import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import image3 from "../../images/undraw_profile_pic_ic5t (2).svg";
 import { Field, Formik, Form } from "formik";
 import "./registarion.css";
-import { Route, Switch, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import * as yup from "yup";
 import PersonIcon from "@material-ui/icons/Person";
-import axios from 'axios';
+import axios from "axios";
 import AlertBox from "../../alert/AlertBox";
 function Registration() {
   const [openalert, setopenalert] = useState(false);
   async function makePostRequest(data) {
-    let res = await axios.post("http://localhost:2002/register", data)
-    console.log(res.data)
+    let res = await axios.post("http://localhost:2002/register", data);
+    console.log(res.data);
   }
-const history = useHistory();
+  const history = useHistory();
   const closealert = () => {
     setopenalert(false);
   };
-const erroralert = (error) => {
+  const erroralert = (error) => {
     return (
       <AlertBox
         setopenalert={openalert}
@@ -38,7 +38,7 @@ const erroralert = (error) => {
   const onSubmit = (values, onsubmitprops) => {
     makePostRequest(values);
     console.log(values);
-    history.push("/login")
+    history.push("/login");
   };
   const validationSchema = yup.object({
     email: yup.string().required("email is required"),
@@ -58,7 +58,11 @@ const erroralert = (error) => {
       {(formik) => {
         return (
           <>
-            <img src={image1} className="registration-wave"></img>
+            <img
+              alt="QuickAsk"
+              src={image1}
+              className="registration-wave"
+            ></img>
             <div className="registration-container">
               <div className="reimg" id="img">
                 <img
@@ -69,7 +73,11 @@ const erroralert = (error) => {
               </div>
               <div className="reg2-container">
                 <Form className="registation-form">
-                  <img src={image3} className="registration-face"></img>
+                  <img
+                    alt="QuickAsk"
+                    src={image3}
+                    className="registration-face"
+                  ></img>
                   <div className="input-group">
                     <div className="registation-div one focus">
                       <div className="icons">
@@ -116,10 +124,10 @@ const erroralert = (error) => {
                     {formik.errors.firstname
                       ? erroralert(formik.errors.firstname)
                       : formik.errors.lastname
-                        ? erroralert(formik.errors.lastname)
-                        : formik.errors.companyemail
-                          ? erroralert(formik.errors.companyemail)
-                          : null}
+                      ? erroralert(formik.errors.lastname)
+                      : formik.errors.companyemail
+                      ? erroralert(formik.errors.companyemail)
+                      : null}
                     <input
                       type="submit"
                       className="tn"

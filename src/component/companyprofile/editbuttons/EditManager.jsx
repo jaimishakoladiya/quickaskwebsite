@@ -19,10 +19,15 @@ import QuestionsCard from "../addbuttons/QuestionsCard";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { connect } from "react-redux";
-import { editdeptdata, editjobdata, deletemanagerdata, editmanagerdata, fetchdata } from "../../../redux/actions/companyprofile/companprofileAction";
-import DisplayQuestions from "../DisplayQuestions"
+import {
+  editjobdata,
+  deletemanagerdata,
+  editmanagerdata,
+  fetchdata,
+} from "../../../redux/actions/companyprofile/companprofileAction";
+import DisplayQuestions from "../DisplayQuestions";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import axios from 'axios';
+import axios from "axios";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -38,8 +43,8 @@ const useStyle = makeStyles((theme) => ({
 function EditManager(props) {
   useEffect(() => {
     getque();
-  }, [])
-  const user = JSON.parse(localStorage.getItem('user'));
+  }, []);
+  const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
 
   const classes = useStyle();
@@ -47,69 +52,69 @@ function EditManager(props) {
   const [opendelete, setOpendelete] = useState(false);
   const [openalert, setopenalert] = useState(true);
   const [Yesopen, SetYesopen] = useState(false);
-  const [question, setnewque] = useState([])
-  const[message,setmess]=useState();
-  const[status,setstatus]=useState(null);
-  async function addquestion  (newq) {
+  const [question, setnewque] = useState([]);
+  const [message, setmess] = useState();
+  const [status, setstatus] = useState(null);
+
+  async function addquestion(newq) {
     setnewque((olditem) => {
-      return [
-        ...olditem,
-        newq
-      ]
-    })
-    
+      return [...olditem, newq];
+    });
+
     var res = await axios({
       method: "post",
       url: `http://localhost:2002/manager/save-question/${props.editdata.manager_token}`,
-      data:{...newq},
+      data: { ...newq },
       headers: {
-        Authorization: token
-      }
-    })
-    console.log(res.data)
+        Authorization: token,
+      },
+    });
+    console.log(res.data);
     setmess(res.data.message);
     setstatus(res.data.status);
   }
-async function   deletequestion (id){
+
+  async function deletequestion(id) {
     setnewque((olditem) => {
       return olditem.filter((arr, index) => {
-        return index != id;
-      })
-    })
-    var id=question[id].id;
+        return index !== id;
+      });
+    });
+    var id = question[id].id;
     console.log(id);
     var res = await axios({
-      
       method: "get",
       url: `http://localhost:2002/remove-department-question/${props.editdata.manager_token}/${id}`,
       headers: {
-        Authorization: token
-      }
-    })
-    console.log(res.data)
-  };
+        Authorization: token,
+      },
+    });
+    console.log(res.data);
+  }
+
   async function deletemanager() {
     var res = await axios({
       method: "post",
       url: `http://localhost:2002/delete-manager/${props.editdata.manager_token}/true`,
       headers: {
-        Authorization: token
-      }
-    })
+        Authorization: token,
+      },
+    });
     props.fetchdata();
   }
+
   async function getque() {
     var resq = await axios({
-      method: 'get',
+      method: "get",
       url: `http://localhost:2002/view-manager-question/${props.editdata.manager_token}`,
       headers: {
-        Authorization: token
-      }
-    })
-    console.log(resq.data)
-    setnewque(resq.data.data)
+        Authorization: token,
+      },
+    });
+    console.log(resq.data);
+    setnewque(resq.data.data);
   }
- 
+
   const initialValues = {
     firstname: props.editdata.firstname,
     lastname: props.editdata.lastname,
@@ -118,19 +123,19 @@ async function   deletequestion (id){
 
   const onSubmit = (values) => {
     console.log(values);
-   props.editjobdata(values, props.id)
+    props.editjobdata(values, props.id);
     setOpen(false);
-  
-   
   };
 
   const validationSchema = yup.object({
     firstname: yup.string().required("All fields are required"),
     lastname: yup.string().required("All fields are required"),
-    email: yup.string().email("email invalid ").required("All fields are required"),
-
+    email: yup
+      .string()
+      .email("email invalid ")
+      .required("All fields are required"),
   });
- 
+
   const erroralert = (error) => {
     return (
       <AlertBox
@@ -140,35 +145,37 @@ async function   deletequestion (id){
       />
     );
   };
+
   const closealert = () => {
     setopenalert(false);
   };
+
   const handleClickOpen = () => {
     setOpen(true);
-
   };
-  const handleClickOpen1 = () => {
 
+  const handleClickOpen1 = () => {
     setOpendelete(true);
   };
+
   const handleClose = () => {
     setOpen(false);
-
   };
-  const handleClose1 = () => {
 
+  const handleClose1 = () => {
     setOpendelete(false);
   };
+
   const YesFunction = () => {
     SetYesopen(true);
   };
+
   const managerdata = () => {
     // props.deletemanagerdata(props.id);
     deletemanager();
     SetYesopen(false);
-    handleClose1()
-
-  }
+    handleClose1();
+  };
 
   return (
     <div>
@@ -189,7 +196,7 @@ async function   deletequestion (id){
 
       {/* delete manager */}
 
-      {status!=null?erroralert(message):null}
+      {status != null ? erroralert(message) : null}
       <Dialog
         open={opendelete}
         onClose={handleClose1}
@@ -197,21 +204,29 @@ async function   deletequestion (id){
         aria-describedby="alert-dialog-description"
       >
         <div style={{ borderTop: "10px solid darkcyan" }}>
-          <DialogTitle id="max-width-dialog-title"><h3>PLEASE CONFIRM</h3></DialogTitle>
+          <DialogTitle id="max-width-dialog-title">
+            <h3>PLEASE CONFIRM</h3>
+          </DialogTitle>
           <DialogContent style={{ width: "400px" }}>
             <DialogContentText>
               <h4>Are You Want To Sure Delete Data? </h4>
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-
-
-            <Button onClick={handleClose1}
-              variant="contained" style={{ backgroundColor: "black", color: "white" }} autoFocus>
+            <Button
+              onClick={handleClose1}
+              variant="contained"
+              style={{ backgroundColor: "black", color: "white" }}
+              autoFocus
+            >
               <h3>Cancel</h3>
             </Button>
             <Button
-              variant="contained" onClick={YesFunction} style={{ backgroundColor: "#dc3545", color: "white" }} autoFocus>
+              variant="contained"
+              onClick={YesFunction}
+              style={{ backgroundColor: "#dc3545", color: "white" }}
+              autoFocus
+            >
               <h3>Delete</h3>
             </Button>
           </DialogActions>
@@ -223,7 +238,6 @@ async function   deletequestion (id){
         >
           <DialogTitle id="max-width-dialog-title">
             <h3> Data Deleted Successfully</h3>
-
           </DialogTitle>
           <DialogContent>
             <DialogContentText>
@@ -233,12 +247,16 @@ async function   deletequestion (id){
           <Button
             onClick={managerdata}
             variant="contained"
-            style={{ backgroundColor: "darkcyan", color: "white", fontSize: "20px" }} >
+            style={{
+              backgroundColor: "darkcyan",
+              color: "white",
+              fontSize: "20px",
+            }}
+          >
             OK
-              </Button>
+          </Button>
         </Dialog>
       </Dialog>
-
 
       {/* edit manager */}
 
@@ -337,19 +355,20 @@ async function   deletequestion (id){
                         {/* <Grid item xs={4}>
                           <h3>Time Allocated</h3>
                         </Grid> */}
-
-
                       </Grid>
-                      <DisplayQuestions question={question} deletequestion={deletequestion} />
+                      <DisplayQuestions
+                        question={question}
+                        deletequestion={deletequestion}
+                      />
                       <br />
 
                       {formik.errors.firstname
                         ? erroralert(formik.errors.firstname)
                         : formik.errors.lastname
-                          ? erroralert(formik.errors.lastname)
-                          : formik.errors.email
-                            ? erroralert(formik.errors.email)
-                            : null}
+                        ? erroralert(formik.errors.lastname)
+                        : formik.errors.email
+                        ? erroralert(formik.errors.email)
+                        : null}
 
                       <Button
                         onClick={handleClose}
@@ -385,18 +404,24 @@ const mapStateToProps = (state, ownprops) => {
   //   return index === ownprops.id
   // })
   return {
+    editdata: state.companyprofile.manager[ownprops.id],
+  };
+};
 
-    editdata: state.companyprofile.manager[ownprops.id]
-
-  }
-}
-
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    editjobdata: (data, id) => { dispatch(editjobdata(data, id)) },
-    deletemanagerdata: (id) => { dispatch(deletemanagerdata(id)) },
-    editmanagerdata: (data, id) => { dispatch(editmanagerdata(data, id)) },
-    fetchdata: () => { dispatch(fetchdata()) }
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(EditManager)
+    editjobdata: (data, id) => {
+      dispatch(editjobdata(data, id));
+    },
+    deletemanagerdata: (id) => {
+      dispatch(deletemanagerdata(id));
+    },
+    editmanagerdata: (data, id) => {
+      dispatch(editmanagerdata(data, id));
+    },
+    fetchdata: () => {
+      dispatch(fetchdata());
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(EditManager);

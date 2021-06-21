@@ -13,6 +13,8 @@ import InterviewShareGrid from '../../interviews/InterviewShareGrid';
 import AdminView from '../../interviews/AdminView';
 import AddInterview from '../../interviews/AddInterview';
 import GoodBye from '../../videoupload/GoodBye';
+import StartTest from "../../videoupload/StartTest";
+import RealInterview from "../../videoupload/RealInterview";
 const InnerNavbar = () => {
   const location = useLocation();
   return (
@@ -38,6 +40,8 @@ const InnerNavbar = () => {
           path="/companyprofilepage"
           component={CompanyProfilePage}
         />
+        <Route exact path="/start/:tokenid/:id" component={StartTest}/>
+        <Route exact path="/start/:tokenid" component={RealInterview}/>
         <Route exact path="/interview" component={Interviews} />
         <Route exact path="/addinterview" component={AddInterview}/>
         <Route exact path="/login" component={Login} />

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Field, Formik, Form } from "formik";
 import * as yup from "yup";
 import Button from "@material-ui/core/Button";
@@ -7,7 +7,7 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogActions from '@material-ui/core/DialogActions';
+import DialogActions from "@material-ui/core/DialogActions";
 import Slide from "@material-ui/core/Slide";
 import CloseIcon from "@material-ui/icons/Close";
 import Grid from "@material-ui/core/Grid";
@@ -18,7 +18,9 @@ import QuestionsCard from "../addbuttons/QuestionsCard";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { connect } from "react-redux";
-import { editdeptdata, deletequestion, deletedeptdata, fetchdata } from "../../../redux/actions/companyprofile/companprofileAction";
+import {
+  fetchdata,
+} from "../../../redux/actions/companyprofile/companprofileAction";
 import DisplayQuestions from "../DisplayQuestions";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import axios from "axios";
@@ -39,71 +41,65 @@ function EditDepartment(props) {
   const [open, setOpen] = useState(false);
   const [opendelete, setOpendelete] = useState(false);
   const [openalert, setopenalert] = useState(true);
-  const [questions, setnewque] = useState(props.editdata.questions)
+  const [questions, setnewque] = useState(props.editdata.questions);
   const [Yesopen, SetYesopen] = useState(false);
   const [message, setmess] = useState();
   const [status, setstatus] = useState(null);
   async function deletedepartment() {
     var res = await axios({
-      method: 'post',
+      method: "post",
       url: `http://localhost:2002/delete-department/${props.editdata.departmentId}`,
       headers: {
-        Authorization: token
-      }
-    })
-    props.fetchdata()
+        Authorization: token,
+      },
+    });
+    props.fetchdata();
   }
   async function updatedepartment(data) {
-    console.log(data)
-    console.log(props.editdata.departmentId)
+    console.log(data);
+    console.log(props.editdata.departmentId);
     var res = await axios({
-      method: 'post',
+      method: "post",
       url: `http://localhost:2002/update-department/${props.editdata.departmentId}`,
       data: data,
       headers: {
-        Authorization: token
-      }
-    })
+        Authorization: token,
+      },
+    });
     setmess(res.data.message);
     setstatus(res.data.status);
-    props.fetchdata()
+    props.fetchdata();
   }
   const addquestion = (newq) => {
     setnewque((olditem) => {
-      return [
-        ...olditem,
-        newq
-      ]
-    })
-
-  }
+      return [...olditem, newq];
+    });
+  };
   const deletequestion = (id) => {
     setnewque((olditem) => {
       return olditem.filter((arr, index) => {
         return index !== id;
-      })
-    })
-  }
+      });
+    });
+  };
   const deletedata = () => {
     handleClose1();
     SetYesopen(false);
-    deletedepartment(props.id)
-  }
+    deletedepartment(props.id);
+  };
   const YesFunction = () => {
     SetYesopen(true);
   };
   const initialValues = {
     name: props.editdata.name,
     costCenter: props.editdata.cost_center,
-  }
+  };
 
   const onSubmit = (values) => {
-    console.log({ ...values, questions })
+    console.log({ ...values, questions });
 
-    updatedepartment({ ...values, questions })
+    updatedepartment({ ...values, questions });
     setOpen(false);
-
-
   };
 
   const validationSchema = yup.object({
@@ -131,13 +127,11 @@ function EditDepartment(props) {
     setOpen(false);
   };
 
-
   const handleClickOpen1 = () => {
     setOpendelete(true);
   };
 
   const handleClose1 = () => {
-
     setOpendelete(false);
   };
   return (
@@ -165,21 +159,28 @@ function EditDepartment(props) {
         aria-describedby="alert-dialog-description"
       >
         <div style={{ borderTop: "10px solid darkcyan" }}>
-          <DialogTitle id="max-width-dialog-title"><h3>PLEASE CONFIRM</h3></DialogTitle>
+          <DialogTitle id="max-width-dialog-title">
+            <h3>PLEASE CONFIRM</h3>
+          </DialogTitle>
           <DialogContent style={{ width: "400px" }}>
             <DialogContentText>
               <h4>Are you sure you want to delete the department record? </h4>
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-
-
-            <Button onClick={handleClose1}
-              variant="contained" style={{ backgroundColor: "black", color: "white" }} autoFocus>
+            <Button
+              onClick={handleClose1}
+              variant="contained"
+              style={{ backgroundColor: "black", color: "white" }}
+              autoFocus
+            >
               <h3>Cancel</h3>
             </Button>
-            <Button onClick={YesFunction}
-              variant="contained" style={{ backgroundColor: "#dc3545", color: "white" }}  >
+            <Button
+              onClick={YesFunction}
+              variant="contained"
+              style={{ backgroundColor: "#dc3545", color: "white" }}
+            >
               <h3>Delete</h3>
             </Button>
           </DialogActions>
@@ -191,7 +192,6 @@ function EditDepartment(props) {
         >
           <DialogTitle id="max-width-dialog-title">
             <h3> Data Deleted Successfully</h3>
-
           </DialogTitle>
           <DialogContent>
             <DialogContentText>
@@ -201,13 +201,16 @@ function EditDepartment(props) {
           <Button
             onClick={deletedata}
             variant="contained"
-            style={{ backgroundColor: "darkcyan", color: "white", fontSize: "20px" }} >
+            style={{
+              backgroundColor: "darkcyan",
+              color: "white",
+              fontSize: "20px",
+            }}
+          >
             OK
-              </Button>
+          </Button>
         </Dialog>
       </Dialog>
-
-
 
       {/* edit department */}
       <Dialog
@@ -234,8 +237,6 @@ function EditDepartment(props) {
               validationSchema={validationSchema}
             >
               {(formik) => {
-
-
                 return (
                   <>
                     <Form>
@@ -275,13 +276,16 @@ function EditDepartment(props) {
                           <h3>Time Allocated</h3>
                         </Grid> */}
                       </Grid>
-                      <DisplayQuestions question={questions} deletequestion={deletequestion} />
+                      <DisplayQuestions
+                        question={questions}
+                        deletequestion={deletequestion}
+                      />
                       <br />
                       {formik.touched.name && formik.errors.name
                         ? erroralert(formik.errors.name)
                         : formik.touched.costCenter && formik.errors.costCenter
-                          ? erroralert(formik.errors.costCenter)
-                          : null}
+                        ? erroralert(formik.errors.costCenter)
+                        : null}
 
                       <Button
                         id="dialog-cancel-btn"
@@ -319,14 +323,15 @@ const mapStateToProps = (state, ownprops) => {
   //   return index === ownprops.id
   // })
   return {
-    editdata: state.companyprofile.users[ownprops.id]
+    editdata: state.companyprofile.users[ownprops.id],
+  };
+};
 
-  }
-}
-
-const mapDispatchToProps = disptach => {
+const mapDispatchToProps = (disptach) => {
   return {
-    fetchdata: () => { disptach(fetchdata()) }
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(EditDepartment)
+    fetchdata: () => {
+      disptach(fetchdata());
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(EditDepartment);

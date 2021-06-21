@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import { Field, Formik, Form } from "formik";
-import FormControl from "@material-ui/core/FormControl";
-import NativeSelect from "@material-ui/core/NativeSelect";
-import InputLabel from "@material-ui/core/InputLabel";
 import * as yup from "yup";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -12,8 +9,8 @@ import AlertBox from "../../alert/AlertBox";
 function QuestionsCard(props) {
   const [openalert, setopenalert] = useState(false);
   const [newquestion, setnewquestion] = useState({
-    question: ''
-  })
+    question: "",
+  });
   const inputchange = (event) => {
     const { name, value } = event.target;
     setnewquestion((oldval) => {
@@ -25,22 +22,22 @@ function QuestionsCard(props) {
     console.log(newquestion);
   };
   const initialValues = {
-    question: ""
+    question: "",
   };
   const onSubmit = (values, onSubmitProps) => {
     props.addquestion(newquestion);
     setnewquestion({
-      question: ''
-    })
+      question: "",
+    });
     onSubmitProps.resetForm();
   };
   const validationSchema = yup.object({
     question: yup.string().required("Enter Default Question"),
- });
-const closealert = () => {
+  });
+  const closealert = () => {
     setopenalert(false);
-};
-const erroralert = (error) => {
+  };
+  const erroralert = (error) => {
     return (
       <AlertBox
         setopenalert={openalert}
@@ -48,7 +45,7 @@ const erroralert = (error) => {
         error={error}
       />
     );
-};
+  };
   return (
     <div>
       <Formik
@@ -57,7 +54,7 @@ const erroralert = (error) => {
         validationSchema={validationSchema}
       >
         {(formik) => {
-          {/* console.log(formik); */}
+        
           return (
             <>
               <Grid item xs={12}>

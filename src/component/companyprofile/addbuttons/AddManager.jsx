@@ -14,9 +14,14 @@ import { Field, Formik, Form } from "formik";
 import * as yup from "yup";
 import AlertBox from "../../alert/AlertBox";
 import DisplayQuestions from "../DisplayQuestions";
-import { addmanagerquestion, getmanagerdata, deletemanagerquestion, fetchdata } from "../../../redux/actions/companyprofile/companprofileAction";
+import {
+  addmanagerquestion,
+  getmanagerdata,
+  deletemanagerquestion,
+  fetchdata,
+} from "../../../redux/actions/companyprofile/companprofileAction";
 import { connect } from "react-redux";
-import axios from 'axios'
+import axios from "axios";
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
@@ -28,7 +33,7 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 function AddManager({ data, fetchdata }) {
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
   const classes = useStyle();
   const [open, setOpen] = useState(false);
@@ -37,39 +42,35 @@ function AddManager({ data, fetchdata }) {
   const [message, setmessage] = useState();
   const [question, setnewque] = useState([]);
   useEffect(() => {
-    fetchdata()
-  }, [])
+    fetchdata();
+  }, []);
   const initialValues = {
-    firstname: '',
-    lastname: '',
-    email: ''
-  }
+    firstname: "",
+    lastname: "",
+    email: "",
+  };
   async function savemanager(data) {
     var res = await axios({
-      method: 'post',
+      method: "post",
       url: "http://localhost:2002/save-manager",
       data: data,
       headers: {
-        Authorization: token
-      }
-    })
-    console.log(res.data)
-    fetchdata()
+        Authorization: token,
+      },
+    });
+    console.log(res.data);
+    fetchdata();
     setstatus(res.data.status);
     setmessage(res.data.message);
   }
   const addquestion = (newq) => {
     setnewque((oldval) => {
-      return [
-        ...oldval,
-        newq
-      ]
-    })
-  }
-  const deletequestion = () => {
-  }
+      return [...oldval, newq];
+    });
+  };
+  const deletequestion = () => {};
   const onSubmit = (values) => {
-    savemanager({ ...values, question })
+    savemanager({ ...values, question });
     setnewque([]);
     setOpen(false);
   };
@@ -192,15 +193,18 @@ function AddManager({ data, fetchdata }) {
                           <h3>Default Question For Department</h3>
                         </Grid>
                       </Grid>
-                      <DisplayQuestions question={question} deletequestion={deletequestion} />
+                      <DisplayQuestions
+                        question={question}
+                        deletequestion={deletequestion}
+                      />
                       <br />
                       {formik.errors.firstname
                         ? erroralert(formik.errors.firstname)
                         : formik.errors.lastname
-                          ? erroralert(formik.errors.lastname)
-                          : formik.errors.email
-                            ? erroralert(formik.errors.email)
-                            : null}
+                        ? erroralert(formik.errors.lastname)
+                        : formik.errors.email
+                        ? erroralert(formik.errors.email)
+                        : null}
                       <Button
                         onClick={handleClose}
                         id="dialog-cancel-btn"
@@ -230,17 +234,25 @@ function AddManager({ data, fetchdata }) {
     </div>
   );
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    data: state.companyprofile
-  }
-}
-const mapDispatchToProps = dispatch => {
+    data: state.companyprofile,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
   return {
-    addmanagerquestion: (newquestion) => { dispatch(addmanagerquestion(newquestion)) },
-    deletemanagerquestion: (id) => { dispatch(deletemanagerquestion(id)) },
-    getmanagerdata: (data) => { dispatch(getmanagerdata(data)) },
-    fetchdata: () => { dispatch(fetchdata()) }
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(AddManager)
+    addmanagerquestion: (newquestion) => {
+      dispatch(addmanagerquestion(newquestion));
+    },
+    deletemanagerquestion: (id) => {
+      dispatch(deletemanagerquestion(id));
+    },
+    getmanagerdata: (data) => {
+      dispatch(getmanagerdata(data));
+    },
+    fetchdata: () => {
+      dispatch(fetchdata());
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(AddManager);

@@ -19,7 +19,7 @@ const CompanyProfileForm = (props) => {
             Comapany Information
           </h4>
         </div>
-        {type==="admin"?<CompanyFields />:null}
+        {type === "admin" ? <CompanyFields /> : null}
         <Department />
         <Manager />
         <JobTitle />
@@ -27,6 +27,5 @@ const CompanyProfileForm = (props) => {
     </>
   );
 };
-
 
 export default CompanyProfileForm;
