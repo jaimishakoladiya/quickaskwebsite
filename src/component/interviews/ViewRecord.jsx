@@ -31,15 +31,15 @@ function ViewRecord(props) {
   };
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
-  const { managerid, id,role } = useParams()
+  const { managerid, id, role } = useParams()
   const [question, setquestion] = useState([]);
   const [candidateName, setCandidateName] = useState('');
-  const [rate,setRate]=useState([]);
-  const [candidate,setCandidate]=useState([])
+  const [rate, setRate] = useState([]);
+  const [candidate, setCandidate] = useState([])
 
   async function sharegrid() {
-    var candidatedata=[];
-    var rating=[];
+    var candidatedata = [];
+    var rating = [];
     var res = await axios({
       method: "get",
       url: `http://localhost:2002/single-candidate-data/${id}/manager`,
@@ -47,62 +47,62 @@ function ViewRecord(props) {
         Authorization: token
       }
     })
-   
-    if(res.data.status===false){
-      var res1 = await axios({
-      method: 'get',
-      url: `http://localhost:2002/multiple-candidate/${managerid}/${role}/true/manager`,
-      headers: {
-        Authorization: token
-      }
-    })
-  console.log(res1.data)
-    var name;
-    var questions=[];
-    res1.data.data.candidate && res1.data.data.candidate.map((item)=>{
-            if(id===item.token){
-              name= item.first_name + ' ' + item.last_name
-            }
-    })
-     setCandidateName(name)
-     res1.data.data.questionGrid && res1.data.data.questionGrid.map((item,value)=>{
-      questions.push({question:item.question})
-      candidatedata.push({candidate:item.candidate})
-     })
-    
-     setquestion(questions)
 
-    }
-    else{
+    if (res.data.status === false) {
       var res1 = await axios({
         method: 'get',
-        url: `http://localhost:2002/multiple-candidate/${managerid}/${role}/true/admin`,
+        url: `http://localhost:2002/multiple-candidate/${managerid}/${role}/true/multiple`,
         headers: {
           Authorization: token
         }
       })
-    console.log(res1.data)
-    res1.data.data.questionGrid && res1.data.data.questionGrid.map((item,value)=>{
-      candidatedata.push({candidate:item.candidate})
-     })
-    
-      setCandidateName(`${res&&res.data&&res.data.data&&res.data.data.candidate&&res.data.data.candidate.first_name} ${res&&res.data&&res.data.data&&res.data.data.candidate&&res.data.data.candidate.last_name}`)
-      const questionData=JSON.parse(res&&res.data&&res.data.data&&res.data.data&&res.data.data.data);
-      setquestion(questionData.video)
-      console.log("question  question  question",questionData)
-    }
-    candidatedata.map((val)=>{
-      val.candidate.map((item)=>{
-        if(id===item.id)
-        {  console.log(item.rating)
-          rating.push(item.rating) 
-  
+      console.log(res1.data)
+      var name;
+      var questions = [];
+      res1.data.data.candidate && res1.data.data.candidate.map((item) => {
+        if (id === item.token) {
+          name = item.first_name + ' ' + item.last_name
         }
       })
-   
-  })
-   setRate(rating)
-   
+      setCandidateName(name)
+      res1.data.data.questionGrid && res1.data.data.questionGrid.map((item, value) => {
+        questions.push({ question: item.question })
+        candidatedata.push({ candidate: item.candidate })
+      })
+
+      setquestion(questions)
+
+    }
+    else {
+      var res1 = await axios({
+        method: 'get',
+        url: `http://localhost:2002/multiple-candidate/${managerid}/${role}/true/multiple`,
+        headers: {
+          Authorization: token
+        }
+      })
+      console.log(res1.data)
+      res1.data.data.questionGrid && res1.data.data.questionGrid.map((item, value) => {
+        candidatedata.push({ candidate: item.candidate })
+      })
+
+      setCandidateName(`${res && res.data && res.data.data && res.data.data.candidate && res.data.data.candidate.first_name} ${res && res.data && res.data.data && res.data.data.candidate && res.data.data.candidate.last_name}`)
+      const questionData = JSON.parse(res && res.data && res.data.data && res.data.data && res.data.data.data);
+      setquestion(questionData.video)
+      console.log("question  question  question", questionData)
+    }
+    candidatedata.map((val) => {
+      val.candidate.map((item) => {
+        if (id === item.id) {
+          console.log(item.rating)
+          rating.push(item.rating)
+
+        }
+      })
+
+    })
+    setRate(rating)
+
     const questionData = JSON.parse(
       res && res.data && res.data.data && res.data.data && res.data.data.data
     );
@@ -112,7 +112,7 @@ function ViewRecord(props) {
 
   return (
     <>
-    <Navbar2/>
+      <Navbar2 />
       <div className="view-data">
         <div className="view-header1">
           <h5>{candidateName}</h5>
@@ -147,7 +147,7 @@ function ViewRecord(props) {
           <Table aria-label="customized table">
             <TableHead style={rowcss2}>
               <TableRow className="view-pic">
-              <TableCell style={rowcss}></TableCell>
+                <TableCell style={rowcss}></TableCell>
 
                 <TableCell style={rowcss}>
                   <img
@@ -157,8 +157,8 @@ function ViewRecord(props) {
                       width: "90px",
                       marginLeft: "750px",
                       marginTop: "-30px",
-                      display:"flex",
-                      justifyContent:"center"
+                      display: "flex",
+                      justifyContent: "center"
                     }}
                     src={img2}
                   />

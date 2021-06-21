@@ -12,20 +12,10 @@ import NativeSelect from "@material-ui/core/NativeSelect";
 import {deleteorginfo, getorginfo,getmanager, addinterviewque, setdisabled} from "../../../redux/actions/interview/InterviewAction"; 
 import Step1AddField from "./Step1AddField";
 
-
-
-const useStyles = makeStyles((theme) => ({
-
-  container: {
-    display: "grid",
-    gridTemplateColumns: "repeat(12, 1fr)",
-    gridGap: theme.spacing(3),
-  },
-}));
-
 const Step2 = (props) => {
   console.log(props.manager.managers.user.data)
-
+  const user=JSON.parse(localStorage.getItem('user'));
+  const token=user.data.type;
   const [data, setdata] = useState({
     department: '',
     email: props.manager.managers.user.data.email,
@@ -57,18 +47,26 @@ const Step2 = (props) => {
   }
 
   const getemails = () => {
-    let useremail=props.manager.managers.user.data.email;
-    let items = [];
-    items.push(
-      <option value={useremail}>{useremail}</option>
-    );
-    managers.map((item) => {
-      if(item.registration_status==="REGISTERED" && item.isDeleted===false)
-     { items.push(
-        <option value={item.email}>{item.email}</option>
-      );}
-
-    })
+      let useremail=props.manager.managers.user.data.email;
+      let items = [];
+    if(token === "admin"){
+      items.push(
+        <option value={useremail}>{useremail}</option>
+      );
+      managers.map((item) => {
+        if(item.registration_status==="REGISTERED" && item.isDeleted===false)
+       { items.push(
+          <option value={item.email}>{item.email}</option>
+        );}
+  
+      })
+    }
+    else{
+      items.push(
+        <option value={user.data[token].email}>{user.data[token].email}</option>
+      );
+    }
+   
 
     return items;
 

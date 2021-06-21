@@ -132,7 +132,7 @@ function RatingBox(props) {
 
   return (
     <div>
-      <div style={{display:'flex',marginLeft:"650px"}}>
+      <div style={{ display: 'flex', marginLeft: "650px" }}>
         {props.data ? (
           <PlayCircleOutlineIcon
             onClick={handleClickOpen}
