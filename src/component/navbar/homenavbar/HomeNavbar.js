@@ -33,7 +33,7 @@ function HomeNavbar() {
         <Route exact path="/addinterview" component={AddInterview} />
         <Route exact path="/registartion" component={Registration} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/adminview" component={AdminView} />
+        {/* <Route exact path="/adminview" component={AdminView} /> */}
         <Route exact path="/team" component={Team} />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/forgotpassword" component={Forpass} />

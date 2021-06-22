@@ -17,8 +17,8 @@ function AdminView() {
   }
     return (
      <div>
-         {/* <div style={{marginLeft:"-5%"}}>
-             <div className="detail-data"> */}
+         <div style={{marginLeft:"-5%"}}>
+             <div className="detail-data">
         {/* <div className="detail-header1">
           <h5>ALLCANDIDATES</h5>
           <div className="detail-input">
@@ -36,17 +36,13 @@ function AdminView() {
           </div>
         </div> */}
      
-       {/* <div className="detail-header2">
-    
        
-         <div className="interview_card1"> */}
       
       <CreateData name={name}/>  
-         {/* </div> */}
-     {/* </div>
+       
   
-     </div> */}
-     <div>
+     </div>
+     <div style={{margin:"500px"}}></div>
         
         <div className="interview-footer">
              <img className="interview-footer-logo"  src={logo2}></img>
@@ -54,8 +50,8 @@ function AdminView() {
          
         </div>
     </div>
-         {/* </div> */}
-        </div>
+         </div>
+        
     )
 }
 

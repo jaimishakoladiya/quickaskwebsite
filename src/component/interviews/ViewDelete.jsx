@@ -38,7 +38,7 @@ function  ViewDelete(props) {
       }
     })
     console.log(res.data)
-  props.getadminview()
+  props.ondelete()
     setOpen(false);
   };
   
