@@ -6,7 +6,7 @@ function VideoHeader() {
     return (
         <div>
             <div className="video-header">
-            <img className="logo" src={logo}></img>
+            <img className="logo" alt="header" src={logo}></img>
         </div>
         </div>
     )

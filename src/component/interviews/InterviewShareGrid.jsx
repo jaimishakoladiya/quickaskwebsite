@@ -95,8 +95,9 @@ async function managershare(data){
           aria-labelledby="form-dialog-title"
           TransitionComponent={Transition}
           fullWidth={true}
-          // maxWidth="md"
-          classes={{ paper: classes.dialogWrapper }}>
+          classes={{ paper: classes.dialogWrapper }}
+        
+        >
           <div className="AddDepartment_primaryHeader">
             <h3>Share Grid </h3>
             <div className="AddDepartment_closeicon">

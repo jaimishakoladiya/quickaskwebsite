@@ -15,8 +15,9 @@ import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import AlertBox from '../alert/AlertBox'
 import { getmanager ,emptydata, setdisabled} from "../../redux/actions/interview/InterviewAction";
+import { useHistory} from 'react-router-dom'
 import PeopleIcon from '@material-ui/icons/People';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles} from '@material-ui/core/styles';
 import clsx from 'clsx';
 import "./Interviews.css"
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
@@ -70,6 +71,7 @@ function AddInterview(props) {
   const [openalert, setopenalert] = useState(true);
   const [status,setstatus]=useState(false);
   const [message,setmessage]=useState();
+const history=useHistory();
   function getStepContent(step) {
     switch (step) {
       case 0:
@@ -109,9 +111,8 @@ function AddInterview(props) {
     })
     props.setdisabled(false)
     props.emptydata();
-    setopenalert(true)
-    setstatus(true);
-    setmessage("Interview Create Successfully")
+   history.push('/adminview')
+   
   }
   else{
     setopenalert(true)

@@ -1,23 +1,36 @@
 import React, { useState } from 'react'
-import {useLocation} from 'react-router-dom'
 import InterviewQuestion from './InterviewQuestion';
 import PractiseInterviewTips from './PractiseInterviewTips'
 import Startinterview from './Startinterview';
-function StartTest() {
-    const [tips,settips]=useState(true)
-    const [practice,setpractice]=useState(false)
+import FinishInterview from './FinishInterview';
+import { useHistory } from 'react-router-dom';
 
-    const closepracticetips=()=>{
+function StartTest() {
+    const [tips, settips] = useState(true)
+    const [practice, setpractice] = useState(false)
+    const [yes, setyes] = useState(true)
+    const history = useHistory()
+
+    const [tokenid, settokenid] = useState()
+    const closepracticetips = () => {
         settips(false)
     }
-    const startinterview =()=>{
+    const startinterview = () => {
         setpractice(true)
     }
-    return (
+    const finish = (id) => {
+        setyes(false)
+        console.log(id)
+        settokenid(id)
+    }
+    const gotostart = () => {
+        console.log(tokenid)
+        history.push(`/start/${tokenid}`)
+    }
+return (
         <div>
-           {/* { tips?<PractiseInterviewTips close={closepracticetips}/>:<Startinterview open={startinterview}/>} */}
-            {practice?<InterviewQuestion/>:
-            tips?<PractiseInterviewTips close={closepracticetips}/>:<Startinterview open={startinterview}/>}
+            {practice ? yes ? <InterviewQuestion start={finish} /> : <FinishInterview gotostart={gotostart} /> :
+                tips ? <PractiseInterviewTips close={closepracticetips} /> : <Startinterview open={startinterview} />}
         </div>
     )
 }

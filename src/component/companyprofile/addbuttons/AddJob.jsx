@@ -16,9 +16,12 @@ import axios from "axios";
 import { makeStyles } from "@material-ui/core";
 import AlertBox from "../../alert/AlertBox";
 import QuestionsCard from "./QuestionsCard";
-import { connect } from "react-redux"
+import { connect } from "react-redux";
 import DisplayQuestions from "../DisplayQuestions";
-import { addjobdata, addjobquestion, deletejobquestion,getjobdata,fetchdata } from "../../../redux/actions/companyprofile/companprofileAction"
+import {
+  getjobdata,
+  fetchdata,
+} from "../../../redux/actions/companyprofile/companprofileAction";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -30,114 +33,71 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: "#eef5f6",
   },
 }));
-function AddJob({data,fetchdata}) {
+function AddJob({ data, fetchdata }) {
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
-  const[message,setmessege]=useState();
-  const[status,setstatus]=useState(null);
-  // useEffect(()=>{
-  //   async function getData(){
-  //     const result = await axios({
-  //       method:'get',
-  //       url:"http://localhost:2002/get-job-detail",
-  //       headers:{
-  //         Authorization:token
-  //       }
-  //     })
-  //     props.getjobdata(result.data.result)
-  //     console.log(result.data);
-  //   }
-
-  //   getData();
-  // })
-  
+  const [message, setmessege] = useState();
+  const [status, setstatus] = useState(null);
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const [openalert, setopenalert] = useState(true);
-  const[questions,setnewque]=useState([])
-  useEffect(()=>{
-    // async function getData(){
-    //   const result = await axios({
-    //     method:'get',
-    //     url:"http://localhost:2002/get-job-detail",
-    //     headers:{
-    //       Authorization:token
-    //     }
-    //   })
-    //   props.getjobdata(result.data.result)
-      
-    // }
-
-    // getData();
-    fetchdata()
+  const [questions, setnewque] = useState([]);
+  useEffect(() => {
+    fetchdata();
     console.log("called add job useEffect");
-  },[])
- 
+  }, []);
+
   const SelectItem = () => {
     let items = [];
-    data.dept.map((item,index)=>{
-      items.push(<option value={item.name}>{item.name}</option>)
-    })
+    data.dept.map((item, index) => {
+      items.push(<option value={item.name}>{item.name}</option>);
+    });
     return items;
   };
-  const addquestion=(newq)=>{
-    setnewque((olditem)=>{
-      return[
-        ...olditem,
-        newq
-      ]
-    })
-   
-    // props.addjobquestion(newq)
-  }
-  const deletequestions =(id)=>{
-    setnewque((olditem)=>{
-      return olditem.filter((arr,index)=>{
+  const addquestion = (newq) => {
+    setnewque((olditem) => {
+      return [...olditem, newq];
+    });
+  };
+  const deletequestions = (id) => {
+    setnewque((olditem) => {
+      return olditem.filter((arr, index) => {
         return index !== id;
-      })
-    })
-  }
+      });
+    });
+  };
   const initialValues = {
     title: "",
     department: "",
   };
-  async function savejobdata(data){
-  
+  async function savejobdata(data) {
     var res = await axios({
-      method:'post',
-      url:"http://localhost:2002/save-job-detail",
-      data:data,
-      headers:{
+      method: "post",
+      url: "http://localhost:2002/save-job-detail",
+      data: data,
+      headers: {
         Authorization: token,
-      }
-    })
-    fetchdata()
-    
-      const result = await axios({
-        method:'get',
-        url:"http://localhost:2002/get-job-detail",
-        headers:{
-          Authorization:token
-        }
-      })
-      
-     
-    
-      setstatus(res.data.status);
-      setmessege(res.data.message);
+      },
+    });
+    fetchdata();
+    const result = await axios({
+      method: "get",
+      url: "http://localhost:2002/get-job-detail",
+      headers: {
+        Authorization: token,
+      },
+    });
+    setstatus(res.data.status);
+    setmessege(res.data.message);
   }
-
   const onSubmit = (values) => {
-    
-  console.log({...values,questions})
-   savejobdata({...values,questions});
+    console.log({ ...values, questions });
+    savejobdata({ ...values, questions });
     setOpen(false);
     setnewque([]);
   };
-
   const validationSchema = yup.object({
-     title: yup.string().required("All fields are required"),
-    // department: yup.string().required("All fields are required"),
+    title: yup.string().required("All fields are required"),
   });
   const closealert = () => {
     setopenalert(false);
@@ -151,15 +111,12 @@ function AddJob({data,fetchdata}) {
       />
     );
   };
-
   const handleClickOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
   };
-
   return (
     <div>
       <Button
@@ -172,7 +129,7 @@ function AddJob({data,fetchdata}) {
         Add Job
       </Button>
       <br />
-  {status!=null?erroralert(message):null}
+      {status != null ? erroralert(message) : null}
       <Dialog
         open={open}
         onClose={handleClose}
@@ -197,8 +154,6 @@ function AddJob({data,fetchdata}) {
               validationSchema={validationSchema}
             >
               {(formik) => {
-               
-
                 return (
                   <>
                     <Form>
@@ -220,14 +175,14 @@ function AddJob({data,fetchdata}) {
                           />
                         </Grid>
                         <Grid item xs={6}>
-                        <Field as={NativeSelect}
-                        style={{ marginLeft: "10px", width: "350px" }}
-                        name='department'
-                        
-                      >
-                        <option value="null">--Select Department--</option>
-                        {SelectItem()}
-                      </Field>
+                          <Field
+                            as={NativeSelect}
+                            style={{ marginLeft: "10px", width: "350px" }}
+                            name="department"
+                          >
+                            <option value="null">--Select Department--</option>
+                            {SelectItem()}
+                          </Field>
                         </Grid>
                         <Grid item xs={6}>
                           <h3>Default Question For Department</h3>
@@ -236,14 +191,16 @@ function AddJob({data,fetchdata}) {
                           <h3>Time Allocated</h3>
                         </Grid> */}
                       </Grid>
-                      <DisplayQuestions question={questions} deletequestion={deletequestions} />
+                      <DisplayQuestions
+                        question={questions}
+                        deletequestion={deletequestions}
+                      />
                       <br />
                       {formik.touched.title && formik.errors.title
                         ? erroralert(formik.errors.title)
                         : formik.touched.department && formik.errors.department
-                          ? erroralert(formik.errors.department)
-                          : null}
-
+                        ? erroralert(formik.errors.department)
+                        : null}
                       <Button
                         id="dialog-cancel-btn"
                         onClick={handleClose}
@@ -275,20 +232,20 @@ function AddJob({data,fetchdata}) {
     </div>
   );
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    data: state.companyprofile
-  }
-}
-
-const mapDispatchToProps = dispatch => {
+    data: state.companyprofile,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
   return {
-  //   addjobquestion: (newquestion) => { dispatch(addjobquestion(newquestion)) },
-  //   deletejobquestion: (id) => { dispatch(deletejobquestion(id)) },
-  //   addjobdata:(data) =>{dispatch(addjobdata(data))}
-  getjobdata:(data)=>{dispatch(getjobdata(data))}  ,
-  fetchdata:()=>{dispatch(fetchdata())}
-}
-}
+    getjobdata: (data) => {
+      dispatch(getjobdata(data));
+    },
+    fetchdata: () => {
+      dispatch(fetchdata());
+    },
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddJob)
+export default connect(mapStateToProps, mapDispatchToProps)(AddJob);

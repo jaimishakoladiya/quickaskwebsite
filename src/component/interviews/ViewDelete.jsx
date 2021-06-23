@@ -31,12 +31,14 @@ function  ViewDelete(props) {
         Authorization:token
       }
     })
-  props.getadminview()
+    console.log(res.data)
+  props.ondelete()
     setOpen(false);
   };
   return (
     <div>
-        <button id="edit_btn" onClick={() => history.push(`/viewrecord/${manager}/${role}/${id}`)}>       <VisibilityIcon/>
+        
+        <button id="edit_btn" onClick={() => history.push(`/viewrecord/${manager}/${id}/${role}`)}>       <VisibilityIcon/>
          </button>
        <button id="delete_btn"  onClick={handleClickOpen} > <DeleteIcon/> 
          </button> 

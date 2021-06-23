@@ -3,29 +3,23 @@ import image1 from "../../images/wave.png";
 import image2 from "../../images/undraw_mobile_user_7oqo (3).svg";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import image3 from "../../images/undraw_profile_pic_ic5t (2).svg";
-// import Loginpage from './Loginpage';
 import { Field, Formik, Form } from "formik";
 import "./registarion.css";
-import { Route, Switch, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import * as yup from "yup";
 import PersonIcon from "@material-ui/icons/Person";
-import axios from 'axios';
+import axios from "axios";
 import AlertBox from "../../alert/AlertBox";
-
 function Registration() {
   const [openalert, setopenalert] = useState(false);
-  async function makePostRequest(data){
-    let res=await axios.post("http://localhost:2002/register",data)
-    console.log(res.data)
+  async function makePostRequest(data) {
+    let res = await axios.post("http://localhost:2002/register", data);
+    console.log(res.data);
   }
-
- 
   const history = useHistory();
-
   const closealert = () => {
     setopenalert(false);
   };
-
   const erroralert = (error) => {
     return (
       <AlertBox
@@ -36,22 +30,19 @@ function Registration() {
     );
   };
   const initialValues = {
-    email:"",
+    email: "",
     firstname: "",
     lastname: "",
     companyemail: "",
   };
   const onSubmit = (values, onsubmitprops) => {
-    // onsubmitprops.resetForm();
     makePostRequest(values);
     console.log(values);
-    history.push("/login")
-
+    history.push("/login");
   };
-
   const validationSchema = yup.object({
     email: yup.string().required("email is required"),
-   firstname: yup.string().required("Firstname is required"),
+    firstname: yup.string().required("Firstname is required"),
     lastname: yup.string().required("Lastname is required"),
     companyemail: yup
       .string()
@@ -67,7 +58,11 @@ function Registration() {
       {(formik) => {
         return (
           <>
-            <img src={image1} className="registration-wave"></img>
+            <img
+              alt="QuickAsk"
+              src={image1}
+              className="registration-wave"
+            ></img>
             <div className="registration-container">
               <div className="reimg" id="img">
                 <img
@@ -78,13 +73,13 @@ function Registration() {
               </div>
               <div className="reg2-container">
                 <Form className="registation-form">
-                  
-                  <img src={image3} className="registration-face"></img>
-                  
-
+                  <img
+                    alt="QuickAsk"
+                    src={image3}
+                    className="registration-face"
+                  ></img>
                   <div className="input-group">
-                  <div className="registation-div one focus">
-                   
+                    <div className="registation-div one focus">
                       <div className="icons">
                         <MailOutlineIcon className="person" />
                       </div>
@@ -94,7 +89,6 @@ function Registration() {
                       </div>
                     </div>
                     <div className="registation-div one focus">
-                   
                       <div className="icons">
                         <PersonIcon className="person" />
                       </div>
@@ -103,7 +97,6 @@ function Registration() {
                         <Field type="text" name="firstname" className="input" />
                       </div>
                     </div>
-
                     <div className="registation-div two focus">
                       <div className="icons">
                         <PersonIcon className="local" />
@@ -138,13 +131,11 @@ function Registration() {
                     <input
                       type="submit"
                       className="tn"
-                     onClick={() => setopenalert(true)}
+                      onClick={() => setopenalert(true)}
                       value="Sign Up"
                     />
                   </div>
                   <br />
-
-
                   <input
                     type="button"
                     onClick={() => history.push("/login")}
@@ -160,5 +151,4 @@ function Registration() {
     </Formik>
   );
 }
-
 export default Registration;

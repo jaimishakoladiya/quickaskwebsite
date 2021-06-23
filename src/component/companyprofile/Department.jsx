@@ -1,19 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 
 import AddDepartment from "./addbuttons/AddDepartment";
 import { connect } from "react-redux";
 
 import EditDepartment from "./editbuttons/EditDepartment";
 
-
 const Department = (props) => {
-  // console.log("dept" + props.data.deptdata.department)
-  const [openedit, setopenedit] = useState(true);
-  const closeedit = () => {
-    setopenedit(false);
-  };
-
-
   return (
     <>
       <div className="Department_card1">
@@ -27,21 +19,17 @@ const Department = (props) => {
             </th>
           </tr>
 
-          {
-            props.data.users.map((item, index) => {
-
-              return (
-                <tr className="company-tr" key={index}>
-                  <td className="company-td">{item.name}</td>
-                  <td className="company-td">{item.cost_center}</td>
-                  <td className="company-td" id="Action_css">
-
-                    <EditDepartment id={index} />
-
-                  </td>
-                </tr>
-              );
-            })}
+          {props.data.users.map((item, index) => {
+            return (
+              <tr className="company-tr" key={index}>
+                <td className="company-td">{item.name}</td>
+                <td className="company-td">{item.cost_center}</td>
+                <td className="company-td" id="Action_css">
+                  <EditDepartment id={index} />
+                </td>
+              </tr>
+            );
+          })}
         </table>
         <br></br> <AddDepartment />
         <br></br>

@@ -9,14 +9,14 @@ function About() {
   AOS.init({
     offset: 100,
     duration: 1000,
-    once:true,
+    once: true,
   });
   return (
     <>
       <div style={{ marginTop: "200px" }}>
         <div className="title">
           <div>
-            <img className="about-img1" src={img1} />
+            <img className="about-img1" alt="img" src={img1} />
           </div>
           <h3 className="about-title">HOW WE</h3>
           <h3 className="about-title">CAN HELP YOU</h3>
@@ -59,7 +59,7 @@ function About() {
         <br></br>
 
         <div className="aboutfooter" data-aos="fade-up">
-          <img className="about-img2" src={img2} />
+          <img className="about-img2" alt="img" src={img2} />
           <div className="about-col-8">
             <h4 className="about-footer-title">MISSION STATEMENT</h4>
             <p className="about-footer-text">

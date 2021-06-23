@@ -292,7 +292,7 @@ bottom: 0;
 color:#dc3545;
 }
 #delete_question:hover{
-  background-color: lightcyan;
+  background-color: white;
 }
 #edit_btn{
   background-color:darkcyan;
@@ -309,7 +309,7 @@ color:#dc3545;
   height:35px;
   border-radius:6px;
  border-color: #dc3545;
- margin-left: 4px;
+ margin-left: 100 px;
 }
 #Action_css{
   justify-content: right;
