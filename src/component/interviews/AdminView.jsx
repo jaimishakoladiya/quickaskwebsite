@@ -2,21 +2,17 @@ import React, { useState } from 'react'
 import "./Interviews.css";
 import CreateData from "./CreateData";
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
 import Table from "@material-ui/core/Table";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import CompanyFooter from '../companyprofile/CompanyFooter';
-
 function AdminView() {
   const [name,setname]=useState();
   const inputchangefunction=(event)=>{
     setname(event.target.value);
-    console.log(name);
   }
     return (
-     
         <div>
              <div className="detail-data">
         <div className="detail-header1">
@@ -32,43 +28,25 @@ function AdminView() {
               name="name"
               onChange={inputchangefunction}
             />
-           
           </div>
         </div>
-     
        <div className="detail-header2">
-    
        <TableContainer >
         <Table aria-label="customized table">
         <TableHead id="headercss" >
-            
-          
               <TableHead id="headercss">Name</TableHead>
-        
              <TableHead id="headercss" >JobTitle</TableHead>
-   
            <TableHead id="headercss" >Status</TableHead>
             <TableHead id="headercss" >Date</TableHead>
-           
             <TableHead id="headercss" >score</TableHead>
             <TableHead id="headercss" >Action</TableHead>
-          
           </TableHead>
-       
           <TableRow>
           <div className="interview_card1">
-      
          <CreateData name={name}/>    </div>
           </TableRow>   
-          
- 
-
         </Table>
-        
         </TableContainer> 
-      
-     
-       
      </div>
   
      </div>
@@ -76,5 +54,4 @@ function AdminView() {
         </div>
     )
 }
-
 export default AdminView

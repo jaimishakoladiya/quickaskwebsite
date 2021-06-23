@@ -5,27 +5,18 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import { connect } from "react-redux";
-import axios from 'axios'
-import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from "@material-ui/core/FormControl";
 import NativeSelect from "@material-ui/core/NativeSelect";
 import {deleteorginfo, getorginfo,getmanager, addinterviewque, setdisabled} from "../../../redux/actions/interview/InterviewAction"; 
 import Step1AddField from "./Step1AddField";
-
-
-
 const useStyles = makeStyles((theme) => ({
-
   container: {
     display: "grid",
     gridTemplateColumns: "repeat(12, 1fr)",
     gridGap: theme.spacing(3),
   },
 }));
-
 const Step2 = (props) => {
-  console.log(props.manager.managers.user.data)
-
   const [data, setdata] = useState({
     department: '',
     email: props.manager.managers.user.data.email,
@@ -36,15 +27,12 @@ const Step2 = (props) => {
   const managers = [ props.manager.managers.user.data,...props.manager.managers.managerdata];
   const department = [...props.manager.managers.departmentResult];
   const job = [...props.manager.managers.jobTitleResult];
-  console.log(job)
   useEffect(() => {
     getname()
   }, [data.email])
-
   const getname = () => {
     managers.map((item) => {
       if (item.email === data.email) {
-        console.log(item.firstname)
         setdata((olditem) => {
           return {
             ...olditem,
@@ -55,7 +43,6 @@ const Step2 = (props) => {
       }
     })
   }
-
   const getemails = () => {
     let useremail=props.manager.managers.user.data.email;
     let items = [];
@@ -67,11 +54,8 @@ const Step2 = (props) => {
      { items.push(
         <option value={item.email}>{item.email}</option>
       );}
-
     })
-
     return items;
-
   }
   const getdepartment = () => {
     let items = [];
@@ -85,32 +69,25 @@ const Step2 = (props) => {
     })
     return items;
   }
-
   const getjob = () => {
     const items = [];
     job.map((item) => {
       item['job-title'].map((val) => {
         if (val.department === data.department) {
-          console.log(val.title)
           items.push(<option value={val.title}>{val.title}</option>)
         }
       })
-
     })
     return items;
   }
-
   const inputchange = (event) => {
     const { name, value } = event.target;
-
     setdata((olditem) => {
       return {
         ...olditem,
         [name]: value
       }
     })
-    console.log(data)
-
   }
   const addorginfodata=()=>{
   var test=[];
@@ -128,23 +105,18 @@ const Step2 = (props) => {
       item['job-title'].map((val) => {
         if (data.jobTitle === val.title) {
           if(item.questions.length!=0){
-            //   console.log(item.questions)
             props.addinterviewque(...val.questions)
             }
      }
       })
     })
-  
     managers.map((item, index) => {
       if (data.email === item.email) {
        if(item.questions && item.questions.length!=0){
-      //   console.log(item.questions)
         props.addinterviewque(...item.questions)
       }
-  
       }
     })
-    // console.log(test)
     console.log(props.data.interviewque)
     setdata({
       department: '',
@@ -158,7 +130,6 @@ const Step2 = (props) => {
   const deletefunction = (id) => {
     props.deleteorginfo(id)
     props.setdisabled(false);
-
   }
   return (
     <>
@@ -186,20 +157,15 @@ const Step2 = (props) => {
                 name="last_name"
                 value={data.last_name}
                 disabled={props.data.disabled}
-
               />
             </Grid>
             <Grid item xs={4} sm={4} xl={4} md={4} className="d-flex">
               <FormControl style={{ width: "200px", marginTop: "5px" }}>
-
                 <NativeSelect
                   name='email'
                   value={data.email}
                   onChange={inputchange}
-                  disabled={props.data.disabled}
-
-                >
-                  {/* <option value="none">--select--</option> */}
+                  disabled={props.data.disabled}>
                   {getemails()}
                 </NativeSelect>
               </FormControl>
@@ -211,7 +177,6 @@ const Step2 = (props) => {
         <Grid container spacing={2}>
           <Grid item xs={4} sm={4} xl={4} md={4} className="d-flex">
             <FormControl style={{ width: "200px", marginTop: "10px" }}>
-
               <NativeSelect
                 name='department'
                 value={data.department}
@@ -225,7 +190,6 @@ const Step2 = (props) => {
             </FormControl>
           </Grid>
           <Grid item xs={4} sm={4} xl={4} md={4} className="d-flex">
-
             <FormControl style={{ width: "200px", marginTop: "10px" }}>
               <NativeSelect
                 name='jobTitle'
@@ -272,7 +236,6 @@ const mapDispatchToProps=dispatch=>{
     getmanager:(data)=>{dispatch(getmanager(data))},
     addinterviewque:(data)=>{dispatch(addinterviewque(data))},
     setdisabled:(data)=>{dispatch(setdisabled(data))}
-    
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Step2);

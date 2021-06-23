@@ -20,7 +20,6 @@ function ViewRecord(props) {
   const rowcss = {
     fontSize: "19px",
     fontWeight: "bold",
-
   }
   const printfun = () => {
     window.print();
@@ -28,16 +27,12 @@ function ViewRecord(props) {
   const rowcss2 = {
     fontSize: "19px",
     fontWeight: "bold",
-
   }
   const user = JSON.parse(localStorage.getItem('user'));
   const token = user.token;
   const { managerid, role, id } = useParams()
-  console.log(managerid)
   const [question, setquestion] = useState([]);
   const [job, setjob] = useState();
-  // console.log(managerid);
-  // console.log(role);
   async function sharegrid() {
     var res = await axios({
       method: 'get',
@@ -46,51 +41,37 @@ function ViewRecord(props) {
         Authorization: token
       }
     })
-    console.log(res.data)
-    // console.log(res.data.data.questionGrid)
     res.data.data.questionGrid && res.data.data.questionGrid.map((arr, index) => {
-      console.log(arr.question)
     })
     setquestion(res.data.data.questionGrid);
-    console.log(question)
-
   }
-
   return (
     <>
-  
       <div className="view-data" >
         <div className="view-header1">
           <h5>{role}</h5>
           <InterviewShareGrid managerid={managerid} candidateid={id}/>
           <Button variant="contained" onClick={printfun} color="secondary" style={{ marginLeft:"20px", fontSize: "12pt", height: "50px" }}>
             Print</Button>
-        
         </div>
       </div>
       <div className="view-header2">
         <TableContainer >
           <Table aria-label="customized table">
             <TableHead style={rowcss} >
-
               <TableCell></TableCell>
               <TableCell style={rowcss} id="view_css">Questions</TableCell>
-
               <TableCell style={rowcss} >Name</TableCell>
-
             </TableHead>
           </Table>
         </TableContainer>
       </div>
-
       <div className="view-header3" >
         <TableContainer >
           <Table aria-label="customized table">
             <TableHead style={rowcss2} >
               <TableRow className="view-pic">
-
                 <TableCell style={rowcss}><img style={{ height: "90px", width: "90px", marginLeft: "800px", marginTop: "-30px" }} src={img2} /></TableCell>
-
               </TableRow>
             </TableHead>
           </Table>
@@ -100,7 +81,6 @@ function ViewRecord(props) {
           <TableContainer >
             <Table aria-label="customized table">
               <TableHead style={rowcss} >
-
                 {question && question.map((arr, index) => {
                   let rate;
                   let path;
@@ -108,8 +88,6 @@ function ViewRecord(props) {
                     <TableRow id="view-header4">
                       <TableCell style={rowcss}>{arr.question}</TableCell>
                       {console.log(arr.candidate)}
-
-                  
                       {arr.candidate.map((item) => {
                         if (id === item.id) {
                           rate = item.rating;
@@ -119,7 +97,6 @@ function ViewRecord(props) {
                       <TableCell style={rowcss} align="center">
                        {path? <RatingBox path={path}/>:null}
                      <StarIcon style={{ color: "black", margin: "-5px 5px"}} />{rate}</TableCell>
-
                     </TableRow>)
                 })
                 }
@@ -127,14 +104,10 @@ function ViewRecord(props) {
             </Table>
           </TableContainer>
           <div style={{borderBottom:"110px solid white"}}></div>
-
           </div>
-   
           </div>
-      
           <CompanyFooter/>
    </>
     )
 }
-
 export default ViewRecord;

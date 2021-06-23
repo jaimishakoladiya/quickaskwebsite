@@ -40,7 +40,7 @@ function HomeNavbar() {
         {location.pathname === "/adminview" ||
           location.pathname === "/interview" ||
           location.pathname === "/companyprofilepage" ||
-          location.pathname === "/viewrecord"||
+          
           location.pathname ==="/addinterview"
         ? <InnerNavbar/> : null}
       

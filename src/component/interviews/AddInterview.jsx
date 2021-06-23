@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react';
+import React,{useState} from 'react';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
@@ -15,17 +15,12 @@ import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import AlertBox from '../alert/AlertBox'
 import { getmanager ,emptydata, setdisabled} from "../../redux/actions/interview/InterviewAction";
-
-// import "./index.css"
 import PeopleIcon from '@material-ui/icons/People';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import "./Interviews.css"
-
-import EditIcon from '@material-ui/icons/Edit';
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import CompanyFooter from '../companyprofile/CompanyFooter';
-
 const useColorlibStepIconStyles = makeStyles({
   root: {
     backgroundColor: '#ccc',
@@ -38,7 +33,6 @@ const useColorlibStepIconStyles = makeStyles({
     alignItems: 'center',
   },
   active: {
-  
     backgroundColor:"darkcyan",
     boxShadow: '0 4px 10px 0 rgba(0,0,0,.25)',
   },
@@ -46,18 +40,15 @@ const useColorlibStepIconStyles = makeStyles({
     backgroundColor:"darkcyan",
   },
 });
-
 function ColorlibStepIcon(props) {
   const classes = useColorlibStepIconStyles();
   const { active, completed } = props;
-
   const icons = {
     1: <GroupAddIcon/>,
     2: <PersonAddIcon />,
     3: <PeopleIcon />,
     4: <ContactSupportIcon/>
   };
-
   return (
     <div 
       className={clsx(classes.root, {
@@ -65,28 +56,21 @@ function ColorlibStepIcon(props) {
         [classes.completed]: completed,
       })}
     >
-
       {icons[String(props.icon)]}
     </div>
   );
 }
 function getSteps() {
-  
   return ["Candidates",
   "Organization Info",
   "Panel Participant",
   "Interview Quetions"];
-  
 }
-
-
 function AddInterview(props) {
   const [openalert, setopenalert] = useState(true);
   const [status,setstatus]=useState(false);
   const [message,setmessage]=useState();
-
   function getStepContent(step) {
- 
     switch (step) {
       case 0:
         return <Step1/>
@@ -100,15 +84,11 @@ function AddInterview(props) {
         return 'Unknown step';
     }
   }
-
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
   const steps = getSteps();
-  
  const addinterview=async ()=>{
    var data;
-
- 
   if((props.data.candidate.length !== 0) || (props.data.managers.length !== 0) || (props.data.interviewque.length!== 0)){
     data={
       candidate:props.data.candidate,
@@ -119,7 +99,6 @@ function AddInterview(props) {
         test:props.data.interviewque
       }
     }
-    console.log(data);
     var res = await axios({
       method: 'post',
       url: "http://localhost:2002/manager-added-interview",
@@ -128,24 +107,17 @@ function AddInterview(props) {
         Authorization: token
       }
     })
-    console.log(res.data)
     props.setdisabled(false)
     props.emptydata();
     setopenalert(true)
     setstatus(true);
     setmessage("Interview Create Successfully")
-    
-   
   }
   else{
-    console.log("blank")
     setopenalert(true)
    setstatus(true);
    setmessage("All Fields Required!!");
-   
-    
   }
-  
  }
  const closealert = () => {
   setopenalert(false);
@@ -175,18 +147,12 @@ const erroralert = (error) => {
         <Stepper id="stepper" orientation="vertical">
           {steps.map((label, index) => {
             return (
-              
               <Step  key={label} active={true}>
               <StepLabel StepIconComponent={ColorlibStepIcon}><h3>{label}</h3></StepLabel>
-              
-               
                 <StepContent >
                   <Typography >{getStepContent(index)}</Typography>
-                  
                 </StepContent>
-                
               </Step>
-              
             );
           })}
           <div>
@@ -215,7 +181,6 @@ const erroralert = (error) => {
       <CompanyFooter/>
       </>
     );
-  
 }
 const mapStateToProps=state=>{
   return {

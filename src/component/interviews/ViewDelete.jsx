@@ -11,21 +11,15 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import axios from 'axios'
 import { connect } from 'react-redux';
 import { getadminview } from '../../redux/actions/interview/InterviewAction';
-
-
 function  ViewDelete(props) {
-  // console.log(props.manager);
-  // console.log(props.role);
   var manager=props.manager;
   var role=props.role;
  var id=props.id;
-
   const [open, setOpen] = React.useState(false);
   const user = JSON.parse(localStorage.getItem("user"));
   const token = user.token;
   const handleClickOpen = async () => {
     setOpen(true);
-    
   };
   const history = useHistory();
   const handleClose = async () => {
@@ -37,27 +31,20 @@ function  ViewDelete(props) {
         Authorization:token
       }
     })
-    console.log(res.data)
   props.getadminview()
     setOpen(false);
   };
-  
-
   return (
     <div>
-        
         <button id="edit_btn" onClick={() => history.push(`/viewrecord/${manager}/${role}/${id}`)}>       <VisibilityIcon/>
          </button>
-       
        <button id="delete_btn"  onClick={handleClickOpen} > <DeleteIcon/> 
          </button> 
-      
       <Dialog
         open={open}                                                              
         onClose={handleClose}
         aria-labelledby="max-width-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
+        aria-describedby="alert-dialog-description">
         <div style={{borderTop:"10px solid darkcyan"}}>
         <DialogTitle id="max-width-dialog-title"><h3>Success</h3></DialogTitle>
         <DialogContent style={{ width: "400px" }}>
@@ -66,7 +53,6 @@ function  ViewDelete(props) {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-  
           <Button onClick={handleClose}
          variant="contained" style={{ backgroundColor: "#008b8b" }}  autoFocus>
           <h3>Ok</h3> 
@@ -86,7 +72,6 @@ const mapDispatchToProps=dispatch=>{
   return {
     
     getadminview:()=>{dispatch(getadminview())}
-    
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(ViewDelete);

@@ -2,12 +2,10 @@ import React ,{useState} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
-import StepLabel from "@material-ui/core/StepLabel";
 import StepContent from "@material-ui/core/StepContent";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
-
 import "./Interviews.css";
 import Step1 from "./steps/Step1";
 import Step2 from "./steps/Step2";
@@ -16,11 +14,7 @@ import Step4 from "./steps/Step4";
 import { connect } from "react-redux";
 import AlertBox from "../alert/AlertBox";
 import { emptydata } from "../../redux/actions/interview/InterviewAction";
-import CompanyFooter from "../companyprofile/CompanyFooter";
-
 const CreateInterview = (props) => {
- 
-  // const [data,setdata]=useState({})
   var data;
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -38,7 +32,6 @@ const CreateInterview = (props) => {
       padding: theme.spacing(3),
     },
   }));
-
   function getSteps() {
     return [
       "Candidates",
@@ -47,7 +40,6 @@ const CreateInterview = (props) => {
       "Interview Quetions",
     ];
   }
-
   function getStepContent(step) {
     switch (step) {
       case 0:
@@ -61,7 +53,6 @@ const CreateInterview = (props) => {
         return <Step4 key={step}/>;
     }
   }
-
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
@@ -70,42 +61,13 @@ const CreateInterview = (props) => {
     setopenalert(false);
   };
   const handleNext = () => {
- console.log(activeStep)
-  //  switch(activeStep)
-  //  {
-  //    case 0:
-      
-  //      if(props.data.candidate.length!=0){
-  //         setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  //      }
-  //     //  else{
-  //     //   setopenalert(true);
-  //     //   }
-  //      case 1:
-  //       if(props.data.orginfo.length!=0){
-  //         setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  //        }
-  //     //    else{
-  //     //     setopenalert(true);
-  //     //    }
-  //    case 2:
-       
-  //     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  //  }
-  // setopenalert(true)
    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-
-  //  console.log(openalert)
-   
-
   };
 const box=()=>{
-
   return  <AlertBox
   setopenalert={openalert}
   closealert={closealert}
   error='Enter All Fields' />
- 
 }
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
@@ -116,26 +78,21 @@ const senddata=()=>{
   const handleReset = () => {
  props.emptydata();
 };
-
   return (
-  
     <div className="interview-Mainbox">
       <div id="stepper_font" className={classes.root}>
         <Stepper
           id="stepper_css"
           activeStep={activeStep}
           orientation="vertical"
-          
         > 
         {openalert?box():null}
           {steps.map((label, index) => (
             <Step key={label}>
-              {/* <StepLabel>{label}</StepLabel> */}
               <StepContent id="stepper_font">
                 <Typography key={index}>{getStepContent(index)}</Typography>
                 <div className={classes.actionsContainer}>
                   <div>
-                
                     <Button
                       style={{
                         color: "darkcyan",
@@ -155,7 +112,6 @@ const senddata=()=>{
                       id="btn_color"
                       onClick={handleNext}
                       className={classes.button}
-                    
                     >
                       Next
                     </Button>:<>
@@ -166,7 +122,6 @@ const senddata=()=>{
                       id="btn_color"
                       onClick={senddata}
                       className={classes.button}
-                    
                     >
                      submit
                     </Button> <Button
@@ -176,12 +131,9 @@ const senddata=()=>{
                       id="btn_color"
                       onClick={handleReset}
                       className={classes.button}
-                    
                     >
                      reset
                     </Button></>}
-                   
-          
                   </div>
                 </div>
               </StepContent>
@@ -196,15 +148,12 @@ const senddata=()=>{
           ></Paper>
         )}
       </div>
-     
     </div>
-
   );
 };
 const mapStateToProps=state=>{
   return {
     data:state.interview
-  
   }
 }
 const mapDispatchToProps=dispatch=>{

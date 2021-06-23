@@ -6,7 +6,6 @@ import Button from "@material-ui/core/Button";
 import * as yup from "yup";
 import AlertBox from "../../alert/AlertBox";
 import { Form, Formik, Field } from "formik";
-import Step1AddField from "./Step1AddField";
 import {addpaneldata,deletepaneldata} from "../../../redux/actions/interview/InterviewAction";
 import { connect } from "react-redux";
 import Step3AddPanel from "./Step3AddPanel";
@@ -32,11 +31,7 @@ const AddpanelCandidate =(values)=>{
   })
 }
 const deletefunction=(id)=>{
-    // return setpanelArray((oldval)=>{
-    //   return oldval.filter((arr,index)=>{
-    //     return index !== id ;
-    //   })
-    // })
+    
     props.deletepaneldata(id)
 }
   const initialValues = {
@@ -45,7 +40,6 @@ const deletefunction=(id)=>{
     email: "",
   };
   const onSubmit = (values, onSubmitprops) => {
-    console.log(values);
     props.addpaneldata(values);
     AddpanelCandidate();
     onSubmitprops.resetForm();
@@ -58,7 +52,6 @@ const deletefunction=(id)=>{
   const closealert = () => {
     setopenalert(false);
   };
-
   const erroralert = (error) => {
     return (
       <AlertBox setopenalert={open} closealert={closealert} error={error} />
@@ -147,7 +140,6 @@ const deletefunction=(id)=>{
                     </Button>
                   </div>
                   <div>
-                   
                            {
                              props.newdata.panel.map((item,index)=>{
                                return(
@@ -156,7 +148,6 @@ const deletefunction=(id)=>{
                            newrecords={props.newdata.panel[index]}
                            id={index}/>)
                          })}
-                    
                   </div>
                 </div>
               </Form>

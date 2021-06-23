@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import PersonIcon from "@material-ui/icons/Person";
-import CloseIcon from "@material-ui/icons/Close";
 import Chip from "@material-ui/core/Chip";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -9,9 +8,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import { connect } from "react-redux";
 const Step3AddPanel = (props) => {
-  console.log(props.newrecords)
   const [open, SetOpen] = useState(false);
   const [Yesopen, SetYesopen] = useState(false);
   const handleClickOpen = () => {
@@ -19,39 +16,27 @@ const Step3AddPanel = (props) => {
   };
   const handleClickClose = () => {
     SetOpen(false);
-    
   };
   const YesFunction = () => {
     SetYesopen(true);
   };
- 
   const OKFunction = () => {
     props.deletefunction(props.id)
     SetYesopen(false);
     SetOpen(false);
-    
-   
   };
   const handleDelete = () => {
-    console.log("delete");
     handleClickOpen();
   };
-
-  
-
   return (
-
     <>
       <Chip
         id="Chip_box"
         icon={<PersonIcon />}
         label={`${props.newrecords.firstName}  ${props.newrecords.lastName}`}
-      // deletequestion={deletecandidatedata}
         onDelete={handleDelete}
-        // deleteIcon={<CloseIcon />}
       ></Chip>
       <Dialog
-      //id="Delete_dailog"
         open={open}
         onClose={handleClickClose}
         aria-labelledby="max-width-dialog-title"
@@ -93,7 +78,6 @@ const Step3AddPanel = (props) => {
                 OK
               </Button>
             </Dialog>
-
           </DialogActions>
           <DialogContent />
         </DialogContent>
@@ -101,15 +85,5 @@ const Step3AddPanel = (props) => {
     </>
   );
 };
-// const mapStateToProps = () => {
-  
-// }
-// const mapDispatchToProps = dispatch => {
-//   return {
-    
-   
-   
-//   }
-// }
 export default Step3AddPanel;
 

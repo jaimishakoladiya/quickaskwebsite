@@ -1,11 +1,10 @@
 import axios from 'axios';
-import React, { useEffect,useState} from 'react';
+import React, {useState} from 'react';
 import { getmdata } from '../../redux/actions/companyprofile/companprofileAction';
 import CompanyFooter from './../companyprofile/CompanyFooter';
 import AddInterview from './AddInterview';
 import MainInterview from './MainInterview';
 import {connect} from 'react-redux';
-
 const Interviews = (props)=>{
 const user=JSON.parse(localStorage.getItem('user'));
 const token=user.token;
@@ -18,11 +17,9 @@ const token=user.token;
         Authorization:token
       }
     })
-    console.log(res.data);
     props.getmdata(res.data.data)
     setopen(true);
   }
-  
     return(<>
            {open===false?<MainInterview openinterviewform={openinterviewform}/>:
              <AddInterview/>}

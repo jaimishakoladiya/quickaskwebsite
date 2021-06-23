@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React  from "react";
 import Table from "@material-ui/core/Table";
 import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
@@ -11,28 +11,19 @@ import {
 } from "../../../redux/actions/interview/InterviewAction";
 import DisplayQuestions from "../../companyprofile/DisplayQuestions";
 import { connect } from "react-redux";
-
 const Step4 = (props) => {
-
   const addquestion = (que) => {
-  
     props.addinterviewque(que)
-
   }
-
   const deletequestion = (id) => {
-
     props.deleteinterviewque(id)
-
   }
   return (
     <>
-
       <div className="step4">
         <QuestionsCard
           addquestion={addquestion}
         />
-        {/* <QuestionsCard/> */}
         <br></br>
         <div>
           <TableContainer>
@@ -43,13 +34,11 @@ const Step4 = (props) => {
                   <TableCell id="Step4_table">
                     Delete
                   </TableCell>
-                
                 </TableRow>
               </TableHead>
             </Table>
           </TableContainer>
         </div>
-
         <DisplayQuestions
           deletequestion={deletequestion}
           question={props.data.interviewque}
@@ -64,7 +53,6 @@ const mapStateToProps = (state) => {
     manager:state.companyprofile
   };
 };
-
 const mapDispatchToProps = (dispatch) => {
   return {
     addinterviewque: (newquestion) => {
@@ -73,7 +61,6 @@ const mapDispatchToProps = (dispatch) => {
     deleteinterviewque: (id) => {
       dispatch(deleteinterviewque(id));
     },
-
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Step4);
